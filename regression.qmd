@@ -1,5 +1,6 @@
 ---
 title: "Linear Regression"
+subtitle: "How to use stats and lm()"
 author: "Allison Anemone & Andrew Silhavy"
 format: html
 ---

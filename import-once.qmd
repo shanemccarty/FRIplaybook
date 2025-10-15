@@ -1,0 +1,189 @@
+---
+title: "Importing Data Once"
+subtitle: "How to use readr, readxl, and haven"
+authors: 
+  - Zihan Hei
+  - Shane McCarty, PhD
+abstract: |
+  This chapter introduces students to importing data from various sources and file formats commonly used in public health research. Students learn to load datasets from R packages (NHANES), read CSV files, import Excel spreadsheets, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Students also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, students will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.
+keywords:
+  - data import
+  - NHANES
+  - CSV
+  - Excel
+  - SPSS
+  - missing data
+format: live-html
+engine: knitr
+editor: visual
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+::: callout-tip
+## 📖 Learning Resources
+
+-   **R for Data Science**: [Data Import](https://r4ds.hadley.nz/data-import.html)
+-   **R for Data Science**: [Import](https://r4ds.hadley.nz/import.html)
+-   **Cheat Sheet**: [dplyr](https://rstudio.github.io/cheatsheets/data-import.pdf)
+-   **Posit Interactive Page**: [import](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)
+:::
+
+## Introduction to Data Import
+
+**Importing data** is the *first step* in the data science workflow. Before you can clean, visualize, or model your data, you need to get it into R. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected in the software Qualtrics.
+
+**Common data sources:**
+
+-   Survey platforms (Qualtrics, REDCap)
+
+-   R packages (e.g., `NHANES`)
+
+-   Other statistical softwares (e.g., SPSS, SAS, Stata)
+
+-   Spreadsheets (Excel, Google Sheets) 
+
+-   Databases (SQL)
+
+```{r}
+#| label: load-packages
+#| autorun: true
+#| completion: true
+#| warning: false
+#| message: false
+
+# Load packages (do this each session)
+library(NHANES)    # CDC health data
+library(tidyverse) # Data wrangling (includes readr)
+library(readxl)    # Read Excel files
+library(haven)     # Read SPSS/SAS/Stata files
+```
+
+## Datasets
+
+You will learn how to import different datasets:
+
+-   datasets in R packages `NHANES` and `YRBS`
+
+-   class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course
+
+-   team dataset "oralhealth"
+
+### File Formats
+
+-   National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package `NHANES`
+
+-   a `.csv` file format of the class dataset "health beliefs (cohort 11)" collected in the Research Methods I (ANTH206) course `03.15.2025.prolificgealthbeliefs.csv`
+
+-   a `.xlsx` file format of the class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.xlsx`
+
+-   a `.sav` file format from SPSS of the FRI team project on oral health `10.31.2024.oralhealth.sav`.
+
+## Import Examples
+
+### Import from `NHANES` package
+#### First Setup the library:
+
+```{r}
+#| autorun: false
+#| completion: true
+#| echo: true
+#| output: false
+#| warning: false
+#| error: false
+
+library(tidyverse)
+library(psych)
+library(knitr)
+library(tibble)
+library(dplyr)
+library(tidyr)
+library(scales)     # for number formatting like comma()
+library(english)    # to convert numbers to words
+library(stringr)    # for text functions like str_c()
+library(NHANES)
+```
+
+```{webr-r}
+#| label: install NHANES
+#| eval: false
+install.packages("NHANES")
+```
+
+#### Data Structure
+
+Now, you will view the structure of the NHANES data
+
+```{webr-r}
+library(NHANES)
+# Load the data and view its structure
+str(NHANESraw)
+```
+
+#### Data Header
+
+```{webr-r}
+library(NHANES)
+# Load the data and view its header
+head(NHANESraw)
+```
+
+#### Variables (aka Column) Names
+
+```{webr-r}
+names(NHANESraw)
+```
+
+
+#### View Data
+
+In Posit Cloud, you can use `View()` in your CONSOLE to view the dataframe.
+
+```{{r}}
+library(NHANES)
+# View data
+View(NHANESraw)
+```
+
+### Import from Excel `.xlsx` file
+
+Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them.
+
+```{r}
+#| label: import-excel
+#| autorun: true
+#| completion: true
+#| echo: true
+#| output: false
+#| warning: false
+#| error: false
+
+library(readxl)
+# Import Excel file
+healthbeliefs_xlsx <- read_excel("data/03.15.2025.prolifichealthbeliefs.xlsx")
+
+```
+
+```{webr-r}
+# View first 10 rows
+head(healthbeliefs_xlsx, 10)
+```
+
+```{webr-r}
+# View column names, which are the VARIABLES
+names(healthbeliefs_xlsx)
+```
+
+```{webr-r}
+# Get a summary of all variables
+summary(healthbeliefs_xlsx)
+```
+
+
+#### Excel: Import Data to Assign Missing Data to `NA`
+
+::: callout-warning
+This page is under construction. It will include important missing data information.
+:::
+
+

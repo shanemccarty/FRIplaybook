@@ -1,5 +1,6 @@
 ---
-title: "Transforming Your Data with dplyr"
+title: "Transforming Your Data"
+subtitle: "How to use dplyr"
 author: "Mara Estreich"
 abstract: |
   This chapter introduces students to dplyr, a core package within the tidyverse designed

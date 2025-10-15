@@ -1,5 +1,6 @@
 ---
-title: "quartopub"
+title: "Set up Quarto Pub Account"
+subtitle: "How to publish using Quarto Pub"
 format: html
 ---
 

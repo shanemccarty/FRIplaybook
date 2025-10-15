@@ -9,7 +9,7 @@
 <meta name="author" content="Zihan Hei">
 <meta name="keywords" content="quarto publishing, in line coding, writing">
 
-<title>9&nbsp; Use Functions to Write – The Quantitative Playbook for Public Health Research in R</title>
+<title>10&nbsp; Write Functions, Save Time – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -1672,7 +1672,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Report Transparently:</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Use Functions to Write</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Report Data:</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Use Functions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1749,7 +1749,7 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start Quarto Document</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start a Document</span></span></a>
   </div>
 </li>
       </ul>
@@ -1757,7 +1757,7 @@ globalThis.qwebrExecuteCode = async function (
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Importing Data</span></a>
+ <span class="menu-text">Import Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1766,19 +1766,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exporting from Qualtrics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exporting Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import-simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importing Data Simply</span></span></a>
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importing Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import-continuous.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Importing Data Continously</span></span></a>
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Importing Live</span></span></a>
   </div>
 </li>
       </ul>
@@ -1803,7 +1803,7 @@ globalThis.qwebrExecuteCode = async function (
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Report Transparently:</span></a>
+ <span class="menu-text">Visualize Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1811,14 +1811,31 @@ globalThis.qwebrExecuteCode = async function (
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Report Data:</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Read Me File</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Use Functions to Write</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Use Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -1833,19 +1850,19 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">9.1</span> Purpose</a></li>
-  <li><a href="#first-setup-the-library" id="toc-first-setup-the-library" class="nav-link" data-scroll-target="#first-setup-the-library"><span class="header-section-number">9.2</span> First Setup the library:</a></li>
-  <li><a href="#dataset-example-survey-data" id="toc-dataset-example-survey-data" class="nav-link" data-scroll-target="#dataset-example-survey-data"><span class="header-section-number">9.3</span> Dataset: Example Survey Data</a></li>
-  <li><a href="#example-1-reporting-sample-size-in-a-manuscript-using-inline-r" id="toc-example-1-reporting-sample-size-in-a-manuscript-using-inline-r" class="nav-link" data-scroll-target="#example-1-reporting-sample-size-in-a-manuscript-using-inline-r"><span class="header-section-number">9.4</span> Example 1: Reporting Sample Size in a Manuscript (using inline R)</a></li>
-  <li><a href="#in-your-manuscript-write-like-this" id="toc-in-your-manuscript-write-like-this" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this"><span class="header-section-number">9.5</span> In your manuscript, write like this:</a></li>
-  <li><a href="#example-2-report-numbers-and-percentages" id="toc-example-2-report-numbers-and-percentages" class="nav-link" data-scroll-target="#example-2-report-numbers-and-percentages"><span class="header-section-number">9.6</span> Example 2: Report Numbers and Percentages</a></li>
-  <li><a href="#in-your-manuscript-write-like-this-1" id="toc-in-your-manuscript-write-like-this-1" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-1"><span class="header-section-number">9.7</span> In your manuscript, write like this:</a></li>
-  <li><a href="#example-3-capitalizing-and-writing-numbers-as-words" id="toc-example-3-capitalizing-and-writing-numbers-as-words" class="nav-link" data-scroll-target="#example-3-capitalizing-and-writing-numbers-as-words"><span class="header-section-number">9.8</span> Example 3: Capitalizing and Writing Numbers as Words</a></li>
-  <li><a href="#in-your-manuscript-write-like-this-2" id="toc-in-your-manuscript-write-like-this-2" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-2"><span class="header-section-number">9.9</span> In your manuscript, write like this:</a></li>
-  <li><a href="#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range" id="toc-example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range" class="nav-link" data-scroll-target="#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">9.10</span> Example 4: Interpret a table by using inline R code (Mean, SD, Range)</a></li>
-  <li><a href="#in-your-manuscript-write-like-this-3" id="toc-in-your-manuscript-write-like-this-3" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-3"><span class="header-section-number">9.11</span> In your manuscript, write like this:</a></li>
-  <li><a href="#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code" id="toc-example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code" class="nav-link" data-scroll-target="#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code"><span class="header-section-number">9.12</span> Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code</a></li>
-  <li><a href="#in-your-manuscript-write-like-this-4" id="toc-in-your-manuscript-write-like-this-4" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-4"><span class="header-section-number">9.13</span> In your manuscript, write like this:</a></li>
+  <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose"><span class="header-section-number">10.1</span> Purpose</a></li>
+  <li><a href="#first-setup-the-library" id="toc-first-setup-the-library" class="nav-link" data-scroll-target="#first-setup-the-library"><span class="header-section-number">10.2</span> First Setup the library:</a></li>
+  <li><a href="#dataset-example-survey-data" id="toc-dataset-example-survey-data" class="nav-link" data-scroll-target="#dataset-example-survey-data"><span class="header-section-number">10.3</span> Dataset: Example Survey Data</a></li>
+  <li><a href="#example-1-reporting-sample-size-in-a-manuscript-using-inline-r" id="toc-example-1-reporting-sample-size-in-a-manuscript-using-inline-r" class="nav-link" data-scroll-target="#example-1-reporting-sample-size-in-a-manuscript-using-inline-r"><span class="header-section-number">10.4</span> Example 1: Reporting Sample Size in a Manuscript (using inline R)</a></li>
+  <li><a href="#in-your-manuscript-write-like-this" id="toc-in-your-manuscript-write-like-this" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this"><span class="header-section-number">10.5</span> In your manuscript, write like this:</a></li>
+  <li><a href="#example-2-report-numbers-and-percentages" id="toc-example-2-report-numbers-and-percentages" class="nav-link" data-scroll-target="#example-2-report-numbers-and-percentages"><span class="header-section-number">10.6</span> Example 2: Report Numbers and Percentages</a></li>
+  <li><a href="#in-your-manuscript-write-like-this-1" id="toc-in-your-manuscript-write-like-this-1" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-1"><span class="header-section-number">10.7</span> In your manuscript, write like this:</a></li>
+  <li><a href="#example-3-capitalizing-and-writing-numbers-as-words" id="toc-example-3-capitalizing-and-writing-numbers-as-words" class="nav-link" data-scroll-target="#example-3-capitalizing-and-writing-numbers-as-words"><span class="header-section-number">10.8</span> Example 3: Capitalizing and Writing Numbers as Words</a></li>
+  <li><a href="#in-your-manuscript-write-like-this-2" id="toc-in-your-manuscript-write-like-this-2" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-2"><span class="header-section-number">10.9</span> In your manuscript, write like this:</a></li>
+  <li><a href="#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range" id="toc-example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range" class="nav-link" data-scroll-target="#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">10.10</span> Example 4: Interpret a table by using inline R code (Mean, SD, Range)</a></li>
+  <li><a href="#in-your-manuscript-write-like-this-3" id="toc-in-your-manuscript-write-like-this-3" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-3"><span class="header-section-number">10.11</span> In your manuscript, write like this:</a></li>
+  <li><a href="#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code" id="toc-example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code" class="nav-link" data-scroll-target="#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code"><span class="header-section-number">10.12</span> Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code</a></li>
+  <li><a href="#in-your-manuscript-write-like-this-4" id="toc-in-your-manuscript-write-like-this-4" class="nav-link" data-scroll-target="#in-your-manuscript-write-like-this-4"><span class="header-section-number">10.13</span> In your manuscript, write like this:</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/functions.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2136,10 +2153,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Report Transparently:</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Use Functions to Write</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Report Data:</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Use Functions</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Use Functions to Write</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-<p class="subtitle lead">From Text to Code</p>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write Functions, Save Time</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">How to go from Text to Code</p>
 </div>
 
 
@@ -2174,12 +2191,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="purpose" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="purpose"><span class="header-section-number">9.1</span> Purpose</h2>
+<section id="purpose" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="purpose"><span class="header-section-number">10.1</span> Purpose</h2>
 <p>In reproducible research, writing <em>numbers</em> <em>manually</em> (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use <strong>R functions</strong> inside <strong>Quarto</strong> to turn your results directly into sentences!</p>
 </section>
-<section id="first-setup-the-library" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="first-setup-the-library"><span class="header-section-number">9.2</span> First Setup the library:</h2>
+<section id="first-setup-the-library" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="first-setup-the-library"><span class="header-section-number">10.2</span> First Setup the library:</h2>
 <div class="cell" data-autorun="false" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
@@ -2192,8 +2209,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># for text functions like str_c()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="dataset-example-survey-data" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="dataset-example-survey-data"><span class="header-section-number">9.3</span> Dataset: Example Survey Data</h2>
+<section id="dataset-example-survey-data" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="dataset-example-survey-data"><span class="header-section-number">10.3</span> Dataset: Example Survey Data</h2>
 <p>The dataset was collected on March 15, 2025 in the ANTH206 course: <code>03152025ProlificHealthBeliefs.csv</code>.</p>
 <div class="cell" data-autorun="false" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your data</span></span>
@@ -2205,15 +2222,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(select_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-1-reporting-sample-size-in-a-manuscript-using-inline-r" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="example-1-reporting-sample-size-in-a-manuscript-using-inline-r"><span class="header-section-number">9.4</span> Example 1: Reporting Sample Size in a Manuscript (using inline R)</h2>
+<section id="example-1-reporting-sample-size-in-a-manuscript-using-inline-r" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="example-1-reporting-sample-size-in-a-manuscript-using-inline-r"><span class="header-section-number">10.4</span> Example 1: Reporting Sample Size in a Manuscript (using inline R)</h2>
 <div class="cell" data-autorun="false" data-completion="true">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="in-your-manuscript-write-like-this" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="in-your-manuscript-write-like-this"><span class="header-section-number">9.5</span> In your manuscript, write like this:</h2>
+<section id="in-your-manuscript-write-like-this" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="in-your-manuscript-write-like-this"><span class="header-section-number">10.5</span> In your manuscript, write like this:</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>We surveyed a total of <span class="in">`r total_responses`</span> participants.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -2222,16 +2239,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>We surveyed a total of 122 participants.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-2-report-numbers-and-percentages" class="level2" data-number="9.6">
-<h2 data-number="9.6" class="anchored" data-anchor-id="example-2-report-numbers-and-percentages"><span class="header-section-number">9.6</span> Example 2: Report Numbers and Percentages</h2>
+<section id="example-2-report-numbers-and-percentages" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="example-2-report-numbers-and-percentages"><span class="header-section-number">10.6</span> Example 2: Report Numbers and Percentages</h2>
 <p>You can combine counts and percentages easily.</p>
 <div class="cell" data-autorun="false" data-completion="true">
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="in-your-manuscript-write-like-this-1" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-1"><span class="header-section-number">9.7</span> In your manuscript, write like this:</h2>
+<section id="in-your-manuscript-write-like-this-1" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-1"><span class="header-section-number">10.7</span> In your manuscript, write like this:</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Out of <span class="in">`r total_responses`</span> participants, The final sample was roughly balanced in terms of </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>racial identity (White: <span class="in">`r percent(white, accuracy = 0.1)`</span>, </span>
@@ -2245,12 +2262,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-3-capitalizing-and-writing-numbers-as-words" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="example-3-capitalizing-and-writing-numbers-as-words"><span class="header-section-number">9.8</span> Example 3: Capitalizing and Writing Numbers as Words</h2>
+<section id="example-3-capitalizing-and-writing-numbers-as-words" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="example-3-capitalizing-and-writing-numbers-as-words"><span class="header-section-number">10.8</span> Example 3: Capitalizing and Writing Numbers as Words</h2>
 <p>For more formal writing, report numbers as words:</p>
 </section>
-<section id="in-your-manuscript-write-like-this-2" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-2"><span class="header-section-number">9.9</span> In your manuscript, write like this:</h2>
+<section id="in-your-manuscript-write-like-this-2" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-2"><span class="header-section-number">10.9</span> In your manuscript, write like this:</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A total of <span class="in">`r str_to_title(as.character(english(total_responses)))`</span> participants were included in the analysis.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -2259,8 +2276,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A total of One Hundred And Twenty-Two participants were included in the analysis.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">9.10</span> Example 4: Interpret a table by using inline R code (Mean, SD, Range)</h2>
+<section id="example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">10.10</span> Example 4: Interpret a table by using inline R code (Mean, SD, Range)</h2>
 <div class="cell" data-tbl-cap="Descriptive Statistics Table for Continuous Variables">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Continuous Variables</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>continuous_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -2423,8 +2440,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section id="in-your-manuscript-write-like-this-3" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-3"><span class="header-section-number">9.11</span> In your manuscript, write like this:</h2>
+<section id="in-your-manuscript-write-like-this-3" class="level2" data-number="10.11">
+<h2 data-number="10.11" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-3"><span class="header-section-number">10.11</span> In your manuscript, write like this:</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>The sample consisted of <span class="in">`r nrow(select_data)`</span> participants, </span>
@@ -2444,15 +2461,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Participants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code" class="level2" data-number="9.12">
-<h2 data-number="9.12" class="anchored" data-anchor-id="example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code"><span class="header-section-number">9.12</span> Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code</h2>
+<section id="example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code" class="level2" data-number="10.12">
+<h2 data-number="10.12" class="anchored" data-anchor-id="example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code"><span class="header-section-number">10.12</span> Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code</h2>
 <div class="cell">
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="in-your-manuscript-write-like-this-4" class="level2" data-number="9.13">
-<h2 data-number="9.13" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-4"><span class="header-section-number">9.13</span> In your manuscript, write like this:</h2>
+<section id="in-your-manuscript-write-like-this-4" class="level2" data-number="10.13">
+<h2 data-number="10.13" class="anchored" data-anchor-id="in-your-manuscript-write-like-this-4"><span class="header-section-number">10.13</span> In your manuscript, write like this:</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>There was no significant difference in ZEROSUM_1 scores across political party groups, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>Kruskal-Wallis χ²(<span class="in">`r kw.ZEROSUM_1.party$parameter`</span>) = <span class="in">`r round(kw.ZEROSUM_1.party$statistic, 2)`</span>, </span>
@@ -2923,16 +2940,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./readme.html" class="pagination-link" aria-label="Read Me File">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Read Me File</span></span>
+      <a href="./readme.html" class="pagination-link" aria-label="Write a Read Me">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Use Functions to Write"</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "From Text to Code"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Write Functions, Save Time"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "How to go from Text to Code"</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Zihan Hei"</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="an">abstract:</span><span class="co"> |</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">  This chapter introduces reproducible research practices by demonstrating how to embed </span></span>

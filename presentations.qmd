@@ -1,6 +1,9 @@
 ---
 title: "How to Create a Quarto Presentation"
-author: "Jeff John & Gavin Rualo"
+subtitle: "How to Create Reproducible Slides" 
+author:
+  - Jeff John
+  - Gavin Rualo
 format: html
 ---
 

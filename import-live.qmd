@@ -1,0 +1,134 @@
+---
+title: "Importing Qualtrics Data Live"
+subtitle: "How to use the QualtrRics R package"
+author: "Gavin Rualo"
+abstract: |
+  This chapter demonstrates how to programmatically download survey data from Qualtrics
+  using the Qualtrics API. Students learn to authenticate with Qualtrics, initiate data
+  exports, and download responses directly into R for real-time analysis and reporting.
+  This approach enables automated data updates and live dashboards that reflect the most
+  current survey responses without manual downloads. Using this approach, a research team should be able to run analyses during the last week before the poster is submitted to maximize the data collection window.
+format: html
+engine: knitr
+editor: visual
+execute:
+  eval: false  # Don't run the code automatically
+  echo: true
+---
+
+::: {.callout-tip icon="false"}
+## 📖 Additional Learning Resources
+
+- **Qualtrics API Documentation**: [API Reference](https://api.qualtrics.com/docs/)
+- **qualtRics R Package**: [Working with APIs in R](https://cran.r-project.org/web/packages/qualtRics/vignettes/qualtRics.html)
+
+:::
+
+## Benefits of QualtRics Continuous Importing of Survey Data
+By importing data continously using the `qualtRics` R package, you do not need to export from qualtrics and upload/import a data file. You can generate with up-to-date data instaneously for a:  
+- Quarto report 
+- Plots in a shiny app 
+- Quarto presentation, such as a live demonstration with survey data collected moments ago or to show what your code can do 
+
+## Getting necessary Qualtrics information
+
+![Qualtrics Info](images/qualtrics_info_ex.png)
+
+When you log into Qualtrics, you're going to need to retrieve a few pieces of data specific to your account and the survey that you want to get live data from. Here, we've clicked our user icon in the top right and gone to "Account Settings." You're going to need these strings later.
+
+Next, you're going to need your survey ID. When you click on the survey that you're getting live data from, the URL will look something like this: https://binghamton.yul1.qualtrics.com/survey-builder/SV_6mOC1SaJbecAuP0/edit The survey ID is the string between survey-builder/ and /edit, in this case, being "SV_6mOC1SaJbecAuP0"
+
+Getting into the actual code, we have the following steps: \## Import necessary packages:
+
+```{r}
+#| autorun: false
+#| completion: true
+#| echo: true
+#| output: false
+#| warning: false
+#| error: false
+
+library(httr)
+library(jsonlite)
+library(readr)
+```
+
+## Save important info to variables:
+
+```{r}
+api_token <- "1V0X29BHlwPfSYPsUMQ5d8tQfeydhsVBcGQ2v9Bw"
+data_center <- "yul1"
+survey_id <- "SV_6mOC1SaJbecAuP0"
+
+base_url <- paste0("https://", data_center, ".qualtrics.com/API/v3")
+headers <- add_headers(
+  "X-API-TOKEN" = api_token,
+  "Content-Type" = "application/json"
+)
+```
+
+In this chunk, after saving our API key and survey ID info, we construct the URL that we are going to scrape using the paste0 function (which just combines the arguments into a single string with no spaces between them). We add these specific headers because they are necessary arguments for the API call.
+
+## Start the export job
+
+```{r}
+start_response_export <- function(survey_id) {
+  url <- paste0(base_url, "/surveys/", survey_id, "/export-responses")
+  body <- list(format = "csv")  # Use CSV format here
+  res <- POST(url, headers, body = toJSON(body, auto_unbox = TRUE))
+  stop_for_status(res)
+  content(res, as = "parsed", simplifyVector = TRUE)
+}
+```
+
+This chunk creates the API endpoint and allows us to begin exporting. It also gives us a progress report on how close the data is to being exported!
+
+## Poll for export completion
+
+```{r}
+check_export_progress <- function(progress_id) {
+  url <- paste0(base_url, "/surveys/", survey_id, "/export-responses/", progress_id)
+  repeat {
+    res <- GET(url, headers)
+    stop_for_status(res)
+    progress <- content(res, as = "parsed", simplifyVector = TRUE)
+    if (progress$result$status == "complete") {
+      return(progress$result$fileId)
+    } else if (progress$result$status == "failed") {
+      stop("Export failed")
+    }
+    Sys.sleep(2)
+  }
+}
+```
+
+Once the export is ready, this chunk returns the ID for the file that we can now download from the API.
+
+## Download and read CSV file
+
+```{r}
+daily_download_responses_csv <- function(file_id) {
+  url <- paste0(base_url, "/surveys/", survey_id, "/export-responses/", file_id, "/file")
+  res <- GET(url, headers)
+  stop_for_status(res)
+  tmp <- tempfile(fileext = ".zip")
+  writeBin(content(res, "raw"), tmp)
+  unzip_dir <- tempdir()
+  unzip(tmp, exdir = unzip_dir)
+  csv_file <- list.files(unzip_dir, pattern = "*.csv", full.names = TRUE)
+  read_csv(csv_file)
+}
+```
+
+This chunk unpacks the output into a .csv file which makes it ready for analysis!
+
+## Main execution
+
+```{r}
+export_response <- start_response_export(survey_id)
+progress_id <- export_response$result$progressId
+file_id <- check_export_progress(progress_id)
+responses_df <- daily_download_responses_csv(file_id)
+```
+
+Finally, we set up our dataframes. These dataframes are now in your environment and can update charts or tables every time you reload the export!

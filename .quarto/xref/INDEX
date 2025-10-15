@@ -88,5 +88,11 @@
   },
   "manuscripts.qmd": {
     "manuscripts.html": "a3da88cd"
+  },
+  "import-once.qmd": {
+    "import-once.html": "78f04664"
+  },
+  "import-live.qmd": {
+    "import-live.html": "81988b83"
   }
 }

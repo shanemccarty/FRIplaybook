@@ -23,25 +23,29 @@ book:
           file: intro.qmd
         - text: "Reproducible Reports"
           file: example.qmd
-        - text: "Start Quarto Document"
+        - text: "Start a Document"
           file: codechunks.qmd
-    - part: "Importing Data"
+    - part: "Import Data"
       chapters:
-        - text: "Exporting from Qualtrics"
+        - text: "Exporting Data"
           file: export.qmd
-        - text: "Importing Data Simply"
-          file: import-simple.qmd
-        - text: "Importing Data Continously"
-          file: import-continuous.qmd
+        - text: "Importing Once"
+          file: import-once.qmd
+        - text: "Importing Live"
+          file: import-live.qmd
     - part: "Tidy Data"
       chapters:
         - text: "Tidying Your Data"
           file: tidy.qmd
-    - part: "Report Transparently:"
+    - part: "Visualize Data"
+      chapters:
+        - text: "Visualizing Your Data"
+          file: ggplot2.qmd
+    - part: "Report Data:"
       chapters:    
-        - text: "Read Me File"
+        - text: "Write a Read Me"
           file: readme.qmd
-        - text: "Use Functions to Write"
+        - text: "Use Functions"
           file: functions.qmd
 # Filters - WebR only for now
 filters:
@@ -83,7 +87,7 @@ format:
       left: "© 2025 FRI Public Health Research Stream"
       right: 
         - icon: github
-          href: https://github.com/shanemccarty/FRIplaybook
+          href: https://shanemccarty.github.io/FRIplaybook
         - icon: house
           href: https://fripublichealth.quarto.pub
     search: true

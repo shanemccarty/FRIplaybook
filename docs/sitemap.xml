@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/index.html</loc>
-    <lastmod>2025-10-14T22:24:20.092Z</lastmod>
+    <lastmod>2025-10-15T05:01:53.754Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/intro.html</loc>
-    <lastmod>2025-10-14T23:27:14.060Z</lastmod>
+    <lastmod>2025-10-15T05:03:57.168Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/example.html</loc>
-    <lastmod>2025-10-15T04:43:53.741Z</lastmod>
+    <lastmod>2025-10-15T05:04:07.064Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/codechunks.html</loc>
-    <lastmod>2025-10-15T04:44:57.834Z</lastmod>
+    <lastmod>2025-10-15T05:22:29.245Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/export.html</loc>
-    <lastmod>2025-10-15T04:43:23.384Z</lastmod>
+    <lastmod>2025-10-15T05:19:09.306Z</lastmod>
   </url>
   <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/import-simple.html</loc>
-    <lastmod>2025-10-15T04:46:42.139Z</lastmod>
+    <loc>https://shanemccarty.github.io/FRIplaybook/import-once.html</loc>
+    <lastmod>2025-10-15T05:10:10.798Z</lastmod>
   </url>
   <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/import-continuous.html</loc>
-    <lastmod>2025-10-14T18:00:49.931Z</lastmod>
+    <loc>https://shanemccarty.github.io/FRIplaybook/import-live.html</loc>
+    <lastmod>2025-10-15T05:09:32.813Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/tidy.html</loc>
     <lastmod>2025-10-15T03:36:22.996Z</lastmod>
   </url>
   <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/ggplot2.html</loc>
+    <lastmod>2025-10-15T05:12:19.904Z</lastmod>
+  </url>
+  <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/readme.html</loc>
-    <lastmod>2025-10-15T04:47:42.036Z</lastmod>
+    <lastmod>2025-10-15T05:15:55.395Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/functions.html</loc>
-    <lastmod>2025-10-15T03:36:16.828Z</lastmod>
+    <lastmod>2025-10-15T05:13:31.873Z</lastmod>
   </url>
 </urlset>

@@ -1,6 +1,8 @@
 ---
 title: "How to Write a Quarto Manucript"
-author: "Zihan Hei & Shane McCarty"
+author:
+  - Zihan Hei
+  - Shane McCarty
 format: html
 ---
 

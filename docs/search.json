@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The Quantitative Playbook for Public Health Research in R",
     "section": "",
-    "text": "Preface\nThe most successful sports teams rely on well-designed plays to navigate complex game situations, the FRI Public Health research stream uses strategic data analysis “plays” to tackle the multifaceted challenges of promoting wellbeing, preventing disease, and protecting health. Our research stream explores the intricate biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like MUSE S and Fitbits, psychological insights via survey questionnaires and interviews, and behavioral patterns through online experiments. Like a coach calling the right play at the crucial moment, this playbook equips you and your research teams with proven strategies for importing, tidying, transforming, visualizing, modeling, and communicating the mixed-methods data that helps us connect the dots between social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. Each “play” in this guide has been field-tested by research teams who have successfully used quantitative and qualitative approaches to answer pressing questions about physical and mental health. Whether you’re facing a complex dataset for the first time or looking to refine your analytical strategy, this playbook offers guidance for you to turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.\nTo learn more about the FRI Public Health stream, visit us at: https://fripublichealth.quarto.pub.",
+    "text": "Preface\nStudents in the FRI Public Health research stream at Binghamton University explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of “plays” (R code) that students in the quantitative data analysis track can use for their team-based research projects.\nThe most successful sports teams rely on well-designed plays to navigate complex game situations. The FRI Public Health research stream uses strategic data analysis “plays” to tackle the multifaceted challenges of promoting wellbeing, preventing disease, and protecting health. Our research stream explores the intricate biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like MUSE S and Fitbits, psychological insights via survey questionnaires and interviews, and behavioral patterns through online experiments. Like a coach calling the right play at the crucial moment, this playbook equips you and your research teams with proven strategies for importing, tidying, transforming, visualizing, modeling, and communicating the mixed-methods data that helps us connect the dots between social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. Each “play” in this guide has been field-tested by research teams who have successfully used quantitative and qualitative approaches to answer pressing questions about physical and mental health. Whether you’re facing a complex dataset for the first time or looking to refine your analytical strategy, this playbook offers guidance for you to turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.\nTo learn more about the FRI Public Health stream, visit us at: https://fripublichealth.quarto.pub.",
     "crumbs": [
       "Preface"
     ]
@@ -12,20 +12,20 @@
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  The Quantitative Playbook for Public Health Research in R",
+    "title": "1  The Data Analysis Workflow",
     "section": "",
-    "text": "1.1 The Data Analysis Workflow\nStudents in the FRI Public Health research stream at Binghamton University explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of “plays” (R code) that students in the quantitative data analysis track can use for their team-based research projects.\nThis playbook follows the data science workflow in R for Data Science (2e) (Hadley, 2023) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.\nBy the end of this guide, you will be able to:\nEach section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.",
+    "text": "1.1 What Makes This Guide Different?\nThis playbook follows the data science workflow in R for Data Science (2e) (Hadley, 2023) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.\nBy the end of this guide, you will be able to:\nEach section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
     ]
   },
   {
-    "objectID": "intro.html#the-data-analysis-workflow",
-    "href": "intro.html#the-data-analysis-workflow",
-    "title": "1  The Quantitative Playbook for Public Health Research in R",
+    "objectID": "intro.html#what-makes-this-guide-different",
+    "href": "intro.html#what-makes-this-guide-different",
+    "title": "1  The Data Analysis Workflow",
     "section": "",
-    "text": "Import - Load data from various files, such as text (.csv), excel (.xlsx), and SPSS (.sav)\nTidy - Organize data into a consistent, analysis-ready structure\nTransform - Clean, recode, and create new variables using dplyr\nVisualize - Create informative graphs and charts with ggplot2\nModel - Apply statistical methods (e.g., regression, paired t-test) to answer questions\nCommunicate - Generate reproducible reports with Quarto\nPublish – Use transparent practices to produce multiple products (e.g., report, manuscript, presentation)\n\n\n\n1.1.1 What Makes This Guide Different?\n\nInteractive Learning: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using WebR—no software installation required\nReal Public Health Data: Examples use datasets on insurance claims from kaggle, oral health and diabetes (cohort 10), health beliefs (cohort 11), and related surveys\nComplete Workflow: Covers every step from raw data to publication-ready reports\nPractical Focus: Emphasizes “plays” (R code chunks) you’ll actually use in public health research and practice",
+    "text": "Interactive Learning: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using WebR—no software installation required\nReal Public Health Data: Examples use datasets on insurance claims from kaggle, oral health and diabetes (cohort 10), health beliefs (cohort 11), and related surveys\nComplete Workflow: Covers every step from raw data to publication-ready reports\nPractical Focus: Emphasizes “plays” (R code chunks) you’ll actually use in public health research and practice",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
@@ -34,7 +34,7 @@
   {
     "objectID": "intro.html#prerequisites",
     "href": "intro.html#prerequisites",
-    "title": "1  The Quantitative Playbook for Public Health Research in R",
+    "title": "1  The Data Analysis Workflow",
     "section": "1.2 Prerequisites",
     "text": "1.2 Prerequisites\nTechnical Requirements:\n\nA web browser (Chrome, Firefox, Safari, or Edge) for interactive WebR examples\nPosit Cloud in a browser or R/R Studio on your computer\n\nBackground Knowledge:\n\nBasic familiarity with public health concepts\nIntroductory statistics (descriptive statistics, hypothesis testing, p-values)\nMotivation to learn more R programming (with limited R experience!)",
     "crumbs": [
@@ -45,9 +45,9 @@
   {
     "objectID": "intro.html#how-to-cite-this-guide",
     "href": "intro.html#how-to-cite-this-guide",
-    "title": "1  The Quantitative Playbook for Public Health Research in R",
+    "title": "1  The Data Analysis Workflow",
     "section": "1.3 How to Cite This Guide",
-    "text": "1.3 How to Cite This Guide\nYou can cite this guide as McCarty, S. (Ed.). (2025). The Quantitative Playbook for Public Health Research in R. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Introduction to ggplot2: Creating publication-ready visualizations. The Quantitative Playbook for Public Health Research in R.\n\n1.3.1 Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nAllison Anemone\nMara Estreich\nZihan Hei\nJeff John\nGavin Rualo\nErica Sava\nAndrew Silhavy\nZach Spiegel\n\n\nAfter generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.",
+    "text": "1.3 How to Cite This Guide\nYou can cite this guide as McCarty, S. (Ed.). (2025). The Quantitative Playbook for Public Health Research in R. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data with ggplot2: Creating publication-ready visualizations. The Quantitative Playbook for Public Health Research in R.\n\n1.3.1 Editor and Chapter Co-Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nAllison Anemone\nMara Estreich\nZihan Hei\nJeff John\nGavin Rualo\nErica Sava\nAndrew Silhavy\nZach Spiegel\n\n\nAfter generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
@@ -78,210 +78,210 @@
   {
     "objectID": "codechunks.html",
     "href": "codechunks.html",
-    "title": "3  Start Quarto Markdown Document",
+    "title": "3  Quarto Markdown Document",
     "section": "",
     "text": "3.1 Create a Markdown Document\nIn your Posit Cloud window browser, you should see the source and visual editor options in the top left corner of your screen. You can toggle back and forth between the two options.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start a Document</span>"
     ]
   },
   {
     "objectID": "codechunks.html#create-a-markdown-document",
     "href": "codechunks.html#create-a-markdown-document",
-    "title": "3  Start Quarto Markdown Document",
+    "title": "3  Quarto Markdown Document",
     "section": "",
     "text": "File &gt; New File &gt; Quarto Document\nComplete Title and Author Name, Create\nFile &gt; Save As &gt; name-it-now.qmd\nCheck the file shows up in your files in the bottom right window as .qmd file\n\n\n3.1.1 Quarto Document File Names\nFor individual lab and report quarto reports:\n\nYour individual lab was renamed to lab.qmd\nYour results and discussion report should be named: RDreport.qmd\nAfter submitting your RDreport.qmd, you should go to the files tab, check the box next to RDreport.qmd and then click the gear icon (More) &gt; Copy &gt; name it name_report.qmd\nYour final report should be named: name_report.qmd\n\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou must name your quarto markdown files (.qmd) correctly.\n\n\n\n\n3.1.2 Clearing Environment in Posit Cloud\nYour previously created objects (e.g., alldata, select_data, VARIABLE1) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your .qmd document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.\n\n# Remove all objects from the global environment\nrm(list = ls())\n\nFor your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -&gt; #1: Vivian & Team (to notify me where to look for your team’s MMR work) - create a team_RD.qmd file - create a team_final.qmd file",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start a Document</span>"
     ]
   },
   {
     "objectID": "codechunks.html#yaml",
     "href": "codechunks.html#yaml",
-    "title": "3  Start Quarto Markdown Document",
+    "title": "3  Quarto Markdown Document",
     "section": "3.2 YAML",
     "text": "3.2 YAML\nYAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output (HTML vs. PDF).\n\n\n\n\n\n\nImportantRequirement\n\n\n\nUse this YAML format at the top of ALL Quarto markdown document files (.qmd).\n\n\n\n---\n\ntitle: \"name your final report here\"\nauthor: \"put your full name here\"\ndate: \"3/22/2023\"\nabstract: |\n    TBD goes here\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n    \n---\n\nFor more information, see YAML.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start a Document</span>"
     ]
   },
   {
     "objectID": "codechunks.html#markdown",
     "href": "codechunks.html#markdown",
-    "title": "3  Start Quarto Markdown Document",
+    "title": "3  Quarto Markdown Document",
     "section": "3.3 Markdown",
     "text": "3.3 Markdown\nYou will write in the English language with markdown language to format your quarto report.\n\nThis is a language called markdown. It is very simple. You can use\n*italics*, **bold**, ***bold italics*** to produce:\n\n\nitalics\nbold\nbold italics\n\n\n3.3.1 Verbatim Code\nYou can use a backtick to denote code or the name of a variable by placing a word within ``. For example, if I put EFFICACY between `` then it returns EFFICACY . This will be important for naming variables in your report.\n\n\n\n\n\n\nImportantRequirement\n\n\n\nUse ` ` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start a Document</span>"
     ]
   },
   {
     "objectID": "codechunks.html#code-chunks",
     "href": "codechunks.html#code-chunks",
-    "title": "3  Start Quarto Markdown Document",
+    "title": "3  Quarto Markdown Document",
     "section": "3.4 Code Chunks",
     "text": "3.4 Code Chunks\nA traditional R script (.R) involves code throughout the entire script. A Quarto Markdown Document (.qmd) integrates the R programming language with markdown language into a single document that can include a mix of code and written content. We use report.qmd and other .qmd files to write a reproducible manuscript using written text within embedded code chunks.\n\n3.4.1 Example Code Chunk\nBelow is an example from the @ggplot2.qmd chapter of an informative label for your code chunk and a very detailed figure caption ( fig-cap). Also, notice that all code chunk options start with #| and use a :.\nFor more examples, see @ggplot2.qmd.\n\n```{r}\n#| label: scatterplot-BMI-insurance\n#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables\n#| eval: false\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)\n#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges\n```\n\n\n\n3.4.2 Template Code Chunk\n\nLabel for All Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nEvery code chunk must have a #| label: at the start of the chunk.\n\n\n```{r}\n#| label: this is a label that you will revise\n\n```\nYour #| label: should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.\n```{r}\n#| label: import-data-xlsx\n\n```\n\n\nFigure Caption (Fig-Cap) for Plot Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nEvery plot should include a detailed figure caption using #| fig-cap:\n\n\n```{r}\n#| label: you-need-to-revise-this\n#| fig-cap: you need to revise this with detailed figure caption\n\n```\n\n\nProvide Sources for ALL Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nAt the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).\n\n\n```{r}\n#| label: you-need-to-revise-this\n#| fig-cap: you need to revise this with detailed figure caption\n\n#source example 1: The FRI Playbook (McCarty, 2025)   \n#source example 2: Write Functions (Hei, 2025)   \n#source example 3: Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html\n\n```\nNotice that the format is different. The #source: NOT be in the prior #| format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.\n\n\nProvide Explanation for ALL Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou will explain the code chunk in your own words using #explanation: at the bottom of your code chunk.\n\n\n\n```{r}\n#| label: scatterplot-BMI-insurance\n#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables\n#| eval: false\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)\n#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges\n```\n\n\n\nCode Chunk Options\nFor more information on code chunks, see code chunk options.\n\n```{r}\n#| label: example-with-options\n#| eval: true          # Whether to execute the code\n#| echo: fenced        # for teaching -- this shows the code chunk options to you\n#| output: true        # Whether to display output\n#| warning: false      # Hide warnings\n#| message: false      # Hide messages\n#| error: false        # Hide errors\n#| fig-cap: \"Caption\"  # Figure caption\n#| fig-width: 8        # Figure width in inches\n#| fig-height: 6       # Figure height in inches\n\n# Your code here below these code chunk options\n```",
     "crumbs": [
       "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start a Document</span>"
     ]
   },
   {
     "objectID": "export.html",
     "href": "export.html",
-    "title": "4  Exporting Survey Data",
+    "title": "4  Exporting Survey Data from Qualtrics",
     "section": "",
     "text": "4.1 Exporting Survey Data",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting from Qualtrics</span>"
+      "Import Data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
     ]
   },
   {
     "objectID": "export.html#exporting-survey-data",
     "href": "export.html#exporting-survey-data",
-    "title": "4  Exporting Survey Data",
+    "title": "4  Exporting Survey Data from Qualtrics",
     "section": "",
     "text": "Log into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nRecode variables in Qualtrics\n\nVisit “Recode Values” section of the Qualtrics guide\nFollow the instructions: https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting from Qualtrics</span>"
+      "Import Data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
     ]
   },
   {
     "objectID": "export.html#exporting-survey-data-1",
     "href": "export.html#exporting-survey-data-1",
-    "title": "4  Exporting Survey Data",
+    "title": "4  Exporting Survey Data from Qualtrics",
     "section": "4.2 Exporting Survey Data",
     "text": "4.2 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use {r} Sys.Date() in the correct format and update the file names: 10.15.2025.data.team1.csv and 10.15.2025.data.team1.xlsx",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting from Qualtrics</span>"
+      "Import Data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
     ]
   },
   {
-    "objectID": "import-simple.html",
-    "href": "import-simple.html",
-    "title": "5  Importing Data Simply",
+    "objectID": "import-once.html",
+    "href": "import-once.html",
+    "title": "5  Importing Data Once",
     "section": "",
     "text": "5.1 Introduction to Data Import\nImporting data is the first step in the data science workflow. Before you can clean, visualize, or model your data, you need to get it into R. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected in the software Qualtrics.\nCommon data sources:\n# Load packages (do this each session)\nlibrary(NHANES)    # CDC health data\nlibrary(tidyverse) # Data wrangling (includes readr)\nlibrary(readxl)    # Read Excel files\nlibrary(haven)     # Read SPSS/SAS/Stata files",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
+      "Import Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Once</span>"
     ]
   },
   {
-    "objectID": "import-simple.html#introduction-to-data-import",
-    "href": "import-simple.html#introduction-to-data-import",
-    "title": "5  Importing Data Simply",
+    "objectID": "import-once.html#introduction-to-data-import",
+    "href": "import-once.html#introduction-to-data-import",
+    "title": "5  Importing Data Once",
     "section": "",
     "text": "Survey platforms (Qualtrics, REDCap)\nR packages (e.g., NHANES)\nOther statistical softwares (e.g., SPSS, SAS, Stata)\nSpreadsheets (Excel, Google Sheets)\nDatabases (SQL)",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
+      "Import Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Once</span>"
     ]
   },
   {
-    "objectID": "import-simple.html#datasets",
-    "href": "import-simple.html#datasets",
-    "title": "5  Importing Data Simply",
+    "objectID": "import-once.html#datasets",
+    "href": "import-once.html#datasets",
+    "title": "5  Importing Data Once",
     "section": "5.2 Datasets",
     "text": "5.2 Datasets\nYou will learn how to import different datasets:\n\ndatasets in R packages NHANES and YRBS\nclass dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course\nteam dataset “oralhealth”\n\n\n5.2.1 File Formats\n\nNational Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package NHANES\na .csv file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course 03.15.2025.prolificgealthbeliefs.csv\na .xlsx file format of the class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course 03.15.2025.prolifichealthbeliefs.xlsx\na .sav file format from SPSS of the FRI team project on oral health 10.31.2024.oralhealth.sav.",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
+      "Import Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Once</span>"
     ]
   },
   {
-    "objectID": "import-simple.html#import-examples",
-    "href": "import-simple.html#import-examples",
-    "title": "5  Importing Data Simply",
+    "objectID": "import-once.html#import-examples",
+    "href": "import-once.html#import-examples",
+    "title": "5  Importing Data Once",
     "section": "5.3 Import Examples",
     "text": "5.3 Import Examples\n\n5.3.1 Import from NHANES package\n\nFirst Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()\nlibrary(NHANES)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nData Structure\nNow, you will view the structure of the NHANES data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nData Header\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nVariables (aka Column) Names\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nView Data\nIn Posit Cloud, you can use View() in your CONSOLE to view the dataframe.\n```{r}\nlibrary(NHANES)\n# View data\nView(NHANESraw)\n```\n\n\n\n5.3.2 Import from Excel .xlsx file\nExcel files (.xlsx or .xls) are common in public health. Use the readxl package to import them.\n\nlibrary(readxl)\n# Import Excel file\nhealthbeliefs_xlsx &lt;- read_excel(\"data/03.15.2025.prolifichealthbeliefs.xlsx\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExcel: Import Data to Assign Missing Data to NA\n\n\n\n\n\n\nWarning\n\n\n\nThis page is under construction. It will include important missing data information.",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
+      "Import Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Once</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html",
-    "href": "import-continuous.html",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html",
+    "href": "import-live.html",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "",
     "text": "6.1 Benefits of QualtRics Continuous Importing of Survey Data\nBy importing data continously using the qualtRics R package, you do not need to export from qualtrics and upload/import a data file. You can generate with up-to-date data instaneously for a:\n- Quarto report - Plots in a shiny app - Quarto presentation, such as a live demonstration with survey data collected moments ago or to show what your code can do",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html#getting-necessary-qualtrics-information",
-    "href": "import-continuous.html#getting-necessary-qualtrics-information",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html#getting-necessary-qualtrics-information",
+    "href": "import-live.html#getting-necessary-qualtrics-information",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "6.2 Getting necessary Qualtrics information",
     "text": "6.2 Getting necessary Qualtrics information\n\n\n\nQualtrics Info\n\n\nWhen you log into Qualtrics, you’re going to need to retrieve a few pieces of data specific to your account and the survey that you want to get live data from. Here, we’ve clicked our user icon in the top right and gone to “Account Settings.” You’re going to need these strings later.\nNext, you’re going to need your survey ID. When you click on the survey that you’re getting live data from, the URL will look something like this: https://binghamton.yul1.qualtrics.com/survey-builder/SV_6mOC1SaJbecAuP0/edit The survey ID is the string between survey-builder/ and /edit, in this case, being “SV_6mOC1SaJbecAuP0”\nGetting into the actual code, we have the following steps: ## Import necessary packages:\n\nlibrary(httr)\nlibrary(jsonlite)\nlibrary(readr)",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html#save-important-info-to-variables",
-    "href": "import-continuous.html#save-important-info-to-variables",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html#save-important-info-to-variables",
+    "href": "import-live.html#save-important-info-to-variables",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "6.3 Save important info to variables:",
     "text": "6.3 Save important info to variables:\n\napi_token &lt;- \"1V0X29BHlwPfSYPsUMQ5d8tQfeydhsVBcGQ2v9Bw\"\ndata_center &lt;- \"yul1\"\nsurvey_id &lt;- \"SV_6mOC1SaJbecAuP0\"\n\nbase_url &lt;- paste0(\"https://\", data_center, \".qualtrics.com/API/v3\")\nheaders &lt;- add_headers(\n  \"X-API-TOKEN\" = api_token,\n  \"Content-Type\" = \"application/json\"\n)\n\nIn this chunk, after saving our API key and survey ID info, we construct the URL that we are going to scrape using the paste0 function (which just combines the arguments into a single string with no spaces between them). We add these specific headers because they are necessary arguments for the API call.",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html#start-the-export-job",
-    "href": "import-continuous.html#start-the-export-job",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html#start-the-export-job",
+    "href": "import-live.html#start-the-export-job",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "6.4 Start the export job",
     "text": "6.4 Start the export job\n\nstart_response_export &lt;- function(survey_id) {\n  url &lt;- paste0(base_url, \"/surveys/\", survey_id, \"/export-responses\")\n  body &lt;- list(format = \"csv\")  # Use CSV format here\n  res &lt;- POST(url, headers, body = toJSON(body, auto_unbox = TRUE))\n  stop_for_status(res)\n  content(res, as = \"parsed\", simplifyVector = TRUE)\n}\n\nThis chunk creates the API endpoint and allows us to begin exporting. It also gives us a progress report on how close the data is to being exported!",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html#poll-for-export-completion",
-    "href": "import-continuous.html#poll-for-export-completion",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html#poll-for-export-completion",
+    "href": "import-live.html#poll-for-export-completion",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "6.5 Poll for export completion",
     "text": "6.5 Poll for export completion\n\ncheck_export_progress &lt;- function(progress_id) {\n  url &lt;- paste0(base_url, \"/surveys/\", survey_id, \"/export-responses/\", progress_id)\n  repeat {\n    res &lt;- GET(url, headers)\n    stop_for_status(res)\n    progress &lt;- content(res, as = \"parsed\", simplifyVector = TRUE)\n    if (progress$result$status == \"complete\") {\n      return(progress$result$fileId)\n    } else if (progress$result$status == \"failed\") {\n      stop(\"Export failed\")\n    }\n    Sys.sleep(2)\n  }\n}\n\nOnce the export is ready, this chunk returns the ID for the file that we can now download from the API.",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html#download-and-read-csv-file",
-    "href": "import-continuous.html#download-and-read-csv-file",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html#download-and-read-csv-file",
+    "href": "import-live.html#download-and-read-csv-file",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "6.6 Download and read CSV file",
     "text": "6.6 Download and read CSV file\n\ndaily_download_responses_csv &lt;- function(file_id) {\n  url &lt;- paste0(base_url, \"/surveys/\", survey_id, \"/export-responses/\", file_id, \"/file\")\n  res &lt;- GET(url, headers)\n  stop_for_status(res)\n  tmp &lt;- tempfile(fileext = \".zip\")\n  writeBin(content(res, \"raw\"), tmp)\n  unzip_dir &lt;- tempdir()\n  unzip(tmp, exdir = unzip_dir)\n  csv_file &lt;- list.files(unzip_dir, pattern = \"*.csv\", full.names = TRUE)\n  read_csv(csv_file)\n}\n\nThis chunk unpacks the output into a .csv file which makes it ready for analysis!",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
-    "objectID": "import-continuous.html#main-execution",
-    "href": "import-continuous.html#main-execution",
-    "title": "6  Live Qualtrics Reporting",
+    "objectID": "import-live.html#main-execution",
+    "href": "import-live.html#main-execution",
+    "title": "6  Importing Qualtrics Data Live",
     "section": "6.7 Main execution",
     "text": "6.7 Main execution\n\nexport_response &lt;- start_response_export(survey_id)\nprogress_id &lt;- export_response$result$progressId\nfile_id &lt;- check_export_progress(progress_id)\nresponses_df &lt;- daily_download_responses_csv(file_id)\n\nFinally, we set up our dataframes. These dataframes are now in your environment and can update charts or tables every time you reload the export!",
     "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Data Continously</span>"
+      "Import Data",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
     ]
   },
   {
@@ -296,157 +296,245 @@
     ]
   },
   {
+    "objectID": "ggplot2.html",
+    "href": "ggplot2.html",
+    "title": "8  Visualizing your data",
+    "section": "",
+    "text": "8.1 The ggplot2 Package\nRecall: Packages are collections of code, data, and documentation that add extra functionality not included in base R.\nTo install and load ggplot2:\ninstall.packages(\"ggplot2\")",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#example-dataset-insurance-charges",
+    "href": "ggplot2.html#example-dataset-insurance-charges",
+    "title": "8  Visualizing your data",
+    "section": "8.2 Example Dataset: Insurance Charges",
+    "text": "8.2 Example Dataset: Insurance Charges\nLet’s start by loading our dataset and exploring it:\n\ninsurance &lt;- read.csv(\"data/insurance.csv\")\n\n\nlibrary(ggplot2)\n\n\n8.2.1 Summarizing Our Data\nLet’s learn more about our data with summary():\n\nsummary(insurance)\n\n      age            sex                 bmi           children    \n Min.   :18.00   Length:1338        Min.   :15.96   Min.   :0.000  \n 1st Qu.:27.00   Class :character   1st Qu.:26.30   1st Qu.:0.000  \n Median :39.00   Mode  :character   Median :30.40   Median :1.000  \n Mean   :39.21                      Mean   :30.66   Mean   :1.095  \n 3rd Qu.:51.00                      3rd Qu.:34.69   3rd Qu.:2.000  \n Max.   :64.00                      Max.   :53.13   Max.   :5.000  \n    smoker             region             charges     \n Length:1338        Length:1338        Min.   : 1122  \n Class :character   Class :character   1st Qu.: 4740  \n Mode  :character   Mode  :character   Median : 9382  \n                                       Mean   :13270  \n                                       3rd Qu.:16640  \n                                       Max.   :63770  \n\n\n\nhead(insurance, 10)\n\n   age    sex    bmi children smoker    region   charges\n1   19 female 27.900        0    yes southwest 16884.924\n2   18   male 33.770        1     no southeast  1725.552\n3   28   male 33.000        3     no southeast  4449.462\n4   33   male 22.705        0     no northwest 21984.471\n5   32   male 28.880        0     no northwest  3866.855\n6   31 female 25.740        0     no southeast  3756.622\n7   46 female 33.440        1     no southeast  8240.590\n8   37 female 27.740        3     no northwest  7281.506\n9   37   male 29.830        2     no northeast  6406.411\n10  60 female 25.840        0     no northwest 28923.137",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#the-seven-components-of-ggplot2",
+    "href": "ggplot2.html#the-seven-components-of-ggplot2",
+    "title": "8  Visualizing your data",
+    "section": "8.3 The Seven Components of ggplot2",
+    "text": "8.3 The Seven Components of ggplot2\nThink of building a ggplot like making a layered lasagna - you add one component at a time to create the final product. The seven components are:\n\nData: The dataset you’re visualizing\nMapping: Which variables go on which axes (aesthetics)\nGeometries: The type of plot (points, lines, bars, etc.)\nFacets: Subplots based on categorical variables\nStatistics: Statistical transformations of the data\nCoordinates: The coordinate system (usually Cartesian)\nTheme: Visual styling and appearance\n\n\n\n\nIn ggplot2, add layers as you would in making lasagna",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#understanding-data-types",
+    "href": "ggplot2.html#understanding-data-types",
+    "title": "8  Visualizing your data",
+    "section": "8.4 Understanding Data Types",
+    "text": "8.4 Understanding Data Types\nBefore creating visualizations, it’s important to understand your data types:\nQualitative Data:\n\n🏷️ Nominal Data: Categories without any order (e.g., Red, Green, Blue)\n📶 Ordinal Data: Categories with some order (e.g., Small, Medium, Large)\n\nQuantitative Data:\n\n🔢 Discrete: Countable data (e.g., number of people in a room)\n📏 Continuous: Measurable data (e.g., height, weight)",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#building-a-plot-step-by-step",
+    "href": "ggplot2.html#building-a-plot-step-by-step",
+    "title": "8  Visualizing your data",
+    "section": "8.5 Building a Plot Step by Step",
+    "text": "8.5 Building a Plot Step by Step\n\n8.5.1 Step 1: Data and Mapping\nWhat is the relationship between BMI and insurance charges?\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges))\n\n\n\n\n\n\n\n\nThis creates a blank canvas with our axes defined, but no data displayed yet!\n\n\n8.5.2 Step 2: Adding Layers with Geometries\nAdd points to create a scatterplot using geom_point():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) + \n  geom_point()\n\n\n\n\n\n\n\n\n\n\n8.5.3 Step 3: Adding a Trend Line\nAdd a linear model line with geom_smooth():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\nNotice how it looks like we have two different populations? Let’s explore this further.",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#incorporating-grouping-variables",
+    "href": "ggplot2.html#incorporating-grouping-variables",
+    "title": "8  Visualizing your data",
+    "section": "8.6 Incorporating Grouping Variables",
+    "text": "8.6 Incorporating Grouping Variables\nThere are two main approaches to visualizing grouping variables:\n\n8.6.1 Method 1: Using Color\nMap the smoker variable to color:\n\nggplot(data = insurance, \n       mapping = aes(x = bmi, y = charges, color = smoker)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\n\n\n8.6.2 Method 2: Using Facets\nCreate separate panels for each group with facet_wrap():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  facet_wrap(~smoker)\n\n\n\n\n\n\n\n\nBoth methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#customizing-with-themes",
+    "href": "ggplot2.html#customizing-with-themes",
+    "title": "8  Visualizing your data",
+    "section": "8.7 Customizing with Themes",
+    "text": "8.7 Customizing with Themes\n\n8.7.1 Adding Titles and Labels\nMake your plot more informative with descriptive titles:\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  ggtitle(\"Insurance charges vs BMI for smokers and non-smokers\") +\n  xlab(\"Body Mass Index (BMI)\") +\n  ylab(\"Insurance Charges\")\n\n\n\n\n\n\n\n\n\n\n8.7.2 Changing the Theme\nApply a professional theme with theme_bw():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  ggtitle(\"Insurance charges vs BMI for smokers and non-smokers\") +\n  xlab(\"Body Mass Index (BMI)\") +\n  ylab(\"Insurance Charges\") +\n  theme_bw()\n\n\n\n\na scatterplot depicting a linear relationship between BMI and insurance charges",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#other-common-plot-types",
+    "href": "ggplot2.html#other-common-plot-types",
+    "title": "8  Visualizing your data",
+    "section": "8.8 Other Common Plot Types",
+    "text": "8.8 Other Common Plot Types\n\n8.8.1 Bar Plots with geom_bar()\nBar plots are useful for comparing means across categories:\n\nggplot(data = insurance, mapping = aes(x = region, y = charges)) + \n  geom_bar(stat = 'summary', fun = 'mean', fill = \"#005a43\") + \n  ggtitle(\"Mean Insurance Charges Based on Region\") + \n  xlab(\"Region\") +\n  ylab(\"Insurance Charges\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\n8.8.2 Violin Plots with geom_violin()\nViolin plots show the distribution of data across categories:\n\nggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) + \n  geom_violin() +\n  ggtitle(\"Distribution of Insurance Charges by Smoking Status\") +\n  xlab(\"Smoker (Y/N)\") +\n  ylab(\"Insurance Charges\") +\n  theme_bw()",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"
+    ]
+  },
+  {
     "objectID": "readme.html",
     "href": "readme.html",
-    "title": "8  How to Read Me",
+    "title": "9  Read Me",
     "section": "",
-    "text": "8.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
+    "text": "9.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Read Me File</span>"
+      "Report Data:",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
     ]
   },
   {
     "objectID": "functions.html",
     "href": "functions.html",
-    "title": "9  Use Functions to Write",
+    "title": "10  Write Functions, Save Time",
     "section": "",
-    "text": "9.1 Purpose\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
+    "text": "10.1 Purpose\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#first-setup-the-library",
     "href": "functions.html#first-setup-the-library",
-    "title": "9  Use Functions to Write",
-    "section": "9.2 First Setup the library:",
-    "text": "9.2 First Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.2 First Setup the library:",
+    "text": "10.2 First Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#dataset-example-survey-data",
     "href": "functions.html#dataset-example-survey-data",
-    "title": "9  Use Functions to Write",
-    "section": "9.3 Dataset: Example Survey Data",
-    "text": "9.3 Dataset: Example Survey Data\nThe dataset was collected on March 15, 2025 in the ANTH206 course: 03152025ProlificHealthBeliefs.csv.\n\n# Load your data\n##  \"data/\" is a folder called \"data\" where the dataset file is located\n## if your data is not in a folder, you can delete \"data/\"\nselect_data &lt;- read.csv(\"data/03.15.2025.prolifichealthbeliefs.csv\")\n\n# displays structures of R objects\nstr(select_data)",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.3 Dataset: Example Survey Data",
+    "text": "10.3 Dataset: Example Survey Data\nThe dataset was collected on March 15, 2025 in the ANTH206 course: 03152025ProlificHealthBeliefs.csv.\n\n# Load your data\n##  \"data/\" is a folder called \"data\" where the dataset file is located\n## if your data is not in a folder, you can delete \"data/\"\nselect_data &lt;- read.csv(\"data/03.15.2025.prolifichealthbeliefs.csv\")\n\n# displays structures of R objects\nstr(select_data)",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
     "href": "functions.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
-    "title": "9  Use Functions to Write",
-    "section": "9.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)",
-    "text": "9.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)",
+    "text": "10.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#in-your-manuscript-write-like-this",
     "href": "functions.html#in-your-manuscript-write-like-this",
-    "title": "9  Use Functions to Write",
-    "section": "9.5 In your manuscript, write like this:",
-    "text": "9.5 In your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.5 In your manuscript, write like this:",
+    "text": "10.5 In your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-2-report-numbers-and-percentages",
     "href": "functions.html#example-2-report-numbers-and-percentages",
-    "title": "9  Use Functions to Write",
-    "section": "9.6 Example 2: Report Numbers and Percentages",
-    "text": "9.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.6 Example 2: Report Numbers and Percentages",
+    "text": "10.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#in-your-manuscript-write-like-this-1",
     "href": "functions.html#in-your-manuscript-write-like-this-1",
-    "title": "9  Use Functions to Write",
-    "section": "9.7 In your manuscript, write like this:",
-    "text": "9.7 In your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.7 In your manuscript, write like this:",
+    "text": "10.7 In your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
     "href": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
-    "title": "9  Use Functions to Write",
-    "section": "9.8 Example 3: Capitalizing and Writing Numbers as Words",
-    "text": "9.8 Example 3: Capitalizing and Writing Numbers as Words\nFor more formal writing, report numbers as words:",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.8 Example 3: Capitalizing and Writing Numbers as Words",
+    "text": "10.8 Example 3: Capitalizing and Writing Numbers as Words\nFor more formal writing, report numbers as words:",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#in-your-manuscript-write-like-this-2",
     "href": "functions.html#in-your-manuscript-write-like-this-2",
-    "title": "9  Use Functions to Write",
-    "section": "9.9 In your manuscript, write like this:",
-    "text": "9.9 In your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.9 In your manuscript, write like this:",
+    "text": "10.9 In your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
     "href": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
-    "title": "9  Use Functions to Write",
-    "section": "9.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
-    "text": "9.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
+    "text": "10.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#in-your-manuscript-write-like-this-3",
     "href": "functions.html#in-your-manuscript-write-like-this-3",
-    "title": "9  Use Functions to Write",
-    "section": "9.11 In your manuscript, write like this:",
-    "text": "9.11 In your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.11 In your manuscript, write like this:",
+    "text": "10.11 In your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
     "href": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
-    "title": "9  Use Functions to Write",
-    "section": "9.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
-    "text": "9.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
+    "text": "10.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#in-your-manuscript-write-like-this-4",
     "href": "functions.html#in-your-manuscript-write-like-this-4",
-    "title": "9  Use Functions to Write",
-    "section": "9.13 In your manuscript, write like this:",
-    "text": "9.13 In your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "title": "10  Write Functions, Save Time",
+    "section": "10.13 In your manuscript, write like this:",
+    "text": "10.13 In your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
     "crumbs": [
-      "Report Transparently:",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Use Functions to Write</span>"
+      "Report Data:",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   }
 ]

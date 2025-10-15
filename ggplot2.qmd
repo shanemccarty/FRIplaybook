@@ -1,6 +1,9 @@
 ---
-title: "Introduction to ggplot2: Creating publication-ready visualizations"
-author: "Andrew Silhavy & Shane McCarty, PhD"
+title: "Visualizing your data"
+subtitle: "How to use ggplot2"
+author:
+  - Andrew Silhavy
+  - Shane McCarty, PhD
 abstract: |
   This chapter introduces students to the ggplot2 package, a powerful tool for creating sophisticated and publication-ready data visualizations in R. Students learn the foundational "grammar of graphics" approach, which builds plots layer by layer using seven core components: data, mapping, geometries, facets, statistics, coordinates, and  themes. Through hands-on examples using insurance data, the chapter demonstrates how to construct various plot types including scatterplots, bar plots, and violin plots. 
   Students explore how to visualize relationships between variables, incorporate grouping variables using color and faceting, and customize plots with titles, labels, and themes. By the end of this chapter, students will understand how to select appropriate visualizations based on data types and create professional-quality figures for their public health research.

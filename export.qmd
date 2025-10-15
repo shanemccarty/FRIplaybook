@@ -1,8 +1,11 @@
 ---
-title: "Exporting Survey Data"
-author: "James Giallella & Shane McCarty, PhD"
+title: "Exporting Survey Data from Qualtrics"
+subtitle: "How to name variables and recode values"
+author:
+  - James Giallella
+  - Shane McCarty, PhD
 abstract: |
-  This chapter introduces students to import qualtrics features, such as recoding variables in qualtrics before exporting the dataset.
+  This chapter introduces students to import qualtrics features, such as recoding values in qualtrics before exporting the dataset.
 keywords:
   - export
   - import

@@ -1,6 +1,8 @@
 ---
 title: "Example Reports"
-authors: "Shane McCarty & Zihan Hei"
+authors:
+  - Shane McCarty
+  - Zihan Hei
 format: html
 ---
 

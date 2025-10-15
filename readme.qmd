@@ -1,6 +1,9 @@
 ---
-title: "How to Read Me"
-author: "Zihan Hei & Shane McCarty"
+title: "Read Me"
+subtitle: "How to write a read me file"
+author: 
+  - Zihan Hei
+  - Shane McCarty
 abstract: |
   This chapter introduces students to the basics of a read me file. 
 keywords:

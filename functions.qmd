@@ -1,6 +1,6 @@
 ---
-title: "Use Functions to Write"
-subtitle: "From Text to Code"
+title: "Write Functions, Save Time"
+subtitle: "How to go from Text to Code"
 author: "Zihan Hei"
 abstract: |
   This chapter introduces reproducible research practices by demonstrating how to embed 

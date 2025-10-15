@@ -1,7 +1,3 @@
-## The Quantitative Playbook for Public Health Research in R
-
-Students in the [FRI Public Health research stream at Binghamton University](https://fripublichealth.quarto.pub) explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of "plays" (R code) that students in the quantitative data analysis track can use for their team-based research projects.
-
 ## The Data Analysis Workflow
 
 This playbook follows the data science workflow in R for Data Science (2e) ([Hadley, 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.
@@ -18,7 +14,7 @@ By the end of this guide, you will be able to:
 
 Each section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.
 
-### What Makes This Guide Different?
+## What Makes This Guide Different?
 
 -   **Interactive Learning**: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using [WebR](https://docs.r-wasm.org/webr/latest/)—no software installation required
 -   **Real Public Health Data**: Examples use datasets on [insurance claims from kaggle](https://www.kaggle.com/code/pralabhpoudel/does-smoking-makes-your-insurance-high), oral health and diabetes (cohort 10), health beliefs (cohort 11), and related surveys
@@ -43,9 +39,9 @@ Each section builds on previous concepts, taking you from raw data files to poli
 
 ## How to Cite This Guide
 
-You can cite this guide as McCarty, S. (Ed.). (2025). *The Quantitative Playbook for Public Health Research in R*. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Introduction to ggplot2: Creating publication-ready visualizations. *The Quantitative Playbook for Public Health Research in R.*
+You can cite this guide as McCarty, S. (Ed.). (2025). *The Quantitative Playbook for Public Health Research in R*. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data with ggplot2: Creating publication-ready visualizations. *The Quantitative Playbook for Public Health Research in R.*
 
-### Authors
+### Editor and Chapter Co-Authors
 
 -   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)
 
