@@ -1,0 +1,227 @@
+---
+title: "Introduction to ggplot2: Creating publication-ready visualizations"
+author: "Andrew Silhavy & Shane McCarty, PhD"
+abstract: |
+  This chapter introduces students to the ggplot2 package, a powerful tool for creating sophisticated and publication-ready data visualizations in R. Students learn the foundational "grammar of graphics" approach, which builds plots layer by layer using seven core components: data, mapping, geometries, facets, statistics, coordinates, and  themes. Through hands-on examples using insurance data, the chapter demonstrates how to construct various plot types including scatterplots, bar plots, and violin plots. 
+  Students explore how to visualize relationships between variables, incorporate grouping variables using color and faceting, and customize plots with titles, labels, and themes. By the end of this chapter, students will understand how to select appropriate visualizations based on data types and create professional-quality figures for their public health research.
+keywords:
+  - ggplot2
+  - data visualization
+  - grammar of graphics
+  - R
+  - exploratory data analysis
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+::: callout-tip
+## 📖 Learning Resources
+
+-   **R for Data Science (2e):** [Data Visualization](https://r4ds.hadley.nz/data-visualize.html) & [Visualize](https://r4ds.hadley.nz/visualize.html)
+-   **ggplot2 Book:** [elegant graphics](https://ggplot2-book.org)
+-   **Datacamp Course**: [ggplot2](https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
+-   **Cheat Sheet**: [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
+-   **Posit Code**: [ggplot2](https://rstudio.github.io/cheatsheets/html/data-visualization.html) & [tidyverse](https://ggplot2.tidyverse.org)
+:::
+
+## The ggplot2 Package
+
+Recall: Packages are collections of code, data, and documentation that add extra functionality not included in base R.
+
+To install and load ggplot2:
+
+```{r}
+#| label: install packages
+#| eval: false
+install.packages("ggplot2")
+```
+
+## Example Dataset: Insurance Charges
+
+Let's start by loading our dataset and exploring it:
+
+```{r}
+#| label: import insurance data
+insurance <- read.csv("data/insurance.csv")
+```
+
+```{r}
+#| label: load library
+library(ggplot2)
+```
+
+### Summarizing Our Data
+
+Let's learn more about our data with `summary()`:
+
+```{r}
+#| label: summarize variables
+summary(insurance)
+```
+
+```{r}
+#| label: review the header
+head(insurance, 10)
+```
+
+## The Seven Components of ggplot2
+
+Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product. The seven components are:
+
+1.  **Data**: The dataset you're visualizing
+
+2.  **Mapping**: Which variables go on which axes (aesthetics)
+
+3.  **Geometries**: The type of plot (points, lines, bars, etc.)
+
+4.  **Facets**: Subplots based on categorical variables
+
+5.  **Statistics**: Statistical transformations of the data
+
+6.  **Coordinates**: The coordinate system (usually Cartesian)
+
+7.  **Theme**: Visual styling and appearance
+
+![In ggplot2, add layers as you would in making lasagna](Lasagna.png)
+
+## Understanding Data Types
+
+Before creating visualizations, it's important to understand your data types:
+
+**Qualitative Data:**
+
+-   🏷️ **Nominal Data**: Categories without any order (e.g., Red, Green, Blue)
+
+-   📶 **Ordinal Data**: Categories with some order (e.g., Small, Medium, Large)
+
+**Quantitative Data:**
+
+-   🔢 **Discrete**: Countable data (e.g., number of people in a room)
+
+-   📏 **Continuous**: Measurable data (e.g., height, weight)
+
+## Building a Plot Step by Step
+
+### Step 1: Data and Mapping
+
+What is the relationship between BMI and insurance charges?
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = bmi, y = charges))
+```
+
+This creates a blank canvas with our axes defined, but no data displayed yet!
+
+### Step 2: Adding Layers with Geometries
+
+Add points to create a scatterplot using `geom_point()`:
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) + 
+  geom_point()
+```
+
+### Step 3: Adding a Trend Line
+
+Add a linear model line with `geom_smooth()`:
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Notice how it looks like we have two different populations? Let's explore this further.
+
+## Incorporating Grouping Variables
+
+There are two main approaches to visualizing grouping variables:
+
+### Method 1: Using Color
+
+Map the `smoker` variable to color:
+
+```{r}
+ggplot(data = insurance, 
+       mapping = aes(x = bmi, y = charges, color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+### Method 2: Using Facets
+
+Create separate panels for each group with `facet_wrap()`:
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~smoker)
+```
+
+Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!
+
+## Customizing with Themes
+
+### Adding Titles and Labels
+
+Make your plot more informative with descriptive titles:
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ggtitle("Insurance charges vs BMI for smokers and non-smokers") +
+  xlab("Body Mass Index (BMI)") +
+  ylab("Insurance Charges")
+```
+
+### Changing the Theme
+
+Apply a professional theme with `theme_bw()`:
+
+```{r}
+#| label: ggplot with black and white theme 
+#| fig-cap: "a scatterplot depicting a linear relationship between BMI and insurance charges"
+#| fig-height: 6
+#| fig-width: 8
+
+ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ggtitle("Insurance charges vs BMI for smokers and non-smokers") +
+  xlab("Body Mass Index (BMI)") +
+  ylab("Insurance Charges") +
+  theme_bw()
+```
+
+## Other Common Plot Types
+
+### Bar Plots with `geom_bar()`
+
+Bar plots are useful for comparing means across categories:
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = region, y = charges)) + 
+  geom_bar(stat = 'summary', fun = 'mean', fill = "#005a43") + 
+  ggtitle("Mean Insurance Charges Based on Region") + 
+  xlab("Region") +
+  ylab("Insurance Charges") +
+  theme_bw()
+```
+
+### Violin Plots with `geom_violin()`
+
+Violin plots show the distribution of data across categories:
+
+```{r}
+ggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) + 
+  geom_violin() +
+  ggtitle("Distribution of Insurance Charges by Smoking Status") +
+  xlab("Smoker (Y/N)") +
+  ylab("Insurance Charges") +
+  theme_bw()
+```

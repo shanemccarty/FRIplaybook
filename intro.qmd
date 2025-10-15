@@ -1,0 +1,70 @@
+## The Quantitative Playbook for Public Health Research in R
+
+Students in the [FRI Public Health research stream at Binghamton University](https://fripublichealth.quarto.pub) explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of "plays" (R code) that students in the quantitative data analysis track can use for their team-based research projects.
+
+## The Data Analysis Workflow
+
+This playbook follows the data science workflow in R for Data Science (2e) ([Hadley, 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.
+
+By the end of this guide, you will be able to:
+
+1.  **Import** - Load data from various files, such as text (.csv), excel (.xlsx), and SPSS (.sav)
+2.  **Tidy** - Organize data into a consistent, analysis-ready structure
+3.  **Transform** - Clean, recode, and create new variables using dplyr
+4.  **Visualize** - Create informative graphs and charts with ggplot2
+5.  **Model** - Apply statistical methods (e.g., regression, paired t-test) to answer questions
+6.  **Communicate** - Generate reproducible reports with Quarto
+7.  **Publish –** Use transparent practices to produce multiple products (e.g., report, manuscript, presentation)
+
+Each section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.
+
+### What Makes This Guide Different?
+
+-   **Interactive Learning**: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using [WebR](https://docs.r-wasm.org/webr/latest/)—no software installation required
+-   **Real Public Health Data**: Examples use datasets on [insurance claims from kaggle](https://www.kaggle.com/code/pralabhpoudel/does-smoking-makes-your-insurance-high), oral health and diabetes (cohort 10), health beliefs (cohort 11), and related surveys
+-   **Complete Workflow**: Covers every step from raw data to publication-ready reports
+-   **Practical Focus**: Emphasizes "plays" (R code chunks) you'll actually use in public health research and practice
+
+## Prerequisites
+
+**Technical Requirements:**
+
+-   A web browser (Chrome, Firefox, Safari, or Edge) for interactive WebR examples
+
+-   Posit Cloud in a browser or R/R Studio on your computer
+
+**Background Knowledge:**
+
+-   Basic familiarity with public health concepts
+
+-   Introductory statistics (descriptive statistics, hypothesis testing, p-values)
+
+-   Motivation to learn more R programming (with limited R experience!)
+
+## How to Cite This Guide
+
+You can cite this guide as McCarty, S. (Ed.). (2025). *The Quantitative Playbook for Public Health Research in R*. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Introduction to ggplot2: Creating publication-ready visualizations. *The Quantitative Playbook for Public Health Research in R.*
+
+### Authors
+
+-   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)
+
+-   Chapter Authors
+
+    -   Allison Anemone
+
+    -   Mara Estreich
+
+    -   [Zihan Hei](#0)
+
+    -   Jeff John
+
+    -   Gavin Rualo
+
+    -   Erica Sava
+
+    -   Andrew Silhavy
+
+    -   Zach Spiegel
+
+After generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.

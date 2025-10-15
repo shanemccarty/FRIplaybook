@@ -1,0 +1,49 @@
+---
+title: "Exporting Survey Data"
+author: "James Giallella & Shane McCarty, PhD"
+abstract: |
+  This chapter introduces students to import qualtrics features, such as recoding variables in qualtrics before exporting the dataset.
+keywords:
+  - export
+  - import
+  - Qualtrics
+  - recoding variables
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+# Exporting Survey Data
+
+-   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
+
+    -   [ ] Under Active surveys, click on your survey
+
+-   [ ] Recode variables in Qualtrics
+
+    -   [ ] Visit "Recode Values" section of the [Qualtrics guide](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/)
+
+    -   [ ] Follow the instructions: <https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre>
+
+# Exporting Survey Data
+
+-   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
+    -   [ ] Under Active surveys, click on your survey
+-   [ ] At the top, go to Data & Analysis tab (top navigation bar)
+    -   [ ] Ensure that "Data" is selected (from the second navigvation bar)
+
+![*Click on Data & Analysis and ensure Data is underlined in the navigation bars.*](images/export-navbar.png)
+
+-   [ ] On the upper right side, click Export & Import \^, then select Export Data...
+
+-   [ ] Download the dataset (with download all fields checked and export *values* check – do not select export *labels* in two file formats:
+
+    -   [ ] CSV
+
+    -   [ ] Excel
+
+-   [ ] Upload both files to "Survey Data" folder in your Team ELN
+
+-   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use `{r} Sys.Date()` in the correct format and update the file names: `10.15.2025.data.team1.csv` and `10.15.2025.data.team1.xlsx`

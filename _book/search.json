@@ -1,0 +1,606 @@
+[
+  {
+    "objectID": "quant-intro.html",
+    "href": "quant-intro.html",
+    "title": "1  Overview",
+    "section": "",
+    "text": "1.1 What You’ll Learn\nPart III: Analyzing Quantitative Data {.unnumbered}\nSection Editors: Shane McCarty, PhD & Zihan Hei\nThis section of the FRI Public Health Playbook focuses on quantitative data analysis methods essential for public health research. We cover the complete workflow from data import through advanced statistical analysis and visualization.\nIn this section, you will:",
+    "crumbs": [
+      "Introduction to the Playbook",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "quant-intro.html#what-youll-learn",
+    "href": "quant-intro.html#what-youll-learn",
+    "title": "1  Overview",
+    "section": "",
+    "text": "Master data import techniques for various file formats commonly used in public health research\nLearn to clean, transform, and prepare data for analysis\nApply descriptive and inferential statistics to public health datasets\nCreate publication-quality visualizations\nInterpret and communicate quantitative findings effectively",
+    "crumbs": [
+      "Introduction to the Playbook",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "quant-intro.html#section-contents",
+    "href": "quant-intro.html#section-contents",
+    "title": "1  Overview",
+    "section": "1.2 Section Contents",
+    "text": "1.2 Section Contents\nThis section includes the following chapters:\n\nImporting and Visualizing NHANES Data - Learn the fundamentals of data import and exploration using the National Health and Nutrition Examination Survey dataset\nAdditional chapters on statistical analysis (coming soon)\nAdvanced visualization techniques (coming soon)",
+    "crumbs": [
+      "Introduction to the Playbook",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "quant-intro.html#prerequisites",
+    "href": "quant-intro.html#prerequisites",
+    "title": "1  Overview",
+    "section": "1.3 Prerequisites",
+    "text": "1.3 Prerequisites\nBefore beginning this section, you should have:\n\nBasic familiarity with R or another statistical programming language\nUnderstanding of fundamental statistical concepts\nAccess to a web browser (for WebR interactive examples)",
+    "crumbs": [
+      "Introduction to the Playbook",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "quant-intro.html#about-the-section-editors",
+    "href": "quant-intro.html#about-the-section-editors",
+    "title": "1  Overview",
+    "section": "1.4 About the Section Editors",
+    "text": "1.4 About the Section Editors\nShane McCarty, PhD is the lead author of the FRI Public Health Playbook and specializes in quantitative methods for public health research.\nZihan Hei is a contributing researcher focusing on data visualization and statistical analysis in public health contexts.\n\nLet’s begin with importing and exploring real public health data!",
+    "crumbs": [
+      "Introduction to the Playbook",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The FRI Public Health Playbook for Quantitative Data Analysis",
+    "section": "",
+    "text": "Preface\nThe most successful sports teams rely on well-designed plays to navigate complex game situations, the FRI Public Health research stream uses strategic data analysis “plays” to tackle the multifaceted challenges of promoting wellbeing, preventing disease, and protecting health. Our research stream explores the intricate biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like MUSE S and Fitbits, psychological insights via survey questionnaires and interviews, and behavioral patterns through online experiments. Like a coach calling the right play at the crucial moment, this playbook equips you and your research teams with proven strategies for importing, tidying, transforming, visualizing, modeling, and communicating the mixed-methods data that helps us connect the dots between social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. Each “play” in this guide has been field-tested by research teams who have successfully used quantitative and qualitative approaches to answer pressing questions about physical and mental health. Whether you’re facing a complex dataset for the first time or looking to refine your analytical strategy, this playbook offers guidance for you to turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.\nTo learn more about the FRI Public Health stream, visit us at: https://fripublichealth.quarto.pub.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html",
+    "href": "functions-writing.html",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "",
+    "text": "3.1 Chapter Purpose\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#dataset-example-survey-data",
+    "href": "functions-writing.html#dataset-example-survey-data",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.3 Dataset: Example Survey Data",
+    "text": "3.3 Dataset: Example Survey Data\nStudents will work with this example zerosum dataset select_data.csv:\n\n# Load your data\nselect_data &lt;- read.csv(\"select_data.csv\")\n\n# displays structures of R objects\nstr(select_data)",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
+    "href": "functions-writing.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)",
+    "text": "3.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#in-your-manuscript-write-like-this",
+    "href": "functions-writing.html#in-your-manuscript-write-like-this",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.5 In your manuscript, write like this:",
+    "text": "3.5 In your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#example-2-report-numbers-and-percentages",
+    "href": "functions-writing.html#example-2-report-numbers-and-percentages",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.6 Example 2: Report Numbers and Percentages",
+    "text": "3.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#in-your-manuscript-write-like-this-1",
+    "href": "functions-writing.html#in-your-manuscript-write-like-this-1",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.7 In your manuscript, write like this:",
+    "text": "3.7 In your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#example-3-capitalizing-and-writing-numbers-as-words",
+    "href": "functions-writing.html#example-3-capitalizing-and-writing-numbers-as-words",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.8 Example 3: Capitalizing and Writing Numbers as Words",
+    "text": "3.8 Example 3: Capitalizing and Writing Numbers as Words\nFor more formal writing, report numbers as words:",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#in-your-manuscript-write-like-this-2",
+    "href": "functions-writing.html#in-your-manuscript-write-like-this-2",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.9 In your manuscript, write like this:",
+    "text": "3.9 In your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
+    "href": "functions-writing.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
+    "text": "3.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#in-your-manuscript-write-like-this-3",
+    "href": "functions-writing.html#in-your-manuscript-write-like-this-3",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.11 In your manuscript, write like this:",
+    "text": "3.11 In your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
+    "href": "functions-writing.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
+    "text": "3.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#in-your-manuscript-write-like-this-4",
+    "href": "functions-writing.html#in-your-manuscript-write-like-this-4",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.13 In your manuscript, write like this:",
+    "text": "3.13 In your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "import.html",
+    "href": "import.html",
+    "title": "3  Import",
+    "section": "",
+    "text": "# Install required packages\ninstall.packages(\"NHANES\")\ninstall.packages(\"tidyverse\")\ninstall.packages(\"GGally\")\ninstall.packages(\"iris\")\n\n# Load the packages\nlibrary(NHANES)\nlibrary(tidyverse)\nlibrary(GGally)\n\nNow, you will view the structure of the NHANES data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Importing Data",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Import</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "",
+    "text": "1.1 The Data Analysis Workflow\nStudents in the FRI Public Health research stream at Binghamton University explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of “plays” (R code) that students in the quantitative data analysis track can use for their team-based research projects.\nThis playbook follows the data science workflow in R for Data Science (2e) (Hadley, 2023) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.\nEach section builds on previous concepts, taking you from raw data files to polished, publication-ready analyses.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "functions-writing.html#first-setup-the-library",
+    "href": "functions-writing.html#first-setup-the-library",
+    "title": "3  Using Functions to Write: From Text to Code",
+    "section": "3.2 First Setup the library:",
+    "text": "3.2 First Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html",
+    "href": "ggplot2.html",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "",
+    "text": "7.1 The ggplot2 Package\nRecall: Packages are collections of code, data, and documentation that add extra functionality not included in base R.\nTo install and load ggplot2:\ninstall.packages(\"ggplot2\")",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#what-youll-learn",
+    "href": "intro.html#what-youll-learn",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "1.2 What You’ll Learn",
+    "text": "1.2 What You’ll Learn\nBy the end of this book, you will be able to:\n\nImport and manage data from multiple file formats commonly used in public health (CSV, Excel, SPSS, SAS)\nClean and prepare datasets for analysis using tidyverse tools\nTransform variables by recoding, creating dummy variables, and calculating composite scores\nCreate publication-quality visualizations that effectively communicate health data\nApply statistical models including regression, paired tests, and other inferential methods\nGenerate reproducible reports that integrate code, results, and narrative\nFollow best practices for transparent, reproducible public health research",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#section-contents",
+    "href": "intro.html#section-contents",
+    "title": "1  Overview",
+    "section": "1.2 Section Contents",
+    "text": "1.2 Section Contents\nThis section includes the following chapters:\n\nImporting and Visualizing NHANES Data - Learn the fundamentals of data import and exploration using the National Health and Nutrition Examination Survey dataset\nAdditional chapters on statistical analysis (coming soon)\nAdvanced visualization techniques (coming soon)",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#prerequisites",
+    "href": "intro.html#prerequisites",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "1.4 Prerequisites",
+    "text": "1.4 Prerequisites\nTechnical Requirements:\n- A web browser (Chrome, Firefox, Safari, or Edge) for interactive WebR examples\n- Optional: R and RStudio installed for local work (instructions provided in Chapter 1)\nBackground Knowledge:\n- Basic familiarity with public health concepts - Introductory statistics (descriptive statistics, hypothesis testing, p-values)\n- Willingness to learn programming (no prior R experience required!)",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#about-the-section-editors",
+    "href": "intro.html#about-the-section-editors",
+    "title": "1  Overview",
+    "section": "1.4 About the Section Editors",
+    "text": "1.4 About the Section Editors\nShane McCarty, PhD is the lead author of the FRI Public Health Playbook and specializes in quantitative methods for public health research.\nZihan Hei is a contributing researcher focusing on data visualization and statistical analysis in public health contexts.\n\nLet’s begin with importing and exploring real public health data!",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html",
+    "href": "functions.html",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "",
+    "text": "9.1 Purpose\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#first-setup-the-library",
+    "href": "functions.html#first-setup-the-library",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.2 First Setup the library:",
+    "text": "9.2 First Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#dataset-example-survey-data",
+    "href": "functions.html#dataset-example-survey-data",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.3 Dataset: Example Survey Data",
+    "text": "9.3 Dataset: Example Survey Data\nStudents will work with this example zerosum dataset select_data.csv:\n\n# Load your data\nselect_data &lt;- read.csv(\"select_data.csv\")\n\n# displays structures of R objects\nstr(select_data)\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
+    "href": "functions.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)",
+    "text": "9.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#in-your-manuscript-write-like-this",
+    "href": "functions.html#in-your-manuscript-write-like-this",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.5 In your manuscript, write like this:",
+    "text": "9.5 In your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#example-2-report-numbers-and-percentages",
+    "href": "functions.html#example-2-report-numbers-and-percentages",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.6 Example 2: Report Numbers and Percentages",
+    "text": "9.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#in-your-manuscript-write-like-this-1",
+    "href": "functions.html#in-your-manuscript-write-like-this-1",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.7 In your manuscript, write like this:",
+    "text": "9.7 In your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
+    "href": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.8 Example 3: Capitalizing and Writing Numbers as Words",
+    "text": "9.8 Example 3: Capitalizing and Writing Numbers as Words\nFor more formal writing, report numbers as words:",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#in-your-manuscript-write-like-this-2",
+    "href": "functions.html#in-your-manuscript-write-like-this-2",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.9 In your manuscript, write like this:",
+    "text": "9.9 In your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
+    "href": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
+    "text": "9.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#in-your-manuscript-write-like-this-3",
+    "href": "functions.html#in-your-manuscript-write-like-this-3",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.11 In your manuscript, write like this:",
+    "text": "9.11 In your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
+    "href": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
+    "text": "9.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#in-your-manuscript-write-like-this-4",
+    "href": "functions.html#in-your-manuscript-write-like-this-4",
+    "title": "9  Using Functions to Write: From Text to Code",
+    "section": "9.13 In your manuscript, write like this:",
+    "text": "9.13 In your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "crumbs": [
+      "Quarto Reporting",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Using Functions to Write: From Text to Code</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#example-dataset-insurance-charges",
+    "href": "ggplot2.html#example-dataset-insurance-charges",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.2 Example Dataset: Insurance Charges",
+    "text": "7.2 Example Dataset: Insurance Charges\nLet’s start by loading our dataset and exploring it:\n\ninsurance &lt;- read.csv(\"data/insurance.csv\")\n\n\nlibrary(ggplot2)\n\n\n7.2.1 Summarizing Our Data\nLet’s learn more about our data with summary():\n\nsummary(insurance)\n\n      age            sex                 bmi           children    \n Min.   :18.00   Length:1338        Min.   :15.96   Min.   :0.000  \n 1st Qu.:27.00   Class :character   1st Qu.:26.30   1st Qu.:0.000  \n Median :39.00   Mode  :character   Median :30.40   Median :1.000  \n Mean   :39.21                      Mean   :30.66   Mean   :1.095  \n 3rd Qu.:51.00                      3rd Qu.:34.69   3rd Qu.:2.000  \n Max.   :64.00                      Max.   :53.13   Max.   :5.000  \n    smoker             region             charges     \n Length:1338        Length:1338        Min.   : 1122  \n Class :character   Class :character   1st Qu.: 4740  \n Mode  :character   Mode  :character   Median : 9382  \n                                       Mean   :13270  \n                                       3rd Qu.:16640  \n                                       Max.   :63770  \n\n\n\nhead(insurance, 10)\n\n   age    sex    bmi children smoker    region   charges\n1   19 female 27.900        0    yes southwest 16884.924\n2   18   male 33.770        1     no southeast  1725.552\n3   28   male 33.000        3     no southeast  4449.462\n4   33   male 22.705        0     no northwest 21984.471\n5   32   male 28.880        0     no northwest  3866.855\n6   31 female 25.740        0     no southeast  3756.622\n7   46 female 33.440        1     no southeast  8240.590\n8   37 female 27.740        3     no northwest  7281.506\n9   37   male 29.830        2     no northeast  6406.411\n10  60 female 25.840        0     no northwest 28923.137",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#the-seven-components-of-ggplot2",
+    "href": "ggplot2.html#the-seven-components-of-ggplot2",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.3 The Seven Components of ggplot2",
+    "text": "7.3 The Seven Components of ggplot2\nThink of building a ggplot like making a layered lasagna - you add one component at a time to create the final product. The seven components are:\n\nData: The dataset you’re visualizing\nMapping: Which variables go on which axes (aesthetics)\nGeometries: The type of plot (points, lines, bars, etc.)\nFacets: Subplots based on categorical variables\nStatistics: Statistical transformations of the data\nCoordinates: The coordinate system (usually Cartesian)\nTheme: Visual styling and appearance\n\n\n\n\nIn ggplot2, add layers as you would in making lasagna",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#understanding-data-types",
+    "href": "ggplot2.html#understanding-data-types",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.4 Understanding Data Types",
+    "text": "7.4 Understanding Data Types\nBefore creating visualizations, it’s important to understand your data types:\nQualitative Data:\n\n🏷️ Nominal Data: Categories without any order (e.g., Red, Green, Blue)\n📶 Ordinal Data: Categories with some order (e.g., Small, Medium, Large)\n\nQuantitative Data:\n\n🔢 Discrete: Countable data (e.g., number of people in a room)\n📏 Continuous: Measurable data (e.g., height, weight)",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#building-a-plot-step-by-step",
+    "href": "ggplot2.html#building-a-plot-step-by-step",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.5 Building a Plot Step by Step",
+    "text": "7.5 Building a Plot Step by Step\n\n7.5.1 Step 1: Data and Mapping\nWhat is the relationship between BMI and insurance charges?\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges))\n\n\n\n\n\n\n\n\nThis creates a blank canvas with our axes defined, but no data displayed yet!\n\n\n7.5.2 Step 2: Adding Layers with Geometries\nAdd points to create a scatterplot using geom_point():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) + \n  geom_point()\n\n\n\n\n\n\n\n\n\n\n7.5.3 Step 3: Adding a Trend Line\nAdd a linear model line with geom_smooth():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\nNotice how it looks like we have two different populations? Let’s explore this further.",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#incorporating-grouping-variables",
+    "href": "ggplot2.html#incorporating-grouping-variables",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.6 Incorporating Grouping Variables",
+    "text": "7.6 Incorporating Grouping Variables\nThere are two main approaches to visualizing grouping variables:\n\n7.6.1 Method 1: Using Color\nMap the smoker variable to color:\n\nggplot(data = insurance, \n       mapping = aes(x = bmi, y = charges, color = smoker)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\n\n\n7.6.2 Method 2: Using Facets\nCreate separate panels for each group with facet_wrap():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  facet_wrap(~smoker)\n\n\n\n\n\n\n\n\nBoth methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#customizing-with-themes",
+    "href": "ggplot2.html#customizing-with-themes",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.7 Customizing with Themes",
+    "text": "7.7 Customizing with Themes\n\n7.7.1 Adding Titles and Labels\nMake your plot more informative with descriptive titles:\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  ggtitle(\"Insurance charges vs BMI for smokers and non-smokers\") +\n  xlab(\"Body Mass Index (BMI)\") +\n  ylab(\"Insurance Charges\")\n\n\n\n\n\n\n\n\n\n\n7.7.2 Changing the Theme\nApply a professional theme with theme_bw():\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  ggtitle(\"Insurance charges vs BMI for smokers and non-smokers\") +\n  xlab(\"Body Mass Index (BMI)\") +\n  ylab(\"Insurance Charges\") +\n  theme_bw()\n\n\n\n\na scatterplot depicting a linear relationship between BMI and insurance charges",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot2.html#other-common-plot-types",
+    "href": "ggplot2.html#other-common-plot-types",
+    "title": "7  Introduction to ggplot2: Creating publication-ready visualizations",
+    "section": "7.8 Other Common Plot Types",
+    "text": "7.8 Other Common Plot Types\n\n7.8.1 Bar Plots with geom_bar()\nBar plots are useful for comparing means across categories:\n\nggplot(data = insurance, mapping = aes(x = region, y = charges)) + \n  geom_bar(stat = 'summary', fun = 'mean', fill = \"#005a43\") + \n  ggtitle(\"Mean Insurance Charges Based on Region\") + \n  xlab(\"Region\") +\n  ylab(\"Insurance Charges\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\n7.8.2 Violin Plots with geom_violin()\nViolin plots show the distribution of data across categories:\n\nggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) + \n  geom_violin() +\n  ggtitle(\"Distribution of Insurance Charges by Smoking Status\") +\n  xlab(\"Smoker (Y/N)\") +\n  ylab(\"Insurance Charges\") +\n  theme_bw()",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introduction to ggplot2: Creating publication-ready visualizations</span>"
+    ]
+  },
+  {
+    "objectID": "dplyr.html",
+    "href": "dplyr.html",
+    "title": "5  Data Manipulation with dplyr: Cleaning and Transforming Data",
+    "section": "",
+    "text": "5.1 Introduction to dplyr\ndplyr is part of the tidyverse and provides intuitive functions for manipulating data. Think of it as a toolkit for cleaning and preparing your data for analysis.\nWhy use dplyr?",
+    "crumbs": [
+      "Transform Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Manipulation with dplyr: Cleaning and Transforming Data</span>"
+    ]
+  },
+  {
+    "objectID": "dplyr.html#introduction-to-dplyr",
+    "href": "dplyr.html#introduction-to-dplyr",
+    "title": "5  Data Manipulation with dplyr: Cleaning and Transforming Data",
+    "section": "",
+    "text": "Makes data cleaning code readable and logical\nUses the pipe operator (%&gt;%) to chain operations together\nEssential for preparing data before creating visualizations or running analyses\n\n\nRemember: You cannot create meaningful visualizations or run valid statistical analyses without clean data!",
+    "crumbs": [
+      "Transform Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Manipulation with dplyr: Cleaning and Transforming Data</span>"
+    ]
+  },
+  {
+    "objectID": "dplyr.html#example-1-recoding-education-into-categories",
+    "href": "dplyr.html#example-1-recoding-education-into-categories",
+    "title": "5  Data Manipulation with dplyr: Cleaning and Transforming Data",
+    "section": "5.2 Example 1: Recoding Education into Categories",
+    "text": "5.2 Example 1: Recoding Education into Categories\nWhen working with survey data, we often need to collapse detailed response categories into broader groups. This is useful for:\n\nSimplifying analysis\nCreating groups with adequate sample sizes\nMaking results easier to interpret\n\n\n5.2.1 Original Education Variable\nOur survey asked about education level with 7 response options:\n\nLess than high school\nHigh school diploma or GED\nSome college, but no degree\nAssociate’s or technical degree\nBachelor’s degree\nMaster’s degree\nDoctoral or professional degree\n\n\n\n5.2.2 Recoding into Three Categories\nLet’s group these into three meaningful categories:\n\n# Create a new 3-category education variable\nalldata &lt;- alldata %&gt;%\n  mutate(\n    education_3cat = factor(\n      case_when(\n        Education_Level %in% c(1, 2, 3, 4) ~ \"Less than Bachelor's\",\n        Education_Level == 5 ~ \"Bachelor's Degree\",\n        Education_Level %in% c(6, 7) ~ \"Graduate Degree\"\n      ),\n      levels = c(\"Less than Bachelor's\", \"Bachelor's Degree\", \"Graduate Degree\")\n    )\n  )\n\n# Check the recoding with a cross-tabulation\ntable(alldata$Education_Level, alldata$education_3cat, useNA = \"ifany\")\n\n   \n    Less than Bachelor's Bachelor's Degree Graduate Degree\n  1                   11                 0               0\n  2                   17                 0               0\n  3                    8                 0               0",
+    "crumbs": [
+      "Transform Data",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Manipulation with dplyr: Cleaning and Transforming Data</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#about-the-authors",
+    "href": "intro.html#about-the-authors",
+    "title": "1  Overview",
+    "section": "1.4 About the Authors",
+    "text": "1.4 About the Authors\nShane McCarty, PhD developed the FRI Public Health Playbook with a team of collaborating Binghamton students to support quantitative data analysis in R for public health research.\nZihan Heiis a contributing researcher focusing on data visualization and statistical analysis in public health contexts.\n\nLet’s begin with importing and exploring real data!",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#the-data-analysis-workflow",
+    "href": "intro.html#the-data-analysis-workflow",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "",
+    "text": "Import - Load data from various sources, such as standard (.csv), Excel (.xlsx), and SPSS (.sav)\nTidy - Organize data into a consistent, analysis-ready structure\nTransform - Clean, recode, and create new variables using dplyr\nVisualize - Create informative graphs and charts with ggplot2\nModel - Apply statistical methods to answer research questions\nCommunicate - Generate reproducible reports with Quarto\n\n\n\n1.1.1 What Makes This Book Different?\n\nInteractive Learning: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using WebR—no software installation required\nReal Public Health Data: Examples use datasets on insurance claims from kaggle, oral health and diabetes (cohort 10), health beliefs (cohort 11), and related surveys\nComplete Workflow: Covers every step from raw data to publication-ready reports\nPractical Focus: Emphasizes “plays” (R code chunks) you’ll actually use in public health research and practice",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#book-structure",
+    "href": "intro.html#book-structure",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "1.3 Book Structure",
+    "text": "1.3 Book Structure\n\n1.3.1 Part 1: Importing Data\nLearn to bring data into R from various sources, including exporting from Qualtrics and importing common file formats.\nChapters:\n- Exporting Data from Survey Platforms\n- Importing Data into R (CSV, Excel, SPSS, and more)\n\n\n1.3.2 Part 2: Tidy Data\nUnderstand the principles of tidy data and how to reshape datasets for analysis.\nChapters:\n- Tidying Data with tidyr\n\n\n1.3.3 Part 3: Transform Data\nMaster data manipulation techniques to prepare your data for analysis.\nChapters:\n- Data Manipulation with dplyr (filtering, recoding, creating variables)\n\n\n1.3.4 Part 4: Visualize Data\nCreate effective visualizations that reveal patterns and communicate findings.\nChapters:\n- Introduction to ggplot2 (scatterplots, bar charts, distributions)\n\n\n1.3.5 Part 5: Model Data\nApply statistical methods to test hypotheses and quantify relationships.\nChapters:\n- Regression Analysis\n- Paired and Related Samples Tests\n\n\n1.3.6 Part 6: Quarto Reporting\nLearn to create reproducible, professional reports that integrate your analysis.\nChapters:\n- Using Functions to Write: From Text to Code (inline R, dynamic reporting)",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#how-to-use-this-book",
+    "href": "intro.html#how-to-use-this-book",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "1.5 How to Use This Book",
+    "text": "1.5 How to Use This Book\n\n1.5.1 Interactive Code Examples\nThroughout this book, you’ll see interactive code blocks that you can run directly in your browser: ```{webr-r}",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#how-to-cite-this-book",
+    "href": "intro.html#how-to-cite-this-book",
+    "title": "1  Welcome to the FRI Public Health Playbook",
+    "section": "1.6 How to Cite This Book",
+    "text": "1.6 How to Cite This Book\nUse #comment to source your code chunks if you copy and paste any code from this playbook. McCarty, S. (Ed.). (2025). The FRI Public Health Playbook. https://fripublichealth.quarto.pub/playbook\n\n1.6.1 Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nZihan Hei\nGavin Rualo\n\n\nAfter generating original content, claude.ai was used to create chapter summaries based on the chapter content and code. Ai was also used to refine existing code chunks.",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to the FRI Public Health Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "tidy.html",
+    "href": "tidy.html",
+    "title": "4  tidy",
+    "section": "",
+    "text": "Tip📖 Learning Resources\n\n\n\n\nR for Data Science: Data Tidying\nDatacamp Course: dplyr\nCheat Sheet: dplyr\nPosit Interactive Page: dplyr\n\n\n\nMore coming soon!",
+    "crumbs": [
+      "Tidy Data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>tidy</span>"
+    ]
+  }
+]

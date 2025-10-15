@@ -1,0 +1,113 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "The Quantitative Playbook for Public Health Research in R"
+  subtitle: "The R Plays to Promote and Protect Health"
+  author: "Shane McCarty, PhD"
+  date: "10/14/2025"
+  version: "Version 0.5 (draft)"
+  search: true
+  repo-url: https://shanemccarty.github.io/FRIplaybook
+  repo-actions: [edit, issue]
+  downloads: []  # CHANGED: Removed pdf and epub since they're not rendering
+  sharing: [twitter, linkedin]
+  site-url: "https://shanemccarty.github.io/FRIplaybook"  # ADDED: This is important!
+  
+  chapters:
+    - index.qmd
+    - part: "Introduction"
+      chapters:
+        - text: "The Playbook"
+          file: intro.qmd
+        - text: "Reproducible Reports"
+          file: example.qmd
+        - text: "Start Quarto Document"
+          file: codechunks.qmd
+    - part: "Importing Data"
+      chapters:
+        - text: "Exporting from Qualtrics"
+          file: export.qmd
+        - text: "Importing Data Simply"
+          file: import-simple.qmd
+        - text: "Importing Data Continously"
+          file: import-continuous.qmd
+    - part: "Tidy Data"
+      chapters:
+        - text: "Tidying Your Data"
+          file: tidy.qmd
+    - part: "Report Transparently:"
+      chapters:    
+        - text: "Read Me File"
+          file: readme.qmd
+        - text: "Use Functions to Write"
+          file: functions.qmd
+# Filters - WebR only for now
+filters:
+  - webr
+
+# WebR configuration
+webr:
+  packages: ['ggplot2', 'dplyr', 'tidyr', 'readr', 'haven', 'readxl', 'NHANES', 'psych']  # ADDED: psych
+  autoload-packages: false
+  show-startup-message: true
+  show-header-message: true
+  channel-type: "automatic"
+  home-dir: "/home/web_user"
+  base-url: "https://webr.r-wasm.org/latest/"
+
+# Quarto Live configuration
+live:
+  show-editor: true
+  show-console: true
+  editor-theme: "textmate"
+  editor-font-size: 14
+  console-font-size: 14
+
+format:
+  html:
+    theme: cosmo  # SIMPLIFIED: Remove custom scss for now if files don't exist
+    respect-user-color-scheme: true
+    highlight-style: 
+      light: github
+      dark: github-dark
+    code-copy: true
+    code-fold: false
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 3
+    page-footer:
+      left: "© 2025 FRI Public Health Research Stream"
+      right: 
+        - icon: github
+          href: https://github.com/shanemccarty/FRIplaybook
+        - icon: house
+          href: https://fripublichealth.quarto.pub
+    search: true
+
+# Bibliography configuration (comment out if files don't exist yet)
+# bibliography: references.bib
+# csl: apa.csl
+
+# Code execution
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+  freeze: auto
+
+lang: en
+
+params:
+  organization: "FRI Public Health Research Stream"
+  contact_email: "fripublichealth@binghamton.edu"
+  version: "1.0"
+  authors:
+    lead: "Shane McCarty, PhD"
+    contributors:
+      - name: "Zihan Hei"
+      - name: "Gavin Rualo"

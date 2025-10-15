@@ -1,0 +1,19 @@
+{
+  "hash": "4896d319818583e9f6f88c1868a42fad",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Importing Data Simply\"\nauthor: \"Zihan Hei & Shane McCarty\"\nabstract: |\n   TBD\nkeywords:\n  - import\n  - head\n  - structure\n  - summary\nformat: live-html\nengine: knitr\neditor: visual\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n## Purpose\n\nImporting data is the first step in the workflow. \n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"NHANES\")\ninstall.packages(\"devtools\")\n```\n:::\n\n\n\n## First Setup the library:\n\n\n::: {.cell autorun='false' completion='true'}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()\nlibrary(NHANES)\n```\n:::\n\n\n\n# Datasets\n\nYou will learn how to import different datasets:\n\n- datasets in R packages `NHANES` and `YRBS`\n\n- class dataset \"health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course\n\n- team dataset \"oralhealth\"\n\n## File Formats\n\n- National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package `NHANES`\n\n- a `.csv` file format of the class dataset \"health beliefs (cohort 11)\" collected in the Research Methods I (ANTH206) course `03152025ProlificHealthBeliefs.csv`\n\n- a `.xlsx` file format of the class dataset \"health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course `03152025ProlificHealthBeliefs.xlsx`\n\n- a `.sav` file format from SPSS of the FRI team project on oral health `10312024oralhealth.sav`. \n\n\n::: {.cell autorun='false' completion='true'}\n\n```{.r .cell-code}\n# Load your data\nselect_data <- read.csv(\"data/03.15.2025.ProlificHealthBeliefs.csv\")\n\n# displays structures of R objects\nstr(select_data)\n```\n:::\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Install required packages\ninstall.packages(\"NHANES\")\ninstall.packages(\"tidyverse\")\ninstall.packages(\"GGally\")\ninstall.packages(\"iris\")\n\n# Load the packages\nlibrary(NHANES)\nlibrary(tidyverse)\nlibrary(GGally)\n```\n:::\n\n\n## Data Structure\nNow, you will view the structure of the NHANES data\n\n```{webr-r}\nlibrary(NHANES)\n# Load the data and view its structure\nstr(NHANESraw)\n```\n\n## Data Header\n\n```{webr-r}\nlibrary(NHANES)\n# Load the data and view its header\nhead(NHANESraw)\n```\n\n## View Data\n\nIn Posit Cloud, you can use `View()` in your CONSOLE to view the dataframe.  \n\n```{{r}}\nlibrary(NHANES)\n# View data\nView(NHANESraw)\n```\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

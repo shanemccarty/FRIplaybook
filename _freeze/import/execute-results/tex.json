@@ -1,0 +1,19 @@
+{
+  "hash": "bddd906fe73d4520f482c6d8d2c39746",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Import\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Install required packages\ninstall.packages(\"NHANES\")\ninstall.packages(\"tidyverse\")\ninstall.packages(\"GGally\")\ninstall.packages(\"iris\")\n\n# Load the packages\nlibrary(NHANES)\nlibrary(tidyverse)\nlibrary(GGally)\n```\n:::\n\n\nNow, you will view the structure of the NHANES data\n\n```{webr-r}\n# Load the data and view its structure\nstr(iris)\n\n```\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

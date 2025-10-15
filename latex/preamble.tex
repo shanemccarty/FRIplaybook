@@ -1,0 +1,34 @@
+% Use Times-like font for main text
+\usepackage{times}
+
+% Or use Palatino (another nice serif font)
+% \usepackage{palatino}
+
+% Define FRI-PH colors for PDF
+\usepackage{xcolor}
+\definecolor{friphgreen}{RGB}{0,128,0}
+\definecolor{friphgreenlight}{RGB}{144,238,144}
+\definecolor{friphgreendark}{RGB}{0,100,0}
+
+% Improve table appearance
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% Better code blocks
+\usepackage{fancyvrb}
+
+% Custom chapter headings (optional)
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Custom header/footer (optional)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{FRI Public Health Playbook}
+
+% Better spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}

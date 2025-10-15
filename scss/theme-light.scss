@@ -1,0 +1,100 @@
+/*-- scss:defaults --*/
+
+// FRI-PH Brand Colors (from BingTheme.css)
+$fri-ph-green: #005a43;
+$fri-ph-green-light: lighten($fri-ph-green, 10%);
+$fri-ph-green-lighter: lighten($fri-ph-green, 20%);
+$fri-ph-green-dark: darken($fri-ph-green, 10%);
+
+// Base colors for light mode
+$body-bg: #ffffff;
+$body-color: $fri-ph-green;
+$text-muted: lighten($fri-ph-green, 30%);
+
+// Headings
+$headings-color: $fri-ph-green;
+$headings-font-weight: 600;
+
+// Links
+$link-color: $fri-ph-green;
+$link-hover-color: $fri-ph-green-light;
+
+// Navigation
+$navbar-bg: $fri-ph-green;
+$navbar-fg: #ffffff;
+
+// Sidebar
+$sidebar-bg: #f8f9fa;
+$sidebar-fg: $fri-ph-green;
+
+// Code blocks
+$code-bg: #f8f9fa;
+$code-color: $fri-ph-green-dark;
+
+// Borders
+$border-color: lighten($fri-ph-green, 50%);
+
+/*-- scss:rules --*/
+
+// Light mode specific content visibility
+.light-content {
+  display: block;
+}
+
+.dark-content {
+  display: none;
+}
+
+// Custom styling for FRI-PH branding
+h1, h2, h3, h4, h5, h6 {
+  color: $fri-ph-green;
+  margin-top: 1.5rem;
+}
+
+// Enhanced book styling
+.quarto-title-block .quarto-title {
+  color: $fri-ph-green;
+  font-weight: 700;
+}
+
+.sidebar-navigation .sidebar-item {
+  color: $fri-ph-green;
+}
+
+.sidebar-navigation .sidebar-item:hover {
+  background-color: lighten($fri-ph-green, 55%);
+}
+
+// Code block enhancements
+pre code {
+  background-color: $code-bg;
+  border: 1px solid $border-color;
+  border-radius: 0.375rem;
+}
+
+// Callout blocks
+.callout {
+  border-left: 4px solid $fri-ph-green;
+}
+
+// Table styling
+.table {
+  border-color: $border-color;
+}
+
+.table th {
+  background-color: lighten($fri-ph-green, 52%);
+  color: $fri-ph-green;
+  border-color: $border-color;
+}
+
+// Button styling
+.btn-primary {
+  background-color: $fri-ph-green;
+  border-color: $fri-ph-green;
+}
+
+.btn-primary:hover {
+  background-color: $fri-ph-green-light;
+  border-color: $fri-ph-green-light;
+}

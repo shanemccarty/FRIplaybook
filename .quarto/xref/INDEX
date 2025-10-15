@@ -1,0 +1,92 @@
+{
+  "index.qmd": {
+    "index.html": "87294083"
+  },
+  "intro.qmd": {
+    "intro.html": "aff01697"
+  },
+  "summary.qmd": {
+    "summary.html": "9c41b211"
+  },
+  "references.qmd": {
+    "references.html": "ab5eeaed"
+  },
+  "resources.qmd": {
+    "resources.html": "56ddb6ba"
+  },
+  "mmr.qmd": {
+    "mmr.html": "1eaeee86"
+  },
+  "import.qmd": {
+    "import.html": "6f65b727"
+  },
+  "nvivo.qmd": {
+    "nvivo.html": "b7a5494f"
+  },
+  "quant-intro.qmd": {
+    "quant-intro.html": "b0453ede"
+  },
+  "functions-writing.qmd": {
+    "functions-writing.html": "a0a3c0b4"
+  },
+  "ggplot2.qmd": {
+    "ggplot2.html": "379412f8"
+  },
+  "export.qmd": {
+    "export.html": "19ca53d7"
+  },
+  "tidy.qmd": {
+    "tidy.html": "379b9e6c"
+  },
+  "dplyr.qmd": {
+    "dplyr.html": "c4498086"
+  },
+  "regression.qmd": {
+    "regression.html": "1a6013c5"
+  },
+  "paired.qmd": {
+    "paired.html": "a6377097"
+  },
+  "functions.qmd": {
+    "functions.html": "ba48db97"
+  },
+  "composite.qmd": {
+    "composite.html": "2fea8a23"
+  },
+  "import-continuous.qmd": {
+    "import-continuous.html": "3f167a7e"
+  },
+  "import-simple.qmd": {
+    "import-simple.html": "01cfa2b1"
+  },
+  "codechunks.qmd": {
+    "codechunks.html": "04116184"
+  },
+  "example.qmd": {
+    "example.html": "606ebb66"
+  },
+  "quartopub.qmd": {
+    "quartopub.html": "a844f36f"
+  },
+  "review.qmd": {
+    "review.html": "a20bf013"
+  },
+  "presentations.qmd": {
+    "presentations.html": "5ed5e6ec"
+  },
+  "citations.qmd": {
+    "citations.html": "70859852"
+  },
+  "readme.qmd": {
+    "readme.html": "4b267a44"
+  },
+  "tables.qmd": {
+    "tables.html": "7e20b31e"
+  },
+  "cross.qmd": {
+    "cross.html": "67bfcd72"
+  },
+  "manuscripts.qmd": {
+    "manuscripts.html": "a3da88cd"
+  }
+}

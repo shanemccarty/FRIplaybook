@@ -1,0 +1,128 @@
+---
+title: "Transforming Your Data with dplyr"
+author: "Mara Estreich"
+abstract: |
+  This chapter introduces students to dplyr, a core package within the tidyverse designed
+  for efficient data manipulation and transformation. Students learn essential data cleaning
+  techniques including filtering observations, recoding variables, and creating new categorical
+  and binary variables. Through practical examples using survey data, the chapter demonstrates
+  how to prepare datasets for analysis by grouping response categories and creating dummy
+  variables for regression modeling. By the end of this chapter, students will understand
+  that clean, well-organized data is foundational for accurate analysis and will be equipped
+  with core dplyr functions to transform raw survey data into analysis-ready datasets.
+keywords:
+  - data manipulation
+  - dplyr
+  - recoding variables
+  - creating new variables
+  - dummy coding
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+::: callout-tip
+## 📖 Learning Resources
+
+-   **R for Data Science**: [Data Transformation](https://r4ds.hadley.nz/data-transform.html)
+-   **R for Data Science**: [Transform](https://r4ds.hadley.nz/transform.html)
+-   **Datacamp Course**: [dplyr](https://www.datacamp.com/courses/data-manipulation-with-dplyr)
+-   **Cheat Sheet**: [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+-   **Posit Interactive Page**: [dplyr](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
+:::
+
+```{r}
+#| label: load library
+library(haven)
+library(naniar)
+library(dplyr)
+library(knitr)
+```
+
+```{r}
+#| label: import-dataset
+alldata <- read_sav("data/10.31.2024.oralhealth.sav", user_na = FALSE)
+```
+
+
+
+```{r}
+#| label: replace-missing-data
+
+## replace with NA
+alldata <- alldata %>%
+  replace_with_na_all(condition = ~.x %in% c(-99, -50))
+```
+
+## Introduction to dplyr
+
+dplyr is part of the tidyverse and provides intuitive functions for manipulating data. Think of it as a toolkit for cleaning and preparing your data for analysis.
+
+**Why use dplyr?**
+
+-   Makes data cleaning code readable and logical
+
+-   Uses the pipe operator (`%>%`) to chain operations together
+
+-   Essential for preparing data before creating visualizations or running analyses
+
+> **Remember**: You cannot create meaningful visualizations or run valid statistical analyses without clean data!
+
+## Example 1: Recoding Education into Categories
+
+When working with survey data, we often need to collapse detailed response categories into broader groups. This is useful for:
+
+-   Simplifying analysis
+
+-   Creating groups with adequate sample sizes
+
+-   Making results easier to interpret
+
+### Original Education Variable
+
+Our survey asked about education level with 7 response options:
+
+1.  Less than high school
+
+2.  High school diploma or GED
+
+3.  Some college, but no degree
+
+4.  Associate's or technical degree
+
+5.  Bachelor's degree
+
+6.  Master's degree
+
+7.  Doctoral or professional degree
+
+### Recoding into Three Categories
+
+Let's group these into three meaningful categories:
+
+```{r}
+#| label: mutate-education-to-education_3cat
+  
+# Create a new 3-category education variable
+alldata <- alldata %>%
+  mutate(
+    education_3cat = factor(
+      case_when(
+        Education_Level %in% c(1, 2, 3, 4) ~ "Less than Bachelor's",
+        Education_Level == 5 ~ "Bachelor's Degree",
+        Education_Level %in% c(6, 7) ~ "Graduate Degree"
+      ),
+      levels = c("Less than Bachelor's", "Bachelor's Degree", "Graduate Degree")
+    )
+  )
+
+# Check the recoding with a cross-tabulation
+table(alldata$Education_Level, alldata$education_3cat, useNA = "ifany")
+```
+
+::: callout-warning
+This page is under construction. It will include more information soon!
+:::
+

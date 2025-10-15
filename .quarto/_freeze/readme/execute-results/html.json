@@ -1,0 +1,15 @@
+{
+  "hash": "94b70f1332fb8dbae1e3977bcccb51cf",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"How to Read Me\"\nauthor: \"Zihan Hei & Shane McCarty\"\nabstract: |\n  This chapter introduces students to the basics of a read me file. \nkeywords:\n  - quarto publishing\n  - in line coding\n  - writing\nformat: live-html\nengine: knitr\neditor: visual\n---\n\n# Read Me file\nA read me is instructing someone else to read me. It provides basic information and contextual information to help someone else who wants to replicate or check your work. \n\nTo see an example of an excellent read me file, see \"zero sum report read me file\": https://fripublichealth.quarto.pub/zerosum/readme-preview.html\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "hash": "9daea7223c149891a5ba5be0ad63d24c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Creating Composite Scores from Survey Scales\"\nauthor: \"Claude.ai\"\nabstract: |\n  This chapter teaches students how to create composite scores from multi-item survey scales. Students learn to check whether items on a scale reliably measure the same construct using Cronbach's alpha, and then calculate an average score across all items. The chapter uses a straightforward approach where composite scores are only calculated for participants who answered all items on the scale, ensuring everyone's score has the same meaning. Through a practical example with sleep behavior data, students learn the essential steps: select items, check reliability, remove incomplete cases, and calculate mean scores. This skill is fundamental when working with validated scales in public health surveys.\nkeywords:\n  - composite scores\n  - Cronbach's alpha\n  - reliability\n  - survey scales\nformat: html\neditor: visual\nexecute:\n  warning: false\n  message: false\n---\n\n::: {.callout-tip icon=\"false\"}\n## 📖 Additional Learning Resources\n\n- **Cheat Sheet**: [dplyr Data Transformation](https://rstudio.github.io/cheatsheets/data-transformation.pdf)\n- **psych Package**: [Quick reference guide](https://cran.r-project.org/web/packages/psych/psych.pdf)\n:::\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\nlibrary(psych)\nlibrary(knitr)\nlibrary(ggplot2)\n```\n:::\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {
+      "knitr": [
+        "{\"type\":\"list\",\"attributes\":{},\"value\":[]}"
+      ]
+    },
+    "preserve": null,
+    "postProcess": false
+  }
+}

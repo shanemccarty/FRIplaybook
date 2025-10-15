@@ -1,0 +1,945 @@
+---
+title: "Use Functions to Write"
+subtitle: "From Text to Code"
+author: "Zihan Hei"
+abstract: |
+  This chapter introduces reproducible research practices by demonstrating how to embed 
+  R code directly into manuscript text using Quarto. Students learn to replace manually 
+  typed numbers with dynamic inline R code that automatically updates when data changes, 
+  reducing errors and improving research reproducibility. Through practical examples using 
+  survey data, the chapter covers reporting sample sizes, calculating percentages, 
+  formatting numbers as words, interpreting descriptive statistics tables, and presenting 
+  statistical test results. By the end of this chapter, students will be able to transform 
+  static numbers in their research papers into dynamic, code-generated values that maintain 
+  accuracy throughout the research process.
+keywords:
+  - quarto publishing
+  - in line coding
+  - writing
+format: live-html
+engine: knitr
+editor: visual
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Purpose
+
+In reproducible research, writing *numbers* *manually* (e.g., "We surveyed 120 people.") can lead to errors if you import data later (after you have collected 140 people). Instead, use **R functions** inside **Quarto** to turn your results directly into sentences!
+
+## First Setup the library:
+
+```{r}
+#| autorun: false
+#| completion: true
+#| echo: true
+#| output: false
+#| warning: false
+#| error: false
+
+library(tidyverse)
+library(psych)
+library(knitr)
+library(tibble)
+library(dplyr)
+library(tidyr)
+library(scales)     # for number formatting like comma()
+library(english)    # to convert numbers to words
+library(stringr)    # for text functions like str_c()
+```
+
+## Dataset: Example Survey Data
+
+The dataset was collected on March 15, 2025 in the ANTH206 course: `03152025ProlificHealthBeliefs.csv`.
+
+```{r}
+#| autorun: false
+#| completion: true
+#| echo: true
+#| output: false
+#| warning: false
+#| error: false
+# Load your data
+##  "data/" is a folder called "data" where the dataset file is located
+## if your data is not in a folder, you can delete "data/"
+select_data <- read.csv("data/03.15.2025.prolifichealthbeliefs.csv")
+
+# displays structures of R objects
+str(select_data)
+```
+
+```{r}
+#| error: false
+#| warning: false
+#| autorun: false
+#| completion: true
+#| include: false
+#| output: false
+
+# Extract just a sample (5 rows)
+sample_data <- head(select_data, 122)
+
+# Generate R code to embed
+dput(sample_data)
+```
+
+```{webr}
+#| label: embed-select-data
+#| error: false
+#| warning: false
+#| autorun: false
+#| completion: true
+#| include: false
+#| output: false
+
+select_data <- structure(list(
+  AGE = c(29L, 40L, 23L, 35L, 67L, 45L, 20L, 34L, 
+59L, 40L, 30L, 41L, 29L, 24L, 72L, 23L, 22L, 51L, NA, 36L, 59L, 
+29L, 21L, 36L, 47L, 24L, 33L, 27L, 21L, 21L, 42L, 22L, 26L, 62L, 
+35L, 29L, 30L, 20L, 42L, 33L, 35L, 33L, 35L, 45L, 33L, 40L, 58L, 
+36L, 25L, 39L, 24L, 42L, 36L, 43L, 28L, 30L, 51L, 25L, 27L, 30L, 
+54L, 33L, 52L, 52L, 20L, 22L, 32L, 22L, 25L, 28L, 19L, 27L, 31L, 
+34L, 37L, 48L, 61L, 49L, 28L, 24L, 34L, 32L, 37L, 29L, 30L, 29L, 
+43L, 73L, 37L, 21L, 31L, 56L, 25L, 54L, 54L, 37L, 59L, 30L, 19L, 
+26L, 46L, 29L, 32L, 20L, 39L, 38L, 23L, 47L, 28L, 27L, 67L, 52L, 
+22L, 27L, 44L, 48L, 36L, 28L, 21L, 56L, 52L, 38L), EDUCATION = c(6L, 
+2L, 3L, 5L, 6L, 5L, 3L, 5L, 2L, 3L, 6L, 6L, 5L, 5L, 6L, 2L, 6L, 
+5L, 6L, 5L, 5L, 5L, 5L, 5L, 6L, 3L, 2L, 5L, 5L, 3L, 6L, 5L, 3L, 
+4L, 5L, 2L, 3L, 3L, 5L, 5L, 5L, 5L, 6L, 3L, 3L, 5L, 6L, 6L, 5L, 
+5L, 2L, 6L, 4L, 6L, 5L, 6L, 6L, 5L, 3L, 5L, 6L, 6L, 4L, 6L, 6L, 
+3L, 6L, 3L, 6L, 5L, 5L, 5L, 5L, 6L, 5L, 5L, 4L, 6L, 5L, 3L, 2L, 
+6L, 6L, 4L, 6L, 6L, 5L, 6L, 6L, 5L, 6L, 3L, 2L, 5L, 6L, 6L, 5L, 
+5L, 3L, 4L, 5L, 5L, 6L, 4L, 6L, 5L, 3L, 6L, 6L, 5L, 6L, 3L, 5L, 
+5L, 3L, 6L, 6L, 3L, 3L, 5L, 5L, 5L), SOCIALSTATUS = c(6L, 3L, 
+4L, 6L, 9L, 7L, 4L, 3L, 3L, 4L, 3L, 5L, 6L, 6L, 8L, 4L, 9L, 7L, 
+6L, 4L, 4L, 4L, 6L, 4L, 7L, 6L, 3L, 6L, 5L, 8L, 7L, 5L, 5L, 5L, 
+5L, 1L, 2L, 5L, 6L, 2L, 6L, 6L, 5L, 2L, 3L, 5L, 6L, 5L, 4L, 3L, 
+2L, 7L, 7L, 8L, 3L, 6L, 8L, 5L, 5L, 5L, 7L, 7L, 8L, 5L, 6L, 1L, 
+7L, 5L, 6L, 3L, 7L, 6L, 6L, 6L, 7L, 6L, 3L, 8L, 8L, 3L, 5L, 6L, 
+6L, 1L, 6L, 4L, 6L, 6L, 7L, 5L, 6L, 4L, 3L, 3L, 9L, 6L, 7L, 5L, 
+7L, 5L, 5L, 6L, 8L, 5L, 7L, 4L, 3L, 4L, 4L, 4L, 5L, 4L, 7L, 6L, 
+3L, 6L, 6L, 7L, 7L, 5L, 6L, 8L), INCOME = c("$100,000-$149,999", 
+"$25,000-$49,999", "Prefer not to say", "$150,000 or more", "$100,000-$149,999", 
+"$150,000 or more", "$50,000-$74,999", "$25,000-$49,999", "Less than $25,000", 
+"$100,000-$149,999", "Less than $25,000", "$25,000-$49,999", 
+"$50,000-$74,999", "$100,000-$149,999", "$75,000-$99,999", "Less than $25,000", 
+"$50,000-$74,999", "$75,000-$99,999", "Less than $25,000", "$100,000-$149,999", 
+"$25,000-$49,999", "$100,000-$149,999", "$75,000-$99,999", "$100,000-$149,999", 
+"$100,000-$149,999", "$25,000-$49,999", "$25,000-$49,999", "$100,000-$149,999", 
+"$75,000-$99,999", "$50,000-$74,999", "$50,000-$74,999", "$50,000-$74,999", 
+"$50,000-$74,999", "$50,000-$74,999", "$150,000 or more", "Prefer not to say", 
+"Less than $25,000", "$25,000-$49,999", "$100,000-$149,999", 
+"$50,000-$74,999", "$50,000-$74,999", "$100,000-$149,999", "$50,000-$74,999", 
+"Less than $25,000", "$25,000-$49,999", "$75,000-$99,999", "$100,000-$149,999", 
+"$25,000-$49,999", "$50,000-$74,999", "$50,000-$74,999", "$50,000-$74,999", 
+"$75,000-$99,999", "$25,000-$49,999", "$100,000-$149,999", "$25,000-$49,999", 
+"$50,000-$74,999", "$100,000-$149,999", "$25,000-$49,999", "$25,000-$49,999", 
+"$150,000 or more", "$150,000 or more", "$50,000-$74,999", "$150,000 or more", 
+"$100,000-$149,999", "$50,000-$74,999", "$50,000-$74,999", "$75,000-$99,999", 
+"Less than $25,000", "$100,000-$149,999", "$25,000-$49,999", 
+"Less than $25,000", "Less than $25,000", "$100,000-$149,999", 
+"$100,000-$149,999", "$150,000 or more", "$50,000-$74,999", "Less than $25,000", 
+"$50,000-$74,999", "$25,000-$49,999", "$100,000-$149,999", "$100,000-$149,999", 
+"$100,000-$149,999", "$75,000-$99,999", "$25,000-$49,999", "$150,000 or more", 
+"$75,000-$99,999", "$100,000-$149,999", "$100,000-$149,999", 
+"$75,000-$99,999", "$100,000-$149,999", "$100,000-$149,999", 
+"Less than $25,000", "$25,000-$49,999", "$25,000-$49,999", "$100,000-$149,999", 
+"$100,000-$149,999", "$150,000 or more", "$25,000-$49,999", "$75,000-$99,999", 
+"$75,000-$99,999", "$150,000 or more", "$100,000-$149,999", "$150,000 or more", 
+"$100,000-$149,999", "$50,000-$74,999", "$100,000-$149,999", 
+"$25,000-$49,999", "$50,000-$74,999", "$25,000-$49,999", "$25,000-$49,999", 
+"$100,000-$149,999", "$25,000-$49,999", "$100,000-$149,999", 
+"$25,000-$49,999", "$25,000-$49,999", "$100,000-$149,999", "$100,000-$149,999", 
+"$75,000-$99,999", "$100,000-$149,999", "Less than $25,000", 
+"$75,000-$99,999", "$100,000-$149,999"), RELIGIOUS_IDENTITY = c("1", 
+"9", "9", "1", "1", "1", "1", "9", "8", "1", "1", "7", "1", "9", 
+"1", "8", "1", "5,9", "1", "1", "8", "1", "1", "1", "1", "-99", 
+"1", "1", "1", "9", "1", "1", "1", "9", "-99", "9", "9", "9", 
+"9", "1", "1", "9", "1", "9", "1", "8", "9", "1", "9", "-99", 
+"9", "1", "1", "1", "1", "1", "1", "1", "9", "9", "1", "1", "9", 
+"1", "1", "9", "1", "1", "9", "1", "1", "9", "1", "9", "9", "9", 
+"1", "1", "1", "1", "1", "9", "9", "9", "1", "1", "9", "6", "1", 
+"1", "1", "1", "9", "2", "1", "9", "1", "9", "1", "2", "9", "1", 
+"1", "9", "1", "1", "9", "4", "1", "9", "9", "1", "9", "9", "9", 
+"9", "9", "9", "4", "1", "9", "1"), RACE = c("3", "7", "3,7", 
+"2", "7", "3", "7", "7", "7", "7", "7", "8", "3", "3,7", "6", 
+"3", "3", "7", "3", "7", "7", "3", "3", "2", "7", "3", "4", "7", 
+"7", "2", "3", "2", "4", "1,7", "2", "2", "4,7", "4", "7", "4", 
+"7", "7", "4", "7", "4", "2", "2", "7", "3", "7", "3,4,7", "7", 
+"3", "3", "3", "7", "7", "3", "4", "2", "3", "7", "7", "3", "3", 
+"7", "3", "7", "7", "7", "7", "5", "7", "3", "2", "7", "7", "7", 
+"7", "2", "2,3", "7", "4", "3", "2", "3", "2,7", "7", "3", "3", 
+"7", "3", "7", "7", "3", "2", "4", "2", "2", "2", "7", "3,6", 
+"7", "2,7", "2", "7", "7", "2", "3", "7", "7", "7", "2", "2", 
+"7", "2", "2", "7", "2", "1,7", "3", "7"), STREETRACE = c("Black", 
+"White", NA, "Asian American", "White", "Black", "White", "White", 
+"White", "White", "White", "Some other race", "Black", "Black", 
+"White", "Black", "Black", "White", "Black", "White", "White", 
+"Black", "Black", "Asian American", "Native American/American Indian", 
+"Black", "Latine", "White", "White", "Asian American", "Black", 
+"Asian American", "White", "White", "Asian American", "Mexican", 
+"White", "Mexican", "White", "Mexican", "White", "White", "White", 
+"White", "Latine", "Asian American", "Asian American", "White", 
+"Black", "White", "Latine", "Latine", "Black", "Black", "Black", 
+"White", "White", "Black", "Latine", "Asian American", "Black", 
+"White", "White", "Black", "Black", "White", "Native American/American Indian", 
+"White", "White", "White", "White", NA, "White", "Black", "Asian American", 
+"White", "White", "White", "White", "Asian American", "Black", 
+"White", "Latine", "Black", "Asian American", "Black", "White", 
+"White", "Black", "Black", "White", "Black", "White", "White", 
+"Black", "Asian American", "Latine", "Asian American", "Asian American", 
+"Asian American", "White", "Black", "White", "White", "Asian American", 
+"White", "White", "Mexican", "Black", "White", "White", "White", 
+"Asian American", "Asian American", "White", "Asian American", 
+"Asian American", "White", "Asian American", "Native American/American Indian", 
+"Black", "White"), GENDER = c(2L, 2L, 2L, 1L, 2L, 1L, 1L, 2L, 
+1L, 1L, 2L, 3L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 
+1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 3L, 3L, 2L, 2L, 2L, 
+2L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 3L, 
+1L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 
+2L, 2L, 1L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 2L, 
+2L, 2L, 1L, 1L, 1L, 1L, 2L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 1L, 
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 
+2L, 1L), SEXUAL_IDENTITY = c("Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Gay or lesbian", "Bisexual, pansexual, or queer", "Straight or heterosexual", 
+"Gay or lesbian", "Straight or heterosexual", "Straight or heterosexual", 
+"Gay or lesbian", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Asexual", "Not sure", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Bisexual, pansexual, or queer", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Bisexual, pansexual, or queer", "Straight or heterosexual", 
+"Gay or lesbian", "Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Gay or lesbian", "Asexual", "Bisexual, pansexual, or queer", 
+"Bisexual, pansexual, or queer", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Bisexual, pansexual, or queer", "Straight or heterosexual", 
+"Straight or heterosexual", "Gay or lesbian", "Straight or heterosexual", 
+"Gay or lesbian", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Asexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Bisexual, pansexual, or queer", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Bisexual, pansexual, or queer", "Asexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Gay or lesbian", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Straight or heterosexual", "Bisexual, pansexual, or queer", 
+"Bisexual, pansexual, or queer", "Straight or heterosexual", 
+"Straight or heterosexual", "Straight or heterosexual", "Gay or lesbian", 
+"Straight or heterosexual", "Straight or heterosexual", "Straight or heterosexual", 
+"Gay or lesbian", "Straight or heterosexual"), POLITICALBELIEFS = c(4L, 
+5L, 5L, 3L, 4L, 3L, 4L, 4L, NA, 6L, 4L, 3L, 3L, 1L, 6L, 2L, 2L, 
+2L, 4L, 1L, 2L, 4L, 4L, 5L, 4L, 2L, 6L, 2L, NA, 3L, 3L, 4L, 3L, 
+1L, 4L, 3L, 2L, 4L, 4L, 2L, 4L, 2L, 5L, 3L, 3L, 2L, 5L, 3L, 3L, 
+3L, 5L, 6L, 5L, 5L, 6L, 5L, 5L, 4L, 5L, 3L, 5L, 5L, 3L, 5L, 5L, 
+2L, 6L, 3L, 6L, 5L, 5L, 3L, 2L, 5L, 5L, 3L, 5L, 4L, 2L, 4L, 3L, 
+6L, 4L, 1L, 5L, 3L, 3L, 3L, 6L, 4L, 6L, 3L, 3L, 1L, 5L, 5L, 5L, 
+3L, 4L, 4L, 1L, 5L, 3L, 2L, 4L, 4L, 2L, 3L, 3L, 3L, 3L, 4L, 1L, 
+4L, 3L, 4L, 2L, 5L, 5L, 4L, 3L, 2L), POLITICALAFFIL = c("Republican Party", 
+"Republican Party", NA, "Democratic Party", NA, "Democratic Party", 
+"Republican Party", "Republican Party", NA, NA, "Republican Party", 
+"Democratic Party", "Democratic Party", "Democratic Party", "Conservative Party", 
+"Democratic Party", "Republican Party", NA, "Republican Party", 
+"Democratic Party", NA, "Libertarian Party", "Democratic Party", 
+"Republican Party", "Republican Party", "Libertarian Party", 
+"Republican Party", "Democratic Party", "Libertarian Party", 
+"Democratic Party", "Libertarian Party", "Libertarian Party", 
+"Democratic Party", "Democratic Party", "Socialist or Green Party", 
+"Democratic Party", "Democratic Party", NA, "Libertarian Party", 
+"Democratic Party", "Democratic Party", "Democratic Party", "Republican Party", 
+"Democratic Party", NA, "Democratic Party", "Conservative Party", 
+"Republican Party", "Democratic Party", "Democratic Party", "Republican Party", 
+"Conservative Party", NA, "Republican Party", "Republican Party", 
+"Republican Party", "Republican Party", "Democratic Party", "Republican Party", 
+"Democratic Party", "Republican Party", "Democratic Party", "Democratic Party", 
+"Conservative Party", "Republican Party", "Democratic Party", 
+"Conservative Party", "Democratic Party", "Conservative Party", 
+"Conservative Party", "Republican Party", "Democratic Party", 
+"Democratic Party", "Republican Party", "Republican Party", "Democratic Party", 
+"Republican Party", "Democratic Party", "Republican Party", NA, 
+"Democratic Party", "Republican Party", NA, NA, "Republican Party", 
+"Democratic Party", "Democratic Party", "Democratic Party", "Democratic Party", 
+"Republican Party", "Conservative Party", "Democratic Party", 
+"Democratic Party", "Democratic Party", "Democratic Party", "Republican Party", 
+"Republican Party", "Democratic Party", NA, NA, "Democratic Party", 
+"Conservative Party", "Democratic Party", "Democratic Party", 
+"Republican Party", "Democratic Party", "Democratic Party", "Democratic Party", 
+NA, "Democratic Party", "Democratic Party", NA, "Democratic Party", 
+NA, "Libertarian Party", NA, "Democratic Party", "Libertarian Party", 
+"Republican Party", NA, "Republican Party", "Democratic Party"
+), VOTE2024 = c(1L, 1L, 8L, 2L, 2L, 1L, 1L, 8L, 8L, 1L, 1L, 2L, 
+2L, 2L, 1L, 8L, 1L, 2L, 1L, 2L, 2L, NA, 2L, 2L, 1L, 1L, 1L, 2L, 
+NA, 2L, 1L, 8L, 2L, 2L, 8L, 2L, 2L, 8L, 5L, 2L, 2L, 2L, 1L, 8L, 
+2L, 2L, 1L, 1L, 2L, 2L, 8L, 1L, 7L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 
+1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 1L, 8L, 2L, 1L, 1L, 1L, 2L, 
+1L, 1L, 1L, 8L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 2L, 1L, 1L, 1L, 2L, 
+8L, 2L, 1L, 1L, 1L, 2L, 8L, 8L, 2L, 1L, 2L, 2L, 1L, 1L, 2L, 2L, 
+NA, 2L, 2L, 2L, 2L, 8L, 8L, 2L, 2L, 1L, 1L, 1L, 1L, 2L), SERIOUS = c("Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+NA, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", 
+"Yes", "Yes", "Yes"), POLITICALPARTY = c("Republican", "Republican", 
+"Independent", "Democrat", "Independent", "Democrat", "Republican", 
+"Republican", "Independent", "Independent", "Republican", "Independent", 
+"Democrat", "Democrat", "Republican", "Republican", "Republican", 
+"Independent", "Independent", "Democrat", "Independent", "Independent", 
+"Democrat", "Republican", "Republican", "Democrat", "Republican", 
+"Democrat", "Democrat", "Democrat", "Independent", "Independent", 
+"Democrat", "Democrat", "Independent", "Independent", "Democrat", 
+"Independent", "Independent", "Democrat", "Independent", "Democrat", 
+"Independent", "Independent", "Independent", "Democrat", "Republican", 
+"Republican", "Democrat", "Democrat", "Republican", "Republican", 
+"Independent", "Republican", "Republican", "Republican", "Republican", 
+"Democrat", "Republican", "Democrat", "Republican", "Democrat", 
+"Democrat", "Republican", "Republican", "Independent", "Republican", 
+"Independent", "Republican", "Republican", "Republican", "Democrat", 
+"Democrat", "Republican", "Republican", "Democrat", "Republican", 
+"Republican", "Republican", "Independent", "Independent", "Republican", 
+"Independent", "Independent", "Republican", "Democrat", "Democrat", 
+"Democrat", "Democrat", "Independent", "Independent", "Independent", 
+"Democrat", "Democrat", "Democrat", "Republican", "Republican", 
+"Democrat", "Independent", "Independent", "Democrat", "Republican", 
+"Democrat", "Democrat", "Republican", "Independent", "Independent", 
+"Democrat", "Independent", "Democrat", "Democrat", "Independent", 
+"Democrat", "Independent", "Independent", "Independent", "Democrat", 
+"Independent", "Republican", "Independent", "Democrat", "Democrat"
+), SEX = c("Male", "Male", "Male", "Female", "Male", "Female", 
+"Female", "Male", "Female", "Female", "Male", "Female", "Female", 
+"Female", "Male", "Female", "Female", "Male", "Female", "Male", 
+"Female", "Male", "Male", "Male", "Female", "Female", "Female", 
+"Female", "Female", "Male", "Female", "Male", "Female", "Female", 
+"Male", "Female", "Male", "Male", "Male", "Male", "Male", "Male", 
+"Female", "Male", "Male", "Female", "Female", "Male", "Male", 
+"Female", "Male", "Male", "Male", "Female", "Female", "Male", 
+"Female", "Female", "Male", "Female", "Male", "Female", "Female", 
+"Male", "Male", "Female", "Female", "Female", "Male", "Female", 
+"Female", "Male", "Male", "Male", "Female", "Male", "Female", 
+"Female", "Male", "Male", "Male", "Male", "Male", "Female", "Female", 
+"Female", "Male", "Male", "Male", "Male", "Female", "Female", 
+"Female", "Female", "Male", "Male", "Female", "Male", "Male", 
+"Female", "Female", "Male", "Male", "Female", "Female", "Female", 
+"Female", "Male", "Male", "Male", "Male", "Male", "Female", "Female", 
+"Male", "Female", "Male", "Male", "Male", "Female", "Male", "Female"
+), ETHNICITY = c("Black", "White", "Mixed/Other", "Asian", "White", 
+"Black", "White", "Mixed/Other", "White", "White", "White", "Mixed/Other", 
+"Black", "Mixed/Other", "White", "Black", "Black", "White", "Black", 
+"White", "White", "Black", "Black", "Asian", "White", "Black", 
+"Mixed/Other", "White", "White", "Asian", "Black", "Asian", "Mixed/Other", 
+"White", "Asian", "Asian", "White", "White", "White", "Mixed/Other", 
+"White", "Mixed/Other", "Mixed/Other", "White", "Mixed/Other", 
+"Asian", "Asian", "White", "Black", "White", "Mixed/Other", "White", 
+"Black", "Black", "Mixed/Other", "White", "White", "Black", "Mixed/Other", 
+"Asian", "Black", "White", "White", "Black", "Black", "Mixed/Other", 
+"Black", "White", "White", "White", "White", "Mixed/Other", "White", 
+"Mixed/Other", "Asian", "White", "White", "White", "White", "Asian", 
+"Mixed/Other", "Asian", "Mixed/Other", "Black", "Asian", "Mixed/Other", 
+"Mixed/Other", "White", "Black", "Black", "White", "Black", "White", 
+"White", "Black", "Asian", "Mixed/Other", "Asian", "Asian", "Asian", 
+"White", "Mixed/Other", "White", "Mixed/Other", "Asian", "White", 
+"White", "Asian", "Black", "White", "White", "White", "Asian", 
+"Asian", "White", "Asian", "Asian", "White", "Asian", "Mixed/Other", 
+"Black", "Mixed/Other"), Nationality = c("United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States", 
+"United States", "United States", "United States", "United States"
+), Student.status = c("Yes", "No", "Yes", "No", "No", "No", "Yes", 
+"DATA_EXPIRED", "DATA_EXPIRED", "Yes", "No", "No", "No", "DATA_EXPIRED", 
+"DATA_EXPIRED", "DATA_EXPIRED", "No", "No", "DATA_EXPIRED", "No", 
+"No", "No", "Yes", "No", "No", "No", "No", "Yes", "No", "DATA_EXPIRED", 
+"No", "Yes", "No", "No", "DATA_EXPIRED", "No", "No", "No", "No", 
+"No", "No", "Yes", "Yes", "DATA_EXPIRED", "Yes", "No", "DATA_EXPIRED", 
+"No", "No", "No", "No", "Yes", "No", "Yes", "No", "Yes", "No", 
+"No", "No", "DATA_EXPIRED", "No", "No", "No", "DATA_EXPIRED", 
+"No", "No", "No", "Yes", "No", "Yes", "Yes", "Yes", "No", "DATA_EXPIRED", 
+"No", "No", "No", "No", "No", "No", "No", "No", "No", "Yes", 
+"Yes", "Yes", "No", "No", "Yes", "No", "Yes", "No", "No", "DATA_EXPIRED", 
+"No", "No", "Yes", "No", "Yes", "DATA_EXPIRED", "No", "DATA_EXPIRED", 
+"No", "Yes", "No", "DATA_EXPIRED", "Yes", "No", "Yes", "Yes", 
+"No", "No", "No", "No", "No", "No", "No", "No", "Yes", "No", 
+"DATA_EXPIRED", "Yes"), Employment.status = c("Part-Time", "Unemployed (and job seeking)", 
+"DATA_EXPIRED", "Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Full-Time", "Part-Time", "DATA_EXPIRED", "DATA_EXPIRED", "Full-Time", 
+"Part-Time", "Full-Time", "Full-Time", "DATA_EXPIRED", "Full-Time", 
+"DATA_EXPIRED", "Part-Time", "Full-Time", "Part-Time", "Full-Time", 
+"DATA_EXPIRED", "Full-Time", "Full-Time", "Part-Time", "Full-Time", 
+"Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Part-Time", "Part-Time", "DATA_EXPIRED", "Full-Time", "Unemployed (and job seeking)", 
+"DATA_EXPIRED", "Unemployed (and job seeking)", "Unemployed (and job seeking)", 
+"Other", "Full-Time", "Full-Time", "Part-Time", "Full-Time", 
+"Full-Time", "DATA_EXPIRED", "Part-Time", "Full-Time", "Full-Time", 
+"Part-Time", "Full-Time", "Part-Time", "Unemployed (and job seeking)", 
+"Part-Time", "Unemployed (and job seeking)", "Part-Time", "Full-Time", 
+"Part-Time", "Part-Time", "Full-Time", "Full-Time", "DATA_EXPIRED", 
+"Full-Time", "Part-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Full-Time", "DATA_EXPIRED", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Part-Time", "DATA_EXPIRED", "Full-Time", "Part-Time", "Part-Time", 
+"Part-Time", "Full-Time", "Full-Time", "Due to start a new job within the next month", 
+"Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Part-Time", "Part-Time", "Unemployed (and job seeking)", "Full-Time", 
+"Full-Time", "Full-Time", "Unemployed (and job seeking)", "Full-Time", 
+"Part-Time", "DATA_EXPIRED", "Other", "Unemployed (and job seeking)", 
+"Full-Time", "Full-Time", "Part-Time", "Unemployed (and job seeking)", 
+"Not in paid work (e.g. homemaker', 'retired or disabled)", "Part-Time", 
+"Full-Time", "Full-Time", "Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"DATA_EXPIRED", "Part-Time", "Full-Time", "Full-Time", "DATA_EXPIRED", 
+"Part-Time", "DATA_EXPIRED", "Other", "Part-Time", "Full-Time", 
+"Full-Time", "Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Full-Time", "Not in paid work (e.g. homemaker', 'retired or disabled)", 
+"Full-Time", "Full-Time", "Full-Time", "Full-Time", "Unemployed (and job seeking)", 
+"Unemployed (and job seeking)", "DATA_EXPIRED", "Full-Time"), 
+    ZEROSUM_1 = c(4L, 5L, 7L, 2L, 1L, 6L, 5L, 6L, 6L, 4L, 2L, 
+    1L, 4L, 3L, 3L, 6L, 2L, 2L, 4L, 5L, 1L, 6L, 4L, 4L, 2L, 6L, 
+    6L, 4L, 5L, 4L, 6L, 2L, 5L, 4L, 6L, 4L, 1L, 2L, 5L, 1L, 2L, 
+    1L, 5L, 5L, 4L, 3L, 5L, 2L, 3L, 6L, 6L, 4L, 1L, 7L, 5L, 7L, 
+    5L, 5L, 1L, 4L, 5L, 6L, 1L, 3L, 2L, 7L, 7L, 5L, 3L, 3L, 5L, 
+    4L, 5L, 6L, 1L, 6L, 1L, 3L, 5L, 3L, 5L, 5L, 5L, 1L, 6L, 1L, 
+    3L, 4L, 5L, 5L, 5L, 2L, 5L, 7L, 6L, 4L, 4L, 6L, 2L, 4L, 1L, 
+    5L, 3L, 3L, 4L, 5L, 1L, 6L, 5L, 1L, 1L, 5L, 5L, 1L, 2L, 3L, 
+    4L, 3L, 4L, 3L, 5L, 5L), ZEROSUM_2 = c(3L, 7L, 5L, 7L, 5L, 
+    5L, 5L, 7L, 6L, 5L, 3L, 5L, 5L, 6L, 3L, 7L, 6L, 5L, 4L, 7L, 
+    7L, 1L, 4L, 4L, 5L, 6L, 4L, 4L, 7L, 4L, 6L, 2L, 5L, 5L, 7L, 
+    5L, 4L, 3L, 5L, 1L, 6L, 6L, 4L, 6L, 5L, 7L, 3L, 4L, 3L, 6L, 
+    5L, 4L, 1L, 6L, 3L, 7L, 7L, 6L, 2L, 4L, 7L, 5L, 4L, 4L, 3L, 
+    7L, 5L, 5L, 5L, 5L, 6L, 3L, 5L, 2L, 1L, 7L, 2L, 2L, 6L, 5L, 
+    5L, 4L, 6L, 5L, 5L, 6L, 5L, 4L, 6L, 5L, 5L, NA, 5L, 7L, 5L, 
+    4L, 4L, 7L, 4L, 4L, 7L, 4L, 3L, 2L, 6L, 7L, 7L, 6L, 4L, 5L, 
+    2L, 5L, 7L, 1L, 4L, 4L, 4L, 5L, 4L, 3L, 5L, 5L), ZEROSUM_3 = c(5L, 
+    5L, 5L, 6L, 5L, 3L, 6L, 7L, 4L, 5L, 5L, 4L, 4L, 7L, 4L, 5L, 
+    5L, 7L, 3L, 7L, 7L, 6L, 4L, 3L, 5L, 6L, 4L, 2L, 6L, 4L, 6L, 
+    2L, 6L, 4L, 7L, 5L, 5L, 6L, 5L, 7L, 6L, 6L, 4L, 6L, 4L, 7L, 
+    5L, 2L, 6L, 6L, 6L, 5L, 1L, 6L, 5L, 7L, 6L, 1L, 6L, 5L, 4L, 
+    3L, 5L, 2L, 4L, 7L, 5L, 5L, 5L, 4L, 7L, 4L, 5L, 3L, 1L, 7L, 
+    5L, 5L, 6L, 5L, 4L, 5L, 5L, 7L, 5L, 6L, 7L, 4L, 5L, 5L, 5L, 
+    NA, 6L, 7L, 5L, 4L, 4L, 7L, 3L, 4L, 7L, 6L, 5L, 2L, 4L, 6L, 
+    7L, 4L, 4L, 7L, 6L, 5L, 5L, 2L, 7L, 5L, 4L, 2L, 4L, 3L, 4L, 
+    4L), ZEROSUM_4 = c(4L, 4L, 7L, 1L, 1L, 5L, 4L, 4L, 4L, 4L, 
+    4L, 1L, 2L, 2L, 3L, 1L, 3L, 2L, 4L, 1L, 1L, 5L, 4L, 5L, 1L, 
+    5L, 6L, 4L, 3L, 3L, 3L, 2L, 3L, 4L, 5L, 3L, 1L, 1L, 2L, 1L, 
+    2L, 1L, 5L, 4L, 4L, 1L, 2L, 4L, 1L, 3L, 6L, 4L, 1L, 5L, 4L, 
+    7L, 4L, 1L, 6L, 3L, 5L, 6L, 1L, 3L, 3L, 1L, 2L, 1L, 5L, 3L, 
+    5L, 3L, 4L, 2L, 1L, 5L, 3L, 3L, 6L, 3L, 1L, 6L, 2L, 1L, 6L, 
+    3L, 3L, 1L, 5L, 4L, 6L, NA, 5L, 1L, 4L, 1L, 2L, 1L, 3L, 4L, 
+    1L, 4L, 5L, 1L, 3L, 1L, 1L, 1L, 5L, 1L, 1L, 5L, 1L, 2L, 2L, 
+    3L, 1L, 3L, 4L, 3L, 4L, 5L), ZEROSUM_5 = c(4L, 3L, 3L, 1L, 
+    1L, 2L, 5L, 5L, 4L, 4L, 4L, 1L, 1L, 1L, 3L, 1L, 3L, 2L, 1L, 
+    1L, 1L, 1L, 4L, 1L, 1L, 6L, 4L, 3L, 5L, 3L, 5L, 1L, 3L, 1L, 
+    1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 7L, 3L, 5L, 1L, 3L, 4L, 1L, 
+    3L, 6L, 5L, 1L, 6L, 3L, 3L, 6L, 1L, 1L, 1L, 1L, 5L, 1L, 3L, 
+    4L, 1L, 4L, 4L, 5L, 4L, 3L, 3L, 4L, 2L, 4L, 1L, 3L, 4L, 6L, 
+    3L, 1L, 7L, 3L, 1L, 6L, 3L, 2L, 1L, 4L, 4L, 5L, 1L, 3L, 1L, 
+    6L, 2L, 3L, 1L, 6L, 4L, 1L, 6L, 3L, 1L, 3L, 1L, 1L, 2L, 4L, 
+    1L, 1L, 2L, 1L, 2L, 1L, 3L, 1L, 3L, 4L, 4L, 6L, 6L), ZEROSUM_6 = c(5L, 
+    6L, 7L, 1L, 1L, 5L, 5L, 7L, 4L, 7L, 4L, 1L, 4L, 1L, 4L, 7L, 
+    3L, 1L, 5L, 1L, 1L, 1L, 4L, 1L, 1L, 6L, 7L, 3L, 2L, 4L, 6L, 
+    2L, 3L, 1L, 6L, 4L, 1L, 1L, 2L, 1L, 6L, 1L, 6L, 6L, 5L, 1L, 
+    4L, 4L, 1L, 3L, 7L, 6L, 1L, 6L, 4L, 6L, 6L, 2L, 5L, 2L, 6L, 
+    5L, 1L, 2L, 3L, 1L, 6L, 2L, 5L, 3L, 5L, 3L, 5L, 2L, 7L, 1L, 
+    4L, 5L, 6L, 3L, 7L, 6L, 2L, 1L, 5L, 5L, 1L, 1L, 3L, 5L, 5L, 
+    NA, 1L, 1L, 6L, 1L, 3L, 1L, 4L, 4L, 1L, 2L, 5L, 1L, 4L, 1L, 
+    1L, 3L, 4L, 1L, 1L, 3L, 1L, 6L, 1L, 3L, 1L, 7L, 3L, 4L, 3L, 
+    4L), ZEROSUM_7 = c(4L, 4L, 7L, 2L, 5L, 4L, 4L, 5L, 2L, 7L, 
+    5L, 1L, 2L, 1L, 4L, 2L, 4L, 2L, 1L, 1L, 6L, 1L, 5L, 1L, 2L, 
+    5L, 7L, 2L, 3L, NA, 5L, 1L, 3L, 1L, 1L, 4L, 3L, 4L, 5L, 1L, 
+    6L, 1L, 4L, 5L, 5L, 2L, 5L, 4L, 1L, 3L, 4L, 6L, 1L, 5L, 3L, 
+    2L, 6L, 1L, 5L, 1L, 5L, 4L, 4L, 4L, 5L, 4L, 5L, 4L, 4L, 4L, 
+    3L, 3L, 5L, 3L, 7L, 1L, 7L, 3L, 5L, 3L, 5L, 6L, 1L, 1L, 6L, 
+    2L, 5L, 5L, 4L, 4L, 4L, NA, 5L, 1L, 3L, 4L, 2L, 1L, 5L, 4L, 
+    1L, 4L, 5L, 2L, 3L, 2L, 1L, 6L, 4L, 1L, 1L, 2L, 1L, 2L, 5L, 
+    4L, 4L, 7L, 5L, 7L, 3L, 5L), ZEROSUM_8 = c(5L, 4L, 3L, 2L, 
+    1L, 2L, 5L, 7L, 1L, 3L, 1L, 1L, 3L, 2L, 4L, 1L, 4L, 1L, 4L, 
+    1L, 1L, 5L, 5L, 1L, 6L, 6L, 4L, 1L, 3L, 3L, 4L, 1L, 5L, 1L, 
+    1L, 1L, 1L, 1L, 4L, 1L, 2L, 1L, 4L, 2L, 5L, 1L, 5L, 4L, 1L, 
+    3L, 3L, 4L, 5L, 5L, 4L, 3L, 5L, 1L, 5L, 4L, 4L, 4L, 2L, 3L, 
+    3L, 1L, 6L, 1L, 5L, 3L, 3L, 3L, 4L, 3L, 1L, 1L, 3L, 3L, 5L, 
+    3L, 3L, 7L, 1L, 1L, 5L, 3L, 5L, 1L, 4L, 4L, 4L, NA, 2L, 1L, 
+    4L, 3L, 1L, 1L, 4L, 4L, 1L, 3L, 3L, 2L, 3L, 1L, 1L, 3L, 4L, 
+    1L, 1L, 2L, 1L, 6L, 1L, 3L, 4L, 2L, 4L, 3L, 4L, 5L), ZEROSUM_9 = c(3L, 
+    5L, 4L, 1L, 1L, 6L, 7L, 4L, 4L, 6L, 1L, 1L, 4L, 1L, 4L, 5L, 
+    6L, 1L, 4L, 1L, 1L, 1L, 4L, 1L, 1L, 2L, 5L, 3L, 3L, 3L, 2L, 
+    1L, 3L, 1L, 2L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 4L, 1L, 4L, 1L, 
+    3L, 1L, 1L, 3L, 5L, 5L, 1L, 5L, 2L, 2L, 6L, 1L, 2L, 1L, 7L, 
+    4L, 1L, 3L, 4L, 1L, 4L, 1L, 6L, 3L, 3L, 1L, 4L, 5L, 1L, 1L, 
+    1L, 2L, 5L, 3L, 1L, 5L, 1L, 1L, 4L, 1L, 1L, 1L, 3L, 2L, 5L, 
+    NA, 1L, 1L, 5L, 2L, 3L, 1L, 3L, 4L, 1L, 7L, 3L, 1L, 1L, 1L, 
+    1L, 2L, 5L, 1L, 1L, 2L, 1L, 2L, 1L, 3L, 1L, 1L, 2L, 3L, 4L, 
+    5L), ZEROSUM_10 = c(5L, 4L, 6L, 1L, 1L, 3L, 5L, 5L, 4L, 5L, 
+    5L, 1L, 1L, 1L, 4L, 5L, 6L, 2L, 1L, 1L, 1L, 1L, 4L, 1L, 1L, 
+    6L, 4L, 4L, 1L, 4L, 5L, 1L, 4L, 1L, 3L, 3L, 4L, 3L, 3L, 1L, 
+    2L, 2L, 5L, 2L, 5L, 3L, 3L, 4L, 1L, 3L, 2L, 5L, 1L, 6L, 6L, 
+    4L, 7L, 1L, 5L, 2L, 4L, 4L, 1L, 3L, 4L, 1L, 5L, 5L, 5L, 3L, 
+    3L, 3L, 4L, 6L, 6L, 1L, 5L, 3L, 5L, 3L, 4L, 6L, 1L, 1L, 6L, 
+    3L, 3L, 2L, 4L, 4L, 6L, 1L, 2L, 1L, 4L, 3L, 3L, 1L, 2L, 4L, 
+    1L, 6L, 3L, 2L, 3L, 1L, 1L, 5L, 3L, 1L, 1L, 2L, 1L, 6L, 1L, 
+    3L, 2L, 5L, 5L, 3L, 4L, 6L), ZEROSUM_11 = c(5L, 3L, 2L, 2L, 
+    4L, 4L, 4L, 5L, 4L, 4L, 3L, 1L, 1L, 1L, 3L, 4L, 7L, 2L, 4L, 
+    4L, 1L, 1L, 4L, 5L, 1L, 5L, 6L, 4L, 1L, 4L, 5L, 1L, 3L, 1L, 
+    2L, 3L, 1L, 4L, 4L, 1L, 2L, 1L, 6L, 1L, 5L, 1L, 4L, 2L, 1L, 
+    3L, 5L, 6L, 1L, 6L, 2L, 6L, 6L, 1L, 2L, 2L, 5L, 6L, 2L, 2L, 
+    2L, 1L, 5L, 4L, 5L, 4L, 4L, 2L, 4L, 4L, 5L, 1L, 3L, 5L, 6L, 
+    3L, 7L, 6L, 1L, 1L, 6L, 6L, 4L, 4L, 3L, 2L, 5L, NA, 2L, 1L, 
+    3L, 1L, 3L, 1L, 3L, 4L, 1L, 2L, 3L, 2L, 3L, 1L, 1L, 4L, 4L, 
+    1L, 1L, 2L, 1L, 6L, 3L, 4L, 2L, 6L, 3L, 3L, 3L, 4L), EDUCATION_LEVEL = c("Graduate or professional degree", 
+    "High school diploma or GED", "Some college, but no degree", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Some college, but no degree", "Bachelor’s degree", 
+    "High school diploma or GED", "Some college, but no degree", 
+    "Graduate or professional degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Graduate or professional degree", 
+    "High school diploma or GED", "Graduate or professional degree", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Bachelor’s degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Graduate or professional degree", 
+    "Some college, but no degree", "High school diploma or GED", 
+    "Bachelor’s degree", "Bachelor’s degree", "Some college, but no degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Some college, but no degree", "Associates or technical degree", 
+    "Bachelor’s degree", "High school diploma or GED", "Some college, but no degree", 
+    "Some college, but no degree", "Bachelor’s degree", "Bachelor’s degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Graduate or professional degree", 
+    "Some college, but no degree", "Some college, but no degree", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Bachelor’s degree", "High school diploma or GED", "Graduate or professional degree", 
+    "Associates or technical degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Some college, but no degree", "Bachelor’s degree", "Graduate or professional degree", 
+    "Graduate or professional degree", "Associates or technical degree", 
+    "Graduate or professional degree", "Graduate or professional degree", 
+    "Some college, but no degree", "Graduate or professional degree", 
+    "Some college, but no degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Bachelor’s degree", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Associates or technical degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Some college, but no degree", "High school diploma or GED", 
+    "Graduate or professional degree", "Graduate or professional degree", 
+    "Associates or technical degree", "Graduate or professional degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Graduate or professional degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Some college, but no degree", "High school diploma or GED", 
+    "Bachelor’s degree", "Graduate or professional degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Bachelor’s degree", "Some college, but no degree", "Associates or technical degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Graduate or professional degree", 
+    "Associates or technical degree", "Graduate or professional degree", 
+    "Bachelor’s degree", "Some college, but no degree", "Graduate or professional degree", 
+    "Graduate or professional degree", "Bachelor’s degree", 
+    "Graduate or professional degree", "Some college, but no degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Some college, but no degree", 
+    "Graduate or professional degree", "Graduate or professional degree", 
+    "Some college, but no degree", "Some college, but no degree", 
+    "Bachelor’s degree", "Bachelor’s degree", "Bachelor’s degree"
+    ), RELIGIOUS_Identity = c("Christian", "Religiously Unaffiliated", 
+    "Religiously Unaffiliated", "Christian", "Christian", "Christian", 
+    "Christian", "Religiously Unaffiliated", "Other", "Christian", 
+    "Christian", "Folk Religion", "Christian", "Religiously Unaffiliated", 
+    "Christian", "Other", "Christian", NA, "Christian", "Christian", 
+    "Other", "Christian", "Christian", "Christian", "Christian", 
+    "Decline to answer", "Christian", "Christian", "Christian", 
+    "Religiously Unaffiliated", "Christian", "Christian", "Christian", 
+    "Religiously Unaffiliated", "Decline to answer", "Religiously Unaffiliated", 
+    "Religiously Unaffiliated", "Religiously Unaffiliated", "Religiously Unaffiliated", 
+    "Christian", "Christian", "Religiously Unaffiliated", "Christian", 
+    "Religiously Unaffiliated", "Christian", "Other", "Religiously Unaffiliated", 
+    "Christian", "Religiously Unaffiliated", "Decline to answer", 
+    "Religiously Unaffiliated", "Christian", "Christian", "Christian", 
+    "Christian", "Christian", "Christian", "Christian", "Religiously Unaffiliated", 
+    "Religiously Unaffiliated", "Christian", "Christian", "Religiously Unaffiliated", 
+    "Christian", "Christian", "Religiously Unaffiliated", "Christian", 
+    "Christian", "Religiously Unaffiliated", "Christian", "Christian", 
+    "Religiously Unaffiliated", "Christian", "Religiously Unaffiliated", 
+    "Religiously Unaffiliated", "Religiously Unaffiliated", "Christian", 
+    "Christian", "Christian", "Christian", "Christian", "Religiously Unaffiliated", 
+    "Religiously Unaffiliated", "Religiously Unaffiliated", "Christian", 
+    "Christian", "Religiously Unaffiliated", "Jewish", "Christian", 
+    "Christian", "Christian", "Christian", "Religiously Unaffiliated", 
+    "Muslim", "Christian", "Religiously Unaffiliated", "Christian", 
+    "Religiously Unaffiliated", "Christian", "Muslim", "Religiously Unaffiliated", 
+    "Christian", "Christian", "Religiously Unaffiliated", "Christian", 
+    "Christian", "Religiously Unaffiliated", "Hindu", "Christian", 
+    "Religiously Unaffiliated", "Religiously Unaffiliated", "Christian", 
+    "Religiously Unaffiliated", "Religiously Unaffiliated", "Religiously Unaffiliated", 
+    "Religiously Unaffiliated", "Religiously Unaffiliated", "Religiously Unaffiliated", 
+    "Hindu", "Christian", "Religiously Unaffiliated", "Christian"
+    ), VOTE_2024 = c("Donald Trump", "Donald Trump", "DID NOT VOTE IN 2024", 
+    "Kamala Harris", "Kamala Harris", "Donald Trump", "Donald Trump", 
+    "DID NOT VOTE IN 2024", "DID NOT VOTE IN 2024", "Donald Trump", 
+    "Donald Trump", "Kamala Harris", "Kamala Harris", "Kamala Harris", 
+    "Donald Trump", "DID NOT VOTE IN 2024", "Donald Trump", "Kamala Harris", 
+    "Donald Trump", "Kamala Harris", "Kamala Harris", NA, "Kamala Harris", 
+    "Kamala Harris", "Donald Trump", "Donald Trump", "Donald Trump", 
+    "Kamala Harris", NA, "Kamala Harris", "Donald Trump", "DID NOT VOTE IN 2024", 
+    "Kamala Harris", "Kamala Harris", "DID NOT VOTE IN 2024", 
+    "Kamala Harris", "Kamala Harris", "DID NOT VOTE IN 2024", 
+    "Chase Oliver", "Kamala Harris", "Kamala Harris", "Kamala Harris", 
+    "Donald Trump", "DID NOT VOTE IN 2024", "Kamala Harris", 
+    "Kamala Harris", "Donald Trump", "Donald Trump", "Kamala Harris", 
+    "Kamala Harris", "DID NOT VOTE IN 2024", "Donald Trump", 
+    "Cornel West", "Donald Trump", "Donald Trump", "Donald Trump", 
+    "Donald Trump", "Donald Trump", "Donald Trump", "Kamala Harris", 
+    "Donald Trump", "Donald Trump", "Kamala Harris", "Donald Trump", 
+    "Donald Trump", "Kamala Harris", "Donald Trump", "Kamala Harris", 
+    "Donald Trump", "Donald Trump", "DID NOT VOTE IN 2024", "Kamala Harris", 
+    "Donald Trump", "Donald Trump", "Donald Trump", "Kamala Harris", 
+    "Donald Trump", "Donald Trump", "Donald Trump", "DID NOT VOTE IN 2024", 
+    "Kamala Harris", "Donald Trump", "Kamala Harris", "Kamala Harris", 
+    "Donald Trump", "Kamala Harris", "Kamala Harris", "Kamala Harris", 
+    "Donald Trump", "Donald Trump", "Donald Trump", "Kamala Harris", 
+    "DID NOT VOTE IN 2024", "Kamala Harris", "Donald Trump", 
+    "Donald Trump", "Donald Trump", "Kamala Harris", "DID NOT VOTE IN 2024", 
+    "DID NOT VOTE IN 2024", "Kamala Harris", "Donald Trump", 
+    "Kamala Harris", "Kamala Harris", "Donald Trump", "Donald Trump", 
+    "Kamala Harris", "Kamala Harris", NA, "Kamala Harris", "Kamala Harris", 
+    "Kamala Harris", "Kamala Harris", "DID NOT VOTE IN 2024", 
+    "DID NOT VOTE IN 2024", "Kamala Harris", "Kamala Harris", 
+    "Donald Trump", "Donald Trump", "Donald Trump", "Donald Trump", 
+    "Kamala Harris"), RACIALIDENTITY.6 = c("Black", "White", 
+    "Mixed", "Asian", "White", "Black", "White", "White", "White", 
+    "White", "White", "Other", "Black", "Mixed", "Other", "Black", 
+    "Black", "White", "Black", "White", "White", "Black", "Black", 
+    "Asian", "White", "Black", "Latine", "White", "White", "Asian", 
+    "Black", "Asian", "Latine", "Mixed", "Asian", "Asian", "Mixed", 
+    "Latine", "White", "Latine", "White", "White", "Latine", 
+    "White", "Latine", "Asian", "Asian", "White", "Black", "White", 
+    "Mixed", "White", "Black", "Black", "Black", "White", "White", 
+    "Black", "Latine", "Asian", "Black", "White", "White", "Black", 
+    "Black", "White", "Black", "White", "White", "White", "White", 
+    "Other", "White", "Black", "Asian", "White", "White", "White", 
+    "White", "Asian", "Mixed", "White", "Latine", "Black", "Asian", 
+    "Black", "Mixed", "White", "Black", "Black", "White", "Black", 
+    "White", "White", "Black", "Asian", "Latine", "Asian", "Asian", 
+    "Asian", "White", "Mixed", "White", "Mixed", "Asian", "White", 
+    "White", "Asian", "Black", "White", "White", "White", "Asian", 
+    "Asian", "White", "Asian", "Asian", "White", "Asian", "Mixed", 
+    "Black", "White"), RACIALIDENTITY.4 = c("Black", "White", 
+    "Mixed/Other", "Asian", "White", "Black", "White", "White", 
+    "White", "White", "White", "Mixed/Other", "Black", "Mixed/Other", 
+    "Mixed/Other", "Black", "Black", "White", "Black", "White", 
+    "White", "Black", "Black", "Asian", "White", "Black", "Mixed/Other", 
+    "White", "White", "Asian", "Black", "Asian", "Mixed/Other", 
+    "Mixed/Other", "Asian", "Asian", "Mixed/Other", "Mixed/Other", 
+    "White", "Mixed/Other", "White", "White", "Mixed/Other", 
+    "White", "Mixed/Other", "Asian", "Asian", "White", "Black", 
+    "White", "Mixed/Other", "White", "Black", "Black", "Black", 
+    "White", "White", "Black", "Mixed/Other", "Asian", "Black", 
+    "White", "White", "Black", "Black", "White", "Black", "White", 
+    "White", "White", "White", "Mixed/Other", "White", "Black", 
+    "Asian", "White", "White", "White", "White", "Asian", "Mixed/Other", 
+    "White", "Mixed/Other", "Black", "Asian", "Black", "Mixed/Other", 
+    "White", "Black", "Black", "White", "Black", "White", "White", 
+    "Black", "Asian", "Mixed/Other", "Asian", "Asian", "Asian", 
+    "White", "Mixed/Other", "White", "Mixed/Other", "Asian", 
+    "White", "White", "Asian", "Black", "White", "White", "White", 
+    "Asian", "Asian", "White", "Asian", "Asian", "White", "Asian", 
+    "Mixed/Other", "Black", "White"), RACIALIDENTITY.2 = c("Else", 
+    "White", "Else", "Else", "White", "Else", "White", "White", 
+    "White", "White", "White", "Else", "Else", "Else", "Else", 
+    "Else", "Else", "White", "Else", "White", "White", "Else", 
+    "Else", "Else", "White", "Else", "Else", "White", "White", 
+    "Else", "Else", "Else", "Else", "Else", "Else", "Else", "Else", 
+    "Else", "White", "Else", "White", "White", "Else", "White", 
+    "Else", "Else", "Else", "White", "Else", "White", "Else", 
+    "White", "Else", "Else", "Else", "White", "White", "Else", 
+    "Else", "Else", "Else", "White", "White", "Else", "Else", 
+    "White", "Else", "White", "White", "White", "White", "Else", 
+    "White", "Else", "Else", "White", "White", "White", "White", 
+    "Else", "Else", "White", "Else", "Else", "Else", "Else", 
+    "Else", "White", "Else", "Else", "White", "Else", "White", 
+    "White", "Else", "Else", "Else", "Else", "Else", "Else", 
+    "White", "Else", "White", "Else", "Else", "White", "White", 
+    "Else", "Else", "White", "White", "White", "Else", "Else", 
+    "White", "Else", "Else", "White", "Else", "Else", "Else", 
+    "White"), RI_White = c(0L, 1L, 0L, 0L, 1L, 0L, 1L, 1L, 1L, 
+    1L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 1L, 1L, 0L, 0L, 0L, 
+    1L, 0L, 0L, 1L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 
+    0L, 1L, 1L, 0L, 1L, 0L, 0L, 0L, 1L, 0L, 1L, 0L, 1L, 0L, 0L, 
+    0L, 1L, 1L, 0L, 0L, 0L, 0L, 1L, 1L, 0L, 0L, 1L, 0L, 1L, 1L, 
+    1L, 1L, 0L, 1L, 0L, 0L, 1L, 1L, 1L, 1L, 0L, 0L, 1L, 0L, 0L, 
+    0L, 0L, 0L, 1L, 0L, 0L, 1L, 0L, 1L, 1L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 1L, 0L, 1L, 0L, 0L, 1L, 1L, 0L, 0L, 1L, 1L, 1L, 0L, 0L, 
+    1L, 0L, 0L, 1L, 0L, 0L, 0L, 1L), RI_Else = c(1L, 0L, 1L, 
+    1L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 
+    1L, 0L, 0L, 1L, 1L, 1L, 0L, 1L, 1L, 0L, 0L, 1L, 1L, 1L, 1L, 
+    1L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 0L, 1L, 0L, 1L, 1L, 1L, 0L, 
+    1L, 0L, 1L, 0L, 1L, 1L, 1L, 0L, 0L, 1L, 1L, 1L, 1L, 0L, 0L, 
+    1L, 1L, 0L, 1L, 0L, 0L, 0L, 0L, 1L, 0L, 1L, 1L, 0L, 0L, 0L, 
+    0L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 0L, 
+    0L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 1L, 1L, 0L, 0L, 1L, 
+    1L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 1L, 1L, 0L), 
+    GENDER_MALE = c(1L, 1L, 1L, 0L, 1L, 0L, 0L, 1L, 0L, 0L, 1L, 
+    0L, 0L, 0L, 1L, 0L, 0L, 1L, 0L, 1L, 0L, 1L, 1L, 1L, 0L, 0L, 
+    0L, 0L, 0L, 1L, 0L, 1L, 0L, 0L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 
+    1L, 0L, 1L, 1L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 1L, 0L, 0L, 1L, 
+    0L, 0L, 1L, 0L, 1L, 0L, 0L, 1L, 1L, 0L, 0L, 0L, 1L, 0L, 0L, 
+    1L, 1L, 1L, 0L, 1L, 0L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, 
+    1L, 1L, 1L, 1L, 0L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 0L, 
+    1L, 1L, 0L, 0L, 0L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 1L, 0L, 
+    1L, 1L, 1L, 0L, 1L, 0L), RACE_BLACK = c(1L, 0L, 0L, 0L, 0L, 
+    1L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 1L, 1L, 0L, 1L, 0L, 
+    0L, 1L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 
+    0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 
+    0L, 0L, 1L, 1L, 1L, 0L, 0L, 1L, 0L, 0L, 1L, 0L, 0L, 1L, 1L, 
+    0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 0L, 0L, 1L, 0L, 1L, 0L, 0L, 1L, 1L, 0L, 1L, 0L, 0L, 1L, 
+    0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 
+    0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L), RACE_ASIAN = c(0L, 
+    0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 
+    1L, 0L, 0L, 1L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 
+    1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 
+    0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 
+    0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 0L, 0L, 0L, 1L, 0L, 1L, 1L, 1L, 0L, 0L, 0L, 0L, 1L, 0L, 
+    0L, 1L, 0L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 0L, 0L, 
+    0L), RACE_OTHER = c(0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 1L, 0L, 1L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 1L, 0L, 0L, 1L, 1L, 0L, 1L, 
+    0L, 0L, 1L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 
+    0L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 1L, 0L, 0L, 
+    0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 
+    0L, 1L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 
+    0L, 0L, 0L, 0L, 1L, 0L, 0L), RELIGIOUS_YES = c(1L, 0L, 0L, 
+    1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 
+    0L, 0L, 0L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 0L, 1L, 1L, 0L, 1L, 
+    0L, 0L, 0L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 1L, 1L, 0L, 
+    1L, 1L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 0L, 0L, 0L, 1L, 1L, 
+    1L, 1L, 1L, 0L, 0L, 0L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 
+    1L, 1L, 0L, 1L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 
+    1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 1L, 0L, 1L), 
+    EDUCATION_HIGH = c(1L, 0L, 0L, 1L, 1L, 1L, 0L, 1L, 0L, 0L, 
+    1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 
+    0L, 0L, 1L, 1L, 0L, 1L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, 1L, 
+    1L, 1L, 1L, 0L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 1L, 1L, 
+    1L, 1L, 1L, 0L, 1L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 0L, 1L, 1L, 
+    1L, 1L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 0L, 0L, 1L, 1L, 0L, 1L, 
+    1L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 
+    1L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 0L, 
+    1L, 1L, 0L, 0L, 1L, 1L, 1L)), row.names = c(NA, 122L), class = "data.frame")
+
+# Check it's loaded
+str(select_data)
+```
+
+## Example 1: Reporting Sample Size in a Manuscript (using inline R)
+
+```{webr}
+#| autorun: false
+#| completion: true
+
+# Example: find out total survey responses (# of rows of data)
+total_responses <- nrow(select_data)
+
+# print out total responses
+total_responses
+```
+
+## In your manuscript, write like this:
+
+```{markdown}
+We surveyed a total of `r total_responses` participants.
+```
+
+When you render the output, you'll get:
+
+```{markdown}
+We surveyed a total of 122 participants.
+```
+
+## Example 2: Report Numbers and Percentages
+
+You can combine counts and percentages easily.
+
+```{webr}
+#| autorun: false
+#| completion: true
+
+# find out each total racial groups responses
+asian_responses <- sum(select_data$RACIALIDENTITY.4 == "Asian")
+black_responses <- sum(select_data$RACIALIDENTITY.4 == "Black")
+white_responses <- sum(select_data$RACIALIDENTITY.4 == "White")
+mixed_other_responses <- sum(select_data$RACIALIDENTITY.4 == "Mixed/Other")
+
+# get the percentage of each racial groups
+asian <- asian_responses / total_responses
+black <- black_responses / total_responses
+white <- white_responses / total_responses
+mixed_other <- mixed_other_responses / total_responses
+
+# print out responses
+asian_responses
+black_responses
+white_responses
+mixed_other_responses
+
+# print out percentage
+asian
+black
+white
+mixed_other
+```
+
+## In your manuscript, write like this:
+
+```{markdown}
+Out of `r total_responses` participants, The final sample was roughly balanced in terms of 
+racial identity (White: `r percent(white, accuracy = 0.1)`, 
+                 Black: `r percent(black, accuracy = 0.1)`,
+                 Asian: `r percent(asian, accuracy = 0.1)`, 
+                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).
+```
+
+When you render the output, you'll get:
+
+```{markdown}
+Out of 122 participants, The final sample was roughly balanced in terms of racial identity
+(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).
+```
+
+## Example 3: Capitalizing and Writing Numbers as Words
+
+For more formal writing, report numbers as words:
+
+## In your manuscript, write like this:
+
+```{markdown}
+A total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.
+```
+
+When you render the output, you'll get:
+
+```{markdown}
+A total of One Hundred And Twenty-Two participants were included in the analysis.
+```
+
+## Example 4: Interpret a table by using inline R code (Mean, SD, Range)
+
+```{r}
+#| label: Continuous Descriptive Statistics Table
+#| tbl-cap: "Descriptive Statistics Table for Continuous Variables"
+#| echo: true
+#| message: false
+#| warning: false
+
+# Define Continuous Variables
+continuous_vars <- c(
+  "AGE", "SOCIALSTATUS", "POLITICALBELIEFS",
+  paste0("ZEROSUM_", 1:11)
+)
+
+desc_table_continuous <- select_data %>%
+  select(all_of(continuous_vars)) %>%
+  psych::describe() %>%
+  tibble::rownames_to_column(var = "Variable") %>%
+  select(Variable, n, mean, median, sd, min, max)
+
+# Remove font specifications from nice_table
+knitr::kable(desc_table_continuous,
+             digits = 2)
+```
+
+## In your manuscript, write like this:
+
+```{markdown}
+Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. 
+The sample consisted of `r nrow(select_data)` participants, 
+with a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == "AGE"], 2)` 
+years (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == "AGE"], 2)`, 
+range = `r desc_table_continuous$min[desc_table_continuous$Variable == "AGE"]`
+– `r desc_table_continuous$max[desc_table_continuous$Variable == "AGE"]`). 
+
+Participants reported a mean social status of 
+`r round(desc_table_continuous$mean[desc_table_continuous$Variable == "SOCIALSTATUS"], 2)` 
+(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == "SOCIALSTATUS"], 2)`) on a 10-point scale.
+```
+
+When you render the output, you'll get:
+
+```{markdown}
+Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. 
+The sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). 
+Participants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.
+```
+
+## Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code
+
+```{webr}
+#| label: Kruskal-Wallis zerosum1
+
+kw.ZEROSUM_1.party <- kruskal.test(ZEROSUM_1 ~ POLITICALPARTY, data = select_data)
+kw.ZEROSUM_1.party
+
+```
+
+## In your manuscript, write like this:
+
+```{markdown}
+There was no significant difference in ZEROSUM_1 scores across political party groups, 
+Kruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, 
+*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.
+```
+
+When you render the output, you'll get:
+
+```{markdown}
+There was no significant difference in ZEROSUM_1 scores across political party groups, 
+Kruskal-Wallis χ²(2) = 1.5, p = 0.473.
+```

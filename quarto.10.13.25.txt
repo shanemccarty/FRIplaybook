@@ -1,0 +1,131 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "The FRI Public Health Playbook for Quantitative Data Analysis"
+  subtitle: "The R play you need to score"
+  author: "Shane McCarty, PhD"
+  date: "7/22/2025"
+  search: true
+  repo-url: https://github.com/shanemccarty/FRIplaybook
+  repo-actions: [edit, issue]
+  downloads: [pdf, epub]
+  sharing: [twitter, linkedin]
+  
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - export.qmd
+    - import.qmd #Gavin
+    - tidy.qmd
+    - dplyr.qmd
+    - composite.qmd
+    - ggplot2.qmd
+    - regression.qmd
+    - paired.qmd
+    - functions.qmd
+    - references.qmd
+
+# Filters - WebR only for now
+filters:
+  - webr
+
+# WebR configuration
+webr:
+  # Packages to be available in WebR
+  packages: ['ggplot2', 'dplyr', 'tidyr', 'readr', 'haven', 'readxl', 'NHANES']
+  # Whether to autoload packages on startup
+  autoload-packages: false
+  # Show startup message
+  show-startup-message: true
+  # Show header message
+  show-header-message: true
+  # Channel URLs for package installation
+  channel-type: "automatic"
+  # Home directory
+  home-dir: "/home/web_user"
+  # Base URL for WebR
+  base-url: "https://webr.r-wasm.org/latest/"
+
+# Quarto Live configuration
+live:
+  # Show code editor
+  show-editor: true
+  # Show console output
+  show-console: true
+  # Editor theme
+  editor-theme: "textmate"
+  # Editor font size
+  editor-font-size: 14
+  # Console font size  
+  console-font-size: 14
+
+format:
+  html:
+    # Light and dark theme configuration with FRI-PH colors
+    theme:
+      light: [cosmo, scss/theme-light.scss]
+      dark: [cosmo, scss/theme-light.scss, scss/theme-dark.scss]
+    
+    # Respect user's system color scheme preference
+    respect-user-color-scheme: true
+    
+    # Code highlighting that works with both themes
+    highlight-style: 
+      light: github
+      dark: github-dark
+    
+    # General HTML options
+    code-copy: true
+    code-fold: false
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 3
+    
+    # Footer and navigation
+    page-footer:
+      left: "© 2025 FRI Public Health Research Stream"
+      right: 
+        - icon: github
+          href: https://github.com/shanemccarty/FRIplaybook
+    
+    # Custom CSS for additional styling
+    css: custom.css
+    
+    # Enable search
+    search: true
+
+  epub:
+    # EPUB configuration
+    cover-image: cover.png
+    css: epub-styles.css
+
+# Bibliography configuration
+bibliography: references.bib
+csl: apa.csl
+
+# Code execution
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+  freeze: auto
+
+# Language and locale
+lang: en
+title-block-banner: true
+
+# Custom variables that can be used throughout the book
+params:
+  organization: "FRI Public Health Research Stream"
+  contact_email: "fripublichealth@binghamton.edu"
+  version: "1.0"
+  authors:
+    lead: "Shane McCarty, PhD"
+    contributors:
+      - name: "Zihan Hei"
+      - name: "Gavin Rualo"
