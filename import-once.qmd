@@ -147,7 +147,7 @@ View(NHANESraw)
 
 ### Import from Excel `.xlsx` file
 
-Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them.
+Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them. Below are code chunks that can be copied into your report if you are using an excel file. 
 
 ```{r}
 #| label: import-excel
@@ -164,17 +164,17 @@ healthbeliefs_xlsx <- read_excel("data/03.15.2025.prolifichealthbeliefs.xlsx")
 
 ```
 
-```{webr-r}
+```{r}
 # View first 10 rows
 head(healthbeliefs_xlsx, 10)
 ```
 
-```{webr-r}
+```{r}
 # View column names, which are the VARIABLES
 names(healthbeliefs_xlsx)
 ```
 
-```{webr-r}
+```{r}
 # Get a summary of all variables
 summary(healthbeliefs_xlsx)
 ```

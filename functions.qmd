@@ -29,7 +29,7 @@ In reproducible research, writing *numbers* *manually* (e.g., "We surveyed 120 p
 
 ## First Setup the library:
 
-```{r}
+```{webr-r}
 #| autorun: false
 #| completion: true
 #| echo: true
@@ -50,47 +50,16 @@ library(stringr)    # for text functions like str_c()
 
 ## Dataset: Example Survey Data
 
-The dataset was collected on March 15, 2025 in the ANTH206 course: `03152025ProlificHealthBeliefs.csv`.
+A subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: [https://fripublichealth.quarto.pub/zerosum/readme-preview.html](https://fripublichealth.quarto.pub/zerosum/readme-preview.html)
 
-```{r}
-#| autorun: false
-#| completion: true
-#| echo: true
-#| output: false
-#| warning: false
-#| error: false
-# Load your data
-##  "data/" is a folder called "data" where the dataset file is located
-## if your data is not in a folder, you can delete "data/"
-select_data <- read.csv("data/03.15.2025.prolifichealthbeliefs.csv")
-
-# displays structures of R objects
-str(select_data)
-```
-
-```{r}
-#| error: false
-#| warning: false
-#| autorun: false
-#| completion: true
-#| include: false
-#| output: false
-
-# Extract just a sample (5 rows)
-sample_data <- head(select_data, 122)
-
-# Generate R code to embed
-dput(sample_data)
-```
-
-```{webr}
+```{webr-r}
 #| label: embed-select-data
 #| error: false
 #| warning: false
 #| autorun: false
 #| completion: true
 #| include: false
-#| output: false
+#| output: true
 
 select_data <- structure(list(
   AGE = c(29L, 40L, 23L, 35L, 67L, 45L, 20L, 34L, 
@@ -781,7 +750,7 @@ str(select_data)
 
 ## Example 1: Reporting Sample Size in a Manuscript (using inline R)
 
-```{webr}
+```{webr-r}
 #| autorun: false
 #| completion: true
 

@@ -406,7 +406,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"install.packages(\"NHANES\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","eval":"false","fig-cap":"","fig-height":5,"fig-width":7,"label":"install NHANES","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(NHANES)\n# Load the data and view its structure\nstr(NHANESraw)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(NHANES)\n# Load the data and view its header\nhead(NHANESraw)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(NHANESraw)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# View first 10 rows\nhead(healthbeliefs_xlsx, 10)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# View column names, which are the VARIABLES\nnames(healthbeliefs_xlsx)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Get a summary of all variables\nsummary(healthbeliefs_xlsx)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"install.packages(\"NHANES\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","eval":"false","fig-cap":"","fig-height":5,"fig-width":7,"label":"install NHANES","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(NHANES)\n# Load the data and view its structure\nstr(NHANESraw)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(NHANES)\n# Load the data and view its header\nhead(NHANESraw)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(NHANESraw)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -2293,18 +2293,689 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="import-from-excel-.xlsx-file" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="import-from-excel-.xlsx-file"><span class="header-section-number">5.3.2</span> Import from Excel <code>.xlsx</code> file</h3>
-<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them.</p>
+<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them. Below are code chunks that can be copied into your report if you are using an excel file.</p>
 <div class="cell" data-autorun="true" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>healthbeliefs_xlsx <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 10 rows</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(healthbeliefs_xlsx, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 270
+   StartDate           EndDate             Status Progress
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dbl&gt;    &lt;dbl&gt;
+ 1 2025-04-15 13:59:51 2025-04-15 14:20:09      0      100
+ 2 2025-04-15 14:01:16 2025-04-15 14:21:34      0      100
+ 3 2025-04-15 13:54:52 2025-04-15 14:21:54      0      100
+ 4 2025-04-15 14:08:40 2025-04-15 14:38:18      0      100
+ 5 2025-04-15 13:54:41 2025-04-15 14:46:33      0      100
+ 6 2025-04-15 13:59:37 2025-04-15 14:48:37      0      100
+ 7 2025-04-15 13:57:37 2025-04-15 14:54:26      0      100
+ 8 2025-04-15 14:20:12 2025-04-15 14:59:04      0      100
+ 9 2025-04-15 14:30:34 2025-04-15 15:02:03      0      100
+10 2025-04-15 14:18:39 2025-04-15 15:02:08      0      100
+# ℹ 266 more variables: `Duration (in seconds)` &lt;dbl&gt;, Finished &lt;dbl&gt;,
+#   RecordedDate &lt;dttm&gt;, ResponseId &lt;chr&gt;, RecipientLastName &lt;lgl&gt;,
+#   RecipientFirstName &lt;lgl&gt;, RecipientEmail &lt;lgl&gt;, ExternalReference &lt;lgl&gt;,
+#   DistributionChannel &lt;chr&gt;, UserLanguage &lt;chr&gt;, Q_RecaptchaScore &lt;dbl&gt;,
+#   CONSENT &lt;dbl&gt;, PROLIFIC &lt;chr&gt;, HELPING_1 &lt;dbl&gt;, HELPING_2 &lt;dbl&gt;,
+#   HELPING_3 &lt;dbl&gt;, HELPING_4 &lt;dbl&gt;, HELPING_5 &lt;dbl&gt;, HELPING_6 &lt;dbl&gt;,
+#   HELPING_7 &lt;dbl&gt;, HELPING_8 &lt;dbl&gt;, HELPING_9 &lt;dbl&gt;, HELPING_10 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View column names, which are the VARIABLES</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(healthbeliefs_xlsx)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "StartDate"                  "EndDate"                   
+  [3] "Status"                     "Progress"                  
+  [5] "Duration (in seconds)"      "Finished"                  
+  [7] "RecordedDate"               "ResponseId"                
+  [9] "RecipientLastName"          "RecipientFirstName"        
+ [11] "RecipientEmail"             "ExternalReference"         
+ [13] "DistributionChannel"        "UserLanguage"              
+ [15] "Q_RecaptchaScore"           "CONSENT"                   
+ [17] "PROLIFIC"                   "HELPING_1"                 
+ [19] "HELPING_2"                  "HELPING_3"                 
+ [21] "HELPING_4"                  "HELPING_5"                 
+ [23] "HELPING_6"                  "HELPING_7"                 
+ [25] "HELPING_8"                  "HELPING_9"                 
+ [27] "HELPING_10"                 "HELPING_11"                
+ [29] "HELPING_12"                 "HELPING_13"                
+ [31] "HELPING_14"                 "HELPING_15"                
+ [33] "HELPING_16"                 "HELPING_17"                
+ [35] "HELPING_18"                 "HELPING_19"                
+ [37] "HELPING_20"                 "HELPING_21"                
+ [39] "HELPING_22"                 "HELPING_23"                
+ [41] "HELPING_24"                 "HELPING_25"                
+ [43] "HELPING_26"                 "HELPING_27"                
+ [45] "HELPING_28"                 "HELPING_29"                
+ [47] "PROSOCIALPREV_QUAL"         "PROSOCIALPRO_QUAL"         
+ [49] "FOCUS_1"                    "FOCUS_2"                   
+ [51] "FOCUS_3"                    "FOCUS_4"                   
+ [53] "FOCUS_5"                    "FOCUS_6"                   
+ [55] "FOCUS_7"                    "FOCUS_8"                   
+ [57] "FOCUS_9"                    "FOCUS_10"                  
+ [59] "FOCUS_11"                   "HELPGOAL_1"                
+ [61] "HELPGOAL_2"                 "HELPGOAL_3"                
+ [63] "HELPGOAL_4"                 "HELPGOAL_5"                
+ [65] "HELPGOAL_6"                 "HELPGOAL_7"                
+ [67] "REGGOAL_1"                  "REGGOAL_2"                 
+ [69] "REGGOAL_3"                  "GOALCHOICE&nbsp;"               
+ [71] "HEALTHSTATUS"               "IDAS_1"                    
+ [73] "IDAS_2"                     "IDAS_3"                    
+ [75] "IDAS_4"                     "IDAS_5"                    
+ [77] "IDAS_6"                     "IDAS_7"                    
+ [79] "IDAS_8"                     "IDAS_9"                    
+ [81] "IDAS_10"                    "IDAS_11"                   
+ [83] "IDAS_12"                    "IDAS_13"                   
+ [85] "IDAS_14"                    "IDAS_15"                   
+ [87] "IDAS_16"                    "IDAS_17"                   
+ [89] "IDAS_18"                    "IDAS_19"                   
+ [91] "IDAS_20"                    "IDAS_21"                   
+ [93] "IDAS_22"                    "IDAS_23"                   
+ [95] "IDAS_24"                    "IDAS_25"                   
+ [97] "IDAS_26"                    "SLEEPBEHAVE_1"             
+ [99] "SLEEPBEHAVE_2"              "SLEEPBEHAVE_3"             
+[101] "SLEEPBEHAVE_4"              "SLEEPBEHAVE_5"             
+[103] "SLEEPBEHAVE_6"              "SLEEPBEHAVE_7"             
+[105] "SLEEPBEHAVE_8"              "SLEEPBEHAVE_9"             
+[107] "SLEEPBEHAVE_10"             "SLEEPBEHAVE_11"            
+[109] "SLEEPBEHAVE_12"             "SLEEPBEHAVE_13"            
+[111] "SLEEPBEHAVE_14"             "SLEEPBEHAVE_15"            
+[113] "SLEEPBEHAVE_16"             "SLEEPBEHAVE_17"            
+[115] "SLEEPBEHAVE_18"             "SLEEPBEHAVE_19"            
+[117] "STRESS"                     "EXERCISE"                  
+[119] "ATTENTION1"                 "SLEEP"                     
+[121] "SLEEP_QUAL"                 "GUN_EXPOSURE_1"            
+[123] "GUN_EXPOSURE_2"             "SAFETY_1"                  
+[125] "SAFETY_2"                   "SAFETY_3"                  
+[127] "SAFETY_4"                   "SAFETY_5"                  
+[129] "SAFETY_6"                   "SAFETY_FUND_1"             
+[131] "SAFETY_FUND_2"              "SAFETY_FUND_3"             
+[133] "SAFETY_FUND_4"              "SAFETY_FUND_5"             
+[135] "SAFETY_FUND_6"              "SAFETY_FUND_7"             
+[137] "SAFETY_FUND_8"              "SAFETY_BEST"               
+[139] "VIOLENCE_QUAL"              "SAFETY_QUAL"               
+[141] "CREATESAFETY_QUAL"          "APPUSE"                    
+[143] "APPTYPE"                    "APPTYPE_9_TEXT"            
+[145] "USE_ESTIMATE"               "USE_OBJECTIVE"             
+[147] "REASONS_QUAL...147"         "USESAD_1"                  
+[149] "USESAD_2"                   "USESAD_3"                  
+[151] "ADDICTION_1"                "ADDICTION_2"               
+[153] "ADDICTION_3"                "ADDICTION_4"               
+[155] "ADDICTION_5"                "LITERACY_1"                
+[157] "LITERACY_2"                 "POLITICAL_1"               
+[159] "POLITICAL_2"                "POLITICAL_3"               
+[161] "POLITICAL_4"                "POLITICAL_5"               
+[163] "GOVTBELIEFS_1"              "GOVTBELIEFS_2"             
+[165] "GOVTBELIEFS_3"              "ATTENTION2"                
+[167] "FOODSUFF"                   "FOODSUFF2"                 
+[169] "FOODSUFF3"                  "FOODSUFF4"                 
+[171] "NARRATIVE_QUAL"             "REASONS_QUAL...172"        
+[173] "STIGMA_QUAL"                "CONSUME_1"                 
+[175] "CONSUME_2"                  "CONSUME_3"                 
+[177] "CONSUME_4"                  "CONSUME_5"                 
+[179] "CONSUME_6"                  "CONSUME_7"                 
+[181] "NOCOOKING"                  "FOODILLNESS"               
+[183] "UNHEALTHY_QUAL"             "UPFTYPE_1"                 
+[185] "UPFTYPE_2"                  "UPFTYPE_3"                 
+[187] "UPFTYPE_4"                  "UPFTYPE_5"                 
+[189] "UPFTYPE_6"                  "UPFTYPE_7"                 
+[191] "UPFTYPE_8"                  "UPFTYPE_9"                 
+[193] "UPFTYPE_10"                 "UPFTYPE_11"                
+[195] "UPFTYPE_12"                 "WEALTHGUESS_5"             
+[197] "WEALTHGUESS_4"              "WEALTHGUESS_3"             
+[199] "WEALTHGUESS_2"              "WEALTHGUESS_1"             
+[201] "WEALTHFAIR_5"               "WEALTHFAIR_4"              
+[203] "WEALTHFAIR_3"               "WEALTHFAIR_2"              
+[205] "WEALTHFAIR_1"               "RANKISSUES_1"              
+[207] "RANKISSUES_2"               "RANKISSUES_3"              
+[209] "RANKISSUES_4"               "RANKISSUES_5"              
+[211] "RANKISSUES_6"               "RANKISSUES_7"              
+[213] "RANKISSUES_8"               "RANKISSUES_9"              
+[215] "RANKISSUES_10"              "RANKISSUES_11"             
+[217] "RANKISSUES_12"              "ESTIMATES _1"              
+[219] "ESTIMATES _2"               "ESTIMATES _3"              
+[221] "NEOLIB_1"                   "NEOLIB_2"                  
+[223] "NEOLIB_3"                   "NEOLIB_4"                  
+[225] "NEOLIB_5"                   "NEOLIB_6"                  
+[227] "NEOLIB_7"                   "NEOLIB_8"                  
+[229] "NEOLIB_9"                   "NEOLIB_10"                 
+[231] "NEOLIB_11"                  "NEOLIB_12"                 
+[233] "NEOLIB_13"                  "NEOLIB_14"                 
+[235] "NEOLIB_15"                  "ZEROSUM_1"                 
+[237] "ZEROSUM_2"                  "ZEROSUM_3"                 
+[239] "ZEROSUM_4"                  "ZEROSUM_5"                 
+[241] "ZEROSUM_6"                  "ZEROSUM_7"                 
+[243] "ZEROSUM_8"                  "ZEROSUM_9"                 
+[245] "ZEROSUM_10"                 "ZEROSUM_11"                
+[247] "ATTENTION3"                 "AGE"                       
+[249] "EDUCATION"                  "SOCIALSTATUS"              
+[251] "INCOME"                     "RELIGIOUS_IDENTITY"        
+[253] "RACE"                       "RACE_8_TEXT"               
+[255] "STREETRACE"                 "DISABILITY"                
+[257] "GENDER"                     "SEXUAL_IDENTITY"           
+[259] "STATE"                      "ZIP_BORN"                  
+[261] "ZIP_NOW"                    "POLITICALBELIEFS"          
+[263] "POLITICALAFFIL"             "VOTE2024"                  
+[265] "SERIOUS"                    "Q_AmbiguousTextPresent"    
+[267] "Q_AmbiguousTextQuestions"   "Q_StraightliningCount"     
+[269] "Q_StraightliningPercentage" "Q_StraightliningQuestions" </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a summary of all variables</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(healthbeliefs_xlsx)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   StartDate                         EndDate                           Status 
+ Min.   :2025-04-15 13:54:41.00   Min.   :2025-04-15 14:02:30.00   Min.   :0  
+ 1st Qu.:2025-04-15 14:10:38.00   1st Qu.:2025-04-15 15:02:07.50   1st Qu.:0  
+ Median :2025-04-15 14:30:34.00   Median :2025-04-15 15:24:47.00   Median :0  
+ Mean   :2025-04-15 14:45:32.64   Mean   :2025-04-15 15:38:27.88   Mean   :0  
+ 3rd Qu.:2025-04-15 14:58:24.00   3rd Qu.:2025-04-15 16:03:20.50   3rd Qu.:0  
+ Max.   :2025-04-15 17:50:21.00   Max.   :2025-04-15 18:36:32.00   Max.   :0  
+                                                                              
+    Progress      Duration (in seconds)    Finished     
+ Min.   :  1.00   Min.   :   23         Min.   :0.0000  
+ 1st Qu.: 98.00   1st Qu.: 1990         1st Qu.:0.0000  
+ Median : 98.00   Median : 2990         Median :0.0000  
+ Mean   : 91.57   Mean   : 3175         Mean   :0.3778  
+ 3rd Qu.:100.00   3rd Qu.: 3776         3rd Qu.:1.0000  
+ Max.   :100.00   Max.   :11150         Max.   :1.0000  
+                                                        
+  RecordedDate                     ResponseId        RecipientLastName
+ Min.   :2025-04-15 14:20:10.18   Length:135         Mode:logical     
+ 1st Qu.:2025-04-15 16:00:44.58   Class :character   NA's:135         
+ Median :2025-04-22 14:53:48.16   Mode  :character                    
+ Mean   :2025-04-20 00:10:30.67                                       
+ 3rd Qu.:2025-04-22 15:27:24.22                                       
+ Max.   :2025-04-22 18:36:39.68                                       
+                                                                      
+ RecipientFirstName RecipientEmail ExternalReference DistributionChannel
+ Mode:logical       Mode:logical   Mode:logical      Length:135         
+ NA's:135           NA's:135       NA's:135          Class :character   
+                                                     Mode  :character   
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+ UserLanguage       Q_RecaptchaScore    CONSENT    PROLIFIC        
+ Length:135         Min.   :0.3000   Min.   :1   Length:135        
+ Class :character   1st Qu.:0.9000   1st Qu.:1   Class :character  
+ Mode  :character   Median :1.0000   Median :1   Mode  :character  
+                    Mean   :0.9296   Mean   :1                     
+                    3rd Qu.:1.0000   3rd Qu.:1                     
+                    Max.   :1.0000   Max.   :1                     
+                                                                   
+   HELPING_1       HELPING_2       HELPING_3      HELPING_4       HELPING_5   
+ Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.00  
+ 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.00   1st Qu.:4.000   1st Qu.:4.00  
+ Median :5.000   Median :5.000   Median :5.00   Median :5.000   Median :5.00  
+ Mean   :4.768   Mean   :4.452   Mean   :4.36   Mean   :4.472   Mean   :4.64  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00   3rd Qu.:5.000   3rd Qu.:5.00  
+ Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :6.000   Max.   :6.00  
+ NA's   :10      NA's   :11      NA's   :10     NA's   :12      NA's   :10    
+   HELPING_6       HELPING_7       HELPING_8       HELPING_9      HELPING_10   
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000  
+ 1st Qu.:3.000   1st Qu.:4.000   1st Qu.:3.000   1st Qu.:4.00   1st Qu.:3.000  
+ Median :4.000   Median :4.500   Median :4.000   Median :4.00   Median :4.500  
+ Mean   :4.096   Mean   :4.395   Mean   :3.864   Mean   :4.25   Mean   :4.177  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00   3rd Qu.:5.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :6.000  
+ NA's   :10      NA's   :11      NA's   :10      NA's   :11     NA's   :11     
+   HELPING_11      HELPING_12      HELPING_13      HELPING_14     HELPING_15  
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.00  
+ 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:3.00   1st Qu.:2.00  
+ Median :4.000   Median :4.000   Median :4.000   Median :4.00   Median :3.00  
+ Mean   :3.694   Mean   :3.616   Mean   :4.323   Mean   :3.76   Mean   :3.12  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00   3rd Qu.:4.00  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :6.00  
+ NA's   :11      NA's   :10      NA's   :11      NA's   :10     NA's   :10    
+   HELPING_16     HELPING_17      HELPING_18      HELPING_19      HELPING_20   
+ Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:4.00   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000  
+ Median :5.00   Median :3.000   Median :3.000   Median :3.000   Median :3.000  
+ Mean   :4.48   Mean   :3.416   Mean   :3.272   Mean   :3.448   Mean   :3.176  
+ 3rd Qu.:5.00   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:4.000  
+ Max.   :6.00   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
+ NA's   :10     NA's   :10      NA's   :10      NA's   :10      NA's   :10     
+   HELPING_21      HELPING_22      HELPING_23      HELPING_24   
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
+ Median :4.000   Median :4.000   Median :4.000   Median :5.000  
+ Mean   :4.137   Mean   :4.072   Mean   :4.431   Mean   :4.272  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
+ NA's   :11      NA's   :10      NA's   :12      NA's   :10     
+   HELPING_25      HELPING_26      HELPING_27      HELPING_28   
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000  
+ Median :4.000   Median :5.000   Median :5.000   Median :5.000  
+ Mean   :3.976   Mean   :4.408   Mean   :4.435   Mean   :4.512  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
+ NA's   :10      NA's   :10      NA's   :11      NA's   :10     
+   HELPING_29    PROSOCIALPREV_QUAL PROSOCIALPRO_QUAL     FOCUS_1    
+ Min.   :1.000   Length:135         Length:135         Min.   :1.00  
+ 1st Qu.:3.000   Class :character   Class :character   1st Qu.:2.00  
+ Median :4.000   Mode  :character   Mode  :character   Median :3.00  
+ Mean   :3.944                                         Mean   :2.84  
+ 3rd Qu.:5.000                                         3rd Qu.:4.00  
+ Max.   :6.000                                         Max.   :5.00  
+ NA's   :10                                            NA's   :10    
+    FOCUS_2         FOCUS_3         FOCUS_4        FOCUS_5         FOCUS_6     
+ Min.   :2.000   Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:2.00   1st Qu.:3.000   1st Qu.:2.000  
+ Median :4.000   Median :4.000   Median :3.00   Median :4.000   Median :3.000  
+ Mean   :3.632   Mean   :3.496   Mean   :3.16   Mean   :3.496   Mean   :2.768  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.00   Max.   :5.000   Max.   :5.000  
+ NA's   :10      NA's   :10      NA's   :10     NA's   :10      NA's   :10     
+    FOCUS_7         FOCUS_8         FOCUS_9         FOCUS_10    
+ Min.   :1.000   Min.   :1.000   Min.   :2.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :3.000   Median :3.000   Median :4.000   Median :3.000  
+ Mean   :2.784   Mean   :3.216   Mean   :3.824   Mean   :2.952  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:4.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ NA's   :10      NA's   :10      NA's   :10      NA's   :10     
+    FOCUS_11       HELPGOAL_1      HELPGOAL_2        HELPGOAL_3     HELPGOAL_4 
+ Min.   :1.000   Min.   :0.000   Min.   :-50.000   Min.   :0.00   Min.   :0.0  
+ 1st Qu.:2.000   1st Qu.:0.000   1st Qu.:  0.000   1st Qu.:0.00   1st Qu.:0.0  
+ Median :3.000   Median :1.000   Median :  1.000   Median :1.00   Median :1.0  
+ Mean   :2.984   Mean   :0.616   Mean   : -0.504   Mean   :0.68   Mean   :0.6  
+ 3rd Qu.:4.000   3rd Qu.:1.000   3rd Qu.:  1.000   3rd Qu.:1.00   3rd Qu.:1.0  
+ Max.   :5.000   Max.   :1.000   Max.   :  1.000   Max.   :1.00   Max.   :1.0  
+ NA's   :10      NA's   :10      NA's   :10        NA's   :10     NA's   :10   
+   HELPGOAL_5        HELPGOAL_6         HELPGOAL_7        REGGOAL_1      
+ Min.   :-50.000   Min.   :-50.0000   Min.   :-50.000   Min.   :-50.000  
+ 1st Qu.:  0.000   1st Qu.:  1.0000   1st Qu.:  1.000   1st Qu.:  0.000  
+ Median :  1.000   Median :  1.0000   Median :  1.000   Median :  1.000  
+ Mean   :  0.129   Mean   :  0.3871   Mean   :  0.048   Mean   : -0.144  
+ 3rd Qu.:  1.000   3rd Qu.:  1.0000   3rd Qu.:  1.000   3rd Qu.:  1.000  
+ Max.   :  1.000   Max.   :  1.0000   Max.   :  1.000   Max.   :  1.000  
+ NA's   :11        NA's   :11         NA's   :10        NA's   :10       
+   REGGOAL_2         REGGOAL_3        GOALCHOICE&nbsp;     HEALTHSTATUS 
+ Min.   :-50.000   Min.   :-50.000   Min.   :1.000   Min.   :1.00  
+ 1st Qu.:  0.000   1st Qu.:  1.000   1st Qu.:2.000   1st Qu.:3.00  
+ Median :  1.000   Median :  1.000   Median :3.000   Median :3.00  
+ Mean   : -0.488   Mean   : -0.024   Mean   :2.552   Mean   :3.36  
+ 3rd Qu.:  1.000   3rd Qu.:  1.000   3rd Qu.:3.000   3rd Qu.:4.00  
+ Max.   :  1.000   Max.   :  1.000   Max.   :4.000   Max.   :5.00  
+ NA's   :10        NA's   :10        NA's   :10      NA's   :10    
+     IDAS_1        IDAS_2          IDAS_3          IDAS_4          IDAS_5     
+ Min.   :1.0   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.0   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :3.0   Median :3.000   Median :3.000   Median :3.000   Median :3.000  
+ Mean   :3.2   Mean   :3.347   Mean   :3.048   Mean   :3.311   Mean   :3.232  
+ 3rd Qu.:4.0   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :5.0   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ NA's   :10    NA's   :11      NA's   :10      NA's   :13      NA's   :10     
+     IDAS_6         IDAS_7          IDAS_8          IDAS_9         IDAS_10     
+ Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:3.00   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :3.00   Median :3.000   Median :3.000   Median :2.000   Median :2.000  
+ Mean   :3.25   Mean   :3.024   Mean   :3.315   Mean   :2.144   Mean   :2.323  
+ 3rd Qu.:4.00   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000  
+ Max.   :5.00   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ NA's   :11     NA's   :10      NA's   :11      NA's   :10      NA's   :11     
+    IDAS_11        IDAS_12         IDAS_13         IDAS_14         IDAS_15     
+ Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:1.00   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :2.00   Median :3.000   Median :2.000   Median :2.000   Median :2.000  
+ Mean   :2.36   Mean   :2.752   Mean   :2.234   Mean   :2.363   Mean   :2.403  
+ 3rd Qu.:3.00   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000  
+ Max.   :5.00   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ NA's   :10     NA's   :10      NA's   :11      NA's   :11      NA's   :11     
+    IDAS_16         IDAS_17       IDAS_18         IDAS_19        IDAS_20     
+ Min.   :1.000   Min.   :1.0   Min.   :1.000   Min.   :1.00   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.0   1st Qu.:3.000   1st Qu.:2.00   1st Qu.:1.000  
+ Median :2.000   Median :2.0   Median :3.000   Median :3.00   Median :2.000  
+ Mean   :2.616   Mean   :2.2   Mean   :3.266   Mean   :2.68   Mean   :2.392  
+ 3rd Qu.:4.000   3rd Qu.:3.0   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:3.000  
+ Max.   :5.000   Max.   :5.0   Max.   :5.000   Max.   :5.00   Max.   :5.000  
+ NA's   :10      NA's   :10    NA's   :11      NA's   :13     NA's   :10     
+    IDAS_21         IDAS_22         IDAS_23         IDAS_24     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
+ Median :2.000   Median :2.000   Median :2.000   Median :2.000  
+ Mean   :2.508   Mean   :2.624   Mean   :2.408   Mean   :2.072  
+ 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ NA's   :11      NA's   :10      NA's   :10      NA's   :10     
+    IDAS_25         IDAS_26      SLEEPBEHAVE_1   SLEEPBEHAVE_2  
+ Min.   :1.000   Min.   :1.000   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:4.000  
+ Median :2.000   Median :3.000   Median :2.000   Median :5.000  
+ Mean   :2.568   Mean   :2.848   Mean   :2.312   Mean   :4.664  
+ 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:6.000  
+ Max.   :5.000   Max.   :5.000   Max.   :7.000   Max.   :7.000  
+ NA's   :10      NA's   :10      NA's   :10      NA's   :10     
+ SLEEPBEHAVE_3   SLEEPBEHAVE_4   SLEEPBEHAVE_5   SLEEPBEHAVE_6 SLEEPBEHAVE_7 
+ Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.0   Min.   :0.00  
+ 1st Qu.:3.000   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.0   1st Qu.:0.00  
+ Median :5.000   Median :3.000   Median :2.000   Median :0.0   Median :0.00  
+ Mean   :4.272   Mean   :2.832   Mean   :2.248   Mean   :1.4   Mean   :1.36  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:3.000   3rd Qu.:3.0   3rd Qu.:3.00  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.0   Max.   :7.00  
+ NA's   :10      NA's   :10      NA's   :10      NA's   :10    NA's   :10    
+ SLEEPBEHAVE_8   SLEEPBEHAVE_9   SLEEPBEHAVE_10  SLEEPBEHAVE_11 
+ Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:2.000  
+ Median :2.000   Median :2.000   Median :2.000   Median :4.000  
+ Mean   :2.488   Mean   :2.464   Mean   :1.888   Mean   :3.896  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:6.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+ NA's   :10      NA's   :10      NA's   :10      NA's   :10     
+ SLEEPBEHAVE_12  SLEEPBEHAVE_13 SLEEPBEHAVE_14  SLEEPBEHAVE_15 SLEEPBEHAVE_16 
+ Min.   :0.000   Min.   :0.00   Min.   :0.000   Min.   :0.00   Min.   :0.000  
+ 1st Qu.:0.000   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.00   1st Qu.:0.000  
+ Median :2.000   Median :3.00   Median :3.000   Median :4.00   Median :0.000  
+ Mean   :2.752   Mean   :3.28   Mean   :3.455   Mean   :3.88   Mean   :1.432  
+ 3rd Qu.:4.000   3rd Qu.:5.00   3rd Qu.:6.000   3rd Qu.:6.00   3rd Qu.:2.000  
+ Max.   :7.000   Max.   :7.00   Max.   :7.000   Max.   :7.00   Max.   :7.000  
+ NA's   :10      NA's   :10     NA's   :12      NA's   :10     NA's   :10     
+ SLEEPBEHAVE_17 SLEEPBEHAVE_18  SLEEPBEHAVE_19      STRESS      
+ Min.   :0.00   Min.   :0.000   Min.   :0.000   Min.   : 0.000  
+ 1st Qu.:0.00   1st Qu.:0.000   1st Qu.:0.000   1st Qu.: 2.000  
+ Median :0.00   Median :0.000   Median :0.000   Median : 4.000  
+ Mean   :1.44   Mean   :1.176   Mean   :0.968   Mean   : 4.024  
+ 3rd Qu.:3.00   3rd Qu.:2.000   3rd Qu.:1.000   3rd Qu.: 6.000  
+ Max.   :7.00   Max.   :7.000   Max.   :7.000   Max.   :10.000  
+ NA's   :10     NA's   :10      NA's   :10      NA's   :11      
+    EXERCISE       ATTENTION1        SLEEP        SLEEP_QUAL       
+ Min.   :0.000   Min.   :3.000   Min.   :1.000   Length:135        
+ 1st Qu.:2.000   1st Qu.:4.000   1st Qu.:2.750   Class :character  
+ Median :4.000   Median :4.000   Median :3.000   Mode  :character  
+ Mean   :3.629   Mean   :3.976   Mean   :3.242                     
+ 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:4.000                     
+ Max.   :7.000   Max.   :6.000   Max.   :5.000                     
+ NA's   :11      NA's   :11      NA's   :11                        
+ GUN_EXPOSURE_1  GUN_EXPOSURE_2     SAFETY_1        SAFETY_2        SAFETY_3   
+ Min.   :1.000   Min.   :1.000   Min.   :2.000   Min.   :1.000   Min.   :1.00  
+ 1st Qu.:4.000   1st Qu.:1.000   1st Qu.:4.000   1st Qu.:3.000   1st Qu.:2.00  
+ Median :5.000   Median :2.000   Median :5.000   Median :4.000   Median :4.00  
+ Mean   :4.784   Mean   :2.072   Mean   :4.808   Mean   :3.855   Mean   :3.48  
+ 3rd Qu.:6.000   3rd Qu.:2.000   3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:5.00  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
+ NA's   :10      NA's   :10      NA's   :10      NA's   :11      NA's   :10    
+    SAFETY_4        SAFETY_5        SAFETY_6    SAFETY_FUND_1  SAFETY_FUND_2  
+ Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.00   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.00   1st Qu.:3.00   1st Qu.:3.000  
+ Median :3.000   Median :3.000   Median :4.00   Median :4.00   Median :4.000  
+ Mean   :3.072   Mean   :2.872   Mean   :3.56   Mean   :3.92   Mean   :3.784  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.00   3rd Qu.:5.00   3rd Qu.:4.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :5.00   Max.   :5.000  
+ NA's   :10      NA's   :10      NA's   :10     NA's   :10     NA's   :10     
+ SAFETY_FUND_3   SAFETY_FUND_4   SAFETY_FUND_5   SAFETY_FUND_6  
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :2.000  
+ 1st Qu.:4.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
+ Median :4.000   Median :4.000   Median :4.000   Median :4.000  
+ Mean   :3.976   Mean   :3.536   Mean   :4.064   Mean   :4.128  
+ 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:5.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+ NA's   :12      NA's   :10      NA's   :10      NA's   :10     
+ SAFETY_FUND_7   SAFETY_FUND_8    SAFETY_BEST    VIOLENCE_QUAL     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Length:135        
+ 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:1.000   Class :character  
+ Median :4.000   Median :4.000   Median :2.000   Mode  :character  
+ Mean   :4.128   Mean   :4.121   Mean   :2.689                     
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:4.000                     
+ Max.   :5.000   Max.   :5.000   Max.   :7.000                     
+ NA's   :10      NA's   :11      NA's   :13                        
+ SAFETY_QUAL        CREATESAFETY_QUAL      APPUSE         APPTYPE         
+ Length:135         Length:135         Min.   :0.0000   Length:135        
+ Class :character   Class :character   1st Qu.:1.0000   Class :character  
+ Mode  :character   Mode  :character   Median :1.0000   Mode  :character  
+                                       Mean   :0.9516                     
+                                       3rd Qu.:1.0000                     
+                                       Max.   :1.0000                     
+                                       NA's   :11                         
+ APPTYPE_9_TEXT      USE_ESTIMATE    USE_OBJECTIVE      REASONS_QUAL...147
+ Length:135         Min.   : 0.500   Length:135         Length:135        
+ Class :character   1st Qu.: 3.000   Class :character   Class :character  
+ Mode  :character   Median : 4.000   Mode  :character   Mode  :character  
+                    Mean   : 4.429                                        
+                    3rd Qu.: 5.000                                        
+                    Max.   :25.000                                        
+                    NA's   :16                                            
+    USESAD_1        USESAD_2        USESAD_3      ADDICTION_1    ADDICTION_2   
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:4.000   1st Qu.:1.00   1st Qu.:2.000  
+ Median :4.000   Median :2.000   Median :5.000   Median :2.00   Median :4.000  
+ Mean   :3.244   Mean   :2.529   Mean   :4.492   Mean   :2.95   Mean   :3.857  
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:4.00   3rd Qu.:5.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :7.00   Max.   :7.000  
+ NA's   :16      NA's   :16      NA's   :17      NA's   :16     NA's   :16     
+  ADDICTION_3     ADDICTION_4     ADDICTION_5      LITERACY_1   
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:4.000  
+ Median :3.000   Median :4.000   Median :4.000   Median :5.000  
+ Mean   :2.941   Mean   :3.832   Mean   :3.924   Mean   :4.597  
+ 3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :6.000  
+ NA's   :16      NA's   :16      NA's   :17      NA's   :16     
+   LITERACY_2     POLITICAL_1     POLITICAL_2     POLITICAL_3   
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:3.000   1st Qu.:3.000  
+ Median :4.000   Median :4.000   Median :4.000   Median :4.000  
+ Mean   :4.084   Mean   :4.143   Mean   :3.899   Mean   :3.924  
+ 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
+ NA's   :16      NA's   :16      NA's   :16      NA's   :16     
+  POLITICAL_4     POLITICAL_5    GOVTBELIEFS_1   GOVTBELIEFS_2   GOVTBELIEFS_3 
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
+ 1st Qu.:3.000   1st Qu.:2.000   1st Qu.:4.000   1st Qu.:2.500   1st Qu.:2.00  
+ Median :4.000   Median :3.000   Median :5.000   Median :4.000   Median :4.00  
+ Mean   :3.975   Mean   :3.282   Mean   :4.681   Mean   :3.571   Mean   :3.42  
+ 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:5.500   3rd Qu.:5.000   3rd Qu.:5.00  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
+ NA's   :17      NA's   :18      NA's   :16      NA's   :16      NA's   :16    
+   ATTENTION2       FOODSUFF       FOODSUFF2         FOODSUFF3      
+ Min.   :0.000   Min.   :1.000   Min.   :-50.000   Min.   :-99.000  
+ 1st Qu.:0.000   1st Qu.:3.000   1st Qu.:  2.000   1st Qu.:  2.000  
+ Median :0.000   Median :4.000   Median :  3.000   Median :  3.000  
+ Mean   :0.008   Mean   :3.616   Mean   :  1.336   Mean   :  0.944  
+ 3rd Qu.:0.000   3rd Qu.:4.000   3rd Qu.:  3.000   3rd Qu.:  3.000  
+ Max.   :1.000   Max.   :4.000   Max.   :  3.000   Max.   :  3.000  
+ NA's   :10      NA's   :10      NA's   :10        NA's   :10       
+   FOODSUFF4     NARRATIVE_QUAL     REASONS_QUAL...172 STIGMA_QUAL       
+ Min.   :1.000   Length:135         Length:135         Length:135        
+ 1st Qu.:3.000   Class :character   Class :character   Class :character  
+ Median :3.000   Mode  :character   Mode  :character   Mode  :character  
+ Mean   :3.144                                                           
+ 3rd Qu.:4.000                                                           
+ Max.   :4.000                                                           
+ NA's   :10                                                              
+   CONSUME_1      CONSUME_2       CONSUME_3       CONSUME_4       CONSUME_5    
+ Min.   :0.00   Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.000  
+ 1st Qu.:1.00   1st Qu.:1.000   1st Qu.:0.000   1st Qu.:3.000   1st Qu.:1.000  
+ Median :2.00   Median :2.000   Median :1.000   Median :5.000   Median :3.000  
+ Mean   :2.16   Mean   :2.592   Mean   :1.456   Mean   :4.464   Mean   :2.856  
+ 3rd Qu.:3.00   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:6.000   3rd Qu.:4.000  
+ Max.   :7.00   Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+ NA's   :10     NA's   :10      NA's   :10      NA's   :10      NA's   :10     
+   CONSUME_6      CONSUME_7      NOCOOKING      FOODILLNESS   
+ Min.   :0.00   Min.   :0.00   Min.   :1.000   Min.   :0.000  
+ 1st Qu.:2.00   1st Qu.:2.00   1st Qu.:2.000   1st Qu.:0.000  
+ Median :3.00   Median :4.00   Median :3.000   Median :1.000  
+ Mean   :3.28   Mean   :3.56   Mean   :2.768   Mean   :1.152  
+ 3rd Qu.:5.00   3rd Qu.:5.00   3rd Qu.:3.000   3rd Qu.:2.000  
+ Max.   :7.00   Max.   :7.00   Max.   :5.000   Max.   :5.000  
+ NA's   :10     NA's   :10     NA's   :10      NA's   :10     
+ UNHEALTHY_QUAL       UPFTYPE_1      UPFTYPE_2    UPFTYPE_3      UPFTYPE_4    
+ Length:135         Min.   :1.00   Min.   :1    Min.   :1.00   Min.   :1.000  
+ Class :character   1st Qu.:3.00   1st Qu.:3    1st Qu.:2.00   1st Qu.:2.000  
+ Mode  :character   Median :3.00   Median :3    Median :3.00   Median :3.000  
+                    Mean   :3.12   Mean   :3    Mean   :2.64   Mean   :2.734  
+                    3rd Qu.:4.00   3rd Qu.:4    3rd Qu.:3.00   3rd Qu.:3.000  
+                    Max.   :4.00   Max.   :4    Max.   :4.00   Max.   :4.000  
+                    NA's   :10     NA's   :15   NA's   :10     NA's   :11     
+   UPFTYPE_5      UPFTYPE_6       UPFTYPE_7       UPFTYPE_8       UPFTYPE_9   
+ Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
+ 1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:3.00  
+ Median :1.00   Median :3.000   Median :3.000   Median :1.000   Median :3.00  
+ Mean   :1.52   Mean   :2.669   Mean   :2.528   Mean   :1.593   Mean   :3.27  
+ 3rd Qu.:2.00   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:4.00  
+ Max.   :4.00   Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.00  
+ NA's   :10     NA's   :11      NA's   :10      NA's   :12      NA's   :13    
+   UPFTYPE_10      UPFTYPE_11      UPFTYPE_12    WEALTHGUESS_5  
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   : 1.00  
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:20.00  
+ Median :2.000   Median :1.000   Median :1.000   Median :40.00  
+ Mean   :1.968   Mean   :1.677   Mean   :1.339   Mean   :42.42  
+ 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:1.000   3rd Qu.:70.00  
+ Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :90.00  
+ NA's   :10      NA's   :11      NA's   :11      NA's   :10     
+ WEALTHGUESS_4   WEALTHGUESS_3   WEALTHGUESS_2   WEALTHGUESS_1  
+ Min.   : 3.00   Min.   : 2.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.:10.00   1st Qu.: 8.00   1st Qu.: 5.00   1st Qu.: 2.00  
+ Median :20.00   Median :13.00   Median :10.00   Median : 6.00  
+ Mean   :17.66   Mean   :13.96   Mean   :12.52   Mean   :13.45  
+ 3rd Qu.:20.00   3rd Qu.:20.00   3rd Qu.:20.00   3rd Qu.:20.00  
+ Max.   :40.00   Max.   :50.00   Max.   :35.00   Max.   :71.00  
+ NA's   :10      NA's   :10      NA's   :10      NA's   :10     
+  WEALTHFAIR_5     WEALTHFAIR_4    WEALTHFAIR_3    WEALTHFAIR_2  
+ Min.   :  1.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.: 20.00   1st Qu.:20.00   1st Qu.:20.00   1st Qu.:15.00  
+ Median : 20.00   Median :20.00   Median :20.00   Median :20.00  
+ Mean   : 25.89   Mean   :20.19   Mean   :19.76   Mean   :17.67  
+ 3rd Qu.: 30.00   3rd Qu.:20.00   3rd Qu.:20.00   3rd Qu.:20.00  
+ Max.   :100.00   Max.   :40.00   Max.   :55.00   Max.   :40.00  
+ NA's   :10       NA's   :10      NA's   :10      NA's   :10     
+  WEALTHFAIR_1    RANKISSUES_1     RANKISSUES_2     RANKISSUES_3   
+ Min.   : 0.00   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+ 1st Qu.:10.00   1st Qu.: 4.000   1st Qu.: 3.000   1st Qu.: 5.000  
+ Median :20.00   Median : 6.000   Median : 5.000   Median : 7.000  
+ Mean   :16.49   Mean   : 5.927   Mean   : 5.577   Mean   : 7.049  
+ 3rd Qu.:20.00   3rd Qu.: 8.000   3rd Qu.: 8.000   3rd Qu.: 9.500  
+ Max.   :52.00   Max.   :12.000   Max.   :12.000   Max.   :12.000  
+ NA's   :10      NA's   :12       NA's   :12       NA's   :12      
+  RANKISSUES_4     RANKISSUES_5     RANKISSUES_6     RANKISSUES_7   
+ Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+ 1st Qu.: 1.000   1st Qu.: 3.000   1st Qu.: 6.000   1st Qu.: 2.000  
+ Median : 2.000   Median : 5.000   Median : 9.000   Median : 4.000  
+ Mean   : 3.187   Mean   : 5.528   Mean   : 8.106   Mean   : 4.927  
+ 3rd Qu.: 4.000   3rd Qu.: 8.000   3rd Qu.:11.000   3rd Qu.: 7.000  
+ Max.   :12.000   Max.   :12.000   Max.   :12.000   Max.   :12.000  
+ NA's   :12       NA's   :12       NA's   :12       NA's   :12      
+  RANKISSUES_8     RANKISSUES_9    RANKISSUES_10    RANKISSUES_11   
+ Min.   : 2.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+ 1st Qu.: 8.000   1st Qu.: 6.000   1st Qu.: 3.000   1st Qu.: 6.000  
+ Median :11.000   Median : 9.000   Median : 4.000   Median : 9.000  
+ Mean   : 9.707   Mean   : 8.024   Mean   : 4.659   Mean   : 8.049  
+ 3rd Qu.:12.000   3rd Qu.:10.000   3rd Qu.: 7.000   3rd Qu.:10.000  
+ Max.   :12.000   Max.   :12.000   Max.   :11.000   Max.   :12.000  
+ NA's   :12       NA's   :12       NA's   :12       NA's   :12      
+ RANKISSUES_12    ESTIMATES _1    ESTIMATES _2     ESTIMATES _3   
+ Min.   : 1.00   Min.   : 0.00   Min.   :  0.00   Min.   :  0.00  
+ 1st Qu.: 5.00   1st Qu.: 7.00   1st Qu.: 25.00   1st Qu.: 33.00  
+ Median : 8.00   Median :16.00   Median : 40.00   Median : 50.00  
+ Mean   : 7.26   Mean   :24.89   Mean   : 42.56   Mean   : 52.76  
+ 3rd Qu.: 9.50   3rd Qu.:41.00   3rd Qu.: 62.25   3rd Qu.: 70.00  
+ Max.   :12.00   Max.   :85.00   Max.   :100.00   Max.   :100.00  
+ NA's   :12      NA's   :10      NA's   :11       NA's   :10      
+    NEOLIB_1        NEOLIB_2        NEOLIB_3        NEOLIB_4    
+ Min.   :2.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:4.000   1st Qu.:3.750   1st Qu.:3.000   1st Qu.:4.000  
+ Median :5.000   Median :5.000   Median :4.000   Median :5.000  
+ Mean   :4.877   Mean   :4.363   Mean   :4.143   Mean   :4.861  
+ 3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:6.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
+ NA's   :13      NA's   :11      NA's   :16      NA's   :13     
+    NEOLIB_5        NEOLIB_6        NEOLIB_7        NEOLIB_8    
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000  
+ Median :5.000   Median :5.000   Median :5.000   Median :5.000  
+ Mean   :4.793   Mean   :4.517   Mean   :4.306   Mean   :4.424  
+ 3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
+ NA's   :14      NA's   :15      NA's   :14      NA's   :17     
+    NEOLIB_9       NEOLIB_10       NEOLIB_11       NEOLIB_12       NEOLIB_13   
+ Min.   :2.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
+ 1st Qu.:4.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:3.00  
+ Median :5.000   Median :3.000   Median :3.000   Median :4.000   Median :4.00  
+ Mean   :4.967   Mean   :3.089   Mean   :3.163   Mean   :3.798   Mean   :3.86  
+ 3rd Qu.:6.000   3rd Qu.:4.500   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00  
+ Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
+ NA's   :15      NA's   :12      NA's   :12      NA's   :16      NA's   :14    
+   NEOLIB_14     NEOLIB_15       ZEROSUM_1       ZEROSUM_2       ZEROSUM_3    
+ Min.   :1.0   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:2.0   1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
+ Median :4.0   Median :4.000   Median :4.000   Median :5.000   Median :5.000  
+ Mean   :3.6   Mean   :3.932   Mean   :3.944   Mean   :4.758   Mean   :4.911  
+ 3rd Qu.:5.0   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:6.000   3rd Qu.:6.000  
+ Max.   :6.0   Max.   :6.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+ NA's   :15    NA's   :17      NA's   :10      NA's   :11      NA's   :11     
+   ZEROSUM_4       ZEROSUM_5      ZEROSUM_6       ZEROSUM_7       ZEROSUM_8    
+ Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:1.000   1st Qu.:1.00   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:1.000  
+ Median :3.000   Median :3.00   Median :3.500   Median :4.000   Median :3.000  
+ Mean   :3.065   Mean   :2.88   Mean   :3.452   Mean   :3.537   Mean   :2.944  
+ 3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:4.000  
+ Max.   :7.000   Max.   :7.00   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+ NA's   :11      NA's   :10     NA's   :11      NA's   :12      NA's   :11     
+   ZEROSUM_9       ZEROSUM_10      ZEROSUM_11      ATTENTION3      AGE       
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :2    Min.   :19.00  
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2    1st Qu.:26.75  
+ Median :2.000   Median :3.000   Median :3.000   Median :2    Median :33.00  
+ Mean   :2.605   Mean   :3.232   Mean   :3.202   Mean   :2    Mean   :36.12  
+ 3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:2    3rd Qu.:43.25  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :2    Max.   :73.00  
+ NA's   :11      NA's   :10      NA's   :11      NA's   :10   NA's   :11     
+   EDUCATION     SOCIALSTATUS       INCOME      RELIGIOUS_IDENTITY
+ Min.   :2.00   Min.   :1.000   Min.   :1.000   Length:135        
+ 1st Qu.:4.00   1st Qu.:4.000   1st Qu.:2.000   Class :character  
+ Median :5.00   Median :6.000   Median :4.000   Mode  :character  
+ Mean   :4.76   Mean   :5.328   Mean   :3.672                     
+ 3rd Qu.:6.00   3rd Qu.:6.000   3rd Qu.:5.000                     
+ Max.   :6.00   Max.   :9.000   Max.   :7.000                     
+ NA's   :10     NA's   :10      NA's   :10                        
+     RACE           RACE_8_TEXT          STREETRACE      DISABILITY     
+ Length:135         Length:135         Min.   :1.000   Min.   :-99.000  
+ Class :character   Class :character   1st Qu.:3.000   1st Qu.:  0.000  
+ Mode  :character   Mode  :character   Median :3.000   Median :  0.000  
+                                       Mean   :3.366   Mean   : -2.968  
+                                       3rd Qu.:5.000   3rd Qu.:  0.000  
+                                       Max.   :8.000   Max.   :  1.000  
+                                       NA's   :12      NA's   :11       
+     GENDER      SEXUAL_IDENTITY     STATE         ZIP_BORN        
+ Min.   :1.000   Min.   :1.000   Min.   : 1.00   Length:135        
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.: 5.00   Class :character  
+ Median :2.000   Median :1.000   Median :21.00   Mode  :character  
+ Mean   :1.544   Mean   :1.568   Mean   :21.35                     
+ 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:34.00                     
+ Max.   :3.000   Max.   :5.000   Max.   :51.00                     
+ NA's   :10      NA's   :10      NA's   :10                        
+   ZIP_NOW          POLITICALBELIEFS  POLITICALAFFIL    VOTE2024      
+ Length:135         Min.   :-99.000   Min.   :1.00   Min.   :-99.000  
+ Class :character   1st Qu.:  3.000   1st Qu.:2.00   1st Qu.:  1.000  
+ Mode  :character   Median :  4.000   Median :2.00   Median :  2.000  
+                    Mean   :  2.448   Mean   :2.67   Mean   : -0.024  
+                    3rd Qu.:  5.000   3rd Qu.:4.00   3rd Qu.:  2.000  
+                    Max.   :  6.000   Max.   :5.00   Max.   :  8.000  
+                    NA's   :10        NA's   :29     NA's   :10       
+    SERIOUS   Q_AmbiguousTextPresent Q_AmbiguousTextQuestions
+ Min.   :1    Min.   :0.0000         Length:135              
+ 1st Qu.:1    1st Qu.:1.0000         Class :character        
+ Median :1    Median :1.0000         Mode  :character        
+ Mean   :1    Mean   :0.9111                                 
+ 3rd Qu.:1    3rd Qu.:1.0000                                 
+ Max.   :1    Max.   :1.0000                                 
+ NA's   :11                                                  
+ Q_StraightliningCount Q_StraightliningPercentage Q_StraightliningQuestions
+ Min.   :0.000         Min.   :0.00000            Length:135               
+ 1st Qu.:0.500         1st Qu.:0.02778            Class :character         
+ Median :1.000         Median :0.05556            Mode  :character         
+ Mean   :1.393         Mean   :0.07800                                     
+ 3rd Qu.:2.000         3rd Qu.:0.11111                                     
+ Max.   :7.000         Max.   :0.38889                                     
+                                                                           </code></pre>
+</div>
+</div>
 <section id="excel-import-data-to-assign-missing-data-to-na" class="level4">
 <h4 class="anchored" data-anchor-id="excel-import-data-to-assign-missing-data-to-na">Excel: Import Data to Assign Missing Data to <code>NA</code></h4>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -2792,194 +3463,194 @@ Warning
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Importing Data Once"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "How to use readr, readxl, and haven"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - Zihan Hei</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">  - Shane McCarty, PhD</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="an">abstract:</span><span class="co"> |</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">  This chapter introduces students to importing data from various sources and file formats commonly used in public health research. Students learn to load datasets from R packages (NHANES), read CSV files, import Excel spreadsheets, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Students also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, students will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="an">keywords:</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - data import</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - NHANES</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - CSV</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - Excel</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">  - SPSS</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">  - missing data</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> live-html</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>{{&lt; include ./_extensions/r-wasm/live/_knitr.qmd &gt;}}</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Learning Resources</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Data Import</span><span class="co">](https://r4ds.hadley.nz/data-import.html)</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Import</span><span class="co">](https://r4ds.hadley.nz/import.html)</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cheat Sheet**: <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://rstudio.github.io/cheatsheets/data-import.pdf)</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Posit Interactive Page**: <span class="co">[</span><span class="ot">import</span><span class="co">](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Data Import</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>**Importing data** is the *first step* in the data science workflow. Before you can clean, visualize, or model your data, you need to get it into R. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected in the software Qualtrics.</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>**Common data sources:**</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Survey platforms (Qualtrics, REDCap)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R packages (e.g., <span class="in">`NHANES`</span>)</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Other statistical softwares (e.g., SPSS, SAS, Stata)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Spreadsheets (Excel, Google Sheets) </span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Databases (SQL)</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-packages</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| autorun: true</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| completion: true</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages (do this each session)</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)    <span class="co"># CDC health data</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Data wrangling (includes readr)</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)    <span class="co"># Read Excel files</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)     <span class="co"># Read SPSS/SAS/Stata files</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datasets</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>You will learn how to import different datasets:</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>datasets in R packages <span class="in">`NHANES`</span> and <span class="in">`YRBS`</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>team dataset "oralhealth"</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### File Formats</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package <span class="in">`NHANES`</span></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a <span class="in">`.csv`</span> file format of the class dataset "health beliefs (cohort 11)" collected in the Research Methods I (ANTH206) course <span class="in">`03.15.2025.prolificgealthbeliefs.csv`</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a <span class="in">`.xlsx`</span> file format of the class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course <span class="in">`03.15.2025.prolifichealthbeliefs.xlsx`</span></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a <span class="in">`.sav`</span> file format from SPSS of the FRI team project on oral health <span class="in">`10.31.2024.oralhealth.sav`</span>.</span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Import Examples</span></span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import from `NHANES` package</span></span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="fu">#### First Setup the library:</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| autorun: false</span></span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| completion: true</span></span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: false</span></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)     <span class="co"># for number formatting like comma()</span></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(english)    <span class="co"># to convert numbers to words</span></span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># for text functions like str_c()</span></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: install NHANES</span></span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("NHANES")</span></span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Data Structure</span></span>
-<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a>Now, you will view the structure of the NHANES data</span>
-<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a><span class="in">library(NHANES)</span></span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="in"># Load the data and view its structure</span></span>
-<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="in">str(NHANESraw)</span></span>
-<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Data Header</span></span>
-<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a><span class="in">library(NHANES)</span></span>
-<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a><span class="in"># Load the data and view its header</span></span>
-<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a><span class="in">head(NHANESraw)</span></span>
-<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variables (aka Column) Names</span></span>
-<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a><span class="in">names(NHANESraw)</span></span>
-<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a><span class="fu">#### View Data</span></span>
-<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a>In Posit Cloud, you can use <span class="in">`View()`</span> in your CONSOLE to view the dataframe.</span>
-<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
-<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
-<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(NHANESraw)</span>
-<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import from Excel `.xlsx` file</span></span>
-<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a>Excel files (.xlsx or .xls) are common in public health. Use the <span class="in">`readxl`</span> package to import them.</span>
-<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-excel</span></span>
-<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| autorun: true</span></span>
-<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| completion: true</span></span>
-<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: false</span></span>
-<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
-<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a>healthbeliefs_xlsx <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>)</span>
-<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a><span class="in"># View first 10 rows</span></span>
-<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a><span class="in">head(healthbeliefs_xlsx, 10)</span></span>
-<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="in"># View column names, which are the VARIABLES</span></span>
-<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="in">names(healthbeliefs_xlsx)</span></span>
-<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a><span class="in"># Get a summary of all variables</span></span>
-<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a><span class="in">summary(healthbeliefs_xlsx)</span></span>
-<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Excel: Import Data to Assign Missing Data to `NA`</span></span>
-<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
-<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a>This page is under construction. It will include important missing data information.</span>
-<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Importing Data Once"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "How to use readr, readxl, and haven"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - Zihan Hei</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">  - Shane McCarty, PhD</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="an">abstract:</span><span class="co"> |</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">  This chapter introduces students to importing data from various sources and file formats commonly used in public health research. Students learn to load datasets from R packages (NHANES), read CSV files, import Excel spreadsheets, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Students also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, students will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="an">keywords:</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - data import</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - NHANES</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">  - CSV</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - Excel</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">  - SPSS</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">  - missing data</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> live-html</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="an">engine:</span><span class="co"> knitr</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>{{&lt; include ./_extensions/r-wasm/live/_knitr.qmd &gt;}}</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Learning Resources</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Data Import</span><span class="co">](https://r4ds.hadley.nz/data-import.html)</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Import</span><span class="co">](https://r4ds.hadley.nz/import.html)</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cheat Sheet**: <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://rstudio.github.io/cheatsheets/data-import.pdf)</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Posit Interactive Page**: <span class="co">[</span><span class="ot">import</span><span class="co">](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to Data Import</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>**Importing data** is the *first step* in the data science workflow. Before you can clean, visualize, or model your data, you need to get it into R. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected in the software Qualtrics.</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>**Common data sources:**</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Survey platforms (Qualtrics, REDCap)</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>R packages (e.g., <span class="in">`NHANES`</span>)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Other statistical softwares (e.g., SPSS, SAS, Stata)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Spreadsheets (Excel, Google Sheets) </span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Databases (SQL)</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-packages</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| autorun: true</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| completion: true</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages (do this each session)</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)    <span class="co"># CDC health data</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Data wrangling (includes readr)</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)    <span class="co"># Read Excel files</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)     <span class="co"># Read SPSS/SAS/Stata files</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Datasets</span></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>You will learn how to import different datasets:</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>datasets in R packages <span class="in">`NHANES`</span> and <span class="in">`YRBS`</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>team dataset "oralhealth"</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### File Formats</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package <span class="in">`NHANES`</span></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a <span class="in">`.csv`</span> file format of the class dataset "health beliefs (cohort 11)" collected in the Research Methods I (ANTH206) course <span class="in">`03.15.2025.prolificgealthbeliefs.csv`</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a <span class="in">`.xlsx`</span> file format of the class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course <span class="in">`03.15.2025.prolifichealthbeliefs.xlsx`</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a <span class="in">`.sav`</span> file format from SPSS of the FRI team project on oral health <span class="in">`10.31.2024.oralhealth.sav`</span>.</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Import Examples</span></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import from `NHANES` package</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="fu">#### First Setup the library:</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| autorun: false</span></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| completion: true</span></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: false</span></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)     <span class="co"># for number formatting like comma()</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(english)    <span class="co"># to convert numbers to words</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># for text functions like str_c()</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: install NHANES</span></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("NHANES")</span></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Data Structure</span></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>Now, you will view the structure of the NHANES data</span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="in">library(NHANES)</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="in"># Load the data and view its structure</span></span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">str(NHANESraw)</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Data Header</span></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="in">library(NHANES)</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="in"># Load the data and view its header</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="in">head(NHANESraw)</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Variables (aka Column) Names</span></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a><span class="in">names(NHANESraw)</span></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a><span class="fu">#### View Data</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>In Posit Cloud, you can use <span class="in">`View()`</span> in your CONSOLE to view the dataframe.</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(NHANESraw)</span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import from Excel `.xlsx` file</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>Excel files (.xlsx or .xls) are common in public health. Use the <span class="in">`readxl`</span> package to import them. Below are code chunks that can be copied into your report if you are using an excel file. </span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-excel</span></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| autorun: true</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a><span class="co">#| completion: true</span></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: false</span></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>healthbeliefs_xlsx <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>)</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 10 rows</span></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(healthbeliefs_xlsx, <span class="dv">10</span>)</span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a><span class="co"># View column names, which are the VARIABLES</span></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(healthbeliefs_xlsx)</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a summary of all variables</span></span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(healthbeliefs_xlsx)</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Excel: Import Data to Assign Missing Data to `NA`</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>This page is under construction. It will include important missing data information.</span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
