@@ -14,7 +14,7 @@ The failure to reproduce research is a function of systems pressure (defunding o
 
 A primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.
 
-# Reproducible Reports
+## Reproducible Reports
 
 You and your team will produce a reproducible Quarto Markdown report (`.qmd`) for your individual report and team manuscript. Specific instructions are provided in the next chapter.
 

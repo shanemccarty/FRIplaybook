@@ -58,7 +58,7 @@ library(readxl)    # Read Excel files
 library(haven)     # Read SPSS/SAS/Stata files
 ```
 
-# Datasets
+## Datasets
 
 You will learn how to import different datasets:
 
@@ -68,7 +68,7 @@ You will learn how to import different datasets:
 
 -   team dataset "oralhealth"
 
-## File Formats
+### File Formats
 
 -   National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package `NHANES`
 
@@ -78,9 +78,10 @@ You will learn how to import different datasets:
 
 -   a `.sav` file format from SPSS of the FRI team project on oral health `10.31.2024.oralhealth.sav`.
 
-# Import Examples
+## Import Examples
 
-## First Setup the library:
+### Import from `NHANES` package
+#### First Setup the library:
 
 ```{r}
 #| autorun: false
@@ -102,15 +103,13 @@ library(stringr)    # for text functions like str_c()
 library(NHANES)
 ```
 
-## Import from `NHANES` package
-
 ```{webr-r}
 #| label: install NHANES
 #| eval: false
 install.packages("NHANES")
 ```
 
-## Data Structure
+#### Data Structure
 
 Now, you will view the structure of the NHANES data
 
@@ -120,7 +119,7 @@ library(NHANES)
 str(NHANESraw)
 ```
 
-## Data Header
+#### Data Header
 
 ```{webr-r}
 library(NHANES)
@@ -128,14 +127,14 @@ library(NHANES)
 head(NHANESraw)
 ```
 
-## Variables (aka Column) Names
+#### Variables (aka Column) Names
 
 ```{webr-r}
 names(NHANESraw)
 ```
 
 
-## View Data
+#### View Data
 
 In Posit Cloud, you can use `View()` in your CONSOLE to view the dataframe.
 
@@ -145,7 +144,7 @@ library(NHANES)
 View(NHANESraw)
 ```
 
-## Import from Excel `.xlsx` file
+### Import from Excel `.xlsx` file
 
 Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them.
 
@@ -180,8 +179,7 @@ summary(healthbeliefs_xlsx)
 ```
 
 
-
-### Excel: Import Data to Assign Missing Data to `NA`
+#### Excel: Import Data to Assign Missing Data to `NA`
 
 ::: callout-warning
 This page is under construction. It will include important missing data information.

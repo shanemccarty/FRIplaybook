@@ -44,14 +44,14 @@ In your Posit Cloud window browser, you should see the *source* and *visual* edi
 
 -   The visual editor is your best place to see the quarto markdown document (.qmd) before it is officially rendered as an HTML output.
 
-# Create a Markdown Document
+## Create a Markdown Document
 
 -   File \> New File \> Quarto Document
 -   Complete Title and Author Name, Create
 -   File \> Save As \> name-it-now.qmd
 -   Check the file shows up in your files in the bottom right window as .qmd file
 
-## Quarto Document File Names
+### Quarto Document File Names
 
 For individual lab and report quarto reports:
 
@@ -67,7 +67,7 @@ You must name your quarto markdown files (`.qmd`) correctly.
 
 :::
 
-## Clearing Environment in Posit Cloud
+### Clearing Environment in Posit Cloud
 
 Your previously created objects (e.g., `alldata`, `select_data`, `VARIABLE1`) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your `.qmd` document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors. 
 
@@ -81,12 +81,12 @@ For your draft and final team MMR manuscript, you should:
 - rename this specific posit cloud project from #1: Vivian -\> #1: Vivian & Team (to notify me where to look for your team's MMR work)
 - create a `team_RD.qmd` file - create a `team_final.qmd` file
 
-# YAML
+## YAML
 
 YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output (HTML vs. PDF).
 
 ::: {.callout-important}
-## Requirement
+### Requirement
 
 Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
 
@@ -111,7 +111,7 @@ format:
 
 For more information, see [YAML](https://quarto.org/docs/reference/formats/html.html).
 
-# Markdown
+## Markdown
 
 You will write in the English language with [markdown](https://quarto.org/docs/authoring/markdown-basics.html) language to format your quarto report.
 
@@ -124,7 +124,7 @@ This is a language called markdown. It is very simple. You can use
 -   **bold**
 -   ***bold italics***
 
-## Verbatim Code
+### Verbatim Code
 
 You can use a backtick to denote code or the name of a variable by placing a word within \`\`. For example, if I put EFFICACY between \`\` then it returns `EFFICACY` . This will be important for naming variables in your report.
 
@@ -135,11 +135,11 @@ Use \` \` between CAPITALIZED variable names in your report if you are referring
 
 :::
 
-# Code Chunks
+## Code Chunks
 
 A traditional R script (`.R`) involves code throughout the entire script. A Quarto Markdown Document (`.qmd`) integrates the R programming language with markdown language into a single document that can include a mix of code and written content. We use `report.qmd` and other `.qmd` files to write a reproducible manuscript using written text within embedded code chunks.
 
-## Example Code Chunk
+### Example Code Chunk
 
 Below is an example from the @ggplot2.qmd chapter of an informative `label` for your code chunk and a very detailed figure caption ( `fig-cap`). Also, notice that all code chunk options start with `#|` and use a `:`.
 
@@ -152,9 +152,9 @@ For more examples, see @ggplot2.qmd.
 #| eval: false
 ```
 
-## Template Code Chunk
+### Template Code Chunk
 
-### Label for All Code Chunks
+#### Label for All Code Chunks
 
 ::: {.callout-important}
 ## Requirement
@@ -176,7 +176,7 @@ Your `#| label:` should be lowercase with dashs between words to create a comple
 
 ```
 
-### Figure Caption (Fig-Cap) for Plot Code Chunks
+#### Figure Caption (Fig-Cap) for Plot Code Chunks
 
 ::: {.callout-important}
 ## Requirement
@@ -191,7 +191,7 @@ Every plot should include a detailed figure caption using `#| fig-cap:`
 
 ```
 
-### Provide Sources for ALL Code Chunks
+#### Provide Sources for ALL Code Chunks
 
 ::: {.callout-important}
 ## Requirement
@@ -212,7 +212,7 @@ At the end of every code chunk, include the source of the code chunk so that oth
 
 Notice that the format is different. The `#source:` NOT be in the prior `#|` format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.
 
-### Provide Explanation for ALL Code Chunks
+#### Provide Explanation for ALL Code Chunks
 
 ::: {.callout-important}
 ## Requirement
@@ -236,7 +236,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 
 ```
 
-### Code Chunk Options
+#### Code Chunk Options
 
 For more information on code chunks, see [code chunk options](https://r4ds.hadley.nz/quarto.html#chunk-options).
 

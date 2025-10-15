@@ -281,27 +281,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#create-a-markdown-document" id="toc-create-a-markdown-document" class="nav-link active" data-scroll-target="#create-a-markdown-document"><span class="header-section-number">4</span> Create a Markdown Document</a>
+  <li><a href="#create-a-markdown-document" id="toc-create-a-markdown-document" class="nav-link active" data-scroll-target="#create-a-markdown-document"><span class="header-section-number">3.1</span> Create a Markdown Document</a>
   <ul class="collapse">
-  <li><a href="#quarto-document-file-names" id="toc-quarto-document-file-names" class="nav-link" data-scroll-target="#quarto-document-file-names"><span class="header-section-number">4.1</span> Quarto Document File Names</a></li>
-  <li><a href="#clearing-environment-in-posit-cloud" id="toc-clearing-environment-in-posit-cloud" class="nav-link" data-scroll-target="#clearing-environment-in-posit-cloud"><span class="header-section-number">4.2</span> Clearing Environment in Posit Cloud</a></li>
+  <li><a href="#quarto-document-file-names" id="toc-quarto-document-file-names" class="nav-link" data-scroll-target="#quarto-document-file-names"><span class="header-section-number">3.1.1</span> Quarto Document File Names</a></li>
+  <li><a href="#clearing-environment-in-posit-cloud" id="toc-clearing-environment-in-posit-cloud" class="nav-link" data-scroll-target="#clearing-environment-in-posit-cloud"><span class="header-section-number">3.1.2</span> Clearing Environment in Posit Cloud</a></li>
   </ul></li>
-  <li><a href="#yaml" id="toc-yaml" class="nav-link" data-scroll-target="#yaml"><span class="header-section-number">5</span> YAML</a></li>
-  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">6</span> Markdown</a>
+  <li><a href="#yaml" id="toc-yaml" class="nav-link" data-scroll-target="#yaml"><span class="header-section-number">3.2</span> YAML</a></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">3.3</span> Markdown</a>
   <ul class="collapse">
-  <li><a href="#verbatim-code" id="toc-verbatim-code" class="nav-link" data-scroll-target="#verbatim-code"><span class="header-section-number">6.1</span> Verbatim Code</a></li>
+  <li><a href="#verbatim-code" id="toc-verbatim-code" class="nav-link" data-scroll-target="#verbatim-code"><span class="header-section-number">3.3.1</span> Verbatim Code</a></li>
   </ul></li>
-  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">7</span> Code Chunks</a>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">3.4</span> Code Chunks</a>
   <ul class="collapse">
-  <li><a href="#example-code-chunk" id="toc-example-code-chunk" class="nav-link" data-scroll-target="#example-code-chunk"><span class="header-section-number">7.1</span> Example Code Chunk</a></li>
-  <li><a href="#template-code-chunk" id="toc-template-code-chunk" class="nav-link" data-scroll-target="#template-code-chunk"><span class="header-section-number">7.2</span> Template Code Chunk</a>
-  <ul class="collapse">
-  <li><a href="#label-for-all-code-chunks" id="toc-label-for-all-code-chunks" class="nav-link" data-scroll-target="#label-for-all-code-chunks"><span class="header-section-number">7.2.1</span> Label for All Code Chunks</a></li>
-  <li><a href="#figure-caption-fig-cap-for-plot-code-chunks" id="toc-figure-caption-fig-cap-for-plot-code-chunks" class="nav-link" data-scroll-target="#figure-caption-fig-cap-for-plot-code-chunks"><span class="header-section-number">7.2.2</span> Figure Caption (Fig-Cap) for Plot Code Chunks</a></li>
-  <li><a href="#provide-sources-for-all-code-chunks" id="toc-provide-sources-for-all-code-chunks" class="nav-link" data-scroll-target="#provide-sources-for-all-code-chunks"><span class="header-section-number">7.2.3</span> Provide Sources for ALL Code Chunks</a></li>
-  <li><a href="#provide-explanation-for-all-code-chunks" id="toc-provide-explanation-for-all-code-chunks" class="nav-link" data-scroll-target="#provide-explanation-for-all-code-chunks"><span class="header-section-number">7.2.4</span> Provide Explanation for ALL Code Chunks</a></li>
-  <li><a href="#code-chunk-options" id="toc-code-chunk-options" class="nav-link" data-scroll-target="#code-chunk-options"><span class="header-section-number">7.2.5</span> Code Chunk Options</a></li>
-  </ul></li>
+  <li><a href="#example-code-chunk" id="toc-example-code-chunk" class="nav-link" data-scroll-target="#example-code-chunk"><span class="header-section-number">3.4.1</span> Example Code Chunk</a></li>
+  <li><a href="#template-code-chunk" id="toc-template-code-chunk" class="nav-link" data-scroll-target="#template-code-chunk"><span class="header-section-number">3.4.2</span> Template Code Chunk</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/codechunks.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -375,16 +368,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>The source option is your best option for coding in R with line items.</p></li>
 <li><p>The visual editor is your best place to see the quarto markdown document (.qmd) before it is officially rendered as an HTML output.</p></li>
 </ul>
-<section id="create-a-markdown-document" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Create a Markdown Document</h1>
+<section id="create-a-markdown-document" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="create-a-markdown-document"><span class="header-section-number">3.1</span> Create a Markdown Document</h2>
 <ul>
 <li>File &gt; New File &gt; Quarto Document</li>
 <li>Complete Title and Author Name, Create</li>
 <li>File &gt; Save As &gt; name-it-now.qmd</li>
 <li>Check the file shows up in your files in the bottom right window as .qmd file</li>
 </ul>
-<section id="quarto-document-file-names" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="quarto-document-file-names"><span class="header-section-number">4.1</span> Quarto Document File Names</h2>
+<section id="quarto-document-file-names" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="quarto-document-file-names"><span class="header-section-number">3.1.1</span> Quarto Document File Names</h3>
 <p>For individual lab and report quarto reports:</p>
 <ul>
 <li>Your individual lab was renamed to <code>lab.qmd</code></li>
@@ -406,8 +399,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="clearing-environment-in-posit-cloud" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="clearing-environment-in-posit-cloud"><span class="header-section-number">4.2</span> Clearing Environment in Posit Cloud</h2>
+<section id="clearing-environment-in-posit-cloud" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="clearing-environment-in-posit-cloud"><span class="header-section-number">3.1.2</span> Clearing Environment in Posit Cloud</h3>
 <p>Your previously created objects (e.g., <code>alldata</code>, <code>select_data</code>, <code>VARIABLE1</code>) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your <code>.qmd</code> document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all objects from the global environment</span></span>
@@ -416,8 +409,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -&gt; #1: Vivian &amp; Team (to notify me where to look for your team’s MMR work) - create a <code>team_RD.qmd</code> file - create a <code>team_final.qmd</code> file</p>
 </section>
 </section>
-<section id="yaml" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> YAML</h1>
+<section id="yaml" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="yaml"><span class="header-section-number">3.2</span> YAML</h2>
 <p>YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output (HTML vs.&nbsp;PDF).</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -450,8 +443,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>For more information, see <a href="https://quarto.org/docs/reference/formats/html.html">YAML</a>.</p>
 </section>
-<section id="markdown" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Markdown</h1>
+<section id="markdown" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="markdown"><span class="header-section-number">3.3</span> Markdown</h2>
 <p>You will write in the English language with <a href="https://quarto.org/docs/authoring/markdown-basics.html">markdown</a> language to format your quarto report.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>This is a language called markdown. It is very simple. You can use</span>
@@ -462,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>bold</strong></li>
 <li><strong><em>bold italics</em></strong></li>
 </ul>
-<section id="verbatim-code" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="verbatim-code"><span class="header-section-number">6.1</span> Verbatim Code</h2>
+<section id="verbatim-code" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="verbatim-code"><span class="header-section-number">3.3.1</span> Verbatim Code</h3>
 <p>You can use a backtick to denote code or the name of a variable by placing a word within ``. For example, if I put EFFICACY between `` then it returns <code>EFFICACY</code> . This will be important for naming variables in your report.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -480,11 +473,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="code-chunks" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Code Chunks</h1>
+<section id="code-chunks" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">3.4</span> Code Chunks</h2>
 <p>A traditional R script (<code>.R</code>) involves code throughout the entire script. A Quarto Markdown Document (<code>.qmd</code>) integrates the R programming language with markdown language into a single document that can include a mix of code and written content. We use <code>report.qmd</code> and other <code>.qmd</code> files to write a reproducible manuscript using written text within embedded code chunks.</p>
-<section id="example-code-chunk" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="example-code-chunk"><span class="header-section-number">7.1</span> Example Code Chunk</h2>
+<section id="example-code-chunk" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="example-code-chunk"><span class="header-section-number">3.4.1</span> Example Code Chunk</h3>
 <p>Below is an example from the <span class="citation" data-cites="ggplot2.qmd">@ggplot2.qmd</span> chapter of an informative <code>label</code> for your code chunk and a very detailed figure caption ( <code>fig-cap</code>). Also, notice that all code chunk options start with <code>#|</code> and use a <code>:</code>.</p>
 <p>For more examples, see <span class="citation" data-cites="ggplot2.qmd">@ggplot2.qmd</span>.</p>
 <div class="cell">
@@ -501,10 +494,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="template-code-chunk" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="template-code-chunk"><span class="header-section-number">7.2</span> Template Code Chunk</h2>
-<section id="label-for-all-code-chunks" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="label-for-all-code-chunks"><span class="header-section-number">7.2.1</span> Label for All Code Chunks</h3>
+<section id="template-code-chunk" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="template-code-chunk"><span class="header-section-number">3.4.2</span> Template Code Chunk</h3>
+<section id="label-for-all-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="label-for-all-code-chunks">Label for All Code Chunks</h4>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -528,8 +521,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="figure-caption-fig-cap-for-plot-code-chunks" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="figure-caption-fig-cap-for-plot-code-chunks"><span class="header-section-number">7.2.2</span> Figure Caption (Fig-Cap) for Plot Code Chunks</h3>
+<section id="figure-caption-fig-cap-for-plot-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="figure-caption-fig-cap-for-plot-code-chunks">Figure Caption (Fig-Cap) for Plot Code Chunks</h4>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -549,8 +542,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="provide-sources-for-all-code-chunks" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="provide-sources-for-all-code-chunks"><span class="header-section-number">7.2.3</span> Provide Sources for ALL Code Chunks</h3>
+<section id="provide-sources-for-all-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="provide-sources-for-all-code-chunks">Provide Sources for ALL Code Chunks</h4>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -575,8 +568,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Notice that the format is different. The <code>#source:</code> NOT be in the prior <code>#|</code> format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.</p>
 </section>
-<section id="provide-explanation-for-all-code-chunks" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="provide-explanation-for-all-code-chunks"><span class="header-section-number">7.2.4</span> Provide Explanation for ALL Code Chunks</h3>
+<section id="provide-explanation-for-all-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="provide-explanation-for-all-code-chunks">Provide Explanation for ALL Code Chunks</h4>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -605,8 +598,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="code-chunk-options" class="level3" data-number="7.2.5">
-<h3 data-number="7.2.5" class="anchored" data-anchor-id="code-chunk-options"><span class="header-section-number">7.2.5</span> Code Chunk Options</h3>
+<section id="code-chunk-options" class="level4">
+<h4 class="anchored" data-anchor-id="code-chunk-options">Code Chunk Options</h4>
 <p>For more information on code chunks, see <a href="https://r4ds.hadley.nz/quarto.html#chunk-options">code chunk options</a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -1142,14 +1135,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The visual editor is your best place to see the quarto markdown document (.qmd) before it is officially rendered as an HTML output.</span>
 <span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="fu"># Create a Markdown Document</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Create a Markdown Document</span></span>
 <span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>File <span class="sc">\&gt;</span> New File <span class="sc">\&gt;</span> Quarto Document</span>
 <span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Complete Title and Author Name, Create</span>
 <span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>File <span class="sc">\&gt;</span> Save As <span class="sc">\&gt;</span> name-it-now.qmd</span>
 <span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Check the file shows up in your files in the bottom right window as .qmd file</span>
 <span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto Document File Names</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quarto Document File Names</span></span>
 <span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>For individual lab and report quarto reports:</span>
 <span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a></span>
@@ -1165,7 +1158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## Clearing Environment in Posit Cloud</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="fu">### Clearing Environment in Posit Cloud</span></span>
 <span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>Your previously created objects (e.g., <span class="in">`alldata`</span>, <span class="in">`select_data`</span>, <span class="in">`VARIABLE1`</span>) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your <span class="in">`.qmd`</span> document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors. </span>
 <span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
@@ -1179,12 +1172,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>rename this specific posit cloud project from #1: Vivian -<span class="sc">\&gt;</span> #1: Vivian &amp; Team (to notify me where to look for your team's MMR work)</span>
 <span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>create a <span class="in">`team_RD.qmd`</span> file - create a <span class="in">`team_final.qmd`</span> file</span>
 <span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="fu"># YAML</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## YAML</span></span>
 <span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output (HTML vs. PDF).</span>
 <span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Requirement</span></span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### Requirement</span></span>
 <span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>Use this YAML format at the top of ALL Quarto markdown document files (<span class="in">`.qmd`</span>).</span>
 <span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a></span>
@@ -1209,7 +1202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>For more information, see <span class="co">[</span><span class="ot">YAML</span><span class="co">](https://quarto.org/docs/reference/formats/html.html)</span>.</span>
 <span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markdown</span></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="fu">## Markdown</span></span>
 <span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>You will write in the English language with <span class="co">[</span><span class="ot">markdown</span><span class="co">](https://quarto.org/docs/authoring/markdown-basics.html)</span> language to format your quarto report.</span>
 <span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a></span>
@@ -1222,7 +1215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**bold**</span>
 <span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>***bold italics***</span>
 <span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verbatim Code</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="fu">### Verbatim Code</span></span>
 <span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>You can use a backtick to denote code or the name of a variable by placing a word within <span class="sc">\`\`</span>. For example, if I put EFFICACY between <span class="sc">\`\`</span> then it returns <span class="in">`EFFICACY`</span> . This will be important for naming variables in your report.</span>
 <span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
@@ -1233,11 +1226,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code Chunks</span></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code Chunks</span></span>
 <span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>A traditional R script (<span class="in">`.R`</span>) involves code throughout the entire script. A Quarto Markdown Document (<span class="in">`.qmd`</span>) integrates the R programming language with markdown language into a single document that can include a mix of code and written content. We use <span class="in">`report.qmd`</span> and other <span class="in">`.qmd`</span> files to write a reproducible manuscript using written text within embedded code chunks.</span>
 <span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example Code Chunk</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example Code Chunk</span></span>
 <span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a>Below is an example from the @ggplot2.qmd chapter of an informative <span class="in">`label`</span> for your code chunk and a very detailed figure caption ( <span class="in">`fig-cap`</span>). Also, notice that all code chunk options start with <span class="in">`#|`</span> and use a <span class="in">`:`</span>.</span>
 <span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
@@ -1250,9 +1243,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
 <span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Template Code Chunk</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### Template Code Chunk</span></span>
 <span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### Label for All Code Chunks</span></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Label for All Code Chunks</span></span>
 <span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
 <span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## Requirement</span></span>
@@ -1274,7 +1267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a><span class="fu">### Figure Caption (Fig-Cap) for Plot Code Chunks</span></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Figure Caption (Fig-Cap) for Plot Code Chunks</span></span>
 <span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
 <span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Requirement</span></span>
@@ -1289,7 +1282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="fu">### Provide Sources for ALL Code Chunks</span></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Provide Sources for ALL Code Chunks</span></span>
 <span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
 <span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## Requirement</span></span>
@@ -1310,7 +1303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>Notice that the format is different. The <span class="in">`#source:`</span> NOT be in the prior <span class="in">`#|`</span> format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.</span>
 <span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### Provide Explanation for ALL Code Chunks</span></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Provide Explanation for ALL Code Chunks</span></span>
 <span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
 <span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a><span class="fu">## Requirement</span></span>
@@ -1334,7 +1327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a><span class="fu">### Code Chunk Options</span></span>
+<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Code Chunk Options</span></span>
 <span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a>For more information on code chunks, see <span class="co">[</span><span class="ot">code chunk options</span><span class="co">](https://r4ds.hadley.nz/quarto.html#chunk-options)</span>.</span>
 <span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a></span>

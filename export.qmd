@@ -15,7 +15,7 @@ execute:
   message: false
 ---
 
-# Exporting Survey Data
+## Exporting Survey Data
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
 
@@ -27,7 +27,7 @@ execute:
 
     -   [ ] Follow the instructions: <https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre>
 
-# Exporting Survey Data
+## Exporting Survey Data
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
     -   [ ] Under Active surveys, click on your survey

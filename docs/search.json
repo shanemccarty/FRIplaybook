@@ -58,7 +58,18 @@
     "href": "example.html",
     "title": "2  Example Reports",
     "section": "",
-    "text": "Replication or reproducibility crisis\n\ngrowing concern about the inability to reproduce published scientific research findings\n\n\nA Nature paper by Baker (2016) states: “More than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments.”\nThe failure to reproduce research is a function of systems pressure (defunding of public higher education), intentional actions (fraudulent scientific practices), unintentional decision-making (e.g., human error when clicking software, poor note-taking), and scientific training (e.g., methodology sections without clear protocols and details). Reproducible research is both an intentional practice and the outcome of scientific training emphasizing a specific workflow.\nA primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.\n\n3 Reproducible Reports\nYou and your team will produce a reproducible Quarto Markdown report (.qmd) for your individual report and team manuscript. Specific instructions are provided in the next chapter.\nQuarto provided two examples of a reproducible report and manuscript:\n\nStandard Quarto Report Example\nStandard Quarto Manuscript Example\n\nThe FRI Public Health Lab has produced Quarto manuscripts from active research projects:\n\nHealth Avoiders Report\nZero Sum Full Report\nZero Sum Mini Report",
+    "text": "2.1 Reproducible Reports\nA Nature paper by Baker (2016) states: “More than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments.”\nThe failure to reproduce research is a function of systems pressure (defunding of public higher education), intentional actions (fraudulent scientific practices), unintentional decision-making (e.g., human error when clicking software, poor note-taking), and scientific training (e.g., methodology sections without clear protocols and details). Reproducible research is both an intentional practice and the outcome of scientific training emphasizing a specific workflow.\nA primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.\nYou and your team will produce a reproducible Quarto Markdown report (.qmd) for your individual report and team manuscript. Specific instructions are provided in the next chapter.\nQuarto provided two examples of a reproducible report and manuscript:\nThe FRI Public Health Lab has produced Quarto manuscripts from active research projects:",
+    "crumbs": [
+      "Introduction",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible Reports</span>"
+    ]
+  },
+  {
+    "objectID": "example.html#reproducible-reports",
+    "href": "example.html#reproducible-reports",
+    "title": "2  Example Reports",
+    "section": "",
+    "text": "Standard Quarto Report Example\nStandard Quarto Manuscript Example\n\n\n\nHealth Avoiders Report\nZero Sum Full Report\nZero Sum Mini Report",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible Reports</span>"
@@ -69,62 +80,51 @@
     "href": "codechunks.html",
     "title": "3  Start Quarto Markdown Document",
     "section": "",
-    "text": "4 Create a Markdown Document\nIn your Posit Cloud window browser, you should see the source and visual editor options in the top left corner of your screen. You can toggle back and forth between the two options.",
+    "text": "3.1 Create a Markdown Document\nIn your Posit Cloud window browser, you should see the source and visual editor options in the top left corner of your screen. You can toggle back and forth between the two options.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
     ]
   },
   {
-    "objectID": "codechunks.html#quarto-document-file-names",
-    "href": "codechunks.html#quarto-document-file-names",
+    "objectID": "codechunks.html#create-a-markdown-document",
+    "href": "codechunks.html#create-a-markdown-document",
     "title": "3  Start Quarto Markdown Document",
-    "section": "4.1 Quarto Document File Names",
-    "text": "4.1 Quarto Document File Names\nFor individual lab and report quarto reports:\n\nYour individual lab was renamed to lab.qmd\nYour results and discussion report should be named: RDreport.qmd\nAfter submitting your RDreport.qmd, you should go to the files tab, check the box next to RDreport.qmd and then click the gear icon (More) &gt; Copy &gt; name it name_report.qmd\nYour final report should be named: name_report.qmd\n\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou must name your quarto markdown files (.qmd) correctly.",
+    "section": "",
+    "text": "File &gt; New File &gt; Quarto Document\nComplete Title and Author Name, Create\nFile &gt; Save As &gt; name-it-now.qmd\nCheck the file shows up in your files in the bottom right window as .qmd file\n\n\n3.1.1 Quarto Document File Names\nFor individual lab and report quarto reports:\n\nYour individual lab was renamed to lab.qmd\nYour results and discussion report should be named: RDreport.qmd\nAfter submitting your RDreport.qmd, you should go to the files tab, check the box next to RDreport.qmd and then click the gear icon (More) &gt; Copy &gt; name it name_report.qmd\nYour final report should be named: name_report.qmd\n\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou must name your quarto markdown files (.qmd) correctly.\n\n\n\n\n3.1.2 Clearing Environment in Posit Cloud\nYour previously created objects (e.g., alldata, select_data, VARIABLE1) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your .qmd document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.\n\n# Remove all objects from the global environment\nrm(list = ls())\n\nFor your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -&gt; #1: Vivian & Team (to notify me where to look for your team’s MMR work) - create a team_RD.qmd file - create a team_final.qmd file",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
     ]
   },
   {
-    "objectID": "codechunks.html#clearing-environment-in-posit-cloud",
-    "href": "codechunks.html#clearing-environment-in-posit-cloud",
+    "objectID": "codechunks.html#yaml",
+    "href": "codechunks.html#yaml",
     "title": "3  Start Quarto Markdown Document",
-    "section": "4.2 Clearing Environment in Posit Cloud",
-    "text": "4.2 Clearing Environment in Posit Cloud\nYour previously created objects (e.g., alldata, select_data, VARIABLE1) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your .qmd document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.\n\n# Remove all objects from the global environment\nrm(list = ls())\n\nFor your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -&gt; #1: Vivian & Team (to notify me where to look for your team’s MMR work) - create a team_RD.qmd file - create a team_final.qmd file",
+    "section": "3.2 YAML",
+    "text": "3.2 YAML\nYAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output (HTML vs. PDF).\n\n\n\n\n\n\nImportantRequirement\n\n\n\nUse this YAML format at the top of ALL Quarto markdown document files (.qmd).\n\n\n\n---\n\ntitle: \"name your final report here\"\nauthor: \"put your full name here\"\ndate: \"3/22/2023\"\nabstract: |\n    TBD goes here\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n    \n---\n\nFor more information, see YAML.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
     ]
   },
   {
-    "objectID": "codechunks.html#verbatim-code",
-    "href": "codechunks.html#verbatim-code",
+    "objectID": "codechunks.html#markdown",
+    "href": "codechunks.html#markdown",
     "title": "3  Start Quarto Markdown Document",
-    "section": "6.1 Verbatim Code",
-    "text": "6.1 Verbatim Code\nYou can use a backtick to denote code or the name of a variable by placing a word within ``. For example, if I put EFFICACY between `` then it returns EFFICACY . This will be important for naming variables in your report.\n\n\n\n\n\n\nImportantRequirement\n\n\n\nUse ` ` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.",
+    "section": "3.3 Markdown",
+    "text": "3.3 Markdown\nYou will write in the English language with markdown language to format your quarto report.\n\nThis is a language called markdown. It is very simple. You can use\n*italics*, **bold**, ***bold italics*** to produce:\n\n\nitalics\nbold\nbold italics\n\n\n3.3.1 Verbatim Code\nYou can use a backtick to denote code or the name of a variable by placing a word within ``. For example, if I put EFFICACY between `` then it returns EFFICACY . This will be important for naming variables in your report.\n\n\n\n\n\n\nImportantRequirement\n\n\n\nUse ` ` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
     ]
   },
   {
-    "objectID": "codechunks.html#example-code-chunk",
-    "href": "codechunks.html#example-code-chunk",
+    "objectID": "codechunks.html#code-chunks",
+    "href": "codechunks.html#code-chunks",
     "title": "3  Start Quarto Markdown Document",
-    "section": "7.1 Example Code Chunk",
-    "text": "7.1 Example Code Chunk\nBelow is an example from the @ggplot2.qmd chapter of an informative label for your code chunk and a very detailed figure caption ( fig-cap). Also, notice that all code chunk options start with #| and use a :.\nFor more examples, see @ggplot2.qmd.\n\n```{r}\n#| label: scatterplot-BMI-insurance\n#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables\n#| eval: false\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)\n#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges\n```",
-    "crumbs": [
-      "Introduction",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
-    ]
-  },
-  {
-    "objectID": "codechunks.html#template-code-chunk",
-    "href": "codechunks.html#template-code-chunk",
-    "title": "3  Start Quarto Markdown Document",
-    "section": "7.2 Template Code Chunk",
-    "text": "7.2 Template Code Chunk\n\n7.2.1 Label for All Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nEvery code chunk must have a #| label: at the start of the chunk.\n\n\n```{r}\n#| label: this is a label that you will revise\n\n```\nYour #| label: should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.\n```{r}\n#| label: import-data-xlsx\n\n```\n\n\n7.2.2 Figure Caption (Fig-Cap) for Plot Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nEvery plot should include a detailed figure caption using #| fig-cap:\n\n\n```{r}\n#| label: you-need-to-revise-this\n#| fig-cap: you need to revise this with detailed figure caption\n\n```\n\n\n7.2.3 Provide Sources for ALL Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nAt the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).\n\n\n```{r}\n#| label: you-need-to-revise-this\n#| fig-cap: you need to revise this with detailed figure caption\n\n#source example 1: The FRI Playbook (McCarty, 2025)   \n#source example 2: Write Functions (Hei, 2025)   \n#source example 3: Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html\n\n```\nNotice that the format is different. The #source: NOT be in the prior #| format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.\n\n\n7.2.4 Provide Explanation for ALL Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou will explain the code chunk in your own words using #explanation: at the bottom of your code chunk.\n\n\n\n```{r}\n#| label: scatterplot-BMI-insurance\n#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables\n#| eval: false\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)\n#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges\n```\n\n\n\n7.2.5 Code Chunk Options\nFor more information on code chunks, see code chunk options.\n\n```{r}\n#| label: example-with-options\n#| eval: true          # Whether to execute the code\n#| echo: fenced        # for teaching -- this shows the code chunk options to you\n#| output: true        # Whether to display output\n#| warning: false      # Hide warnings\n#| message: false      # Hide messages\n#| error: false        # Hide errors\n#| fig-cap: \"Caption\"  # Figure caption\n#| fig-width: 8        # Figure width in inches\n#| fig-height: 6       # Figure height in inches\n\n# Your code here below these code chunk options\n```",
+    "section": "3.4 Code Chunks",
+    "text": "3.4 Code Chunks\nA traditional R script (.R) involves code throughout the entire script. A Quarto Markdown Document (.qmd) integrates the R programming language with markdown language into a single document that can include a mix of code and written content. We use report.qmd and other .qmd files to write a reproducible manuscript using written text within embedded code chunks.\n\n3.4.1 Example Code Chunk\nBelow is an example from the @ggplot2.qmd chapter of an informative label for your code chunk and a very detailed figure caption ( fig-cap). Also, notice that all code chunk options start with #| and use a :.\nFor more examples, see @ggplot2.qmd.\n\n```{r}\n#| label: scatterplot-BMI-insurance\n#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables\n#| eval: false\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)\n#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges\n```\n\n\n\n3.4.2 Template Code Chunk\n\nLabel for All Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nEvery code chunk must have a #| label: at the start of the chunk.\n\n\n```{r}\n#| label: this is a label that you will revise\n\n```\nYour #| label: should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.\n```{r}\n#| label: import-data-xlsx\n\n```\n\n\nFigure Caption (Fig-Cap) for Plot Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nEvery plot should include a detailed figure caption using #| fig-cap:\n\n\n```{r}\n#| label: you-need-to-revise-this\n#| fig-cap: you need to revise this with detailed figure caption\n\n```\n\n\nProvide Sources for ALL Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nAt the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).\n\n\n```{r}\n#| label: you-need-to-revise-this\n#| fig-cap: you need to revise this with detailed figure caption\n\n#source example 1: The FRI Playbook (McCarty, 2025)   \n#source example 2: Write Functions (Hei, 2025)   \n#source example 3: Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html\n\n```\nNotice that the format is different. The #source: NOT be in the prior #| format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.\n\n\nProvide Explanation for ALL Code Chunks\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou will explain the code chunk in your own words using #explanation: at the bottom of your code chunk.\n\n\n\n```{r}\n#| label: scatterplot-BMI-insurance\n#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables\n#| eval: false\n\nggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)\n#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges\n```\n\n\n\nCode Chunk Options\nFor more information on code chunks, see code chunk options.\n\n```{r}\n#| label: example-with-options\n#| eval: true          # Whether to execute the code\n#| echo: fenced        # for teaching -- this shows the code chunk options to you\n#| output: true        # Whether to display output\n#| warning: false      # Hide warnings\n#| message: false      # Hide messages\n#| error: false        # Hide errors\n#| fig-cap: \"Caption\"  # Figure caption\n#| fig-width: 8        # Figure width in inches\n#| fig-height: 6       # Figure height in inches\n\n# Your code here below these code chunk options\n```",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start Quarto Document</span>"
@@ -135,7 +135,29 @@
     "href": "export.html",
     "title": "4  Exporting Survey Data",
     "section": "",
-    "text": "5 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nRecode variables in Qualtrics\n\nVisit “Recode Values” section of the Qualtrics guide\nFollow the instructions: https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre\n\n\n\n\n6 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use {r} Sys.Date() in the correct format and update the file names: 10.15.2025.data.team1.csv and 10.15.2025.data.team1.xlsx",
+    "text": "4.1 Exporting Survey Data",
+    "crumbs": [
+      "Importing Data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting from Qualtrics</span>"
+    ]
+  },
+  {
+    "objectID": "export.html#exporting-survey-data",
+    "href": "export.html#exporting-survey-data",
+    "title": "4  Exporting Survey Data",
+    "section": "",
+    "text": "Log into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nRecode variables in Qualtrics\n\nVisit “Recode Values” section of the Qualtrics guide\nFollow the instructions: https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre",
+    "crumbs": [
+      "Importing Data",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting from Qualtrics</span>"
+    ]
+  },
+  {
+    "objectID": "export.html#exporting-survey-data-1",
+    "href": "export.html#exporting-survey-data-1",
+    "title": "4  Exporting Survey Data",
+    "section": "4.2 Exporting Survey Data",
+    "text": "4.2 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use {r} Sys.Date() in the correct format and update the file names: 10.15.2025.data.team1.csv and 10.15.2025.data.team1.xlsx",
     "crumbs": [
       "Importing Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting from Qualtrics</span>"
@@ -164,88 +186,22 @@
     ]
   },
   {
-    "objectID": "import-simple.html#file-formats",
-    "href": "import-simple.html#file-formats",
+    "objectID": "import-simple.html#datasets",
+    "href": "import-simple.html#datasets",
     "title": "5  Importing Data Simply",
-    "section": "6.1 File Formats",
-    "text": "6.1 File Formats\n\nNational Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package NHANES\na .csv file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course 03.15.2025.prolificgealthbeliefs.csv\na .xlsx file format of the class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course 03.15.2025.prolifichealthbeliefs.xlsx\na .sav file format from SPSS of the FRI team project on oral health 10.31.2024.oralhealth.sav.",
+    "section": "5.2 Datasets",
+    "text": "5.2 Datasets\nYou will learn how to import different datasets:\n\ndatasets in R packages NHANES and YRBS\nclass dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course\nteam dataset “oralhealth”\n\n\n5.2.1 File Formats\n\nNational Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package NHANES\na .csv file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course 03.15.2025.prolificgealthbeliefs.csv\na .xlsx file format of the class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course 03.15.2025.prolifichealthbeliefs.xlsx\na .sav file format from SPSS of the FRI team project on oral health 10.31.2024.oralhealth.sav.",
     "crumbs": [
       "Importing Data",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
     ]
   },
   {
-    "objectID": "import-simple.html#first-setup-the-library",
-    "href": "import-simple.html#first-setup-the-library",
+    "objectID": "import-simple.html#import-examples",
+    "href": "import-simple.html#import-examples",
     "title": "5  Importing Data Simply",
-    "section": "7.1 First Setup the library:",
-    "text": "7.1 First Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()\nlibrary(NHANES)",
-    "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
-    ]
-  },
-  {
-    "objectID": "import-simple.html#import-from-nhanes-package",
-    "href": "import-simple.html#import-from-nhanes-package",
-    "title": "5  Importing Data Simply",
-    "section": "7.2 Import from NHANES package",
-    "text": "7.2 Import from NHANES package\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
-    ]
-  },
-  {
-    "objectID": "import-simple.html#data-structure",
-    "href": "import-simple.html#data-structure",
-    "title": "5  Importing Data Simply",
-    "section": "7.3 Data Structure",
-    "text": "7.3 Data Structure\nNow, you will view the structure of the NHANES data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
-    ]
-  },
-  {
-    "objectID": "import-simple.html#data-header",
-    "href": "import-simple.html#data-header",
-    "title": "5  Importing Data Simply",
-    "section": "7.4 Data Header",
-    "text": "7.4 Data Header\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
-    ]
-  },
-  {
-    "objectID": "import-simple.html#variables-aka-column-names",
-    "href": "import-simple.html#variables-aka-column-names",
-    "title": "5  Importing Data Simply",
-    "section": "7.5 Variables (aka Column) Names",
-    "text": "7.5 Variables (aka Column) Names\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
-    "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
-    ]
-  },
-  {
-    "objectID": "import-simple.html#view-data",
-    "href": "import-simple.html#view-data",
-    "title": "5  Importing Data Simply",
-    "section": "7.6 View Data",
-    "text": "7.6 View Data\nIn Posit Cloud, you can use View() in your CONSOLE to view the dataframe.\n```{r}\nlibrary(NHANES)\n# View data\nView(NHANESraw)\n```",
-    "crumbs": [
-      "Importing Data",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
-    ]
-  },
-  {
-    "objectID": "import-simple.html#import-from-excel-.xlsx-file",
-    "href": "import-simple.html#import-from-excel-.xlsx-file",
-    "title": "5  Importing Data Simply",
-    "section": "7.7 Import from Excel .xlsx file",
-    "text": "7.7 Import from Excel .xlsx file\nExcel files (.xlsx or .xls) are common in public health. Use the readxl package to import them.\n\nlibrary(readxl)\n# Import Excel file\nhealthbeliefs_xlsx &lt;- read_excel(\"data/03.15.2025.prolifichealthbeliefs.xlsx\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n7.7.1 Excel: Import Data to Assign Missing Data to NA\n\n\n\n\n\n\nWarning\n\n\n\nThis page is under construction. It will include important missing data information.",
+    "section": "5.3 Import Examples",
+    "text": "5.3 Import Examples\n\n5.3.1 Import from NHANES package\n\nFirst Setup the library:\n\nlibrary(tidyverse)\nlibrary(psych)\nlibrary(knitr)\nlibrary(tibble)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(scales)     # for number formatting like comma()\nlibrary(english)    # to convert numbers to words\nlibrary(stringr)    # for text functions like str_c()\nlibrary(NHANES)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nData Structure\nNow, you will view the structure of the NHANES data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nData Header\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nVariables (aka Column) Names\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nView Data\nIn Posit Cloud, you can use View() in your CONSOLE to view the dataframe.\n```{r}\nlibrary(NHANES)\n# View data\nView(NHANESraw)\n```\n\n\n\n5.3.2 Import from Excel .xlsx file\nExcel files (.xlsx or .xls) are common in public health. Use the readxl package to import them.\n\nlibrary(readxl)\n# Import Excel file\nhealthbeliefs_xlsx &lt;- read_excel(\"data/03.15.2025.prolifichealthbeliefs.xlsx\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nExcel: Import Data to Assign Missing Data to NA\n\n\n\n\n\n\nWarning\n\n\n\nThis page is under construction. It will include important missing data information.",
     "crumbs": [
       "Importing Data",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importing Data Simply</span>"
@@ -344,7 +300,7 @@
     "href": "readme.html",
     "title": "8  How to Read Me",
     "section": "",
-    "text": "9 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
+    "text": "8.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
       "Report Transparently:",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Read Me File</span>"

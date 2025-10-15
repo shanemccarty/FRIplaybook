@@ -14,7 +14,7 @@ execute:
   message: false
 ---
 
-# Read Me
+## Read Me
 
 A `readme.qmd` file instructs someone else to *read me*. It provides basic information and contextual information to a colleague who wants to replicate or check your work.
 
