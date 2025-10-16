@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "The Quantitative Playbook for Public Health Research in R",
     "section": "",
-    "text": "Preface\nStudents in the FRI Public Health research stream at Binghamton University explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of “plays” (R code) that students in the quantitative data analysis track can use for their team-based research projects.\nThe most successful sports teams rely on well-designed plays to navigate complex game situations. The FRI Public Health research stream uses strategic data analysis “plays” to tackle the multifaceted challenges of promoting wellbeing, preventing disease, and protecting health. Our research stream explores the intricate biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like MUSE S and Fitbits, psychological insights via survey questionnaires and interviews, and behavioral patterns through online experiments. Like a coach calling the right play at the crucial moment, this playbook equips you and your research teams with proven strategies for importing, tidying, transforming, visualizing, modeling, and communicating the mixed-methods data that helps us connect the dots between social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. Each “play” in this guide has been field-tested by research teams who have successfully used quantitative and qualitative approaches to answer pressing questions about physical and mental health. Whether you’re facing a complex dataset for the first time or looking to refine your analytical strategy, this playbook offers guidance for you to turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.\nTo learn more about the FRI Public Health stream, visit us at: https://fripublichealth.quarto.pub.",
+    "text": "Preface\nStudents in the FRI Public Health research stream at Binghamton University explore a variety of biopsychosocial factors affecting human physical and mental health. This playbook includes a variety of “plays” (R code) that students in the quantitative data analysis track can use for their team-based research projects.\nThe most successful sports teams rely on well-designed plays to navigate complex game situations. The FRI Public Health research stream uses strategic data analysis “plays” to tackle the multifaceted challenges of promoting wellbeing, preventing disease, and protecting health. Our research stream explores the intricate biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like MUSE S and Fitbits, psychological insights via survey questionnaires and interviews, and behavioral patterns through online experiments. Like a coach calling the right play at the crucial moment, this playbook equips you and your research teams with proven strategies for importing, tidying, transforming, visualizing, modeling, and communicating quantitative data that helps us connect the dots between social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. Each “play” in this guide has been field-tested by research teams who have successfully used quantitative and qualitative approaches to answer pressing questions about physical and mental health. Whether you’re facing a complex dataset for the first time or looking to refine your analytical strategy, this playbook offers guidance for you to turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.\nTo learn more about the FRI Public Health stream, visit us at: https://fripublichealth.quarto.pub.",
     "crumbs": [
       "Preface"
     ]
@@ -14,7 +14,7 @@
     "href": "intro.html",
     "title": "1  The Data Analysis Workflow",
     "section": "",
-    "text": "1.1 What Makes This Guide Different?\nThis playbook follows the data science workflow in R for Data Science (2e) (Hadley, 2023) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.\nBy the end of this guide, you will be able to:\nEach section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.",
+    "text": "1.1 What Makes This Guide Different?\nThis playbook follows the data science workflow in R for Data Science (2e) (Hadley, 2023) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.\nBy the end of this guide, you will be able to:\nEach section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
@@ -47,7 +47,7 @@
     "href": "intro.html#how-to-cite-this-guide",
     "title": "1  The Data Analysis Workflow",
     "section": "1.3 How to Cite This Guide",
-    "text": "1.3 How to Cite This Guide\nYou can cite this guide as McCarty, S. (Ed.). (2025). The Quantitative Playbook for Public Health Research in R. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data with ggplot2: Creating publication-ready visualizations. The Quantitative Playbook for Public Health Research in R.\n\n1.3.1 Editor and Chapter Co-Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nAllison Anemone\nMara Estreich\nZihan Hei\nJeff John\nGavin Rualo\nErica Sava\nAndrew Silhavy\nZach Spiegel\n\n\nAfter generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.",
+    "text": "1.3 How to Cite This Guide\nYou can cite this guide as McCarty, S. (Ed.). (2025). The Quantitative Playbook for Public Health Research in R. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data with ggplot2: Creating publication-ready visualizations. The Quantitative Playbook for Public Health Research in R.\n\n1.3.1 Editor and Chapter Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nZihan Hei\nGavin Rualo\nAndrew Silhavy\nAllison Anemone\nMara Estreich\nJeff John\nErica Sava\nZach Spiegel\n\n\nAfter generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
@@ -56,7 +56,7 @@
   {
     "objectID": "example.html",
     "href": "example.html",
-    "title": "2  Example Reports",
+    "title": "2  Reproducible Reports",
     "section": "",
     "text": "2.1 Reproducible Reports\nA Nature paper by Baker (2016) states: “More than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments.”\nThe failure to reproduce research is a function of systems pressure (defunding of public higher education), intentional actions (fraudulent scientific practices), unintentional decision-making (e.g., human error when clicking software, poor note-taking), and scientific training (e.g., methodology sections without clear protocols and details). Reproducible research is both an intentional practice and the outcome of scientific training emphasizing a specific workflow.\nA primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.\nYou and your team will produce a reproducible Quarto Markdown report (.qmd) for your individual report and team manuscript. Specific instructions are provided in the next chapter.\nQuarto provided two examples of a reproducible report and manuscript:\nThe FRI Public Health Lab has produced Quarto manuscripts from active research projects:",
     "crumbs": [
@@ -67,9 +67,9 @@
   {
     "objectID": "example.html#reproducible-reports",
     "href": "example.html#reproducible-reports",
-    "title": "2  Example Reports",
+    "title": "2  Reproducible Reports",
     "section": "",
-    "text": "Standard Quarto Report Example\nStandard Quarto Manuscript Example\n\n\n\nHealth Avoiders Report\nZero Sum Full Report\nZero Sum Mini Report",
+    "text": "Standard Quarto Report Example\nStandard Quarto Manuscript Example\n\n\n\nHealth Avoiders Manuscript\nZero Sum Full Manuscript\nZero Sum Mini Manuscript",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Reproducible Reports</span>"
@@ -91,7 +91,7 @@
     "href": "codechunks.html#create-a-markdown-document",
     "title": "3  Quarto Markdown Document",
     "section": "",
-    "text": "File &gt; New File &gt; Quarto Document\nComplete Title and Author Name, Create\nFile &gt; Save As &gt; name-it-now.qmd\nCheck the file shows up in your files in the bottom right window as .qmd file\n\n\n3.1.1 Quarto Document File Names\nFor individual lab and report quarto reports:\n\nYour individual lab was renamed to lab.qmd\nYour results and discussion report should be named: RDreport.qmd\nAfter submitting your RDreport.qmd, you should go to the files tab, check the box next to RDreport.qmd and then click the gear icon (More) &gt; Copy &gt; name it name_report.qmd\nYour final report should be named: name_report.qmd\n\n\n\n\n\n\n\nImportantRequirement\n\n\n\nYou must name your quarto markdown files (.qmd) correctly.\n\n\n\n\n3.1.2 Clearing Environment in Posit Cloud\nYour previously created objects (e.g., alldata, select_data, VARIABLE1) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your .qmd document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.\n\n# Remove all objects from the global environment\nrm(list = ls())\n\nFor your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -&gt; #1: Vivian & Team (to notify me where to look for your team’s MMR work) - create a team_RD.qmd file - create a team_final.qmd file",
+    "text": "File &gt; New File &gt; Quarto Document\nComplete Title and Author Name, Create\nFile &gt; Save As &gt; name-it-now.qmd\nCheck the file shows up in your files in the bottom right window as .qmd file\n\n\n3.1.1 Quarto Document File Names\nFor individual lab and report quarto reports:\n\nYour individual lab was renamed to lab.qmd\nYour results and discussion report should be named: RDreport.qmd\nAfter submitting your RDreport.qmd, you should go to the files tab, check the box next to RDreport.qmd and then click the gear icon (More) &gt; Copy &gt; name it yourlastname_report.qmd\nYour final report should be named: yourlastname_report.qmd\n\n\n\n\n\n\n\nImportantRequirement\n\n\n\nPlease name your quarto markdown files (.qmd) correctly.\n\n\n\n\n3.1.2 Clearing Environment in Posit Cloud\nYour previously created objects (e.g., alldata, select_data, VARIABLE1) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your .qmd document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.\n\n# Remove all objects from the global environment\nrm(list = ls())\n\nFor your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -&gt; #1: Vivian & Team (to notify me where to look for your team’s MMR work) - create a team_RD.qmd file - create a team_final.qmd file",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Start a Document</span>"
@@ -157,7 +157,7 @@
     "href": "export.html#exporting-survey-data-1",
     "title": "4  Exporting Survey Data from Qualtrics",
     "section": "4.2 Exporting Survey Data",
-    "text": "4.2 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use {r} Sys.Date() in the correct format and update the file names: 10.15.2025.data.team1.csv and 10.15.2025.data.team1.xlsx",
+    "text": "4.2 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use 10.15.2025 in the correct format and update the file names: 10.15.2025.data.team1.csv and {r} current_date`.data.team1.xlsx",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
@@ -285,11 +285,44 @@
     ]
   },
   {
-    "objectID": "tidy.html",
-    "href": "tidy.html",
-    "title": "7  Tidying your data with tidyr",
+    "objectID": "tidyr.html",
+    "href": "tidyr.html",
+    "title": "7  Tidying your data",
     "section": "",
-    "text": "Tip📖 Learning Resources\n\n\n\n\nR for Data Science: Data Tidying\nDatacamp Course: dplyr\nCheat Sheet: dplyr\nPosit Interactive Page: dplyr\n\n\n\nMore coming soon!",
+    "text": "7.1",
+    "crumbs": [
+      "Tidy Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "tidyr.html#data-formats",
+    "href": "tidyr.html#data-formats",
+    "title": "7  Tidying your data",
+    "section": "7.2 Data Formats",
+    "text": "7.2 Data Formats\n\n7.2.1 Long Form\nImagine you collected data on WELLBEING and SLEEP at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is PASSWORD. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.\n\nExample of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.\n\n\nPASSWORD\nDAY\nWELLBEING\nSLEEP\n\n\n\n\nabc123\n1\n3.2\n42\n\n\ngobills7\n1\n7.8\n83\n\n\nabc123\n7\n1.2\n17\n\n\ngobills7\n7\n5.8\n68\n\n\n\n\n\n7.2.2 Wide Form\nUsing the tidyr package, long form data can be converted to wide form using the DAY variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the PASSWORD.\n\nExample of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with DAY dropped from the columns because there is no longer a DAY.\n\n\n\n\n\n\n\n\n\nPASSWORD\nWELLBEING_T1\nWELLBEING_T2\nSLEEP_T1\nSLEEP_T2\n\n\n\n\nabc123\n3.2\n1.2\n42\n17\n\n\ngobills7\n7.8\n5.8\n83\n18",
+    "crumbs": [
+      "Tidy Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "tidyr.html#teams",
+    "href": "tidyr.html#teams",
+    "title": "7  Tidying your data",
+    "section": "7.3 Teams",
+    "text": "7.3 Teams\nSome teams will need to use tidyr to convert their data from long form into wide form.\n\nTeam 2\n\nDay 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.\nDaily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.\n\nTeam 4\n\nSurvey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).\n\n\nTeam 1, 3, and 5 will export data as wide form and will not use tidyr.",
+    "crumbs": [
+      "Tidy Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
+    ]
+  },
+  {
+    "objectID": "tidyr.html#resources",
+    "href": "tidyr.html#resources",
+    "title": "7  Tidying your data",
+    "section": "7.4 Resources",
+    "text": "7.4 Resources\nAt present, the best resource is: Reshaping data between long and wide formats (Dai, 2020)\n\n\n\n\n\n\nWarning\n\n\n\nThis page is under construction. It will include important information soon.",
     "crumbs": [
       "Tidy Data",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
@@ -390,150 +423,106 @@
     "section": "",
     "text": "9.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
     ]
   },
   {
     "objectID": "functions.html",
     "href": "functions.html",
-    "title": "10  Write Functions, Save Time",
+    "title": "10  Use Functions to Write Text",
     "section": "",
-    "text": "10.1 Purpose\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
+    "text": "10.1 Load Library\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
     "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
-    "objectID": "functions.html#first-setup-the-library",
-    "href": "functions.html#first-setup-the-library",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.2 First Setup the library:",
-    "text": "10.2 First Setup the library:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "functions.html#load-library",
+    "href": "functions.html#load-library",
+    "title": "10  Use Functions to Write Text",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#dataset-example-survey-data",
     "href": "functions.html#dataset-example-survey-data",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.3 Dataset: Example Survey Data",
-    "text": "10.3 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.2 Dataset: Example Survey Data",
+    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
-    "href": "functions.html#example-1-reporting-sample-size-in-a-manuscript-using-inline-r",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)",
-    "text": "10.4 Example 1: Reporting Sample Size in a Manuscript (using inline R)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "functions.html#example-1-reporting-sample-size-using-inline-r-code",
+    "href": "functions.html#example-1-reporting-sample-size-using-inline-r-code",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.3 Example 1: Reporting Sample Size (using inline R code)",
+    "text": "10.3 Example 1: Reporting Sample Size (using inline R code)\n\n10.3.1 create an object for total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
-    "objectID": "functions.html#in-your-manuscript-write-like-this",
-    "href": "functions.html#in-your-manuscript-write-like-this",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.5 In your manuscript, write like this:",
-    "text": "10.5 In your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
+    "objectID": "functions.html#use-inline-r-code-with-total_responses",
+    "href": "functions.html#use-inline-r-code-with-total_responses",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.4 use inline r code with total_responses",
+    "text": "10.4 use inline r code with total_responses\nIn your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
     "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-2-report-numbers-and-percentages",
-    "href": "functions.html#example-2-report-numbers-and-percentages",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.6 Example 2: Report Numbers and Percentages",
-    "text": "10.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "functions.html#example-2-report-numbers-and-percentages-using-inline-r",
+    "href": "functions.html#example-2-report-numbers-and-percentages-using-inline-r",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.5 Example 2: Report Numbers and Percentages (using inline R)",
+    "text": "10.5 Example 2: Report Numbers and Percentages (using inline R)\nYou can combine counts and percentages easily.\n\n10.5.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.5.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
     "crumbs": [
-      "Report Data:",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
-    ]
-  },
-  {
-    "objectID": "functions.html#in-your-manuscript-write-like-this-1",
-    "href": "functions.html#in-your-manuscript-write-like-this-1",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.7 In your manuscript, write like this:",
-    "text": "10.7 In your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
-    "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
     "href": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.8 Example 3: Capitalizing and Writing Numbers as Words",
-    "text": "10.8 Example 3: Capitalizing and Writing Numbers as Words\nFor more formal writing, report numbers as words:",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.6 Example 3: Capitalizing and Writing Numbers as Words",
+    "text": "10.6 Example 3: Capitalizing and Writing Numbers as Words\n\n10.6.1 report numbers as words\nIn your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
     "crumbs": [
-      "Report Data:",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
-    ]
-  },
-  {
-    "objectID": "functions.html#in-your-manuscript-write-like-this-2",
-    "href": "functions.html#in-your-manuscript-write-like-this-2",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.9 In your manuscript, write like this:",
-    "text": "10.9 In your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
-    "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
     "href": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
-    "text": "10.10 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.7 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
+    "text": "10.7 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n10.7.1 create variables\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7\n\n\n\n\n\n\n\n10.7.2 create table\nIn your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
     "crumbs": [
-      "Report Data:",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
-    ]
-  },
-  {
-    "objectID": "functions.html#in-your-manuscript-write-like-this-3",
-    "href": "functions.html#in-your-manuscript-write-like-this-3",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.11 In your manuscript, write like this:",
-    "text": "10.11 In your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
-    "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   },
   {
     "objectID": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
     "href": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
-    "text": "10.12 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "10  Use Functions to Write Text",
+    "section": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
+    "text": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n10.8.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.8.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
     "crumbs": [
-      "Report Data:",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
-    ]
-  },
-  {
-    "objectID": "functions.html#in-your-manuscript-write-like-this-4",
-    "href": "functions.html#in-your-manuscript-write-like-this-4",
-    "title": "10  Write Functions, Save Time",
-    "section": "10.13 In your manuscript, write like this:",
-    "text": "10.13 In your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
-    "crumbs": [
-      "Report Data:",
+      "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
     ]
   }

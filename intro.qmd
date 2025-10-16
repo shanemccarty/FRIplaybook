@@ -1,6 +1,6 @@
 ## The Data Analysis Workflow
 
-This playbook follows the data science workflow in R for Data Science (2e) ([Hadley, 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and produce a reproducible scientific report with R and Quarto.
+This playbook follows the data science workflow in R for Data Science (2e) ([Hadley, 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
 
 By the end of this guide, you will be able to:
 
@@ -41,25 +41,25 @@ Each section builds on previous concepts, taking you from raw data files to poli
 
 You can cite this guide as McCarty, S. (Ed.). (2025). *The Quantitative Playbook for Public Health Research in R*. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data with ggplot2: Creating publication-ready visualizations. *The Quantitative Playbook for Public Health Research in R.*
 
-### Editor and Chapter Co-Authors
+### Editor and Chapter Authors
 
 -   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)
 
 -   Chapter Authors
 
+    -   [Zihan Hei](https://zihanhei.quarto.pub)
+
+    -   Gavin Rualo
+
+    -   Andrew Silhavy
+
     -   Allison Anemone
 
     -   Mara Estreich
 
-    -   [Zihan Hei](#0)
-
     -   Jeff John
 
-    -   Gavin Rualo
-
     -   Erica Sava
-
-    -   Andrew Silhavy
 
     -   Zach Spiegel
 

@@ -18,6 +18,12 @@ execute:
   message: false
 ---
 
+```{r}
+#| include: false
+current_date <- format(Sys.Date(), "%m.%d.%Y")
+```
+
+
 ## Exporting Survey Data
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
@@ -49,4 +55,4 @@ execute:
 
 -   [ ] Upload both files to "Survey Data" folder in your Team ELN
 
--   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use `{r} Sys.Date()` in the correct format and update the file names: `10.15.2025.data.team1.csv` and `10.15.2025.data.team1.xlsx`
+-   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use `{r} current_date` in the correct format and update the file names: `{r} current_date`.data.team1.csv and {r} current_date`.data.team1.xlsx

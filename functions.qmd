@@ -1,6 +1,6 @@
 ---
-title: "Write Functions, Save Time"
-subtitle: "How to go from Text to Code"
+title: "Use Functions to Write Text"
+subtitle: "How to use inline R code instead of text"
 author: "Zihan Hei"
 abstract: |
   This chapter introduces reproducible research practices by demonstrating how to embed 
@@ -23,11 +23,9 @@ editor: visual
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
-## Purpose
-
 In reproducible research, writing *numbers* *manually* (e.g., "We surveyed 120 people.") can lead to errors if you import data later (after you have collected 140 people). Instead, use **R functions** inside **Quarto** to turn your results directly into sentences!
 
-## First Setup the library:
+## Load Library
 
 ```{webr-r}
 #| autorun: false
@@ -744,11 +742,13 @@ NA, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
     1L, 1L, 1L, 0L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 0L, 1L, 1L, 0L, 
     1L, 1L, 0L, 0L, 1L, 1L, 1L)), row.names = c(NA, 122L), class = "data.frame")
 
-# Check it's loaded
+# Check if it is loaded and see structure
 str(select_data)
 ```
 
-## Example 1: Reporting Sample Size in a Manuscript (using inline R)
+## Example 1: Reporting Sample Size (using inline R code)
+
+### create an object for `total_responses`
 
 ```{webr-r}
 #| autorun: false
@@ -761,21 +761,23 @@ total_responses <- nrow(select_data)
 total_responses
 ```
 
-## In your manuscript, write like this:
+## use inline r code with `total_responses`
 
+In your manuscript, write like this:
 ```{markdown}
 We surveyed a total of `r total_responses` participants.
 ```
 
 When you render the output, you'll get:
-
 ```{markdown}
 We surveyed a total of 122 participants.
 ```
 
-## Example 2: Report Numbers and Percentages
+## Example 2: Report Numbers and Percentages (using inline R)
 
 You can combine counts and percentages easily.
+
+### create an object for the sum of each racial identity in the sample
 
 ```{webr}
 #| autorun: false
@@ -806,7 +808,9 @@ white
 mixed_other
 ```
 
-## In your manuscript, write like this:
+### use inline r code with `total_responses`
+
+In your manuscript, write like this:
 
 ```{markdown}
 Out of `r total_responses` participants, The final sample was roughly balanced in terms of 
@@ -825,9 +829,8 @@ Out of 122 participants, The final sample was roughly balanced in terms of racia
 
 ## Example 3: Capitalizing and Writing Numbers as Words
 
-For more formal writing, report numbers as words:
-
-## In your manuscript, write like this:
+### report numbers as words
+In your manuscript, write like this:
 
 ```{markdown}
 A total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.
@@ -840,6 +843,8 @@ A total of One Hundred And Twenty-Two participants were included in the analysis
 ```
 
 ## Example 4: Interpret a table by using inline R code (Mean, SD, Range)
+
+### create variables
 
 ```{r}
 #| label: Continuous Descriptive Statistics Table
@@ -865,7 +870,9 @@ knitr::kable(desc_table_continuous,
              digits = 2)
 ```
 
-## In your manuscript, write like this:
+### create table
+
+In your manuscript, write like this:
 
 ```{markdown}
 Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. 
@@ -890,6 +897,8 @@ Participants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scal
 
 ## Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code
 
+### run analyses 
+
 ```{webr}
 #| label: Kruskal-Wallis zerosum1
 
@@ -898,7 +907,9 @@ kw.ZEROSUM_1.party
 
 ```
 
-## In your manuscript, write like this:
+### include inline R code with reporting 
+
+In your manuscript, write like this:
 
 ```{markdown}
 There was no significant difference in ZEROSUM_1 scores across political party groups, 

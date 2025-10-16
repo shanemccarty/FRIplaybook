@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Tidying your data with tidyr – The Quantitative Playbook for Public Health Research in R</title>
+<title>7&nbsp; Tidying your data – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidy.html">Tidy Data</a></li><li class="breadcrumb-item"><a href="./tidy.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyr.html">Tidy Data</a></li><li class="breadcrumb-item"><a href="./tidyr.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidy.html" class="sidebar-item-text sidebar-link active">
+  <a href="./tidyr.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></span></a>
   </div>
 </li>
@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Report Data:</span></a>
+ <span class="menu-text">Report Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -291,15 +291,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">7.1</span> </a></li>
+  <li><a href="#data-formats" id="toc-data-formats" class="nav-link" data-scroll-target="#data-formats"><span class="header-section-number">7.2</span> Data Formats</a>
+  <ul class="collapse">
+  <li><a href="#long-form" id="toc-long-form" class="nav-link" data-scroll-target="#long-form"><span class="header-section-number">7.2.1</span> Long Form</a></li>
+  <li><a href="#wide-form" id="toc-wide-form" class="nav-link" data-scroll-target="#wide-form"><span class="header-section-number">7.2.2</span> Wide Form</a></li>
+  </ul></li>
+  <li><a href="#teams" id="toc-teams" class="nav-link" data-scroll-target="#teams"><span class="header-section-number">7.3</span> Teams</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">7.4</span> Resources</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/tidyr.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidy.html">Tidy Data</a></li><li class="breadcrumb-item"><a href="./tidy.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyr.html">Tidy Data</a></li><li class="breadcrumb-item"><a href="./tidyr.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying your data with tidyr</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying your data</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">How to use tidyr</p>
 </div>
 
 
@@ -328,17 +342,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>R for Data Science</strong>: <a href="https://r4ds.hadley.nz/data-tidy.html">Data Tidying</a></li>
-<li><strong>Datacamp Course</strong>: <a href="https://www.datacamp.com/courses/reshaping-data-with-tidyr">dplyr</a></li>
-<li><strong>Cheat Sheet</strong>: <a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">dplyr</a></li>
-<li><strong>Posit Interactive Page</strong>: <a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">dplyr</a></li>
+<li><strong>Datacamp Course</strong>: <a href="https://www.datacamp.com/courses/reshaping-data-with-tidyr">tidyr</a></li>
+<li><strong>Cheat Sheet</strong>: <a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">tidyr</a></li>
+<li><strong>Posit Interactive Page</strong>: <a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">tidyr</a></li>
 </ul>
 </div>
 </div>
-<p>More coming soon!</p>
+<section id="section" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="section"><span class="header-section-number">7.1</span> </h2>
+</section>
+<section id="data-formats" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="data-formats"><span class="header-section-number">7.2</span> Data Formats</h2>
+<section id="long-form" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="long-form"><span class="header-section-number">7.2.1</span> Long Form</h3>
+<p>Imagine you collected data on <code>WELLBEING</code> and <code>SLEEP</code> at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is <code>PASSWORD</code>. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.</p>
+<table class="caption-top table">
+<caption><em>Example of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.</em></caption>
+<thead>
+<tr class="header">
+<th><code>PASSWORD</code></th>
+<th><code>DAY</code></th>
+<th><code>WELLBEING</code></th>
+<th><code>SLEEP</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>abc123</td>
+<td>1</td>
+<td>3.2</td>
+<td>42</td>
+</tr>
+<tr class="even">
+<td>gobills7</td>
+<td>1</td>
+<td>7.8</td>
+<td>83</td>
+</tr>
+<tr class="odd">
+<td>abc123</td>
+<td>7</td>
+<td>1.2</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>gobills7</td>
+<td>7</td>
+<td>5.8</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wide-form" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="wide-form"><span class="header-section-number">7.2.2</span> Wide Form</h3>
+<p>Using the <code>tidyr</code> package, long form data can be converted to wide form using the <code>DAY</code> variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the <code>PASSWORD</code>.</p>
+<table class="caption-top table">
+<caption><em>Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with <code>DAY</code></em> dropped from the columns because there is no longer a <code>DAY</code>.</caption>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><code>PASSWORD</code></th>
+<th><code>WELLBEING_T1</code></th>
+<th><code>WELLBEING_T2</code></th>
+<th><code>SLEEP_T1</code></th>
+<th><code>SLEEP_T2</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>abc123</td>
+<td>3.2</td>
+<td>1.2</td>
+<td>42</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>gobills7</td>
+<td>7.8</td>
+<td>5.8</td>
+<td>83</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="teams" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="teams"><span class="header-section-number">7.3</span> Teams</h2>
+<p>Some teams will need to use <code>tidyr</code> to convert their data from long form into wide form.</p>
+<ul>
+<li><p>Team 2</p>
+<ul>
+<li><p>Day 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.</p></li>
+<li><p>Daily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.</p></li>
+</ul></li>
+<li><p>Team 4</p>
+<ul>
+<li>Survey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).</li>
+</ul></li>
+</ul>
+<p>Team 1, 3, and 5 will export data as wide form and will not use <code>tidyr</code>.</p>
+</section>
+<section id="resources" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="resources"><span class="header-section-number">7.4</span> Resources</h2>
+<p>At present, the best resource is: <a href="https://shanghai.hosting.nyu.edu/data/r/reshaping.html">Reshaping data between long and wide formats (Dai, 2020)</a></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This page is under construction. It will include important information soon.</p>
+</div>
+</div>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -805,24 +937,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tidying your data with tidyr"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Learning Resources</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Data Tidying</span><span class="co">](https://r4ds.hadley.nz/data-tidy.html)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Datacamp Course**: <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://www.datacamp.com/courses/reshaping-data-with-tidyr)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cheat Sheet**: <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://rstudio.github.io/cheatsheets/tidyr.pdf)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Posit Interactive Page**: <span class="co">[</span><span class="ot">dplyr</span><span class="co">](https://rstudio.github.io/cheatsheets/html/tidyr.html)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>More coming soon!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tidying your data"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "How to use tidyr"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Learning Resources</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Data Tidying</span><span class="co">](https://r4ds.hadley.nz/data-tidy.html)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Datacamp Course**: <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://www.datacamp.com/courses/reshaping-data-with-tidyr)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cheat Sheet**: <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://rstudio.github.io/cheatsheets/tidyr.pdf)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Posit Interactive Page**: <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://rstudio.github.io/cheatsheets/html/tidyr.html)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## </span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Formats</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### Long Form</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Imagine you collected data on <span class="in">`WELLBEING`</span> and <span class="in">`SLEEP`</span> at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is <span class="in">`PASSWORD`</span>. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PASSWORD`</span> <span class="pp">|</span> <span class="in">`DAY`</span> <span class="pp">|</span> <span class="in">`WELLBEING`</span> <span class="pp">|</span> <span class="in">`SLEEP`</span> <span class="pp">|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|-------|-------------|---------|</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 1     <span class="pp">|</span> 3.2         <span class="pp">|</span> 42      <span class="pp">|</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 1     <span class="pp">|</span> 7.8         <span class="pp">|</span> 83      <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 7     <span class="pp">|</span> 1.2         <span class="pp">|</span> 17      <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 7     <span class="pp">|</span> 5.8         <span class="pp">|</span> 68      <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>: *Example of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.*</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Wide Form</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`tidyr`</span> package, long form data can be converted to wide form using the <span class="in">`DAY`</span> variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the <span class="in">`PASSWORD`</span>.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PASSWORD`</span> <span class="pp">|</span> <span class="in">`WELLBEING_T1`</span> <span class="pp">|</span> <span class="in">`WELLBEING_T2`</span> <span class="pp">|</span> <span class="in">`SLEEP_T1`</span> <span class="pp">|</span> <span class="in">`SLEEP_T2`</span> <span class="pp">|</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|----------------|----------------|------------|------------|</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 3.2            <span class="pp">|</span> 1.2            <span class="pp">|</span> 42         <span class="pp">|</span> 17         <span class="pp">|</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 7.8            <span class="pp">|</span> 5.8            <span class="pp">|</span> 83         <span class="pp">|</span> 18         <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>: *Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with `DAY`* dropped from the columns because there is no longer a <span class="in">`DAY`</span>.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Teams</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>Some teams will need to use <span class="in">`tidyr`</span> to convert their data from long form into wide form.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Team 2</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Day 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Daily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Team 4</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Survey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Team 1, 3, and 5 will export data as wide form and will not use <span class="in">`tidyr`</span>.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>At present, the best resource is: <span class="co">[</span><span class="ot">Reshaping data between long and wide formats (Dai, 2020)</span><span class="co">](https://shanghai.hosting.nyu.edu/data/r/reshaping.html)</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>This page is under construction. It will include important information soon.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/tidy.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/tidyr.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

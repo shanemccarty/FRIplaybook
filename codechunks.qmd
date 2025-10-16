@@ -57,13 +57,13 @@ For individual lab and report quarto reports:
 
 - Your individual lab was renamed to `lab.qmd`
 - Your results and discussion report should be named: `RDreport.qmd`
-- After submitting your `RDreport.qmd`, you should go to the files tab, check the box next to `RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `name_report.qmd`
-- Your final report should be named: `name_report.qmd`
+- After submitting your `RDreport.qmd`, you should go to the files tab, check the box next to `RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `yourlastname_report.qmd`
+- Your final report should be named: `yourlastname_report.qmd`
 
 ::: {.callout-important}
 ## Requirement
 
-You must name your quarto markdown files (`.qmd`) correctly.
+Please name your quarto markdown files (`.qmd`) correctly.
 
 :::
 

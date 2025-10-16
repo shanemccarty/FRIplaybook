@@ -1,0 +1,66 @@
+---
+title: "Tidying your data"
+subtitle: "How to use tidyr"
+format: html
+---
+
+::: callout-tip
+## 📖 Learning Resources
+
+-   **R for Data Science**: [Data Tidying](https://r4ds.hadley.nz/data-tidy.html)
+-   **Datacamp Course**: [tidyr](https://www.datacamp.com/courses/reshaping-data-with-tidyr)
+-   **Cheat Sheet**: [tidyr](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+-   **Posit Interactive Page**: [tidyr](https://rstudio.github.io/cheatsheets/html/tidyr.html)
+:::
+
+## 
+
+## Data Formats
+
+### Long Form
+
+Imagine you collected data on `WELLBEING` and `SLEEP` at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is `PASSWORD`. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.
+
+| `PASSWORD` | `DAY` | `WELLBEING` | `SLEEP` |
+|------------|-------|-------------|---------|
+| abc123     | 1     | 3.2         | 42      |
+| gobills7   | 1     | 7.8         | 83      |
+| abc123     | 7     | 1.2         | 17      |
+| gobills7   | 7     | 5.8         | 68      |
+
+: *Example of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.*
+
+### Wide Form
+
+Using the `tidyr` package, long form data can be converted to wide form using the `DAY` variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the `PASSWORD`.
+
+| `PASSWORD` | `WELLBEING_T1` | `WELLBEING_T2` | `SLEEP_T1` | `SLEEP_T2` |
+|------------|----------------|----------------|------------|------------|
+| abc123     | 3.2            | 1.2            | 42         | 17         |
+| gobills7   | 7.8            | 5.8            | 83         | 18         |
+
+: *Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with `DAY`* dropped from the columns because there is no longer a `DAY`.
+
+## Teams
+
+Some teams will need to use `tidyr` to convert their data from long form into wide form.
+
+-   Team 2
+
+    -   Day 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.
+
+    -   Daily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.
+
+-   Team 4
+
+    -   Survey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).
+
+Team 1, 3, and 5 will export data as wide form and will not use `tidyr`.
+
+## Resources
+
+At present, the best resource is: [Reshaping data between long and wide formats (Dai, 2020)](https://shanghai.hosting.nyu.edu/data/r/reshaping.html)
+
+::: callout-warning
+This page is under construction. It will include important information soon.
+:::

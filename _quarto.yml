@@ -36,12 +36,12 @@ book:
     - part: "Tidy Data"
       chapters:
         - text: "Tidying Your Data"
-          file: tidy.qmd
+          file: tidyr.qmd
     - part: "Visualize Data"
       chapters:
         - text: "Visualizing Your Data"
           file: ggplot2.qmd
-    - part: "Report Data:"
+    - part: "Report Data"
       chapters:    
         - text: "Write a Read Me"
           file: readme.qmd

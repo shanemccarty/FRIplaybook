@@ -1,5 +1,5 @@
 ---
-title: "Example Reports"
+title: "Reproducible Reports"
 authors:
   - Shane McCarty
   - Zihan Hei
@@ -28,8 +28,8 @@ Quarto provided two examples of a reproducible report and manuscript:
 
 The FRI Public Health Lab has produced Quarto manuscripts from active research projects:
 
--   [Health Avoiders Report](https://zihanhei.quarto.pub/avoider-report/)
+-   [Health Avoiders Manuscript](https://zihanhei.quarto.pub/avoider-report/)
 
--   [Zero Sum Full Report](https://fripublichealth.quarto.pub/zerosum/)
+-   [Zero Sum Full Manuscript](https://fripublichealth.quarto.pub/zerosum/)
 
--   [Zero Sum Mini Report](https://fripublichealth.quarto.pub/zerosum/example-preview.html)
+-   [Zero Sum Mini Manuscript](https://fripublichealth.quarto.pub/zerosum/example-preview.html)

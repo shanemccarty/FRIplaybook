@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/index.html</loc>
-    <lastmod>2025-10-15T05:01:53.754Z</lastmod>
+    <lastmod>2025-10-15T23:21:28.445Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/intro.html</loc>
-    <lastmod>2025-10-15T05:03:57.168Z</lastmod>
+    <lastmod>2025-10-15T23:22:45.626Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/example.html</loc>
-    <lastmod>2025-10-15T05:04:07.064Z</lastmod>
+    <lastmod>2025-10-15T23:18:35.154Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/codechunks.html</loc>
-    <lastmod>2025-10-15T17:31:44.697Z</lastmod>
+    <lastmod>2025-10-15T23:25:11.437Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/export.html</loc>
-    <lastmod>2025-10-15T05:19:09.306Z</lastmod>
+    <lastmod>2025-10-15T23:30:19.035Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/import-once.html</loc>
-    <lastmod>2025-10-15T21:59:28.353Z</lastmod>
+    <lastmod>2025-10-15T23:34:10.619Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/import-live.html</loc>
     <lastmod>2025-10-15T05:09:32.813Z</lastmod>
   </url>
   <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/tidy.html</loc>
-    <lastmod>2025-10-15T03:36:22.996Z</lastmod>
+    <loc>https://shanemccarty.github.io/FRIplaybook/tidyr.html</loc>
+    <lastmod>2025-10-15T23:59:28.495Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/ggplot2.html</loc>
@@ -42,6 +42,6 @@
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/functions.html</loc>
-    <lastmod>2025-10-15T22:07:09.741Z</lastmod>
+    <lastmod>2025-10-16T00:10:22.483Z</lastmod>
   </url>
 </urlset>
