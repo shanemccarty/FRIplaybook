@@ -54,10 +54,10 @@ A subset of data from a March, 15, 2025 Prolific-collected sample is included be
 #| label: embed-select-data
 #| error: false
 #| warning: false
-#| autorun: false
-#| completion: true
-#| include: false
-#| output: true
+#| autorun: true
+#| completion: false
+#| echo: false
+#| output: false
 
 select_data <- structure(list(
   AGE = c(29L, 40L, 23L, 35L, 67L, 45L, 20L, 34L, 

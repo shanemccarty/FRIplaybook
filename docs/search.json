@@ -454,7 +454,7 @@
     "href": "functions.html#dataset-example-survey-data",
     "title": "10  Use Functions to Write Text",
     "section": "10.2 Dataset: Example Survey Data",
-    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
@@ -465,7 +465,7 @@
     "href": "functions.html#example-1-reporting-sample-size-using-inline-r-code",
     "title": "10  Use Functions to Write Text",
     "section": "10.3 Example 1: Reporting Sample Size (using inline R code)",
-    "text": "10.3 Example 1: Reporting Sample Size (using inline R code)\n\n10.3.1 create an object for total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "10.3 Example 1: Reporting Sample Size (using inline R code)\n\n10.3.1 create an object for total_responses",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
@@ -487,7 +487,7 @@
     "href": "functions.html#example-2-report-numbers-and-percentages-using-inline-r",
     "title": "10  Use Functions to Write Text",
     "section": "10.5 Example 2: Report Numbers and Percentages (using inline R)",
-    "text": "10.5 Example 2: Report Numbers and Percentages (using inline R)\nYou can combine counts and percentages easily.\n\n10.5.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.5.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "text": "10.5 Example 2: Report Numbers and Percentages (using inline R)\nYou can combine counts and percentages easily.\n\n10.5.1 create an object for the sum of each racial identity in the sample\n\n\n\n\n\n\n\n\n\n\n10.5.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
@@ -520,7 +520,7 @@
     "href": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
     "title": "10  Use Functions to Write Text",
     "section": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
-    "text": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n10.8.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.8.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "text": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n10.8.1 run analyses\n\n\n\n\n\n\n\n\n\n\n10.8.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
