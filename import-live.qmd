@@ -17,20 +17,20 @@ execute:
 ---
 
 ::: {.callout-tip icon="false"}
-## 📖 Additional Learning Resources
+## 📖 `qualtrRics` resources
 
-- **Qualtrics API Documentation**: [API Reference](https://api.qualtrics.com/docs/)
-- **qualtRics R Package**: [Working with APIs in R](https://cran.r-project.org/web/packages/qualtRics/vignettes/qualtRics.html)
+- [Documentation](https://cran.r-project.org/web/packages/qualtRics/vignettes/qualtRics.html)
+- [Qualtrics website](https://api.qualtrics.com/docs/)
 
 :::
 
-## Benefits of QualtRics Continuous Importing of Survey Data
+## Benefits of `qualtRics` Continuous Importing of Survey Data
 By importing data continously using the `qualtRics` R package, you do not need to export from qualtrics and upload/import a data file. You can generate with up-to-date data instaneously for a:  
 - Quarto report 
 - Plots in a shiny app 
 - Quarto presentation, such as a live demonstration with survey data collected moments ago or to show what your code can do 
 
-## Getting necessary Qualtrics information
+## Getting necessary qualtrics information
 
 ![Qualtrics Info](images/qualtrics_info_ex.png)
 

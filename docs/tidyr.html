@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shane McCarty, PhD">
 
 <title>7&nbsp; Tidying your data – The Quantitative Playbook for Public Health Research in R</title>
 <style>
@@ -319,6 +320,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shane McCarty, PhD </p>
+          </div>
+  </div>
     
   
     
@@ -335,15 +342,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>📖 Learning Resources
+<span class="screen-reader-only">Tip</span>📖 <code>tidyr</code> resources
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>R for Data Science</strong>: <a href="https://r4ds.hadley.nz/data-tidy.html">Data Tidying</a></li>
-<li><strong>Datacamp Course</strong>: <a href="https://www.datacamp.com/courses/reshaping-data-with-tidyr">tidyr</a></li>
-<li><strong>Cheat Sheet</strong>: <a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">tidyr</a></li>
-<li><strong>Posit Interactive Page</strong>: <a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">tidyr</a></li>
+<li><a href="https://r4ds.hadley.nz/data-tidy.html">R4DS Book Chapter 5</a></li>
+<li><a href="https://www.datacamp.com/courses/reshaping-data-with-tidyr">Datacamp</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">Cheat Sheet</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">Posit page</a></li>
 </ul>
 </div>
 </div>
@@ -935,67 +942,68 @@ Warning
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tidying your data"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "How to use tidyr"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 Learning Resources</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**R for Data Science**: <span class="co">[</span><span class="ot">Data Tidying</span><span class="co">](https://r4ds.hadley.nz/data-tidy.html)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Datacamp Course**: <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://www.datacamp.com/courses/reshaping-data-with-tidyr)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cheat Sheet**: <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://rstudio.github.io/cheatsheets/tidyr.pdf)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Posit Interactive Page**: <span class="co">[</span><span class="ot">tidyr</span><span class="co">](https://rstudio.github.io/cheatsheets/html/tidyr.html)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Formats</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### Long Form</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Imagine you collected data on <span class="in">`WELLBEING`</span> and <span class="in">`SLEEP`</span> at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is <span class="in">`PASSWORD`</span>. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PASSWORD`</span> <span class="pp">|</span> <span class="in">`DAY`</span> <span class="pp">|</span> <span class="in">`WELLBEING`</span> <span class="pp">|</span> <span class="in">`SLEEP`</span> <span class="pp">|</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|-------|-------------|---------|</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 1     <span class="pp">|</span> 3.2         <span class="pp">|</span> 42      <span class="pp">|</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 1     <span class="pp">|</span> 7.8         <span class="pp">|</span> 83      <span class="pp">|</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 7     <span class="pp">|</span> 1.2         <span class="pp">|</span> 17      <span class="pp">|</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 7     <span class="pp">|</span> 5.8         <span class="pp">|</span> 68      <span class="pp">|</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>: *Example of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.*</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Wide Form</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`tidyr`</span> package, long form data can be converted to wide form using the <span class="in">`DAY`</span> variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the <span class="in">`PASSWORD`</span>.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PASSWORD`</span> <span class="pp">|</span> <span class="in">`WELLBEING_T1`</span> <span class="pp">|</span> <span class="in">`WELLBEING_T2`</span> <span class="pp">|</span> <span class="in">`SLEEP_T1`</span> <span class="pp">|</span> <span class="in">`SLEEP_T2`</span> <span class="pp">|</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|----------------|----------------|------------|------------|</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 3.2            <span class="pp">|</span> 1.2            <span class="pp">|</span> 42         <span class="pp">|</span> 17         <span class="pp">|</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 7.8            <span class="pp">|</span> 5.8            <span class="pp">|</span> 83         <span class="pp">|</span> 18         <span class="pp">|</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>: *Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with `DAY`* dropped from the columns because there is no longer a <span class="in">`DAY`</span>.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Teams</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>Some teams will need to use <span class="in">`tidyr`</span> to convert their data from long form into wide form.</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Team 2</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Day 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Daily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Team 4</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Survey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>Team 1, 3, and 5 will export data as wide form and will not use <span class="in">`tidyr`</span>.</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>At present, the best resource is: <span class="co">[</span><span class="ot">Reshaping data between long and wide formats (Dai, 2020)</span><span class="co">](https://shanghai.hosting.nyu.edu/data/r/reshaping.html)</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>This page is under construction. It will include important information soon.</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Shane McCarty, PhD</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📖 `tidyr` resources</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">R4DS Book Chapter 5</span><span class="co">](https://r4ds.hadley.nz/data-tidy.html)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Datacamp</span><span class="co">](https://www.datacamp.com/courses/reshaping-data-with-tidyr)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Cheat Sheet</span><span class="co">](https://rstudio.github.io/cheatsheets/tidyr.pdf)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Posit page</span><span class="co">](https://rstudio.github.io/cheatsheets/html/tidyr.html)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Formats</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Long Form</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Imagine you collected data on <span class="in">`WELLBEING`</span> and <span class="in">`SLEEP`</span> at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is <span class="in">`PASSWORD`</span>. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PASSWORD`</span> <span class="pp">|</span> <span class="in">`DAY`</span> <span class="pp">|</span> <span class="in">`WELLBEING`</span> <span class="pp">|</span> <span class="in">`SLEEP`</span> <span class="pp">|</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|-------|-------------|---------|</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 1     <span class="pp">|</span> 3.2         <span class="pp">|</span> 42      <span class="pp">|</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 1     <span class="pp">|</span> 7.8         <span class="pp">|</span> 83      <span class="pp">|</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 7     <span class="pp">|</span> 1.2         <span class="pp">|</span> 17      <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 7     <span class="pp">|</span> 5.8         <span class="pp">|</span> 68      <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>: *Example of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.*</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">### Wide Form</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Using the <span class="in">`tidyr`</span> package, long form data can be converted to wide form using the <span class="in">`DAY`</span> variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the <span class="in">`PASSWORD`</span>.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`PASSWORD`</span> <span class="pp">|</span> <span class="in">`WELLBEING_T1`</span> <span class="pp">|</span> <span class="in">`WELLBEING_T2`</span> <span class="pp">|</span> <span class="in">`SLEEP_T1`</span> <span class="pp">|</span> <span class="in">`SLEEP_T2`</span> <span class="pp">|</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------|----------------|----------------|------------|------------|</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> abc123     <span class="pp">|</span> 3.2            <span class="pp">|</span> 1.2            <span class="pp">|</span> 42         <span class="pp">|</span> 17         <span class="pp">|</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> gobills7   <span class="pp">|</span> 7.8            <span class="pp">|</span> 5.8            <span class="pp">|</span> 83         <span class="pp">|</span> 18         <span class="pp">|</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>: *Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with `DAY`* dropped from the columns because there is no longer a <span class="in">`DAY`</span>.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Teams</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>Some teams will need to use <span class="in">`tidyr`</span> to convert their data from long form into wide form.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Team 2</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Day 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Daily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Team 4</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Survey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Team 1, 3, and 5 will export data as wide form and will not use <span class="in">`tidyr`</span>.</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resources</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>At present, the best resource is: <span class="co">[</span><span class="ot">Reshaping data between long and wide formats (Dai, 2020)</span><span class="co">](https://shanghai.hosting.nyu.edu/data/r/reshaping.html)</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>This page is under construction. It will include important information soon.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

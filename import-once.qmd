@@ -21,12 +21,13 @@ editor: visual
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ::: callout-tip
-## 📖 Learning Resources
+## 📖 import resources
 
--   **R for Data Science**: [Data Import](https://r4ds.hadley.nz/data-import.html)
--   **R for Data Science**: [Import](https://r4ds.hadley.nz/import.html)
--   **Cheat Sheet**: [dplyr](https://rstudio.github.io/cheatsheets/data-import.pdf)
--   **Posit Interactive Page**: [import](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)
+-   [R4DS Book Chapter 4](https://r4ds.hadley.nz/data-import.html)
+-   [R4DS Book Chapter 20-24](https://r4ds.hadley.nz/import.html)
+-   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)
+-   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-import.pdf)
+
 :::
 
 ## Introduction to Data Import

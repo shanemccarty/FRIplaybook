@@ -1,16 +1,17 @@
 ---
 title: "Tidying your data"
 subtitle: "How to use tidyr"
+author: Shane McCarty, PhD
 format: html
 ---
 
 ::: callout-tip
-## 📖 Learning Resources
+## 📖 `tidyr` resources
 
--   **R for Data Science**: [Data Tidying](https://r4ds.hadley.nz/data-tidy.html)
--   **Datacamp Course**: [tidyr](https://www.datacamp.com/courses/reshaping-data-with-tidyr)
--   **Cheat Sheet**: [tidyr](https://rstudio.github.io/cheatsheets/tidyr.pdf)
--   **Posit Interactive Page**: [tidyr](https://rstudio.github.io/cheatsheets/html/tidyr.html)
+-   [R4DS Book Chapter 5](https://r4ds.hadley.nz/data-tidy.html)
+-   [Datacamp](https://www.datacamp.com/courses/reshaping-data-with-tidyr)
+-   [Cheat Sheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+-   [Posit page](https://rstudio.github.io/cheatsheets/html/tidyr.html)
 :::
 
 ## Data Formats

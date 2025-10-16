@@ -212,7 +212,7 @@
     "href": "import-live.html",
     "title": "6  Importing Qualtrics Data Live",
     "section": "",
-    "text": "6.1 Benefits of QualtRics Continuous Importing of Survey Data\nBy importing data continously using the qualtRics R package, you do not need to export from qualtrics and upload/import a data file. You can generate with up-to-date data instaneously for a:\n- Quarto report - Plots in a shiny app - Quarto presentation, such as a live demonstration with survey data collected moments ago or to show what your code can do",
+    "text": "6.1 Benefits of qualtRics Continuous Importing of Survey Data\nBy importing data continously using the qualtRics R package, you do not need to export from qualtrics and upload/import a data file. You can generate with up-to-date data instaneously for a:\n- Quarto report - Plots in a shiny app - Quarto presentation, such as a live demonstration with survey data collected moments ago or to show what your code can do",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
@@ -222,8 +222,8 @@
     "objectID": "import-live.html#getting-necessary-qualtrics-information",
     "href": "import-live.html#getting-necessary-qualtrics-information",
     "title": "6  Importing Qualtrics Data Live",
-    "section": "6.2 Getting necessary Qualtrics information",
-    "text": "6.2 Getting necessary Qualtrics information\n\n\n\nQualtrics Info\n\n\nWhen you log into Qualtrics, you’re going to need to retrieve a few pieces of data specific to your account and the survey that you want to get live data from. Here, we’ve clicked our user icon in the top right and gone to “Account Settings.” You’re going to need these strings later.\nNext, you’re going to need your survey ID. When you click on the survey that you’re getting live data from, the URL will look something like this: https://binghamton.yul1.qualtrics.com/survey-builder/SV_6mOC1SaJbecAuP0/edit The survey ID is the string between survey-builder/ and /edit, in this case, being “SV_6mOC1SaJbecAuP0”\nGetting into the actual code, we have the following steps: ## Import necessary packages:\n\nlibrary(httr)\nlibrary(jsonlite)\nlibrary(readr)",
+    "section": "6.2 Getting necessary qualtrics information",
+    "text": "6.2 Getting necessary qualtrics information\n\n\n\nQualtrics Info\n\n\nWhen you log into Qualtrics, you’re going to need to retrieve a few pieces of data specific to your account and the survey that you want to get live data from. Here, we’ve clicked our user icon in the top right and gone to “Account Settings.” You’re going to need these strings later.\nNext, you’re going to need your survey ID. When you click on the survey that you’re getting live data from, the URL will look something like this: https://binghamton.yul1.qualtrics.com/survey-builder/SV_6mOC1SaJbecAuP0/edit The survey ID is the string between survey-builder/ and /edit, in this case, being “SV_6mOC1SaJbecAuP0”\nGetting into the actual code, we have the following steps: ## Import necessary packages:\n\nlibrary(httr)\nlibrary(jsonlite)\nlibrary(readr)",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importing Live</span>"
@@ -333,7 +333,7 @@
     "href": "ggplot2.html",
     "title": "8  Visualizing your data",
     "section": "",
-    "text": "8.1 The ggplot2 Package\nRecall: Packages are collections of code, data, and documentation that add extra functionality not included in base R.\nTo install and load ggplot2:\ninstall.packages(\"ggplot2\")",
+    "text": "8.1 Load Library\nTo install and load ggplot2:\ninstall.packages(\"ggplot2\")",
     "crumbs": [
       "Visualize Data",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Visualizing Your Data</span>"

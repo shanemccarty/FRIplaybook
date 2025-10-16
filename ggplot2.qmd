@@ -21,18 +21,19 @@ execute:
 ---
 
 ::: callout-tip
-## 📖 Learning Resources
+## 📖 `ggplot2` resources
 
--   **R for Data Science (2e):** [Data Visualization](https://r4ds.hadley.nz/data-visualize.html) & [Visualize](https://r4ds.hadley.nz/visualize.html)
--   **ggplot2 Book:** [elegant graphics](https://ggplot2-book.org)
--   **Datacamp Course**: [ggplot2](https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
--   **Cheat Sheet**: [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
--   **Posit Code**: [ggplot2](https://rstudio.github.io/cheatsheets/html/data-visualization.html) & [tidyverse](https://ggplot2.tidyverse.org)
+-   [Documentation](https://ggplot2.tidyverse.org)
+-   [R4DS Book Chapter 1](https://r4ds.hadley.nz/data-visualize.html)
+-   [R4DS Book Ch. 9 - 11](https://r4ds.hadley.nz/visualize.html)
+-   [ggplot2 Book](https://ggplot2-book.org)
+-   [Datacamp](https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
+-   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html)
+-   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
+
 :::
 
-## The ggplot2 Package
-
-Recall: Packages are collections of code, data, and documentation that add extra functionality not included in base R.
+## Load Library
 
 To install and load ggplot2:
 
@@ -47,12 +48,12 @@ install.packages("ggplot2")
 Let's start by loading our dataset and exploring it:
 
 ```{r}
-#| label: import insurance data
+#| label: import-data-insurance
 insurance <- read.csv("data/insurance.csv")
 ```
 
 ```{r}
-#| label: load library
+#| label: load-library-ggplot2
 library(ggplot2)
 ```
 
@@ -61,12 +62,12 @@ library(ggplot2)
 Let's learn more about our data with `summary()`:
 
 ```{r}
-#| label: summarize variables
+#| label: summarize-variables
 summary(insurance)
 ```
 
 ```{r}
-#| label: review the header
+#| label: review-header
 head(insurance, 10)
 ```
 
