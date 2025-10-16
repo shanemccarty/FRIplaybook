@@ -111,7 +111,7 @@ lang: en
 params:
   organization: "FRI Public Health Research Stream"
   contact_email: "fripublichealth@binghamton.edu"
-  version: "1.0"
+  version: "0.7"
   authors:
     lead: "Shane McCarty, PhD"
     contributors:

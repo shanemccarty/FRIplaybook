@@ -83,13 +83,19 @@ You will learn how to import different datasets:
 ## Import Examples
 
 ### Import from `NHANES` package
-#### First Setup the library:
+
+```{r}
+#| label: install NHANES
+install.packages("NHANES")
+```
+
+### Load libraries
 
 ```{r}
 #| autorun: false
 #| completion: true
 #| echo: true
-#| output: false
+#| output: true
 #| warning: false
 #| error: false
 
@@ -105,11 +111,14 @@ library(stringr)    # for text functions like str_c()
 library(NHANES)
 ```
 
+#### Column Names
+
+Review the column names (aka the variables) in the dataset.
+
 ```{webr-r}
-#| label: install NHANES
-#| eval: false
-install.packages("NHANES")
+names(NHANESraw)
 ```
+
 
 #### Data Structure
 
@@ -123,18 +132,11 @@ str(NHANESraw)
 
 #### Data Header
 
+Review the first 10 responses for the first 6 columns
 ```{webr-r}
 library(NHANES)
-# Load the data and view its header
-head(NHANESraw)
+NHANESraw[1:10, 1:6] 
 ```
-
-#### Variables (aka Column) Names
-
-```{webr-r}
-names(NHANESraw)
-```
-
 
 #### View Data
 
