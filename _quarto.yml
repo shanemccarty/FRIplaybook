@@ -76,9 +76,11 @@ format:
     highlight-style: 
       light: github
       dark: github-dark
-    code-copy: true
+    # Code display settings
     code-fold: false
-    code-tools: true
+    code-overflow: wrap
+    code-line-numbers: false
+    code-copy: true
     toc: true
     toc-depth: 3
     number-sections: true

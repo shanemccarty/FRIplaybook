@@ -8,9 +8,9 @@ abstract: |
   This chapter introduces students to import qualtrics features, such as recoding values in qualtrics before exporting the dataset.
 keywords:
   - export
-  - import
-  - Qualtrics
-  - recoding variables
+  - qualtrics
+  - label variables
+  - recode values
 format: html
 editor: visual
 execute:
@@ -55,4 +55,4 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
 -   [ ] Upload both files to "Survey Data" folder in your Team ELN
 
--   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use `{r} current_date` in the correct format and update the file names: `{r} current_date`.data.team1.csv and {r} current_date`.data.team1.xlsx
+-   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use `{r} current_date` in the correct format and update the file names: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx

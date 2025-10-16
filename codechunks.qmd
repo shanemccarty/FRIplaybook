@@ -33,8 +33,9 @@ execute:
 -   [R4DS Book Chapter](https://r4ds.hadley.nz/quarto.html)
 -   [Youtube: Getting Started](https://www.youtube.com/watch?v=_f3latmOhew)
 -   [Youtube: Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
--   [Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
--   [Posit website](https://rstudio.github.io/cheatsheets/html/quarto.html)
+-   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
+-   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
+
 :::
 
 In your Posit Cloud window browser, you should see the *source* and *visual* editor options in the top left corner of your screen. You can toggle back and forth between the two options.

@@ -1,6 +1,6 @@
 ---
 title: "Importing Qualtrics Data Live"
-subtitle: "How to use the QualtrRics R package"
+subtitle: "How to use QualtrRics"
 author: "Gavin Rualo"
 abstract: |
   This chapter demonstrates how to programmatically download survey data from Qualtrics
