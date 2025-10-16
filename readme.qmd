@@ -22,3 +22,9 @@ execute:
 A `readme.qmd` file instructs someone else to *read me*. It provides basic information and contextual information to a colleague who wants to replicate or check your work.
 
 To see an example of an excellent read me file, see "zero sum report read me file": <https://fripublichealth.quarto.pub/zerosum/readme-preview.html>
+
+::: callout-important
+## Requirement
+
+You must create a `readme.qmd` file for all submissions.
+:::

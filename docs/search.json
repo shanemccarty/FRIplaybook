@@ -47,7 +47,7 @@
     "href": "intro.html#how-to-cite-this-guide",
     "title": "1  The Data Analysis Workflow",
     "section": "1.3 How to Cite This Guide",
-    "text": "1.3 How to Cite This Guide\nYou can cite this guide as McCarty, S. (Ed.). (2025). The Quantitative Playbook for Public Health Research in R. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data with ggplot2: Creating publication-ready visualizations. The Quantitative Playbook for Public Health Research in R.\n\n1.3.1 Editor and Chapter Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nZihan Hei\nGavin Rualo\nAndrew Silhavy\nAllison Anemone\nMara Estreich\nJeff John\nErica Sava\nZach Spiegel\n\n\nAfter generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.",
+    "text": "1.3 How to Cite This Guide\nYou can cite this guide as McCarty, S. (Ed.). (2025). The Quantitative Playbook for Public Health Research in R. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data: How to use ggplot2. The Quantitative Playbook for Public Health Research in R.\n\n1.3.1 Editor and Chapter Authors\n\nEditor: Shane McCarty, PhD\nChapter Authors\n\nZihan Hei\nGavin Rualo\nAndrew Silhavy\nAllison Anemone\nMara Estreich\nJeff John\nErica Sava\nZach Spiegel\n\n\nAfter generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
@@ -422,6 +422,17 @@
     "title": "9  Read Me",
     "section": "",
     "text": "9.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
+    "crumbs": [
+      "Report Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
+    ]
+  },
+  {
+    "objectID": "readme.html#read-me",
+    "href": "readme.html#read-me",
+    "title": "9  Read Me",
+    "section": "",
+    "text": "ImportantRequirement\n\n\n\nYou must create a readme.qmd file for all submissions.",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
