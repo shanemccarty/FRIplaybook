@@ -50,12 +50,10 @@ library(stringr)    # for text functions like str_c()
 
 A subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: [https://fripublichealth.quarto.pub/zerosum/readme-preview.html](https://fripublichealth.quarto.pub/zerosum/readme-preview.html)
 
-```{webr-r}
+```{r}
 #| label: embed-select-data
 #| error: false
 #| warning: false
-#| autorun: true
-#| completion: false
 #| echo: false
 #| output: false
 

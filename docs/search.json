@@ -454,7 +454,7 @@
     "href": "functions.html#dataset-example-survey-data",
     "title": "10  Use Functions to Write Text",
     "section": "10.2 Dataset: Example Survey Data",
-    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
