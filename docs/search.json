@@ -289,7 +289,7 @@
     "href": "tidyr.html",
     "title": "7  Tidying your data",
     "section": "",
-    "text": "7.1",
+    "text": "7.1 Data Formats",
     "crumbs": [
       "Tidy Data",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
@@ -299,8 +299,8 @@
     "objectID": "tidyr.html#data-formats",
     "href": "tidyr.html#data-formats",
     "title": "7  Tidying your data",
-    "section": "7.2 Data Formats",
-    "text": "7.2 Data Formats\n\n7.2.1 Long Form\nImagine you collected data on WELLBEING and SLEEP at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is PASSWORD. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.\n\nExample of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.\n\n\nPASSWORD\nDAY\nWELLBEING\nSLEEP\n\n\n\n\nabc123\n1\n3.2\n42\n\n\ngobills7\n1\n7.8\n83\n\n\nabc123\n7\n1.2\n17\n\n\ngobills7\n7\n5.8\n68\n\n\n\n\n\n7.2.2 Wide Form\nUsing the tidyr package, long form data can be converted to wide form using the DAY variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the PASSWORD.\n\nExample of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with DAY dropped from the columns because there is no longer a DAY.\n\n\n\n\n\n\n\n\n\nPASSWORD\nWELLBEING_T1\nWELLBEING_T2\nSLEEP_T1\nSLEEP_T2\n\n\n\n\nabc123\n3.2\n1.2\n42\n17\n\n\ngobills7\n7.8\n5.8\n83\n18",
+    "section": "",
+    "text": "7.1.1 Long Form\nImagine you collected data on WELLBEING and SLEEP at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is PASSWORD. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.\n\nExample of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.\n\n\nPASSWORD\nDAY\nWELLBEING\nSLEEP\n\n\n\n\nabc123\n1\n3.2\n42\n\n\ngobills7\n1\n7.8\n83\n\n\nabc123\n7\n1.2\n17\n\n\ngobills7\n7\n5.8\n68\n\n\n\n\n\n7.1.2 Wide Form\nUsing the tidyr package, long form data can be converted to wide form using the DAY variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the PASSWORD.\n\nExample of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with DAY dropped from the columns because there is no longer a DAY.\n\n\n\n\n\n\n\n\n\nPASSWORD\nWELLBEING_T1\nWELLBEING_T2\nSLEEP_T1\nSLEEP_T2\n\n\n\n\nabc123\n3.2\n1.2\n42\n17\n\n\ngobills7\n7.8\n5.8\n83\n18",
     "crumbs": [
       "Tidy Data",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
@@ -310,8 +310,8 @@
     "objectID": "tidyr.html#teams",
     "href": "tidyr.html#teams",
     "title": "7  Tidying your data",
-    "section": "7.3 Teams",
-    "text": "7.3 Teams\nSome teams will need to use tidyr to convert their data from long form into wide form.\n\nTeam 2\n\nDay 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.\nDaily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.\n\nTeam 4\n\nSurvey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).\n\n\nTeam 1, 3, and 5 will export data as wide form and will not use tidyr.",
+    "section": "7.2 Teams",
+    "text": "7.2 Teams\nSome teams will need to use tidyr to convert their data from long form into wide form.\n\nTeam 2\n\nDay 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.\nDaily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.\n\nTeam 4\n\nSurvey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).\n\n\nTeam 1, 3, and 5 will export data as wide form and will not use tidyr.",
     "crumbs": [
       "Tidy Data",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
@@ -321,8 +321,8 @@
     "objectID": "tidyr.html#resources",
     "href": "tidyr.html#resources",
     "title": "7  Tidying your data",
-    "section": "7.4 Resources",
-    "text": "7.4 Resources\nAt present, the best resource is: Reshaping data between long and wide formats (Dai, 2020)\n\n\n\n\n\n\nWarning\n\n\n\nThis page is under construction. It will include important information soon.",
+    "section": "7.3 Resources",
+    "text": "7.3 Resources\nAt present, the best resource is: Reshaping data between long and wide formats (Dai, 2020)\n\n\n\n\n\n\nWarning\n\n\n\nThis page is under construction. It will include important information soon.",
     "crumbs": [
       "Tidy Data",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
@@ -454,7 +454,7 @@
     "href": "functions.html#dataset-example-survey-data",
     "title": "10  Use Functions to Write Text",
     "section": "10.2 Dataset: Example Survey Data",
-    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
+    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
@@ -465,7 +465,7 @@
     "href": "functions.html#example-1-reporting-sample-size-using-inline-r-code",
     "title": "10  Use Functions to Write Text",
     "section": "10.3 Example 1: Reporting Sample Size (using inline R code)",
-    "text": "10.3 Example 1: Reporting Sample Size (using inline R code)\n\n10.3.1 create an object for total_responses",
+    "text": "10.3 Example 1: Reporting Sample Size (using inline R code)\n\n10.3.1 create an object for total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
@@ -487,7 +487,7 @@
     "href": "functions.html#example-2-report-numbers-and-percentages-using-inline-r",
     "title": "10  Use Functions to Write Text",
     "section": "10.5 Example 2: Report Numbers and Percentages (using inline R)",
-    "text": "10.5 Example 2: Report Numbers and Percentages (using inline R)\nYou can combine counts and percentages easily.\n\n10.5.1 create an object for the sum of each racial identity in the sample\n\n\n\n\n\n\n\n\n\n\n10.5.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "text": "10.5 Example 2: Report Numbers and Percentages (using inline R)\nYou can combine counts and percentages easily.\n\n10.5.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.5.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
@@ -520,7 +520,7 @@
     "href": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
     "title": "10  Use Functions to Write Text",
     "section": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
-    "text": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n10.8.1 run analyses\n\n\n\n\n\n\n\n\n\n\n10.8.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "text": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n10.8.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.8.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
     "crumbs": [
       "Report Data",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"

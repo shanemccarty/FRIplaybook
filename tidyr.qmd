@@ -13,8 +13,6 @@ format: html
 -   **Posit Interactive Page**: [tidyr](https://rstudio.github.io/cheatsheets/html/tidyr.html)
 :::
 
-## 
-
 ## Data Formats
 
 ### Long Form
