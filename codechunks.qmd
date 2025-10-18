@@ -85,30 +85,67 @@ For your draft and final team MMR manuscript, you should: - pick one quantitativ
 
 ## YAML
 
-YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output (HTML vs. PDF).
+YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
 
 ::: callout-important
 ### Requirement
 
-Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+- Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+
+- title, subtitle, name, email should be revised
+
+- url should be updated from "https://fripublichealth.quarto.pub/study1.html" to reflect your team # for the study #!
+
+- abstract and keywords should be included
+
 :::
+
 
 ```{YAML}
 ---
-
-title: "name your final report here"
-author: "put your full name here"
-date: "10/22/2025"
+title: "title your report here"
+subtitle: "insert subtitle here"
+date: "`r Sys.Date()`"
+author:
+  - name: "your name"
+    email: youremail@binghamton.edu 
+    affiliation: 
+      - name: Binghamton University
+        url: "https://fripublichealth.quarto.pub/study1.html"
+    attributes:
+      corresponding: true
 abstract: |
     TBD goes here
+keywords:
+  - insert keyword 1
+  - insert keyword 2
+  - insert keyword 3
+  - insert keyword 4
+  - insert keyword 5
 format: 
   html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
     fig-width: 8
     fig-height: 4
     code-fold: true
     code-overflow: wrap
-    
+    embed-resources: true
+    theme: cosmo
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    fig-width: 6
+    fig-height: 4
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
 ---
+    
 ```
 
 For more information, see:
@@ -118,6 +155,8 @@ For more information, see:
 -   [Front Matter](https://quarto.org/docs/authoring/front-matter.html)
 
 -   [code-overflow](https://quarto.org/docs/output-formats/html-code.html#code-overflow)
+
+-   [Authors & Affiliations](https://quarto.org/docs/journals/authors.html)
 
 ## Markdown
 
@@ -197,13 +236,13 @@ Every plot should include a detailed figure caption using `#| fig-cap:`
 
 #### Alternative Text for Figures and Images (Fig-Alt)
 
-Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.
-
 ::: callout-important
 ## Requirement
 
 Every figure and image should include alternative text using `#| fig-alt:`
 :::
+
+Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.
 
 ```{{r}}
 #| label: you-need-to-revise-this
@@ -255,6 +294,21 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 #explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges
 
 ```
+
+#### Setting library code chunk
+
+By setting the `#| output:` to `false`, none of the output from running the code will show up. Only the code chunk for loading the library has `#| output: false`. The output is "attaching package (`readxl`), which is not necessary for our report. In almost all cases, your code chunk will NOT include the `output` option. If you do include it, it will mostly be set to `true` in order for you to output results, a plot, etc.  
+
+```{r}
+#| label: load-library-readxl
+#| echo: fenced
+#| output: false
+
+library(readxl)
+
+```
+```
+
 
 #### Code Chunk Options
 
