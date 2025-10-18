@@ -6,6 +6,8 @@ author:
   - Shane McCarty, PhD
 abstract: |
   This chapter introduces students to import qualtrics features, such as recoding values in qualtrics before exporting the dataset.
+date: today
+date-format: "MM.DD.YYYY"
 keywords:
   - export
   - qualtrics
@@ -21,10 +23,11 @@ execute:
 ```{r}
 #| include: false
 current_date <- format(Sys.Date(), "%m.%d.%Y")
+
 ```
 
 
-## Exporting Survey Data
+## Name and Recode Variables
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
 
@@ -34,9 +37,9 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
     -   [ ] Visit "Recode Values" section of the [Qualtrics guide](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/)
 
-    -   [ ] Follow the instructions: <https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre>
+    -   [ ] Follow the instructions on how to [name and recode values](https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre)
 
-## Exporting Survey Data
+## Export Survey Data
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
     -   [ ] Under Active surveys, click on your survey
@@ -55,4 +58,4 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
 -   [ ] Upload both files to "Survey Data" folder in your Team ELN
 
--   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use `{r} current_date` in the correct format and update the file names: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx
+-   [ ] Rename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you could use `{r} current_date` in the correct format and update the file names: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx

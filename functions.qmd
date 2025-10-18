@@ -1,17 +1,18 @@
 ---
-title: "Use Functions to Write Text"
-subtitle: "How to use inline R code instead of text"
+title: "Writing Reproducible Results"
+subtitle: "How to use R functions and inline code to embed statistics in text"
 author: "Zihan Hei"
 abstract: |
-  This chapter introduces reproducible research practices by demonstrating how to embed 
-  R code directly into manuscript text using Quarto. Students learn to replace manually 
-  typed numbers with dynamic inline R code that automatically updates when data changes, 
-  reducing errors and improving research reproducibility. Through practical examples using 
-  survey data, the chapter covers reporting sample sizes, calculating percentages, 
-  formatting numbers as words, interpreting descriptive statistics tables, and presenting 
-  statistical test results. By the end of this chapter, students will be able to transform 
-  static numbers in their research papers into dynamic, code-generated values that maintain 
-  accuracy throughout the research process.
+  This chapter teaches students to write reproducible results sections by computing 
+  statistics in R and embedding them directly into manuscript text. Students learn a 
+  two-step process: (1) calculate statistics using R functions and store them as objects, 
+  and (2) insert those values into prose using Quarto's inline code syntax. Through five 
+  practical examples, the chapter covers calculating sample sizes, computing percentages, 
+  formatting numbers as words, creating descriptive statistics tables, and running 
+  statistical tests. By replacing manually typed numbers with code-generated values, 
+  students eliminate transcription errors and create manuscripts that automatically 
+  update when data or analyses change, following reproducible research best practices.By the end of this chapter, students will be able to transform 
+  static numbers in their research papers into dynamic, code-generated values for research reproducibility. 
 keywords:
   - quarto publishing
   - in line coding
@@ -31,7 +32,7 @@ In reproducible research, writing *numbers* *manually* (e.g., "We surveyed 120 p
 #| autorun: false
 #| completion: true
 #| echo: true
-#| output: false
+#| output: true
 #| warning: false
 #| error: false
 
@@ -46,16 +47,15 @@ library(english)    # to convert numbers to words
 library(stringr)    # for text functions like str_c()
 ```
 
-## Dataset: Example Survey Data
+## Example Dataset
 
-A subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: [https://fripublichealth.quarto.pub/zerosum/readme-preview.html](https://fripublichealth.quarto.pub/zerosum/readme-preview.html)
+The example dataset is a small subset of a larger dataset collected via Prolific on March, 15, 2025. For more information, review the [read me file](https://fripublichealth.quarto.pub/zerosum/readme-preview.html).
 
-```{r}
+```{webr-r}
 #| label: embed-select-data
-#| error: false
-#| warning: false
 #| echo: false
-#| output: false
+#| warning: false
+#| message: false
 
 select_data <- structure(list(
   AGE = c(29L, 40L, 23L, 35L, 67L, 45L, 20L, 34L, 
@@ -744,9 +744,23 @@ NA, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",
 str(select_data)
 ```
 
-## Example 1: Reporting Sample Size (using inline R code)
+## Inline R Code
 
-### create an object for `total_responses`
+The traditional process of writing a results section of a research paper usually involves three steps: 1) running the analyses, 2) copying statistics and p-values from the data analysis software into a word document, and 3) writing text to interpret the results. In each of these steps, researchers can make an error. Using inline R code eliminates step2 of copying-and-pasting of numbers into a report or manuscript and reduces parts of step 3. Below are a few examples of how to use inline R code to generate numbers or text using functions:
+
+1.  Report Sample Size
+
+2.  Report Numbers and Percentages
+
+3.  Write Numbers as Words
+
+4.  Report Descriptive Stats in a Table
+
+5.  Report a Parameter and p-value
+
+## Example 1: Report Sample Size
+
+### create object: `total_responses`
 
 ```{webr-r}
 #| autorun: false
@@ -759,19 +773,21 @@ total_responses <- nrow(select_data)
 total_responses
 ```
 
-## use inline r code with `total_responses`
+## use in line code
 
 In your manuscript, write like this:
+
 ```{markdown}
 We surveyed a total of `r total_responses` participants.
 ```
 
 When you render the output, you'll get:
+
 ```{markdown}
 We surveyed a total of 122 participants.
 ```
 
-## Example 2: Report Numbers and Percentages (using inline R)
+## Example 2: Report Numbers and Percentages
 
 You can combine counts and percentages easily.
 
@@ -825,9 +841,18 @@ Out of 122 participants, The final sample was roughly balanced in terms of racia
 (White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).
 ```
 
-## Example 3: Capitalizing and Writing Numbers as Words
+## Example 3: Write Numbers as Words
+
+### load library
+
+```{webr-r}
+library(scales)     # for number formatting like comma()
+library(english)    # to convert numbers to words
+library(stringr) 
+```
 
 ### report numbers as words
+
 In your manuscript, write like this:
 
 ```{markdown}
@@ -840,7 +865,9 @@ When you render the output, you'll get:
 A total of One Hundred And Twenty-Two participants were included in the analysis.
 ```
 
-## Example 4: Interpret a table by using inline R code (Mean, SD, Range)
+## Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)
+
+Writing functions can help researchers output the mean, median, sd, min, max and output these descriptive statistics into a table.
 
 ### create variables
 
@@ -893,9 +920,11 @@ The sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12
 Participants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.
 ```
 
-## Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code
+## Example 5: Report a parameter and p-values
 
-### run analyses 
+Inline R code is used to report the parameter and p-value of a Kruskal-Wallis Test.
+
+### run analyses
 
 ```{webr}
 #| label: Kruskal-Wallis zerosum1
@@ -905,7 +934,7 @@ kw.ZEROSUM_1.party
 
 ```
 
-### include inline R code with reporting 
+### include inline R code with reporting
 
 In your manuscript, write like this:
 
@@ -921,3 +950,14 @@ When you render the output, you'll get:
 There was no significant difference in ZEROSUM_1 scores across political party groups, 
 Kruskal-Wallis χ²(2) = 1.5, p = 0.473.
 ```
+
+## Common Pitfalls to Avoid
+
+::: {.callout-warning collapse="true"}
+## ⚠️ Danger: Common Mistakes
+-   **Object not found errors** - Make sure you create objects, such as `total_responses`, before using functions, such as `percent()`, before referencing them inline
+-   **Wrong variable names** - R is case-sensitive: `age` ≠ `AGE`
+-   **Missing packages** - Load `scales` and `english` if outputting english text
+
+:::
+

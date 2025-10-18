@@ -135,29 +135,29 @@
     "href": "export.html",
     "title": "4  Exporting Survey Data from Qualtrics",
     "section": "",
-    "text": "4.1 Exporting Survey Data",
+    "text": "4.1 Name and Recode Variables",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
     ]
   },
   {
-    "objectID": "export.html#exporting-survey-data",
-    "href": "export.html#exporting-survey-data",
+    "objectID": "export.html#name-and-recode-variables",
+    "href": "export.html#name-and-recode-variables",
     "title": "4  Exporting Survey Data from Qualtrics",
     "section": "",
-    "text": "Log into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nRecode variables in Qualtrics\n\nVisit “Recode Values” section of the Qualtrics guide\nFollow the instructions: https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre",
+    "text": "Log into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nRecode variables in Qualtrics\n\nVisit “Recode Values” section of the Qualtrics guide\nFollow the instructions on how to name and recode values",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
     ]
   },
   {
-    "objectID": "export.html#exporting-survey-data-1",
-    "href": "export.html#exporting-survey-data-1",
+    "objectID": "export.html#export-survey-data",
+    "href": "export.html#export-survey-data",
     "title": "4  Exporting Survey Data from Qualtrics",
-    "section": "4.2 Exporting Survey Data",
-    "text": "4.2 Exporting Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you should use 10.15.2025 in the correct format and update the file names: 10.15.2025.data.team1.csv and 10.15.2025.data.team1.xlsx",
+    "section": "4.2 Export Survey Data",
+    "text": "4.2 Export Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Survey Data” folder in your Team ELN\nRename both files using the date MONTH.DAY.YEAR.filename.team#.filetype. For example, you could use 10.18.2025 in the correct format and update the file names: 10.18.2025.data.team1.csv and 10.18.2025.data.team1.xlsx",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
@@ -423,7 +423,7 @@
     "section": "",
     "text": "9.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
-      "Report Data",
+      "Reproducibility",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
     ]
   },
@@ -434,107 +434,129 @@
     "section": "",
     "text": "ImportantRequirement\n\n\n\nYou must create a readme.qmd file for all submissions.",
     "crumbs": [
-      "Report Data",
+      "Reproducibility",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
     ]
   },
   {
     "objectID": "functions.html",
     "href": "functions.html",
-    "title": "10  Use Functions to Write Text",
+    "title": "10  Writing Reproducible Results",
     "section": "",
     "text": "10.1 Load Library\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#load-library",
     "href": "functions.html#load-library",
-    "title": "10  Use Functions to Write Text",
+    "title": "10  Writing Reproducible Results",
     "section": "",
     "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#dataset-example-survey-data",
-    "href": "functions.html#dataset-example-survey-data",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.2 Dataset: Example Survey Data",
-    "text": "10.2 Dataset: Example Survey Data\nA subset of data from a March, 15, 2025 Prolific-collected sample is included below for demonstration purposes. More of the full data can be found at: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
+    "objectID": "functions.html#example-dataset",
+    "href": "functions.html#example-dataset",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.2 Example Dataset",
+    "text": "10.2 Example Dataset\nThe example dataset is a small subset of a larger dataset collected via Prolific on March, 15, 2025. For more information, review the read me file.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-1-reporting-sample-size-using-inline-r-code",
-    "href": "functions.html#example-1-reporting-sample-size-using-inline-r-code",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.3 Example 1: Reporting Sample Size (using inline R code)",
-    "text": "10.3 Example 1: Reporting Sample Size (using inline R code)\n\n10.3.1 create an object for total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "objectID": "functions.html#inline-r-code",
+    "href": "functions.html#inline-r-code",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.3 Inline R Code",
+    "text": "10.3 Inline R Code\nThe traditional process of writing a results section of a research paper usually involves three steps: 1) running the analyses, 2) copying statistics and p-values from the data analysis software into a word document, and 3) writing text to interpret the results. In each of these steps, researchers can make an error. Using inline R code eliminates step2 of copying-and-pasting of numbers into a report or manuscript and reduces parts of step 3. Below are a few examples of how to use inline R code to generate numbers or text using functions:\n\nReport Sample Size\nReport Numbers and Percentages\nWrite Numbers as Words\nReport Descriptive Stats in a Table\nReport a Parameter and p-value",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#use-inline-r-code-with-total_responses",
-    "href": "functions.html#use-inline-r-code-with-total_responses",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.4 use inline r code with total_responses",
-    "text": "10.4 use inline r code with total_responses\nIn your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
+    "objectID": "functions.html#example-1-report-sample-size",
+    "href": "functions.html#example-1-report-sample-size",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.4 Example 1: Report Sample Size",
+    "text": "10.4 Example 1: Report Sample Size\n\n10.4.1 create object: total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-2-report-numbers-and-percentages-using-inline-r",
-    "href": "functions.html#example-2-report-numbers-and-percentages-using-inline-r",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.5 Example 2: Report Numbers and Percentages (using inline R)",
-    "text": "10.5 Example 2: Report Numbers and Percentages (using inline R)\nYou can combine counts and percentages easily.\n\n10.5.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.5.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "objectID": "functions.html#use-in-line-code",
+    "href": "functions.html#use-in-line-code",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.5 use in line code",
+    "text": "10.5 use in line code\nIn your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
-    "href": "functions.html#example-3-capitalizing-and-writing-numbers-as-words",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.6 Example 3: Capitalizing and Writing Numbers as Words",
-    "text": "10.6 Example 3: Capitalizing and Writing Numbers as Words\n\n10.6.1 report numbers as words\nIn your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
+    "objectID": "functions.html#example-2-report-numbers-and-percentages",
+    "href": "functions.html#example-2-report-numbers-and-percentages",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.6 Example 2: Report Numbers and Percentages",
+    "text": "10.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n10.6.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.6.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
-    "href": "functions.html#example-4-interpret-a-table-by-using-inline-r-code-mean-sd-range",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.7 Example 4: Interpret a table by using inline R code (Mean, SD, Range)",
-    "text": "10.7 Example 4: Interpret a table by using inline R code (Mean, SD, Range)\n\n10.7.1 create variables\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7\n\n\n\n\n\n\n\n10.7.2 create table\nIn your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
+    "objectID": "functions.html#example-3-write-numbers-as-words",
+    "href": "functions.html#example-3-write-numbers-as-words",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.7 Example 3: Write Numbers as Words",
+    "text": "10.7 Example 3: Write Numbers as Words\n\n10.7.1 load library\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n10.7.2 report numbers as words\nIn your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
-    "objectID": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
-    "href": "functions.html#example-5-interpret-p-value-in-a-kruskal-wallis-test-by-using-inline-r-code",
-    "title": "10  Use Functions to Write Text",
-    "section": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code",
-    "text": "10.8 Example 5: Interpret P-value in a Kruskal-Wallis Test by using inline R code\n\n10.8.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.8.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "objectID": "functions.html#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range",
+    "href": "functions.html#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.8 Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)",
+    "text": "10.8 Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)\nWriting functions can help researchers output the mean, median, sd, min, max and output these descriptive statistics into a table.\n\n10.8.1 create variables\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7\n\n\n\n\n\n\n\n10.8.2 create table\nIn your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
     "crumbs": [
-      "Report Data",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Use Functions</span>"
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#example-5-report-a-parameter-and-p-values",
+    "href": "functions.html#example-5-report-a-parameter-and-p-values",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.9 Example 5: Report a parameter and p-values",
+    "text": "10.9 Example 5: Report a parameter and p-values\nInline R code is used to report the parameter and p-value of a Kruskal-Wallis Test.\n\n10.9.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.9.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "crumbs": [
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+    ]
+  },
+  {
+    "objectID": "functions.html#common-pitfalls-to-avoid",
+    "href": "functions.html#common-pitfalls-to-avoid",
+    "title": "10  Writing Reproducible Results",
+    "section": "10.10 Common Pitfalls to Avoid",
+    "text": "10.10 Common Pitfalls to Avoid\n\n\n\n\n\n\nWarning⚠️ Danger: Common Mistakes\n\n\n\n\n\n\nObject not found errors - Make sure you create objects, such as total_responses, before using functions, such as percent(), before referencing them inline\nWrong variable names - R is case-sensitive: age ≠ AGE\nMissing packages - Load scales and english if outputting english text",
+    "crumbs": [
+      "Reproducibility",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
   }
 ]

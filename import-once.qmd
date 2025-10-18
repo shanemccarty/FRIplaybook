@@ -116,6 +116,8 @@ library(NHANES)
 Review the column names (aka the variables) in the dataset.
 
 ```{webr-r}
+#| label: names-NHANES
+library(NHANES)
 names(NHANESraw)
 ```
 
@@ -125,8 +127,7 @@ names(NHANESraw)
 Now, you will view the structure of the NHANES data
 
 ```{webr-r}
-library(NHANES)
-# Load the data and view its structure
+#| label: data-structure-NHANES
 str(NHANESraw)
 ```
 
