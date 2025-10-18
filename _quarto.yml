@@ -6,7 +6,7 @@ book:
   title: "The Quantitative Playbook for Public Health Research in R"
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
-  date: "10/15/2025"
+  date: "10/17/2025"
   version: "Version 0.78 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
@@ -111,7 +111,7 @@ lang: en
 params:
   organization: "FRI Public Health Research Stream"
   contact_email: "fripublichealth@binghamton.edu"
-  version: "0.75"
+  version: "0.78"
   authors:
     lead: "Shane McCarty, PhD"
     contributors:
