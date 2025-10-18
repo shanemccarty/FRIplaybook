@@ -35,8 +35,14 @@ execute:
 -   [Youtube: Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
 -   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
 -   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
-
 :::
+
+::: {.callout-caution collapse="true"}
+## New Requirement
+
+Alternative Text for Figures and Images (Fig-Alt) was added and is a requirement for your Quarto report and manuscript.
+:::
+
 
 In your Posit Cloud window browser, you should see the *source* and *visual* editor options in the top left corner of your screen. You can toggle back and forth between the two options.
 
@@ -92,7 +98,7 @@ Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
 
 title: "name your final report here"
 author: "put your full name here"
-date: "3/22/2023"
+date: "10/22/2025"
 abstract: |
     TBD goes here
 format: 
@@ -100,11 +106,18 @@ format:
     fig-width: 8
     fig-height: 4
     code-fold: true
+    code-overflow: wrap
     
 ---
 ```
 
-For more information, see [YAML](https://quarto.org/docs/reference/formats/html.html).
+For more information, see:
+
+-   [YAML](https://quarto.org/docs/reference/formats/html.html)
+
+-   [Front Matter](https://quarto.org/docs/authoring/front-matter.html)
+
+-   [code-overflow](https://quarto.org/docs/output-formats/html-code.html#code-overflow)
 
 ## Markdown
 
@@ -178,9 +191,27 @@ Every plot should include a detailed figure caption using `#| fig-cap:`
 
 ```{{r}}
 #| label: you-need-to-revise-this
-#| fig-cap: you need to revise this with detailed figure caption
+#| fig-cap: provide a detailed figure caption
 
 ```
+
+#### Alternative Text for Figures and Images (Fig-Alt)
+
+Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.
+
+::: callout-important
+## Requirement
+
+Every figure and image should include alternative text using `#| fig-alt:`
+:::
+
+```{{r}}
+#| label: you-need-to-revise-this
+#| fig-cap: provide a detailed figure caption
+#| fig-alt: provide info for accessiblity
+```
+
+For more information on how improve the accessiblity of an image, see [figures-alt-text on Quarto](https://quarto.org/docs/authoring/figures.html#alt-text) to use alt text to increase accessiblity.
 
 #### Provide Sources for ALL Code Chunks
 

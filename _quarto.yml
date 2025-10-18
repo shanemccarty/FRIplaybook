@@ -7,7 +7,7 @@ book:
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
   date: "10/15/2025"
-  version: "Version 0.75 (draft)"
+  version: "Version 0.76 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -111,7 +111,7 @@ lang: en
 params:
   organization: "FRI Public Health Research Stream"
   contact_email: "fripublichealth@binghamton.edu"
-  version: "0.7"
+  version: "0.75"
   authors:
     lead: "Shane McCarty, PhD"
     contributors:
