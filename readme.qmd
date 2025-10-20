@@ -10,6 +10,8 @@ keywords:
   - read me
   - transparent
   - project management
+date: "10.15.2025"
+date-format: "MM.DD.YYYY"
 format: html
 editor: visual
 execute:

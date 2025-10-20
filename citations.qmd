@@ -2,6 +2,8 @@
 title: "APA Citations & References"
 subtitle: "How to cite and reference sources in Quarto using APA style (7th)"
 author: "Zihan Hei"
+date: "10.20.2025"
+date-format: "MM.DD.YYYY"
 format: html
 editor: visual
 engine: knitr

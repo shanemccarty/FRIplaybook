@@ -17,6 +17,8 @@ keywords:
   - quarto publishing
   - in line coding
   - writing
+date: "10.15.2025"
+date-format: "MM.DD.YYYY"
 format: live-html
 engine: knitr
 editor: visual

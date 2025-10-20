@@ -2,6 +2,8 @@
 title: "Tidying your data"
 subtitle: "How to use tidyr"
 author: Shane McCarty, PhD & Gavin Rualo
+date: "10.20.2025"
+date-format: "MM.DD.YYYY"
 format: html
 ---
 
