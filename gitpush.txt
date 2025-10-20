@@ -1,0 +1,6 @@
+# use terminal 
+## do these four steps line by line in terminal
+quarto render --to html
+git add .
+git commit -m "Version 0.85"
+git push
