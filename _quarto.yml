@@ -7,7 +7,7 @@ book:
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
   date: "10/20/2025"
-  version: "Version 0.82 (draft)"
+  version: "Version 0.85 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -47,6 +47,8 @@ book:
           file: readme.qmd
         - text: "Results Section"
           file: functions.qmd
+        - text: "Citations & Refs"
+          file: citations.qmd
 # Filters - WebR only for now
 filters:
   - webr

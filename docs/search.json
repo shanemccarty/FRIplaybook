@@ -569,5 +569,38 @@
       "Reproducibility",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
     ]
+  },
+  {
+    "objectID": "citations.html",
+    "href": "citations.html",
+    "title": "11  APA Citations & References",
+    "section": "",
+    "text": "12 1. Add “bibliography: references.bib” to the YAML\nThis line tells Quarto to create and use a file called references.bib, which you can find in the Files section.\nTo format your references in APA style, also include the line csl: apa.csl in the YAML header.\n---\ntitle: \"APA citations\"\nauthor: \"Zihan Hei\"\nformat: html\neditor: visual\n\nbibliography: references.bib\ncsl: apa.csl\n---",
+    "crumbs": [
+      "Reproducibility",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+    ]
+  },
+  {
+    "objectID": "citations.html#find-apa-style-in-zotero",
+    "href": "citations.html#find-apa-style-in-zotero",
+    "title": "11  APA Citations & References",
+    "section": "13.1 Find APA Style in Zotero",
+    "text": "13.1 Find APA Style in Zotero\n\nOpen Zotero.\nGo to the menu bar (top left).\n\nOn Windows: click Edit –&gt; Settings\nOn Mac: click Zotero –&gt; Settings\n\nIn the left sidebar, select Cite –&gt; then click the Styles tab.\nAt the bottom of the style list, click “Get additional styles…”\n\nThis opens the Zotero Style Repository inside your browser.\n\nSearch for APA — you’ll see this:\n\nAmerican Psychological Association 7th edition\n\nClick the name of the style and Zotero will automatically install it into your local Zotero library.",
+    "crumbs": [
+      "Reproducibility",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+    ]
+  },
+  {
+    "objectID": "citations.html#finding-the-csl-file",
+    "href": "citations.html#finding-the-csl-file",
+    "title": "11  APA Citations & References",
+    "section": "13.2 Finding the CSL File",
+    "text": "13.2 Finding the CSL File\nWe need the actual .csl file for Quarto:\n\nAfter installing it, go to Zotero’s data directory:\n\n\nOn Windows: C:\\Users\\&lt;YourName&gt;\\Zotero\\styles\n\nC: drives –&gt; folder with your name –&gt; Zotero folder –&gt; styles folder\n\nOn macOS: Home/Zotero/styles\n\nHome folder –&gt; Zotero folder –&gt; styles folder\n\n\n\nFind the file named something like apa.csl or apa-7th-edition.csl.\nUpload it into your Quarto project folder, and in your YAML, include:\n\n\n---\ncsl: apa.csl     \n\nor \n\ncsl: apa-7th-edition.csl    \n---",
+    "crumbs": [
+      "Reproducibility",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+    ]
   }
 ]
