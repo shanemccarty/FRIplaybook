@@ -1865,7 +1865,8 @@ globalThis.qwebrExecuteCode = async function (
   <ul class="collapse">
   <li><a href="#import-from-nhanes-package" id="toc-import-from-nhanes-package" class="nav-link" data-scroll-target="#import-from-nhanes-package"><span class="header-section-number">5.3.1</span> Import from <code>NHANES</code> package</a></li>
   <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">5.3.2</span> Load libraries</a></li>
-  <li><a href="#import-from-excel-.xlsx-file" id="toc-import-from-excel-.xlsx-file" class="nav-link" data-scroll-target="#import-from-excel-.xlsx-file"><span class="header-section-number">5.3.3</span> Import from Excel <code>.xlsx</code> file</a></li>
+  <li><a href="#example.-import.xlsx-file-with-1-header-first-row" id="toc-example.-import.xlsx-file-with-1-header-first-row" class="nav-link" data-scroll-target="#example.-import.xlsx-file-with-1-header-first-row"><span class="header-section-number">5.3.3</span> Example. Import<code>.xlsx</code> file with 1 header (first row)</a></li>
+  <li><a href="#option-2.-import.xlsx-file-with-2-row-header-first-2-rows" id="toc-option-2.-import.xlsx-file-with-2-row-header-first-2-rows" class="nav-link" data-scroll-target="#option-2.-import.xlsx-file-with-2-row-header-first-2-rows"><span class="header-section-number">5.3.4</span> Option 2. Import<code>.xlsx</code> file with 2 row header (first 2 rows)</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/import-once.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -2178,7 +2179,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10.15.2025</p>
+      <p class="date">10.20.2025</p>
     </div>
   </div>
   
@@ -2220,6 +2221,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </ul>
 </div>
 </div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Page Update
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>On October 20th, 2025 at 11:35pm, much of the code was updated to tag missing data correctly. Responses (NA, -99, and -50) will be changed to <code>NA</code>.</p>
+</div>
+</div>
+</div>
 <section id="introduction-to-data-import" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="introduction-to-data-import"><span class="header-section-number">5.1</span> Introduction to Data Import</h2>
 <p><strong>Importing data</strong> is the <em>first step</em> in the data science workflow. Before you can clean, visualize, or model your data, you need to get it into R. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected in the software Qualtrics.</p>
@@ -2251,7 +2268,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">5.2.1</span> File Formats</h3>
 <ul>
 <li><p>National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package <code>NHANES</code></p></li>
-<li><p>a <code>.csv</code> file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolificgealthbeliefs.csv</code></p></li>
+<li><p>a <code>.csv</code> file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.csv</code></p></li>
 <li><p>a <code>.xlsx</code> file format of the class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.xlsx</code></p></li>
 <li><p>a <code>.sav</code> file format from SPSS of the FRI team project on oral health <code>10.31.2024.oralhealth.sav</code>.</p></li>
 </ul>
@@ -2307,17 +2324,20 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="import-from-excel-.xlsx-file" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="import-from-excel-.xlsx-file"><span class="header-section-number">5.3.3</span> Import from Excel <code>.xlsx</code> file</h3>
-<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them. Below are code chunks that can be copied into your report if you are using an excel file.</p>
+<section id="example.-import.xlsx-file-with-1-header-first-row" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="example.-import.xlsx-file-with-1-header-first-row"><span class="header-section-number">5.3.3</span> Example. Import<code>.xlsx</code> file with 1 header (first row)</h3>
+<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them. Below are code chunks that can be copied into your report if you are using an excel file with <strong>1 header</strong>.</p>
+<p>Use the .clean datafile: 10.20.2025.data.team1.clean.xlsx . Notice that the file path has “data/10.20.2025.data.team1.clean.xlsx” because the folder (data) is holding the Posit Cloud file (10.20.2025.data.team1.clean.xlsx). You do NOT need to put your file inside of a “data” folder. After you uupload your data, you can use the file name only as the path.</p>
 <div class="cell" data-autorun="true" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>healthbeliefs_xlsx <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>healthbeliefsdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"-99"</span>, <span class="st">"-50"</span>))  <span class="co"># Define missing value codes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 10 rows</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(healthbeliefs_xlsx, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(healthbeliefsdata, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 270
    StartDate           EndDate             Status Progress
@@ -2343,7 +2363,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View column names, which are the VARIABLES</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(healthbeliefs_xlsx)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(healthbeliefsdata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] "StartDate"                  "EndDate"                   
   [3] "Status"                     "Progress"                  
@@ -2484,7 +2504,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a summary of all variables</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(healthbeliefs_xlsx)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(healthbeliefsdata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   StartDate                         EndDate                           Status 
  Min.   :2025-04-15 13:54:41.00   Min.   :2025-04-15 14:02:30.00   Min.   :0  
@@ -2992,19 +3012,57 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
                                                                            </code></pre>
 </div>
 </div>
-<section id="excel-import-data-to-assign-missing-data-to-na" class="level4">
-<h4 class="anchored" data-anchor-id="excel-import-data-to-assign-missing-data-to-na">Excel: Import Data to Assign Missing Data to <code>NA</code></h4>
-<div class="callout callout-style-default callout-warning callout-titled">
+</section>
+<section id="option-2.-import.xlsx-file-with-2-row-header-first-2-rows" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="option-2.-import.xlsx-file-with-2-row-header-first-2-rows"><span class="header-section-number">5.3.4</span> Option 2. Import<code>.xlsx</code> file with 2 row header (first 2 rows)</h3>
+<p>If you do NOT clean your data and want to import the exact file you exported from the Qualtrics. You can skip the step of manually deleting row 2 (see exporting data chapter) and import a 2 row header with the following code.</p>
+<p>Use the not clean datafile: 10.20.2025.data.team1.xlsx</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-excel-header2</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file using readxl only</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Row 1: Variable names (used as header)</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Row 2: Variable labels (SKIP this row)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Row 3+: Actual data</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Read row 1 to get variable names</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>safetydata2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"data/10.20.2025.TestData.Team1.xlsx"</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_max =</span> <span class="dv">1</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">FALSE</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to character vector</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">as.character</span>(var_names[<span class="dv">1</span>, ])</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Read the actual data starting from row 3</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>safetydata2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"data/10.20.2025.TestData.Team1.xlsx"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">2</span>,  <span class="co"># Skip rows 1 and 2</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> var_names,  <span class="co"># Use row 1 as column names</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"-99"</span>, <span class="st">"-50"</span>)  <span class="co"># Define missing value codes</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="excel-import-data-to-assign-missing-data-as-na" class="level4">
+<h4 class="anchored" data-anchor-id="excel-import-data-to-assign-missing-data-as-na">Excel: Import Data to assign Missing Data as <code>NA</code></h4>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This page is under construction. It will include important missing data information.</p>
+<p>This page has been updated to address missing data during import.</p>
 </div>
 </div>
 
