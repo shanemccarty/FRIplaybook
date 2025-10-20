@@ -55,6 +55,9 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
     -   [ ] CSV
 
     -   [ ] Excel
+    
+    
+## Upload to Drive and Rename Files
 
 -   [ ] Upload both files to "Team Survey Data" folder in your Team ELN
 
@@ -64,4 +67,6 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
 - [ ] In google sheets, open up the file with .clean added to the original file (i.e., `{r} current_date`.data.team1.clean.xlsx) and delete the second row. You'll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels. 
 
-- [ ] Go to file > download > Microsoft Excel. This is the file you will import into your R or NVivo. 
+- [ ] Go to file > download > Microsoft Excel.
+
+Once you have completed these steps, you can move to the next chapter to import your data (`{r} current_date`.data.team1.clean.xlsx) to R or NVivo. 
