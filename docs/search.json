@@ -157,18 +157,18 @@
     "href": "export.html#export-survey-data",
     "title": "4  Exporting Survey Data from Qualtrics",
     "section": "4.2 Export Survey Data",
-    "text": "4.2 Export Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel",
+    "text": "4.2 Export Survey Data\n\nLog into Qualtrics: https://binghamton.co1.qualtrics.com\n\nUnder Active surveys, click on your survey\n\nAt the top, go to Data & Analysis tab (top navigation bar)\n\nEnsure that “Data” is selected (from the second navigvation bar)\n\n\n\n\n\nClick on Data & Analysis and ensure Data is underlined in the navigation bars.\n\n\n\nOn the upper right side, click Export & Import ^, then select Export Data…\nDownload the dataset (with download all fields checked and export values check – do not select export labels in two file formats:\n\nCSV\nExcel\n\nUpload both files to “Team Survey Data” folder in your Team ELN",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"
     ]
   },
   {
-    "objectID": "export.html#upload-to-drive-and-rename-files",
-    "href": "export.html#upload-to-drive-and-rename-files",
+    "objectID": "export.html#rename-files-and-download",
+    "href": "export.html#rename-files-and-download",
     "title": "4  Exporting Survey Data from Qualtrics",
-    "section": "4.3 Upload to Drive and Rename Files",
-    "text": "4.3 Upload to Drive and Rename Files\n\nUpload both files to “Team Survey Data” folder in your Team ELN\nRename both files using the date of the export in this format: MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is 10.18.2025 then the correct format of the files should be: 10.18.2025.data.team1.csv and 10.18.2025.data.team1.xlsx\nMake a copy of the 10.18.2025.data.team1.xlsx and rename it to: 10.18.2025.data.team1.clean.xlsx. This will be the dataset you use to IMPORT.\nIn google sheets, open up the file with .clean added to the original file (i.e., 10.18.2025.data.team1.clean.xlsx) and delete the second row. You’ll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.\nGo to file &gt; download &gt; Microsoft Excel.\n\nOnce you have completed these steps, you can move to the next chapter to import your data (10.18.2025.data.team1.clean.xlsx) to R or NVivo.",
+    "section": "4.3 Rename Files and Download",
+    "text": "4.3 Rename Files and Download\n\nRename both files using the date of the export in this format: MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is 10.18.2025 then the correct format of the files should be: 10.18.2025.data.team1.csv and 10.18.2025.data.team1.xlsx\nMake a copy of the 10.18.2025.data.team1.xlsx and rename it to: 10.18.2025.data.team1.clean.xlsx. This will be the dataset you use to IMPORT.\nIn google sheets, open up the file with .clean added to the original file (i.e., 10.18.2025.data.team1.clean.xlsx) and delete the second row. You’ll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.\nGo to file &gt; download &gt; Microsoft Excel.\n\nOnce you have completed these steps, you can move to the next chapter to import your data (10.18.2025.data.team1.clean.xlsx) to R or NVivo.",
     "crumbs": [
       "Import Data",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exporting Data</span>"

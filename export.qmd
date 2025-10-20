@@ -55,11 +55,10 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
     -   [ ] CSV
 
     -   [ ] Excel
-    
-    
-## Upload to Drive and Rename Files
 
--   [ ] Upload both files to "Team Survey Data" folder in your Team ELN
+-   [ ] Upload both files to "Team Survey Data" folder in your Team ELN  
+    
+## Rename Files and Download
 
 -   [ ] Rename both files using the date of the export in this format:  MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is `{r} current_date` then the correct format of the files should be: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx
 
