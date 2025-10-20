@@ -48,8 +48,6 @@ library(knitr)
 alldata <- read_sav("data/10.31.2024.oralhealth.sav", user_na = FALSE)
 ```
 
-
-
 ```{r}
 #| label: replace-missing-data
 
@@ -127,4 +125,3 @@ table(alldata$Education_Level, alldata$education_3cat, useNA = "ifany")
 ::: callout-warning
 This page is under construction. It will include more information soon!
 :::
-

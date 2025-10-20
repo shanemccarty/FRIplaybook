@@ -18,8 +18,8 @@ execute:
 ::: {.callout-tip icon="false"}
 ## 📖 Additional Learning Resources
 
-- **Cheat Sheet**: [dplyr Data Transformation](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
-- **psych Package**: [Quick reference guide](https://cran.r-project.org/web/packages/psych/psych.pdf)
+-   **Cheat Sheet**: [dplyr Data Transformation](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+-   **psych Package**: [Quick reference guide](https://cran.r-project.org/web/packages/psych/psych.pdf)
 :::
 
 ```{r}
@@ -29,7 +29,6 @@ library(psych)
 library(knitr)
 library(ggplot2)
 ```
-
 
 ::: callout-warning
 This page is under construction. It will include important information soon!

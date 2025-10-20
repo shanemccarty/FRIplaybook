@@ -957,9 +957,8 @@ Kruskal-Wallis χ²(2) = 1.5, p = 0.473.
 
 ::: {.callout-warning collapse="true"}
 ## ⚠️ Danger: Common Mistakes
+
 -   **Object not found errors** - Make sure you create objects, such as `total_responses`, before using functions, such as `percent()`, before referencing them inline
 -   **Wrong variable names** - R is case-sensitive: `age` ≠ `AGE`
 -   **Missing packages** - Load `scales` and `english` if outputting english text
-
 :::
-

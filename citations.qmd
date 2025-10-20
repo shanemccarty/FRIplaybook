@@ -159,10 +159,8 @@ By default, Quarto will automatically generate a list of cited works and will be
 
 For more information about citations in Quarto, check out the Quarto website: <https://quarto.org/docs/authoring/citations.html>
 
-
-::: {.callout-tip}
+::: callout-tip
 ## Tip with Title
 
-Citations and references are not required for the Results & Discussion Report ( `RDreport.qmd` ), but they are required for the final report. 
-
+Citations and references are not required for the Results & Discussion Report ( `RDreport.qmd` ), but they are required for the final report.
 :::
