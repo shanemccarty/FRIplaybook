@@ -94,7 +94,7 @@ YAML (human-readable data serialization language) has a simple syntax, which is 
 
 - title, subtitle, name, email should be revised
 
-- url should be updated from "https://fripublichealth.quarto.pub/study1.html" to reflect your team # for the study #!
+- url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team # (e.g., team2.html, team3.html)
 
 - abstract and keywords should be included
 
@@ -111,7 +111,7 @@ author:
     email: youremail@binghamton.edu 
     affiliation: 
       - name: Binghamton University
-        url: "https://fripublichealth.quarto.pub/study1.html"
+        url: "https://fripublichealth.quarto.pub/team1.html"
     attributes:
       corresponding: true
 abstract: |

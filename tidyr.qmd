@@ -1,7 +1,7 @@
 ---
 title: "Tidying your data"
 subtitle: "How to use tidyr"
-author: Shane McCarty, PhD
+author: Shane McCarty, PhD & Gavin Rualo
 format: html
 ---
 
@@ -39,6 +39,26 @@ Using the `tidyr` package, long form data can be converted to wide form using th
 | gobills7   | 7.8            | 5.8            | 83         | 18         |
 
 : *Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with `DAY`* dropped from the columns because there is no longer a `DAY`.
+
+### R Code
+
+The code used to transition from long to wide data format here is as follows:
+
+```{{r}}
+#| label: long-to-wide
+library(tidyr)
+
+## Convert to wide format
+wide_data <- long_data %>%
+  pivot_wider(
+    names_from = DAY,
+    values_from = c(WELLBEING, SLEEP), 
+    names_glue = "{.value}_T{DAY}" 
+  )
+```
+
+
+Here, we reference the "DAY" column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.
 
 ## Teams
 
