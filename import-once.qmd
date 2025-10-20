@@ -13,7 +13,7 @@ keywords:
   - SPSS
   - NHANES
   - missing data
-date: "10.15.2025"
+date: 10.15.2025
 date-format: "MM.DD.YYYY"
 format: live-html
 engine: knitr
