@@ -26,7 +26,6 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
 ```
 
-
 ## Name and Recode Variables
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
@@ -56,16 +55,16 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
     -   [ ] Excel
 
--   [ ] Upload both files to "Team Survey Data" folder in your Team ELN  
-    
+-   [ ] Upload both files to "Team Survey Data" folder in your Team ELN
+
 ## Rename Files and Download
 
--   [ ] Rename both files using the date of the export in this format:  MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is `{r} current_date` then the correct format of the files should be: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx
+-   [ ] **Rename both files** using the date of the export in this format: MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is `{r} current_date` then the correct format of the files should be: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx
 
-- [ ] Make a copy of the `{r} current_date`.data.team1.xlsx and rename it to: `{r} current_date`.data.team1.clean.xlsx. This will be the dataset you use to IMPORT. 
+-   [ ] **Make a copy** of the `{r} current_date`.data.team1.xlsx and rename it to: `{r} current_date`.data.team1.clean.xlsx.
 
-- [ ] In google sheets, open up the file with .clean added to the original file (i.e., `{r} current_date`.data.team1.clean.xlsx) and delete the second row. You'll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels. 
+-   [ ] In google sheets, **open up the file with .clean** added to the original file (i.e., `{r} current_date`.data.team1.clean.xlsx) and **delete the second row**. You'll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.
 
-- [ ] Go to file > download > Microsoft Excel.
+-   [ ] Go to File \> **Download** \> Microsoft Excel.
 
-Once you have completed these steps, you can move to the next chapter to import your data (`{r} current_date`.data.team1.clean.xlsx) to R or NVivo. 
+Once you have completed these steps, you can move to the next chapter to import your data (`{r} current_date`.data.team1.clean.xlsx) to R or NVivo.
