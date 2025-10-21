@@ -10,7 +10,7 @@
 <meta name="author" content="James Giallella">
 <meta name="keywords" content="export, qualtrics, label variables, recode values">
 
-<title>4&nbsp; Exporting Survey Data from Qualtrics – The Quantitative Playbook for Public Health Research in R</title>
+<title>4&nbsp; Exporting Survey Data – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -270,9 +270,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#name-and-recode-variables" id="toc-name-and-recode-variables" class="nav-link active" data-scroll-target="#name-and-recode-variables"><span class="header-section-number">4.1</span> Name and Recode Variables</a></li>
-  <li><a href="#export-survey-data" id="toc-export-survey-data" class="nav-link" data-scroll-target="#export-survey-data"><span class="header-section-number">4.2</span> Export Survey Data</a></li>
-  <li><a href="#rename-files-and-download" id="toc-rename-files-and-download" class="nav-link" data-scroll-target="#rename-files-and-download"><span class="header-section-number">4.3</span> Rename Files and Download</a></li>
+  <li><a href="#name-and-recode-variables-in-qualtrics" id="toc-name-and-recode-variables-in-qualtrics" class="nav-link active" data-scroll-target="#name-and-recode-variables-in-qualtrics"><span class="header-section-number">4.1</span> Name and Recode Variables in Qualtrics</a></li>
+  <li><a href="#export-survey-questionsitems-.docx" id="toc-export-survey-questionsitems-.docx" class="nav-link" data-scroll-target="#export-survey-questionsitems-.docx"><span class="header-section-number">4.2</span> Export Survey Questions/Items (<code>.docx</code>)</a></li>
+  <li><a href="#export-survey-data-.xlsx" id="toc-export-survey-data-.xlsx" class="nav-link" data-scroll-target="#export-survey-data-.xlsx"><span class="header-section-number">4.3</span> Export Survey Data (<code>.xlsx</code>)</a></li>
+  <li><a href="#rename-files-and-download" id="toc-rename-files-and-download" class="nav-link" data-scroll-target="#rename-files-and-download"><span class="header-section-number">4.4</span> Rename Files and Download</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/export.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -281,8 +282,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Import Data</a></li><li class="breadcrumb-item"><a href="./export.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exporting Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exporting Survey Data from Qualtrics</span></h1>
-<p class="subtitle lead">How to name variables and recode values</p>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exporting Survey Data</span></h1>
+<p class="subtitle lead">How to name variables and recode values in Qualtrics</p>
 </div>
 
 
@@ -310,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter introduces students to import qualtrics features, such as recoding values in qualtrics before exporting the dataset.</p>
+    <p>This chapter guides students through the complete process of exporting survey data from Qualtrics for analysis in R (for quanitative track) or NVivo (for qualitative track). Students learn to prepare their data by naming variables and recoding values directly in Qualtrics before export, ensuring numerical values are properly assigned to response options. The chapter covers three essential exports: the survey instrument as a Word document for documentation, the raw dataset as an Excel file with numerical values, and a cleaned version with duplicate header rows removed. Students practice proper file naming conventions using date-stamped formats (MONTH.DAY.YEAR.data.team#.filetype) to track multiple data exports throughout their research project. By the end of this chapter, students will have properly formatted, team-specific datasets ready for import into data analysis software, following reproducible research standards for data management and version control.</p>
   </div>
 </div>
 
@@ -324,30 +325,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="name-and-recode-variables" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="name-and-recode-variables"><span class="header-section-number">4.1</span> Name and Recode Variables</h2>
+<section id="name-and-recode-variables-in-qualtrics" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="name-and-recode-variables-in-qualtrics"><span class="header-section-number">4.1</span> Name and Recode Variables in Qualtrics</h2>
 <ul class="task-list">
 <li><p><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
 </ul></li>
-<li><p><label><input type="checkbox">Recode variables in Qualtrics</label></p>
-<ul class="task-list">
+<li><p><label><input type="checkbox">Recode variables in Qualtrics</label></p></li>
 <li><p><label><input type="checkbox">Visit “Recode Values” section of the <a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/">Qualtrics guide</a></label></p></li>
 <li><p><label><input type="checkbox">Follow the instructions on how to <a href="https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre">name and recode values</a></label></p></li>
-</ul></li>
+<li><p><label><input type="checkbox">Click “publish” in Qualtrics to save your recodes</label></p></li>
 </ul>
 </section>
-<section id="export-survey-data" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="export-survey-data"><span class="header-section-number">4.2</span> Export Survey Data</h2>
+<section id="export-survey-questionsitems-.docx" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="export-survey-questionsitems-.docx"><span class="header-section-number">4.2</span> Export Survey Questions/Items (<code>.docx</code>)</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label>
+<li><p><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label></p>
 <ul class="task-list">
 <li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
 </ul></li>
+<li><p><label><input type="checkbox">Click on Survey &gt; Import/Export &gt; “Export Survey to Word” to download a copy of the entire survey questions/statements as they would appear in the online Qualtrics survey. As a reminder, you already did this for your IRB submission.</label></p></li>
+<li><p><label><input type="checkbox">Open the document in Microsoft Word (not google docs) to confirm it works. Then, save it as <code>10.20.2025.ExportedSurvey.docx</code>.</label></p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📁 For Teams 2 and 5
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<p><em>Files for Team 2:</em> - <code>10.20.2025.ExportedSurvey.Daily.docx</code> - <code>10.20.2025.ExportedSurvey.Day17.docx</code></p>
+<p><em>Files for Team 5:</em> - <code>10.20.2025.ExportedSurvey.Veggie.docx</code> - <code>10.20.2025.ExportedSurvey.Perception.docx</code></p>
+</div>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Open your “Team Survey Data” on google drive and click + New &gt; File Upload and select your document.</label></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/export-survey.png" class="img-fluid figure-img"></p>
+<figcaption><em>Click on Survey &gt; Import/Export &gt; Export Survey to Word</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="export-survey-data-.xlsx" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="export-survey-data-.xlsx"><span class="header-section-number">4.3</span> Export Survey Data (<code>.xlsx</code>)</h2>
+<ul class="task-list">
 <li><label><input type="checkbox">At the top, go to Data &amp; Analysis tab (top navigation bar)</label>
 <ul class="task-list">
-<li><label><input type="checkbox">Ensure that “Data” is selected (from the second navigvation bar)</label></li>
+<li><label><input type="checkbox">Ensure that “Data” is selected (from the second navigation bar)</label></li>
 </ul></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
@@ -358,23 +392,142 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <ul class="task-list">
 <li><p><label><input type="checkbox">On the upper right side, click Export &amp; Import ^, then select Export Data…</label></p></li>
-<li><p><label><input type="checkbox">Download the dataset (with download all fields checked and export <em>values</em> check – do not select export <em>labels</em> in two file formats:</label></p>
+<li><p><label><input type="checkbox">Click the Excel tab, check download all fields, check <em>export values</em> (and do NOT select <em>export labels</em>), and click the download button.</label></p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/export-excel.png" class="img-fluid figure-img"></p>
+<figcaption><em>Select the excel option of the multiple file type options (csv, tsv, SPSS) and select key choices before download</em></figcaption>
+</figure>
+</div>
 <ul class="task-list">
-<li><p><label><input type="checkbox">CSV</label></p></li>
-<li><p><label><input type="checkbox">Excel</label></p></li>
-</ul></li>
-<li><p><label><input type="checkbox">Upload both files to “Team Survey Data” folder in your Team ELN</label></p></li>
+<li><label><input type="checkbox">Open the file in Microsoft Word as <code>.docx</code> and check that numerical values are shown in parentheses (e.g., Poor (1) next to the response options</label></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/export-survey-recode.png" class="img-fluid figure-img"></p>
+<figcaption>*Confirm your closed-ended questions/items have response options with numerical values for each response option</figcaption>
+</figure>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Upload both files to “Team Survey Data” folder in your Team ELN</label></li>
 </ul>
 </section>
-<section id="rename-files-and-download" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="rename-files-and-download"><span class="header-section-number">4.3</span> Rename Files and Download</h2>
+<section id="rename-files-and-download" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="rename-files-and-download"><span class="header-section-number">4.4</span> Rename Files and Download</h2>
 <ul class="task-list">
-<li><p><label><input type="checkbox"><strong>Rename both files</strong> using the date of the export in this format: MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is 10.18.2025 then the correct format of the files should be: 10.18.2025.data.team1.csv and 10.18.2025.data.team1.xlsx</label></p></li>
-<li><p><label><input type="checkbox"><strong>Make a copy</strong> of the 10.18.2025.data.team1.xlsx and rename it to: 10.18.2025.data.team1.clean.xlsx.</label></p></li>
-<li><p><label><input type="checkbox">In google sheets, <strong>open up the file with .clean</strong> added to the original file (i.e., 10.18.2025.data.team1.clean.xlsx) and <strong>delete the second row</strong>. You’ll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.</label></p></li>
+<li><p><label><input type="checkbox"><strong>Rename both files</strong> using the date of the export in this format: MONTH.DAY.YEAR.data.team#.filetype. For example, if the date is 10.20.2025 then the correct format of the files should be: 10.20.2025.data.team1.csv and 10.20.2025.data.team1.xlsx</label></p></li>
+<li><p><label><input type="checkbox"><strong>Make a copy</strong> of the <code>10.20.2025.data.team1.xlsx</code> and rename it to: <code>10.20.2025.data.team1.clean.xlsx.</code></label></p></li>
+<li><p><label><input type="checkbox">In google sheets, <strong>open up the file with .clean</strong> added to the original file (i.e., <code>10.20.2025.data.team1.clean.xlsx</code>) and <strong>delete the second row</strong>. You’ll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.</label></p></li>
 <li><p><label><input type="checkbox">Go to File &gt; <strong>Download</strong> &gt; Microsoft Excel.</label></p></li>
 </ul>
-<p>Once you have completed these steps, you can move to the next chapter to import your data (10.18.2025.data.team1.clean.xlsx) to R or NVivo.</p>
+<p>Once you have completed these steps, you can move to the next chapter to import your data (<code>10.20.2025.data.team1.clean.xlsx</code>) to R or NVivo.</p>
+<p>Reminder: Some teams will export datasets at different times during their recruitment process in order to complete the individual and team deadlines. You should export and <strong>Rename both files</strong> using the date of the export, following MONTH.DAY.YEAR.data.team#.filetype. For example, if you export on 10.20.2025 then the correct format of the files should be: 10.20.2025.data.team1.csv and 10.20.2025.data.team1.xlsx. Then, 10.20.2025.data.team1.xlsx should be changed to 10.20.2025.data.team1.clean.xlsx after removing the second row.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📁 Team 1 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.20.2025.data.team1.csv</li>
+<li>10.20.2025.data.team1.xlsx</li>
+<li>10.20.2025.data.team1.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📁 Team 2 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.20.2025.data.team2.csv</li>
+<li>10.20.2025.data.team2.xlsx</li>
+<li>10.20.2025.data.team2.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📁 Team 3 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.20.2025.data.team3.csv</li>
+<li>10.20.2025.data.team3.xlsx</li>
+<li>10.20.2025.data.team3.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📁 Team 4 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.20.2025.data.team4.csv</li>
+<li>10.20.2025.data.team4.xlsx</li>
+<li>10.20.2025.data.team4.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📁 Team 5 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.20.2025.data.team5.csv</li>
+<li>10.20.2025.data.team5.xlsx</li>
+<li>10.20.2025.data.team5.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>

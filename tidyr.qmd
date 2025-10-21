@@ -59,7 +59,6 @@ wide_data <- long_data %>%
   )
 ```
 
-
 Here, we reference the "DAY" column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.
 
 ## Teams

@@ -1865,8 +1865,7 @@ globalThis.qwebrExecuteCode = async function (
   <ul class="collapse">
   <li><a href="#import-from-nhanes-package" id="toc-import-from-nhanes-package" class="nav-link" data-scroll-target="#import-from-nhanes-package"><span class="header-section-number">5.3.1</span> Import from <code>NHANES</code> package</a></li>
   <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">5.3.2</span> Load libraries</a></li>
-  <li><a href="#example.-import.xlsx-file-with-1-header-first-row" id="toc-example.-import.xlsx-file-with-1-header-first-row" class="nav-link" data-scroll-target="#example.-import.xlsx-file-with-1-header-first-row"><span class="header-section-number">5.3.3</span> Example. Import<code>.xlsx</code> file with 1 header (first row)</a></li>
-  <li><a href="#option-2.-import.xlsx-file-with-2-row-header-first-2-rows" id="toc-option-2.-import.xlsx-file-with-2-row-header-first-2-rows" class="nav-link" data-scroll-target="#option-2.-import.xlsx-file-with-2-row-header-first-2-rows"><span class="header-section-number">5.3.4</span> Option 2. Import<code>.xlsx</code> file with 2 row header (first 2 rows)</a></li>
+  <li><a href="#row1" id="toc-row1" class="nav-link" data-scroll-target="#row1"><span class="header-section-number">5.3.3</span> Import <code>.xlsx</code> file with row 1 header</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/import-once.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -2227,13 +2226,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Page Update
+<span class="screen-reader-only">Caution</span>Updated 10/20/2025 8:30pm
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>On October 20th, 2025 at 11:35pm, much of the code was updated to tag missing data correctly. Responses (NA, -99, and -50) will be changed to <code>NA</code>.</p>
+<p><a href="#row1">Section 5.3.3</a> was updated to handle missing data correctly. Responses (-99, and -50) will be changed to <code>NA</code>. Check <code>View()</code> to ensure there are no -99 and -50 values. You can run a histogram to check too!</p>
 </div>
 </div>
 </div>
@@ -2324,750 +2323,301 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="example.-import.xlsx-file-with-1-header-first-row" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="example.-import.xlsx-file-with-1-header-first-row"><span class="header-section-number">5.3.3</span> Example. Import<code>.xlsx</code> file with 1 header (first row)</h3>
-<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them. Below are code chunks that can be copied into your report if you are using an excel file with <strong>1 header</strong>.</p>
-<p>Use the .clean datafile: 10.20.2025.data.team1.clean.xlsx . Notice that the file path has “data/10.20.2025.data.team1.clean.xlsx” because the folder (data) is holding the Posit Cloud file (10.20.2025.data.team1.clean.xlsx). You do NOT need to put your file inside of a “data” folder. After you uupload your data, you can use the file name only as the path.</p>
+<section id="row1" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="row1"><span class="header-section-number">5.3.3</span> Import <code>.xlsx</code> file with row 1 header</h3>
+<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them. Below are code chunks that can be copied into your report if you are using an excel file with the <strong>header in row 1</strong>.</p>
+<p>Use the .clean datafile: 10.20.2025.data.team1.clean.xlsx .</p>
+<ul>
+<li>Notice: the file path has “data/10.20.2025.data.team1.clean.xlsx” because the folder (data) is holding the Posit Cloud file (10.20.2025.data.team1.clean.xlsx). You do NOT need to put your file inside of a “data” folder, but you do need to UPLOAD your dataset to your files in Posit Cloud.</li>
+</ul>
 <div class="cell" data-autorun="true" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>healthbeliefsdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"-99"</span>, <span class="st">"-50"</span>))  <span class="co"># Define missing value codes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>safetydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"10.20.2025.data.team1.clean.xlsx"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>safetydata[safetydata <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>safetydata[safetydata <span class="sc">==</span> <span class="sc">-</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">##explanation: all -99 and -50 data will be treated as missing data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 10 rows</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(healthbeliefsdata, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(safetydata, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 270
-   StartDate           EndDate             Status Progress
-   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dbl&gt;    &lt;dbl&gt;
- 1 2025-04-15 13:59:51 2025-04-15 14:20:09      0      100
- 2 2025-04-15 14:01:16 2025-04-15 14:21:34      0      100
- 3 2025-04-15 13:54:52 2025-04-15 14:21:54      0      100
- 4 2025-04-15 14:08:40 2025-04-15 14:38:18      0      100
- 5 2025-04-15 13:54:41 2025-04-15 14:46:33      0      100
- 6 2025-04-15 13:59:37 2025-04-15 14:48:37      0      100
- 7 2025-04-15 13:57:37 2025-04-15 14:54:26      0      100
- 8 2025-04-15 14:20:12 2025-04-15 14:59:04      0      100
- 9 2025-04-15 14:30:34 2025-04-15 15:02:03      0      100
-10 2025-04-15 14:18:39 2025-04-15 15:02:08      0      100
-# ℹ 266 more variables: `Duration (in seconds)` &lt;dbl&gt;, Finished &lt;dbl&gt;,
+<pre><code># A tibble: 10 × 88
+   StartDate           EndDate             Status IPAddress       Progress
+   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+ 1 2025-09-17 14:41:41 2025-09-17 14:56:14      0 149.125.90.78        100
+ 2 2025-09-17 14:58:26 2025-09-17 15:09:09      0 149.125.71.249       100
+ 3 2025-09-17 15:10:40 2025-09-17 15:52:03      0 149.125.5.92         100
+ 4 2025-09-17 15:58:56 2025-09-17 16:12:55      0 174.254.231.34       100
+ 5 2025-09-17 19:23:33 2025-09-17 19:37:52      0 149.125.118.117      100
+ 6 2025-09-18 11:49:00 2025-09-18 11:56:18      0 149.125.188.203      100
+ 7 2025-09-18 11:56:04 2025-09-18 13:06:41      0 69.207.149.41        100
+ 8 2025-09-17 16:05:31 2025-09-18 13:37:48      0 174.197.199.232      100
+ 9 2025-09-18 13:21:08 2025-09-18 13:40:41      0 149.125.48.210       100
+10 2025-09-18 13:35:06 2025-09-18 13:53:33      0 149.125.63.60        100
+# ℹ 83 more variables: `Duration (in seconds)` &lt;dbl&gt;, Finished &lt;dbl&gt;,
 #   RecordedDate &lt;dttm&gt;, ResponseId &lt;chr&gt;, RecipientLastName &lt;lgl&gt;,
 #   RecipientFirstName &lt;lgl&gt;, RecipientEmail &lt;lgl&gt;, ExternalReference &lt;lgl&gt;,
-#   DistributionChannel &lt;chr&gt;, UserLanguage &lt;chr&gt;, Q_RecaptchaScore &lt;dbl&gt;,
-#   CONSENT &lt;dbl&gt;, PROLIFIC &lt;chr&gt;, HELPING_1 &lt;dbl&gt;, HELPING_2 &lt;dbl&gt;,
-#   HELPING_3 &lt;dbl&gt;, HELPING_4 &lt;dbl&gt;, HELPING_5 &lt;dbl&gt;, HELPING_6 &lt;dbl&gt;,
-#   HELPING_7 &lt;dbl&gt;, HELPING_8 &lt;dbl&gt;, HELPING_9 &lt;dbl&gt;, HELPING_10 &lt;dbl&gt;, …</code></pre>
+#   LocationLatitude &lt;dbl&gt;, LocationLongitude &lt;dbl&gt;, DistributionChannel &lt;chr&gt;,
+#   UserLanguage &lt;chr&gt;, Q_RecaptchaScore &lt;dbl&gt;, CONSENT &lt;dbl&gt;, SAFE_QUAL &lt;chr&gt;,
+#   REDUCEVIOLENCE_QUAL &lt;chr&gt;, FIXED_CRIMES_QUAL &lt;chr&gt;,
+#   FIXED_CRIMINALS_QUAL &lt;chr&gt;, COMM_FEEL &lt;dbl&gt;, COMM_HELP &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View column names, which are the VARIABLES</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(healthbeliefsdata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(safetydata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] "StartDate"                  "EndDate"                   
-  [3] "Status"                     "Progress"                  
-  [5] "Duration (in seconds)"      "Finished"                  
-  [7] "RecordedDate"               "ResponseId"                
-  [9] "RecipientLastName"          "RecipientFirstName"        
- [11] "RecipientEmail"             "ExternalReference"         
- [13] "DistributionChannel"        "UserLanguage"              
- [15] "Q_RecaptchaScore"           "CONSENT"                   
- [17] "PROLIFIC"                   "HELPING_1"                 
- [19] "HELPING_2"                  "HELPING_3"                 
- [21] "HELPING_4"                  "HELPING_5"                 
- [23] "HELPING_6"                  "HELPING_7"                 
- [25] "HELPING_8"                  "HELPING_9"                 
- [27] "HELPING_10"                 "HELPING_11"                
- [29] "HELPING_12"                 "HELPING_13"                
- [31] "HELPING_14"                 "HELPING_15"                
- [33] "HELPING_16"                 "HELPING_17"                
- [35] "HELPING_18"                 "HELPING_19"                
- [37] "HELPING_20"                 "HELPING_21"                
- [39] "HELPING_22"                 "HELPING_23"                
- [41] "HELPING_24"                 "HELPING_25"                
- [43] "HELPING_26"                 "HELPING_27"                
- [45] "HELPING_28"                 "HELPING_29"                
- [47] "PROSOCIALPREV_QUAL"         "PROSOCIALPRO_QUAL"         
- [49] "FOCUS_1"                    "FOCUS_2"                   
- [51] "FOCUS_3"                    "FOCUS_4"                   
- [53] "FOCUS_5"                    "FOCUS_6"                   
- [55] "FOCUS_7"                    "FOCUS_8"                   
- [57] "FOCUS_9"                    "FOCUS_10"                  
- [59] "FOCUS_11"                   "HELPGOAL_1"                
- [61] "HELPGOAL_2"                 "HELPGOAL_3"                
- [63] "HELPGOAL_4"                 "HELPGOAL_5"                
- [65] "HELPGOAL_6"                 "HELPGOAL_7"                
- [67] "REGGOAL_1"                  "REGGOAL_2"                 
- [69] "REGGOAL_3"                  "GOALCHOICE&nbsp;"               
- [71] "HEALTHSTATUS"               "IDAS_1"                    
- [73] "IDAS_2"                     "IDAS_3"                    
- [75] "IDAS_4"                     "IDAS_5"                    
- [77] "IDAS_6"                     "IDAS_7"                    
- [79] "IDAS_8"                     "IDAS_9"                    
- [81] "IDAS_10"                    "IDAS_11"                   
- [83] "IDAS_12"                    "IDAS_13"                   
- [85] "IDAS_14"                    "IDAS_15"                   
- [87] "IDAS_16"                    "IDAS_17"                   
- [89] "IDAS_18"                    "IDAS_19"                   
- [91] "IDAS_20"                    "IDAS_21"                   
- [93] "IDAS_22"                    "IDAS_23"                   
- [95] "IDAS_24"                    "IDAS_25"                   
- [97] "IDAS_26"                    "SLEEPBEHAVE_1"             
- [99] "SLEEPBEHAVE_2"              "SLEEPBEHAVE_3"             
-[101] "SLEEPBEHAVE_4"              "SLEEPBEHAVE_5"             
-[103] "SLEEPBEHAVE_6"              "SLEEPBEHAVE_7"             
-[105] "SLEEPBEHAVE_8"              "SLEEPBEHAVE_9"             
-[107] "SLEEPBEHAVE_10"             "SLEEPBEHAVE_11"            
-[109] "SLEEPBEHAVE_12"             "SLEEPBEHAVE_13"            
-[111] "SLEEPBEHAVE_14"             "SLEEPBEHAVE_15"            
-[113] "SLEEPBEHAVE_16"             "SLEEPBEHAVE_17"            
-[115] "SLEEPBEHAVE_18"             "SLEEPBEHAVE_19"            
-[117] "STRESS"                     "EXERCISE"                  
-[119] "ATTENTION1"                 "SLEEP"                     
-[121] "SLEEP_QUAL"                 "GUN_EXPOSURE_1"            
-[123] "GUN_EXPOSURE_2"             "SAFETY_1"                  
-[125] "SAFETY_2"                   "SAFETY_3"                  
-[127] "SAFETY_4"                   "SAFETY_5"                  
-[129] "SAFETY_6"                   "SAFETY_FUND_1"             
-[131] "SAFETY_FUND_2"              "SAFETY_FUND_3"             
-[133] "SAFETY_FUND_4"              "SAFETY_FUND_5"             
-[135] "SAFETY_FUND_6"              "SAFETY_FUND_7"             
-[137] "SAFETY_FUND_8"              "SAFETY_BEST"               
-[139] "VIOLENCE_QUAL"              "SAFETY_QUAL"               
-[141] "CREATESAFETY_QUAL"          "APPUSE"                    
-[143] "APPTYPE"                    "APPTYPE_9_TEXT"            
-[145] "USE_ESTIMATE"               "USE_OBJECTIVE"             
-[147] "REASONS_QUAL...147"         "USESAD_1"                  
-[149] "USESAD_2"                   "USESAD_3"                  
-[151] "ADDICTION_1"                "ADDICTION_2"               
-[153] "ADDICTION_3"                "ADDICTION_4"               
-[155] "ADDICTION_5"                "LITERACY_1"                
-[157] "LITERACY_2"                 "POLITICAL_1"               
-[159] "POLITICAL_2"                "POLITICAL_3"               
-[161] "POLITICAL_4"                "POLITICAL_5"               
-[163] "GOVTBELIEFS_1"              "GOVTBELIEFS_2"             
-[165] "GOVTBELIEFS_3"              "ATTENTION2"                
-[167] "FOODSUFF"                   "FOODSUFF2"                 
-[169] "FOODSUFF3"                  "FOODSUFF4"                 
-[171] "NARRATIVE_QUAL"             "REASONS_QUAL...172"        
-[173] "STIGMA_QUAL"                "CONSUME_1"                 
-[175] "CONSUME_2"                  "CONSUME_3"                 
-[177] "CONSUME_4"                  "CONSUME_5"                 
-[179] "CONSUME_6"                  "CONSUME_7"                 
-[181] "NOCOOKING"                  "FOODILLNESS"               
-[183] "UNHEALTHY_QUAL"             "UPFTYPE_1"                 
-[185] "UPFTYPE_2"                  "UPFTYPE_3"                 
-[187] "UPFTYPE_4"                  "UPFTYPE_5"                 
-[189] "UPFTYPE_6"                  "UPFTYPE_7"                 
-[191] "UPFTYPE_8"                  "UPFTYPE_9"                 
-[193] "UPFTYPE_10"                 "UPFTYPE_11"                
-[195] "UPFTYPE_12"                 "WEALTHGUESS_5"             
-[197] "WEALTHGUESS_4"              "WEALTHGUESS_3"             
-[199] "WEALTHGUESS_2"              "WEALTHGUESS_1"             
-[201] "WEALTHFAIR_5"               "WEALTHFAIR_4"              
-[203] "WEALTHFAIR_3"               "WEALTHFAIR_2"              
-[205] "WEALTHFAIR_1"               "RANKISSUES_1"              
-[207] "RANKISSUES_2"               "RANKISSUES_3"              
-[209] "RANKISSUES_4"               "RANKISSUES_5"              
-[211] "RANKISSUES_6"               "RANKISSUES_7"              
-[213] "RANKISSUES_8"               "RANKISSUES_9"              
-[215] "RANKISSUES_10"              "RANKISSUES_11"             
-[217] "RANKISSUES_12"              "ESTIMATES _1"              
-[219] "ESTIMATES _2"               "ESTIMATES _3"              
-[221] "NEOLIB_1"                   "NEOLIB_2"                  
-[223] "NEOLIB_3"                   "NEOLIB_4"                  
-[225] "NEOLIB_5"                   "NEOLIB_6"                  
-[227] "NEOLIB_7"                   "NEOLIB_8"                  
-[229] "NEOLIB_9"                   "NEOLIB_10"                 
-[231] "NEOLIB_11"                  "NEOLIB_12"                 
-[233] "NEOLIB_13"                  "NEOLIB_14"                 
-[235] "NEOLIB_15"                  "ZEROSUM_1"                 
-[237] "ZEROSUM_2"                  "ZEROSUM_3"                 
-[239] "ZEROSUM_4"                  "ZEROSUM_5"                 
-[241] "ZEROSUM_6"                  "ZEROSUM_7"                 
-[243] "ZEROSUM_8"                  "ZEROSUM_9"                 
-[245] "ZEROSUM_10"                 "ZEROSUM_11"                
-[247] "ATTENTION3"                 "AGE"                       
-[249] "EDUCATION"                  "SOCIALSTATUS"              
-[251] "INCOME"                     "RELIGIOUS_IDENTITY"        
-[253] "RACE"                       "RACE_8_TEXT"               
-[255] "STREETRACE"                 "DISABILITY"                
-[257] "GENDER"                     "SEXUAL_IDENTITY"           
-[259] "STATE"                      "ZIP_BORN"                  
-[261] "ZIP_NOW"                    "POLITICALBELIEFS"          
-[263] "POLITICALAFFIL"             "VOTE2024"                  
-[265] "SERIOUS"                    "Q_AmbiguousTextPresent"    
-[267] "Q_AmbiguousTextQuestions"   "Q_StraightliningCount"     
-[269] "Q_StraightliningPercentage" "Q_StraightliningQuestions" </code></pre>
+<pre><code> [1] "StartDate"                "EndDate"                 
+ [3] "Status"                   "IPAddress"               
+ [5] "Progress"                 "Duration (in seconds)"   
+ [7] "Finished"                 "RecordedDate"            
+ [9] "ResponseId"               "RecipientLastName"       
+[11] "RecipientFirstName"       "RecipientEmail"          
+[13] "ExternalReference"        "LocationLatitude"        
+[15] "LocationLongitude"        "DistributionChannel"     
+[17] "UserLanguage"             "Q_RecaptchaScore"        
+[19] "CONSENT"                  "SAFE_QUAL"               
+[21] "REDUCEVIOLENCE_QUAL"      "FIXED_CRIMES_QUAL"       
+[23] "FIXED_CRIMINALS_QUAL"     "COMM_FEEL"               
+[25] "COMM_HELP"                "COMM_NEIGHBORS"          
+[27] "NOTCOMM_UNSAFE"           "NOTCOMM_RELY"            
+[29] "NOTCOMM_DISTRUST"         "EFFECT_CARE_COMM"        
+[31] "EFFECT_CARE_EDUCATION"    "EFFECT_CARE_HVIP"        
+[33] "EFFECT_CARE_MHRESOURCES"  "EFFECT_CARE_WELFARE"     
+[35] "EFFECT_FEAR_LEG"          "EFFECT_FEAR_POLICE"      
+[37] "EFFECT_FEAR_DEPORT"       "EFFECT_FEAR_ARMY"        
+[39] "FIXEDPERSON1_BASIC"       "FIXEDPERSON2_DIFF"       
+[41] "FIXEDPERSON3_CHANGE_R"    "FIXEDPERSON4_OLD"        
+[43] "FIXEDPERSON_ALWAYS_R"     "FIXEDPERSON_CERTAIN"     
+[45] "FIXEDPERSON_MATTER_R"     "FIXEDPERSON_ALL_R"       
+[47] "MOREFIREARMS_01"          "GENDER"                  
+[49] "RACIALIZED"               "RACIALIZED_8_TEXT"       
+[51] "POLITICAL_BELIEFS"        "POLITICAL_BELIEFS_8_TEXT"
+[53] "SOCIALSTATUS"             "AGE"                     
+[55] "ZIP"                      "PREVENTABILITY1_CAN"     
+[57] "PREVENTABILITY2_HELP"     "PREVENTABILITY3_TAUGHT"  
+[59] "PREVENTABILITY4_DOING"    "PREVENTABILITY5_LEARN"   
+[61] "PREVENTABILITY6_UPSTAND"  "PROMOTABILITY1_CARING"   
+[63] "PROMOTABILITY2_DO"        "PROMOTABILITY3_TAUGHT"   
+[65] "PROMOTABILITY4_SAYING"    "PROMOTABILITY5_LEARN"    
+[67] "PROMOTABILITY6_UPSTAND"   "EFFECTIVE_SAFETY_1"      
+[69] "EFFECTIVE_SAFETY_2"       "EFFECTIVE_SAFETY_3"      
+[71] "EFFECTIVE_SAFETY_4"       "EFFECTIVE_SAFETY_5"      
+[73] "EFFECTIVE_SAFETY_6"       "EFFECTIVE_SAFETY_7"      
+[75] "EFFECTIVE_SAFETY_8"       "EFFECTIVE_PREVENT_1"     
+[77] "EFFECTIVE_PREVENT_2"      "EFFECTIVE_PREVENT_3"     
+[79] "EFFECTIVE_PREVENT_4"      "EFFECTIVE_PREVENT_5"     
+[81] "EFFECTIVE_PREVENT_6"      "EFFECTIVE_PREVENT_7"     
+[83] "EFFECTIVE_PREVENT_8"      "HEALTHSTATUS"            
+[85] "HOPE"                     "ANXIETY"                 
+[87] "FINDSURVEY"               "FINDSURVEY_5_TEXT"       </code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a summary of all variables</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(healthbeliefsdata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(safetydata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   StartDate                         EndDate                           Status 
- Min.   :2025-04-15 13:54:41.00   Min.   :2025-04-15 14:02:30.00   Min.   :0  
- 1st Qu.:2025-04-15 14:10:38.00   1st Qu.:2025-04-15 15:02:07.50   1st Qu.:0  
- Median :2025-04-15 14:30:34.00   Median :2025-04-15 15:24:47.00   Median :0  
- Mean   :2025-04-15 14:45:32.64   Mean   :2025-04-15 15:38:27.88   Mean   :0  
- 3rd Qu.:2025-04-15 14:58:24.00   3rd Qu.:2025-04-15 16:03:20.50   3rd Qu.:0  
- Max.   :2025-04-15 17:50:21.00   Max.   :2025-04-15 18:36:32.00   Max.   :0  
+ Min.   :2025-09-17 14:37:57.00   Min.   :2025-09-17 14:38:13.00   Min.   :0  
+ 1st Qu.:2025-09-18 13:41:55.00   1st Qu.:2025-09-18 13:54:21.00   1st Qu.:0  
+ Median :2025-09-27 16:09:29.00   Median :2025-09-27 16:34:53.50   Median :0  
+ Mean   :2025-09-27 18:04:40.67   Mean   :2025-09-27 19:15:15.82   Mean   :0  
+ 3rd Qu.:2025-10-08 12:43:40.75   3rd Qu.:2025-10-08 12:44:09.00   3rd Qu.:0  
+ Max.   :2025-10-19 14:02:05.00   Max.   :2025-10-19 14:21:53.00   Max.   :0  
                                                                               
-    Progress      Duration (in seconds)    Finished     
- Min.   :  1.00   Min.   :   23         Min.   :0.0000  
- 1st Qu.: 98.00   1st Qu.: 1990         1st Qu.:0.0000  
- Median : 98.00   Median : 2990         Median :0.0000  
- Mean   : 91.57   Mean   : 3175         Mean   :0.3778  
- 3rd Qu.:100.00   3rd Qu.: 3776         3rd Qu.:1.0000  
- Max.   :100.00   Max.   :11150         Max.   :1.0000  
-                                                        
+  IPAddress            Progress      Duration (in seconds)    Finished     
+ Length:180         Min.   :  0.00   Min.   :     7.0      Min.   :0.0000  
+ Class :character   1st Qu.:  5.00   1st Qu.:    21.0      1st Qu.:0.0000  
+ Mode  :character   Median :  5.00   Median :    78.5      Median :0.0000  
+                    Mean   : 42.48   Mean   :  4234.6      Mean   :0.3556  
+                    3rd Qu.:100.00   3rd Qu.:   857.0      3rd Qu.:1.0000  
+                    Max.   :100.00   Max.   :304917.0      Max.   :1.0000  
+                                                                           
   RecordedDate                     ResponseId        RecipientLastName
- Min.   :2025-04-15 14:20:10.18   Length:135         Mode:logical     
- 1st Qu.:2025-04-15 16:00:44.58   Class :character   NA's:135         
- Median :2025-04-22 14:53:48.16   Mode  :character                    
- Mean   :2025-04-20 00:10:30.67                                       
- 3rd Qu.:2025-04-22 15:27:24.22                                       
- Max.   :2025-04-22 18:36:39.68                                       
+ Min.   :2025-09-17 14:56:15.22   Length:180         Mode:logical     
+ 1st Qu.:2025-09-24 16:16:24.73   Class :character   NA's:180         
+ Median :2025-09-29 21:46:56.86   Mode  :character                    
+ Mean   :2025-10-02 07:31:26.51                                       
+ 3rd Qu.:2025-10-10 12:02:35.19                                       
+ Max.   :2025-10-19 16:55:15.32                                       
                                                                       
- RecipientFirstName RecipientEmail ExternalReference DistributionChannel
- Mode:logical       Mode:logical   Mode:logical      Length:135         
- NA's:135           NA's:135       NA's:135          Class :character   
-                                                     Mode  :character   
-                                                                        
-                                                                        
-                                                                        
-                                                                        
- UserLanguage       Q_RecaptchaScore    CONSENT    PROLIFIC        
- Length:135         Min.   :0.3000   Min.   :1   Length:135        
- Class :character   1st Qu.:0.9000   1st Qu.:1   Class :character  
- Mode  :character   Median :1.0000   Median :1   Mode  :character  
-                    Mean   :0.9296   Mean   :1                     
-                    3rd Qu.:1.0000   3rd Qu.:1                     
-                    Max.   :1.0000   Max.   :1                     
-                                                                   
-   HELPING_1       HELPING_2       HELPING_3      HELPING_4       HELPING_5   
- Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.00  
- 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.00   1st Qu.:4.000   1st Qu.:4.00  
- Median :5.000   Median :5.000   Median :5.00   Median :5.000   Median :5.00  
- Mean   :4.768   Mean   :4.452   Mean   :4.36   Mean   :4.472   Mean   :4.64  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00   3rd Qu.:5.000   3rd Qu.:5.00  
- Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :6.000   Max.   :6.00  
- NA's   :10      NA's   :11      NA's   :10     NA's   :12      NA's   :10    
-   HELPING_6       HELPING_7       HELPING_8       HELPING_9      HELPING_10   
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.:4.000   1st Qu.:3.000   1st Qu.:4.00   1st Qu.:3.000  
- Median :4.000   Median :4.500   Median :4.000   Median :4.00   Median :4.500  
- Mean   :4.096   Mean   :4.395   Mean   :3.864   Mean   :4.25   Mean   :4.177  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00   3rd Qu.:5.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :6.000  
- NA's   :10      NA's   :11      NA's   :10      NA's   :11     NA's   :11     
-   HELPING_11      HELPING_12      HELPING_13      HELPING_14     HELPING_15  
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.00  
- 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:3.00   1st Qu.:2.00  
- Median :4.000   Median :4.000   Median :4.000   Median :4.00   Median :3.00  
- Mean   :3.694   Mean   :3.616   Mean   :4.323   Mean   :3.76   Mean   :3.12  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00   3rd Qu.:4.00  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :6.00  
- NA's   :11      NA's   :10      NA's   :11      NA's   :10     NA's   :10    
-   HELPING_16     HELPING_17      HELPING_18      HELPING_19      HELPING_20   
- Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:4.00   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000  
- Median :5.00   Median :3.000   Median :3.000   Median :3.000   Median :3.000  
- Mean   :4.48   Mean   :3.416   Mean   :3.272   Mean   :3.448   Mean   :3.176  
- 3rd Qu.:5.00   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:4.000  
- Max.   :6.00   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
- NA's   :10     NA's   :10      NA's   :10      NA's   :10      NA's   :10     
-   HELPING_21      HELPING_22      HELPING_23      HELPING_24   
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
- Median :4.000   Median :4.000   Median :4.000   Median :5.000  
- Mean   :4.137   Mean   :4.072   Mean   :4.431   Mean   :4.272  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
- NA's   :11      NA's   :10      NA's   :12      NA's   :10     
-   HELPING_25      HELPING_26      HELPING_27      HELPING_28   
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000  
- Median :4.000   Median :5.000   Median :5.000   Median :5.000  
- Mean   :3.976   Mean   :4.408   Mean   :4.435   Mean   :4.512  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
- NA's   :10      NA's   :10      NA's   :11      NA's   :10     
-   HELPING_29    PROSOCIALPREV_QUAL PROSOCIALPRO_QUAL     FOCUS_1    
- Min.   :1.000   Length:135         Length:135         Min.   :1.00  
- 1st Qu.:3.000   Class :character   Class :character   1st Qu.:2.00  
- Median :4.000   Mode  :character   Mode  :character   Median :3.00  
- Mean   :3.944                                         Mean   :2.84  
- 3rd Qu.:5.000                                         3rd Qu.:4.00  
- Max.   :6.000                                         Max.   :5.00  
- NA's   :10                                            NA's   :10    
-    FOCUS_2         FOCUS_3         FOCUS_4        FOCUS_5         FOCUS_6     
- Min.   :2.000   Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:2.00   1st Qu.:3.000   1st Qu.:2.000  
- Median :4.000   Median :4.000   Median :3.00   Median :4.000   Median :3.000  
- Mean   :3.632   Mean   :3.496   Mean   :3.16   Mean   :3.496   Mean   :2.768  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:4.000   3rd Qu.:4.000  
- Max.   :5.000   Max.   :5.000   Max.   :5.00   Max.   :5.000   Max.   :5.000  
- NA's   :10      NA's   :10      NA's   :10     NA's   :10      NA's   :10     
-    FOCUS_7         FOCUS_8         FOCUS_9         FOCUS_10    
- Min.   :1.000   Min.   :1.000   Min.   :2.000   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:2.000  
- Median :3.000   Median :3.000   Median :4.000   Median :3.000  
- Mean   :2.784   Mean   :3.216   Mean   :3.824   Mean   :2.952  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:4.000  
- Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
- NA's   :10      NA's   :10      NA's   :10      NA's   :10     
-    FOCUS_11       HELPGOAL_1      HELPGOAL_2        HELPGOAL_3     HELPGOAL_4 
- Min.   :1.000   Min.   :0.000   Min.   :-50.000   Min.   :0.00   Min.   :0.0  
- 1st Qu.:2.000   1st Qu.:0.000   1st Qu.:  0.000   1st Qu.:0.00   1st Qu.:0.0  
- Median :3.000   Median :1.000   Median :  1.000   Median :1.00   Median :1.0  
- Mean   :2.984   Mean   :0.616   Mean   : -0.504   Mean   :0.68   Mean   :0.6  
- 3rd Qu.:4.000   3rd Qu.:1.000   3rd Qu.:  1.000   3rd Qu.:1.00   3rd Qu.:1.0  
- Max.   :5.000   Max.   :1.000   Max.   :  1.000   Max.   :1.00   Max.   :1.0  
- NA's   :10      NA's   :10      NA's   :10        NA's   :10     NA's   :10   
-   HELPGOAL_5        HELPGOAL_6         HELPGOAL_7        REGGOAL_1      
- Min.   :-50.000   Min.   :-50.0000   Min.   :-50.000   Min.   :-50.000  
- 1st Qu.:  0.000   1st Qu.:  1.0000   1st Qu.:  1.000   1st Qu.:  0.000  
- Median :  1.000   Median :  1.0000   Median :  1.000   Median :  1.000  
- Mean   :  0.129   Mean   :  0.3871   Mean   :  0.048   Mean   : -0.144  
- 3rd Qu.:  1.000   3rd Qu.:  1.0000   3rd Qu.:  1.000   3rd Qu.:  1.000  
- Max.   :  1.000   Max.   :  1.0000   Max.   :  1.000   Max.   :  1.000  
- NA's   :11        NA's   :11         NA's   :10        NA's   :10       
-   REGGOAL_2         REGGOAL_3        GOALCHOICE&nbsp;     HEALTHSTATUS 
- Min.   :-50.000   Min.   :-50.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:  0.000   1st Qu.:  1.000   1st Qu.:2.000   1st Qu.:3.00  
- Median :  1.000   Median :  1.000   Median :3.000   Median :3.00  
- Mean   : -0.488   Mean   : -0.024   Mean   :2.552   Mean   :3.36  
- 3rd Qu.:  1.000   3rd Qu.:  1.000   3rd Qu.:3.000   3rd Qu.:4.00  
- Max.   :  1.000   Max.   :  1.000   Max.   :4.000   Max.   :5.00  
- NA's   :10        NA's   :10        NA's   :10      NA's   :10    
-     IDAS_1        IDAS_2          IDAS_3          IDAS_4          IDAS_5     
- Min.   :1.0   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:2.0   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:2.000  
- Median :3.0   Median :3.000   Median :3.000   Median :3.000   Median :3.000  
- Mean   :3.2   Mean   :3.347   Mean   :3.048   Mean   :3.311   Mean   :3.232  
- 3rd Qu.:4.0   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
- Max.   :5.0   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
- NA's   :10    NA's   :11      NA's   :10      NA's   :13      NA's   :10     
-     IDAS_6         IDAS_7          IDAS_8          IDAS_9         IDAS_10     
- Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:3.00   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:1.000   1st Qu.:1.000  
- Median :3.00   Median :3.000   Median :3.000   Median :2.000   Median :2.000  
- Mean   :3.25   Mean   :3.024   Mean   :3.315   Mean   :2.144   Mean   :2.323  
- 3rd Qu.:4.00   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000  
- Max.   :5.00   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
- NA's   :11     NA's   :10      NA's   :11      NA's   :10      NA's   :11     
-    IDAS_11        IDAS_12         IDAS_13         IDAS_14         IDAS_15     
- Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:1.00   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
- Median :2.00   Median :3.000   Median :2.000   Median :2.000   Median :2.000  
- Mean   :2.36   Mean   :2.752   Mean   :2.234   Mean   :2.363   Mean   :2.403  
- 3rd Qu.:3.00   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000  
- Max.   :5.00   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
- NA's   :10     NA's   :10      NA's   :11      NA's   :11      NA's   :11     
-    IDAS_16         IDAS_17       IDAS_18         IDAS_19        IDAS_20     
- Min.   :1.000   Min.   :1.0   Min.   :1.000   Min.   :1.00   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:1.0   1st Qu.:3.000   1st Qu.:2.00   1st Qu.:1.000  
- Median :2.000   Median :2.0   Median :3.000   Median :3.00   Median :2.000  
- Mean   :2.616   Mean   :2.2   Mean   :3.266   Mean   :2.68   Mean   :2.392  
- 3rd Qu.:4.000   3rd Qu.:3.0   3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:3.000  
- Max.   :5.000   Max.   :5.0   Max.   :5.000   Max.   :5.00   Max.   :5.000  
- NA's   :10      NA's   :10    NA's   :11      NA's   :13     NA's   :10     
-    IDAS_21         IDAS_22         IDAS_23         IDAS_24     
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
- Median :2.000   Median :2.000   Median :2.000   Median :2.000  
- Mean   :2.508   Mean   :2.624   Mean   :2.408   Mean   :2.072  
- 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000  
- Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
- NA's   :11      NA's   :10      NA's   :10      NA's   :10     
-    IDAS_25         IDAS_26      SLEEPBEHAVE_1   SLEEPBEHAVE_2  
- Min.   :1.000   Min.   :1.000   Min.   :0.000   Min.   :0.000  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:4.000  
- Median :2.000   Median :3.000   Median :2.000   Median :5.000  
- Mean   :2.568   Mean   :2.848   Mean   :2.312   Mean   :4.664  
- 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:6.000  
- Max.   :5.000   Max.   :5.000   Max.   :7.000   Max.   :7.000  
- NA's   :10      NA's   :10      NA's   :10      NA's   :10     
- SLEEPBEHAVE_3   SLEEPBEHAVE_4   SLEEPBEHAVE_5   SLEEPBEHAVE_6 SLEEPBEHAVE_7 
- Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.0   Min.   :0.00  
- 1st Qu.:3.000   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.0   1st Qu.:0.00  
- Median :5.000   Median :3.000   Median :2.000   Median :0.0   Median :0.00  
- Mean   :4.272   Mean   :2.832   Mean   :2.248   Mean   :1.4   Mean   :1.36  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:3.000   3rd Qu.:3.0   3rd Qu.:3.00  
- Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.0   Max.   :7.00  
- NA's   :10      NA's   :10      NA's   :10      NA's   :10    NA's   :10    
- SLEEPBEHAVE_8   SLEEPBEHAVE_9   SLEEPBEHAVE_10  SLEEPBEHAVE_11 
- Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.000  
- 1st Qu.:0.000   1st Qu.:0.000   1st Qu.:0.000   1st Qu.:2.000  
- Median :2.000   Median :2.000   Median :2.000   Median :4.000  
- Mean   :2.488   Mean   :2.464   Mean   :1.888   Mean   :3.896  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:6.000  
- Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
- NA's   :10      NA's   :10      NA's   :10      NA's   :10     
- SLEEPBEHAVE_12  SLEEPBEHAVE_13 SLEEPBEHAVE_14  SLEEPBEHAVE_15 SLEEPBEHAVE_16 
- Min.   :0.000   Min.   :0.00   Min.   :0.000   Min.   :0.00   Min.   :0.000  
- 1st Qu.:0.000   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.00   1st Qu.:0.000  
- Median :2.000   Median :3.00   Median :3.000   Median :4.00   Median :0.000  
- Mean   :2.752   Mean   :3.28   Mean   :3.455   Mean   :3.88   Mean   :1.432  
- 3rd Qu.:4.000   3rd Qu.:5.00   3rd Qu.:6.000   3rd Qu.:6.00   3rd Qu.:2.000  
- Max.   :7.000   Max.   :7.00   Max.   :7.000   Max.   :7.00   Max.   :7.000  
- NA's   :10      NA's   :10     NA's   :12      NA's   :10     NA's   :10     
- SLEEPBEHAVE_17 SLEEPBEHAVE_18  SLEEPBEHAVE_19      STRESS      
- Min.   :0.00   Min.   :0.000   Min.   :0.000   Min.   : 0.000  
- 1st Qu.:0.00   1st Qu.:0.000   1st Qu.:0.000   1st Qu.: 2.000  
- Median :0.00   Median :0.000   Median :0.000   Median : 4.000  
- Mean   :1.44   Mean   :1.176   Mean   :0.968   Mean   : 4.024  
- 3rd Qu.:3.00   3rd Qu.:2.000   3rd Qu.:1.000   3rd Qu.: 6.000  
- Max.   :7.00   Max.   :7.000   Max.   :7.000   Max.   :10.000  
- NA's   :10     NA's   :10      NA's   :10      NA's   :11      
-    EXERCISE       ATTENTION1        SLEEP        SLEEP_QUAL       
- Min.   :0.000   Min.   :3.000   Min.   :1.000   Length:135        
- 1st Qu.:2.000   1st Qu.:4.000   1st Qu.:2.750   Class :character  
- Median :4.000   Median :4.000   Median :3.000   Mode  :character  
- Mean   :3.629   Mean   :3.976   Mean   :3.242                     
- 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:4.000                     
- Max.   :7.000   Max.   :6.000   Max.   :5.000                     
- NA's   :11      NA's   :11      NA's   :11                        
- GUN_EXPOSURE_1  GUN_EXPOSURE_2     SAFETY_1        SAFETY_2        SAFETY_3   
- Min.   :1.000   Min.   :1.000   Min.   :2.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:4.000   1st Qu.:1.000   1st Qu.:4.000   1st Qu.:3.000   1st Qu.:2.00  
- Median :5.000   Median :2.000   Median :5.000   Median :4.000   Median :4.00  
- Mean   :4.784   Mean   :2.072   Mean   :4.808   Mean   :3.855   Mean   :3.48  
- 3rd Qu.:6.000   3rd Qu.:2.000   3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:5.00  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
- NA's   :10      NA's   :10      NA's   :10      NA's   :11      NA's   :10    
-    SAFETY_4        SAFETY_5        SAFETY_6    SAFETY_FUND_1  SAFETY_FUND_2  
- Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.00   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.00   1st Qu.:3.00   1st Qu.:3.000  
- Median :3.000   Median :3.000   Median :4.00   Median :4.00   Median :4.000  
- Mean   :3.072   Mean   :2.872   Mean   :3.56   Mean   :3.92   Mean   :3.784  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.00   3rd Qu.:5.00   3rd Qu.:4.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.00   Max.   :5.00   Max.   :5.000  
- NA's   :10      NA's   :10      NA's   :10     NA's   :10     NA's   :10     
- SAFETY_FUND_3   SAFETY_FUND_4   SAFETY_FUND_5   SAFETY_FUND_6  
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :2.000  
- 1st Qu.:4.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
- Median :4.000   Median :4.000   Median :4.000   Median :4.000  
- Mean   :3.976   Mean   :3.536   Mean   :4.064   Mean   :4.128  
- 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:5.000  
- Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
- NA's   :12      NA's   :10      NA's   :10      NA's   :10     
- SAFETY_FUND_7   SAFETY_FUND_8    SAFETY_BEST    VIOLENCE_QUAL     
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Length:135        
- 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:1.000   Class :character  
- Median :4.000   Median :4.000   Median :2.000   Mode  :character  
- Mean   :4.128   Mean   :4.121   Mean   :2.689                     
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:4.000                     
- Max.   :5.000   Max.   :5.000   Max.   :7.000                     
- NA's   :10      NA's   :11      NA's   :13                        
- SAFETY_QUAL        CREATESAFETY_QUAL      APPUSE         APPTYPE         
- Length:135         Length:135         Min.   :0.0000   Length:135        
- Class :character   Class :character   1st Qu.:1.0000   Class :character  
- Mode  :character   Mode  :character   Median :1.0000   Mode  :character  
-                                       Mean   :0.9516                     
-                                       3rd Qu.:1.0000                     
-                                       Max.   :1.0000                     
-                                       NA's   :11                         
- APPTYPE_9_TEXT      USE_ESTIMATE    USE_OBJECTIVE      REASONS_QUAL...147
- Length:135         Min.   : 0.500   Length:135         Length:135        
- Class :character   1st Qu.: 3.000   Class :character   Class :character  
- Mode  :character   Median : 4.000   Mode  :character   Mode  :character  
-                    Mean   : 4.429                                        
-                    3rd Qu.: 5.000                                        
-                    Max.   :25.000                                        
-                    NA's   :16                                            
-    USESAD_1        USESAD_2        USESAD_3      ADDICTION_1    ADDICTION_2   
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:4.000   1st Qu.:1.00   1st Qu.:2.000  
- Median :4.000   Median :2.000   Median :5.000   Median :2.00   Median :4.000  
- Mean   :3.244   Mean   :2.529   Mean   :4.492   Mean   :2.95   Mean   :3.857  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:4.00   3rd Qu.:5.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :7.00   Max.   :7.000  
- NA's   :16      NA's   :16      NA's   :17      NA's   :16     NA's   :16     
-  ADDICTION_3     ADDICTION_4     ADDICTION_5      LITERACY_1   
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:4.000  
- Median :3.000   Median :4.000   Median :4.000   Median :5.000  
- Mean   :2.941   Mean   :3.832   Mean   :3.924   Mean   :4.597  
- 3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
- Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :6.000  
- NA's   :16      NA's   :16      NA's   :17      NA's   :16     
-   LITERACY_2     POLITICAL_1     POLITICAL_2     POLITICAL_3   
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:3.000   1st Qu.:3.000  
- Median :4.000   Median :4.000   Median :4.000   Median :4.000  
- Mean   :4.084   Mean   :4.143   Mean   :3.899   Mean   :3.924  
- 3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
- NA's   :16      NA's   :16      NA's   :16      NA's   :16     
-  POLITICAL_4     POLITICAL_5    GOVTBELIEFS_1   GOVTBELIEFS_2   GOVTBELIEFS_3 
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:3.000   1st Qu.:2.000   1st Qu.:4.000   1st Qu.:2.500   1st Qu.:2.00  
- Median :4.000   Median :3.000   Median :5.000   Median :4.000   Median :4.00  
- Mean   :3.975   Mean   :3.282   Mean   :4.681   Mean   :3.571   Mean   :3.42  
- 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:5.500   3rd Qu.:5.000   3rd Qu.:5.00  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
- NA's   :17      NA's   :18      NA's   :16      NA's   :16      NA's   :16    
-   ATTENTION2       FOODSUFF       FOODSUFF2         FOODSUFF3      
- Min.   :0.000   Min.   :1.000   Min.   :-50.000   Min.   :-99.000  
- 1st Qu.:0.000   1st Qu.:3.000   1st Qu.:  2.000   1st Qu.:  2.000  
- Median :0.000   Median :4.000   Median :  3.000   Median :  3.000  
- Mean   :0.008   Mean   :3.616   Mean   :  1.336   Mean   :  0.944  
- 3rd Qu.:0.000   3rd Qu.:4.000   3rd Qu.:  3.000   3rd Qu.:  3.000  
- Max.   :1.000   Max.   :4.000   Max.   :  3.000   Max.   :  3.000  
- NA's   :10      NA's   :10      NA's   :10        NA's   :10       
-   FOODSUFF4     NARRATIVE_QUAL     REASONS_QUAL...172 STIGMA_QUAL       
- Min.   :1.000   Length:135         Length:135         Length:135        
- 1st Qu.:3.000   Class :character   Class :character   Class :character  
- Median :3.000   Mode  :character   Mode  :character   Mode  :character  
- Mean   :3.144                                                           
- 3rd Qu.:4.000                                                           
- Max.   :4.000                                                           
- NA's   :10                                                              
-   CONSUME_1      CONSUME_2       CONSUME_3       CONSUME_4       CONSUME_5    
- Min.   :0.00   Min.   :0.000   Min.   :0.000   Min.   :0.000   Min.   :0.000  
- 1st Qu.:1.00   1st Qu.:1.000   1st Qu.:0.000   1st Qu.:3.000   1st Qu.:1.000  
- Median :2.00   Median :2.000   Median :1.000   Median :5.000   Median :3.000  
- Mean   :2.16   Mean   :2.592   Mean   :1.456   Mean   :4.464   Mean   :2.856  
- 3rd Qu.:3.00   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:6.000   3rd Qu.:4.000  
- Max.   :7.00   Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
- NA's   :10     NA's   :10      NA's   :10      NA's   :10      NA's   :10     
-   CONSUME_6      CONSUME_7      NOCOOKING      FOODILLNESS   
- Min.   :0.00   Min.   :0.00   Min.   :1.000   Min.   :0.000  
- 1st Qu.:2.00   1st Qu.:2.00   1st Qu.:2.000   1st Qu.:0.000  
- Median :3.00   Median :4.00   Median :3.000   Median :1.000  
- Mean   :3.28   Mean   :3.56   Mean   :2.768   Mean   :1.152  
- 3rd Qu.:5.00   3rd Qu.:5.00   3rd Qu.:3.000   3rd Qu.:2.000  
- Max.   :7.00   Max.   :7.00   Max.   :5.000   Max.   :5.000  
- NA's   :10     NA's   :10     NA's   :10      NA's   :10     
- UNHEALTHY_QUAL       UPFTYPE_1      UPFTYPE_2    UPFTYPE_3      UPFTYPE_4    
- Length:135         Min.   :1.00   Min.   :1    Min.   :1.00   Min.   :1.000  
- Class :character   1st Qu.:3.00   1st Qu.:3    1st Qu.:2.00   1st Qu.:2.000  
- Mode  :character   Median :3.00   Median :3    Median :3.00   Median :3.000  
-                    Mean   :3.12   Mean   :3    Mean   :2.64   Mean   :2.734  
-                    3rd Qu.:4.00   3rd Qu.:4    3rd Qu.:3.00   3rd Qu.:3.000  
-                    Max.   :4.00   Max.   :4    Max.   :4.00   Max.   :4.000  
-                    NA's   :10     NA's   :15   NA's   :10     NA's   :11     
-   UPFTYPE_5      UPFTYPE_6       UPFTYPE_7       UPFTYPE_8       UPFTYPE_9   
- Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:1.00   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000   1st Qu.:3.00  
- Median :1.00   Median :3.000   Median :3.000   Median :1.000   Median :3.00  
- Mean   :1.52   Mean   :2.669   Mean   :2.528   Mean   :1.593   Mean   :3.27  
- 3rd Qu.:2.00   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:4.00  
- Max.   :4.00   Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.00  
- NA's   :10     NA's   :11      NA's   :10      NA's   :12      NA's   :13    
-   UPFTYPE_10      UPFTYPE_11      UPFTYPE_12    WEALTHGUESS_5  
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   : 1.00  
- 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:20.00  
- Median :2.000   Median :1.000   Median :1.000   Median :40.00  
- Mean   :1.968   Mean   :1.677   Mean   :1.339   Mean   :42.42  
- 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:1.000   3rd Qu.:70.00  
- Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :90.00  
- NA's   :10      NA's   :11      NA's   :11      NA's   :10     
- WEALTHGUESS_4   WEALTHGUESS_3   WEALTHGUESS_2   WEALTHGUESS_1  
- Min.   : 3.00   Min.   : 2.00   Min.   : 0.00   Min.   : 0.00  
- 1st Qu.:10.00   1st Qu.: 8.00   1st Qu.: 5.00   1st Qu.: 2.00  
- Median :20.00   Median :13.00   Median :10.00   Median : 6.00  
- Mean   :17.66   Mean   :13.96   Mean   :12.52   Mean   :13.45  
- 3rd Qu.:20.00   3rd Qu.:20.00   3rd Qu.:20.00   3rd Qu.:20.00  
- Max.   :40.00   Max.   :50.00   Max.   :35.00   Max.   :71.00  
- NA's   :10      NA's   :10      NA's   :10      NA's   :10     
-  WEALTHFAIR_5     WEALTHFAIR_4    WEALTHFAIR_3    WEALTHFAIR_2  
- Min.   :  1.00   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
- 1st Qu.: 20.00   1st Qu.:20.00   1st Qu.:20.00   1st Qu.:15.00  
- Median : 20.00   Median :20.00   Median :20.00   Median :20.00  
- Mean   : 25.89   Mean   :20.19   Mean   :19.76   Mean   :17.67  
- 3rd Qu.: 30.00   3rd Qu.:20.00   3rd Qu.:20.00   3rd Qu.:20.00  
- Max.   :100.00   Max.   :40.00   Max.   :55.00   Max.   :40.00  
- NA's   :10       NA's   :10      NA's   :10      NA's   :10     
-  WEALTHFAIR_1    RANKISSUES_1     RANKISSUES_2     RANKISSUES_3   
- Min.   : 0.00   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
- 1st Qu.:10.00   1st Qu.: 4.000   1st Qu.: 3.000   1st Qu.: 5.000  
- Median :20.00   Median : 6.000   Median : 5.000   Median : 7.000  
- Mean   :16.49   Mean   : 5.927   Mean   : 5.577   Mean   : 7.049  
- 3rd Qu.:20.00   3rd Qu.: 8.000   3rd Qu.: 8.000   3rd Qu.: 9.500  
- Max.   :52.00   Max.   :12.000   Max.   :12.000   Max.   :12.000  
- NA's   :10      NA's   :12       NA's   :12       NA's   :12      
-  RANKISSUES_4     RANKISSUES_5     RANKISSUES_6     RANKISSUES_7   
- Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
- 1st Qu.: 1.000   1st Qu.: 3.000   1st Qu.: 6.000   1st Qu.: 2.000  
- Median : 2.000   Median : 5.000   Median : 9.000   Median : 4.000  
- Mean   : 3.187   Mean   : 5.528   Mean   : 8.106   Mean   : 4.927  
- 3rd Qu.: 4.000   3rd Qu.: 8.000   3rd Qu.:11.000   3rd Qu.: 7.000  
- Max.   :12.000   Max.   :12.000   Max.   :12.000   Max.   :12.000  
- NA's   :12       NA's   :12       NA's   :12       NA's   :12      
-  RANKISSUES_8     RANKISSUES_9    RANKISSUES_10    RANKISSUES_11   
- Min.   : 2.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
- 1st Qu.: 8.000   1st Qu.: 6.000   1st Qu.: 3.000   1st Qu.: 6.000  
- Median :11.000   Median : 9.000   Median : 4.000   Median : 9.000  
- Mean   : 9.707   Mean   : 8.024   Mean   : 4.659   Mean   : 8.049  
- 3rd Qu.:12.000   3rd Qu.:10.000   3rd Qu.: 7.000   3rd Qu.:10.000  
- Max.   :12.000   Max.   :12.000   Max.   :11.000   Max.   :12.000  
- NA's   :12       NA's   :12       NA's   :12       NA's   :12      
- RANKISSUES_12    ESTIMATES _1    ESTIMATES _2     ESTIMATES _3   
- Min.   : 1.00   Min.   : 0.00   Min.   :  0.00   Min.   :  0.00  
- 1st Qu.: 5.00   1st Qu.: 7.00   1st Qu.: 25.00   1st Qu.: 33.00  
- Median : 8.00   Median :16.00   Median : 40.00   Median : 50.00  
- Mean   : 7.26   Mean   :24.89   Mean   : 42.56   Mean   : 52.76  
- 3rd Qu.: 9.50   3rd Qu.:41.00   3rd Qu.: 62.25   3rd Qu.: 70.00  
- Max.   :12.00   Max.   :85.00   Max.   :100.00   Max.   :100.00  
- NA's   :12      NA's   :10      NA's   :11       NA's   :10      
-    NEOLIB_1        NEOLIB_2        NEOLIB_3        NEOLIB_4    
- Min.   :2.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:4.000   1st Qu.:3.750   1st Qu.:3.000   1st Qu.:4.000  
- Median :5.000   Median :5.000   Median :4.000   Median :5.000  
- Mean   :4.877   Mean   :4.363   Mean   :4.143   Mean   :4.861  
- 3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:6.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
- NA's   :13      NA's   :11      NA's   :16      NA's   :13     
-    NEOLIB_5        NEOLIB_6        NEOLIB_7        NEOLIB_8    
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000  
- Median :5.000   Median :5.000   Median :5.000   Median :5.000  
- Mean   :4.793   Mean   :4.517   Mean   :4.306   Mean   :4.424  
- 3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
- NA's   :14      NA's   :15      NA's   :14      NA's   :17     
-    NEOLIB_9       NEOLIB_10       NEOLIB_11       NEOLIB_12       NEOLIB_13   
- Min.   :2.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:4.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:3.00  
- Median :5.000   Median :3.000   Median :3.000   Median :4.000   Median :4.00  
- Mean   :4.967   Mean   :3.089   Mean   :3.163   Mean   :3.798   Mean   :3.86  
- 3rd Qu.:6.000   3rd Qu.:4.500   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.00  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
- NA's   :15      NA's   :12      NA's   :12      NA's   :16      NA's   :14    
-   NEOLIB_14     NEOLIB_15       ZEROSUM_1       ZEROSUM_2       ZEROSUM_3    
- Min.   :1.0   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:2.0   1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
- Median :4.0   Median :4.000   Median :4.000   Median :5.000   Median :5.000  
- Mean   :3.6   Mean   :3.932   Mean   :3.944   Mean   :4.758   Mean   :4.911  
- 3rd Qu.:5.0   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:6.000   3rd Qu.:6.000  
- Max.   :6.0   Max.   :6.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
- NA's   :15    NA's   :17      NA's   :10      NA's   :11      NA's   :11     
-   ZEROSUM_4       ZEROSUM_5      ZEROSUM_6       ZEROSUM_7       ZEROSUM_8    
- Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:1.000   1st Qu.:1.00   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:1.000  
- Median :3.000   Median :3.00   Median :3.500   Median :4.000   Median :3.000  
- Mean   :3.065   Mean   :2.88   Mean   :3.452   Mean   :3.537   Mean   :2.944  
- 3rd Qu.:4.000   3rd Qu.:4.00   3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:4.000  
- Max.   :7.000   Max.   :7.00   Max.   :7.000   Max.   :7.000   Max.   :7.000  
- NA's   :11      NA's   :10     NA's   :11      NA's   :12      NA's   :11     
-   ZEROSUM_9       ZEROSUM_10      ZEROSUM_11      ATTENTION3      AGE       
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :2    Min.   :19.00  
- 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2    1st Qu.:26.75  
- Median :2.000   Median :3.000   Median :3.000   Median :2    Median :33.00  
- Mean   :2.605   Mean   :3.232   Mean   :3.202   Mean   :2    Mean   :36.12  
- 3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:2    3rd Qu.:43.25  
- Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :2    Max.   :73.00  
- NA's   :11      NA's   :10      NA's   :11      NA's   :10   NA's   :11     
-   EDUCATION     SOCIALSTATUS       INCOME      RELIGIOUS_IDENTITY
- Min.   :2.00   Min.   :1.000   Min.   :1.000   Length:135        
- 1st Qu.:4.00   1st Qu.:4.000   1st Qu.:2.000   Class :character  
- Median :5.00   Median :6.000   Median :4.000   Mode  :character  
- Mean   :4.76   Mean   :5.328   Mean   :3.672                     
- 3rd Qu.:6.00   3rd Qu.:6.000   3rd Qu.:5.000                     
- Max.   :6.00   Max.   :9.000   Max.   :7.000                     
- NA's   :10     NA's   :10      NA's   :10                        
-     RACE           RACE_8_TEXT          STREETRACE      DISABILITY     
- Length:135         Length:135         Min.   :1.000   Min.   :-99.000  
- Class :character   Class :character   1st Qu.:3.000   1st Qu.:  0.000  
- Mode  :character   Mode  :character   Median :3.000   Median :  0.000  
-                                       Mean   :3.366   Mean   : -2.968  
-                                       3rd Qu.:5.000   3rd Qu.:  0.000  
-                                       Max.   :8.000   Max.   :  1.000  
-                                       NA's   :12      NA's   :11       
-     GENDER      SEXUAL_IDENTITY     STATE         ZIP_BORN        
- Min.   :1.000   Min.   :1.000   Min.   : 1.00   Length:135        
- 1st Qu.:1.000   1st Qu.:1.000   1st Qu.: 5.00   Class :character  
- Median :2.000   Median :1.000   Median :21.00   Mode  :character  
- Mean   :1.544   Mean   :1.568   Mean   :21.35                     
- 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:34.00                     
- Max.   :3.000   Max.   :5.000   Max.   :51.00                     
- NA's   :10      NA's   :10      NA's   :10                        
-   ZIP_NOW          POLITICALBELIEFS  POLITICALAFFIL    VOTE2024      
- Length:135         Min.   :-99.000   Min.   :1.00   Min.   :-99.000  
- Class :character   1st Qu.:  3.000   1st Qu.:2.00   1st Qu.:  1.000  
- Mode  :character   Median :  4.000   Median :2.00   Median :  2.000  
-                    Mean   :  2.448   Mean   :2.67   Mean   : -0.024  
-                    3rd Qu.:  5.000   3rd Qu.:4.00   3rd Qu.:  2.000  
-                    Max.   :  6.000   Max.   :5.00   Max.   :  8.000  
-                    NA's   :10        NA's   :29     NA's   :10       
-    SERIOUS   Q_AmbiguousTextPresent Q_AmbiguousTextQuestions
- Min.   :1    Min.   :0.0000         Length:135              
- 1st Qu.:1    1st Qu.:1.0000         Class :character        
- Median :1    Median :1.0000         Mode  :character        
- Mean   :1    Mean   :0.9111                                 
- 3rd Qu.:1    3rd Qu.:1.0000                                 
- Max.   :1    Max.   :1.0000                                 
- NA's   :11                                                  
- Q_StraightliningCount Q_StraightliningPercentage Q_StraightliningQuestions
- Min.   :0.000         Min.   :0.00000            Length:135               
- 1st Qu.:0.500         1st Qu.:0.02778            Class :character         
- Median :1.000         Median :0.05556            Mode  :character         
- Mean   :1.393         Mean   :0.07800                                     
- 3rd Qu.:2.000         3rd Qu.:0.11111                                     
- Max.   :7.000         Max.   :0.38889                                     
-                                                                           </code></pre>
-</div>
-</div>
-</section>
-<section id="option-2.-import.xlsx-file-with-2-row-header-first-2-rows" class="level3" data-number="5.3.4">
-<h3 data-number="5.3.4" class="anchored" data-anchor-id="option-2.-import.xlsx-file-with-2-row-header-first-2-rows"><span class="header-section-number">5.3.4</span> Option 2. Import<code>.xlsx</code> file with 2 row header (first 2 rows)</h3>
-<p>If you do NOT clean your data and want to import the exact file you exported from the Qualtrics. You can skip the step of manually deleting row 2 (see exporting data chapter) and import a 2 row header with the following code.</p>
-<p>Use the not clean datafile: 10.20.2025.data.team1.xlsx</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-excel-header2</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file using readxl only</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Row 1: Variable names (used as header)</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Row 2: Variable labels (SKIP this row)</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Row 3+: Actual data</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Read row 1 to get variable names</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>safetydata2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"data/10.20.2025.TestData.Team1.xlsx"</span>,</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_max =</span> <span class="dv">1</span>,</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">FALSE</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to character vector</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">as.character</span>(var_names[<span class="dv">1</span>, ])</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Read the actual data starting from row 3</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>safetydata2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"data/10.20.2025.TestData.Team1.xlsx"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="dv">1</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">2</span>,  <span class="co"># Skip rows 1 and 2</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> var_names,  <span class="co"># Use row 1 as column names</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"-99"</span>, <span class="st">"-50"</span>)  <span class="co"># Define missing value codes</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="excel-import-data-to-assign-missing-data-as-na" class="level4">
-<h4 class="anchored" data-anchor-id="excel-import-data-to-assign-missing-data-as-na">Excel: Import Data to assign Missing Data as <code>NA</code></h4>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This page has been updated to address missing data during import.</p>
+ RecipientFirstName RecipientEmail ExternalReference LocationLatitude
+ Mode:logical       Mode:logical   Mode:logical      Min.   :28.01   
+ NA's:180           NA's:180       NA's:180          1st Qu.:40.83   
+                                                     Median :42.10   
+                                                     Mean   :41.62   
+                                                     3rd Qu.:42.10   
+                                                     Max.   :43.12   
+                                                                     
+ LocationLongitude DistributionChannel UserLanguage       Q_RecaptchaScore
+ Min.   :-82.49    Length:180          Length:180         Min.   :0.7000  
+ 1st Qu.:-75.89    Class :character    Class :character   1st Qu.:1.0000  
+ Median :-75.64    Mode  :character    Mode  :character   Median :1.0000  
+ Mean   :-75.01                                           Mean   :0.9922  
+ 3rd Qu.:-73.92                                           3rd Qu.:1.0000  
+ Max.   :-73.48                                           Max.   :1.0000  
+                                                                          
+    CONSENT       SAFE_QUAL         REDUCEVIOLENCE_QUAL FIXED_CRIMES_QUAL 
+ Min.   :1.000   Length:180         Length:180          Length:180        
+ 1st Qu.:1.000   Class :character   Class :character    Class :character  
+ Median :1.000   Mode  :character   Mode  :character    Mode  :character  
+ Mean   :1.011                                                            
+ 3rd Qu.:1.000                                                            
+ Max.   :2.000                                                            
+                                                                          
+ FIXED_CRIMINALS_QUAL   COMM_FEEL       COMM_HELP     COMM_NEIGHBORS 
+ Length:180           Min.   :1.000   Min.   :1.000   Min.   :2.000  
+ Class :character     1st Qu.:3.500   1st Qu.:4.000   1st Qu.:4.000  
+ Mode  :character     Median :4.000   Median :4.000   Median :5.000  
+                      Mean   :4.147   Mean   :4.473   Mean   :4.458  
+                      3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
+                      Max.   :6.000   Max.   :6.000   Max.   :6.000  
+                      NA's   :105     NA's   :106     NA's   :108    
+ NOTCOMM_UNSAFE   NOTCOMM_RELY   NOTCOMM_DISTRUST EFFECT_CARE_COMM
+ Min.   :1.000   Min.   :1.000   Min.   :1.000    Min.   :-99.00  
+ 1st Qu.:1.250   1st Qu.:2.000   1st Qu.:2.000    1st Qu.:  4.00  
+ Median :2.000   Median :3.000   Median :2.000    Median :  5.00  
+ Mean   :2.284   Mean   :3.085   Mean   :2.649    Mean   :  3.37  
+ 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000    3rd Qu.:  5.00  
+ Max.   :6.000   Max.   :5.000   Max.   :5.000    Max.   :  6.00  
+ NA's   :106     NA's   :109     NA's   :106      NA's   :107     
+ EFFECT_CARE_EDUCATION EFFECT_CARE_HVIP   EFFECT_CARE_MHRESOURCES
+ Min.   :-99.000       Min.   :-99.0000   Min.   :-99.000        
+ 1st Qu.:  4.000       1st Qu.:  3.0000   1st Qu.:  5.000        
+ Median :  5.000       Median :  4.0000   Median :  5.000        
+ Mean   :  3.427       Mean   :  0.9559   Mean   :  3.703        
+ 3rd Qu.:  6.000       3rd Qu.:  5.0000   3rd Qu.:  6.000        
+ Max.   :  6.000       Max.   :  6.0000   Max.   :  6.000        
+ NA's   :105           NA's   :112        NA's   :106            
+ EFFECT_CARE_WELFARE EFFECT_FEAR_LEG   EFFECT_FEAR_POLICE EFFECT_FEAR_DEPORT
+ Min.   :-99.000     Min.   :-99.000   Min.   :1.00       Min.   :1.000     
+ 1st Qu.:  4.000     1st Qu.:  3.250   1st Qu.:2.00       1st Qu.:1.000     
+ Median :  5.000     Median :  4.000   Median :4.00       Median :1.000     
+ Mean   :  1.917     Mean   :  1.432   Mean   :3.32       Mean   :1.795     
+ 3rd Qu.:  5.250     3rd Qu.:  5.000   3rd Qu.:4.00       3rd Qu.:2.000     
+ Max.   :  6.000     Max.   :  6.000   Max.   :6.00       Max.   :6.000     
+ NA's   :108         NA's   :106       NA's   :105        NA's   :107       
+ EFFECT_FEAR_ARMY FIXEDPERSON1_BASIC FIXEDPERSON2_DIFF FIXEDPERSON3_CHANGE_R
+ Min.   :1.000    Min.   :1.000      Min.   :2.000     Min.   :1.000        
+ 1st Qu.:1.000    1st Qu.:4.000      1st Qu.:3.000     1st Qu.:2.000        
+ Median :2.000    Median :5.000      Median :4.000     Median :3.000        
+ Mean   :2.097    Mean   :4.536      Mean   :4.029     Mean   :2.833        
+ 3rd Qu.:3.000    3rd Qu.:5.000      3rd Qu.:5.000     3rd Qu.:3.000        
+ Max.   :6.000    Max.   :6.000      Max.   :6.000     Max.   :6.000        
+ NA's   :108      NA's   :111        NA's   :111       NA's   :114          
+ FIXEDPERSON4_OLD FIXEDPERSON_ALWAYS_R FIXEDPERSON_CERTAIN FIXEDPERSON_MATTER_R
+ Min.   :2.000    Min.   :1.000        Min.   :1.000       Min.   :1.000       
+ 1st Qu.:3.000    1st Qu.:2.000        1st Qu.:4.000       1st Qu.:2.000       
+ Median :5.000    Median :3.000        Median :4.000       Median :3.000       
+ Mean   :4.319    Mean   :2.794        Mean   :4.329       Mean   :2.985       
+ 3rd Qu.:5.000    3rd Qu.:3.000        3rd Qu.:5.000       3rd Qu.:4.000       
+ Max.   :6.000    Max.   :6.000        Max.   :6.000       Max.   :6.000       
+ NA's   :111      NA's   :112          NA's   :110         NA's   :114         
+ FIXEDPERSON_ALL_R MOREFIREARMS_01       GENDER         RACIALIZED       
+ Min.   :-99.000   Min.   :0.00000   Min.   :-99.000   Length:180        
+ 1st Qu.:  2.000   1st Qu.:0.00000   1st Qu.:  0.000   Class :character  
+ Median :  3.000   Median :0.00000   Median :  0.000   Mode  :character  
+ Mean   :  1.409   Mean   :0.01429   Mean   : -1.086                     
+ 3rd Qu.:  3.750   3rd Qu.:0.00000   3rd Qu.:  1.000                     
+ Max.   :  5.000   Max.   :1.00000   Max.   :  2.000                     
+ NA's   :114       NA's   :110       NA's   :110                         
+ RACIALIZED_8_TEXT POLITICAL_BELIEFS POLITICAL_BELIEFS_8_TEXT  SOCIALSTATUS  
+ Mode:logical      Min.   :-99.000   Mode:logical             Min.   :2.000  
+ NA's:180          1st Qu.:  2.000   NA's:180                 1st Qu.:5.000  
+                   Median :  3.000                            Median :6.000  
+                   Mean   : -3.898                            Mean   :5.824  
+                   3rd Qu.:  4.000                            3rd Qu.:7.000  
+                   Max.   :  7.000                            Max.   :9.000  
+                   NA's   :121                                NA's   :112    
+     AGE                ZIP            PREVENTABILITY1_CAN PREVENTABILITY2_HELP
+ Length:180         Length:180         Min.   :2.000       Min.   :1.000       
+ Class :character   Class :character   1st Qu.:4.000       1st Qu.:5.000       
+ Mode  :character   Mode  :character   Median :5.000       Median :5.000       
+                                       Mean   :4.767       Mean   :5.098       
+                                       3rd Qu.:5.000       3rd Qu.:6.000       
+                                       Max.   :6.000       Max.   :6.000       
+                                       NA's   :120         NA's   :119         
+ PREVENTABILITY3_TAUGHT PREVENTABILITY4_DOING PREVENTABILITY5_LEARN
+ Min.   :2.0            Min.   :1.000         Min.   :3.000        
+ 1st Qu.:5.0            1st Qu.:5.000         1st Qu.:5.000        
+ Median :5.0            Median :5.000         Median :5.000        
+ Mean   :5.1            Mean   :5.117         Mean   :5.233        
+ 3rd Qu.:6.0            3rd Qu.:6.000         3rd Qu.:6.000        
+ Max.   :6.0            Max.   :6.000         Max.   :6.000        
+ NA's   :120            NA's   :120           NA's   :120          
+ PREVENTABILITY6_UPSTAND PROMOTABILITY1_CARING PROMOTABILITY2_DO
+ Min.   :3.000           Min.   :2.000         Min.   :4.000    
+ 1st Qu.:5.000           1st Qu.:5.000         1st Qu.:5.000    
+ Median :5.000           Median :5.000         Median :5.000    
+ Mean   :5.117           Mean   :5.233         Mean   :5.217    
+ 3rd Qu.:6.000           3rd Qu.:6.000         3rd Qu.:6.000    
+ Max.   :6.000           Max.   :6.000         Max.   :6.000    
+ NA's   :120             NA's   :120           NA's   :120      
+ PROMOTABILITY3_TAUGHT PROMOTABILITY4_SAYING PROMOTABILITY5_LEARN
+ Min.   :1.000         Min.   :1.00          Min.   :3.000       
+ 1st Qu.:5.000         1st Qu.:5.00          1st Qu.:5.000       
+ Median :5.000         Median :5.00          Median :5.000       
+ Mean   :5.197         Mean   :5.18          Mean   :5.148       
+ 3rd Qu.:6.000         3rd Qu.:6.00          3rd Qu.:6.000       
+ Max.   :6.000         Max.   :6.00          Max.   :6.000       
+ NA's   :119           NA's   :119           NA's   :119         
+ PROMOTABILITY6_UPSTAND EFFECTIVE_SAFETY_1 EFFECTIVE_SAFETY_2
+ Min.   :3.0            Min.   :1.000      Min.   :1.0       
+ 1st Qu.:5.0            1st Qu.:1.750      1st Qu.:2.0       
+ Median :5.0            Median :4.000      Median :4.0       
+ Mean   :5.2            Mean   :3.783      Mean   :3.9       
+ 3rd Qu.:6.0            3rd Qu.:6.000      3rd Qu.:6.0       
+ Max.   :6.0            Max.   :8.000      Max.   :8.0       
+ NA's   :120            NA's   :120        NA's   :120       
+ EFFECTIVE_SAFETY_3 EFFECTIVE_SAFETY_4 EFFECTIVE_SAFETY_5 EFFECTIVE_SAFETY_6
+ Min.   :1.00       Min.   :1.000      Min.   :1.000      Min.   :1.0       
+ 1st Qu.:3.00       1st Qu.:5.000      1st Qu.:3.000      1st Qu.:2.0       
+ Median :5.00       Median :7.000      Median :5.000      Median :3.0       
+ Mean   :4.35       Mean   :5.767      Mean   :4.583      Mean   :3.1       
+ 3rd Qu.:6.00       3rd Qu.:7.000      3rd Qu.:6.000      3rd Qu.:4.0       
+ Max.   :8.00       Max.   :8.000      Max.   :7.000      Max.   :8.0       
+ NA's   :120        NA's   :120        NA's   :120        NA's   :120       
+ EFFECTIVE_SAFETY_7 EFFECTIVE_SAFETY_8 EFFECTIVE_PREVENT_1 EFFECTIVE_PREVENT_2
+ Min.   :1.000      Min.   :3.000      Min.   :1.000       Min.   :1.00       
+ 1st Qu.:2.000      1st Qu.:8.000      1st Qu.:2.000       1st Qu.:2.00       
+ Median :3.000      Median :8.000      Median :4.000       Median :4.00       
+ Mean   :2.883      Mean   :7.633      Mean   :4.121       Mean   :3.69       
+ 3rd Qu.:4.000      3rd Qu.:8.000      3rd Qu.:6.000       3rd Qu.:6.00       
+ Max.   :6.000      Max.   :8.000      Max.   :8.000       Max.   :8.00       
+ NA's   :120        NA's   :120        NA's   :122         NA's   :122        
+ EFFECTIVE_PREVENT_3 EFFECTIVE_PREVENT_4 EFFECTIVE_PREVENT_5
+ Min.   :1.000       Min.   :1.00        Min.   :1.000      
+ 1st Qu.:2.000       1st Qu.:5.25        1st Qu.:4.000      
+ Median :4.000       Median :7.00        Median :5.000      
+ Mean   :3.672       Mean   :5.81        Mean   :4.897      
+ 3rd Qu.:5.000       3rd Qu.:7.00        3rd Qu.:6.000      
+ Max.   :8.000       Max.   :8.00        Max.   :8.000      
+ NA's   :122         NA's   :122         NA's   :122        
+ EFFECTIVE_PREVENT_6 EFFECTIVE_PREVENT_7 EFFECTIVE_PREVENT_8  HEALTHSTATUS  
+ Min.   :1.000       Min.   :1           Min.   :1.000       Min.   :2.000  
+ 1st Qu.:2.000       1st Qu.:2           1st Qu.:7.250       1st Qu.:3.000  
+ Median :3.000       Median :3           Median :8.000       Median :3.000  
+ Mean   :3.483       Mean   :3           Mean   :7.328       Mean   :3.361  
+ 3rd Qu.:5.000       3rd Qu.:4           3rd Qu.:8.000       3rd Qu.:4.000  
+ Max.   :8.000       Max.   :8           Max.   :8.000       Max.   :5.000  
+ NA's   :122         NA's   :122         NA's   :122         NA's   :119    
+      HOPE          ANXIETY        FINDSURVEY    FINDSURVEY_5_TEXT 
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Length:180        
+ 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   Class :character  
+ Median :3.000   Median :3.000   Median :3.000   Mode  :character  
+ Mean   :3.131   Mean   :3.131   Mean   :2.935                     
+ 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000                     
+ Max.   :5.000   Max.   :5.000   Max.   :5.000                     
+ NA's   :119     NA's   :119     NA's   :118                       </code></pre>
 </div>
 </div>
 
 
-</section>
 </section>
 </section>
 

@@ -32,9 +32,9 @@ editor: visual
 :::
 
 ::: {.callout-caution collapse="true"}
-## Updated 10/20/2025 8:30pm
+## Page Update
 
-[Section 5.3.3](#row1) was updated to handle missing data correctly. Responses (-99, and -50) will be changed to `NA`. Check `View()` to ensure there are no -99 and -50 values. You can run a histogram to check too!
+On October 20th, 2025 at 11:35pm, much of the code was updated to tag missing data correctly. Responses (NA, -99, and -50) will be changed to `NA`.
 :::
 
 ```{r}
@@ -162,13 +162,15 @@ library(NHANES)
 View(NHANESraw)
 ```
 
-### Import `.xlsx` file with row 1 header {#row1}
+### Example. Import`.xlsx` file with 1 header (first row)
 
-Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them. Below are code chunks that can be copied into your report if you are using an excel file with the **header in row 1**.
+Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them. Below are code chunks that can be copied into your report if you are using an excel file with **1 header**.
 
 Use the .clean datafile: `r current_date`.data.team1.clean.xlsx . 
 
 - Notice: the file path has "data/`r current_date`.data.team1.clean.xlsx" because the folder (data) is holding the Posit Cloud file (`r current_date`.data.team1.clean.xlsx). You do NOT need to put your file inside of a "data" folder, but you do need to UPLOAD your dataset to your files in Posit Cloud. 
+
+
 
 ```{r}
 #| label: import-excel-header1
@@ -181,9 +183,7 @@ Use the .clean datafile: `r current_date`.data.team1.clean.xlsx .
 
 library(readxl)
 # Import Excel file
-safetydata <- read_excel(
-    "10.20.2025.data.team1.clean.xlsx",
-    col_names = TRUE)
+safetydata <- read_excel("10.20.2025.data.team1.clean.xlsx", col_names = TRUE)
 
 safetydata[safetydata == -99] <- NA
 safetydata[safetydata == -50] <- NA
@@ -206,3 +206,49 @@ names(safetydata)
 summary(safetydata)
 ```
 
+### Option 2. Import`.xlsx` file with 2 row header (first 2 rows)
+
+If you do NOT clean your data and want to import the exact file you exported from the Qualtrics. You can skip the step of manually deleting row 2 (see exporting data chapter) and import a 2 row header with the following code.
+
+Use the not clean datafile: `r current_date`.data.team1.xlsx
+
+```{{r}}
+#| label: import-excel-header2
+
+library(readxl)
+
+# Import Excel file using readxl only
+# Row 1: Variable names (used as header)
+# Row 2: Variable labels (SKIP this row)
+# Row 3+: Actual data
+
+# Step 1: Read row 1 to get variable names
+safetydata2 <- read_excel(
+  path = "10.20.2025.data.team1.clean.xlsx",
+  sheet = 1,
+  n_max = 1,
+  col_names = FALSE
+)
+
+# Convert to character vector
+var_names <- as.character(var_names[1, ])
+
+```
+
+```{{r}}
+
+# Step 2: Read the actual data starting from row 3
+safetydata2 <- read_excel(
+  path = "10.20.2025.data.team1.clean.xlsx",
+  sheet = 1,
+  skip = 2,  # Skip rows 1 and 2
+  col_names = var_names,  # Use row 1 as column names
+  na = c("", "NA", "-99", "-50")  # Define missing value codes
+)
+```
+
+#### Excel: Import Data to assign Missing Data as `NA`
+
+::: callout-tip
+This page has been updated to address missing data during import. 
+:::

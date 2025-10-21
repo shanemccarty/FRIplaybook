@@ -1,12 +1,12 @@
 ---
-title: "Exporting Survey Data from Qualtrics"
-subtitle: "How to name variables and recode values"
+title: "Exporting Survey Data"
+subtitle: "How to name variables and recode values in Qualtrics"
 author:
   - Shane McCarty, PhD
   - James Giallella
 abstract: |
-  This chapter introduces students to import qualtrics features, such as recoding values in qualtrics before exporting the dataset.
-date: today
+  This chapter guides students through the complete process of exporting survey data from Qualtrics for analysis in R (for quanitative track) or NVivo (for qualitative track). Students learn to prepare their data by naming variables and recoding values directly in Qualtrics before export, ensuring numerical values are properly assigned to response options. The chapter covers three essential exports: the survey instrument as a Word document for documentation, the raw dataset as an Excel file with numerical values, and a cleaned version with duplicate header rows removed. Students practice proper file naming conventions using date-stamped formats (MONTH.DAY.YEAR.data.team#.filetype) to track multiple data exports throughout their research project. By the end of this chapter, students will have properly formatted, team-specific datasets ready for import into data analysis software, following reproducible research standards for data management and version control.
+date: 10.20.2025
 date-format: "MM.DD.YYYY"
 keywords:
   - export
@@ -23,10 +23,10 @@ execute:
 ```{r}
 #| include: false
 current_date <- format(Sys.Date(), "%m.%d.%Y")
-
+export_date <- "10.20.2025"
 ```
 
-## Name and Recode Variables
+## Name and Recode Variables in Qualtrics
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
 
@@ -34,37 +34,128 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
 -   [ ] Recode variables in Qualtrics
 
-    -   [ ] Visit "Recode Values" section of the [Qualtrics guide](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/)
+-   [ ] Visit "Recode Values" section of the [Qualtrics guide](https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/)
 
-    -   [ ] Follow the instructions on how to [name and recode values](https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre)
+-   [ ] Follow the instructions on how to [name and recode values](https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre)
 
-## Export Survey Data
+-   [ ] Click "publish" in Qualtrics to save your recodes
+
+## Export Survey Questions/Items (`.docx`)
 
 -   [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
     -   [ ] Under Active surveys, click on your survey
+    
+-   [ ] Click on Survey > Import/Export > "Export Survey to Word" to download a copy of the entire survey questions/statements as they would appear in the online Qualtrics survey. As a reminder, you already did this for your IRB submission. 
+
+-   [ ] Open the document in Microsoft Word (not google docs) to confirm it works. Then, save it as `10.20.2025.ExportedSurvey.docx`. 
+
+::: {.callout-note collapse="true"}
+## 📁 For Teams 2 and 5
+
+**Your files should be named:**
+
+*Files for Team 2:*
+-   `10.20.2025.ExportedSurvey.Daily.docx`
+-   `10.20.2025.ExportedSurvey.Day17.docx`
+
+*Files for Team 5:*
+-   `10.20.2025.ExportedSurvey.Veggie.docx`
+-   `10.20.2025.ExportedSurvey.Perception.docx`
+
+:::
+
+-   [ ] Open your "Team Survey Data" on google drive and click + New > File Upload and select your document. 
+
+![*Click on Survey > Import/Export > Export Survey to Word*](images/export-survey.png)
+
+## Export Survey Data (`.xlsx`)
+
 -   [ ] At the top, go to Data & Analysis tab (top navigation bar)
-    -   [ ] Ensure that "Data" is selected (from the second navigvation bar)
+    -   [ ] Ensure that "Data" is selected (from the second navigation bar)
 
 ![*Click on Data & Analysis and ensure Data is underlined in the navigation bars.*](images/export-navbar.png)
 
+
 -   [ ] On the upper right side, click Export & Import \^, then select Export Data...
 
--   [ ] Download the dataset (with download all fields checked and export *values* check – do not select export *labels* in two file formats:
+-   [ ] Click the Excel tab, check download all fields, check *export values* (and do NOT select *export labels*), and click the download button.
 
-    -   [ ] CSV
+![*Select the excel option of the multiple file type options (csv, tsv, SPSS) and select key choices before download*](images/export-excel.png)
 
-    -   [ ] Excel
+-   [ ] Open the file in Microsoft Word as `.docx` and check that numerical values are shown in parentheses (e.g., Poor (1) next to the response options
+
+![*Confirm your closed-ended questions/items have response options with numerical values for each response option ](images/export-survey-recode.png)
 
 -   [ ] Upload both files to "Team Survey Data" folder in your Team ELN
 
+
+
+
 ## Rename Files and Download
 
--   [ ] **Rename both files** using the date of the export in this format: MONTH.DAY.YEAR.filename.team#.filetype. For example, if the date is `{r} current_date` then the correct format of the files should be: `{r} current_date`.data.team1.csv and `{r} current_date`.data.team1.xlsx
+-   [ ] **Rename both files** using the date of the export in this format: MONTH.DAY.YEAR.data.team#.filetype. For example, if the date is `r current_date` then the correct format of the files should be: `r current_date`.data.team1.csv and `r current_date`.data.team1.xlsx
 
--   [ ] **Make a copy** of the `{r} current_date`.data.team1.xlsx and rename it to: `{r} current_date`.data.team1.clean.xlsx.
+-   [ ] **Make a copy** of the `10.20.2025.data.team1.xlsx` and rename it to: `10.20.2025.data.team1.clean.xlsx.`
 
--   [ ] In google sheets, **open up the file with .clean** added to the original file (i.e., `{r} current_date`.data.team1.clean.xlsx) and **delete the second row**. You'll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.
+-   [ ] In google sheets, **open up the file with .clean** added to the original file (i.e., `10.20.2025.data.team1.clean.xlsx`) and **delete the second row**. You'll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate the labels.
 
 -   [ ] Go to File \> **Download** \> Microsoft Excel.
 
-Once you have completed these steps, you can move to the next chapter to import your data (`{r} current_date`.data.team1.clean.xlsx) to R or NVivo.
+Once you have completed these steps, you can move to the next chapter to import your data (`10.20.2025.data.team1.clean.xlsx`) to R or NVivo.
+
+Reminder: Some teams will export datasets at different times during their recruitment process in order to complete the individual and team deadlines. You should export and **Rename both files** using the date of the export, following MONTH.DAY.YEAR.data.team#.filetype. For example, if you export on `r current_date` then the correct format of the files should be: `r current_date`.data.team1.csv and `r current_date`.data.team1.xlsx. Then, `r current_date`.data.team1.xlsx should be changed to `r current_date`.data.team1.clean.xlsx after removing the second row.
+
+::: {.callout-note collapse="true"}
+## 📁 Team 1 File Names
+
+**Your files should be named:**
+
+-   `r export_date`.data.team1.csv
+-   `r export_date`.data.team1.xlsx
+-   `r export_date`.data.team1.clean.xlsx
+:::
+
+::: {.callout-note collapse="true"}
+## 📁 Team 2 File Names
+
+**Your files should be named:**
+
+-   `r export_date`.data.team2.csv
+-   `r export_date`.data.team2.xlsx
+-   `r export_date`.data.team2.clean.xlsx
+
+:::
+
+::: {.callout-note collapse="true"}
+## 📁 Team 3 File Names
+
+**Your files should be named:**
+
+-   `r export_date`.data.team3.csv
+-   `r export_date`.data.team3.xlsx
+-   `r export_date`.data.team3.clean.xlsx
+
+:::
+
+::: {.callout-note collapse="true"}
+## 📁 Team 4 File Names
+
+**Your files should be named:**
+
+-   `r export_date`.data.team4.csv
+-   `r export_date`.data.team4.xlsx
+-   `r export_date`.data.team4.clean.xlsx
+
+:::
+
+::: {.callout-note collapse="true"}
+## 📁 Team 5 File Names
+
+**Your files should be named:** 
+
+-   `r export_date`.data.team5.csv
+-   `r export_date`.data.team5.xlsx
+-   `r export_date`.data.team5.clean.xlsx
+
+
+:::
