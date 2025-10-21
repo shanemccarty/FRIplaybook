@@ -119,7 +119,7 @@ csl: apa-7th-edition.csl
 
 5.  Choose **In-text** and click **Insert**.
 
-    ![](playbook/insert-citation.png)
+    ![](playbook//images/insert-citation.png)
 
 -   The correct citation should look like this: (@offer2025)
 
