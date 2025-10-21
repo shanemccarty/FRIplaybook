@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#oral-health-dataset" id="toc-oral-health-dataset" class="nav-link active" data-scroll-target="#oral-health-dataset"><span class="header-section-number">9.1</span> Oral Health Dataset</a></li>
   <li><a href="#library" id="toc-library" class="nav-link" data-scroll-target="#library"><span class="header-section-number">9.2</span> Library</a></li>
-  <li><a href="#using-tidyr" id="toc-using-tidyr" class="nav-link" data-scroll-target="#using-tidyr"><span class="header-section-number">9.3</span> Using Tidyr</a></li>
+  <li><a href="#using-tidyr" id="toc-using-tidyr" class="nav-link" data-scroll-target="#using-tidyr"><span class="header-section-number">9.3</span> Using <code>tidyr</code></a></li>
   <li><a href="#visualizing-with-violin-plots" id="toc-visualizing-with-violin-plots" class="nav-link" data-scroll-target="#visualizing-with-violin-plots"><span class="header-section-number">9.4</span> Visualizing with violin plots</a>
   <ul class="collapse">
   <li><a href="#what-is-a-violin-plot" id="toc-what-is-a-violin-plot" class="nav-link" data-scroll-target="#what-is-a-violin-plot"><span class="header-section-number">9.4.1</span> What is a violin plot?</a></li>
@@ -321,6 +321,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#how-can-violin-plots-help-in-your-projects" id="toc-how-can-violin-plots-help-in-your-projects" class="nav-link" data-scroll-target="#how-can-violin-plots-help-in-your-projects"><span class="header-section-number">9.4.3</span> How can violin plots help in your projects?</a></li>
   </ul></li>
   <li><a href="#example-t-test" id="toc-example-t-test" class="nav-link" data-scroll-target="#example-t-test"><span class="header-section-number">9.5</span> Example: T-test</a></li>
+  <li><a href="#example-violin-plot" id="toc-example-violin-plot" class="nav-link" data-scroll-target="#example-violin-plot"><span class="header-section-number">9.6</span> Example: Violin Plot</a></li>
+  <li><a href="#raincloud-plots" id="toc-raincloud-plots" class="nav-link" data-scroll-target="#raincloud-plots"><span class="header-section-number">9.7</span> Raincloud plots</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">9.8</span> Summary</a></li>
+  <li><a href="#now-you-can-confidently-create-your-own-violin-and-raincloud-plots-in-r" id="toc-now-you-can-confidently-create-your-own-violin-and-raincloud-plots-in-r" class="nav-link" data-scroll-target="#now-you-can-confidently-create-your-own-violin-and-raincloud-plots-in-r"><span class="header-section-number">9.9</span> Now you can confidently create your own violin and raincloud plots in R!!!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/violin.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -414,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="using-tidyr" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="using-tidyr"><span class="header-section-number">9.3</span> Using Tidyr</h2>
+<h2 data-number="9.3" class="anchored" data-anchor-id="using-tidyr"><span class="header-section-number">9.3</span> Using <code>tidyr</code></h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -457,19 +461,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE before"</span>, <span class="st">"BSE after"</span>, <span class="st">"CSE before"</span>, <span class="st">"CSE after"</span>, <span class="st">"ISE before"</span>, <span class="st">"ISE after"</span>)</span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>More information on <code>tidyr</code> is available in the <a href="#tidyr.qmd">chapter</a></p>
+<p>More more information on <code>tidyr</code>, see the <a href="#tidyr.qmd">tidyr chapter</a>.</p>
 </section>
 <section id="visualizing-with-violin-plots" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="visualizing-with-violin-plots"><span class="header-section-number">9.4</span> Visualizing with violin plots</h2>
 <section id="what-is-a-violin-plot" class="level3" data-auto-animate="true" data-number="9.4.1">
 <h3 data-auto-animate="true" data-number="9.4.1" class="anchored" data-anchor-id="what-is-a-violin-plot"><span class="header-section-number">9.4.1</span> What is a violin plot?</h3>
-<div style="font-size: 30px">
 <ul>
 <li><p>Combines components of a box plot and kernel density plot (similar to a histogram but shows the distribution as a continuous curve instead of with bars).</p></li>
 <li><p>Shows the distribution of variables for each group</p>
 <p><img src="images/violin-violinstock.png" style="width:50.0%;height:50.0%"></p></li>
 </ul>
-</div>
 </section>
 <section id="why-are-violin-plots-important" class="level3" data-auto-animate="true" data-number="9.4.2">
 <h3 data-auto-animate="true" data-number="9.4.2" class="anchored" data-anchor-id="why-are-violin-plots-important"><span class="header-section-number">9.4.2</span> Why are violin plots important?</h3>
@@ -495,10 +497,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-t-test" class="level2" data-auto-animate="true" data-number="9.5">
 <h2 data-auto-animate="true" data-number="9.5" class="anchored" data-anchor-id="example-t-test"><span class="header-section-number">9.5</span> Example: T-test</h2>
-<div style="font-size: 20px">
-<p>T-test: A way to compare means of two different groups (i.e.&nbsp;comparing if the self-efficacy increased after an educational intervention)</p>
-<p>Converting a normal paired sample t-test, demonstrated by box plots, to a violin plot</p>
+<p>A paired t-test is a statisical technique to compare the group means on two different variables when participants responded to both variables. The objective of the study from this dataset is to examine whether self-efficacy <strong>increased</strong> after a brief online educational intervention video.</p>
+<p>The plot below visualizes the six variables (3 pretest, 3 postest) ussed in the 3 paired t-tests.</p>
 <p><img src="images/violin-boxplot.png" style="width:80.0%;height:80.0%"> :::</p>
+</section>
 <section id="example-violin-plot" class="level2" data-auto-animate="true" data-number="9.6">
 <h2 data-auto-animate="true" data-number="9.6" class="anchored" data-anchor-id="example-violin-plot"><span class="header-section-number">9.6</span> Example: Violin Plot</h2>
 <p>Now you can see the distribution of the basic self-efficacy variable, in addition to the box plot.</p>
@@ -574,8 +576,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/violin-cat.png" style="width:50.0%;height:50.0%"></p>
 
 
-</section>
-</div>
 </section>
 
 </main> <!-- /main -->
