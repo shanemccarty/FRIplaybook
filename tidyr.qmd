@@ -63,19 +63,24 @@ Here, we reference the "DAY" column in the long dataset as the column we are try
 
 ## Teams
 
-Some teams will need to use `tidyr` to convert their data from long form into wide form.
+Team 1, 3, and 5 will export data in wide format and will not use `tidyr`. Teams 2 and 4 will need to use `tidyr` to convert their data from long form into wide form.
 
--   Team 2
+::: {.callout-note collapse="true"}
 
-    -   Day 1/7 Survey is long form where a person takes the same survey at Day 1 and 7, resulting in two entries per person.
+## Team 2
 
-    -   Daily Survey is long form where a person takes the same survey 6-7 days, resulting in multiple entries per person.
+The Day 1/7 Survey is in long format because a person takes the same survey at Day 1 and 7, resulting in two entries per person. The Daily Survey is in long format because a person takes the same survey 6-7 days, resulting in multiple entries per person.
 
--   Team 4
+:::
 
-    -   Survey is long form due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).
+::: {.callout-note collapse="true"}
 
-Team 1, 3, and 5 will export data as wide form and will not use `tidyr`.
+## Team 4
+
+Survey is in long format due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).
+
+:::
+
 
 ## Resources
 
