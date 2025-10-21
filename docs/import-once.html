@@ -1865,7 +1865,7 @@ globalThis.qwebrExecuteCode = async function (
   <ul class="collapse">
   <li><a href="#import-from-nhanes-package" id="toc-import-from-nhanes-package" class="nav-link" data-scroll-target="#import-from-nhanes-package"><span class="header-section-number">5.3.1</span> Import from <code>NHANES</code> package</a></li>
   <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">5.3.2</span> Load libraries</a></li>
-  <li><a href="#row1" id="toc-row1" class="nav-link" data-scroll-target="#row1"><span class="header-section-number">5.3.3</span> Import <code>.xlsx</code> file with row 1 header</a></li>
+  <li><a href="#row1" id="toc-row1" class="nav-link" data-scroll-target="#row1"><span class="header-section-number">5.3.3</span> Import Excel <code>.xlsx</code> file</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/import-once.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -2267,8 +2267,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">5.2.1</span> File Formats</h3>
 <ul>
 <li><p>National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package <code>NHANES</code></p></li>
-<li><p>a <code>.csv</code> file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.csv</code></p></li>
 <li><p>a <code>.xlsx</code> file format of the class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.xlsx</code></p></li>
+<li><p>a <code>.csv</code> file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.csv</code></p></li>
 <li><p>a <code>.sav</code> file format from SPSS of the FRI team project on oral health <code>10.31.2024.oralhealth.sav</code>.</p></li>
 </ul>
 </section>
@@ -2324,12 +2324,21 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 </section>
 <section id="row1" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="row1"><span class="header-section-number">5.3.3</span> Import <code>.xlsx</code> file with row 1 header</h3>
-<p>Excel files (.xlsx or .xls) are common in public health. Use the <code>readxl</code> package to import them. Below are code chunks that can be copied into your report if you are using an excel file with the <strong>header in row 1</strong>.</p>
-<p>Use the .clean datafile: 10.20.2025.data.team1.clean.xlsx .</p>
-<ul>
-<li>Notice: the file path has “data/10.20.2025.data.team1.clean.xlsx” because the folder (data) is holding the Posit Cloud file (10.20.2025.data.team1.clean.xlsx). You do NOT need to put your file inside of a “data” folder, but you do need to UPLOAD your dataset to your files in Posit Cloud.</li>
-</ul>
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="row1"><span class="header-section-number">5.3.3</span> Import Excel <code>.xlsx</code> file</h3>
+<p>Use the <code>readxl</code> package to import Excel files (.xlsx or .xls). The primary advantage of using Excel files is the ability to manually inspect your data using Excel or Google sheets before you import into R. Below are code chunks that can be copied into your report if you are using an excel file with the <strong>header in row 1</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the .clean data file: 10.20.2025.data.team1.clean.xlsx with a header in row 1 only. If you manually inspect your data and you see labels in row 2, you need to clean the dataset.</p>
+</div>
+</div>
 <div class="cell" data-autorun="true" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>

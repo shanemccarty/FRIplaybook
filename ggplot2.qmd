@@ -32,7 +32,6 @@ execute:
 -   [Datacamp](https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
 -   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html)
 -   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
-
 :::
 
 ## Load Library
@@ -203,6 +202,12 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
   ylab("Insurance Charges") +
   theme_bw()
 ```
+
+::: {.callout-important appearance="simple"}
+## Select a theme
+
+Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in the individual reports and the team manuscript!
+:::
 
 ## Other Common Plot Types
 

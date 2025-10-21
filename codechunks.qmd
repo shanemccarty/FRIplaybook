@@ -40,11 +40,10 @@ execute:
 :::
 
 ::: {.callout-caution collapse="true"}
-## New Requirement
+## updated 10/18/2025
 
-Alternative Text for Figures and Images (Fig-Alt) was added and is a requirement for your Quarto report and manuscript.
+[Alternative Text for Figures and Images (Fig-Alt)](#alt-text) was added and is a requirement for your Quarto report and manuscript.
 :::
-
 
 In your Posit Cloud window browser, you should see the *source* and *visual* editor options in the top left corner of your screen. You can toggle back and forth between the two options.
 
@@ -83,7 +82,15 @@ Your previously created objects (e.g., `alldata`, `select_data`, `VARIABLE1`) ar
 rm(list = ls())
 ```
 
-For your draft and final team MMR manuscript, you should: - pick one quantitative team member to store the team files in their posit cloud project - rename this specific posit cloud project from #1: Vivian -\> #1: Vivian & Team (to notify me where to look for your team's MMR work) - create a `team_RD.qmd` file - create a `team_final.qmd` file
+For your draft and final team MMR manuscript, you should:
+
+-   pick one quantitative team member to store the team files in their posit cloud project
+
+-   rename this specific posit cloud project from #1: Vivian -\> #1: Vivian & Team (to notify me where to look for your team's MMR work)
+
+-   create a `team_RD.qmd` file
+
+-   create a `team_final.qmd` file
 
 ## YAML
 
@@ -92,16 +99,14 @@ YAML (human-readable data serialization language) has a simple syntax, which is 
 ::: callout-important
 ### Requirement
 
-- Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+-   Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
 
-- title, subtitle, name, email should be revised
+-   title, subtitle, name, email should be revised
 
-- url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team # (e.g., team2.html, team3.html)
+-   url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team \# (e.g., team2.html, team3.html)
 
-- abstract and keywords should be included
-
+-   abstract and keywords should be included
 :::
-
 
 ```{YAML}
 ---
@@ -210,11 +215,6 @@ For more examples, see @ggplot2.qmd.
 Every code chunk must have a `#| label:` at the start of the chunk.
 :::
 
-```{{r}}
-#| label: this is a label that you will revise
-
-```
-
 Your `#| label:` should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.
 
 ```{{r}}
@@ -236,7 +236,7 @@ Every plot should include a detailed figure caption using `#| fig-cap:`
 
 ```
 
-#### Alternative Text for Figures and Images (Fig-Alt)
+#### Alternative Text for Figures and Images (Fig-Alt) {#alt-text}
 
 ::: callout-important
 ## Requirement
@@ -267,12 +267,16 @@ At the end of every code chunk, include the source of the code chunk so that oth
 #| fig-cap: you need to revise this with detailed figure caption
 
 #source example 1: The FRI Playbook (McCarty, 2025)   
-#source example 2: Write Functions (Hei, 2025)   
+#source example 2: Writing Reproducible Results (Hei, 2025)   
 #source example 3: Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html
 
 ```
 
-Notice that the format is different. The `#source:` NOT be in the prior `#|` format you used for the code chunks at the topic. The #source will be at the bottom of your code chunk.
+::: callout-tip
+## Top
+
+The format is different for the code chunk options using `#|` (e.g., `#| label:`) vs. using `#` to comment (e.g., `#source:`). The #source will be at the bottom of your code chunk.
+:::
 
 #### Provide Explanation for ALL Code Chunks
 
@@ -299,7 +303,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 
 #### Setting library code chunk
 
-By setting the `#| output:` to `false`, none of the output from running the code will show up. Only the code chunk for loading the library has `#| output: false`. The output is "attaching package (`readxl`), which is not necessary for our report. In almost all cases, your code chunk will NOT include the `output` option. If you do include it, it will mostly be set to `true` in order for you to output results, a plot, etc.  
+By setting the `#| output:` to `false`, none of the output from running the code will show up. Only the code chunk for loading the library has `#| output: false`. The output is "attaching package (`readxl`), which is not necessary for our report. In almost all cases, your code chunk will NOT include the `output` option. If you do include it, it will mostly be set to `true` in order for you to output results, a plot, etc.
 
 ```{r}
 #| label: load-library-readxl
@@ -309,17 +313,14 @@ By setting the `#| output:` to `false`, none of the output from running the code
 library(readxl)
 
 ```
-```
-
 
 #### Code Chunk Options
 
 For more information on code chunks, see [code chunk options](https://r4ds.hadley.nz/quarto.html#chunk-options).
 
-```{r}
+```{{r}}
 #| label: example-with-options
 #| eval: true          # Whether to execute the code
-#| echo: fenced        # for teaching -- this shows the code chunk options to you
 #| output: true        # Whether to display output
 #| warning: false      # Hide warnings
 #| message: false      # Hide messages
@@ -329,4 +330,5 @@ For more information on code chunks, see [code chunk options](https://r4ds.hadle
 #| fig-height: 6       # Figure height in inches
 
 # Your code here below these code chunk options
+
 ```
