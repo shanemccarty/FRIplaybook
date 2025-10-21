@@ -323,12 +323,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#method-1-using-color" id="toc-method-1-using-color" class="nav-link" data-scroll-target="#method-1-using-color"><span class="header-section-number">8.6.1</span> Method 1: Using Color</a></li>
   <li><a href="#method-2-using-facets" id="toc-method-2-using-facets" class="nav-link" data-scroll-target="#method-2-using-facets"><span class="header-section-number">8.6.2</span> Method 2: Using Facets</a></li>
   </ul></li>
-  <li><a href="#customizing-with-themes" id="toc-customizing-with-themes" class="nav-link" data-scroll-target="#customizing-with-themes"><span class="header-section-number">8.7</span> Customizing with Themes</a>
+  <li><a href="#custom-theme-and-colors" id="toc-custom-theme-and-colors" class="nav-link" data-scroll-target="#custom-theme-and-colors"><span class="header-section-number">8.7</span> Custom Theme and Colors</a>
   <ul class="collapse">
   <li><a href="#adding-titles-and-labels" id="toc-adding-titles-and-labels" class="nav-link" data-scroll-target="#adding-titles-and-labels"><span class="header-section-number">8.7.1</span> Adding Titles and Labels</a></li>
   <li><a href="#changing-the-theme" id="toc-changing-the-theme" class="nav-link" data-scroll-target="#changing-the-theme"><span class="header-section-number">8.7.2</span> Changing the Theme</a></li>
+  <li><a href="#using-colors" id="toc-using-colors" class="nav-link" data-scroll-target="#using-colors"><span class="header-section-number">8.7.3</span> Using Colors</a></li>
   </ul></li>
-  <li><a href="#other-common-plot-types" id="toc-other-common-plot-types" class="nav-link" data-scroll-target="#other-common-plot-types"><span class="header-section-number">8.8</span> Other Common Plot Types</a>
+  <li><a href="#save" id="toc-save" class="nav-link" data-scroll-target="#save"><span class="header-section-number">8.8</span> <code>ggsave()</code> using Common Plot Types</a>
   <ul class="collapse">
   <li><a href="#bar-plots-with-geom_bar" id="toc-bar-plots-with-geom_bar" class="nav-link" data-scroll-target="#bar-plots-with-geom_bar"><span class="header-section-number">8.8.1</span> Bar Plots with <code>geom_bar()</code></a></li>
   <li><a href="#violin-plots-with-geom_violin" id="toc-violin-plots-with-geom_violin" class="nav-link" data-scroll-target="#violin-plots-with-geom_violin"><span class="header-section-number">8.8.2</span> Violin Plots with <code>geom_violin()</code></a></li>
@@ -360,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10.15.2025</p>
+      <p class="date">10.21.2025</p>
     </div>
   </div>
   
@@ -395,6 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <ul>
+<li><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html">Intro to ggplot2</a></li>
 <li><a href="https://ggplot2.tidyverse.org">Documentation</a></li>
 <li><a href="https://r4ds.hadley.nz/data-visualize.html">R4DS Book Chapter 1</a></li>
 <li><a href="https://r4ds.hadley.nz/visualize.html">R4DS Book Ch. 9 - 11</a></li>
@@ -403,6 +405,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">Posit Cheatsheet</a></li>
 <li><a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">PDF Cheatsheet</a></li>
 </ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your <em>R&amp;D Report</em> and <em>R&amp;D Team Manuscript</em> should include <a href="#save">ggsave( )</a> information so you can export your plots quickly and add them to the poster.</p>
 </div>
 </div>
 <section id="load-library" class="level2" data-number="8.1">
@@ -463,7 +478,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-seven-components-of-ggplot2" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="the-seven-components-of-ggplot2"><span class="header-section-number">8.3</span> The Seven Components of ggplot2</h2>
-<p>Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product. The seven components are:</p>
+<p>Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ggplot2-lasagna.png" class="img-fluid figure-img"></p>
+<figcaption><em>In ggplot2, add layers as you would in making lasagna</em></figcaption>
+</figure>
+</div>
+<p>The seven components are:</p>
 <ol type="1">
 <li><p><strong>Data</strong>: The dataset you’re visualizing</p></li>
 <li><p><strong>Mapping</strong>: Which variables go on which axes (aesthetics)</p></li>
@@ -475,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Lasagna.png" class="img-fluid figure-img"></p>
-<figcaption>In ggplot2, add layers as you would in making lasagna</figcaption>
+<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html"><img src="images/ggplot2-layers.png" class="img-fluid figure-img" alt="the image includes 7 colors for each of the 7 layers"></a></p>
+<figcaption>the grammar of graphics has 7 layers ([ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/articles/ggplot2.html))</figcaption>
 </figure>
 </div>
 </section>
@@ -583,8 +605,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!</p>
 </section>
 </section>
-<section id="customizing-with-themes" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="customizing-with-themes"><span class="header-section-number">8.7</span> Customizing with Themes</h2>
+<section id="custom-theme-and-colors" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="custom-theme-and-colors"><span class="header-section-number">8.7</span> Custom Theme and Colors</h2>
 <section id="adding-titles-and-labels" class="level3" data-number="8.7.1">
 <h3 data-number="8.7.1" class="anchored" data-anchor-id="adding-titles-and-labels"><span class="header-section-number">8.7.1</span> Adding Titles and Labels</h3>
 <p>Make your plot more informative with descriptive titles:</p>
@@ -638,45 +660,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+<section id="using-colors" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="using-colors"><span class="header-section-number">8.7.3</span> Using Colors</h3>
+<p>Want to improve your plots with colors?</p>
+<ul>
+<li><p><a href="https://albert-rapp.de/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">4 ways to use colors in ggplot2 more efficiently</a></p></li>
+<li><p><a href="https://r-graph-gallery.com/ggplot2-color.html">Dealing with colors in ggplot2</a></p></li>
+<li><p><a href="https://sjspielman.github.io/introverse/articles/color_fill_scales.html">Customizing ggplot2 color and fill scales</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=ZVSbY4z7tMY">How to use better colors in ggplot (youtube)</a></p></li>
+</ul>
 </section>
-<section id="other-common-plot-types" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="other-common-plot-types"><span class="header-section-number">8.8</span> Other Common Plot Types</h2>
+</section>
+<section id="save" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="save"><span class="header-section-number">8.8</span> <code>ggsave()</code> using Common Plot Types</h2>
+<p><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave( )</a> is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in the “files” folder, which can be exported out of Posit Cloud and into your poster.</p>
 <section id="bar-plots-with-geom_bar" class="level3" data-number="8.8.1">
 <h3 data-number="8.8.1" class="anchored" data-anchor-id="bar-plots-with-geom_bar"><span class="header-section-number">8.8.1</span> Bar Plots with <code>geom_bar()</code></h3>
 <p>Bar plots are useful for comparing means across categories:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> charges)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> charges)) <span class="sc">+</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'summary'</span>, <span class="at">fun =</span> <span class="st">'mean'</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>) <span class="sc">+</span> </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mean Insurance Charges Based on Region"</span>) <span class="sc">+</span> </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Region"</span>) <span class="sc">+</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print and save the plot</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_region_charges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ggplot2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ggplot2_files/figure-html/plot-region-charges-1.png" class="img-fluid figure-img" alt="the figure" width="768"></p>
+<figcaption>a scatterplot depicting a linear relationship between BMI and insurance charges</figcaption>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1:region.png"</span>, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> plot_region_charges, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">8</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>After you run the code, the console will ask you a question. The use of <code>plots/</code> in the <code>ggsave()</code> code chunk will create a folder called <strong>Plots</strong> in your files within Posit Cloud if you type “1” and click return/enter.</p>
+<p><img src="images/ggplot2-ggsave.png" class="img-fluid" alt="a screenshot of the console output after running the ggsave code"></p>
+<p>In your <strong>Files</strong>, click the <strong>Plots</strong> folder. Your location within Posit Cloud is shown below: Cloud &gt; project &gt; plots. You are in the <strong>Plots</strong>.</p>
+<p><img src="images/ggplot2-ggsave-plotsfolder.png" class="img-fluid" alt="this is a screenshot of the files within the plot folder of posit cloud"></p>
+<p>Click the gear icon (above ” project &gt; plots”), click export, and <strong>Download.</strong> Then, upload this the plot and others within your team’s google drive &gt; Team Survey Data &gt; Quant Data &gt; Plots.</p>
 </section>
 <section id="violin-plots-with-geom_violin" class="level3" data-number="8.8.2">
 <h3 data-number="8.8.2" class="anchored" data-anchor-id="violin-plots-with-geom_violin"><span class="header-section-number">8.8.2</span> Violin Plots with <code>geom_violin()</code></h3>
 <p>Violin plots show the distribution of data across categories:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> smoker, <span class="at">y =</span> charges, <span class="at">fill =</span> smoker)) <span class="sc">+</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges by Smoking Status"</span>) <span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Smoker (Y/N)"</span>) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> smoker, <span class="at">y =</span> charges, <span class="at">fill =</span> smoker)) <span class="sc">+</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges by Smoking Status"</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Smoker (Y/N)"</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ggplot2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ggplot2_files/figure-html/plot-smoker-charges-1.png" class="img-fluid figure-img" alt="the figure" width="768"></p>
+<figcaption>a violin plot depicting differences in insurance charges based on smoker status</figcaption>
 </figure>
 </div>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot above plot without using plot = argument</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot2:smoker.png"</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 

@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10.15.2025</p>
+      <p class="date">10.18.2025</p>
     </div>
   </div>
   
@@ -389,8 +389,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your <em>R&amp;D Report</em> and <em>R&amp;D Team Manuscript</em> will be a <code>.qmd</code> file with code chunks containing: label, fig-cap, fig-alt, source information, and explanation.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -399,9 +412,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><a href="#alt-text">Alternative Text for Figures and Images (Fig-Alt)</a> was added and is a requirement for your Quarto report and manuscript.</p>
+
 </div>
 </div>
 </div>
@@ -460,24 +473,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="yaml" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="yaml"><span class="header-section-number">3.2</span> YAML</h2>
 <p>YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a <code>.qmd</code> file can render as HTML (website format) and a <code>.pdf</code> file too.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Requirement
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Use this YAML format at the top of ALL Quarto markdown document files (<code>.qmd</code>).</p></li>
-<li><p>title, subtitle, name, email should be revised</p></li>
-<li><p>url should be updated from “https://fripublichealth.quarto.pub/team1.html” to reflect your team # (e.g., team2.html, team3.html)</p></li>
-<li><p>abstract and keywords should be included</p></li>
-</ul>
-</div>
-</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"title your report here"</span></span>
@@ -523,6 +518,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> right=1in</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Requirement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Use the above YAML format at the top of ALL Quarto markdown document files (<code>.qmd</code>).</p></li>
+<li><p>title, subtitle, name, email should be revised</p></li>
+<li><p>url should be updated from “https://fripublichealth.quarto.pub/team1.html” to reflect your team # (e.g., team2.html, team3.html)</p></li>
+<li><p>abstract and keywords should be included</p></li>
+</ul>
+</div>
 </div>
 <p>For more information, see:</p>
 <ul>
@@ -587,6 +600,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="template-code-chunk"><span class="header-section-number">3.4.2</span> Template Code Chunk</h3>
 <section id="label-for-all-code-chunks" class="level4">
 <h4 class="anchored" data-anchor-id="label-for-all-code-chunks">Label for All Code Chunks</h4>
+<p>Your <code>#| label:</code> should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-data-xlsx</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -600,14 +618,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Every code chunk must have a <code>#| label:</code> at the start of the chunk.</p>
 </div>
 </div>
-<p>Your <code>#| label:</code> should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-data-xlsx</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="figure-caption-fig-cap-for-plot-code-chunks" class="level4">
 <h4 class="anchored" data-anchor-id="figure-caption-fig-cap-for-plot-code-chunks">Figure Caption (Fig-Cap) for Plot Code Chunks</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: you-need-to-revise-this</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: provide a detailed figure caption</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -621,14 +639,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Every plot should include a detailed figure caption using <code>#| fig-cap:</code></p>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: you-need-to-revise-this</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: provide a detailed figure caption</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="alt-text" class="level4">
 <h4 class="anchored" data-anchor-id="alt-text">Alternative Text for Figures and Images (Fig-Alt)</h4>
+<p>Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: you-need-to-revise-this</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: provide a detailed figure caption</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: provide info for accessiblity</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -642,12 +661,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Every figure and image should include alternative text using <code>#| fig-alt:</code></p>
 </div>
 </div>
-<p>Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: you-need-to-revise-this</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: provide a detailed figure caption</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: provide info for accessiblity</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For more information on how improve the accessiblity of an image, see <a href="https://quarto.org/docs/authoring/figures.html#alt-text">figures-alt-text on Quarto</a> to use alt text to increase accessiblity.</p>
 </section>
 <section id="provide-sources-for-all-code-chunks" class="level4">
@@ -680,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Top
+<span class="screen-reader-only">Tip</span>“#|” vs.&nbsp;“#”
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The format is different for the code chunk options using <code>#|</code> (e.g., <code>#| label:</code>) vs.&nbsp;using <code>#</code> to comment (e.g., <code>#source:</code>). The #source will be at the bottom of your code chunk.</p>
+<p>The format is different for the code chunk options that use <code>#|</code> (e.g., <code>#| label:</code>) vs.&nbsp;sourcing using <code>#</code> to comment (e.g., <code>#source:</code>). The #source will be at the bottom of your code chunk.</p>
 </div>
 </div>
 </section>

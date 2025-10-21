@@ -13,7 +13,7 @@ keywords:
   - grammar of graphics
   - R
   - exploratory data analysis
-date: 10.15.2025
+date: 10.21.2025
 date-format: "MM.DD.YYYY"
 format: html
 editor: visual
@@ -25,6 +25,7 @@ execute:
 ::: callout-tip
 ## 📖 `ggplot2` resources
 
+-   [Intro to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 -   [Documentation](https://ggplot2.tidyverse.org)
 -   [R4DS Book Chapter 1](https://r4ds.hadley.nz/data-visualize.html)
 -   [R4DS Book Ch. 9 - 11](https://r4ds.hadley.nz/visualize.html)
@@ -32,6 +33,13 @@ execute:
 -   [Datacamp](https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
 -   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html)
 -   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
+:::
+
+::: {.callout-important appearance="simple"}
+## Required
+
+Your *R&D Report* and *R&D Team Manuscript* should include [ggsave( )](#save) information so you can export your plots quickly and add them to the poster.
+
 :::
 
 ## Load Library
@@ -74,7 +82,11 @@ head(insurance, 10)
 
 ## The Seven Components of ggplot2
 
-Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product. The seven components are:
+Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product.
+
+![*In ggplot2, add layers as you would in making lasagna*](images/ggplot2-lasagna.png)
+
+The seven components are:
 
 1.  **Data**: The dataset you're visualizing
 
@@ -90,7 +102,7 @@ Think of building a ggplot like making a layered lasagna - you add one component
 
 7.  **Theme**: Visual styling and appearance
 
-![In ggplot2, add layers as you would in making lasagna](Lasagna.png)
+[![the grammar of graphics has 7 layers (\[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html))](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
 ## Understanding Data Types
 
@@ -169,7 +181,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 
 Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!
 
-## Customizing with Themes
+## Custom Theme and Colors
 
 ### Adding Titles and Labels
 
@@ -209,30 +221,80 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
 Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in the individual reports and the team manuscript!
 :::
 
-## Other Common Plot Types
+### Using Colors
+
+Want to improve your plots with colors?
+
+-   [4 ways to use colors in ggplot2 more efficiently](https://albert-rapp.de/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html)
+
+-   [Dealing with colors in ggplot2](https://r-graph-gallery.com/ggplot2-color.html)
+
+-   [Customizing ggplot2 color and fill scales](https://sjspielman.github.io/introverse/articles/color_fill_scales.html)
+
+-   [How to use better colors in ggplot (youtube)](https://www.youtube.com/watch?v=ZVSbY4z7tMY)
+
+## `ggsave()` using Common Plot Types {#save}
+
+[ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in the "files" folder, which can be exported out of Posit Cloud and into your poster.
 
 ### Bar Plots with `geom_bar()`
 
 Bar plots are useful for comparing means across categories:
 
 ```{r}
-ggplot(data = insurance, mapping = aes(x = region, y = charges)) + 
+#| label: plot-region-charges 
+#| fig-cap: "a scatterplot depicting a linear relationship between BMI and insurance charges"
+#| fig-alt: the figure 
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(data = insurance, mapping = aes(x = region, y = charges)) + 
   geom_bar(stat = 'summary', fun = 'mean', fill = "#005a43") + 
   ggtitle("Mean Insurance Charges Based on Region") + 
   xlab("Region") +
   ylab("Insurance Charges") +
   theme_bw()
+
+# Print and save the plot
+print(plot_region_charges)
+ggsave("plots/plot1:region.png", 
+       plot = plot_region_charges, 
+       width = 10, 
+       height = 8, 
+       dpi = 300)
 ```
+
+After you run the code, the console will ask you a question. The use of `plots/` in the `ggsave()` code chunk will create a folder called **Plots** in your files within Posit Cloud if you type "1" and click return/enter.
+
+![](images/ggplot2-ggsave.png){fig-alt="a screenshot of the console output after running the ggsave code"}
+
+In your **Files**, click the **Plots** folder. Your location within Posit Cloud is shown below: Cloud \> project \> plots. You are in the **Plots**.
+
+![](images/ggplot2-ggsave-plotsfolder.png){fig-alt="this is a screenshot of the files within the plot folder of posit cloud"}
+
+Click the gear icon (above " project \> plots"), click export, and **Download.** Then, upload this the plot and others within your team's google drive \> Team Survey Data \> Quant Data \> Plots.
 
 ### Violin Plots with `geom_violin()`
 
 Violin plots show the distribution of data across categories:
 
 ```{r}
+#| label: plot-smoker-charges 
+#| fig-cap: "a violin plot depicting differences in insurance charges based on smoker status"
+#| fig-alt: the figure 
+#| fig-height: 6
+#| fig-width: 8
+
+
 ggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) + 
   geom_violin() +
   ggtitle("Distribution of Insurance Charges by Smoking Status") +
   xlab("Smoker (Y/N)") +
   ylab("Insurance Charges") +
   theme_bw()
+
+#plot above plot without using plot = argument
+ggsave("plots/plot2:smoker.png", width = 10, height = 8, dpi = 300)
 ```
+
+

@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gavin Rualo">
+<meta name="keywords" content="import, qualtrics, live">
 
 <title>6&nbsp; Importing Qualtrics Data Live – The Quantitative Playbook for Public Health Research in R</title>
 <style>
@@ -350,6 +351,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </div>
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>import, qualtrics, live</p>
+  </div>
+</div>
 
 </header>
 
@@ -370,6 +377,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Advanced Module
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an <em>advanced</em> <em>chapter</em> and not required for your report or manuscript!</p>
+</div>
+</div>
 <section id="benefits-of-qualtrics-continuous-importing-of-survey-data" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="benefits-of-qualtrics-continuous-importing-of-survey-data"><span class="header-section-number">6.1</span> Benefits of <code>qualtRics</code> Continuous Importing of Survey Data</h2>
 <p>By importing data continously using the <code>qualtRics</code> R package, you do not need to export from qualtrics and upload/import a data file. You can generate with up-to-date data instaneously for a:<br>
@@ -383,8 +403,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Qualtrics Info</figcaption>
 </figure>
 </div>
-<p>When you log into Qualtrics, you’re going to need to retrieve a few pieces of data specific to your account and the survey that you want to get live data from. Here, we’ve clicked our user icon in the top right and gone to “Account Settings.” You’re going to need these strings later.</p>
-<p>Next, you’re going to need your survey ID. When you click on the survey that you’re getting live data from, the URL will look something like this: https://binghamton.yul1.qualtrics.com/survey-builder/SV_6mOC1SaJbecAuP0/edit The survey ID is the string between survey-builder/ and /edit, in this case, being “SV_6mOC1SaJbecAuP0”</p>
+<p>When you log into Qualtrics, you must retrieve specific data from your account as well as live data from the survey. Here, we’ve clicked our user icon in the top right and gone to “Account Settings.” You’re going to need these strings later.</p>
+<p>Next, you’re going to need your survey ID. When you click on the survey that contains the live data, the URL will look something like this: https://binghamton.yul1.qualtrics.com/survey-builder/SV_6mOC1SaJbecAuP0/edit The survey ID is the string between survey-builder/ and /edit, in this case, being “SV_6mOC1SaJbecAuP0”</p>
 <p>Getting into the actual code, we have the following steps: ## Import necessary packages:</p>
 <div class="cell" data-autorun="false" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>

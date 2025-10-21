@@ -2,6 +2,10 @@
 title: "Tidying your data"
 subtitle: "How to use tidyr"
 author: Shane McCarty, PhD & Gavin Rualo
+keywords: 
+  - wide format
+  - long format
+  - tidyr
 date: "10.20.2025"
 date-format: "MM.DD.YYYY"
 format: html
@@ -14,6 +18,12 @@ format: html
 -   [Datacamp](https://www.datacamp.com/courses/reshaping-data-with-tidyr)
 -   [Cheat Sheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
 -   [Posit page](https://rstudio.github.io/cheatsheets/html/tidyr.html)
+:::
+
+::: {.callout-important appearance="simple"}
+## For Teams 2 and 4
+
+This is a required module for Teams 2 and 4 given their long data format. 
 :::
 
 ## Data Formats

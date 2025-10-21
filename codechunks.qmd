@@ -19,7 +19,7 @@ keywords:
   - code chunks
   - reproducible research
   - file management
-date: 10.15.2025
+date: 10.18.2025
 date-format: "MM.DD.YYYY"
 format: html
 editor: visual
@@ -39,10 +39,17 @@ execute:
 -   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
 :::
 
+::: {.callout-important appearance="simple"}
+## Required
+
+Your *R&D Report* and *R&D Team Manuscript* will be a `.qmd` file with code chunks containing: label, fig-cap, fig-alt, source information, and explanation. 
+
+:::
+
 ::: {.callout-caution collapse="true"}
 ## updated 10/18/2025
 
-[Alternative Text for Figures and Images (Fig-Alt)](#alt-text) was added and is a requirement for your Quarto report and manuscript.
+
 :::
 
 In your Posit Cloud window browser, you should see the *source* and *visual* editor options in the top left corner of your screen. You can toggle back and forth between the two options.
@@ -96,17 +103,6 @@ For your draft and final team MMR manuscript, you should:
 
 YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
 
-::: callout-important
-### Requirement
-
--   Use this YAML format at the top of ALL Quarto markdown document files (`.qmd`).
-
--   title, subtitle, name, email should be revised
-
--   url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team \# (e.g., team2.html, team3.html)
-
--   abstract and keywords should be included
-:::
 
 ```{YAML}
 ---
@@ -154,6 +150,18 @@ format:
 ---
     
 ```
+
+::: callout-important
+### Requirement
+
+-   Use the above YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+
+-   title, subtitle, name, email should be revised
+
+-   url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team \# (e.g., team2.html, team3.html)
+
+-   abstract and keywords should be included
+:::
 
 For more information, see:
 
@@ -209,12 +217,6 @@ For more examples, see @ggplot2.qmd.
 
 #### Label for All Code Chunks
 
-::: callout-important
-## Requirement
-
-Every code chunk must have a `#| label:` at the start of the chunk.
-:::
-
 Your `#| label:` should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.
 
 ```{{r}}
@@ -222,13 +224,13 @@ Your `#| label:` should be lowercase with dashs between words to create a comple
 
 ```
 
-#### Figure Caption (Fig-Cap) for Plot Code Chunks
-
 ::: callout-important
 ## Requirement
 
-Every plot should include a detailed figure caption using `#| fig-cap:`
+Every code chunk must have a `#| label:` at the start of the chunk.
 :::
+
+#### Figure Caption (Fig-Cap) for Plot Code Chunks
 
 ```{{r}}
 #| label: you-need-to-revise-this
@@ -236,13 +238,13 @@ Every plot should include a detailed figure caption using `#| fig-cap:`
 
 ```
 
-#### Alternative Text for Figures and Images (Fig-Alt) {#alt-text}
-
 ::: callout-important
 ## Requirement
 
-Every figure and image should include alternative text using `#| fig-alt:`
+Every plot should include a detailed figure caption using `#| fig-cap:`
 :::
+
+#### Alternative Text for Figures and Images (Fig-Alt) {#alt-text}
 
 Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.
 
@@ -251,6 +253,12 @@ Every image and figure/plot/graph/table should be accessible to people with blin
 #| fig-cap: provide a detailed figure caption
 #| fig-alt: provide info for accessiblity
 ```
+
+::: callout-important
+## Requirement
+
+Every figure and image should include alternative text using `#| fig-alt:`
+:::
 
 For more information on how improve the accessiblity of an image, see [figures-alt-text on Quarto](https://quarto.org/docs/authoring/figures.html#alt-text) to use alt text to increase accessiblity.
 
@@ -273,9 +281,9 @@ At the end of every code chunk, include the source of the code chunk so that oth
 ```
 
 ::: callout-tip
-## Top
+## "#|" vs. "#"
 
-The format is different for the code chunk options using `#|` (e.g., `#| label:`) vs. using `#` to comment (e.g., `#source:`). The #source will be at the bottom of your code chunk.
+The format is different for the code chunk options that use `#|` (e.g., `#| label:`) vs. sourcing using `#` to comment (e.g., `#source:`). The #source will be at the bottom of your code chunk.
 :::
 
 #### Provide Explanation for ALL Code Chunks

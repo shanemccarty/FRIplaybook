@@ -26,6 +26,12 @@ editor: visual
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
+::: {.callout-important appearance="simple"}
+## Advanced Module
+
+This is an *advanced* *chapter* and not required for your report or manuscript!
+:::
+
 In reproducible research, writing *numbers* *manually* (e.g., "We surveyed 120 people.") can lead to errors if you import data later (after you have collected 140 people). Instead, use **R functions** inside **Quarto** to turn your results directly into sentences!
 
 ## Load Library

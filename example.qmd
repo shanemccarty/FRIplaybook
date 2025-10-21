@@ -6,13 +6,11 @@ authors:
 format: html
 ---
 
-Replication or reproducibility crisis
-
-:   growing concern about the inability to reproduce published scientific research findings
+The growing concern about the inability to reproduce published scientific research findings is known as the **replication or reproducibility crisis**.  
 
 A *Nature* paper by [Baker (2016)](https://www.nature.com/articles/533452a) states: "More than 70% of researchers have tried and failed to reproduce another scientist's experiments, and more than half have failed to reproduce their own experiments."
 
-The failure to reproduce research is a function of systems pressure (defunding of public higher education), *intentional actions* (fraudulent scientific practices), *unintentional* *decision-making* (e.g., human error when clicking software, poor note-taking), and *scientific* *training* (e.g., methodology sections without clear protocols and details). Reproducible research is both an intentional practice and the outcome of scientific training emphasizing a specific workflow.
+The failure to reproduce research is a function of *systems pressure* (defunding of public higher education), *intentional actions* (fraudulent scientific practices), *unintentional* *decision-making* (e.g., human error when clicking software, poor note-taking), and *scientific* *training* (e.g., methodology sections without clear protocols and details). Reproducible research is both an intentional practice and the outcome of scientific training emphasizing a specific workflow.
 
 A primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.
 
