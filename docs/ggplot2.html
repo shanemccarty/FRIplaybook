@@ -10,7 +10,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="ggplot2, data visualization, grammar of graphics, R, exploratory data analysis">
 
-<title>8&nbsp; Visualizing your data – The Quantitative Playbook for Public Health Research in R</title>
+<title>8&nbsp; Visualize data in ggplot2 – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualize Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start a Document</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
       </ul>
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Import Data</span></a>
+ <span class="menu-text">Importing Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -215,19 +215,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exporting Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importing Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Importing Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
       </ul>
@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Tidy Data</span></a>
+ <span class="menu-text">Tidying Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Visualize Data</span></a>
+ <span class="menu-text">Visualizing Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -261,13 +261,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ggplot2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing Pre/Post</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
       </ul>
@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Reproducibility</span></a>
+ <span class="menu-text">Writing Reproducibly</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -284,19 +284,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,27 +324,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#the-seven-components-of-ggplot2" id="toc-the-seven-components-of-ggplot2" class="nav-link" data-scroll-target="#the-seven-components-of-ggplot2"><span class="header-section-number">8.3</span> The Seven Components of ggplot2</a></li>
   <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">8.4</span> Understanding Data Types</a></li>
-  <li><a href="#building-a-plot-step-by-step" id="toc-building-a-plot-step-by-step" class="nav-link" data-scroll-target="#building-a-plot-step-by-step"><span class="header-section-number">8.5</span> Building a Plot Step by Step</a>
+  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree"><span class="header-section-number">8.5</span> Decision Tree</a>
   <ul class="collapse">
-  <li><a href="#step-1-data-and-mapping" id="toc-step-1-data-and-mapping" class="nav-link" data-scroll-target="#step-1-data-and-mapping"><span class="header-section-number">8.5.1</span> Step 1: Data and Mapping</a></li>
-  <li><a href="#step-2-adding-layers-with-geometries" id="toc-step-2-adding-layers-with-geometries" class="nav-link" data-scroll-target="#step-2-adding-layers-with-geometries"><span class="header-section-number">8.5.2</span> Step 2: Adding Layers with Geometries</a></li>
-  <li><a href="#step-3-adding-a-trend-line" id="toc-step-3-adding-a-trend-line" class="nav-link" data-scroll-target="#step-3-adding-a-trend-line"><span class="header-section-number">8.5.3</span> Step 3: Adding a Trend Line</a></li>
+  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">8.5.1</span> Relationship Research</a></li>
   </ul></li>
-  <li><a href="#incorporating-grouping-variables" id="toc-incorporating-grouping-variables" class="nav-link" data-scroll-target="#incorporating-grouping-variables"><span class="header-section-number">8.6</span> Incorporating Grouping Variables</a>
+  <li><a href="#save" id="toc-save" class="nav-link" data-scroll-target="#save"><span class="header-section-number">8.6</span> <code>ggsave()</code> using Common Plot Types</a>
   <ul class="collapse">
-  <li><a href="#method-1-using-color" id="toc-method-1-using-color" class="nav-link" data-scroll-target="#method-1-using-color"><span class="header-section-number">8.6.1</span> Method 1: Using Color</a></li>
-  <li><a href="#method-2-using-facets" id="toc-method-2-using-facets" class="nav-link" data-scroll-target="#method-2-using-facets"><span class="header-section-number">8.6.2</span> Method 2: Using Facets</a></li>
-  </ul></li>
-  <li><a href="#custom-theme-and-colors" id="toc-custom-theme-and-colors" class="nav-link" data-scroll-target="#custom-theme-and-colors"><span class="header-section-number">8.7</span> Custom Theme and Colors</a>
-  <ul class="collapse">
-  <li><a href="#adding-titles-and-labels" id="toc-adding-titles-and-labels" class="nav-link" data-scroll-target="#adding-titles-and-labels"><span class="header-section-number">8.7.1</span> Adding Titles and Labels</a></li>
-  <li><a href="#changing-the-theme" id="toc-changing-the-theme" class="nav-link" data-scroll-target="#changing-the-theme"><span class="header-section-number">8.7.2</span> Changing the Theme</a></li>
-  <li><a href="#using-colors" id="toc-using-colors" class="nav-link" data-scroll-target="#using-colors"><span class="header-section-number">8.7.3</span> Using Colors</a></li>
-  </ul></li>
-  <li><a href="#save" id="toc-save" class="nav-link" data-scroll-target="#save"><span class="header-section-number">8.8</span> <code>ggsave()</code> using Common Plot Types</a>
-  <ul class="collapse">
-  <li><a href="#bar-plots-with-geom_bar" id="toc-bar-plots-with-geom_bar" class="nav-link" data-scroll-target="#bar-plots-with-geom_bar"><span class="header-section-number">8.8.1</span> Bar Plots with <code>geom_bar()</code></a></li>
-  <li><a href="#violin-plots-with-geom_violin" id="toc-violin-plots-with-geom_violin" class="nav-link" data-scroll-target="#violin-plots-with-geom_violin"><span class="header-section-number">8.8.2</span> Violin Plots with <code>geom_violin()</code></a></li>
+  <li><a href="#bar-plots-with-geom_bar" id="toc-bar-plots-with-geom_bar" class="nav-link" data-scroll-target="#bar-plots-with-geom_bar"><span class="header-section-number">8.6.1</span> Bar Plots with <code>geom_bar()</code></a></li>
+  <li><a href="#violin-plots-with-geom_violin" id="toc-violin-plots-with-geom_violin" class="nav-link" data-scroll-target="#violin-plots-with-geom_violin"><span class="header-section-number">8.6.2</span> Violin Plots with <code>geom_violin()</code></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/ggplot2.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -346,10 +339,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualize Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing your data</span></h1>
-<p class="subtitle lead">How to use ggplot2</p>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize data in ggplot2</span></h1>
+<p class="subtitle lead">How to produce publication-ready plots</p>
 </div>
 
 
@@ -504,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html"><img src="images/ggplot2-layers.png" class="img-fluid figure-img" alt="the image includes 7 colors for each of the 7 layers"></a></p>
-<figcaption>the grammar of graphics has 7 layers ([ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/articles/ggplot2.html))</figcaption>
+<figcaption>source: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/articles/ggplot2.html)</figcaption>
 </figure>
 </div>
 </section>
@@ -522,10 +515,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>📏 <strong>Continuous</strong>: Measurable data (e.g., height, weight)</p></li>
 </ul>
 </section>
-<section id="building-a-plot-step-by-step" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="building-a-plot-step-by-step"><span class="header-section-number">8.5</span> Building a Plot Step by Step</h2>
-<section id="step-1-data-and-mapping" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="step-1-data-and-mapping"><span class="header-section-number">8.5.1</span> Step 1: Data and Mapping</h3>
+<section id="decision-tree" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">8.5</span> Decision Tree</h2>
+<p>Your research question can be classified as <strong>comparative</strong> research or <strong>relationship</strong> research (<a href="https://pubmed.ncbi.nlm.nih.gov/35470596/">Barroga &amp; Matanguihan, 2022</a>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ggplot2-decision.png" class="img-fluid figure-img"></p>
+<figcaption><em>The decision tree helps researchers to identify the specific statistical technique based on their comparative or relationship research question</em></figcaption>
+</figure>
+</div>
+<section id="relationship-research" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">8.5.1</span> Relationship Research</h3>
+<p>For relationship research, the variables are continuous. The example below shows how to build a scatterplot step by step.</p>
+<section id="step-1-data-and-mapping" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-data-and-mapping">Step 1: Data and Mapping</h4>
 <p>What is the relationship between BMI and insurance charges?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -539,8 +542,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This creates a blank canvas with our axes defined, but no data displayed yet!</p>
 </section>
-<section id="step-2-adding-layers-with-geometries" class="level3" data-number="8.5.2">
-<h3 data-number="8.5.2" class="anchored" data-anchor-id="step-2-adding-layers-with-geometries"><span class="header-section-number">8.5.2</span> Step 2: Adding Layers with Geometries</h3>
+<section id="step-2-adding-layers-with-geometries" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-adding-layers-with-geometries">Step 2: Adding Layers with Geometries</h4>
 <p>Add points to create a scatterplot using <code>geom_point()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges)) <span class="sc">+</span> </span>
@@ -554,8 +557,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="step-3-adding-a-trend-line" class="level3" data-number="8.5.3">
-<h3 data-number="8.5.3" class="anchored" data-anchor-id="step-3-adding-a-trend-line"><span class="header-section-number">8.5.3</span> Step 3: Adding a Trend Line</h3>
+<section id="step-3-adding-a-trend-line" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-adding-a-trend-line">Step 3: Adding a Trend Line</h4>
 <p>Add a linear model line with <code>geom_smooth()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges)) <span class="sc">+</span></span>
@@ -571,12 +574,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Notice how it looks like we have two different populations? Let’s explore this further.</p>
 </section>
-</section>
-<section id="incorporating-grouping-variables" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="incorporating-grouping-variables"><span class="header-section-number">8.6</span> Incorporating Grouping Variables</h2>
+<section id="optional-step-4.-incorporating-grouping-variables" class="level4">
+<h4 class="anchored" data-anchor-id="optional-step-4.-incorporating-grouping-variables">Optional – Step 4. Incorporating Grouping Variables</h4>
 <p>There are two main approaches to visualizing grouping variables:</p>
-<section id="method-1-using-color" class="level3" data-number="8.6.1">
-<h3 data-number="8.6.1" class="anchored" data-anchor-id="method-1-using-color"><span class="header-section-number">8.6.1</span> Method 1: Using Color</h3>
+<section id="method-1-using-color" class="level5">
+<h5 class="anchored" data-anchor-id="method-1-using-color">Method 1: Using Color</h5>
 <p>Map the <code>smoker</code> variable to color:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, </span>
@@ -592,8 +594,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="method-2-using-facets" class="level3" data-number="8.6.2">
-<h3 data-number="8.6.2" class="anchored" data-anchor-id="method-2-using-facets"><span class="header-section-number">8.6.2</span> Method 2: Using Facets</h3>
+<section id="method-2-using-facets" class="level5">
+<h5 class="anchored" data-anchor-id="method-2-using-facets">Method 2: Using Facets</h5>
 <p>Create separate panels for each group with <code>facet_wrap()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges)) <span class="sc">+</span></span>
@@ -611,10 +613,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!</p>
 </section>
 </section>
-<section id="custom-theme-and-colors" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="custom-theme-and-colors"><span class="header-section-number">8.7</span> Custom Theme and Colors</h2>
-<section id="adding-titles-and-labels" class="level3" data-number="8.7.1">
-<h3 data-number="8.7.1" class="anchored" data-anchor-id="adding-titles-and-labels"><span class="header-section-number">8.7.1</span> Adding Titles and Labels</h3>
+<section id="step-5.-custom-theme-and-colors" class="level4">
+<h4 class="anchored" data-anchor-id="step-5.-custom-theme-and-colors">Step 5. Custom Theme and Colors</h4>
+<section id="adding-titles-and-labels" class="level5">
+<h5 class="anchored" data-anchor-id="adding-titles-and-labels">Adding Titles and Labels</h5>
 <p>Make your plot more informative with descriptive titles:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
@@ -632,8 +634,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="changing-the-theme" class="level3" data-number="8.7.2">
-<h3 data-number="8.7.2" class="anchored" data-anchor-id="changing-the-theme"><span class="header-section-number">8.7.2</span> Changing the Theme</h3>
+<section id="changing-the-theme" class="level5">
+<h5 class="anchored" data-anchor-id="changing-the-theme">Changing the Theme</h5>
 <p>Apply a professional theme with <code>theme_bw()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
@@ -666,8 +668,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="using-colors" class="level3" data-number="8.7.3">
-<h3 data-number="8.7.3" class="anchored" data-anchor-id="using-colors"><span class="header-section-number">8.7.3</span> Using Colors</h3>
+<section id="using-colors" class="level5">
+<h5 class="anchored" data-anchor-id="using-colors">Using Colors</h5>
 <p>Want to improve your plots with colors?</p>
 <ul>
 <li><p><a href="https://albert-rapp.de/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">4 ways to use colors in ggplot2 more efficiently</a></p></li>
@@ -677,11 +679,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="save" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="save"><span class="header-section-number">8.8</span> <code>ggsave()</code> using Common Plot Types</h2>
+</section>
+</section>
+<section id="save" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="save"><span class="header-section-number">8.6</span> <code>ggsave()</code> using Common Plot Types</h2>
 <p><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave( )</a> is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in the “files” folder, which can be exported out of Posit Cloud and into your poster.</p>
-<section id="bar-plots-with-geom_bar" class="level3" data-number="8.8.1">
-<h3 data-number="8.8.1" class="anchored" data-anchor-id="bar-plots-with-geom_bar"><span class="header-section-number">8.8.1</span> Bar Plots with <code>geom_bar()</code></h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Requirement
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You must use file for both your final report and team manuscript.</p>
+<p>Your <em>R&amp;D Report</em>, <em>Team R&amp;D Manuscript</em>, <em>Final Report</em>, and <em>Final Manuscript</em> must include <code>ggsave( )</code> for plots.</p>
+</div>
+</div>
+<section id="bar-plots-with-geom_bar" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="bar-plots-with-geom_bar"><span class="header-section-number">8.6.1</span> Bar Plots with <code>geom_bar()</code></h3>
 <p>Bar plots are useful for comparing means across categories:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> charges)) <span class="sc">+</span> </span>
@@ -713,8 +731,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/ggplot2-ggsave-plotsfolder.png" class="img-fluid" alt="this is a screenshot of the files within the plot folder of posit cloud"></p>
 <p>Click the gear icon (above ” project &gt; plots”), click export, and <strong>Download.</strong> Then, upload this the plot and others within your team’s google drive &gt; Team Survey Data &gt; Quant Data &gt; Plots.</p>
 </section>
-<section id="violin-plots-with-geom_violin" class="level3" data-number="8.8.2">
-<h3 data-number="8.8.2" class="anchored" data-anchor-id="violin-plots-with-geom_violin"><span class="header-section-number">8.8.2</span> Violin Plots with <code>geom_violin()</code></h3>
+<section id="violin-plots-with-geom_violin" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="violin-plots-with-geom_violin"><span class="header-section-number">8.6.2</span> Violin Plots with <code>geom_violin()</code></h3>
 <p>Violin plots show the distribution of data across categories:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> smoker, <span class="at">y =</span> charges, <span class="at">fill =</span> smoker)) <span class="sc">+</span> </span>
@@ -1142,13 +1160,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tidyr.html" class="pagination-link" aria-label="Tidying Your Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Tidying Your Data</span></span>
+      <a href="./tidyr.html" class="pagination-link" aria-label="Format Data in tidyr">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./violin.html" class="pagination-link" aria-label="Visualizing Pre/Post">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing Pre/Post</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./violin.html" class="pagination-link" aria-label="Visualize Pre/Post Data">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,6 +1,6 @@
 ---
-title: "Visualizing your data"
-subtitle: "How to use ggplot2"
+title: "Visualize data in ggplot2"
+subtitle: "How to produce publication-ready plots"
 author:
   - Andrew Silhavy
   - Shane McCarty, PhD
@@ -39,7 +39,6 @@ execute:
 ## Required
 
 Your *R&D Report* and *R&D Team Manuscript* should include [ggsave( )](#save) information so you can export your plots quickly and add them to the poster.
-
 :::
 
 ## Load Library
@@ -102,7 +101,7 @@ The seven components are:
 
 7.  **Theme**: Visual styling and appearance
 
-[![the grammar of graphics has 7 layers (\[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html))](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+[![source: \[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html)](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
 ## Understanding Data Types
 
@@ -120,9 +119,17 @@ Before creating visualizations, it's important to understand your data types:
 
 -   📏 **Continuous**: Measurable data (e.g., height, weight)
 
-## Building a Plot Step by Step
+## Decision Tree
 
-### Step 1: Data and Mapping
+Your research question can be classified as **comparative** research or **relationship** research ([Barroga & Matanguihan, 2022](https://pubmed.ncbi.nlm.nih.gov/35470596/)).
+
+![*The decision tree helps researchers to identify the specific statistical technique based on their comparative or relationship research question*](images/ggplot2-decision.png)
+
+### Relationship Research 
+
+For relationship research, the variables are continuous. The example below shows how to build a scatterplot step by step.
+
+#### Step 1: Data and Mapping
 
 What is the relationship between BMI and insurance charges?
 
@@ -132,7 +139,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges))
 
 This creates a blank canvas with our axes defined, but no data displayed yet!
 
-### Step 2: Adding Layers with Geometries
+#### Step 2: Adding Layers with Geometries
 
 Add points to create a scatterplot using `geom_point()`:
 
@@ -141,7 +148,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
   geom_point()
 ```
 
-### Step 3: Adding a Trend Line
+#### Step 3: Adding a Trend Line
 
 Add a linear model line with `geom_smooth()`:
 
@@ -153,11 +160,11 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 
 Notice how it looks like we have two different populations? Let's explore this further.
 
-## Incorporating Grouping Variables
+#### Optional – Step 4. Incorporating Grouping Variables
 
 There are two main approaches to visualizing grouping variables:
 
-### Method 1: Using Color
+##### Method 1: Using Color
 
 Map the `smoker` variable to color:
 
@@ -168,7 +175,7 @@ ggplot(data = insurance,
   geom_smooth(method = "lm")
 ```
 
-### Method 2: Using Facets
+##### Method 2: Using Facets
 
 Create separate panels for each group with `facet_wrap()`:
 
@@ -181,9 +188,9 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 
 Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!
 
-## Custom Theme and Colors
+#### Step 5. Custom Theme and Colors
 
-### Adding Titles and Labels
+##### Adding Titles and Labels
 
 Make your plot more informative with descriptive titles:
 
@@ -196,7 +203,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
   ylab("Insurance Charges")
 ```
 
-### Changing the Theme
+##### Changing the Theme
 
 Apply a professional theme with `theme_bw()`:
 
@@ -221,7 +228,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
 Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in the individual reports and the team manuscript!
 :::
 
-### Using Colors
+##### Using Colors
 
 Want to improve your plots with colors?
 
@@ -236,6 +243,14 @@ Want to improve your plots with colors?
 ## `ggsave()` using Common Plot Types {#save}
 
 [ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in the "files" folder, which can be exported out of Posit Cloud and into your poster.
+
+::: callout-important
+## Requirement
+
+You must use file for both your final report and team manuscript.
+
+Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* must include `ggsave( )` for plots.
+:::
 
 ### Bar Plots with `geom_bar()`
 
@@ -296,5 +311,3 @@ ggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) 
 #plot above plot without using plot = argument
 ggsave("plots/plot2:smoker.png", width = 10, height = 8, dpi = 300)
 ```
-
-

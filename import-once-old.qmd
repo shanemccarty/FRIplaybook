@@ -166,11 +166,9 @@ View(NHANESraw)
 
 Excel files (.xlsx or .xls) are common in public health. Use the `readxl` package to import them. Below are code chunks that can be copied into your report if you are using an excel file with **1 header**.
 
-Use the .clean datafile: `r current_date`.data.team1.clean.xlsx . 
+Use the .clean datafile: `r current_date`.data.team1.clean.xlsx .
 
-- Notice: the file path has "data/`r current_date`.data.team1.clean.xlsx" because the folder (data) is holding the Posit Cloud file (`r current_date`.data.team1.clean.xlsx). You do NOT need to put your file inside of a "data" folder, but you do need to UPLOAD your dataset to your files in Posit Cloud. 
-
-
+-   Notice: the file path has "data/`r current_date`.data.team1.clean.xlsx" because the folder (data) is holding the Posit Cloud file (`r current_date`.data.team1.clean.xlsx). You do NOT need to put your file inside of a "data" folder, but you do need to UPLOAD your dataset to your files in Posit Cloud.
 
 ```{r}
 #| label: import-excel-header1
@@ -250,5 +248,5 @@ safetydata2 <- read_excel(
 #### Excel: Import Data to assign Missing Data as `NA`
 
 ::: callout-tip
-This page has been updated to address missing data during import. 
+This page has been updated to address missing data during import.
 :::

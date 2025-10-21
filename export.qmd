@@ -1,5 +1,5 @@
 ---
-title: "Exporting Survey Data"
+title: "Export Survey Data"
 subtitle: "How to name variables and recode values in Qualtrics"
 author:
   - Shane McCarty, PhD

@@ -1,6 +1,6 @@
 ---
-title: "Importing Qualtrics Data Live"
-subtitle: "How to use QualtrRics"
+title: "Import Data Live using qualtrRics"
+subtitle: "How to automate data export and import"
 author: "Gavin Rualo"
 abstract: |
   This chapter demonstrates how to programmatically download survey data from Qualtrics

@@ -100,5 +100,11 @@
   },
   "violin.qmd": {
     "violin.html": "6ae3c378"
+  },
+  "write-intro.qmd": {
+    "write-intro.html": "e73c5e40"
+  },
+  "write-functions.qmd": {
+    "write-functions.html": "262d9d40"
   }
 }

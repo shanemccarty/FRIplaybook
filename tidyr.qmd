@@ -1,6 +1,6 @@
 ---
-title: "Tidying your data"
-subtitle: "How to use tidyr"
+title: "Format data in tidyr"
+subtitle: "How to reshape data between long and wide formats"
 author: 
   - Shane McCarty, PhD
   - Gavin Rualo

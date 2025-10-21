@@ -1,0 +1,108 @@
+---
+title: "Write an Introduction"
+subtitle: "How to write with markdown"
+author: "Shane McCarty, PhD"
+abstract: |
+  This chapter teaches students to write using markdown syntax and includes a few useful examples.  
+keywords:
+  - quarto
+  - markdown
+date: 10.21.2025
+date-format: "MM.DD.YYYY"
+format: live-html
+engine: knitr
+editor: visual
+---
+
+::: {.callout-important appearance="simple"}
+## Required
+
+Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* will include headings based on the checklist and backticks for variables, such as `EFFICACY`.
+
+:::
+
+## Markdown
+
+You will write in the English language with [markdown](https://quarto.org/docs/authoring/markdown-basics.html) language to format your quarto report.
+
+```{markdown}
+This is a language called markdown. It is very simple. You can use
+*italics*, **bold**, ***bold italics*** to produce:
+```
+
+-   *italics*
+-   **bold**
+-   ***bold italics***
+
+## Headings
+
+Use markdown syntax to create headings based on the checkklist for your report. 
+
+```{markdown}
+# Introduction
+## Significance
+## Knowns and Unknowns
+## Research Aims
+
+# Methods
+## IRB Approval
+## TBD ... 
+
+# Results
+
+# Discussion
+
+# References
+
+```
+
+
+
+## Using Lists
+
+```{markdown}
+**Research Questions:**
+
+1. Does the intervention improve health literacy scores?
+2. Do effects differ by demographic group?
+3. Are improvements sustained at 3-month follow-up?
+
+```
+
+
+```{markdown}
+**Hypotheses:**
+
+1. **H1**: Participants in the intervention group will show higher health literacy scores than controls.
+2. **H2**: Effects will be moderated by baseline education level.
+
+```
+
+### Inline Math
+
+```{markdown}
+### Inline Math
+- Greek letters: $\alpha = 0.05$, $\beta$ coefficient
+- Equations: $t = \frac{\bar{x} - \mu}{s / \sqrt{n}}$
+```
+
+
+### Naming Variables
+
+You can use a backtick to denote code or the name of a variable by placing a word within \`\`. For example, if I put EFFICACY between \`\` then it returns `EFFICACY` . This will be important for naming variables in your report.
+
+::: callout-important
+## Requirement
+
+Use \` \` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.
+:::
+
+## Get started with Quarto Video
+
+This 22-minute video provided a basic overview of the Quarto features, which will help you improve your introduction section of your final report and team manuscript.
+
+{{< video https://www.youtube.com/watch?v=_f3latmOhew >}}
+
+The video mentions how to publish using quarto publish, which you will do later by following the forthcoming chapter on Publishing to Quarto Pub. 
+
+

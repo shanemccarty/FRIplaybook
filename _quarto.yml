@@ -7,7 +7,7 @@ book:
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
   date: "10/21/2025"
-  version: "Version 0.915 (draft)"
+  version: "Version 0.917 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -23,32 +23,34 @@ book:
           file: intro.qmd
         - text: "Reproducible Reports"
           file: example.qmd
-        - text: "Start a Document"
+        - text: "Start a Report"
           file: codechunks.qmd
-    - part: "Import Data"
+    - part: "Importing Your Data"
       chapters:
-        - text: "Exporting Data"
+        - text: "Export Survey Data"
           file: export.qmd
-        - text: "Importing Once"
+        - text: "Import Data Once"
           file: import-once.qmd
-        - text: "Importing Live"
+        - text: "Import Data Live"
           file: import-live.qmd
-    - part: "Tidy Data"
+    - part: "Tidying Your Data"
       chapters:
-        - text: "Tidying Your Data"
+        - text: "Format Data in tidyr"
           file: tidyr.qmd
-    - part: "Visualize Data"
+    - part: "Visualizing Your Data"
       chapters:
-        - text: "Visualizing Your Data"
+        - text: "Visualize in ggplot2"
           file: ggplot2.qmd
-        - text: "Visualizing Pre/Post"
+        - text: "Visualize Pre/Post Data"
           file: violin.qmd
-    - part: "Reproducibility"
+    - part: "Writing Reproducibly"
       chapters:    
-        - text: "Write a Read Me"
+        - text: "Read Me"
           file: readme.qmd
-        - text: "Results Section"
-          file: functions.qmd
+        - text: "Introduction"
+          file: write-intro.qmd
+        - text: "Methods & Results"
+          file: write-functions.qmd
         - text: "Citations & Refs"
           file: citations.qmd
 # Filters - WebR only for now
