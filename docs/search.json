@@ -333,7 +333,7 @@
     "href": "tidyr.html#data-formats",
     "title": "7  Tidying your data",
     "section": "",
-    "text": "7.1.1 Long Form\nImagine you collected data on WELLBEING and SLEEP at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is PASSWORD. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.\n\nExample of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.\n\n\nPASSWORD\nDAY\nWELLBEING\nSLEEP\n\n\n\n\nabc123\n1\n3.2\n42\n\n\ngobills7\n1\n7.8\n83\n\n\nabc123\n7\n1.2\n17\n\n\ngobills7\n7\n5.8\n68\n\n\n\n\n\n7.1.2 Wide Form\nUsing the tidyr package, long form data can be converted to wide form using the DAY variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the PASSWORD.\n\nExample of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with DAY dropped from the columns because there is no longer a DAY.\n\n\n\n\n\n\n\n\n\nPASSWORD\nWELLBEING_T1\nWELLBEING_T2\nSLEEP_T1\nSLEEP_T2\n\n\n\n\nabc123\n3.2\n1.2\n42\n17\n\n\ngobills7\n7.8\n5.8\n83\n18\n\n\n\n\n\n7.1.3 R Code\nThe code used to transition from long to wide data format here is as follows:\n```{r}\n#| label: long-to-wide\nlibrary(tidyr)\n\n## Convert to wide format\nwide_data &lt;- long_data %&gt;%\n  pivot_wider(\n    names_from = DAY,\n    values_from = c(WELLBEING, SLEEP), \n    names_glue = \"{.value}_T{DAY}\" \n  )\n```\nHere, we reference the “DAY” column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.",
+    "text": "7.1.1 Long Form\nImagine you collected data on WELLBEING and SLEEP at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is PASSWORD. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.\n\nExample of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.\n\n\nPASSWORD\nDAY\nWELLBEING\nSLEEP\n\n\n\n\nabc123\n1\n3.2\n42\n\n\ngobills7\n1\n7.8\n83\n\n\nabc123\n7\n1.2\n17\n\n\ngobills7\n7\n5.8\n68\n\n\n\n\n\n7.1.2 Wide Form\nUsing the tidyr package, long form data can be converted to wide form using the DAY variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the PASSWORD.\n\nExample of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with DAY dropped from the columns because there is no longer a DAY.\n\n\n\n\n\n\n\n\n\nPASSWORD\nWELLBEING_T1\nWELLBEING_T2\nSLEEP_T1\nSLEEP_T2\n\n\n\n\nabc123\n3.2\n1.2\n42\n17\n\n\ngobills7\n7.8\n5.8\n83\n18\n\n\n\n\n\n7.1.3 R Code\n\nExample 1\nThe code used to transition from long to wide data format here is as follows:\n```{r}\n#| label: long-to-wide\nlibrary(tidyr)\n\n## Convert to wide format\nwide_data &lt;- long_data %&gt;%\n  pivot_wider(\n    names_from = DAY,\n    values_from = c(WELLBEING, SLEEP), \n    names_glue = \"{.value}_T{DAY}\" \n  )\n```\nHere, we reference the “DAY” column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.\n\n\nExample 2\nAnother example can be found in the next chapter on visualizing pre and posttest scores.\nBelow is the example code:\n```{r}\nlibrary(tidyr)\n\n# Create long format with separate columns for each SE type\nlongdata &lt;- pivot_longer(oralhealthdata_prepost,\n                        cols = c(\"BSE_T1\", \"BSE_T2\", \"CSE_T1\", \"CSE_T2\", \"ISE_T1\", \"ISE_T2\"),\n                        names_to = c(\"SE_type\", \"Time\"),\n                        names_pattern = \"(.+)_(.+)\",\n                        values_to = \"SE\",\n                        values_drop_na = TRUE)\n\n# Convert T1/T2 to before/after\nlongdata$Time &lt;- ifelse(longdata$Time == \"T1\", \"before\", \"after\")\n\n# Pivot wider to get separate columns for each SE type\nlongdata &lt;- pivot_wider(longdata,\n                       names_from = SE_type,\n                       values_from = SE)\n\n# Keep only the desired columns\nlongdata &lt;- longdata[, c(\"Time\", \"BSE\", \"CSE\", \"ISE\")]\n\nlongdata$Time &lt;- factor(longdata$Time, levels = c('before','after'))\n\nlongdata_long &lt;- pivot_longer(longdata, cols = c(BSE, CSE, ISE), \n               names_to = \"SelfEfficacy\", \n               values_to = \"Score\")\n\nlongdata_long$SelfEfficacy &lt;- factor(longdata_long$SelfEfficacy, levels = c(\"BSE\", \"CSE\", \"ISE\"))\nlongdata_long$Time &lt;- factor(longdata_long$Time, levels = c(\"before\", \"after\"))\n\nlongdata_long &lt;- longdata %&gt;%\n  pivot_longer(cols = c(BSE, CSE, ISE), \n               names_to = \"SelfEfficacy\", \n               values_to = \"Score\")\n\n# Create a new variable combining 'SelfEfficacy' and 'Time'\nlongdata_long$SelfEfficacyTime &lt;- factor(\n  paste(longdata_long$SelfEfficacy, longdata_long$Time),\n  levels = c(\"BSE before\", \"BSE after\", \"CSE before\", \"CSE after\", \"ISE before\", \"ISE after\")\n)\n\n```\nIn this example, Erica converts from wide to long data in order to more easily compare time 1 vs time 2 data. This data format is not only for binary time categories either, it can be applicable to projects with data across multiple days.",
     "crumbs": [
       "Tidy Data",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Tidying Your Data</span>"
@@ -450,201 +450,300 @@
     ]
   },
   {
+    "objectID": "violin.html",
+    "href": "violin.html",
+    "title": "9  Visualizing pre/post scores",
+    "section": "",
+    "text": "9.1 Oral Health Dataset\nA team of FRI students in the Public Health stream designed a study on oral health and type 2 diabetes. The convenient sample of Binghamton students, faculty, and staff was collected in September and October of 2024.",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#library",
+    "href": "violin.html#library",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.2 Library",
+    "text": "9.2 Library\n\nlibrary(haven) ## for SPSS data\nlibrary(naniar)\nlibrary(dplyr)\nlibrary(ggplot2) ## for data viz\nlibrary(ggdist)\nlibrary(gghalves)\nlibrary(see)\nlibrary(tidyverse)\noralhealthdata_prepost &lt;- read_sav(\"data/3.19.2025.oralhealth.erica.sav\",\nuser_na = FALSE)\n\n# REPLACE\n## replace missing data\noralhealthdata_prepost &lt;- oralhealthdata_prepost %&gt;%\n  replace_with_na_all(condition = ~.x %in% c(-99, -50))",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#using-tidyr",
+    "href": "violin.html#using-tidyr",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.3 Using Tidyr",
+    "text": "9.3 Using Tidyr\n\nlibrary(tidyr)\n\n# Create long format with separate columns for each SE type\nlongdata &lt;- pivot_longer(oralhealthdata_prepost,\n                         cols = c(\"BSE_T1\", \"BSE_T2\", \"CSE_T1\", \"CSE_T2\", \"ISE_T1\", \"ISE_T2\"),\n                         names_to = c(\"SE_type\", \"Time\"),\n                        names_pattern = \"(.+)_(.+)\",\n                        values_to = \"SE\",\n                        values_drop_na = TRUE)\n\n# Convert T1/T2 to before/after\nlongdata$Time &lt;- ifelse(longdata$Time == \"T1\", \"before\", \"after\")\n\n# Pivot wider to get separate columns for each SE type\nlongdata &lt;- pivot_wider(longdata,\n                       names_from = SE_type,\n                       values_from = SE)\n\n# Keep only the desired columns\nlongdata &lt;- longdata[, c(\"Time\", \"BSE\", \"CSE\", \"ISE\")]\n\nlongdata$Time &lt;- factor(longdata$Time, levels = c('before','after'))\n\nlongdata_long &lt;- pivot_longer(longdata, cols = c(BSE, CSE, ISE), \n               names_to = \"SelfEfficacy\", \n               values_to = \"Score\")\n\nlongdata_long$SelfEfficacy &lt;- factor(longdata_long$SelfEfficacy, levels = c(\"BSE\", \"CSE\", \"ISE\"))\nlongdata_long$Time &lt;- factor(longdata_long$Time, levels = c(\"before\", \"after\"))\n\nlongdata_long &lt;- longdata %&gt;%\n  pivot_longer(cols = c(BSE, CSE, ISE), \n               names_to = \"SelfEfficacy\", \n               values_to = \"Score\")\n\n# Create a new variable combining 'SelfEfficacy' and 'Time'\nlongdata_long$SelfEfficacyTime &lt;- factor(\n  paste(longdata_long$SelfEfficacy, longdata_long$Time),\n  levels = c(\"BSE before\", \"BSE after\", \"CSE before\", \"CSE after\", \"ISE before\", \"ISE after\")\n)\n\nMore information on tidyr is available in the chapter",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#visualizing-with-violin-plots",
+    "href": "violin.html#visualizing-with-violin-plots",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.4 Visualizing with violin plots",
+    "text": "9.4 Visualizing with violin plots\n\n9.4.1 What is a violin plot?\n\n\nCombines components of a box plot and kernel density plot (similar to a histogram but shows the distribution as a continuous curve instead of with bars).\nShows the distribution of variables for each group\n\n\n\n\n\n9.4.2 Why are violin plots important?\n\nHelpful in making comparisons amongst distributions of different groups.\nGood way to visualize data.\nEasy way to identify trends and outliers in the data amongst different variables, which will help in forming relationships between different variables in your data.\nCan be creative and customize plots how you like (filling in plots, coloring, sizing, transparency, etc.)\n\n\n\n\n9.4.3 How can violin plots help in your projects?\n\nExamples\n\nFind normal distributions in your data, which will aid in the decision of what time of statistical test you use\nCompare ditributions between two groups in your data\nWas there an overall change in values in one of your variables before or after an event?",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#example-t-test",
+    "href": "violin.html#example-t-test",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.5 Example: T-test",
+    "text": "9.5 Example: T-test\n\nT-test: A way to compare means of two different groups (i.e. comparing if the self-efficacy increased after an educational intervention)\nConverting a normal paired sample t-test, demonstrated by box plots, to a violin plot\n :::\n\n9.6 Example: Violin Plot\nNow you can see the distribution of the basic self-efficacy variable, in addition to the box plot.\n\nggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) + \n  geom_violin() + geom_boxplot(width = .1, position = position_dodge(width = 0.9)) + \n  geom_point(aes(color = Time), size = 1, position = position_jitter(width = 0.1)) + \n  scale_fill_manual(values = c(\"BSE\" = \"#69b3a2\", \"CSE\" = \"cornflowerblue\", \"ISE\" = \"darkorchid4\")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) + \n  ggtitle(\"Change in Self-Efficacy Due to Intervention\")\n\n\n\n\n\n\n\n\n\n\n9.7 Raincloud plots\n\nWhat if you wanted to see the distribution of the variables and the raw data side by side?\nA raincloud plot allows you to add different types of plots onto one graph.\nHere we see half the violin plot, boxplot, and raw data points jittered on top.\n\n\nggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) +   \n  geom_violinhalf(aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy), trim = TRUE, \n  position = position_nudge(x = 0.1)) + geom_boxplot(width = .1, outlier.shape = NA,    \n  position = position_nudge(x = -0.1)) + geom_point(position = position_nudge(x = -0.3)) +  \n  scale_fill_manual(values = c(\"BSE\" = \"#69b3a2\", \"CSE\" = \"cornflowerblue\", \"ISE\" = \"darkorchid4\")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) +   \n  ggtitle(\"Change in Self-Efficacy Due to Intervention\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip📖 raincloud plot resources\n\n\n\nThere are many different ways to create a raincloud plot: - Raincloud plots with ggplot2 - Raincloudplots - geom_paired__raincloud()\n\n\n\n\n9.8 Summary\n\nViolin and raincloud plots are an effective strategy to visualize your information.\nIt is important to visualize your data in a way that will make it easy for the audience to understand your findings.\nPlots can be easily customized in R:\n\nFill\nColor\nSize\nTransparency (alpha = )\nPosition\n\n\n\n\n9.9 Now you can confidently create your own violin and raincloud plots in R!!!\nAny questions?",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#example-violin-plot",
+    "href": "violin.html#example-violin-plot",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.6 Example: Violin Plot",
+    "text": "9.6 Example: Violin Plot\nNow you can see the distribution of the basic self-efficacy variable, in addition to the box plot.\n\nggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) + \n  geom_violin() + geom_boxplot(width = .1, position = position_dodge(width = 0.9)) + \n  geom_point(aes(color = Time), size = 1, position = position_jitter(width = 0.1)) + \n  scale_fill_manual(values = c(\"BSE\" = \"#69b3a2\", \"CSE\" = \"cornflowerblue\", \"ISE\" = \"darkorchid4\")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) + \n  ggtitle(\"Change in Self-Efficacy Due to Intervention\")",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#raincloud-plots",
+    "href": "violin.html#raincloud-plots",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.7 Raincloud plots",
+    "text": "9.7 Raincloud plots\n\nWhat if you wanted to see the distribution of the variables and the raw data side by side?\nA raincloud plot allows you to add different types of plots onto one graph.\nHere we see half the violin plot, boxplot, and raw data points jittered on top.\n\n\nggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) +   \n  geom_violinhalf(aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy), trim = TRUE, \n  position = position_nudge(x = 0.1)) + geom_boxplot(width = .1, outlier.shape = NA,    \n  position = position_nudge(x = -0.1)) + geom_point(position = position_nudge(x = -0.3)) +  \n  scale_fill_manual(values = c(\"BSE\" = \"#69b3a2\", \"CSE\" = \"cornflowerblue\", \"ISE\" = \"darkorchid4\")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) +   \n  ggtitle(\"Change in Self-Efficacy Due to Intervention\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip📖 raincloud plot resources\n\n\n\nThere are many different ways to create a raincloud plot: - Raincloud plots with ggplot2 - Raincloudplots - geom_paired__raincloud()",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#summary",
+    "href": "violin.html#summary",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.8 Summary",
+    "text": "9.8 Summary\n\nViolin and raincloud plots are an effective strategy to visualize your information.\nIt is important to visualize your data in a way that will make it easy for the audience to understand your findings.\nPlots can be easily customized in R:\n\nFill\nColor\nSize\nTransparency (alpha = )\nPosition",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
+    "objectID": "violin.html#now-you-can-confidently-create-your-own-violin-and-raincloud-plots-in-r",
+    "href": "violin.html#now-you-can-confidently-create-your-own-violin-and-raincloud-plots-in-r",
+    "title": "9  Visualizing pre/post scores",
+    "section": "9.9 Now you can confidently create your own violin and raincloud plots in R!!!",
+    "text": "9.9 Now you can confidently create your own violin and raincloud plots in R!!!\nAny questions?",
+    "crumbs": [
+      "Visualize Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Visualizing Pre/Post</span>"
+    ]
+  },
+  {
     "objectID": "readme.html",
     "href": "readme.html",
-    "title": "9  Read Me",
+    "title": "10  Read Me",
     "section": "",
-    "text": "9.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
+    "text": "10.1 Read Me\nA readme.qmd file instructs someone else to read me. It provides basic information and contextual information to a colleague who wants to replicate or check your work.\nTo see an example of an excellent read me file, see “zero sum report read me file”: https://fripublichealth.quarto.pub/zerosum/readme-preview.html",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Write a Read Me</span>"
     ]
   },
   {
     "objectID": "readme.html#read-me",
     "href": "readme.html#read-me",
-    "title": "9  Read Me",
+    "title": "10  Read Me",
     "section": "",
     "text": "ImportantRequirement\n\n\n\nYou must create a readme.qmd file for all submissions.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Write a Read Me</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Write a Read Me</span>"
     ]
   },
   {
     "objectID": "functions.html",
     "href": "functions.html",
-    "title": "10  Writing Reproducible Results",
+    "title": "11  Writing Reproducible Results",
     "section": "",
-    "text": "10.1 Load Library\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
+    "text": "11.1 Load Library\nIn reproducible research, writing numbers manually (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use R functions inside Quarto to turn your results directly into sentences!",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#load-library",
     "href": "functions.html#load-library",
-    "title": "10  Writing Reproducible Results",
+    "title": "11  Writing Reproducible Results",
     "section": "",
     "text": "Please enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#example-dataset",
     "href": "functions.html#example-dataset",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.2 Example Dataset",
-    "text": "10.2 Example Dataset\nThe example dataset is a small subset of a larger dataset collected via Prolific on March, 15, 2025. For more information, review the read me file.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.2 Example Dataset",
+    "text": "11.2 Example Dataset\nThe example dataset is a small subset of a larger dataset collected via Prolific on March, 15, 2025. For more information, review the read me file.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#inline-r-code",
     "href": "functions.html#inline-r-code",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.3 Inline R Code",
-    "text": "10.3 Inline R Code\nThe traditional process of writing a results section of a research paper usually involves three steps: 1) running the analyses, 2) copying statistics and p-values from the data analysis software into a word document, and 3) writing text to interpret the results. In each of these steps, researchers can make an error. Using inline R code eliminates step2 of copying-and-pasting of numbers into a report or manuscript and reduces parts of step 3. Below are a few examples of how to use inline R code to generate numbers or text using functions:\n\nReport Sample Size\nReport Numbers and Percentages\nWrite Numbers as Words\nReport Descriptive Stats in a Table\nReport a Parameter and p-value",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.3 Inline R Code",
+    "text": "11.3 Inline R Code\nThe traditional process of writing a results section of a research paper usually involves three steps: 1) running the analyses, 2) copying statistics and p-values from the data analysis software into a word document, and 3) writing text to interpret the results. In each of these steps, researchers can make an error. Using inline R code eliminates step2 of copying-and-pasting of numbers into a report or manuscript and reduces parts of step 3. Below are a few examples of how to use inline R code to generate numbers or text using functions:\n\nReport Sample Size\nReport Numbers and Percentages\nWrite Numbers as Words\nReport Descriptive Stats in a Table\nReport a Parameter and p-value",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#example-1-report-sample-size",
     "href": "functions.html#example-1-report-sample-size",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.4 Example 1: Report Sample Size",
-    "text": "10.4 Example 1: Report Sample Size\n\n10.4.1 create object: total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.4 Example 1: Report Sample Size",
+    "text": "11.4 Example 1: Report Sample Size\n\n11.4.1 create object: total_responses\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#use-in-line-code",
     "href": "functions.html#use-in-line-code",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.5 use in line code",
-    "text": "10.5 use in line code\nIn your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.5 use in line code",
+    "text": "11.5 use in line code\nIn your manuscript, write like this:\n\nWe surveyed a total of `r total_responses` participants.\n\nWhen you render the output, you’ll get:\n\nWe surveyed a total of 122 participants.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#example-2-report-numbers-and-percentages",
     "href": "functions.html#example-2-report-numbers-and-percentages",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.6 Example 2: Report Numbers and Percentages",
-    "text": "10.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n10.6.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.6.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.6 Example 2: Report Numbers and Percentages",
+    "text": "11.6 Example 2: Report Numbers and Percentages\nYou can combine counts and percentages easily.\n\n11.6.1 create an object for the sum of each racial identity in the sample\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n11.6.2 use inline r code with total_responses\nIn your manuscript, write like this:\n\nOut of `r total_responses` participants, The final sample was roughly balanced in terms of \nracial identity (White: `r percent(white, accuracy = 0.1)`, \n                 Black: `r percent(black, accuracy = 0.1)`,\n                 Asian: `r percent(asian, accuracy = 0.1)`, \n                 Mixed/Other: `r percent(mixed_other, accuracy = 0.1)`).\n\nWhen you render the output, you’ll get:\n\nOut of 122 participants, The final sample was roughly balanced in terms of racial identity\n(White: 40.2%, Black: 23.0%, Asian: 18.9%, Mixed/Other: 18.0%).",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#example-3-write-numbers-as-words",
     "href": "functions.html#example-3-write-numbers-as-words",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.7 Example 3: Write Numbers as Words",
-    "text": "10.7 Example 3: Write Numbers as Words\n\n10.7.1 load library\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n10.7.2 report numbers as words\nIn your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.7 Example 3: Write Numbers as Words",
+    "text": "11.7 Example 3: Write Numbers as Words\n\n11.7.1 load library\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n11.7.2 report numbers as words\nIn your manuscript, write like this:\n\nA total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.\n\nWhen you render the output, you’ll get:\n\nA total of One Hundred And Twenty-Two participants were included in the analysis.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range",
     "href": "functions.html#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.8 Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)",
-    "text": "10.8 Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)\nWriting functions can help researchers output the mean, median, sd, min, max and output these descriptive statistics into a table.\n\n10.8.1 create variables\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7\n\n\n\n\n\n\n\n10.8.2 create table\nIn your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.8 Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)",
+    "text": "11.8 Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)\nWriting functions can help researchers output the mean, median, sd, min, max and output these descriptive statistics into a table.\n\n11.8.1 create variables\n\n# Define Continuous Variables\ncontinuous_vars &lt;- c(\n  \"AGE\", \"SOCIALSTATUS\", \"POLITICALBELIEFS\",\n  paste0(\"ZEROSUM_\", 1:11)\n)\n\ndesc_table_continuous &lt;- select_data %&gt;%\n  select(all_of(continuous_vars)) %&gt;%\n  psych::describe() %&gt;%\n  tibble::rownames_to_column(var = \"Variable\") %&gt;%\n  select(Variable, n, mean, median, sd, min, max)\n\n# Remove font specifications from nice_table\nknitr::kable(desc_table_continuous,\n             digits = 2)\n\n\nDescriptive Statistics Table for Continuous Variables\n\n\nVariable\nn\nmean\nmedian\nsd\nmin\nmax\n\n\n\n\nAGE\n121\n36.10\n33.0\n12.73\n19\n73\n\n\nSOCIALSTATUS\n122\n5.30\n5.5\n1.78\n1\n9\n\n\nPOLITICALBELIEFS\n120\n3.67\n4.0\n1.35\n1\n6\n\n\nZEROSUM_1\n122\n3.92\n4.0\n1.78\n1\n7\n\n\nZEROSUM_2\n121\n4.75\n5.0\n1.59\n1\n7\n\n\nZEROSUM_3\n121\n4.92\n5.0\n1.49\n1\n7\n\n\nZEROSUM_4\n121\n3.07\n3.0\n1.69\n1\n7\n\n\nZEROSUM_5\n122\n2.84\n3.0\n1.75\n1\n7\n\n\nZEROSUM_6\n121\n3.43\n3.0\n2.07\n1\n7\n\n\nZEROSUM_7\n120\n3.52\n4.0\n1.81\n1\n7\n\n\nZEROSUM_8\n121\n2.93\n3.0\n1.63\n1\n7\n\n\nZEROSUM_9\n121\n2.59\n2.0\n1.74\n1\n7\n\n\nZEROSUM_10\n122\n3.20\n3.0\n1.75\n1\n7\n\n\nZEROSUM_11\n121\n3.17\n3.0\n1.74\n1\n7\n\n\n\n\n\n\n\n11.8.2 create table\nIn your manuscript, write like this:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of `r nrow(select_data)` participants, \nwith a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"AGE\"], 2)` \nyears (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"AGE\"], 2)`, \nrange = `r desc_table_continuous$min[desc_table_continuous$Variable == \"AGE\"]`\n– `r desc_table_continuous$max[desc_table_continuous$Variable == \"AGE\"]`). \n\nParticipants reported a mean social status of \n`r round(desc_table_continuous$mean[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)` \n(SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == \"SOCIALSTATUS\"], 2)`) on a 10-point scale.\n\nWhen you render the output, you’ll get:\n\nDescriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. \nThe sample consisted of 122 participants, with a mean age of 36.1 years (SD = 12.73, range = 19 – 73). \nParticipants reported a mean social status of 5.3 (SD = 1.78) on a 10-point scale.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#example-5-report-a-parameter-and-p-values",
     "href": "functions.html#example-5-report-a-parameter-and-p-values",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.9 Example 5: Report a parameter and p-values",
-    "text": "10.9 Example 5: Report a parameter and p-values\nInline R code is used to report the parameter and p-value of a Kruskal-Wallis Test.\n\n10.9.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n10.9.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.9 Example 5: Report a parameter and p-values",
+    "text": "11.9 Example 5: Report a parameter and p-values\nInline R code is used to report the parameter and p-value of a Kruskal-Wallis Test.\n\n11.9.1 run analyses\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n11.9.2 include inline R code with reporting\nIn your manuscript, write like this:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(`r kw.ZEROSUM_1.party$parameter`) = `r round(kw.ZEROSUM_1.party$statistic, 2)`, \n*p* = `r signif(kw.ZEROSUM_1.party$p.value, 3)`.\n\nWhen you render the output, you’ll get:\n\nThere was no significant difference in ZEROSUM_1 scores across political party groups, \nKruskal-Wallis χ²(2) = 1.5, p = 0.473.",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "functions.html#common-pitfalls-to-avoid",
     "href": "functions.html#common-pitfalls-to-avoid",
-    "title": "10  Writing Reproducible Results",
-    "section": "10.10 Common Pitfalls to Avoid",
-    "text": "10.10 Common Pitfalls to Avoid\n\n\n\n\n\n\nWarning⚠️ Danger: Common Mistakes\n\n\n\n\n\n\nObject not found errors - Make sure you create objects, such as total_responses, before using functions, such as percent(), before referencing them inline\nWrong variable names - R is case-sensitive: age ≠ AGE\nMissing packages - Load scales and english if outputting english text",
+    "title": "11  Writing Reproducible Results",
+    "section": "11.10 Common Pitfalls to Avoid",
+    "text": "11.10 Common Pitfalls to Avoid\n\n\n\n\n\n\nWarning⚠️ Danger: Common Mistakes\n\n\n\n\n\n\nObject not found errors - Make sure you create objects, such as total_responses, before using functions, such as percent(), before referencing them inline\nWrong variable names - R is case-sensitive: age ≠ AGE\nMissing packages - Load scales and english if outputting english text",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Results Section</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Results Section</span>"
     ]
   },
   {
     "objectID": "citations.html",
     "href": "citations.html",
-    "title": "11  APA Citations & References",
+    "title": "12  APA Citations & References",
     "section": "",
-    "text": "11.1 Add “bibliography: references.bib” to the YAML\nThis line tells Quarto to create and use a file called references.bib, which you can find in the Files section.\nTo format your references in APA style, also include the line csl: apa.csl in the YAML header.\n---\ntitle: \"APA citations\"\nauthor: \"Zihan Hei\"\nformat: html\neditor: visual\n\nbibliography: references.bib\ncsl: apa.csl\n---",
+    "text": "12.1 Add “bibliography: references.bib” to the YAML\nThis line tells Quarto to create and use a file called references.bib, which you can find in the Files section.\nTo format your references in APA style, also include the line csl: apa.csl in the YAML header.\n---\ntitle: \"APA citations\"\nauthor: \"Zihan Hei\"\nformat: html\neditor: visual\n\nbibliography: references.bib\ncsl: apa.csl\n---",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Citations & Refs</span>"
     ]
   },
   {
     "objectID": "citations.html#download-the-apa.csl-file-from-zotero",
     "href": "citations.html#download-the-apa.csl-file-from-zotero",
-    "title": "11  APA Citations & References",
-    "section": "11.2 Download the apa.csl file from Zotero",
-    "text": "11.2 Download the apa.csl file from Zotero\n\n11.2.1 Find APA Style in Zotero\n\nOpen Zotero.\nGo to the menu bar (top left).\n\nOn Windows: click Edit –&gt; Settings\nOn Mac: click Zotero –&gt; Settings\n\nIn the left sidebar, select Cite –&gt; then click the Styles tab.\nAt the bottom of the style list, click “Get additional styles…”\n\nThis opens the Zotero Style Repository inside your browser.\n\nSearch for APA — you’ll see this:\n\nAmerican Psychological Association 7th edition\n\nClick the name of the style and Zotero will automatically install it into your local Zotero library.\n\n\n\n11.2.2 Finding the CSL File\nWe need the actual .csl file for Quarto:\n\nAfter installing it, go to Zotero’s data directory:\n\n\nOn Windows: C:\\Users\\&lt;YourName&gt;\\Zotero\\styles\n\nC: drives –&gt; folder with your name –&gt; Zotero folder –&gt; styles folder\n\nOn macOS: Home/Zotero/styles\n\nHome folder –&gt; Zotero folder –&gt; styles folder\n\n\n\nFind the file named something like apa.csl or apa-7th-edition.csl.\nUpload it into your Quarto project folder, and in your YAML, include:\n\n\n---\ncsl: apa.csl     \n\nor \n\ncsl: apa-7th-edition.csl    \n---",
+    "title": "12  APA Citations & References",
+    "section": "12.2 Download the apa.csl file from Zotero",
+    "text": "12.2 Download the apa.csl file from Zotero\n\n12.2.1 Find APA Style in Zotero\n\nOpen Zotero.\nGo to the menu bar (top left).\n\nOn Windows: click Edit –&gt; Settings\nOn Mac: click Zotero –&gt; Settings\n\nIn the left sidebar, select Cite –&gt; then click the Styles tab.\nAt the bottom of the style list, click “Get additional styles…”\n\nThis opens the Zotero Style Repository inside your browser.\n\nSearch for APA — you’ll see this:\n\nAmerican Psychological Association 7th edition\n\nClick the name of the style and Zotero will automatically install it into your local Zotero library.\n\n\n\n12.2.2 Finding the CSL File\nWe need the actual .csl file for Quarto:\n\nAfter installing it, go to Zotero’s data directory:\n\n\nOn Windows: C:\\Users\\&lt;YourName&gt;\\Zotero\\styles\n\nC: drives –&gt; folder with your name –&gt; Zotero folder –&gt; styles folder\n\nOn macOS: Home/Zotero/styles\n\nHome folder –&gt; Zotero folder –&gt; styles folder\n\n\n\nFind the file named something like apa.csl or apa-7th-edition.csl.\nUpload it into your Quarto project folder, and in your YAML, include:\n\n\n---\ncsl: apa.csl     \n\nor \n\ncsl: apa-7th-edition.csl    \n---",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Citations & Refs</span>"
     ]
   },
   {
     "objectID": "citations.html#insert-citations-in-visual-mode",
     "href": "citations.html#insert-citations-in-visual-mode",
-    "title": "11  APA Citations & References",
-    "section": "11.3 Insert Citations in Visual Mode",
-    "text": "11.3 Insert Citations in Visual Mode\n\nFind your article’s DOI and copy it.\nIn the Visual editor, click Insert —&gt; Citation.\nPaste your DOI then search your article under “From DOI”, “Crossref”, “DataCite” or “PubMed”.\nBefore you click insert, make sure the Add to bibliography file option points to references.bib.\nChoose In-text and click Insert.\n\n\n\nThe correct citation should look like this: (Offer et al. (2025))\nIf you want to cite multiple sources in one set of parentheses, separate them with semicolons: (Offer et al. (2025); Johnson (2018); O’Brien et al. (2024))",
+    "title": "12  APA Citations & References",
+    "section": "12.3 Insert Citations in Visual Mode",
+    "text": "12.3 Insert Citations in Visual Mode\n\nFind your article’s DOI and copy it.\nIn the Visual editor, click Insert —&gt; Citation.\nPaste your DOI then search your article under “From DOI”, “Crossref”, “DataCite” or “PubMed”.\nBefore you click insert, make sure the Add to bibliography file option points to references.bib.\nChoose In-text and click Insert.\n\n\n\nThe correct citation should look like this: (Offer et al. (2025))\nIf you want to cite multiple sources in one set of parentheses, separate them with semicolons: (Offer et al. (2025); Johnson (2018); O’Brien et al. (2024))",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Citations & Refs</span>"
     ]
   },
   {
     "objectID": "citations.html#including-uncited-items",
     "href": "citations.html#including-uncited-items",
-    "title": "11  APA Citations & References",
-    "section": "11.4 Including Uncited Items",
-    "text": "11.4 Including Uncited Items\nIf you want certain references to appear in your bibliography without citing them in the text, you can define a nocite field in your YAML like this:\n\n---\nnocite: |\n  @kannan2014\n---\n\nThis means “@kannan2014” will not appear in the body text, but it will still be listed in your final bibliography.\nFor example, if you want to include Dr.Shane’s Quantitative Playbook (which doesn’t have a DOI but has a web link), you can manually add it to your references.bib file:\n\n@article{McCarty2025, \n  title = {The Quantitative Playbook for Public Health Research in R},\n  year = {2025},\n  author = {McCarty, S.},\n  url = {https://shanemccarty.github.io/FRIplaybook/},\n  langid = {en}\n}\n\nAfter this, make sure you put it in the YAML using nocite:\n\n---\nnocite: |\n  @McCarty2025\n---",
+    "title": "12  APA Citations & References",
+    "section": "12.4 Including Uncited Items",
+    "text": "12.4 Including Uncited Items\nIf you want certain references to appear in your bibliography without citing them in the text, you can define a nocite field in your YAML like this:\n\n---\nnocite: |\n  @kannan2014\n---\n\nThis means “@kannan2014” will not appear in the body text, but it will still be listed in your final bibliography.\nFor example, if you want to include Dr.Shane’s Quantitative Playbook (which doesn’t have a DOI but has a web link), you can manually add it to your references.bib file:\n\n@article{McCarty2025, \n  title = {The Quantitative Playbook for Public Health Research in R},\n  year = {2025},\n  author = {McCarty, S.},\n  url = {https://shanemccarty.github.io/FRIplaybook/},\n  langid = {en}\n}\n\nAfter this, make sure you put it in the YAML using nocite:\n\n---\nnocite: |\n  @McCarty2025\n---",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Citations & Refs</span>"
     ]
   },
   {
     "objectID": "citations.html#bibliography-generation",
     "href": "citations.html#bibliography-generation",
-    "title": "11  APA Citations & References",
-    "section": "11.5 Bibliography Generation",
-    "text": "11.5 Bibliography Generation\nBy default, Quarto will automatically generate a list of cited works and will be placed at the end of the document.\nFor more information about citations in Quarto, check out the Quarto website: https://quarto.org/docs/authoring/citations.html\n\n\n\n\n\n\nTipTip with Title\n\n\n\nCitations and references are not required for the Results & Discussion Report ( RDreport.qmd ), but they are required for the final report.\n\n\n\n\n\n\nJohnson, S. G. B. (2018). Why do people believe in a zero-sum economy? Behavioral and Brain Sciences, 41. https://doi.org/10.1017/s0140525x18000389\n\n\nKannan, V. D., & Veazie, P. J. (2014). Predictors of Avoiding Medical Care and Reasons for Avoidance Behavior. Medical Care, 52(4), 336–345. https://doi.org/10.1097/mlr.0000000000000100\n\n\nMcCarty, S. (2025). The Quantitative Playbook for Public Health Research in R. https://shanemccarty.github.io/FRIplaybook/\n\n\nO’Brien, A. G., Meese, W. B., Taber, J. M., Johnson, A. E., Hinojosa, B. M., Burton, R., Ranjan, S., Rodarte, E. D., Coward, C., & Howell, J. L. (2024). Why do people avoid health risk information? A qualitative analysis. SSM - Qualitative Research in Health, 6, 100461. https://doi.org/10.1016/j.ssmqr.2024.100461\n\n\nOffer, K., Oglanova, N., Oswald, L., & Hertwig, R. (2025). Prevalence and predictors of medical information avoidance: a systematic review and meta-analysis. Annals of Behavioral Medicine, 59(1). https://doi.org/10.1093/abm/kaaf058",
+    "title": "12  APA Citations & References",
+    "section": "12.5 Bibliography Generation",
+    "text": "12.5 Bibliography Generation\nBy default, Quarto will automatically generate a list of cited works and will be placed at the end of the document.\nFor more information about citations in Quarto, check out the Quarto website: https://quarto.org/docs/authoring/citations.html\n\n\n\n\n\n\nTipTip with Title\n\n\n\nCitations and references are not required for the Results & Discussion Report ( RDreport.qmd ), but they are required for the final report.\n\n\n\n\n\n\nJohnson, S. G. B. (2018). Why do people believe in a zero-sum economy? Behavioral and Brain Sciences, 41. https://doi.org/10.1017/s0140525x18000389\n\n\nKannan, V. D., & Veazie, P. J. (2014). Predictors of Avoiding Medical Care and Reasons for Avoidance Behavior. Medical Care, 52(4), 336–345. https://doi.org/10.1097/mlr.0000000000000100\n\n\nMcCarty, S. (2025). The Quantitative Playbook for Public Health Research in R. https://shanemccarty.github.io/FRIplaybook/\n\n\nO’Brien, A. G., Meese, W. B., Taber, J. M., Johnson, A. E., Hinojosa, B. M., Burton, R., Ranjan, S., Rodarte, E. D., Coward, C., & Howell, J. L. (2024). Why do people avoid health risk information? A qualitative analysis. SSM - Qualitative Research in Health, 6, 100461. https://doi.org/10.1016/j.ssmqr.2024.100461\n\n\nOffer, K., Oglanova, N., Oswald, L., & Hertwig, R. (2025). Prevalence and predictors of medical information avoidance: a systematic review and meta-analysis. Annals of Behavioral Medicine, 59(1). https://doi.org/10.1093/abm/kaaf058",
     "crumbs": [
       "Reproducibility",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Citations & Refs</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Citations & Refs</span>"
     ]
   }
 ]

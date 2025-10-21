@@ -6,7 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Shane McCarty, PhD &amp; Gavin Rualo">
+<meta name="author" content="Shane McCarty, PhD">
+<meta name="author" content="Gavin Rualo">
+<meta name="author" content="Erica Sava">
 <meta name="keywords" content="wide format, long format, tidyr">
 
 <title>7&nbsp; Tidying your data – The Quantitative Playbook for Public Health Research in R</title>
@@ -263,6 +265,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing Pre/Post</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -277,19 +285,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,9 +337,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Shane McCarty, PhD &amp; Gavin Rualo </p>
+             <p>Shane McCarty, PhD </p>
+             <p>Gavin Rualo </p>
+             <p>Erica Sava </p>
           </div>
   </div>
     
@@ -371,6 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://www.datacamp.com/courses/reshaping-data-with-tidyr">Datacamp</a></li>
 <li><a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">Cheat Sheet</a></li>
 <li><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">Posit page</a></li>
+<li><a href="https://tidyr.tidyverse.org/">Offical Tidyverse page</a></li>
 </ul>
 </div>
 </div>
@@ -471,6 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="r-code" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="r-code"><span class="header-section-number">7.1.3</span> R Code</h3>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example 1</h4>
 <p>The code used to transition from long to wide data format here is as follows:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: long-to-wide</span></span>
@@ -485,6 +498,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here, we reference the “DAY” column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.</p>
+</section>
+<section id="example-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-2">Example 2</h4>
+<p>Another example can be found in the next chapter on <a href="./violin.html">visualizing pre and posttest scores</a>.</p>
+<p>Below is the example code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create long format with separate columns for each SE type</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(oralhealthdata_prepost,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"BSE_T1"</span>, <span class="st">"BSE_T2"</span>, <span class="st">"CSE_T1"</span>, <span class="st">"CSE_T2"</span>, <span class="st">"ISE_T1"</span>, <span class="st">"ISE_T2"</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"SE_type"</span>, <span class="st">"Time"</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_pattern =</span> <span class="st">"(.+)_(.+)"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">"SE"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert T1/T2 to before/after</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(longdata<span class="sc">$</span>Time <span class="sc">==</span> <span class="st">"T1"</span>, <span class="st">"before"</span>, <span class="st">"after"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot wider to get separate columns for each SE type</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(longdata,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from =</span> SE_type,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from =</span> SE)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only the desired columns</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> longdata[, <span class="fu">c</span>(<span class="st">"Time"</span>, <span class="st">"BSE"</span>, <span class="st">"CSE"</span>, <span class="st">"ISE"</span>)]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata<span class="sc">$</span>Time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'before'</span>,<span class="st">'after'</span>))</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>longdata_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(longdata, <span class="at">cols =</span> <span class="fu">c</span>(BSE, CSE, ISE), </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SelfEfficacy"</span>, </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Score"</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>SelfEfficacy <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata_long<span class="sc">$</span>SelfEfficacy, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE"</span>, <span class="st">"CSE"</span>, <span class="st">"ISE"</span>))</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata_long<span class="sc">$</span>Time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>))</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>longdata_long <span class="ot">&lt;-</span> longdata <span class="sc">%&gt;%</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(BSE, CSE, ISE), </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SelfEfficacy"</span>, </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Score"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable combining 'SelfEfficacy' and 'Time'</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>SelfEfficacyTime <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(longdata_long<span class="sc">$</span>SelfEfficacy, longdata_long<span class="sc">$</span>Time),</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE before"</span>, <span class="st">"BSE after"</span>, <span class="st">"CSE before"</span>, <span class="st">"CSE after"</span>, <span class="st">"ISE before"</span>, <span class="st">"ISE after"</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In this example, Erica converts from wide to long data in order to more easily compare time 1 vs time 2 data. This data format is not only for binary time categories either, it can be applicable to projects with data across multiple days.</p>
+</section>
 </section>
 </section>
 <section id="teams" class="level2" data-number="7.2">

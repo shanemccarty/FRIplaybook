@@ -10,7 +10,7 @@
 <meta name="author" content="Shane McCarty">
 <meta name="keywords" content="read me, transparent, project management">
 
-<title>9&nbsp; Read Me – The Quantitative Playbook for Public Health Research in R</title>
+<title>10&nbsp; Read Me – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./functions.html" rel="next">
-<link href="./ggplot2.html" rel="prev">
+<link href="./violin.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./readme.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./readme.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -229,6 +229,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing Pre/Post</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -243,19 +249,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -270,16 +276,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#read-me" id="toc-read-me" class="nav-link active" data-scroll-target="#read-me"><span class="header-section-number">9.1</span> Read Me</a></li>
+  <li><a href="#read-me" id="toc-read-me" class="nav-link active" data-scroll-target="#read-me"><span class="header-section-number">10.1</span> Read Me</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/readme.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./readme.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./readme.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Read Me</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read Me</span></h1>
 <p class="subtitle lead">How to write a read me file</p>
 </div>
 
@@ -322,8 +328,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="read-me" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="read-me"><span class="header-section-number">9.1</span> Read Me</h2>
+<section id="read-me" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="read-me"><span class="header-section-number">10.1</span> Read Me</h2>
 <p>A <code>readme.qmd</code> file instructs someone else to <em>read me</em>. It provides basic information and contextual information to a colleague who wants to replicate or check your work.</p>
 <p>To see an example of an excellent read me file, see “zero sum report read me file”: <a href="https://fripublichealth.quarto.pub/zerosum/readme-preview.html" class="uri">https://fripublichealth.quarto.pub/zerosum/readme-preview.html</a></p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -746,13 +752,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./ggplot2.html" class="pagination-link" aria-label="Visualizing Your Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></span>
+      <a href="./violin.html" class="pagination-link" aria-label="Visualizing Pre/Post">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing Pre/Post</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./functions.html" class="pagination-link" aria-label="Results Section">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Results Section</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

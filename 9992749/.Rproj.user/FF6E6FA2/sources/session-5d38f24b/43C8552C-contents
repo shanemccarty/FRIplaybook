@@ -1,0 +1,169 @@
+---
+title: "Superpower: Violin Plots"
+author: "Erica Sava"
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: all
+    transition: fade
+    transition-speed: slow
+    incremental: true
+css: "BingTheme.css"
+editor: visual
+---
+
+------------------------------------------------------------------------
+
+```{r converting SPSS to R}
+library(haven)
+library(naniar)
+library(dplyr)
+library(ggplot2)
+library(ggdist)
+library(gghalves)
+library(see)
+library(tidyverse)
+alldata <- read_sav("3.19.25_Sava-Erica_Dataset.sav",
+user_na = FALSE)
+
+# REPLACE
+## replace missing data
+alldata <- alldata %>%
+  replace_with_na_all(condition = ~.x %in% c(-99, -50))
+```
+
+```{r reshape}
+library(tidyr)
+
+# Create long format with separate columns for each SE type
+longdata <- pivot_longer(alldata,
+                        cols = c("BSE_T1", "BSE_T2", "CSE_T1", "CSE_T2", "ISE_T1", "ISE_T2"),
+                        names_to = c("SE_type", "Time"),
+                        names_pattern = "(.+)_(.+)",
+                        values_to = "SE",
+                        values_drop_na = TRUE)
+
+# Convert T1/T2 to before/after
+longdata$Time <- ifelse(longdata$Time == "T1", "before", "after")
+
+# Pivot wider to get separate columns for each SE type
+longdata <- pivot_wider(longdata,
+                       names_from = SE_type,
+                       values_from = SE)
+
+# Keep only the desired columns
+longdata <- longdata[, c("Time", "BSE", "CSE", "ISE")]
+
+longdata$Time <- factor(longdata$Time, levels = c('before','after'))
+
+longdata_long <- pivot_longer(longdata, cols = c(BSE, CSE, ISE), 
+               names_to = "SelfEfficacy", 
+               values_to = "Score")
+
+longdata_long$SelfEfficacy <- factor(longdata_long$SelfEfficacy, levels = c("BSE", "CSE", "ISE"))
+longdata_long$Time <- factor(longdata_long$Time, levels = c("before", "after"))
+
+longdata_long <- longdata %>%
+  pivot_longer(cols = c(BSE, CSE, ISE), 
+               names_to = "SelfEfficacy", 
+               values_to = "Score")
+
+# Create a new variable combining 'SelfEfficacy' and 'Time'
+longdata_long$SelfEfficacyTime <- factor(
+  paste(longdata_long$SelfEfficacy, longdata_long$Time),
+  levels = c("BSE before", "BSE after", "CSE before", "CSE after", "ISE before", "ISE after")
+)
+
+```
+
+## What is a violin plot? {auto-animate="true"}
+
+::: {style = "font-size: 30px"}
+
+-   Combines components of a box plot and kernel densityp plot (similar to a histogram but shows the distribution as a continuous curve instead of with bars).
+-   Shows the distribution of variables across groups.
+-   Helps to show summary of statistics and visualize data. ![](Screenshot%202025-03-28%20141146.png){width="50%" height="50%"}
+
+:::
+
+## Why are violin plots important? {auto-animate="true"}
+
+-   Helpful in making comparisons amongst distributions of different groups.
+-   Good way to visualize data.
+-   Easy way to identify trends and outliers in the data amongst different variables, which will help in forming relationships between different variables in your data.
+-   Can be creative and customize plots how you like (filling in plots, coloring, sizing, transparency, etc.)
+
+![](Screenshot%202025-03-28%20142336.png){width="50%" height="50%"}
+
+## How can violin plots help in your projects? {auto-animate="true"}
+
+-   Examples
+    -   Find normal distributions in your data, which will aid in the decision of what time of statistical test you use
+
+    -   Compare ditributions between two groups in your data
+
+    -   Was there an overall change in values in one of your variables before or after an event?
+
+## Example: T-test {auto-animate="true"}
+
+::: {style = "font-size: 20px"}
+
+T-test: A way to compare means of two different groups (i.e. comparing if the self-efficacy increased after an educational intervention)
+
+Converting a normal paired sample t-test, demonstrated by box plots, to a violin plot
+
+![](Screenshot%202025-03-26%20141656.png){width="80%" height="80%"} :::
+
+## Example: Violin Plot {auto-animate="true"}
+
+Now you can see the distribution of the basic self-efficacy variable, in addition to the box plot.
+
+```{r Basic violin plot}
+#| echo: true
+#| fig.width: 8
+#| fig.height: 5
+#| code-font-size: 30px
+ggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) + 
+  geom_violin() + geom_boxplot(width = .1, position = position_dodge(width = 0.9)) + 
+  geom_point(aes(color = Time), size = 1, position = position_jitter(width = 0.1)) + 
+  scale_fill_manual(values = c("BSE" = "#69b3a2", "CSE" = "cornflowerblue", "ISE" = "darkorchid4")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) + 
+  ggtitle("Change in Self-Efficacy Due to Intervention")
+```
+
+## Representing the data in a different way: Raincloud plots {auto-animate="true"}
+
+-   What if you wanted to see the distribution of the variables and the raw data side by side?
+-   A raincloud plot allows you to add different types of plots onto one graph.
+-   Here we see half the violin plot, boxplot, and raw data points jittered on top.
+
+```{r half-violin plot}
+#| echo: true
+#| fig.width: 8
+#| fig.height: 5
+#| code-font-size: 30px
+ggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) +   
+  geom_violinhalf(aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy), trim = TRUE, 
+  position = position_nudge(x = 0.1)) + geom_boxplot(width = .1, outlier.shape = NA,    
+  position = position_nudge(x = -0.1)) + geom_point(position = position_nudge(x = -0.3)) +  
+  scale_fill_manual(values = c("BSE" = "#69b3a2", "CSE" = "cornflowerblue", "ISE" = "darkorchid4")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) +   
+  ggtitle("Change in Self-Efficacy Due to Intervention")
+
+
+```
+
+## Summary {auto-animate="true"}
+
+-   Violin and raincloud plots are an effective strategy to visualize your information.
+-   It is important to visualize your data in a way that will make it easy for the audience to understand your findings.
+-   Plots can be easily customized in R:
+    -   Fill
+    -   Color
+    -   Size
+    -   Transparency (alpha = )
+    -   Position
+
+## Now you can confidently create your own violin and raincloud plots in R!!! {auto-animate="true"}
+
+Any questions?
+
+![](Screenshot%202025-03-28%20142629.png){width="50%" height="50%"}

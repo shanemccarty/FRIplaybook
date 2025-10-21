@@ -1,7 +1,10 @@
 ---
 title: "Tidying your data"
 subtitle: "How to use tidyr"
-author: Shane McCarty, PhD & Gavin Rualo
+author: 
+  - Shane McCarty, PhD
+  - Gavin Rualo
+  - Erica Sava
 keywords: 
   - wide format
   - long format
@@ -18,12 +21,13 @@ format: html
 -   [Datacamp](https://www.datacamp.com/courses/reshaping-data-with-tidyr)
 -   [Cheat Sheet](https://rstudio.github.io/cheatsheets/tidyr.pdf)
 -   [Posit page](https://rstudio.github.io/cheatsheets/html/tidyr.html)
+-   [Offical Tidyverse page](https://tidyr.tidyverse.org/)
 :::
 
 ::: {.callout-important appearance="simple"}
 ## For Teams 2 and 4
 
-This is a required module for Teams 2 and 4 given their long data format. 
+This is a required module for Teams 2 and 4 given their long data format.
 :::
 
 ## Data Formats
@@ -54,6 +58,10 @@ Using the `tidyr` package, long form data can be converted to wide form using th
 
 ### R Code
 
+
+#### Example 1
+
+
 The code used to transition from long to wide data format here is as follows:
 
 ```{{r}}
@@ -71,26 +79,73 @@ wide_data <- long_data %>%
 
 Here, we reference the "DAY" column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.
 
+#### Example 2
+
+Another example can be found in the next chapter on [visualizing pre and posttest scores](violin.qmd). 
+
+Below is the example code:
+
+```{{r}}
+library(tidyr)
+
+# Create long format with separate columns for each SE type
+longdata <- pivot_longer(oralhealthdata_prepost,
+                        cols = c("BSE_T1", "BSE_T2", "CSE_T1", "CSE_T2", "ISE_T1", "ISE_T2"),
+                        names_to = c("SE_type", "Time"),
+                        names_pattern = "(.+)_(.+)",
+                        values_to = "SE",
+                        values_drop_na = TRUE)
+
+# Convert T1/T2 to before/after
+longdata$Time <- ifelse(longdata$Time == "T1", "before", "after")
+
+# Pivot wider to get separate columns for each SE type
+longdata <- pivot_wider(longdata,
+                       names_from = SE_type,
+                       values_from = SE)
+
+# Keep only the desired columns
+longdata <- longdata[, c("Time", "BSE", "CSE", "ISE")]
+
+longdata$Time <- factor(longdata$Time, levels = c('before','after'))
+
+longdata_long <- pivot_longer(longdata, cols = c(BSE, CSE, ISE), 
+               names_to = "SelfEfficacy", 
+               values_to = "Score")
+
+longdata_long$SelfEfficacy <- factor(longdata_long$SelfEfficacy, levels = c("BSE", "CSE", "ISE"))
+longdata_long$Time <- factor(longdata_long$Time, levels = c("before", "after"))
+
+longdata_long <- longdata %>%
+  pivot_longer(cols = c(BSE, CSE, ISE), 
+               names_to = "SelfEfficacy", 
+               values_to = "Score")
+
+# Create a new variable combining 'SelfEfficacy' and 'Time'
+longdata_long$SelfEfficacyTime <- factor(
+  paste(longdata_long$SelfEfficacy, longdata_long$Time),
+  levels = c("BSE before", "BSE after", "CSE before", "CSE after", "ISE before", "ISE after")
+)
+
+```
+
+In this example, Erica converts from wide to long data in order to more easily compare time 1 vs time 2 data. This data format is not only for binary time categories either, it can be applicable to projects with data across multiple days.
+
 ## Teams
 
 Team 1, 3, and 5 will export data in wide format and will not use `tidyr`. Teams 2 and 4 will need to use `tidyr` to convert their data from long form into wide form.
 
 ::: {.callout-note collapse="true"}
-
 ## Team 2
 
 The Day 1/7 Survey is in long format because a person takes the same survey at Day 1 and 7, resulting in two entries per person. The Daily Survey is in long format because a person takes the same survey 6-7 days, resulting in multiple entries per person.
-
 :::
 
 ::: {.callout-note collapse="true"}
-
 ## Team 4
 
 Survey is in long format due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).
-
 :::
-
 
 ## Resources
 

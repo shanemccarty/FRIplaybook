@@ -1,7 +1,7 @@
 ---
 title: "Reproducible Reports"
 authors:
-  - Shane McCarty
+  - Shane McCarty, PhD
   - Zihan Hei
 format: html
 ---

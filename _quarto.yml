@@ -6,8 +6,8 @@ book:
   title: "The Quantitative Playbook for Public Health Research in R"
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
-  date: "10/20/2025"
-  version: "Version 0.911 (draft)"
+  date: "10/21/2025"
+  version: "Version 0.915 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -41,6 +41,8 @@ book:
       chapters:
         - text: "Visualizing Your Data"
           file: ggplot2.qmd
+        - text: "Visualizing Pre/Post"
+          file: violin.qmd
     - part: "Reproducibility"
       chapters:    
         - text: "Write a Read Me"

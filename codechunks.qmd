@@ -1,7 +1,7 @@
 ---
 title: "Quarto Markdown Document"
 subtitle: "How to start, write in markdown, add YAML, and write code chunks"
-author: "Shane McCarty"
+author: "Shane McCarty, PhD"
 abstract: |
   This chapter introduces students to creating and structuring Quarto markdown documents (.qmd)
   for reproducible research. Students learn to set up new Quarto documents, configure metadata

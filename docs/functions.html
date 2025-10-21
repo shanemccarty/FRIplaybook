@@ -9,7 +9,7 @@
 <meta name="author" content="Zihan Hei">
 <meta name="keywords" content="quarto publishing, in line coding, writing">
 
-<title>10&nbsp; Writing Reproducible Results – The Quantitative Playbook for Public Health Research in R</title>
+<title>11&nbsp; Writing Reproducible Results – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -1673,7 +1673,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Results Section</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1816,6 +1816,12 @@ globalThis.qwebrExecuteCode = async function (
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualizing Your Data</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing Pre/Post</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1830,19 +1836,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./functions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -1857,35 +1863,35 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#load-library" id="toc-load-library" class="nav-link active" data-scroll-target="#load-library"><span class="header-section-number">10.1</span> Load Library</a></li>
-  <li><a href="#example-dataset" id="toc-example-dataset" class="nav-link" data-scroll-target="#example-dataset"><span class="header-section-number">10.2</span> Example Dataset</a></li>
-  <li><a href="#inline-r-code" id="toc-inline-r-code" class="nav-link" data-scroll-target="#inline-r-code"><span class="header-section-number">10.3</span> Inline R Code</a></li>
-  <li><a href="#example-1-report-sample-size" id="toc-example-1-report-sample-size" class="nav-link" data-scroll-target="#example-1-report-sample-size"><span class="header-section-number">10.4</span> Example 1: Report Sample Size</a>
+  <li><a href="#load-library" id="toc-load-library" class="nav-link active" data-scroll-target="#load-library"><span class="header-section-number">11.1</span> Load Library</a></li>
+  <li><a href="#example-dataset" id="toc-example-dataset" class="nav-link" data-scroll-target="#example-dataset"><span class="header-section-number">11.2</span> Example Dataset</a></li>
+  <li><a href="#inline-r-code" id="toc-inline-r-code" class="nav-link" data-scroll-target="#inline-r-code"><span class="header-section-number">11.3</span> Inline R Code</a></li>
+  <li><a href="#example-1-report-sample-size" id="toc-example-1-report-sample-size" class="nav-link" data-scroll-target="#example-1-report-sample-size"><span class="header-section-number">11.4</span> Example 1: Report Sample Size</a>
   <ul class="collapse">
-  <li><a href="#create-object-total_responses" id="toc-create-object-total_responses" class="nav-link" data-scroll-target="#create-object-total_responses"><span class="header-section-number">10.4.1</span> create object: <code>total_responses</code></a></li>
+  <li><a href="#create-object-total_responses" id="toc-create-object-total_responses" class="nav-link" data-scroll-target="#create-object-total_responses"><span class="header-section-number">11.4.1</span> create object: <code>total_responses</code></a></li>
   </ul></li>
-  <li><a href="#use-in-line-code" id="toc-use-in-line-code" class="nav-link" data-scroll-target="#use-in-line-code"><span class="header-section-number">10.5</span> use in line code</a></li>
-  <li><a href="#example-2-report-numbers-and-percentages" id="toc-example-2-report-numbers-and-percentages" class="nav-link" data-scroll-target="#example-2-report-numbers-and-percentages"><span class="header-section-number">10.6</span> Example 2: Report Numbers and Percentages</a>
+  <li><a href="#use-in-line-code" id="toc-use-in-line-code" class="nav-link" data-scroll-target="#use-in-line-code"><span class="header-section-number">11.5</span> use in line code</a></li>
+  <li><a href="#example-2-report-numbers-and-percentages" id="toc-example-2-report-numbers-and-percentages" class="nav-link" data-scroll-target="#example-2-report-numbers-and-percentages"><span class="header-section-number">11.6</span> Example 2: Report Numbers and Percentages</a>
   <ul class="collapse">
-  <li><a href="#create-an-object-for-the-sum-of-each-racial-identity-in-the-sample" id="toc-create-an-object-for-the-sum-of-each-racial-identity-in-the-sample" class="nav-link" data-scroll-target="#create-an-object-for-the-sum-of-each-racial-identity-in-the-sample"><span class="header-section-number">10.6.1</span> create an object for the sum of each racial identity in the sample</a></li>
-  <li><a href="#use-inline-r-code-with-total_responses" id="toc-use-inline-r-code-with-total_responses" class="nav-link" data-scroll-target="#use-inline-r-code-with-total_responses"><span class="header-section-number">10.6.2</span> use inline r code with <code>total_responses</code></a></li>
+  <li><a href="#create-an-object-for-the-sum-of-each-racial-identity-in-the-sample" id="toc-create-an-object-for-the-sum-of-each-racial-identity-in-the-sample" class="nav-link" data-scroll-target="#create-an-object-for-the-sum-of-each-racial-identity-in-the-sample"><span class="header-section-number">11.6.1</span> create an object for the sum of each racial identity in the sample</a></li>
+  <li><a href="#use-inline-r-code-with-total_responses" id="toc-use-inline-r-code-with-total_responses" class="nav-link" data-scroll-target="#use-inline-r-code-with-total_responses"><span class="header-section-number">11.6.2</span> use inline r code with <code>total_responses</code></a></li>
   </ul></li>
-  <li><a href="#example-3-write-numbers-as-words" id="toc-example-3-write-numbers-as-words" class="nav-link" data-scroll-target="#example-3-write-numbers-as-words"><span class="header-section-number">10.7</span> Example 3: Write Numbers as Words</a>
+  <li><a href="#example-3-write-numbers-as-words" id="toc-example-3-write-numbers-as-words" class="nav-link" data-scroll-target="#example-3-write-numbers-as-words"><span class="header-section-number">11.7</span> Example 3: Write Numbers as Words</a>
   <ul class="collapse">
-  <li><a href="#load-library-1" id="toc-load-library-1" class="nav-link" data-scroll-target="#load-library-1"><span class="header-section-number">10.7.1</span> load library</a></li>
-  <li><a href="#report-numbers-as-words" id="toc-report-numbers-as-words" class="nav-link" data-scroll-target="#report-numbers-as-words"><span class="header-section-number">10.7.2</span> report numbers as words</a></li>
+  <li><a href="#load-library-1" id="toc-load-library-1" class="nav-link" data-scroll-target="#load-library-1"><span class="header-section-number">11.7.1</span> load library</a></li>
+  <li><a href="#report-numbers-as-words" id="toc-report-numbers-as-words" class="nav-link" data-scroll-target="#report-numbers-as-words"><span class="header-section-number">11.7.2</span> report numbers as words</a></li>
   </ul></li>
-  <li><a href="#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range" id="toc-example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range" class="nav-link" data-scroll-target="#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">10.8</span> Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)</a>
+  <li><a href="#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range" id="toc-example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range" class="nav-link" data-scroll-target="#example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">11.8</span> Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)</a>
   <ul class="collapse">
-  <li><a href="#create-variables" id="toc-create-variables" class="nav-link" data-scroll-target="#create-variables"><span class="header-section-number">10.8.1</span> create variables</a></li>
-  <li><a href="#create-table" id="toc-create-table" class="nav-link" data-scroll-target="#create-table"><span class="header-section-number">10.8.2</span> create table</a></li>
+  <li><a href="#create-variables" id="toc-create-variables" class="nav-link" data-scroll-target="#create-variables"><span class="header-section-number">11.8.1</span> create variables</a></li>
+  <li><a href="#create-table" id="toc-create-table" class="nav-link" data-scroll-target="#create-table"><span class="header-section-number">11.8.2</span> create table</a></li>
   </ul></li>
-  <li><a href="#example-5-report-a-parameter-and-p-values" id="toc-example-5-report-a-parameter-and-p-values" class="nav-link" data-scroll-target="#example-5-report-a-parameter-and-p-values"><span class="header-section-number">10.9</span> Example 5: Report a parameter and p-values</a>
+  <li><a href="#example-5-report-a-parameter-and-p-values" id="toc-example-5-report-a-parameter-and-p-values" class="nav-link" data-scroll-target="#example-5-report-a-parameter-and-p-values"><span class="header-section-number">11.9</span> Example 5: Report a parameter and p-values</a>
   <ul class="collapse">
-  <li><a href="#run-analyses" id="toc-run-analyses" class="nav-link" data-scroll-target="#run-analyses"><span class="header-section-number">10.9.1</span> run analyses</a></li>
-  <li><a href="#include-inline-r-code-with-reporting" id="toc-include-inline-r-code-with-reporting" class="nav-link" data-scroll-target="#include-inline-r-code-with-reporting"><span class="header-section-number">10.9.2</span> include inline R code with reporting</a></li>
+  <li><a href="#run-analyses" id="toc-run-analyses" class="nav-link" data-scroll-target="#run-analyses"><span class="header-section-number">11.9.1</span> run analyses</a></li>
+  <li><a href="#include-inline-r-code-with-reporting" id="toc-include-inline-r-code-with-reporting" class="nav-link" data-scroll-target="#include-inline-r-code-with-reporting"><span class="header-section-number">11.9.2</span> include inline R code with reporting</a></li>
   </ul></li>
-  <li><a href="#common-pitfalls-to-avoid" id="toc-common-pitfalls-to-avoid" class="nav-link" data-scroll-target="#common-pitfalls-to-avoid"><span class="header-section-number">10.10</span> Common Pitfalls to Avoid</a></li>
+  <li><a href="#common-pitfalls-to-avoid" id="toc-common-pitfalls-to-avoid" class="nav-link" data-scroll-target="#common-pitfalls-to-avoid"><span class="header-section-number">11.10</span> Common Pitfalls to Avoid</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/functions.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2176,9 +2182,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Results Section</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Reproducibility</a></li><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Results Section</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Writing Reproducible Results</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Writing Reproducible Results</span></h1>
 <p class="subtitle lead">How to use R functions and inline code to embed statistics in text</p>
 </div>
 
@@ -2234,19 +2240,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <p>In reproducible research, writing <em>numbers</em> <em>manually</em> (e.g., “We surveyed 120 people.”) can lead to errors if you import data later (after you have collected 140 people). Instead, use <strong>R functions</strong> inside <strong>Quarto</strong> to turn your results directly into sentences!</p>
-<section id="load-library" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="load-library"><span class="header-section-number">10.1</span> Load Library</h2>
+<section id="load-library" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="load-library"><span class="header-section-number">11.1</span> Load Library</h2>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="example-dataset" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="example-dataset"><span class="header-section-number">10.2</span> Example Dataset</h2>
+<section id="example-dataset" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="example-dataset"><span class="header-section-number">11.2</span> Example Dataset</h2>
 <p>The example dataset is a small subset of a larger dataset collected via Prolific on March, 15, 2025. For more information, review the <a href="https://fripublichealth.quarto.pub/zerosum/readme-preview.html">read me file</a>.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="inline-r-code" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="inline-r-code"><span class="header-section-number">10.3</span> Inline R Code</h2>
+<section id="inline-r-code" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="inline-r-code"><span class="header-section-number">11.3</span> Inline R Code</h2>
 <p>The traditional process of writing a results section of a research paper usually involves three steps: 1) running the analyses, 2) copying statistics and p-values from the data analysis software into a word document, and 3) writing text to interpret the results. In each of these steps, researchers can make an error. Using inline R code eliminates step2 of copying-and-pasting of numbers into a report or manuscript and reduces parts of step 3. Below are a few examples of how to use inline R code to generate numbers or text using functions:</p>
 <ol type="1">
 <li><p>Report Sample Size</p></li>
@@ -2256,16 +2262,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><p>Report a Parameter and p-value</p></li>
 </ol>
 </section>
-<section id="example-1-report-sample-size" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="example-1-report-sample-size"><span class="header-section-number">10.4</span> Example 1: Report Sample Size</h2>
-<section id="create-object-total_responses" class="level3" data-number="10.4.1">
-<h3 data-number="10.4.1" class="anchored" data-anchor-id="create-object-total_responses"><span class="header-section-number">10.4.1</span> create object: <code>total_responses</code></h3>
+<section id="example-1-report-sample-size" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="example-1-report-sample-size"><span class="header-section-number">11.4</span> Example 1: Report Sample Size</h2>
+<section id="create-object-total_responses" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="create-object-total_responses"><span class="header-section-number">11.4.1</span> create object: <code>total_responses</code></h3>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="use-in-line-code" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="use-in-line-code"><span class="header-section-number">10.5</span> use in line code</h2>
+<section id="use-in-line-code" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="use-in-line-code"><span class="header-section-number">11.5</span> use in line code</h2>
 <p>In your manuscript, write like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>We surveyed a total of <span class="in">`r total_responses`</span> participants.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2275,18 +2281,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>We surveyed a total of 122 participants.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-2-report-numbers-and-percentages" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="example-2-report-numbers-and-percentages"><span class="header-section-number">10.6</span> Example 2: Report Numbers and Percentages</h2>
+<section id="example-2-report-numbers-and-percentages" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="example-2-report-numbers-and-percentages"><span class="header-section-number">11.6</span> Example 2: Report Numbers and Percentages</h2>
 <p>You can combine counts and percentages easily.</p>
-<section id="create-an-object-for-the-sum-of-each-racial-identity-in-the-sample" class="level3" data-number="10.6.1">
-<h3 data-number="10.6.1" class="anchored" data-anchor-id="create-an-object-for-the-sum-of-each-racial-identity-in-the-sample"><span class="header-section-number">10.6.1</span> create an object for the sum of each racial identity in the sample</h3>
+<section id="create-an-object-for-the-sum-of-each-racial-identity-in-the-sample" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="create-an-object-for-the-sum-of-each-racial-identity-in-the-sample"><span class="header-section-number">11.6.1</span> create an object for the sum of each racial identity in the sample</h3>
 <div class="cell" data-autorun="false" data-completion="true">
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="use-inline-r-code-with-total_responses" class="level3" data-number="10.6.2">
-<h3 data-number="10.6.2" class="anchored" data-anchor-id="use-inline-r-code-with-total_responses"><span class="header-section-number">10.6.2</span> use inline r code with <code>total_responses</code></h3>
+<section id="use-inline-r-code-with-total_responses" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="use-inline-r-code-with-total_responses"><span class="header-section-number">11.6.2</span> use inline r code with <code>total_responses</code></h3>
 <p>In your manuscript, write like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Out of <span class="in">`r total_responses`</span> participants, The final sample was roughly balanced in terms of </span>
@@ -2302,15 +2308,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </section>
 </section>
-<section id="example-3-write-numbers-as-words" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="example-3-write-numbers-as-words"><span class="header-section-number">10.7</span> Example 3: Write Numbers as Words</h2>
-<section id="load-library-1" class="level3" data-number="10.7.1">
-<h3 data-number="10.7.1" class="anchored" data-anchor-id="load-library-1"><span class="header-section-number">10.7.1</span> load library</h3>
+<section id="example-3-write-numbers-as-words" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="example-3-write-numbers-as-words"><span class="header-section-number">11.7</span> Example 3: Write Numbers as Words</h2>
+<section id="load-library-1" class="level3" data-number="11.7.1">
+<h3 data-number="11.7.1" class="anchored" data-anchor-id="load-library-1"><span class="header-section-number">11.7.1</span> load library</h3>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="report-numbers-as-words" class="level3" data-number="10.7.2">
-<h3 data-number="10.7.2" class="anchored" data-anchor-id="report-numbers-as-words"><span class="header-section-number">10.7.2</span> report numbers as words</h3>
+<section id="report-numbers-as-words" class="level3" data-number="11.7.2">
+<h3 data-number="11.7.2" class="anchored" data-anchor-id="report-numbers-as-words"><span class="header-section-number">11.7.2</span> report numbers as words</h3>
 <p>In your manuscript, write like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>A total of <span class="in">`r str_to_title(as.character(english(total_responses)))`</span> participants were included in the analysis.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2321,11 +2327,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </section>
 </section>
-<section id="example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">10.8</span> Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)</h2>
+<section id="example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="example-4-report-descriptive-statistics-in-a-table-a-table-by-using-inline-r-code-mean-sd-range"><span class="header-section-number">11.8</span> Example 4: Report descriptive statistics in a table a table by using inline R code (Mean, SD, Range)</h2>
 <p>Writing functions can help researchers output the mean, median, sd, min, max and output these descriptive statistics into a table.</p>
-<section id="create-variables" class="level3" data-number="10.8.1">
-<h3 data-number="10.8.1" class="anchored" data-anchor-id="create-variables"><span class="header-section-number">10.8.1</span> create variables</h3>
+<section id="create-variables" class="level3" data-number="11.8.1">
+<h3 data-number="11.8.1" class="anchored" data-anchor-id="create-variables"><span class="header-section-number">11.8.1</span> create variables</h3>
 <div class="cell" data-tbl-cap="Descriptive Statistics Table for Continuous Variables">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Continuous Variables</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>continuous_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -2488,8 +2494,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </section>
-<section id="create-table" class="level3" data-number="10.8.2">
-<h3 data-number="10.8.2" class="anchored" data-anchor-id="create-table"><span class="header-section-number">10.8.2</span> create table</h3>
+<section id="create-table" class="level3" data-number="11.8.2">
+<h3 data-number="11.8.2" class="anchored" data-anchor-id="create-table"><span class="header-section-number">11.8.2</span> create table</h3>
 <p>In your manuscript, write like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. </span>
@@ -2511,18 +2517,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </section>
 </section>
-<section id="example-5-report-a-parameter-and-p-values" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="example-5-report-a-parameter-and-p-values"><span class="header-section-number">10.9</span> Example 5: Report a parameter and p-values</h2>
+<section id="example-5-report-a-parameter-and-p-values" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="example-5-report-a-parameter-and-p-values"><span class="header-section-number">11.9</span> Example 5: Report a parameter and p-values</h2>
 <p>Inline R code is used to report the parameter and p-value of a Kruskal-Wallis Test.</p>
-<section id="run-analyses" class="level3" data-number="10.9.1">
-<h3 data-number="10.9.1" class="anchored" data-anchor-id="run-analyses"><span class="header-section-number">10.9.1</span> run analyses</h3>
+<section id="run-analyses" class="level3" data-number="11.9.1">
+<h3 data-number="11.9.1" class="anchored" data-anchor-id="run-analyses"><span class="header-section-number">11.9.1</span> run analyses</h3>
 <div class="cell">
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="include-inline-r-code-with-reporting" class="level3" data-number="10.9.2">
-<h3 data-number="10.9.2" class="anchored" data-anchor-id="include-inline-r-code-with-reporting"><span class="header-section-number">10.9.2</span> include inline R code with reporting</h3>
+<section id="include-inline-r-code-with-reporting" class="level3" data-number="11.9.2">
+<h3 data-number="11.9.2" class="anchored" data-anchor-id="include-inline-r-code-with-reporting"><span class="header-section-number">11.9.2</span> include inline R code with reporting</h3>
 <p>In your manuscript, write like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>There was no significant difference in ZEROSUM_1 scores across political party groups, </span>
@@ -2536,8 +2542,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </section>
 </section>
-<section id="common-pitfalls-to-avoid" class="level2" data-number="10.10">
-<h2 data-number="10.10" class="anchored" data-anchor-id="common-pitfalls-to-avoid"><span class="header-section-number">10.10</span> Common Pitfalls to Avoid</h2>
+<section id="common-pitfalls-to-avoid" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="common-pitfalls-to-avoid"><span class="header-section-number">11.10</span> Common Pitfalls to Avoid</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2966,12 +2972,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./readme.html" class="pagination-link" aria-label="Write a Read Me">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Write a Read Me</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./citations.html" class="pagination-link" aria-label="Citations &amp; Refs">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

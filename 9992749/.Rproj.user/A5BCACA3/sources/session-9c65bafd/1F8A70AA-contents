@@ -1,0 +1,89 @@
+---
+title: "Superpower Presentation"
+author: "Gavin Rualo"
+format:
+  revealjs:
+    slide-number: true
+    show-slide-number: all
+    transition: fade
+    transition-speed: slow
+    incremental: true
+css: "BingTheme.css"
+editor: visual
+---
+
+# Superpower Presentation
+
+Add your **name** here
+
+------------------------------------------------------------------------
+
+## What is your superpower? {auto-animate="true"}
+
+Add a short description of what your superpower does, and if applicable, add a small code snippet below:
+
+```{r}
+library(ggplot2)
+
+# Sample dataset: mtcars
+ggplot(mtcars, aes(x = wt, y = mpg, color = cyl)) +
+  geom_point(size = 3) +
+  labs(title = "MPG vs. Weight of Cars",
+       x = "Weight (1000 lbs)",
+       y = "Miles per Gallon",
+       color = "Cylinders") +
+  theme_minimal()
+```
+
+## Why is your superpower important? {auto-animate="true"}
+
+::: columns
+::: {.column width="40%"}
+Demonstrate more code and an output, perhaps with an image.
+:::
+
+::: {.column width="60%"}
+```{r}
+#example code; this is meant to fill the column
+#might be good to put an image/executed code here
+```
+:::
+:::
+
+## How can your superpower help the class? {auto-animate="true"}
+
+-   Examples
+    -   Application 1
+    -   Application 2
+        -   sub-item 1
+
+## What is your plan? {auto-animate="true"}
+
+How will you demonstrate to the class how to use this library?
+
+```{r}
+#simple application of code to give the class an idea of the basics
+```
+
+## Extra slides for teaching the superpower {auto-animate="true"}
+
+Filler
+
+## Extra slide 2
+
+Filler; example of focusing on certain lines of code
+
+```{r}
+#| code-line-numbers: "|4|6"
+h_sum_while <- function(x, n) {
+  result <- 1
+  i <- 1
+  while (i <= n) {
+    result <- result + x^i
+    i <- i + 1
+  }
+  return(result)
+}
+```
+
+## Ending Slide

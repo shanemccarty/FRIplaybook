@@ -1,0 +1,425 @@
+---
+title: "HW2 Quarto Presentation"
+author: "Gavin Rualo"
+format:
+  revealjs: 
+    auto-animate-easing: ease-in-out
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    echo: true
+editor: visual
+---
+
+# HW2 Presentation
+
+Homework 2 covers chapter 3 of the textbook, introducing basic coding concepts such as **for** and **while** loops.
+
+------------------------------------------------------------------------
+
+## Question 1 {auto-animate="true"}
+
+Question 1 asks you to plot a piecewise function. If x \<= 0, f(x) is -x^3^. If 0 \< x \<= 1, f(x) is x^2^. If x \> 1, f(x) is sqrt(x).
+
+```{r}
+
+# input
+x.values <- seq(-2, 2, by = 0.1)
+
+# for each x calculate y
+n <- length(x.values)
+y.values <- rep(0, n)
+```
+
+## Question 1 {auto-animate="true"}
+
+The first step in this code is allocating x values using the **seq()** function. The first two arguments are the bounds of the sequence, and the third is the increment, meaning that **x.values** is now a vector of length 41 with values -2, -1.9, -1.8... 1.8, 1.9, 2.
+
+```{r}
+# input
+x.values <- seq(-2, 2, by = 0.1)
+
+n <- length(x.values)
+y.values <- rep(0, n)
+```
+
+Next, the **y.values** vector is preallocated for efficiency. By creating a vector of appropriate length, the for loop doesn't have to recalculate the length of y.values every time it iterates.
+
+## Question 1 {auto-animate="true"}
+
+::: columns
+::: {.column width="40%"}
+Finally, the for loop iterates through the **x.values** vector using conditionals. Depending on the x value, the loop will assign the corresponding value in y.values to either x^3^, x^2^, or sqrt(x).
+:::
+
+::: {.column width="60%"}
+```{r}
+for (i in 1:n) {
+  x <- x.values[i]
+
+  if (x <= 0) {
+    y <- -x^3
+  } else if (x <= 1) {
+    y <- x^2
+  } else {
+    y <- sqrt(x)
+  }
+
+  y.values[i] <- y
+}
+```
+:::
+:::
+
+## Question 1 {auto-animate="true"}
+
+Here is an alternative solution using vector operations:
+
+```{r}
+x <- seq(-2, 2, by = 0.1)
+y <- ifelse(x <= 0, -x^3, ifelse(x <= 1, x^2, sqrt(x)))
+```
+
+Clearly, this method is much more succinct, but it is a bit less readable.
+
+## Question 1 {auto-animate="true"}
+
+It assigns the same x values as the previous method, but when calculating y, it uses the **ifelse()** function on the vector x. The first argument, x\<=0, is evaluated for truth. If it is true, then the output of the given x value is -x^3^. If it is false, the next **ifelse()** function is called. Once again, this checks the first argument for truth. If the given x value is less than or equal to 1, the output is x^2^. Otherwise, the output is sqrt(x).
+
+```{r}
+x <- seq(-2, 2, by = 0.1)
+y <- ifelse(x <= 0, -x^3, ifelse(x <= 1, x^2, sqrt(x)))
+```
+
+## Question 1 {auto-animate="true"}
+
+Plotting either method will output the following graph:
+
+```{r}
+plot(x,y,type='l')
+```
+
+## Question 2 {auto-animate="true"}
+
+Question 2 asks you to use a for loop to calculate: h(x,n) = 1 + x^2^ + x^3^ + ... + x^n^ = $$
+\sum_{i=0}^{n} x_i
+$$ When calculating this with a for loop, the iterator is the power of x. This is because the sequence adds x^0^, x^1^, x^2^, x^3^, and so on.
+
+## Question 2 {auto-animate="true"}
+
+The for loop solution is as follows:
+
+```{r}
+h_sum <- function(x, n) {
+  result <- 1
+  for (i in 1:n) {
+    result <- result + x^i
+  }
+  return(result)
+}
+```
+
+This function takes in a value for x and n. x is the number being raised to a power, and n is the highest power x will get raised to in the sum. This code works by first setting the total result to 1, because x^0^ is 1. Then, it iterates through all the powers of x until n, and adds each new term to the previous total.
+
+## Question 3 {auto-animate="true"}
+
+Question 3 asks you to calculate (x=0.3, n=55) and (x=6.6,n=8) and compare them against the values found by the explicit formula for these series. For (x=0.3, n=55), the value using the explicit formula is 1.428571. The value using the for loop is also 1.428571. For (x=6.6,n=8), the explicit value is 4243335.538178. The value found using the function is 4243336, so the difference was only rounding!
+
+## Question 4 {auto-animate="true"}
+
+Question 4 asks you to calculate the same equation, but using while loops, and then vector operations without any loops. The while loop solution is as follows:
+
+```{r}
+h_sum_while <- function(x, n) {
+  result <- 1
+  i <- 1
+  while (i <= n) {
+    result <- result + x^i
+    i <- i + 1
+  }
+  return(result)
+}
+```
+
+## Question 4 {auto-animate="true"}
+
+This while loop functions very similarly to the for loop from the last slide. Rather than iterating from 1 to n, the while loop runs as long as the variable i is less than or equal to the given n value. With each iteration of the loop, i is incremented by 1, so it is functionally the same as the for loop.
+
+```{r}
+#| code-line-numbers: "|4|6"
+h_sum_while <- function(x, n) {
+  result <- 1
+  i <- 1
+  while (i <= n) {
+    result <- result + x^i
+    i <- i + 1
+  }
+  return(result)
+}
+```
+
+## Question 4 {auto-animate="true"}
+
+Below is the vector solution:
+
+```{r}
+h_sum_vec <- function(x, n) {
+  return(sum(x^(0:n)))
+}
+```
+
+Again, the vector solution is much more compact. This one makes use of the **sum** function which takes in a vector and sums up all of its elements. In this case, the vector is created with x^(0:n)^. The first element is x^0^, the second element is x^1^, and so on. Then, each element is summed.
+
+## Question 5 {auto-animate="true"}
+
+Question 5 asks you to multiply a given matrix (x,y)^*T*^ by the following rotation matrix:
+
+$$ 
+R(\theta) = \begin{pmatrix}
+\cos(\theta) & -\sin(\theta) \\
+\sin(\theta) & \cos(\theta)
+\end{pmatrix} 
+$$
+
+```{r}
+rotate_vector <- function(my_vec, theta) {
+	my_mat <- c(cos(theta), -sin(theta), sin(theta), cos(theta))
+	rotation_matrix <- matrix(my_mat, nrow = 2, byrow=TRUE)
+	return(rotation_matrix %*% my_vec)
+}
+```
+
+## Question 5 {auto-animate="true"}
+
+```{r}
+rotate_vector <- function(my_vec, theta) {
+	my_mat <- c(cos(theta), -sin(theta), sin(theta), cos(theta))
+	rotation_matrix <- matrix(my_mat, nrow = 2, byrow=TRUE)
+	return(rotation_matrix %*% my_vec)
+}
+```
+
+Because the rotation matrix is only 2x2, each element is written out in the vector my_mat. Then, the 4 elements in the my_mat vector are made into the matrix rotation_matrix which specifies that it has 2 rows, so a 2x2 matrix is made. The optional parameter, byrow, is by default set to false, so we specify that it is true to obtain the correct rotation matrix.
+
+## Question 6 {auto-animate="true"}
+
+Here, we calculate the geometric mean of a vector x. If x has elements x~1~, x~2~... x~n~, the geometric mean is given as follows: $$ 
+(\prod_{i=1}^{n} x_i)^{1/n}
+$$ The program to calculate this with a for loop looks like this:
+
+```{r}
+geometric_mean_loop <- function(x) {
+  prod <- 1
+  n <- length(x)
+  for (i in 1:n) {
+    prod <- prod * x[i]
+  }
+  return(prod^(1/n))
+}
+```
+
+## Question 6 {auto-animate="true"}
+
+While the vectorized version of this calculation looks like this:
+
+```{r}
+geometric_mean_vec <- function(x) {
+  return(prod(x)^(1/length(x)))
+}
+```
+
+Very similar to the last few functions, the for loop iterates through all integers from 1 to n, and then multiplies the current product by the newest term. Finally, it takes the n^th^ root of the product. The vectorized version makes use of the **prod** function which multiplies each element of the given vector, similar to how the sum function adds up each element in a vector.
+
+## Question 7 {auto-animate="true"}
+
+Question 7 asks you to sum every third element of an arbitrary vector x. We accomplish this using the sum function and vector indexing using the seq function. The indices of the values we want are given by seq(3, length(x), by=3) which starts at the index of 3 and keeps incrementing by 3 until length(x), or the last element in x is reached.
+
+```{r}
+sum_third_elements <- function(x) {
+  return(sum(x[seq(3, length(x), by = 3)]))
+}
+```
+
+If length(x) is not divisible by 3, the seq function will not go past length(x), rather it will stop at the nearest third element.
+
+## Question 10 {auto-animate="true"}
+
+The goal of question 10 is to find the minimum element of a vector x without using built-in functions such as **sort** or **min**.
+
+On the next slide, we show how to do this using a for loop.
+
+## Question 10 {auto-animate="true"}
+
+```{r}
+find_min <- function(x) {
+  x_min <- x[1]
+  for (i in 2:length(x)) {
+    if (x[i] < x_min) {
+      x_min <- x[i]
+    }
+  }
+  return(x_min)
+}
+
+x <- c(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5)
+find_min(x)
+```
+
+Simply, this function first sets the first element of vector x to be the minimum, then iterates through each successive term, replacing the minimum only if it finds a term in the vector less than the current minimum.
+
+## Question 11 {auto-animate="true"}
+
+Question 11 requires us to merge two previously sorted vectors into a new sorted vector.
+
+```{r}
+merge_sorted_vectors <- function(vec1, vec2) {
+  # Function to merge two sorted vectors into a single sorted vector
+
+  # Initialize pointers for both vectors
+  i <- 1
+  j <- 1
+  
+  # Lengths of the vectors
+  len1 <- length(vec1)
+  len2 <- length(vec2)
+  
+  # Initialize an empty vector to store the merged result
+  merged <- c()
+}
+```
+
+## Question 11 {auto-animate="true"}
+
+We begin by initializing pointers for when we iterate through each vector, as well as saving their lengths. We also create an empty vector that all the values will be sorted into.
+
+```{r}
+merge_sorted_vectors <- function(vec1, vec2) {
+  # Function to merge two sorted vectors into a single sorted vector
+
+  # Initialize pointers for both vectors
+  i <- 1
+  j <- 1
+  
+  # Lengths of the vectors
+  len1 <- length(vec1)
+  len2 <- length(vec2)
+  
+  # Initialize an empty vector to store the merged result
+  merged <- c()
+}
+```
+
+## Question 11 {auto-animate="true"}
+
+```{r}
+#| eval: False
+while (i <= len1 && j <= len2) {
+    if (vec1[i] <= vec2[j]) {
+      merged <- c(merged, vec1[i])
+      i <- i + 1
+    } else {
+      merged <- c(merged, vec2[j])
+      j <- j + 1
+    }
+}
+```
+
+As long as one of the vectors hasn't been fully sifted through, this loop checks which currently has the least element based on the current values of the pointers. Once a value is taken from a vector, its pointer is incremented by 1.
+
+## Question 11 {auto-animate="true"}
+
+Finally, once one of the vectors is fully sifted through, the rest of the elements in the remaining vector are already sorted. They get combined with the existing merged vector like so:
+
+```{r}
+#| eval: False
+# Append any remaining elements from vec1
+  if (i <= len1) {
+    merged <- c(merged, vec1[i:len1])
+  }
+  
+  # Append any remaining elements from vec2
+  if (j <= len2) {
+    merged <- c(merged, vec2[j:len2])
+  }
+```
+
+## Question 13 {auto-animate="true"}
+
+Question 13 is the following: Suppose that (x(t), y(t)) has polar coordinates (√t, 2πt). Plot (x(t), y(t)) for t ∈ \[0, 10\].
+
+```{r}
+#| eval: False
+t <- seq(0, 10, by = 0.01)
+x <- sqrt(t) * cos(2 * pi * t)
+y <- sqrt(t) * sin(2 * pi * t)
+plot(x, y, type = "l", main = "Polar Plot", xlab = "x", ylab = "y")
+```
+
+The plot is on the next slide.
+
+## Question 13 {auto-animate="true"}
+
+The solution first creates a vector of 1000 x-inputs, then finds their equivalent polar coordinates using the conversion for each axis from Cartesian to polar. Finally, the points are all plotted with line type.
+
+```{r}
+#| echo: False
+t <- seq(0, 10, by = 0.01)
+x <- sqrt(t) * cos(2 * pi * t)
+y <- sqrt(t) * sin(2 * pi * t)
+plot(x, y, type = "l", main = "Polar Plot", xlab = "x", ylab = "y")
+```
+
+## Question 15 {auto-animate="true"}
+
+Question 15 asks the following:
+
+A room contains 100 toggle switches, originally all turned off. 100 people enter the room in turn. The first toggles every switch, the second toggles every second switch, the third every third switch, and so on, to the last person who toggles the last switch only. At the end of this process, which switches are turned on?
+
+Before this is a coding problem, it is a logic one!
+
+## Question 15 {auto-animate="true"}
+
+Here is the solution:
+
+```{r}
+#| code-line-numbers: "1"
+switches <- rep(FALSE, 100)
+for (person in 1:100) {
+  switches[seq(person, 100, by = person)] <- !switches[seq(person, 100, by = person)]
+}
+which(switches)
+```
+
+Breaking it down step by step,
+
+1)  We begin with a vector of length 100, with each element set to false to indicate that every switch is initially off.
+
+## Question 15 {auto-animate="true"}
+
+```{r}
+#| code-line-numbers: "2|3"
+switches <- rep(FALSE, 100)
+for (person in 1:100) {
+  switches[seq(person, 100, by = person)] <- !switches[seq(person, 100, by = person)]
+}
+which(switches)
+```
+
+2)  We then iterate through each person and decide what they would do. Person n would only toggle every n^th^ switch, so we index the switches vector using a sequence with increment n (in this case, the iterator is called "person").
+
+## Question 15 {auto-animate="true"}
+
+```{r}
+#| code-line-numbers: "3|5"
+switches <- rep(FALSE, 100)
+for (person in 1:100) {
+  switches[seq(person, 100, by = person)] <- !switches[seq(person, 100, by = person)]
+}
+which(switches)
+```
+
+3)  To explain the toggling, each switch that a person interacts with is replaced by its opposite truth value using the ! operator.
+4)  The which function then returns the indices of which values are returned as true, which are the switches that are turned on.
