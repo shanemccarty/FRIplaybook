@@ -36,7 +36,7 @@ This is a language called markdown. It is very simple. You can use
 
 ## Headings
 
-Use markdown syntax to create headings based on the checkklist for your report. 
+Use markdown syntax to create headings based on the checklist for your report. 
 
 ```{markdown}
 # Introduction
