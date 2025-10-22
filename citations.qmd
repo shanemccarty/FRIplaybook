@@ -9,7 +9,7 @@ editor: visual
 engine: knitr
 
 abstract: |
-  This short guide explains how to set up and manage APA-style citations and references in Quarto markdown documents. Specifically, researchers learn how to add a bibliography file, insert in-text citations using Visual mode, include uncited references with the `nocite` field, and automatically generate a bibliography at the end of the report. By following these steps, students will be able to properly cite articles, web pages, and other sources within a Quarto report.
+  This short guide explains how to set up and manage APA-style citations and references in Quarto markdown documents. Specifically, researchers learn how to add a bibliography file, insert in-text citations using Visual mode, include uncited references with the `nocite` field, and automatically generate a bibliography at the end of the report. By following these steps, researchers will be able to properly cite articles, web pages, and other sources within a Quarto report.
   
 bibliography: references.bib
 csl: apa.csl
@@ -165,8 +165,9 @@ By default, Quarto will automatically generate a list of cited works and will be
 
 For more information about citations in Quarto, check out the Quarto website: <https://quarto.org/docs/authoring/citations.html>
 
-::: callout-tip
-## Tip with Title
+::: callout-important
+## Requirement
 
 Citations and references are not required for the Results & Discussion Report ( `RDreport.qmd` ), but they are required for the final report.
+
 :::
