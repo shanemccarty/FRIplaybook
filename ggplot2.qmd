@@ -410,11 +410,9 @@ Comparative research questions examine mean score differences on a continuous (q
 
 -   🏷️ **Nominal Data** (Gender Identity)
 
-```         
--   Man
--   Woman
--   Non-Binary
-```
+    -   Man
+    -   Woman
+    -   Non-Binary
 
 -   📶 **Ordinal Data** (Age Group)
 

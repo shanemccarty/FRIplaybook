@@ -45,7 +45,7 @@ current_date <- format(Sys.Date(), "%m.%d.%Y")
 
 ## Introduction to Data Import
 
-**Importing data** is the *first step* in the data science workflow. Before you can clean, visualize, or model your data, you need to get it into R. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected in the software Qualtrics.
+The first step of the data science workflow is to *import your data*. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected using the survey software Qualtrics.
 
 **Common data sources:**
 

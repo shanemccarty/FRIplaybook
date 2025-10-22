@@ -9,7 +9,7 @@ abstract: |
   proper code chunk structure with descriptive labels, detailed figure captions, and execution
   options. Rtudents explore essential practices including file naming conventions, environment
   management, and documentation through code sources and explanations. By the end of this
-  chapter, students will understand how to create professional, well-documented Quarto reports
+  chapter, researchers will understand how to create professional, well-documented Quarto reports
   that integrate narrative text with embedded R code, following reproducible research standards
   for public health manuscripts.
 keywords:
