@@ -40,7 +40,13 @@ Each section builds on previous concepts, taking you from raw data files to poli
 
 ## How to Cite This Guide
 
-You can cite this guide as McCarty, S. (Ed.). (2025). *The Quantitative Playbook for Public Health Research in R*. Or, you can cite a specific chapter: Silhavy, A. & McCarty, S. (2025). Visualizing your data: How to use ggplot2. *The Quantitative Playbook for Public Health Research in R.*
+[You can cite this guide as:]{.underline}
+
+McCarty, S. (Ed.). (2025). *The Quantitative Playbook for Public Health Research in R*. <https://shanemccarty.github.io/FRIplaybook/>
+
+[Or, you can cite a specific chapter:]{.underline}
+
+Silhavy, A. & McCarty, S. (2025). Visualizing data in ggplot2: How to produce publication-ready plots. *The Quantitative Playbook for Public Health Research in R.* <https://shanemccarty.github.io/FRIplaybook/ggplot2.html>
 
 ### Editor and Chapter Authors
 
