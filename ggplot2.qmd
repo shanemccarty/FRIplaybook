@@ -430,7 +430,6 @@ Violin plots provide a different way to visualize information to capture the dis
 #| fig-height: 6
 #| fig-width: 8
 
-
 ggplot(data = insurance,
        mapping = aes(
          x = smoker,

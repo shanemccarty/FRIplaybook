@@ -48,13 +48,11 @@ execute:
 
 -   [`haven` package for SPSS data](https://haven.tidyverse.org)
 -   [geom_violin with ggplot2](https://ggplot2.tidyverse.org/reference/geom_violin.html)
-
 :::
-
 
 ## Oral Health Dataset
 
-A team of FRI students in the Public Health stream designed a study on oral health and type 2 diabetes. The convenient sample of Binghamton students, faculty, and staff was collected in September and October of 2024. 
+A team of FRI students in the Public Health stream designed a study on oral health and type 2 diabetes. The convenient sample of Binghamton students, faculty, and staff was collected in September and October of 2024.
 
 ## Library
 
@@ -124,7 +122,7 @@ longdata_long$SelfEfficacyTime <- factor(
 
 ```
 
-More more information on `tidyr`, see the [tidyr chapter](#tidyr.qmd). 
+More more information on `tidyr`, see the [tidyr chapter](#tidyr.qmd).
 
 ## Visualizing with violin plots
 
@@ -135,7 +133,6 @@ More more information on `tidyr`, see the [tidyr chapter](#tidyr.qmd).
 -   Shows the distribution of variables for each group
 
     ![](images/violin-violinstock.png){width="50%" height="50%"}
-
 
 ### Why are violin plots important? {auto-animate="true"}
 
@@ -157,9 +154,9 @@ More more information on `tidyr`, see the [tidyr chapter](#tidyr.qmd).
 
 ## Example: T-test {auto-animate="true"}
 
-A paired t-test is a statisical technique to compare the group means on two different variables when participants responded to both variables. The objective of the study from this dataset is to examine whether self-efficacy **increased** after a brief online educational intervention video. 
+A paired t-test is a statisical technique to compare the group means on two different variables when participants responded to both variables. The objective of the study from this dataset is to examine whether self-efficacy **increased** after a brief online educational intervention video.
 
-The plot below visualizes the six variables (3 pretest, 3 postest) ussed in the 3 paired t-tests. 
+The plot below visualizes the six variables (3 pretest, 3 postest) ussed in the 3 paired t-tests.
 
 ![](images/violin-boxplot.png){width="80%" height="80%"} :::
 
@@ -200,8 +197,8 @@ ggplot(longdata_long,
 ## Raincloud plots {auto-animate="true"}
 
 -   What if you wanted to see the distribution of the variables and the raw data side by side?
--   A raincloud plot allows you to add different types of plots onto one graph.
--   Here we see half the violin plot, boxplot, and raw data points jittered on top.
+-   A raincloud plot allows you to add different types of plot types onto one figure.
+-   Below, the figure has a half violin plot, boxplot, and raw data points jittered on top.
 
 ```{r half-violin plot}
 #| echo: true
@@ -234,10 +231,11 @@ ggplot(longdata_long,
 ::: callout-tip
 ## 📖 raincloud plot resources
 
-There are many different ways to create a raincloud plot:
+There are many different ways to create raincloud plots:
+
 -   [Raincloud plots with ggplot2](https://z3tt.github.io/Rainclouds/)
 -   [Raincloudplots](https://github.com/jorvlan/raincloudplots)
--   [geom_paired__raincloud()](https://yjunechoe.github.io/posts/2020-07-13-geom-paired-raincloud/)
+-   [geom_paired\_\_raincloud()](https://yjunechoe.github.io/posts/2020-07-13-geom-paired-raincloud/)
 :::
 
 ## Summary {auto-animate="true"}
@@ -251,6 +249,6 @@ There are many different ways to create a raincloud plot:
     -   Transparency (alpha = )
     -   Position
 
-Now you can confidently create your own violin and raincloud plots in R!!! {auto-animate="true"}
+Now you can confidently create your own violin and raincloud plots in R!!!
 
 ![](images/violin-cat.png){width="50%" height="50%"}
