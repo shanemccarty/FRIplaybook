@@ -41,7 +41,11 @@ execute:
 Your *R&D Report* and *R&D Team Manuscript* should include [ggsave( )](#save) information so you can export your plots quickly and add them to the poster.
 :::
 
-## Load Library
+## Example Data: Insurance Charges
+
+The example dataset is entitled "Medical Cost Personal Costs" from [Kaggle](#0).
+
+### Load and Import
 
 To install and load ggplot2:
 
@@ -50,8 +54,6 @@ To install and load ggplot2:
 #| eval: false
 install.packages("ggplot2")
 ```
-
-## Example Dataset: Insurance Charges
 
 Let's start by loading our dataset and exploring it:
 
@@ -65,7 +67,7 @@ insurance <- read.csv("data/insurance.csv")
 library(ggplot2)
 ```
 
-### Summarizing Our Data
+### Summarize `insurance` data
 
 Let's learn more about our data with `summary()`:
 
@@ -103,7 +105,7 @@ The seven components are:
 
 [![source: \[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html)](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
-## Understanding Data Types
+### Understanding Data Types
 
 Before creating visualizations, it's important to understand your data types:
 
@@ -125,42 +127,51 @@ Your research question can be classified as **comparative** research or **relati
 
 ![*The decision tree helps researchers to identify the specific statistical technique based on their comparative or relationship research question*](images/ggplot2-decision.png)
 
-### Relationship Research 
+### Relationship Research
 
-For relationship research, the variables are continuous. The example below shows how to build a scatterplot step by step.
+For relationship research, the variables are 📏 **Continuous** because they range along a continuum, such as a scale for beliefs from 1 (strongly disagree) to 6 (strongly agree). To examine the relationship between two continous variables, use the steps below to build a custom scatterplot.
 
-#### Step 1: Data and Mapping
+#### STEP-BY-STEP TO BUILD A SCATTERPLOT 
+
+#### Step 1: Set up data and mapping
 
 What is the relationship between BMI and insurance charges?
 
 ```{r}
-ggplot(data = insurance, mapping = aes(x = bmi, y = charges))
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges))
 ```
 
 This creates a blank canvas with our axes defined, but no data displayed yet!
 
-#### Step 2: Adding Layers with Geometries
+#### Step 2: Add geometry (points)
 
 Add points to create a scatterplot using `geom_point()`:
 
 ```{r}
-ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) + 
-  geom_point()
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges)) + geom_point()
 ```
 
-#### Step 3: Adding a Trend Line
+#### Step 3: Add a statistical layer (trend line)
 
 Add a linear model line with `geom_smooth()`:
 
 ```{r}
-ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
-  geom_point() +
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges)) + geom_point() +
   geom_smooth(method = "lm")
 ```
 
 Notice how it looks like we have two different populations? Let's explore this further.
 
-#### Optional – Step 4. Incorporating Grouping Variables
+#### Optional – Step 4. Incorporate grouping (color)
 
 There are two main approaches to visualizing grouping variables:
 
@@ -169,9 +180,10 @@ There are two main approaches to visualizing grouping variables:
 Map the `smoker` variable to color:
 
 ```{r}
-ggplot(data = insurance, 
-       mapping = aes(x = bmi, y = charges, color = smoker)) +
-  geom_point() +
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges)) + geom_point() +
   geom_smooth(method = "lm")
 ```
 
@@ -180,7 +192,10 @@ ggplot(data = insurance,
 Create separate panels for each group with `facet_wrap()`:
 
 ```{r}
-ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges)) +
   geom_point() +
   geom_smooth(method = "lm") +
   facet_wrap(~smoker)
@@ -188,17 +203,21 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
 
 Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!
 
-#### Step 5. Custom Theme and Colors
+#### Step 5. Customize Appearance
 
 ##### Adding Titles and Labels
 
 Make your plot more informative with descriptive titles:
 
 ```{r}
-ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  ggtitle("Insurance charges vs BMI for smokers and non-smokers") +
+  ggtitle("Insurance charges vs 
+          BMI for smokers and non-smokers") +
   xlab("Body Mass Index (BMI)") +
   ylab("Insurance Charges")
 ```
@@ -216,7 +235,8 @@ Apply a professional theme with `theme_bw()`:
 ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  ggtitle("Insurance charges vs BMI for smokers and non-smokers") +
+  ggtitle("Insurance charges vs 
+          BMI for smokers and non-smokers") +
   xlab("Body Mass Index (BMI)") +
   ylab("Insurance Charges") +
   theme_bw()
@@ -226,6 +246,36 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
 ## Select a theme
 
 Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in the individual reports and the team manuscript!
+:::
+
+##### Adjusting Axis Scales
+
+Sometimes, you need to manually control the range of your axes for better visualization or to match other plots or to capture the entire range of the possible response options (e.g., 1-6, 1-10, 1 - 100). 
+
+Set specific limits with `xlim()` and `ylim()`. 
+
+```{r}
+ggplot(data = insurance, 
+       mapping = aes(x = bmi, y = charges, color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  xlim(15, 55) +  # Set x-axis from 15 to 55
+  ylim(0, 65000) +  # Set y-axis from 0 to 65000
+  ggtitle("Insurance charges vs BMI for smokers and non-smokers") +
+  xlab("Body Mass Index (BMI)") +
+  ylab("Insurance Charges") +
+  theme_bw()
+```
+
+::: {.callout-warning}
+## Warning: Data outside limits will be removed
+Using `xlim()` and `ylim()` removes any data points outside the specified range. This can affect trend lines!
+:::
+
+::: {.callout-important appearance="simple"}
+## Requirement: X and Y Axes
+
+If your response options range from 1 to 6. Use `ylim( )` to adjust the y-axis to range from 1 to 6 too. 
 :::
 
 ##### Using Colors
@@ -240,26 +290,90 @@ Want to improve your plots with colors?
 
 -   [How to use better colors in ggplot (youtube)](https://www.youtube.com/watch?v=ZVSbY4z7tMY)
 
-## `ggsave()` using Common Plot Types {#save}
+### Comparative Research
 
-[ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in the "files" folder, which can be exported out of Posit Cloud and into your poster.
+Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:
 
-::: callout-important
-## Requirement
+-    🏷️ **Nominal Data** (Gender Identity)
 
-You must use file for both your final report and team manuscript.
+    -   Man
+    -   Woman
+    -   Non-Binary
 
-Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* must include `ggsave( )` for plots.
-:::
+-   📶 **Ordinal Data** (Age Group)
 
-### Bar Plots with `geom_bar()`
+    -   18 - 35
+    -   36 - 54
+    -   55 - 75
+    -   76+
 
-Bar plots are useful for comparing means across categories:
+#### STEP-BY-STEP TO BUILD A BARPLOT WITH `geom_bar()`
+
+Bar plots are useful for comparing mean scores across groups.
+
+#### Step 1: Set up data and mapping
 
 ```{r}
-#| label: plot-region-charges 
-#| fig-cap: "a scatterplot depicting a linear relationship between BMI and insurance charges"
-#| fig-alt: the figure 
+#| label: plot-region-charges-data-mapping 
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)
+  )
+
+## there is nothing to see yet! 
+```
+
+#### Step 2: Add geometry (bars)
+
+```{r}
+#| label: plot-region-charges-bar 
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)) +
+  geom_bar(stat = 'summary', fun = 'mean')
+```
+
+#### Step 3: Customize bars
+
+```{r}
+#| label: plot-region-charges-bar-custom
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)) +
+  geom_bar(
+    stat = 'summary',
+    fun = 'mean',
+    fill = "#005a43")
+
+```
+
+#### Step 4: Add labels and themes
+
+```{r}
+#| label: plot-region-charges-bar-custom-labelsthemes
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
 #| fig-height: 6
 #| fig-width: 8
 
@@ -269,9 +383,25 @@ plot_region_charges <- ggplot(data = insurance, mapping = aes(x = region, y = ch
   xlab("Region") +
   ylab("Insurance Charges") +
   theme_bw()
+```
 
-# Print and save the plot
+#### Step 5: save plot as image using `ggsave()`
+
+[ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in your "files" folder, which can be exported out of Posit Cloud and then added to your google drive and on to the poster.
+
+::: callout-important
+## Requirement
+
+You must use file for both your final report and team manuscript.
+
+Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* must include `ggsave( )` for plots.
+:::
+
+```{r}
+# Print the plot
 print(plot_region_charges)
+
+# save the plot
 ggsave("plots/plot1:region.png", 
        plot = plot_region_charges, 
        width = 10, 
@@ -289,9 +419,9 @@ In your **Files**, click the **Plots** folder. Your location within Posit Cloud 
 
 Click the gear icon (above " project \> plots"), click export, and **Download.** Then, upload this the plot and others within your team's google drive \> Team Survey Data \> Quant Data \> Plots.
 
-### Violin Plots with `geom_violin()`
+##### Violin Plots with `geom_violin()`
 
-Violin plots show the distribution of data across categories:
+Violin plots provide a different way to visualize information to capture the distribution of data for each category.
 
 ```{r}
 #| label: plot-smoker-charges 
@@ -301,7 +431,11 @@ Violin plots show the distribution of data across categories:
 #| fig-width: 8
 
 
-ggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) + 
+ggplot(data = insurance,
+       mapping = aes(
+         x = smoker,
+         y = charges,
+         fill = smoker)) + 
   geom_violin() +
   ggtitle("Distribution of Insurance Charges by Smoking Status") +
   xlab("Smoker (Y/N)") +
@@ -309,5 +443,8 @@ ggplot(data = insurance, mapping = aes(x = smoker, y = charges, fill = smoker)) 
   theme_bw()
 
 #plot above plot without using plot = argument
-ggsave("plots/plot2:smoker.png", width = 10, height = 8, dpi = 300)
+ggsave("plots/plot2:smoker.png",
+       width = 10, height = 8, dpi = 300)
 ```
+
+To learn more about how to use violin plots for pre/post data, go to the next chapter on visualizing pre/post scores.

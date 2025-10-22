@@ -172,11 +172,29 @@ Now you can see the distribution of the basic self-efficacy variable, in additio
 #| fig.width: 8
 #| fig.height: 5
 #| code-font-size: 30px
-ggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) + 
-  geom_violin() + geom_boxplot(width = .1, position = position_dodge(width = 0.9)) + 
-  geom_point(aes(color = Time), size = 1, position = position_jitter(width = 0.1)) + 
-  scale_fill_manual(values = c("BSE" = "#69b3a2", "CSE" = "cornflowerblue", "ISE" = "darkorchid4")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) + 
+ggplot(longdata_long, 
+       aes(
+         x = SelfEfficacyTime,
+         y = Score,
+         fill = SelfEfficacy)) + 
+  geom_violin() + 
+  geom_boxplot(
+    width = .1, 
+    position = position_dodge(width = 0.9)) + 
+  geom_point(aes(color = Time),
+             size = 1,
+             position = position_jitter(width = 0.2)) + 
+  scale_fill_manual(
+    values = c(
+      "BSE" = "#69b3a2",
+      "CSE" = "cornflowerblue",
+      "ISE" = "darkorchid4")) + 
+  scale_color_manual(
+    values = c(
+      'before' = 'white',
+      'after' = 'black')) + 
   ggtitle("Change in Self-Efficacy Due to Intervention")
+
 ```
 
 ## Raincloud plots {auto-animate="true"}
@@ -190,13 +208,26 @@ ggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy))
 #| fig.width: 8
 #| fig.height: 5
 #| code-font-size: 30px
-ggplot(longdata_long, aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy)) +   
-  geom_violinhalf(aes(x = SelfEfficacyTime, y = Score, fill = SelfEfficacy), trim = TRUE, 
-  position = position_nudge(x = 0.1)) + geom_boxplot(width = .1, outlier.shape = NA,    
-  position = position_nudge(x = -0.1)) + geom_point(position = position_nudge(x = -0.3)) +  
-  scale_fill_manual(values = c("BSE" = "#69b3a2", "CSE" = "cornflowerblue", "ISE" = "darkorchid4")) + scale_color_manual(values = c('before' = 'white', 'after' = 'black')) +   
+ggplot(longdata_long,
+       aes(
+         x = SelfEfficacyTime,
+         y = Score,
+         fill = SelfEfficacy)) +   
+  geom_violinhalf(aes(
+    x = SelfEfficacyTime,
+    y = Score,
+    fill = SelfEfficacy), trim = TRUE, 
+  position = position_nudge(x = 0.15)) +
+  geom_boxplot(width = .1, outlier.shape = NA,    
+  position = position_nudge(x = -0.15)) + geom_point(position = position_nudge(x = -0.35)) +  
+  scale_fill_manual(values = c(
+    "BSE" = "#69b3a2",
+    "CSE" = "cornflowerblue",
+    "ISE" = "darkorchid4")) +
+  scale_color_manual(values = c(
+    'before' = 'white',
+    'after' = 'black')) +   
   ggtitle("Change in Self-Efficacy Due to Intervention")
-
 
 ```
 
@@ -213,15 +244,13 @@ There are many different ways to create a raincloud plot:
 
 -   Violin and raincloud plots are an effective strategy to visualize your information.
 -   It is important to visualize your data in a way that will make it easy for the audience to understand your findings.
--   Plots can be easily customized in R:
+-   Plots can be easily customized in R using:
     -   Fill
     -   Color
     -   Size
     -   Transparency (alpha = )
     -   Position
 
-## Now you can confidently create your own violin and raincloud plots in R!!! {auto-animate="true"}
-
-Any questions?
+Now you can confidently create your own violin and raincloud plots in R!!! {auto-animate="true"}
 
 ![](images/violin-cat.png){width="50%" height="50%"}
