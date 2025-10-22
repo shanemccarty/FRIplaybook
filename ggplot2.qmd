@@ -5,15 +5,15 @@ author:
   - Andrew Silhavy
   - Shane McCarty, PhD
 abstract: |
-  This chapter teaches students to create publication-ready data visualizations using 
+  This chapter teaches researchers to create publication-ready data visualizations using 
   ggplot2's "grammar of graphics" approach. Through color-coded, step-by-step tutorials, 
-  students learn to build scatterplots for relationship research and bar plots for 
+  researchers learn to build scatterplots for relationship research and bar plots for 
   comparative research by systematically adding layers: data, mapping, geometries, 
   statistics, facets, and themes. Using real insurance data, the chapter demonstrates 
   how to visualize relationships between variables, incorporate grouping through color 
   and faceting, customize plot appearance, adjust axis scales, and export figures with 
-  ggsave(). Students learn to connect research questions and data types (nominal, ordinal, 
-  continuous) to appropriate visualization choices. By the end, students will create 
+  ggsave(). Researchers learn to connect research questions and data types (nominal, ordinal, 
+  continuous) to appropriate visualization choices. By the end, researchers will create 
   professional-quality figures for their public health research by building plots layer 
   by layer and selecting visualizations that match their analytical goals.
 keywords:
@@ -52,9 +52,9 @@ execute:
 Your *R&D Report* and *R&D Team Manuscript* should include [ggsave( )](#save) information so you can export your plots quickly and add them to the poster.
 :::
 
-## Example Data: Insurance Charges
+## Example Data: `insurance`
 
-The example dataset is entitled "Medical Cost Personal Costs" from [Kaggle](#0).
+The example dataset is from the "Medical Cost Personal Costs" database on Kaggle. For this chapter, we refer to it as `insurance`.
 
 ### Load and Import
 
@@ -78,7 +78,7 @@ insurance <- read.csv("data/insurance.csv")
 library(ggplot2)
 ```
 
-### Summarize `insurance` data
+### Summarize data
 
 Let's learn more about our data with `summary()`:
 
@@ -94,11 +94,7 @@ head(insurance, 10)
 
 ## The Seven Components of ggplot2
 
-Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product.
-
-![*In ggplot2, add layers as you would in making lasagna*](images/ggplot2-lasagna.png)
-
-The seven components are:
+The `ggplot2` uses seven components to produce publication-ready plots:
 
 1.  **Data**: The dataset you're visualizing
 
@@ -165,6 +161,10 @@ Throughout this chapter, headings are color-coded to match the ggplot2 layers:
 ::::::::::
 
 Watch for these colors as you build plots step-by-step! 🎨
+
+In summary, researchers construct a plot using `ggplot2` components in the same way a chef constructs lasagna in layers, one steps at a time.
+
+![*In ggplot2, add layers as you would in making lasagna*](images/ggplot2-lasagna.png)
 
 ### Understanding Data Types
 

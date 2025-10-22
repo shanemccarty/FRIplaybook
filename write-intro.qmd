@@ -3,7 +3,7 @@ title: "Write an Introduction"
 subtitle: "How to write with markdown"
 author: "Shane McCarty, PhD"
 abstract: |
-  This chapter teaches students to write using markdown syntax and includes a few useful examples.  
+  This chapter teaches researchers to use markdown syntax for headings (to structure the report), lists and inline math, and highlight variables using backticks. Also, researchers will watch a youtube video on how to get started with quarto. By the end of this chapter, researchers will be able to structure their report using markdown. 
 keywords:
   - quarto
   - markdown
@@ -18,7 +18,6 @@ editor: visual
 ## Required
 
 Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* will include headings based on the checklist and backticks for variables, such as `EFFICACY`.
-
 :::
 
 ## Markdown
@@ -36,7 +35,7 @@ This is a language called markdown. It is very simple. You can use
 
 ## Headings
 
-Use markdown syntax to create headings based on the checklist for your report. 
+Use markdown syntax to create headings based on the checklist for your report.
 
 ```{markdown}
 # Introduction
@@ -56,8 +55,6 @@ Use markdown syntax to create headings based on the checklist for your report.
 
 ```
 
-
-
 ## Using Lists
 
 ```{markdown}
@@ -68,7 +65,6 @@ Use markdown syntax to create headings based on the checklist for your report.
 3. Are improvements sustained at 3-month follow-up?
 
 ```
-
 
 ```{markdown}
 **Hypotheses:**
@@ -86,7 +82,6 @@ Use markdown syntax to create headings based on the checklist for your report.
 - Equations: $t = \frac{\bar{x} - \mu}{s / \sqrt{n}}$
 ```
 
-
 ### Naming Variables
 
 You can use a backtick to denote code or the name of a variable by placing a word within \`\`. For example, if I put EFFICACY between \`\` then it returns `EFFICACY` . This will be important for naming variables in your report.
@@ -97,12 +92,14 @@ You can use a backtick to denote code or the name of a variable by placing a wor
 Use \` \` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.
 :::
 
+## Source vs. Visual
+
+Reminder: It is useful to switch back and forth between *Source* and *Visual* mode in Posit Cloud to see the code vs. rendered versions.
+
 ## Get started with Quarto Video
 
 This 22-minute video provided a basic overview of the Quarto features, which will help you improve your introduction section of your final report and team manuscript.
 
 {{< video https://www.youtube.com/watch?v=_f3latmOhew >}}
 
-The video mentions how to publish using quarto publish, which you will do later by following the forthcoming chapter on Publishing to Quarto Pub. 
-
-
+*Note: The video mentions how to publish using quarto publish, which you will do later by following the forthcoming chapter on Publishing to Quarto Pub.*

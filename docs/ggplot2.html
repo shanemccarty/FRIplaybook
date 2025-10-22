@@ -318,10 +318,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#example-data-insurance-charges" id="toc-example-data-insurance-charges" class="nav-link active" data-scroll-target="#example-data-insurance-charges"><span class="header-section-number">8.1</span> Example Data: Insurance Charges</a>
+  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link active" data-scroll-target="#example-data-insurance"><span class="header-section-number">8.1</span> Example Data: <code>insurance</code></a>
   <ul class="collapse">
   <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">8.1.1</span> Load and Import</a></li>
-  <li><a href="#summarize-insurance-data" id="toc-summarize-insurance-data" class="nav-link" data-scroll-target="#summarize-insurance-data"><span class="header-section-number">8.1.2</span> Summarize <code>insurance</code> data</a></li>
+  <li><a href="#summarize-data" id="toc-summarize-data" class="nav-link" data-scroll-target="#summarize-data"><span class="header-section-number">8.1.2</span> Summarize data</a></li>
   </ul></li>
   <li><a href="#the-seven-components-of-ggplot2" id="toc-the-seven-components-of-ggplot2" class="nav-link" data-scroll-target="#the-seven-components-of-ggplot2"><span class="header-section-number">8.2</span> The Seven Components of ggplot2</a></li>
   <li><a href="#color-coded-learning-guide" id="toc-color-coded-learning-guide" class="nav-link" data-scroll-target="#color-coded-learning-guide"><span class="header-section-number">8.3</span> Color-Coded Learning Guide</a>
@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter teaches students to create publication-ready data visualizations using ggplot2’s “grammar of graphics” approach. Through color-coded, step-by-step tutorials, students learn to build scatterplots for relationship research and bar plots for comparative research by systematically adding layers: data, mapping, geometries, statistics, facets, and themes. Using real insurance data, the chapter demonstrates how to visualize relationships between variables, incorporate grouping through color and faceting, customize plot appearance, adjust axis scales, and export figures with ggsave(). Students learn to connect research questions and data types (nominal, ordinal, continuous) to appropriate visualization choices. By the end, students will create professional-quality figures for their public health research by building plots layer by layer and selecting visualizations that match their analytical goals.</p>
+    <p>This chapter teaches researchers to create publication-ready data visualizations using ggplot2’s “grammar of graphics” approach. Through color-coded, step-by-step tutorials, researchers learn to build scatterplots for relationship research and bar plots for comparative research by systematically adding layers: data, mapping, geometries, statistics, facets, and themes. Using real insurance data, the chapter demonstrates how to visualize relationships between variables, incorporate grouping through color and faceting, customize plot appearance, adjust axis scales, and export figures with ggsave(). Researchers learn to connect research questions and data types (nominal, ordinal, continuous) to appropriate visualization choices. By the end, researchers will create professional-quality figures for their public health research by building plots layer by layer and selecting visualizations that match their analytical goals.</p>
   </div>
 </div>
 
@@ -419,9 +419,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Your <em>R&amp;D Report</em> and <em>R&amp;D Team Manuscript</em> should include <a href="#save">ggsave( )</a> information so you can export your plots quickly and add them to the poster.</p>
 </div>
 </div>
-<section id="example-data-insurance-charges" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="example-data-insurance-charges"><span class="header-section-number">8.1</span> Example Data: Insurance Charges</h2>
-<p>The example dataset is entitled “Medical Cost Personal Costs” from <a href="#0">Kaggle</a>.</p>
+<section id="example-data-insurance" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">8.1</span> Example Data: <code>insurance</code></h2>
+<p>The example dataset is from the “Medical Cost Personal Costs” database on Kaggle. For this chapter, we refer to it as <code>insurance</code>.</p>
 <section id="load-and-import" class="level3" data-number="8.1.1">
 <h3 data-number="8.1.1" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">8.1.1</span> Load and Import</h3>
 <p>To install and load ggplot2:</p>
@@ -436,8 +436,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="summarize-insurance-data" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="summarize-insurance-data"><span class="header-section-number">8.1.2</span> Summarize <code>insurance</code> data</h3>
+<section id="summarize-data" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="summarize-data"><span class="header-section-number">8.1.2</span> Summarize data</h3>
 <p>Let’s learn more about our data with <code>summary()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -478,14 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-seven-components-of-ggplot2" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="the-seven-components-of-ggplot2"><span class="header-section-number">8.2</span> The Seven Components of ggplot2</h2>
-<p>Think of building a ggplot like making a layered lasagna - you add one component at a time to create the final product.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ggplot2-lasagna.png" class="img-fluid figure-img"></p>
-<figcaption><em>In ggplot2, add layers as you would in making lasagna</em></figcaption>
-</figure>
-</div>
-<p>The seven components are:</p>
+<p>The <code>ggplot2</code> uses seven components to produce publication-ready plots:</p>
 <ol type="1">
 <li><p><strong>Data</strong>: The dataset you’re visualizing</p></li>
 <li><p><strong>Mapping</strong>: Which variables go on which axes (aesthetics)</p></li>
@@ -529,6 +522,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Watch for these colors as you build plots step-by-step! 🎨</p>
+<p>In summary, researchers construct a plot using <code>ggplot2</code> components in the same way a chef constructs lasagna in layers, one steps at a time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ggplot2-lasagna.png" class="img-fluid figure-img"></p>
+<figcaption><em>In ggplot2, add layers as you would in making lasagna</em></figcaption>
+</figure>
+</div>
 <section id="understanding-data-types" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">8.3.1</span> Understanding Data Types</h3>
 <p>Before creating visualizations, it’s important to understand your data types:</p>

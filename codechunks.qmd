@@ -3,11 +3,11 @@ title: "Start a Quarto Markdown Document"
 subtitle: "How to start a report with YAML and code chunks"
 author: "Shane McCarty, PhD"
 abstract: |
-  This chapter introduces students to creating and structuring Quarto markdown documents (.qmd)
-  for reproducible research. Students learn to set up new Quarto documents, configure metadata
+  This chapter introduces researchers to creating and structuring Quarto markdown documents (.qmd)
+  for reproducible research. Researchers learn to set up new Quarto documents, configure metadata
   using YAML headers, and write formatted text using markdown syntax. The chapter demonstrates
   proper code chunk structure with descriptive labels, detailed figure captions, and execution
-  options. Students explore essential practices including file naming conventions, environment
+  options. Rtudents explore essential practices including file naming conventions, environment
   management, and documentation through code sources and explanations. By the end of this
   chapter, students will understand how to create professional, well-documented Quarto reports
   that integrate narrative text with embedded R code, following reproducible research standards

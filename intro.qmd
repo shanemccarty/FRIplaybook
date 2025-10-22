@@ -1,6 +1,6 @@
-## The Data Analysis Workflow
+## The Data Science Workflow
 
-This playbook follows the data science workflow in R for Data Science (2e) ([Hadley, 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
+This playbook applied the data science workflow in *R for Data Science (2e)* ([Wickham et al., 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine public health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
 
 By the end of this guide, you will be able to:
 
@@ -9,8 +9,9 @@ By the end of this guide, you will be able to:
 3.  **Transform** - Clean, recode, and create new variables using dplyr
 4.  **Visualize** - Create informative graphs and charts with ggplot2
 5.  **Model** - Apply statistical methods (e.g., regression, paired t-test) to answer questions
-6.  **Communicate** - Generate reproducible reports with Quarto
-7.  **Publish –** Use transparent practices to produce multiple products (e.g., report, manuscript, presentation)
+6.  **Communicate** - Generate reproducible reports with Quarto to advance transparent scientific practices and multiple products (e.g., report, manuscript, presentation)
+
+[![Source: The Data Science Workflow (Wickham et al., 2023)](images/intro-workflow.png)](https://r4ds.hadley.nz/whole-game.html#fig-ds-whole-game)
 
 Each section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.
 

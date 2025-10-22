@@ -5,7 +5,7 @@ author:
   - Zihan Hei
   - Shane McCarty, PhD
 abstract: |
-  This chapter introduces students to the basics of a read me file. 
+  This chapter introduces researchers to the basics of a read me file. 
 keywords:
   - read me
   - transparent

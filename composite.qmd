@@ -33,3 +33,7 @@ library(ggplot2)
 ::: callout-warning
 This page is under construction. It will include important information soon!
 :::
+
+::: callout-warning
+This page is under construction. It will include important information soon.
+:::

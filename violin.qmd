@@ -17,10 +17,10 @@ abstract: |
   box plots, and jittered raw data points in a single comprehensive visualization. The 
   chapter covers practical customization techniques including manual color scaling, 
   position adjustments, and layering multiple geometric elements to create 
-  publication-ready figures. Students explore how these visualizations help assess 
+  publication-ready figures. Researchers explore how these visualizations help assess 
   normality assumptions for statistical tests, identify outliers, compare group 
   distributions, and effectively communicate intervention effects. By the end of this 
-  chapter, students will understand when violin and raincloud plots are more informative 
+  chapter, researchers will understand when violin and raincloud plots are more informative 
   than traditional box plots and be able to create sophisticated pre/post visualizations 
   that display both summary statistics and underlying data distributions for their own 
   research projects.

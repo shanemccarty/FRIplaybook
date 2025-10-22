@@ -1,11 +1,11 @@
 ---
-title: "Importing Data Once"
+title: "Import Data Once"
 subtitle: "How to use readr, readxl, and haven"
 authors: 
   - Zihan Hei
   - Shane McCarty, PhD
 abstract: |
-  This chapter introduces students to importing data from various sources and file formats commonly used in public health research. Students learn to load datasets from R packages (NHANES), read CSV files, import Excel spreadsheets, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Students also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, students will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.
+  This chapter supports researchers in importing data from various sources and file formats commonly used in public health research. Researchers learn to load datasets from R packages (NHANES), import Excel spreadsheets, read csv files, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Researchers also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, researchers will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.
 keywords:
   - data import
   - csv

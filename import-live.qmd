@@ -4,7 +4,7 @@ subtitle: "How to automate data export and import"
 author: "Gavin Rualo"
 abstract: |
   This chapter demonstrates how to programmatically download survey data from Qualtrics
-  using the Qualtrics API. Students learn to authenticate with Qualtrics, initiate data
+  using the Qualtrics API. Researchers learn to authenticate with Qualtrics, initiate data
   exports, and download responses directly into R for real-time analysis and reporting.
   This approach enables automated data updates and live dashboards that reflect the most
   current survey responses without manual downloads. Using this approach, a research team should be able to run analyses during the last week before the poster is submitted to maximize the data collection window.

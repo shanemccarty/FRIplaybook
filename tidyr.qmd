@@ -5,10 +5,12 @@ author:
   - Shane McCarty, PhD
   - Gavin Rualo
   - Erica Sava
+abstract: |
+  This chapter teaches researchers to reshape data between long and wide formats using tidyr in R. Researchers learn when to use each format: long format for visualization and mixed models (one row per observation) versus wide format for within-person analyses (one row per participant). Through examples with longitudinal wellbeing and sleep data, the chapter demonstrates pivot_wider() for converting repeated measures to separate columns and pivot_longer() for transforming multiple columns into rows. Researchers master key parameters including names_from, values_from, names_glue, and names_pattern to create meaningful variable names during reshaping. The chapter is essential for teams collecting pre/post intervention data or daily diary responses. By the end, researchers will confidently restructure their datasets to match analytical and visualization requirements.
 keywords: 
+  - tidyr
   - wide format
   - long format
-  - tidyr
 date: "10.20.2025"
 date-format: "MM.DD.YYYY"
 format: html
@@ -151,6 +153,3 @@ Survey is in long format due to participants completing the survey twice at the 
 
 At present, the best resource is: [Reshaping data between long and wide formats (Dai, 2020)](https://shanghai.hosting.nyu.edu/data/r/reshaping.html)
 
-::: callout-warning
-This page is under construction. It will include important information soon.
-:::
