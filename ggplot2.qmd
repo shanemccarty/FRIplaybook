@@ -5,8 +5,17 @@ author:
   - Andrew Silhavy
   - Shane McCarty, PhD
 abstract: |
-  This chapter introduces students to the ggplot2 package, a powerful tool for creating sophisticated and publication-ready data visualizations in R. Students learn the foundational "grammar of graphics" approach, which builds plots layer by layer using seven core components: data, mapping, geometries, facets, statistics, coordinates, and  themes. Through hands-on examples using insurance data, the chapter demonstrates how to construct various plot types including scatterplots, bar plots, and violin plots. 
-  Students explore how to visualize relationships between variables, incorporate grouping variables using color and faceting, and customize plots with titles, labels, and themes. By the end of this chapter, students will understand how to select appropriate visualizations based on data types and create professional-quality figures for their public health research.
+  This chapter teaches students to create publication-ready data visualizations using 
+  ggplot2's "grammar of graphics" approach. Through color-coded, step-by-step tutorials, 
+  students learn to build scatterplots for relationship research and bar plots for 
+  comparative research by systematically adding layers: data, mapping, geometries, 
+  statistics, facets, and themes. Using real insurance data, the chapter demonstrates 
+  how to visualize relationships between variables, incorporate grouping through color 
+  and faceting, customize plot appearance, adjust axis scales, and export figures with 
+  ggsave(). Students learn to connect research questions and data types (nominal, ordinal, 
+  continuous) to appropriate visualization choices. By the end, students will create 
+  professional-quality figures for their public health research by building plots layer 
+  by layer and selecting visualizations that match their analytical goals.
 keywords:
   - ggplot2
   - data visualization
@@ -15,7 +24,9 @@ keywords:
   - exploratory data analysis
 date: 10.21.2025
 date-format: "MM.DD.YYYY"
-format: html
+format:
+  html: 
+    css: custom.css
 editor: visual
 execute:
   warning: false
@@ -105,6 +116,56 @@ The seven components are:
 
 [![source: \[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html)](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
+## Color-Coded Learning Guide
+
+Throughout this chapter, headings are color-coded to match the ggplot2 layers:
+
+:::::::::: {style="display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 20px 0;"}
+::: {style="padding: 12px 15px; background-color: #E69F00; color: white; border-radius: 8px;"}
+```         
+📊 Data: The dataset
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #56B4E9; color: white; border-radius: 8px;"}
+```         
+🗺️ Mapping: Which variables go where
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #009E73; color: white; border-radius: 8px;"}
+```         
+📍 Geometries: Points, bars, lines
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #F0E442; color: black; border-radius: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"}
+```         
+📏 Scales/Statistics: Axes, calculations
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #0072B2; color: white; border-radius: 8px;"}
+```         
+🔲 Facets: Separate panels
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #D55E00; color: white; border-radius: 8px;"}
+```         
+📐 Coordinates: Coordinate system
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #CC79A7; color: white; border-radius: 8px;"}
+```         
+🎨 Theme: Visual appearance
+```
+:::
+::::::::::
+
+Watch for these colors as you build plots step-by-step! 🎨
+
 ### Understanding Data Types
 
 Before creating visualizations, it's important to understand your data types:
@@ -131,9 +192,15 @@ Your research question can be classified as **comparative** research or **relati
 
 For relationship research, the variables are 📏 **Continuous** because they range along a continuum, such as a scale for beliefs from 1 (strongly disagree) to 6 (strongly agree). To examine the relationship between two continous variables, use the steps below to build a custom scatterplot.
 
-#### STEP-BY-STEP TO BUILD A SCATTERPLOT 
+#### STEP-BY-STEP TO BUILD A SCATTERPLOT
 
-#### Step 1: Set up data and mapping
+#### [Step 1: Set up data]{.data-layer}
+
+```{r}
+ggplot(data = insurance)
+```
+
+#### [Step 2: Set up mapping]{.mapping-layer}
 
 What is the relationship between BMI and insurance charges?
 
@@ -144,9 +211,16 @@ ggplot(data = insurance,
          y = charges))
 ```
 
-This creates a blank canvas with our axes defined, but no data displayed yet!
+::: callout-note
+## 📊 Layer: Data + Mapping
 
-#### Step 2: Add geometry (points)
+Two layers are used:
+
+-   [**Data**]{style="color: #E69F00; font-weight: bold;"}: `insurance` dataset
+-   [**Mapping**]{style="color: #56B4E9; font-weight: bold;"}: `aes(x = bmi, y = charges)`
+:::
+
+#### [Step 3: Add geometry (points)]{.layers-layer}
 
 Add points to create a scatterplot using `geom_point()`:
 
@@ -157,7 +231,13 @@ ggplot(data = insurance,
          y = charges)) + geom_point()
 ```
 
-#### Step 3: Add a statistical layer (trend line)
+::: callout-note
+## 🎨 Layer: Geometries
+
+-   [**Geometry**]{style="color: #009E73; font-weight: bold;"}: `geom_point()` displays data as points
+:::
+
+#### [Step 4: Add a statistical layer (trend line)]{.statistics-layer}
 
 Add a linear model line with `geom_smooth()`:
 
@@ -169,11 +249,17 @@ ggplot(data = insurance,
   geom_smooth(method = "lm")
 ```
 
+::: callout-note
+## 📈 Layer: Statistics
+
+-   [**Statistics**]{style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"}: `geom_smooth()` calculates and displays a trend line
+:::
+
 Notice how it looks like we have two different populations? Let's explore this further.
 
-#### Optional – Step 4. Incorporate grouping (color)
+#### [Step 5. Incorporate grouping (color)]{.facets-layer}
 
-There are two main approaches to visualizing grouping variables:
+If you have three variables (2 continouous, 1 categorical/grouping variable), then you can use facets. There are two main approaches to visualizing grouping variables:
 
 ##### Method 1: Using Color
 
@@ -183,9 +269,18 @@ Map the `smoker` variable to color:
 ggplot(data = insurance,
        mapping = aes(
          x = bmi,
-         y = charges)) + geom_point() +
+         y = charges,
+         color = smoker)) +
+  geom_point() +
   geom_smooth(method = "lm")
+
 ```
+
+::: callout-note
+## 🔵 Layer: Facet (extended)
+
+-   [**Facet**]{style="color: #0072B2; font-weight: bold;"}: Added `color = smoker` to group by smoking status
+:::
 
 ##### Method 2: Using Facets
 
@@ -201,9 +296,15 @@ ggplot(data = insurance,
   facet_wrap(~smoker)
 ```
 
+::: callout-note
+## 📊 Layer: Facets
+
+-   [**Facets**]{style="color: #0072B2; font-weight: bold;"}: `facet_wrap(~smoker)` creates separate panels
+:::
+
 Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!
 
-#### Step 5. Customize Appearance
+#### [Step 6. Customize Appearance]{.theme-layer}
 
 ##### Adding Titles and Labels
 
@@ -242,17 +343,23 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
   theme_bw()
 ```
 
+::: callout-note
+## 🎨 Layer: Theme
+
+-   [**Theme**]{style="color: #CC79A7; font-weight: bold;"}: `theme_bw()` controls the overall visual appearance
+:::
+
 ::: {.callout-important appearance="simple"}
 ## Select a theme
 
 Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in the individual reports and the team manuscript!
 :::
 
-##### Adjusting Axis Scales
+##### [Adjusting Axis Scales]{.scales-layer}
 
-Sometimes, you need to manually control the range of your axes for better visualization or to match other plots or to capture the entire range of the possible response options (e.g., 1-6, 1-10, 1 - 100). 
+Sometimes, you need to manually control the range of your axes for better visualization or to match other plots or to capture the entire range of the possible response options (e.g., 1-6, 1-10, 1 - 100).
 
-Set specific limits with `xlim()` and `ylim()`. 
+Set specific limits with `xlim()` and `ylim()`.
 
 ```{r}
 ggplot(data = insurance, 
@@ -267,15 +374,22 @@ ggplot(data = insurance,
   theme_bw()
 ```
 
-::: {.callout-warning}
+::: callout-note
+## 📏 Layer: Scales
+
+-   [**Scales**]{style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"}: `xlim()` and `ylim()` control axis ranges
+:::
+
+::: callout-warning
 ## Warning: Data outside limits will be removed
+
 Using `xlim()` and `ylim()` removes any data points outside the specified range. This can affect trend lines!
 :::
 
 ::: {.callout-important appearance="simple"}
 ## Requirement: X and Y Axes
 
-If your response options range from 1 to 6. Use `ylim( )` to adjust the y-axis to range from 1 to 6 too. 
+If your response options range from 1 to 6. Use `ylim( )` to adjust the y-axis to range from 1 to 6 too.
 :::
 
 ##### Using Colors
@@ -294,11 +408,13 @@ Want to improve your plots with colors?
 
 Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:
 
--    🏷️ **Nominal Data** (Gender Identity)
+-   🏷️ **Nominal Data** (Gender Identity)
 
-    -   Man
-    -   Woman
-    -   Non-Binary
+```         
+-   Man
+-   Woman
+-   Non-Binary
+```
 
 -   📶 **Ordinal Data** (Age Group)
 
@@ -311,7 +427,13 @@ Comparative research questions examine mean score differences on a continuous (q
 
 Bar plots are useful for comparing mean scores across groups.
 
-#### Step 1: Set up data and mapping
+#### [Step 1: Set up data]{.data-layer}
+
+```{r}
+ggplot(data = insurance)
+```
+
+#### [Step 2: Set up mapping]{.mapping-layer}
 
 ```{r}
 #| label: plot-region-charges-data-mapping 
@@ -320,17 +442,21 @@ Bar plots are useful for comparing mean scores across groups.
 #| fig-height: 6
 #| fig-width: 8
 
-plot_region_charges <- ggplot(
-  data = insurance,
-  mapping = aes(
-    x = region,
-    y = charges)
-  )
+ggplot(data = insurance,
+       mapping = aes(
+         x = region,
+         y = charges))
 
-## there is nothing to see yet! 
 ```
 
-#### Step 2: Add geometry (bars)
+::: callout-note
+## 📊 Layers: Data + Mapping
+
+-   [**Data**]{style="color: #E69F00; font-weight: bold;"}: `insurance` dataset
+-   [**Mapping**]{style="color: #56B4E9; font-weight: bold;"}: `aes(x = region, y = charges)`
+:::
+
+#### [Step 3: Add geometry (bars)]{.layers-layer}
 
 ```{r}
 #| label: plot-region-charges-bar 
@@ -347,7 +473,15 @@ plot_region_charges <- ggplot(
   geom_bar(stat = 'summary', fun = 'mean')
 ```
 
-#### Step 3: Customize bars
+::: callout-note
+## 🎨 Layer: Geometries
+
+-   [**Geometry**]{style="color: #009E73; font-weight: bold;"}: `geom_bar()` creates bars
+
+-   [**Statistics**]{style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"}: `stat = 'summary', fun = 'mean'` calculates means
+:::
+
+#### [Step 4: Customize bars]{.theme-layer}
 
 ```{r}
 #| label: plot-region-charges-bar-custom
@@ -368,7 +502,13 @@ plot_region_charges <- ggplot(
 
 ```
 
-#### Step 4: Add labels and themes
+::: callout-note
+## 🎨 Layer: Theme (color)
+
+-   Setting `fill = "#005a43"` customizes bar colors
+:::
+
+#### [Step 5: Add labels and themes]{.theme-layer}
 
 ```{r}
 #| label: plot-region-charges-bar-custom-labelsthemes
@@ -377,36 +517,49 @@ plot_region_charges <- ggplot(
 #| fig-height: 6
 #| fig-width: 8
 
-plot_region_charges <- ggplot(data = insurance, mapping = aes(x = region, y = charges)) + 
-  geom_bar(stat = 'summary', fun = 'mean', fill = "#005a43") + 
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)) + 
+  geom_bar(
+    stat = 'summary', fun = 'mean', fill = "#005a43") + 
   ggtitle("Mean Insurance Charges Based on Region") + 
   xlab("Region") +
   ylab("Insurance Charges") +
   theme_bw()
 ```
 
-#### Step 5: save plot as image using `ggsave()`
+::: callout-note
+## 🎨 Layer: Theme
+
+-   [**Theme**]{style="color: #CC79A7; font-weight: bold;"}: Labels and `theme_bw()` enhance appearance
+:::
+
+#### Step 6: Save your plot using `ggsave()`
 
 [ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in your "files" folder, which can be exported out of Posit Cloud and then added to your google drive and on to the poster.
 
-::: callout-important
-## Requirement
-
-You must use file for both your final report and team manuscript.
-
-Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* must include `ggsave( )` for plots.
-:::
-
 ```{r}
-# Print the plot
-print(plot_region_charges)
+# Save the plot to an object
+plot_bmi_charges <- ggplot(
+  data = insurance,
+  mapping = aes(x = bmi, y = charges, color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  xlim(15, 55) +
+  ylim(0, 65000) +
+  ggtitle("Insurance charges vs BMI for smokers and non-smokers") +
+  xlab("Body Mass Index (BMI)") +
+  ylab("Insurance Charges") +
+  theme_bw()
 
-# save the plot
-ggsave("plots/plot1:region.png", 
-       plot = plot_region_charges, 
-       width = 10, 
-       height = 8, 
-       dpi = 300)
+# Print and save to the plots folder
+print(plot_bmi_charges)
+ggsave("plots/plot1_bmi_smoker.png", 
+       plot = plot_bmi_charges,
+       width = 10, height = 8, dpi = 300)
+
 ```
 
 After you run the code, the console will ask you a question. The use of `plots/` in the `ggsave()` code chunk will create a folder called **Plots** in your files within Posit Cloud if you type "1" and click return/enter.
@@ -418,6 +571,15 @@ In your **Files**, click the **Plots** folder. Your location within Posit Cloud 
 ![](images/ggplot2-ggsave-plotsfolder.png){fig-alt="this is a screenshot of the files within the plot folder of posit cloud"}
 
 Click the gear icon (above " project \> plots"), click export, and **Download.** Then, upload this the plot and others within your team's google drive \> Team Survey Data \> Quant Data \> Plots.
+
+::: callout-important
+## Requirement
+
+You must use file for both your final report and team manuscript.
+
+Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* must include `ggsave( )` for plots.
+:::
+
 
 ##### Violin Plots with `geom_violin()`
 

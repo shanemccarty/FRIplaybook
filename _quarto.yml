@@ -7,7 +7,7 @@ book:
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
   date: "10/21/2025"
-  version: "Version 0.919 (draft)"
+  version: "Version 0.920 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]

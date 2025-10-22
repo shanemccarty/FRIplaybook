@@ -110,6 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -322,14 +323,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">8.1.1</span> Load and Import</a></li>
   <li><a href="#summarize-insurance-data" id="toc-summarize-insurance-data" class="nav-link" data-scroll-target="#summarize-insurance-data"><span class="header-section-number">8.1.2</span> Summarize <code>insurance</code> data</a></li>
   </ul></li>
-  <li><a href="#the-seven-components-of-ggplot2" id="toc-the-seven-components-of-ggplot2" class="nav-link" data-scroll-target="#the-seven-components-of-ggplot2"><span class="header-section-number">8.2</span> The Seven Components of ggplot2</a>
+  <li><a href="#the-seven-components-of-ggplot2" id="toc-the-seven-components-of-ggplot2" class="nav-link" data-scroll-target="#the-seven-components-of-ggplot2"><span class="header-section-number">8.2</span> The Seven Components of ggplot2</a></li>
+  <li><a href="#color-coded-learning-guide" id="toc-color-coded-learning-guide" class="nav-link" data-scroll-target="#color-coded-learning-guide"><span class="header-section-number">8.3</span> Color-Coded Learning Guide</a>
   <ul class="collapse">
-  <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">8.2.1</span> Understanding Data Types</a></li>
+  <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">8.3.1</span> Understanding Data Types</a></li>
   </ul></li>
-  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree"><span class="header-section-number">8.3</span> Decision Tree</a>
+  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree"><span class="header-section-number">8.4</span> Decision Tree</a>
   <ul class="collapse">
-  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">8.3.1</span> Relationship Research</a></li>
-  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">8.3.2</span> Comparative Research</a></li>
+  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">8.4.1</span> Relationship Research</a></li>
+  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">8.4.2</span> Comparative Research</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/ggplot2.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -368,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter introduces students to the ggplot2 package, a powerful tool for creating sophisticated and publication-ready data visualizations in R. Students learn the foundational “grammar of graphics” approach, which builds plots layer by layer using seven core components: data, mapping, geometries, facets, statistics, coordinates, and themes. Through hands-on examples using insurance data, the chapter demonstrates how to construct various plot types including scatterplots, bar plots, and violin plots. Students explore how to visualize relationships between variables, incorporate grouping variables using color and faceting, and customize plots with titles, labels, and themes. By the end of this chapter, students will understand how to select appropriate visualizations based on data types and create professional-quality figures for their public health research.</p>
+    <p>This chapter teaches students to create publication-ready data visualizations using ggplot2’s “grammar of graphics” approach. Through color-coded, step-by-step tutorials, students learn to build scatterplots for relationship research and bar plots for comparative research by systematically adding layers: data, mapping, geometries, statistics, facets, and themes. Using real insurance data, the chapter demonstrates how to visualize relationships between variables, incorporate grouping through color and faceting, customize plot appearance, adjust axis scales, and export figures with ggsave(). Students learn to connect research questions and data types (nominal, ordinal, continuous) to appropriate visualization choices. By the end, students will create professional-quality figures for their public health research by building plots layer by layer and selecting visualizations that match their analytical goals.</p>
   </div>
 </div>
 
@@ -499,8 +501,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>source: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/articles/ggplot2.html)</figcaption>
 </figure>
 </div>
-<section id="understanding-data-types" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">8.2.1</span> Understanding Data Types</h3>
+</section>
+<section id="color-coded-learning-guide" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="color-coded-learning-guide"><span class="header-section-number">8.3</span> Color-Coded Learning Guide</h2>
+<p>Throughout this chapter, headings are color-coded to match the ggplot2 layers:</p>
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 20px 0;">
+<div style="padding: 12px 15px; background-color: #E69F00; color: white; border-radius: 8px;">
+<pre><code>📊 Data: The dataset</code></pre>
+</div>
+<div style="padding: 12px 15px; background-color: #56B4E9; color: white; border-radius: 8px;">
+<pre><code>🗺️ Mapping: Which variables go where</code></pre>
+</div>
+<div style="padding: 12px 15px; background-color: #009E73; color: white; border-radius: 8px;">
+<pre><code>📍 Geometries: Points, bars, lines</code></pre>
+</div>
+<div style="padding: 12px 15px; background-color: #F0E442; color: black; border-radius: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+<pre><code>📏 Scales/Statistics: Axes, calculations</code></pre>
+</div>
+<div style="padding: 12px 15px; background-color: #0072B2; color: white; border-radius: 8px;">
+<pre><code>🔲 Facets: Separate panels</code></pre>
+</div>
+<div style="padding: 12px 15px; background-color: #D55E00; color: white; border-radius: 8px;">
+<pre><code>📐 Coordinates: Coordinate system</code></pre>
+</div>
+<div style="padding: 12px 15px; background-color: #CC79A7; color: white; border-radius: 8px;">
+<pre><code>🎨 Theme: Visual appearance</code></pre>
+</div>
+</div>
+<p>Watch for these colors as you build plots step-by-step! 🎨</p>
+<section id="understanding-data-types" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">8.3.1</span> Understanding Data Types</h3>
 <p>Before creating visualizations, it’s important to understand your data types:</p>
 <p><strong>Qualitative Data:</strong></p>
 <ul>
@@ -514,8 +544,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="decision-tree" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">8.3</span> Decision Tree</h2>
+<section id="decision-tree" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">8.4</span> Decision Tree</h2>
 <p>Your research question can be classified as <strong>comparative</strong> research or <strong>relationship</strong> research (<a href="https://pubmed.ncbi.nlm.nih.gov/35470596/">Barroga &amp; Matanguihan, 2022</a>).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -523,20 +553,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption><em>The decision tree helps researchers to identify the specific statistical technique based on their comparative or relationship research question</em></figcaption>
 </figure>
 </div>
-<section id="relationship-research" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">8.3.1</span> Relationship Research</h3>
+<section id="relationship-research" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">8.4.1</span> Relationship Research</h3>
 <p>For relationship research, the variables are 📏 <strong>Continuous</strong> because they range along a continuum, such as a scale for beliefs from 1 (strongly disagree) to 6 (strongly agree). To examine the relationship between two continous variables, use the steps below to build a custom scatterplot.</p>
 <section id="step-by-step-to-build-a-scatterplot" class="level4">
 <h4 class="anchored" data-anchor-id="step-by-step-to-build-a-scatterplot">STEP-BY-STEP TO BUILD A SCATTERPLOT</h4>
 </section>
-<section id="step-1-set-up-data-and-mapping" class="level4">
-<h4 class="anchored" data-anchor-id="step-1-set-up-data-and-mapping">Step 1: Set up data and mapping</h4>
-<p>What is the relationship between BMI and insurance charges?</p>
+<section id="step-1-set-up-data" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-set-up-data"><span class="data-layer">Step 1: Set up data</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -545,16 +571,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This creates a blank canvas with our axes defined, but no data displayed yet!</p>
 </section>
-<section id="step-2-add-geometry-points" class="level4">
-<h4 class="anchored" data-anchor-id="step-2-add-geometry-points">Step 2: Add geometry (points)</h4>
-<p>Add points to create a scatterplot using <code>geom_point()</code>:</p>
+<section id="step-2-set-up-mapping" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-set-up-mapping"><span class="mapping-layer">Step 2: Set up mapping</span></h4>
+<p>What is the relationship between BMI and insurance charges?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -563,16 +588,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📊 Layer: Data + Mapping
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two layers are used:</p>
+<ul>
+<li><span style="color: #E69F00; font-weight: bold;"><strong>Data</strong></span>: <code>insurance</code> dataset</li>
+<li><span style="color: #56B4E9; font-weight: bold;"><strong>Mapping</strong></span>: <code>aes(x = bmi, y = charges)</code></li>
+</ul>
+</div>
+</div>
 </section>
-<section id="step-3-add-a-statistical-layer-trend-line" class="level4">
-<h4 class="anchored" data-anchor-id="step-3-add-a-statistical-layer-trend-line">Step 3: Add a statistical layer (trend line)</h4>
-<p>Add a linear model line with <code>geom_smooth()</code>:</p>
+<section id="step-3-add-geometry-points" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-add-geometry-points"><span class="layers-layer">Step 3: Add geometry (points)</span></h4>
+<p>Add points to create a scatterplot using <code>geom_point()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -581,20 +622,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Notice how it looks like we have two different populations? Let’s explore this further.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🎨 Layer: Geometries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #009E73; font-weight: bold;"><strong>Geometry</strong></span>: <code>geom_point()</code> displays data as points</li>
+</ul>
+</div>
+</div>
 </section>
-<section id="optional-step-4.-incorporate-grouping-color" class="level4">
-<h4 class="anchored" data-anchor-id="optional-step-4.-incorporate-grouping-color">Optional – Step 4. Incorporate grouping (color)</h4>
-<p>There are two main approaches to visualizing grouping variables:</p>
-<section id="method-1-using-color" class="level5">
-<h5 class="anchored" data-anchor-id="method-1-using-color">Method 1: Using Color</h5>
-<p>Map the <code>smoker</code> variable to color:</p>
+<section id="step-4-add-a-statistical-layer-trend-line" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-add-a-statistical-layer-trend-line"><span class="statistics-layer">Step 4: Add a statistical layer (trend line)</span></h4>
+<p>Add a linear model line with <code>geom_smooth()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -603,18 +655,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📈 Layer: Statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"><strong>Statistics</strong></span>: <code>geom_smooth()</code> calculates and displays a trend line</li>
+</ul>
+</div>
+</div>
+<p>Notice how it looks like we have two different populations? Let’s explore this further.</p>
 </section>
-<section id="method-2-using-facets" class="level5">
-<h5 class="anchored" data-anchor-id="method-2-using-facets">Method 2: Using Facets</h5>
-<p>Create separate panels for each group with <code>facet_wrap()</code>:</p>
+<section id="step-5.-incorporate-grouping-color" class="level4">
+<h4 class="anchored" data-anchor-id="step-5.-incorporate-grouping-color"><span class="facets-layer">Step 5. Incorporate grouping (color)</span></h4>
+<p>If you have three variables (2 continouous, 1 categorical/grouping variable), then you can use facets. There are two main approaches to visualizing grouping variables:</p>
+<section id="method-1-using-color" class="level5">
+<h5 class="anchored" data-anchor-id="method-1-using-color">Method 1: Using Color</h5>
+<p>Map the <code>smoker</code> variable to color:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>smoker)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -623,29 +694,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🔵 Layer: Facet (extended)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #0072B2; font-weight: bold;"><strong>Facet</strong></span>: Added <code>color = smoker</code> to group by smoking status</li>
+</ul>
+</div>
+</div>
 </section>
-</section>
-<section id="step-5.-customize-appearance" class="level4">
-<h4 class="anchored" data-anchor-id="step-5.-customize-appearance">Step 5. Customize Appearance</h4>
-<section id="adding-titles-and-labels" class="level5">
-<h5 class="anchored" data-anchor-id="adding-titles-and-labels">Adding Titles and Labels</h5>
-<p>Make your plot more informative with descriptive titles:</p>
+<section id="method-2-using-facets" class="level5">
+<h5 class="anchored" data-anchor-id="method-2-using-facets">Method 2: Using Facets</h5>
+<p>Create separate panels for each group with <code>facet_wrap()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs </span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">          BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>smoker)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="ggplot2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📊 Layer: Facets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #0072B2; font-weight: bold;"><strong>Facets</strong></span>: <code>facet_wrap(~smoker)</code> creates separate panels</li>
+</ul>
+</div>
+</div>
+<p>Both methods reveal that smoking status significantly affects the relationship between BMI and insurance charges!</p>
+</section>
+</section>
+<section id="step-6.-customize-appearance" class="level4">
+<h4 class="anchored" data-anchor-id="step-6.-customize-appearance"><span class="theme-layer">Step 6. Customize Appearance</span></h4>
+<section id="adding-titles-and-labels" class="level5">
+<h5 class="anchored" data-anchor-id="adding-titles-and-labels">Adding Titles and Labels</h5>
+<p>Make your plot more informative with descriptive titles:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs </span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="st">          BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ggplot2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -655,14 +776,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h5 class="anchored" data-anchor-id="changing-the-theme">Changing the Theme</h5>
 <p>Apply a professional theme with <code>theme_bw()</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">          BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">          BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -670,6 +791,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>a scatterplot depicting a linear relationship between BMI and insurance charges</figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🎨 Layer: Theme
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #CC79A7; font-weight: bold;"><strong>Theme</strong></span>: <code>theme_bw()</code> controls the overall visual appearance</li>
+</ul>
 </div>
 </div>
 <div class="callout callout-style-simple callout-important callout-titled">
@@ -687,26 +823,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="adjusting-axis-scales" class="level5">
-<h5 class="anchored" data-anchor-id="adjusting-axis-scales">Adjusting Axis Scales</h5>
+<h5 class="anchored" data-anchor-id="adjusting-axis-scales"><span class="scales-layer">Adjusting Axis Scales</span></h5>
 <p>Sometimes, you need to manually control the range of your axes for better visualization or to match other plots or to capture the entire range of the possible response options (e.g., 1-6, 1-10, 1 - 100).</p>
 <p>Set specific limits with <code>xlim()</code> and <code>ylim()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">15</span>, <span class="dv">55</span>) <span class="sc">+</span>  <span class="co"># Set x-axis from 15 to 55</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">65000</span>) <span class="sc">+</span>  <span class="co"># Set y-axis from 0 to 65000</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">15</span>, <span class="dv">55</span>) <span class="sc">+</span>  <span class="co"># Set x-axis from 15 to 55</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">65000</span>) <span class="sc">+</span>  <span class="co"># Set y-axis from 0 to 65000</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ggplot2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ggplot2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📏 Layer: Scales
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"><strong>Scales</strong></span>: <code>xlim()</code> and <code>ylim()</code> control axis ranges</li>
+</ul>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -748,8 +899,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="comparative-research" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">8.3.2</span> Comparative Research</h3>
+<section id="comparative-research" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">8.4.2</span> Comparative Research</h3>
 <p>Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:</p>
 <ul>
 <li>🏷️ <strong>Nominal Data</strong> (Gender Identity)</li>
@@ -770,58 +921,174 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-by-step-to-build-a-barplot-with-geom_bar">STEP-BY-STEP TO BUILD A BARPLOT WITH <code>geom_bar()</code></h4>
 <p>Bar plots are useful for comparing mean scores across groups.</p>
 </section>
-<section id="step-1-set-up-data-and-mapping-1" class="level4">
-<h4 class="anchored" data-anchor-id="step-1-set-up-data-and-mapping-1">Step 1: Set up data and mapping</h4>
+<section id="step-1-set-up-data-1" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-set-up-data-1"><span class="data-layer">Step 1: Set up data</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> charges)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">## there is nothing to see yet! </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ggplot2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="step-2-add-geometry-bars" class="level4">
-<h4 class="anchored" data-anchor-id="step-2-add-geometry-bars">Step 2: Add geometry (bars)</h4>
+<section id="step-2-set-up-mapping-1" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-set-up-mapping-1"><span class="mapping-layer">Step 2: Set up mapping</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> charges)) <span class="sc">+</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'summary'</span>, <span class="at">fun =</span> <span class="st">'mean'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> region,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ggplot2_files/figure-html/plot-region-charges-data-mapping-1.png" class="img-fluid figure-img" alt="a barplot of insurance charges by region" width="768"></p>
+<figcaption>a barplot depicting differences in charges by region</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📊 Layers: Data + Mapping
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #E69F00; font-weight: bold;"><strong>Data</strong></span>: <code>insurance</code> dataset</li>
+<li><span style="color: #56B4E9; font-weight: bold;"><strong>Mapping</strong></span>: <code>aes(x = region, y = charges)</code></li>
+</ul>
+</div>
 </div>
 </section>
-<section id="step-3-customize-bars" class="level4">
-<h4 class="anchored" data-anchor-id="step-3-customize-bars">Step 3: Customize bars</h4>
+<section id="step-3-add-geometry-bars" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-add-geometry-bars"><span class="layers-layer">Step 3: Add geometry (bars)</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> charges)) <span class="sc">+</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">'summary'</span>,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">'mean'</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"#005a43"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> charges)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'summary'</span>, <span class="at">fun =</span> <span class="st">'mean'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🎨 Layer: Geometries
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><span style="color: #009E73; font-weight: bold;"><strong>Geometry</strong></span>: <code>geom_bar()</code> creates bars</p></li>
+<li><p><span style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"><strong>Statistics</strong></span>: <code>stat = 'summary', fun = 'mean'</code> calculates means</p></li>
+</ul>
+</div>
 </div>
 </section>
-<section id="step-4-add-labels-and-themes" class="level4">
-<h4 class="anchored" data-anchor-id="step-4-add-labels-and-themes">Step 4: Add labels and themes</h4>
+<section id="step-4-customize-bars" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-customize-bars"><span class="theme-layer">Step 4: Customize bars</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> insurance, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region, <span class="at">y =</span> charges)) <span class="sc">+</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'summary'</span>, <span class="at">fun =</span> <span class="st">'mean'</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>) <span class="sc">+</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mean Insurance Charges Based on Region"</span>) <span class="sc">+</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Region"</span>) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> charges)) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">'summary'</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">'mean'</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"#005a43"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🎨 Layer: Theme (color)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Setting <code>fill = "#005a43"</code> customizes bar colors</li>
+</ul>
+</div>
 </div>
 </section>
-<section id="step-5-save-plot-as-image-using-ggsave" class="level4">
-<h4 class="anchored" data-anchor-id="step-5-save-plot-as-image-using-ggsave">Step 5: save plot as image using <code>ggsave()</code></h4>
+<section id="step-5-add-labels-and-themes" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-add-labels-and-themes"><span class="theme-layer">Step 5: Add labels and themes</span></h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_region_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> charges)) <span class="sc">+</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">'summary'</span>, <span class="at">fun =</span> <span class="st">'mean'</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>) <span class="sc">+</span> </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mean Insurance Charges Based on Region"</span>) <span class="sc">+</span> </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Region"</span>) <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🎨 Layer: Theme
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span style="color: #CC79A7; font-weight: bold;"><strong>Theme</strong></span>: Labels and <code>theme_bw()</code> enhance appearance</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="step-6-save-your-plot-using-ggsave" class="level4">
+<h4 class="anchored" data-anchor-id="step-6-save-your-plot-using-ggsave">Step 6: Save your plot using <code>ggsave()</code></h4>
 <p><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave( )</a> is a specific function to save a plot as an image in .jpg or .png image. This plot is saved in your “files” folder, which can be exported out of Posit Cloud and then added to your google drive and on to the poster.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the plot to an object</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>plot_bmi_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> insurance,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bmi, <span class="at">y =</span> charges, <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">15</span>, <span class="dv">55</span>) <span class="sc">+</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">65000</span>) <span class="sc">+</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Insurance charges vs BMI for smokers and non-smokers"</span>) <span class="sc">+</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Body Mass Index (BMI)"</span>) <span class="sc">+</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print and save to the plots folder</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_bmi_charges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ggplot2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1_bmi_smoker.png"</span>, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> plot_bmi_charges,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>After you run the code, the console will ask you a question. The use of <code>plots/</code> in the <code>ggsave()</code> code chunk will create a folder called <strong>Plots</strong> in your files within Posit Cloud if you type “1” and click return/enter.</p>
+<p><img src="images/ggplot2-ggsave.png" class="img-fluid" alt="a screenshot of the console output after running the ggsave code"></p>
+<p>In your <strong>Files</strong>, click the <strong>Plots</strong> folder. Your location within Posit Cloud is shown below: Cloud &gt; project &gt; plots. You are in the <strong>Plots</strong>.</p>
+<p><img src="images/ggplot2-ggsave-plotsfolder.png" class="img-fluid" alt="this is a screenshot of the files within the plot folder of posit cloud"></p>
+<p>Click the gear icon (above ” project &gt; plots”), click export, and <strong>Download.</strong> Then, upload this the plot and others within your team’s google drive &gt; Team Survey Data &gt; Quant Data &gt; Plots.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -836,42 +1103,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Your <em>R&amp;D Report</em>, <em>Team R&amp;D Manuscript</em>, <em>Final Report</em>, and <em>Final Manuscript</em> must include <code>ggsave( )</code> for plots.</p>
 </div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the plot</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_region_charges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ggplot2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the plot</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1:region.png"</span>, </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> plot_region_charges, </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">8</span>, </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>After you run the code, the console will ask you a question. The use of <code>plots/</code> in the <code>ggsave()</code> code chunk will create a folder called <strong>Plots</strong> in your files within Posit Cloud if you type “1” and click return/enter.</p>
-<p><img src="images/ggplot2-ggsave.png" class="img-fluid" alt="a screenshot of the console output after running the ggsave code"></p>
-<p>In your <strong>Files</strong>, click the <strong>Plots</strong> folder. Your location within Posit Cloud is shown below: Cloud &gt; project &gt; plots. You are in the <strong>Plots</strong>.</p>
-<p><img src="images/ggplot2-ggsave-plotsfolder.png" class="img-fluid" alt="this is a screenshot of the files within the plot folder of posit cloud"></p>
-<p>Click the gear icon (above ” project &gt; plots”), click export, and <strong>Download.</strong> Then, upload this the plot and others within your team’s google drive &gt; Team Survey Data &gt; Quant Data &gt; Plots.</p>
 <section id="violin-plots-with-geom_violin" class="level5">
 <h5 class="anchored" data-anchor-id="violin-plots-with-geom_violin">Violin Plots with <code>geom_violin()</code></h5>
 <p>Violin plots provide a different way to visualize information to capture the distribution of data for each category.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> smoker,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill =</span> smoker)) <span class="sc">+</span> </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges by Smoking Status"</span>) <span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Smoker (Y/N)"</span>) <span class="sc">+</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> smoker,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill =</span> smoker)) <span class="sc">+</span> </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges by Smoking Status"</span>) <span class="sc">+</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Smoker (Y/N)"</span>) <span class="sc">+</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -880,9 +1125,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot above plot without using plot = argument</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot2:smoker.png"</span>,</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot above plot without using plot = argument</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot2:smoker.png"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To learn more about how to use violin plots for pre/post data, go to the next chapter on visualizing pre/post scores.</p>
 
