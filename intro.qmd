@@ -13,7 +13,7 @@ By the end of this guide, you will be able to:
 
 [![Source: The Data Science Workflow (Wickham et al., 2023)](images/intro-workflow.png)](https://r4ds.hadley.nz/whole-game.html#fig-ds-whole-game)
 
-Each section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.
+Each section builds on previous concepts, taking you from raw data files to a publication-ready, reproducible scientific report.
 
 ## What Makes This Guide Different?
 

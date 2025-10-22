@@ -14,7 +14,7 @@
     "href": "intro.html",
     "title": "1  The Data Science Workflow",
     "section": "",
-    "text": "1.1 What Makes This Guide Different?\nThis playbook applied the data science workflow in R for Data Science (2e) (Wickham et al., 2023) to help researchers examine public health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.\nBy the end of this guide, you will be able to:\nEach section builds on previous concepts, taking you from raw data files to polished, publication-ready, transparent, and reproducible scientific report.",
+    "text": "1.1 What Makes This Guide Different?\nThis playbook applied the data science workflow in R for Data Science (2e) (Wickham et al., 2023) to help researchers examine public health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.\nBy the end of this guide, you will be able to:\nEach section builds on previous concepts, taking you from raw data files to a publication-ready, reproducible scientific report.",
     "crumbs": [
       "Introduction",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>The Playbook</span>"
