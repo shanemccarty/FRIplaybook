@@ -1,11 +1,5 @@
-base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 dplyr
 psych
 knitr
 ggplot2
+readxl

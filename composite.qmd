@@ -1,8 +1,25 @@
 ---
-title: "Creating Composite Scores from Survey Scales"
-author: "Claude.ai"
+title: "Creating Composite Scores from Multi-Item Measures"
+subtitle: "How to create a composite and check reliability of the measure"
+author: Shane McCarty, PhD
 abstract: |
-  This chapter teaches students how to create composite scores from multi-item survey scales. Students learn to check whether items on a scale reliably measure the same construct using Cronbach's alpha, and then calculate an average score across all items. The chapter uses a straightforward approach where composite scores are only calculated for participants who answered all items on the scale, ensuring everyone's score has the same meaning. Through a practical example with sleep behavior data, students learn the essential steps: select items, check reliability, remove incomplete cases, and calculate mean scores. This skill is fundamental when working with validated scales in public health surveys.
+  This chapter teaches researchers how to create composite scores from multi-item 
+  scales and assess their reliability. Using the Regulatory Focus Questionnaire 
+  (Higgins, 2001) as an example, researchers learn to measure promotion focus 
+  (preference for growth) and prevention focus (preference for maintaining status quo) 
+  through a systematic four-step process: (1) define which survey items belong to 
+  each construct, (2) identify and reverse-code negatively worded items, (3) calculate 
+  composite scores by averaging items using the psych package's scoreItems() function, 
+  and (4) assess scale reliability using Cronbach's alpha. The chapter explains why 
+  single items are insufficient for measuring psychological constructs and demonstrates 
+  how multiple items averaged together create more reliable continuous measures. 
+  Researchers learn to interpret Cronbach's alpha values (with acceptable reliability 
+  typically above .70) and understand when reverse coding is necessary for items that 
+  capture the absence rather than presence of a construct. Through practical examples 
+  with health beliefs data, researchers master creating composite scores that accurately 
+  reflect theoretical constructs while handling missing data and ensuring all 
+  participants' scores have equivalent meaning. This skill is essential when working 
+  with validated multi-item scales in public health and behavioral research.
 keywords:
   - composite scores
   - Cronbach's alpha
@@ -15,25 +32,199 @@ execute:
   message: false
 ---
 
-::: {.callout-tip icon="false"}
-## 📖 Additional Learning Resources
+::: callout-tip
+## 📖 `psych` resources
 
--   **Cheat Sheet**: [dplyr Data Transformation](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
--   **psych Package**: [Quick reference guide](https://cran.r-project.org/web/packages/psych/psych.pdf)
+-   [Documentation](https://cran.r-project.org/web/packages/psych/psych.pdf)
+-   [Personality Project in R](https://personality-project.org/r/psych/)
+-   [Reliability](https://rpubs.com/deondb/reliability)
+-   [Reliability Analysis](https://rpubs.com/hauselin/reliabilityanalysis)
 :::
 
+## Dataset
+
+The health beliefs dataset includes a range of variables, including promotion focus and prevention focus.
+
+-   Promotion focus: a general regulatory motivational preference toward growth and change, attention to positive things, and success seeking
+
+-   Prevention focus: a general regulatory motivational preference toward maintaining the status quo, avoiding negative things, and aversion to threats
+
+### Load Library
+
 ```{r}
-#| label: load library
+#| label: load-library
 library(dplyr)
 library(psych)
 library(knitr)
 library(ggplot2)
+library(readxl)
 ```
 
-::: callout-warning
-This page is under construction. It will include important information soon!
+### Import
+
+```{r}
+#| label: import-excel-header1
+#| autorun: true
+#| completion: true
+#| echo: true
+#| output: false
+#| warning: false
+#| error: false
+
+# Import Excel file
+healthbeliefsdata <- read_excel("data/03.15.2025.prolifichealthbeliefs.xlsx",
+    col_names = TRUE)
+
+healthbeliefsdata[healthbeliefsdata == -99] <- NA
+healthbeliefsdata[healthbeliefsdata == -50] <- NA
+
+##explanation: all -99 and -50 data will be treated as missing data
+
+```
+
+### Scoring Key to Create Composites
+
+In psychology, researchers aim to measure a construct using multiple items. For example, promotion focus (`PROMOFOCUS`) and prevention focus (`PREVFOCUS`) are two separate measures with 6 items and 5 items, respectively. To create a composite measure, each item is added and divided by the number of items, resulting in an average score for the measure.
+
+-   `PROMOFOCUS`: ( `FOCUS_1` + `FOCUS_2` + `FOCUS_3` + `FOCUS_4` + `FOCUS_5` + `FOCUS_6` ) / 6
+-   `PREVFOCUS`: ( `FOCUS_7` + `FOCUS_8` + `FOCUS_9` + `FOCUS_10` + `FOCUS_11` ) / 5
+
+No single item is perfectly predictive of a construct. In rare cases, a single item can approximate a construct, such as the single item self-esteem scale (Robbins et al., 2001) for self esteem and the single item life satisfaction measure. In most cases, a single item is highly problematic. For this reason (and to create a continuous -- not ordinal), multiple items are averaged to create a **composite score**.
+
+```{r}
+#| label: create-keys
+
+library(psych)
+# Create keys for scoring
+focus_keys <- list(
+  PROMOFOCUS = c("FOCUS_1", "FOCUS_2", "FOCUS_3", "FOCUS_4", "FOCUS_5", "FOCUS_6"),
+  PREVFOCUS = c("FOCUS_7", "FOCUS_8", "FOCUS_9", "FOCUS_10", "FOCUS_11") 
+)
+
+#explanation: this creates a list called focus_keys which tells R which survey questions belong to which composite score (promotion or prevention)
+```
+
+::: callout-note
+## What is focus_keys?
+
+-   Items 1-6 measure promotion focus (`PROMOFOCUS)`
+-   Items 7-11 measure prevention focus (`PREVFOCUS)`
+:::
+
+### Scoring Key with Reverse Items
+
+#### Affirmative Items
+
+Below are two examples of FOCUS items:
+
+-   Promotion Item (`FOCUS_3`): "How often have you accomplished things that got you "psyched" to work even harder?"
+
+-   Prevention Item (`FOCUS_9`): "How often did you obey rules and regulations that were established by your parents?"
+
+These items were measured on a 5-point scale:
+
+-   Never or Seldom (1)
+-   Rarely (2)
+-   Sometimes (3)
+-   Often (4)
+-   Very often (5)
+
+#### Negative Items (aka Reverse-Coded Items)
+
+-   Promotion Item (`FOCUS_6`): "I have found very few hobbies or activities in my life that capture my interest or motivate me to put effort into them."
+-   Prevention Item (`FOCUS_8`): "Did you get on your parents’ nerves often when you were growing up?"
+
+Most often, a construct is measured with **affirmative items** where the most agreement/occurrence (very often) is coded as a 5 on a 1-5 scale. Sometimes, a construct also includes negative items where the strongest agreement (very often) to a **negative item** is coded as 1 on a 1-5 scale. In essence, for reverse-scored items, the coded values are flipped.
+
+Notice how the phrase "**very few"** in the item -- "I have found **very few** hobbies or activities in my life that capture my interest or motivate me to put effort into them." -- captures the *absence* of promotion focus.
+
+On the original scale, "Very often" = 5. However, because this is a **negatively worded item**, we reverse the scoring:
+
+-   Original 5 → Reversed to 1
+
+-   Original 4 → Reversed to 2
+
+-   Original 3 → Stays 3
+
+-   Original 2 → Reversed to 4
+
+-   Original 1 → Reversed to 5
+
+Therefore, if someone reports "Very often" (5) for `FOCUS_6`, after reverse coding it becomes 1, correctly reflecting LOW promotion focus.
+
+::: callout-important
+## Understanding the `-` symbol
+
+The minus sign (`-`) before an item name tells `scoreItems()` to reverse code that item.
+
+Example: - `"FOCUS_6"` = use original scores - `"-FOCUS_6"` = reverse the scores (1→5, 2→4, 3→3, 4→2, 5→1)
+:::
+
+```{r}
+#| label: reversecoding
+# reverse coding items based on scoring key from here: https://sjdm.org/dmidi/Regulatory_Focus_Questionnaire.html . Our survey did NOT put the items in the same order which is why it is different than the downloadable word doc.
+focus_keys_with_reverse <- list(
+  PROMOFOCUS = c("-FOCUS_1", "FOCUS_2", "FOCUS_3", "-FOCUS_4", "FOCUS_5", "-FOCUS_6"),
+  PREVFOCUS = c("-FOCUS_7", "-FOCUS_8", "FOCUS_9", "-FOCUS_10", "-FOCUS_11") # this part includes reverse-coded items
+)
+```
+
+```{r}
+#| label: create-composite-withreversed
+
+library(psych)
+# Using scoreItems() - recommended
+focus_scores <- scoreItems(focus_keys_with_reverse, healthbeliefsdata) 
+
+# Extract the scores
+composite_scores <- focus_scores$scores
+
+# Add to your dataframe
+healthbeliefsdata$PROMOFOCUS <- composite_scores[, "PROMOFOCUS"]
+healthbeliefsdata$PREVFOCUS <- composite_scores[, "PREVFOCUS"]
+```
+
+## Reliability Analysis
+
+A reliability analysis of the **composite measure(s)** determines if the items accurately fact reflect your theoretical/conceptual construct. The indicator ranges from 0 to 1 with 1 reflecting higher correlations among the items.
+
+```{r}
+#| label: reliability analysis
+# View reliability statistics
+focus_scores
+```
+
+### Interpreting Cronbach's Alpha
+
+| Alpha Value   | Interpretation                                    |
+|---------------|---------------------------------------------------|
+| α \< 0.60     | Unacceptable - items don't measure the same thing |
+| α = 0.60-0.69 | Questionable - marginal reliability               |
+| α = 0.70-0.79 | Acceptable - adequate reliability                 |
+| α = 0.80-0.89 | Good - strong reliability                         |
+| α ≥ 0.90      | Excellent - very high reliability                 |
+
+**Our results:**
+
+-   Promotion Focus (α = .68): **Questionable** - barely acceptable
+
+-   Prevention Focus (α = .74): **Acceptable** - adequate reliability
+
+::: callout-tip
+## What if alpha is too low?
+
+-   Check for reverse-coded items you missed
+-   Look for items that don't fit conceptually
+-   Consider removing problematic items
+-   Use at least 3-4 items per scale
+:::
+
+::: callout-important
+## Requirement
+
+In the measures section of your `RDreport.qmd` and final report, please include the results of the reliability analysis (aka cronbach's alpha).
 :::
 
 ::: callout-warning
-This page is under construction. It will include important information soon.
+This page is under construction. It will be updated in the future!
 :::

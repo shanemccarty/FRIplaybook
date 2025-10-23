@@ -10,7 +10,7 @@
 <meta name="author" content="Andrew Silhavy">
 <meta name="keywords" content="tidyr, data visualization, ggplot2, violin plots, raincloud plots, pre/post analysis, intervention analysis">
 
-<title>9&nbsp; Visualizing pre/post scores – The Quantitative Playbook for Public Health Research in R</title>
+<title>11&nbsp; Visualizing pre/post scores – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Visualizing Your Data</span></a>
+ <span class="menu-text">Transforming Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -260,14 +260,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./violin.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Writing Reproducibly</span></a>
+ <span class="menu-text">Visualizing Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -283,26 +283,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Writing Reproducibly</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,28 +340,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#oral-health-dataset" id="toc-oral-health-dataset" class="nav-link active" data-scroll-target="#oral-health-dataset"><span class="header-section-number">9.1</span> Oral Health Dataset</a></li>
-  <li><a href="#library" id="toc-library" class="nav-link" data-scroll-target="#library"><span class="header-section-number">9.2</span> Library</a></li>
-  <li><a href="#using-tidyr" id="toc-using-tidyr" class="nav-link" data-scroll-target="#using-tidyr"><span class="header-section-number">9.3</span> Using <code>tidyr</code></a></li>
-  <li><a href="#visualizing-with-violin-plots" id="toc-visualizing-with-violin-plots" class="nav-link" data-scroll-target="#visualizing-with-violin-plots"><span class="header-section-number">9.4</span> Visualizing with violin plots</a>
+  <li><a href="#oral-health-dataset" id="toc-oral-health-dataset" class="nav-link active" data-scroll-target="#oral-health-dataset"><span class="header-section-number">11.1</span> Oral Health Dataset</a></li>
+  <li><a href="#library" id="toc-library" class="nav-link" data-scroll-target="#library"><span class="header-section-number">11.2</span> Library</a></li>
+  <li><a href="#using-tidyr" id="toc-using-tidyr" class="nav-link" data-scroll-target="#using-tidyr"><span class="header-section-number">11.3</span> Using <code>tidyr</code></a></li>
+  <li><a href="#visualizing-with-violin-plots" id="toc-visualizing-with-violin-plots" class="nav-link" data-scroll-target="#visualizing-with-violin-plots"><span class="header-section-number">11.4</span> Visualizing with violin plots</a>
   <ul class="collapse">
-  <li><a href="#what-is-a-violin-plot" id="toc-what-is-a-violin-plot" class="nav-link" data-scroll-target="#what-is-a-violin-plot"><span class="header-section-number">9.4.1</span> What is a violin plot?</a></li>
-  <li><a href="#why-are-violin-plots-important" id="toc-why-are-violin-plots-important" class="nav-link" data-scroll-target="#why-are-violin-plots-important"><span class="header-section-number">9.4.2</span> Why are violin plots important?</a></li>
-  <li><a href="#how-can-violin-plots-help-in-your-projects" id="toc-how-can-violin-plots-help-in-your-projects" class="nav-link" data-scroll-target="#how-can-violin-plots-help-in-your-projects"><span class="header-section-number">9.4.3</span> How can violin plots help in your projects?</a></li>
+  <li><a href="#what-is-a-violin-plot" id="toc-what-is-a-violin-plot" class="nav-link" data-scroll-target="#what-is-a-violin-plot"><span class="header-section-number">11.4.1</span> What is a violin plot?</a></li>
+  <li><a href="#why-are-violin-plots-important" id="toc-why-are-violin-plots-important" class="nav-link" data-scroll-target="#why-are-violin-plots-important"><span class="header-section-number">11.4.2</span> Why are violin plots important?</a></li>
+  <li><a href="#how-can-violin-plots-help-in-your-projects" id="toc-how-can-violin-plots-help-in-your-projects" class="nav-link" data-scroll-target="#how-can-violin-plots-help-in-your-projects"><span class="header-section-number">11.4.3</span> How can violin plots help in your projects?</a></li>
   </ul></li>
-  <li><a href="#example-t-test" id="toc-example-t-test" class="nav-link" data-scroll-target="#example-t-test"><span class="header-section-number">9.5</span> Example: T-test</a></li>
-  <li><a href="#example-violin-plot" id="toc-example-violin-plot" class="nav-link" data-scroll-target="#example-violin-plot"><span class="header-section-number">9.6</span> Example: Violin Plot</a></li>
-  <li><a href="#raincloud-plots" id="toc-raincloud-plots" class="nav-link" data-scroll-target="#raincloud-plots"><span class="header-section-number">9.7</span> Raincloud plots</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">9.8</span> Summary</a></li>
+  <li><a href="#example-t-test" id="toc-example-t-test" class="nav-link" data-scroll-target="#example-t-test"><span class="header-section-number">11.5</span> Example: T-test</a></li>
+  <li><a href="#example-violin-plot" id="toc-example-violin-plot" class="nav-link" data-scroll-target="#example-violin-plot"><span class="header-section-number">11.6</span> Example: Violin Plot</a></li>
+  <li><a href="#raincloud-plots" id="toc-raincloud-plots" class="nav-link" data-scroll-target="#raincloud-plots"><span class="header-section-number">11.7</span> Raincloud plots</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">11.8</span> Summary</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/violin.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualizing pre/post scores</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualizing pre/post scores</span></h1>
 <p class="subtitle lead">How to create violin and raincloud plots</p>
 </div>
 
@@ -398,12 +421,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<section id="oral-health-dataset" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="oral-health-dataset"><span class="header-section-number">9.1</span> Oral Health Dataset</h2>
+<section id="oral-health-dataset" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="oral-health-dataset"><span class="header-section-number">11.1</span> Oral Health Dataset</h2>
 <p>A team of FRI students in the Public Health stream designed a study on oral health and type 2 diabetes. The convenient sample of Binghamton students, faculty, and staff was collected in September and October of 2024.</p>
 </section>
-<section id="library" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="library"><span class="header-section-number">9.2</span> Library</h2>
+<section id="library" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="library"><span class="header-section-number">11.2</span> Library</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="do">## for SPSS data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
@@ -422,8 +445,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_with_na_all</span>(<span class="at">condition =</span> <span class="sc">~</span>.x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">99</span>, <span class="sc">-</span><span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="using-tidyr" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="using-tidyr"><span class="header-section-number">9.3</span> Using <code>tidyr</code></h2>
+<section id="using-tidyr" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="using-tidyr"><span class="header-section-number">11.3</span> Using <code>tidyr</code></h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -468,18 +491,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>More more information on <code>tidyr</code>, see the <a href="#tidyr.qmd">tidyr chapter</a>.</p>
 </section>
-<section id="visualizing-with-violin-plots" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="visualizing-with-violin-plots"><span class="header-section-number">9.4</span> Visualizing with violin plots</h2>
-<section id="what-is-a-violin-plot" class="level3" data-auto-animate="true" data-number="9.4.1">
-<h3 data-auto-animate="true" data-number="9.4.1" class="anchored" data-anchor-id="what-is-a-violin-plot"><span class="header-section-number">9.4.1</span> What is a violin plot?</h3>
+<section id="visualizing-with-violin-plots" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="visualizing-with-violin-plots"><span class="header-section-number">11.4</span> Visualizing with violin plots</h2>
+<section id="what-is-a-violin-plot" class="level3" data-auto-animate="true" data-number="11.4.1">
+<h3 data-auto-animate="true" data-number="11.4.1" class="anchored" data-anchor-id="what-is-a-violin-plot"><span class="header-section-number">11.4.1</span> What is a violin plot?</h3>
 <ul>
 <li><p>Combines components of a box plot and kernel density plot (similar to a histogram but shows the distribution as a continuous curve instead of with bars).</p></li>
 <li><p>Shows the distribution of variables for each group</p>
 <p><img src="images/violin-violinstock.png" style="width:50.0%;height:50.0%"></p></li>
 </ul>
 </section>
-<section id="why-are-violin-plots-important" class="level3" data-auto-animate="true" data-number="9.4.2">
-<h3 data-auto-animate="true" data-number="9.4.2" class="anchored" data-anchor-id="why-are-violin-plots-important"><span class="header-section-number">9.4.2</span> Why are violin plots important?</h3>
+<section id="why-are-violin-plots-important" class="level3" data-auto-animate="true" data-number="11.4.2">
+<h3 data-auto-animate="true" data-number="11.4.2" class="anchored" data-anchor-id="why-are-violin-plots-important"><span class="header-section-number">11.4.2</span> Why are violin plots important?</h3>
 <ul>
 <li>Helpful in making comparisons amongst distributions of different groups.</li>
 <li>Good way to visualize data.</li>
@@ -488,8 +511,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><img src="images/violin-histviolin.png" style="width:50.0%;height:50.0%"></p>
 </section>
-<section id="how-can-violin-plots-help-in-your-projects" class="level3" data-auto-animate="true" data-number="9.4.3">
-<h3 data-auto-animate="true" data-number="9.4.3" class="anchored" data-anchor-id="how-can-violin-plots-help-in-your-projects"><span class="header-section-number">9.4.3</span> How can violin plots help in your projects?</h3>
+<section id="how-can-violin-plots-help-in-your-projects" class="level3" data-auto-animate="true" data-number="11.4.3">
+<h3 data-auto-animate="true" data-number="11.4.3" class="anchored" data-anchor-id="how-can-violin-plots-help-in-your-projects"><span class="header-section-number">11.4.3</span> How can violin plots help in your projects?</h3>
 <ul>
 <li>Examples
 <ul>
@@ -500,14 +523,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="example-t-test" class="level2" data-auto-animate="true" data-number="9.5">
-<h2 data-auto-animate="true" data-number="9.5" class="anchored" data-anchor-id="example-t-test"><span class="header-section-number">9.5</span> Example: T-test</h2>
+<section id="example-t-test" class="level2" data-auto-animate="true" data-number="11.5">
+<h2 data-auto-animate="true" data-number="11.5" class="anchored" data-anchor-id="example-t-test"><span class="header-section-number">11.5</span> Example: T-test</h2>
 <p>A paired t-test is a statisical technique to compare the group means on two different variables when participants responded to both variables. The objective of the study from this dataset is to examine whether self-efficacy <strong>increased</strong> after a brief online educational intervention video.</p>
 <p>The plot below visualizes the six variables (3 pretest, 3 postest) ussed in the 3 paired t-tests.</p>
 <p><img src="images/violin-boxplot.png" style="width:80.0%;height:80.0%"> :::</p>
 </section>
-<section id="example-violin-plot" class="level2" data-auto-animate="true" data-number="9.6">
-<h2 data-auto-animate="true" data-number="9.6" class="anchored" data-anchor-id="example-violin-plot"><span class="header-section-number">9.6</span> Example: Violin Plot</h2>
+<section id="example-violin-plot" class="level2" data-auto-animate="true" data-number="11.6">
+<h2 data-auto-animate="true" data-number="11.6" class="anchored" data-anchor-id="example-violin-plot"><span class="header-section-number">11.6</span> Example: Violin Plot</h2>
 <p>Now you can see the distribution of the basic self-efficacy variable, in addition to the box plot.</p>
 <div class="cell" data-code-font-size="30px">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(longdata_long, </span>
@@ -541,8 +564,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="raincloud-plots" class="level2" data-auto-animate="true" data-number="9.7">
-<h2 data-auto-animate="true" data-number="9.7" class="anchored" data-anchor-id="raincloud-plots"><span class="header-section-number">9.7</span> Raincloud plots</h2>
+<section id="raincloud-plots" class="level2" data-auto-animate="true" data-number="11.7">
+<h2 data-auto-animate="true" data-number="11.7" class="anchored" data-anchor-id="raincloud-plots"><span class="header-section-number">11.7</span> Raincloud plots</h2>
 <ul>
 <li>What if you wanted to see the distribution of the variables and the raw data side by side?</li>
 <li>A raincloud plot allows you to add different types of plot types onto one figure.</li>
@@ -596,8 +619,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="summary" class="level2" data-auto-animate="true" data-number="9.8">
-<h2 data-auto-animate="true" data-number="9.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">9.8</span> Summary</h2>
+<section id="summary" class="level2" data-auto-animate="true" data-number="11.8">
+<h2 data-auto-animate="true" data-number="11.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">11.8</span> Summary</h2>
 <ul>
 <li>Violin and raincloud plots are an effective strategy to visualize your information.</li>
 <li>It is important to visualize your data in a way that will make it easy for the audience to understand your findings.</li>
@@ -1020,12 +1043,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./ggplot2.html" class="pagination-link" aria-label="Visualize in ggplot2">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./readme.html" class="pagination-link" aria-label="Read Me">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read Me</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Read Me</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

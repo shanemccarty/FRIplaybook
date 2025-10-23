@@ -7,7 +7,7 @@ book:
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
   date: "10/22/2025"
-  version: "Version 0.923 (draft)"
+  version: "Version 0.926 (draft)"
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -37,6 +37,12 @@ book:
       chapters:
         - text: "Format Data in tidyr"
           file: tidyr.qmd
+    - part: "Transforming Your Data"
+      chapters:
+        - text: "Mutate Variables"
+          file: dplyr.qmd
+        - text: "Creating Composites"
+          file: composite.qmd
     - part: "Visualizing Your Data"
       chapters:
         - text: "Visualize in ggplot2"

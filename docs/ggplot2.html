@@ -10,7 +10,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="ggplot2, data visualization, grammar of graphics, R, exploratory data analysis">
 
-<title>8&nbsp; Visualize data in ggplot2 – The Quantitative Playbook for Public Health Research in R</title>
+<title>10&nbsp; Visualize data in ggplot2 – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./violin.html" rel="next">
-<link href="./tidyr.html" rel="prev">
+<link href="./composite.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Visualizing Your Data</span></a>
+ <span class="menu-text">Transforming Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -261,14 +261,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Writing Reproducibly</span></a>
+ <span class="menu-text">Visualizing Your Data</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -284,26 +284,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Writing Reproducibly</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,20 +341,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link active" data-scroll-target="#example-data-insurance"><span class="header-section-number">8.1</span> Example Data: <code>insurance</code></a>
+  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link active" data-scroll-target="#example-data-insurance"><span class="header-section-number">10.1</span> Example Data: <code>insurance</code></a>
   <ul class="collapse">
-  <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">8.1.1</span> Load and Import</a></li>
-  <li><a href="#summarize-data" id="toc-summarize-data" class="nav-link" data-scroll-target="#summarize-data"><span class="header-section-number">8.1.2</span> Summarize data</a></li>
+  <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">10.1.1</span> Load and Import</a></li>
+  <li><a href="#summarize-data" id="toc-summarize-data" class="nav-link" data-scroll-target="#summarize-data"><span class="header-section-number">10.1.2</span> Summarize data</a></li>
   </ul></li>
-  <li><a href="#the-seven-components-of-ggplot2" id="toc-the-seven-components-of-ggplot2" class="nav-link" data-scroll-target="#the-seven-components-of-ggplot2"><span class="header-section-number">8.2</span> The Seven Components of ggplot2</a></li>
-  <li><a href="#color-coded-learning-guide" id="toc-color-coded-learning-guide" class="nav-link" data-scroll-target="#color-coded-learning-guide"><span class="header-section-number">8.3</span> Color-Coded Learning Guide</a>
+  <li><a href="#the-seven-components-of-ggplot2" id="toc-the-seven-components-of-ggplot2" class="nav-link" data-scroll-target="#the-seven-components-of-ggplot2"><span class="header-section-number">10.2</span> The Seven Components of ggplot2</a></li>
+  <li><a href="#color-coded-learning-guide" id="toc-color-coded-learning-guide" class="nav-link" data-scroll-target="#color-coded-learning-guide"><span class="header-section-number">10.3</span> Color-Coded Learning Guide</a>
   <ul class="collapse">
-  <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">8.3.1</span> Understanding Data Types</a></li>
+  <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">10.3.1</span> Understanding Data Types</a></li>
   </ul></li>
-  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree"><span class="header-section-number">8.4</span> Decision Tree</a>
+  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree"><span class="header-section-number">10.4</span> Decision Tree</a>
   <ul class="collapse">
-  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">8.4.1</span> Relationship Research</a></li>
-  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">8.4.2</span> Comparative Research</a></li>
+  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">10.4.1</span> Relationship Research</a></li>
+  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">10.4.2</span> Comparative Research</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/ggplot2.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -339,9 +362,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ggplot2.html">Visualizing Your Data</a></li><li class="breadcrumb-item"><a href="./ggplot2.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Visualize data in ggplot2</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize data in ggplot2</span></h1>
 <p class="subtitle lead">How to produce publication-ready plots</p>
 </div>
 
@@ -419,11 +442,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Your <em>R&amp;D Report</em> and <em>R&amp;D Team Manuscript</em> should include <a href="#save">ggsave( )</a> information so you can export your plots quickly and add them to the poster.</p>
 </div>
 </div>
-<section id="example-data-insurance" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">8.1</span> Example Data: <code>insurance</code></h2>
+<section id="example-data-insurance" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">10.1</span> Example Data: <code>insurance</code></h2>
 <p>The example dataset is from the “Medical Cost Personal Costs” database on Kaggle. For this chapter, we refer to it as <code>insurance</code>.</p>
-<section id="load-and-import" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">8.1.1</span> Load and Import</h3>
+<section id="load-and-import" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">10.1.1</span> Load and Import</h3>
 <p>To install and load ggplot2:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -436,8 +459,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="summarize-data" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="summarize-data"><span class="header-section-number">8.1.2</span> Summarize data</h3>
+<section id="summarize-data" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="summarize-data"><span class="header-section-number">10.1.2</span> Summarize data</h3>
 <p>Let’s learn more about our data with <code>summary()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -476,8 +499,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="the-seven-components-of-ggplot2" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="the-seven-components-of-ggplot2"><span class="header-section-number">8.2</span> The Seven Components of ggplot2</h2>
+<section id="the-seven-components-of-ggplot2" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-seven-components-of-ggplot2"><span class="header-section-number">10.2</span> The Seven Components of ggplot2</h2>
 <p>The <code>ggplot2</code> uses seven components to produce publication-ready plots:</p>
 <ol type="1">
 <li><p><strong>Data</strong>: The dataset you’re visualizing</p></li>
@@ -495,8 +518,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="color-coded-learning-guide" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="color-coded-learning-guide"><span class="header-section-number">8.3</span> Color-Coded Learning Guide</h2>
+<section id="color-coded-learning-guide" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="color-coded-learning-guide"><span class="header-section-number">10.3</span> Color-Coded Learning Guide</h2>
 <p>Throughout this chapter, headings are color-coded to match the ggplot2 layers:</p>
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 20px 0;">
 <div style="padding: 12px 15px; background-color: #E69F00; color: white; border-radius: 8px;">
@@ -529,8 +552,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption><em>In ggplot2, add layers as you would in making lasagna</em></figcaption>
 </figure>
 </div>
-<section id="understanding-data-types" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">8.3.1</span> Understanding Data Types</h3>
+<section id="understanding-data-types" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">10.3.1</span> Understanding Data Types</h3>
 <p>Before creating visualizations, it’s important to understand your data types:</p>
 <p><strong>Qualitative Data:</strong></p>
 <ul>
@@ -544,8 +567,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="decision-tree" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">8.4</span> Decision Tree</h2>
+<section id="decision-tree" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="decision-tree"><span class="header-section-number">10.4</span> Decision Tree</h2>
 <p>Your research question can be classified as <strong>comparative</strong> research or <strong>relationship</strong> research (<a href="https://pubmed.ncbi.nlm.nih.gov/35470596/">Barroga &amp; Matanguihan, 2022</a>).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -553,8 +576,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption><em>The decision tree helps researchers to identify the specific statistical technique based on their comparative or relationship research question</em></figcaption>
 </figure>
 </div>
-<section id="relationship-research" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">8.4.1</span> Relationship Research</h3>
+<section id="relationship-research" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">10.4.1</span> Relationship Research</h3>
 <p>For relationship research, the variables are 📏 <strong>Continuous</strong> because they range along a continuum, such as a scale for beliefs from 1 (strongly disagree) to 6 (strongly agree). To examine the relationship between two continous variables, use the steps below to build a custom scatterplot.</p>
 <section id="step-by-step-to-build-a-scatterplot" class="level4">
 <h4 class="anchored" data-anchor-id="step-by-step-to-build-a-scatterplot">STEP-BY-STEP TO BUILD A SCATTERPLOT</h4>
@@ -899,8 +922,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="comparative-research" class="level3" data-number="8.4.2">
-<h3 data-number="8.4.2" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">8.4.2</span> Comparative Research</h3>
+<section id="comparative-research" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">10.4.2</span> Comparative Research</h3>
 <p>Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:</p>
 <ul>
 <li><p>🏷️ <strong>Nominal Data</strong> (Gender Identity)</p>
@@ -1540,13 +1563,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tidyr.html" class="pagination-link" aria-label="Format Data in tidyr">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span>
+      <a href="./composite.html" class="pagination-link" aria-label="Creating Composites">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composites</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./violin.html" class="pagination-link" aria-label="Visualize Pre/Post Data">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
