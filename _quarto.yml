@@ -41,6 +41,8 @@ book:
       chapters:
         - text: "Mutate Variables"
           file: dplyr.qmd
+        - text: "Combine Datasets"
+          file: merge.qmd
         - text: "Creating Composites"
           file: composite.qmd
     - part: "Visualizing Your Data"

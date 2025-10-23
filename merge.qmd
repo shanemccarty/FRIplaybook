@@ -1,0 +1,23 @@
+---
+title: "Combine Datasets"
+format: html
+---
+
+```{{r}}
+library(readxl)
+library(dplyr)
+# source: https://dplyr.tidyverse.org/reference/mutate-joins.html
+
+# Read your Excel files
+primary_data <- read_excel("primary_file.xlsx")
+secondary_data <- read_excel("secondary_file.xlsx")
+
+# Select only the variables you need from secondary dataset, then join
+combined <- primary_data %>%
+  left_join(
+    secondary_data %>% select(PASSWORD, SLEEPSCORE1, SLEEPSCORE2, SLEEPSCORE3),
+    by = "PASSWORD"
+  )
+  
+```
+

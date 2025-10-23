@@ -9,7 +9,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="composite scores, Cronbach’s alpha, reliability, survey scales">
 
-<title>9&nbsp; Creating Composite Scores from Multi-Item Measures – The Quantitative Playbook for Public Health Research in R</title>
+<title>10&nbsp; Creating Composite Scores from Multi-Item Measures – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./ggplot2.html" rel="next">
-<link href="./dplyr.html" rel="prev">
+<link href="./merge.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html">Transforming Your Data</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html">Transforming Your Data</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -265,8 +265,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./merge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,13 +289,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
       </ul>
@@ -306,25 +312,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -339,16 +345,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="header-section-number">9.1</span> Dataset</a>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="header-section-number">10.1</span> Dataset</a>
   <ul class="collapse">
-  <li><a href="#load-library" id="toc-load-library" class="nav-link" data-scroll-target="#load-library"><span class="header-section-number">9.1.1</span> Load Library</a></li>
-  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import"><span class="header-section-number">9.1.2</span> Import</a></li>
-  <li><a href="#scoring-key-to-create-composites" id="toc-scoring-key-to-create-composites" class="nav-link" data-scroll-target="#scoring-key-to-create-composites"><span class="header-section-number">9.1.3</span> Scoring Key to Create Composites</a></li>
-  <li><a href="#scoring-key-with-reverse-items" id="toc-scoring-key-with-reverse-items" class="nav-link" data-scroll-target="#scoring-key-with-reverse-items"><span class="header-section-number">9.1.4</span> Scoring Key with Reverse Items</a></li>
+  <li><a href="#load-library" id="toc-load-library" class="nav-link" data-scroll-target="#load-library"><span class="header-section-number">10.1.1</span> Load Library</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import"><span class="header-section-number">10.1.2</span> Import</a></li>
+  <li><a href="#scoring-key-to-create-composites" id="toc-scoring-key-to-create-composites" class="nav-link" data-scroll-target="#scoring-key-to-create-composites"><span class="header-section-number">10.1.3</span> Scoring Key to Create Composites</a></li>
+  <li><a href="#scoring-key-with-reverse-items" id="toc-scoring-key-with-reverse-items" class="nav-link" data-scroll-target="#scoring-key-with-reverse-items"><span class="header-section-number">10.1.4</span> Scoring Key with Reverse Items</a></li>
   </ul></li>
-  <li><a href="#reliability-analysis" id="toc-reliability-analysis" class="nav-link" data-scroll-target="#reliability-analysis"><span class="header-section-number">9.2</span> Reliability Analysis</a>
+  <li><a href="#reliability-analysis" id="toc-reliability-analysis" class="nav-link" data-scroll-target="#reliability-analysis"><span class="header-section-number">10.2</span> Reliability Analysis</a>
   <ul class="collapse">
-  <li><a href="#interpreting-cronbachs-alpha" id="toc-interpreting-cronbachs-alpha" class="nav-link" data-scroll-target="#interpreting-cronbachs-alpha"><span class="header-section-number">9.2.1</span> Interpreting Cronbach’s Alpha</a></li>
+  <li><a href="#interpreting-cronbachs-alpha" id="toc-interpreting-cronbachs-alpha" class="nav-link" data-scroll-target="#interpreting-cronbachs-alpha"><span class="header-section-number">10.2.1</span> Interpreting Cronbach’s Alpha</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/composite.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -356,9 +362,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html">Transforming Your Data</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html">Transforming Your Data</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Creating Composite Scores from Multi-Item Measures</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composite Scores from Multi-Item Measures</span></h1>
 <p class="subtitle lead">How to create a composite and check reliability of the measure</p>
 </div>
 
@@ -412,15 +418,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<section id="dataset" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">9.1</span> Dataset</h2>
+<section id="dataset" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">10.1</span> Dataset</h2>
 <p>The health beliefs dataset includes a range of variables, including promotion focus and prevention focus.</p>
 <ul>
 <li><p>Promotion focus: a general regulatory motivational preference toward growth and change, attention to positive things, and success seeking</p></li>
 <li><p>Prevention focus: a general regulatory motivational preference toward maintaining the status quo, avoiding negative things, and aversion to threats</p></li>
 </ul>
-<section id="load-library" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="load-library"><span class="header-section-number">9.1.1</span> Load Library</h3>
+<section id="load-library" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="load-library"><span class="header-section-number">10.1.1</span> Load Library</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
@@ -429,8 +435,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="import" class="level3" data-number="9.1.2">
-<h3 data-number="9.1.2" class="anchored" data-anchor-id="import"><span class="header-section-number">9.1.2</span> Import</h3>
+<section id="import" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="import"><span class="header-section-number">10.1.2</span> Import</h3>
 <div class="cell" data-autorun="true" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>healthbeliefsdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>,</span>
@@ -442,8 +448,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">##explanation: all -99 and -50 data will be treated as missing data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="scoring-key-to-create-composites" class="level3" data-number="9.1.3">
-<h3 data-number="9.1.3" class="anchored" data-anchor-id="scoring-key-to-create-composites"><span class="header-section-number">9.1.3</span> Scoring Key to Create Composites</h3>
+<section id="scoring-key-to-create-composites" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="scoring-key-to-create-composites"><span class="header-section-number">10.1.3</span> Scoring Key to Create Composites</h3>
 <p>In psychology, researchers aim to measure a construct using multiple items. For example, promotion focus (<code>PROMOFOCUS</code>) and prevention focus (<code>PREVFOCUS</code>) are two separate measures with 6 items and 5 items, respectively. To create a composite measure, each item is added and divided by the number of items, resulting in an average score for the measure.</p>
 <ul>
 <li><code>PROMOFOCUS</code>: ( <code>FOCUS_1</code> + <code>FOCUS_2</code> + <code>FOCUS_3</code> + <code>FOCUS_4</code> + <code>FOCUS_5</code> + <code>FOCUS_6</code> ) / 6</li>
@@ -477,8 +483,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="scoring-key-with-reverse-items" class="level3" data-number="9.1.4">
-<h3 data-number="9.1.4" class="anchored" data-anchor-id="scoring-key-with-reverse-items"><span class="header-section-number">9.1.4</span> Scoring Key with Reverse Items</h3>
+<section id="scoring-key-with-reverse-items" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="scoring-key-with-reverse-items"><span class="header-section-number">10.1.4</span> Scoring Key with Reverse Items</h3>
 <section id="affirmative-items" class="level4">
 <h4 class="anchored" data-anchor-id="affirmative-items">Affirmative Items</h4>
 <p>Below are two examples of FOCUS items:</p>
@@ -548,8 +554,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="reliability-analysis" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="reliability-analysis"><span class="header-section-number">9.2</span> Reliability Analysis</h2>
+<section id="reliability-analysis" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="reliability-analysis"><span class="header-section-number">10.2</span> Reliability Analysis</h2>
 <p>A reliability analysis of the <strong>composite measure(s)</strong> determines if the items accurately fact reflect your theoretical/conceptual construct. The indicator ranges from 0 to 1 with 1 reflecting higher correlations among the items.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View reliability statistics</span></span>
@@ -602,8 +608,8 @@ PREVFOCUS  0.14  0.69
  print with the short option = FALSE</code></pre>
 </div>
 </div>
-<section id="interpreting-cronbachs-alpha" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="interpreting-cronbachs-alpha"><span class="header-section-number">9.2.1</span> Interpreting Cronbach’s Alpha</h3>
+<section id="interpreting-cronbachs-alpha" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="interpreting-cronbachs-alpha"><span class="header-section-number">10.2.1</span> Interpreting Cronbach’s Alpha</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1091,13 +1097,13 @@ Warning
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./dplyr.html" class="pagination-link" aria-label="Mutate Variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span>
+      <a href="./merge.html" class="pagination-link" aria-label="Combine Datasets">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ggplot2.html" class="pagination-link" aria-label="Visualize in ggplot2">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
