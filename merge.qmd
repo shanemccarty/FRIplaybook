@@ -1,7 +1,35 @@
 ---
-title: "Combine Datasets"
-format: html
+title: "Combine datasets in dplyr"
+subtitle: "How to use mutating joins to merge data"
+author:
+  - Shane McCarty, PhD
+abstract: |
+  This chapter teaches researchers how to combine datasets. 
+keywords:
+  - dplyr
+  - merge data
+date: 10.23.2025
+date-format: "MM.DD.YYYY"
+format:
+  html: 
+    css: custom.css
+editor: visual
+execute:
+  warning: false
+  message: false
 ---
+
+::: callout-tip
+## 📖 `dplyr` resources
+
+-   [Mutate Joins](https://dplyr.tidyverse.org/reference/mutate-joins.html)
+-   [Documentation](https://dplyr.tidyverse.org/index.html)
+-   [R4DS Book Chapter 3](https://r4ds.hadley.nz/data-transform.html)
+-   [R4DS Ch. 12 - 19](https://r4ds.hadley.nz/transform.html)
+-   [Datacamp](https://www.datacamp.com/courses/data-manipulation-with-dplyr)
+-   [Interactive Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
+-   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+:::
 
 ```{{r}}
 library(readxl)

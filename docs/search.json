@@ -386,9 +386,9 @@
   {
     "objectID": "merge.html",
     "href": "merge.html",
-    "title": "9  Combine Datasets",
+    "title": "9  Combine datasets in dplyr",
     "section": "",
-    "text": "```{r}\nlibrary(readxl)\nlibrary(dplyr)\n# source: https://dplyr.tidyverse.org/reference/mutate-joins.html\n\n# Read your Excel files\nprimary_data &lt;- read_excel(\"primary_file.xlsx\")\nsecondary_data &lt;- read_excel(\"secondary_file.xlsx\")\n\n# Select only the variables you need from secondary dataset, then join\ncombined &lt;- primary_data %&gt;%\n  left_join(\n    secondary_data %&gt;% select(PASSWORD, SLEEPSCORE1, SLEEPSCORE2, SLEEPSCORE3),\n    by = \"PASSWORD\"\n  )\n  \n```",
+    "text": "Tip📖 dplyr resources\n\n\n\n\nMutate Joins\nDocumentation\nR4DS Book Chapter 3\nR4DS Ch. 12 - 19\nDatacamp\nInteractive Cheatsheet\nPDF Cheatsheet\n\n\n\n```{r}\nlibrary(readxl)\nlibrary(dplyr)\n# source: https://dplyr.tidyverse.org/reference/mutate-joins.html\n\n# Read your Excel files\nprimary_data &lt;- read_excel(\"primary_file.xlsx\")\nsecondary_data &lt;- read_excel(\"secondary_file.xlsx\")\n\n# Select only the variables you need from secondary dataset, then join\ncombined &lt;- primary_data %&gt;%\n  left_join(\n    secondary_data %&gt;% select(PASSWORD, SLEEPSCORE1, SLEEPSCORE2, SLEEPSCORE3),\n    by = \"PASSWORD\"\n  )\n  \n```",
     "crumbs": [
       "Transforming Your Data",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Combine Datasets</span>"

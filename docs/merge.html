@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shane McCarty, PhD">
+<meta name="keywords" content="dplyr, merge data">
 
-<title>9&nbsp; Combine Datasets – The Quantitative Playbook for Public Health Research in R</title>
+<title>9&nbsp; Combine datasets in dplyr – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,6 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -346,23 +349,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./dplyr.html">Transforming Your Data</a></li><li class="breadcrumb-item"><a href="./merge.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine datasets in dplyr</span></h1>
+<p class="subtitle lead">How to use mutating joins to merge data</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shane McCarty, PhD </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10.23.2025</p>
+    </div>
+  </div>
   
     
   </div>
   
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This chapter teaches researchers how to combine datasets.</p>
+  </div>
+</div>
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>dplyr, merge data</p>
+  </div>
+</div>
 
 </header>
 
 
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>📖 <code>dplyr</code> resources
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">Mutate Joins</a></li>
+<li><a href="https://dplyr.tidyverse.org/index.html">Documentation</a></li>
+<li><a href="https://r4ds.hadley.nz/data-transform.html">R4DS Book Chapter 3</a></li>
+<li><a href="https://r4ds.hadley.nz/transform.html">R4DS Ch. 12 - 19</a></li>
+<li><a href="https://www.datacamp.com/courses/data-manipulation-with-dplyr">Datacamp</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/data-transformation.html">Interactive Cheatsheet</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">PDF Cheatsheet</a></li>
+</ul>
+</div>
+</div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>

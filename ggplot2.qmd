@@ -578,7 +578,6 @@ You must use file for both your final report and team manuscript.
 Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* must include `ggsave( )` for plots.
 :::
 
-
 ##### Violin Plots with `geom_violin()`
 
 Violin plots provide a different way to visualize information to capture the distribution of data for each category.
