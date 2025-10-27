@@ -42,14 +42,11 @@ execute:
 ::: {.callout-important appearance="simple"}
 ## Required
 
-Your *R&D Report* and *R&D Team Manuscript* will be a `.qmd` file with code chunks containing: label, fig-cap, fig-alt, source information, and explanation. 
-
+Your *R&D Report* and *R&D Team Manuscript* will be a `.qmd` file with code chunks containing: label, fig-cap, fig-alt, source information, and explanation.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## updated 10/18/2025
-
-
 :::
 
 In your Posit Cloud window browser, you should see the *source* and *visual* editor options in the top left corner of your screen. You can toggle back and forth between the two options.
@@ -102,7 +99,6 @@ For your draft and final team MMR manuscript, you should:
 ## YAML
 
 YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
-
 
 ```{YAML}
 ---
@@ -258,7 +254,7 @@ At the end of every code chunk, include the source of the code chunk so that oth
 ```
 
 ::: callout-tip
-## "#|" vs. "#"
+## "#\|" vs. "\#"
 
 The format is different for the code chunk options that use `#|` (e.g., `#| label:`) vs. sourcing using `#` to comment (e.g., `#source:`). The #source will be at the bottom of your code chunk.
 :::
@@ -271,11 +267,9 @@ The format is different for the code chunk options that use `#|` (e.g., `#| labe
 You will explain the code chunk in your own words using `#explanation:` at the bottom of your code chunk.
 :::
 
-```{r}
+```{{r}}
 #| label: scatterplot-BMI-insurance
 #| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables
-#| echo: fenced
-#| eval: false
 
 ggplot(data = insurance, mapping = aes(x = bmi, y = charges)) +
   geom_point() +

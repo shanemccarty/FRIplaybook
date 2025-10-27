@@ -3,7 +3,6 @@ title: "Visualizing pre/post scores"
 subtitle: "How to create violin and raincloud plots"
 author:
   - Erica Sava
-  - Andrew Silhavy
 abstract: |
   This chapter introduces students to advanced data visualization techniques for 
   comparing distributions across groups and time points using violin plots and raincloud 

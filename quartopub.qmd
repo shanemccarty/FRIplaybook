@@ -1,6 +1,142 @@
 ---
-title: "Set up Quarto Pub Account"
-subtitle: "How to publish using Quarto Pub"
-format: html
+title: "Publish Your Report to Quarto Pub"
+author: "Zihan Hei"
+abstract: |
+  This guide guides researchers through the process of creating a Quarto Pub website using your Binghmamton University Google account. Follow each step carefully to ensure your report is published correctly.
+keywords:
+  - quarto pub
+  - personal website
+  - publish
+date: 10.27.2025
+date-format: "MM.DD.YYYY"
+format:
+  html: 
+    css: custom.css
+engine: knitr
+editor: visual
+execute:
+  warning: false
+  message: false
+bibliography: references.bib
+csl: apa.csl
 ---
 
+::: callout-tip
+## 📖 resources
+
+-   [Quarto Publish Guide](https://quarto.org/docs/publishing/quarto-pub.html)
+-   [Quarto Pub dashboard](https://quartopub.com/)
+:::
+
+## Before You Begin
+
+Make sure you have:
+
+-   A working Quarto project in Posit Cloud.
+
+-   An active Quarto account linked to your school Google email.
+
+    -   Sign in to [Quarto pub](https://quartopub.com/) with your school email account using google sign in.
+
+-   Your`_quarto.yml` and `_publish.yml` files are in your project folder on Posit Cloud
+
+    -   You can download these files from [306 Quant Track drive](https://drive.google.com/drive/folders/10AG6VkIKUBODfI4_p84Ozohu0dx3xLa3?usp=share_link)
+
+## Prepare the `_publish.yml` File
+
+In your `_publish.yml` file, add the following code (if not already present):
+
+```{markdown}
+- source: project
+  quarto-pub:
+    - id:                                  # leave the id blank
+      url:                                 # leave the url blank
+```
+
+⚠️ Do not manually add or paste any token here.
+
+Tokens are automatically handled by Quarto during the publishing process.
+
+------------------------------------------------------------------------
+
+## Publish from the "Terminal"
+
+Following the step by step process, and you can publish your report to your own Quarto website!!
+
+### Step 1: Under Terminal
+
+-   Click the tab for Terminal (between the Console and Background Jobs tabs) in Posit Cloud (you should see something like `/cloud/project`).
+
+-   Type the following command and press Enter:
+
+```{markdown}
+quarto publish quarto-pub
+```
+
+-   Next, When prompted with “Publish update to:”, click **Add a new destination...**
+
+(see the @fig-quartopub below):
+
+![Quarto publish command and destination selection](images/quartopub_1.png){#fig-quartopub}
+
+------------------------------------------------------------------------
+
+### Step 2: Authorize Your Account
+
+-   Under "Publish with account:" section choose "**Use another account...**" (see the @fig-chooseaccount below)
+
+-   Next, the system will ask to authorize your account in order to publish to Quarto Pub. In the Authorize (Y/n) section, type "**Y**" for Yes. (see the @fig-authorize below)
+
+-   In addition, you will get an url, click it and you will see your quarto account, click "ALLOW", this way you allow to publish into quarto. (see the @fig-linktoauthorization and @fig-authorizationpage below)
+
+![Choose "Use another account"](images/quartopub_2.png){#fig-chooseaccount}
+
+![Authorize publishing in terminal](images/quartopub_3.png){#fig-authorize}
+
+![Click authorization link](images/quartopub_4.png){#fig-linktoauthorization}
+
+![Allow publishing access](images/quartopub-auth.png){#fig-authorizationpage}
+
+------------------------------------------------------------------------
+
+### Step 3: Name Your Website
+
+-   When prompted for "Site name: ", scroll down to "**Use another name...**" (see the @fig-sitename below)
+
+-   Next, in "Publish with name" section, **enter a short name** for your report. (see the @fig-createname)
+
+    -   different examples:
+
+        -   e.g., zerosum
+
+        -   e.g., safety-report
+
+        -   e.g., avoider-report
+
+    -   Your short name will be in the URL link when you publish (e.g., <https://zihanhei.quarto.pub/avoider-report/>)
+
+![Select "Use another name"](images/quartopub_6.png){#fig-sitename}
+
+![Create a name for your report](images/quartopub_7.png){#fig-createname}
+
+------------------------------------------------------------------------
+
+### Step 4: Confirm and View Your Website
+
+Once publishing completes successfully, you’ll see a message in the terminal with a link to your new Quarto Pub website. Click the link to open your published report!
+
+------------------------------------------------------------------------
+
+## Troubleshooting and Tips
+
+-   If you receive an authorization error, sign out of all Google accounts, then log in again with your school email.
+
+-   To update your site later, simply run:
+
+    ```{markdown}
+    quarto publish quarto-pub 
+    ```
+
+-   Your `_publish.yml` should **never contain tokens or IDs** you did not generate yourself.
+
+-   To delete a published site, go to your [Quarto Pub dashboard](https://quartopub.com/) and remove it manually.

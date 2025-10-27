@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/intro.html</loc>
-    <lastmod>2025-10-22T15:36:58.724Z</lastmod>
+    <lastmod>2025-10-24T01:01:30.287Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/example.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/codechunks.html</loc>
-    <lastmod>2025-10-23T15:51:07.550Z</lastmod>
+    <lastmod>2025-10-27T15:12:52.883Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/export.html</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/dplyr.html</loc>
-    <lastmod>2025-10-23T18:47:56.712Z</lastmod>
+    <lastmod>2025-10-25T17:10:02.514Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/merge.html</loc>
@@ -42,15 +42,15 @@
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/composite.html</loc>
-    <lastmod>2025-10-23T18:47:56.924Z</lastmod>
+    <lastmod>2025-10-27T15:15:45.190Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/ggplot2.html</loc>
-    <lastmod>2025-10-23T18:48:08.137Z</lastmod>
+    <lastmod>2025-10-27T14:40:30.276Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/violin.html</loc>
-    <lastmod>2025-10-23T15:51:20.843Z</lastmod>
+    <lastmod>2025-10-27T14:36:13.667Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/readme.html</loc>
@@ -67,5 +67,9 @@
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/citations.html</loc>
     <lastmod>2025-10-23T15:51:06.566Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/quartopub.html</loc>
+    <lastmod>2025-10-27T15:45:35.235Z</lastmod>
   </url>
 </urlset>

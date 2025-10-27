@@ -5,9 +5,9 @@ This playbook applied the data science workflow in *R for Data Science (2e)* ([W
 By the end of this guide, you will be able to:
 
 1.  **Import** - Load data from various files, such as text (.csv), excel (.xlsx), and SPSS (.sav)
-2.  **Tidy** - Organize data into a consistent, analysis-ready structure
-3.  **Transform** - Clean, recode, and create new variables using dplyr
-4.  **Visualize** - Create informative graphs and charts with ggplot2
+2.  **Tidy** - Organize data into a consistent, analysis-ready structure using `tidyr`
+3.  **Transform** - Clean, recode, and create new variables using `dplyr` and `psych`
+4.  **Visualize** - Create informative graphs and charts with `ggplot2`
 5.  **Model** - Apply statistical methods (e.g., regression, paired t-test) to answer questions
 6.  **Communicate** - Generate reproducible reports with Quarto to advance transparent scientific practices and multiple products (e.g., report, manuscript, presentation)
 
