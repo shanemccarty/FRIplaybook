@@ -100,6 +100,15 @@ For your draft and final team MMR manuscript, you should:
 
 YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
 
+::: {.callout-important appearance="simple"}
+## Required
+
+On Oct 27th, the YAML was updated to `code-fold: false`. This improved the HTML output of your report by including all of the code.
+
+:::
+
+
+
 ```{YAML}
 ---
 title: "title your report here"
@@ -128,7 +137,7 @@ format:
     number-sections: true
     fig-width: 8
     fig-height: 4
-    code-fold: true
+    code-fold: false
     code-overflow: wrap
     embed-resources: true
     theme: cosmo
@@ -268,7 +277,7 @@ You will explain the code chunk in your own words using `#explanation:` at the b
 
 ##### Example of Non-Figure Code Chunk
 
-All of your R code chunks for non-figures should follow this format:  
+All of your R code chunks for non-figures should follow this format:
 
 ```{{r}}
 #| label: import-data-csv-insurance

@@ -1,33 +1,59 @@
 ---
 title: "Peer Review with Hypothes.is"
-format: html
-editor: visual
 author: Gavin Rualo
 abstract: |
-  This chapter introduces the use of Hypothes.is to comment on Quarto reports. These can be used to give and receive feedback on your/other teams' papers, and there are certain functions of Hypothes.is that allow certain comments to only be seen by certain people. Therefore, you know where your critiques are coming from. This chapter walks you through the process of leaving these comments on a report.
+  This chapter introduces Hypothes.is as a tool for conducting structured peer review of Quarto reports. Learn how to provide constructive feedback on your peers' work, collaborate within groups, and use annotation features to improve scientific communication. The platform enables targeted, visible feedback that strengthens both the reviewer's critical thinking skills and the author's final product.
+keywords:
+  - peer review
+  - hypothes.is
+date: 10.27.2025
+date-format: "MM.DD.YYYY"
+format:
+  html: 
+    css: custom.css
+editor: visual
+execute:
+  warning: false
+  message: false
 ---
 
 ::: callout-tip
-## 📖 `Review` resources
+## 📖 Peer Review resources
 
 -   [Documentation](https://quarto.org/docs/output-formats/html-basics.html#commenting)
--   [Using Groups](https://web.hypothes.is/help/annotating-with-groups/)
+-   [Annotating with Groups](https://web.hypothes.is/help/annotating-with-groups/)
 :::
 
+## Why Peer Review?
+Peer review is an essential part of scientific communication. 
+
+By critically evaluating each other's work, you:
+
+- Develop analytical skills by identifying strengths and areas for improvement
+- Improve your own writing by seeing how others approach similar challenges
+- Build collaborative habits essential for research environments
+- Provide actionable feedback that directly improves the final product
+
+## Example: Zero Sum Beliefs Report
 To follow along with this chapter, see the [Zero Sum Paper](https://fripublichealth.quarto.pub/zerosum/) which we will add comments to.
 
-Upon opening the paper, you should see the following: ![First Page](review_files/review_login.png)
+Upon opening the paper, you should see the following: ![First Page](images/review-login.png)
 
-Clicking the arrow in the top right corner will produce this menu: ![menu](review_files/menu.png)
+Clicking the arrow in the top right corner will produce this menu: ![menu](images/review-menu.png)
 
-If you have not created an account yet, you can sign up using your Bmail. The menu more or less provides the instructions, but here is an example annotation: ![First annotation](review_files/annotation1.png)
+If you have not created an account yet, you can sign up using your Bmail. The menu more or less provides the instructions, but here is an example annotation: ![First annotation](images/review-annotation.png)
 
 You can annotate text by selecting anything in the report and choosing "Annotate". Note that this annotation can be made public or private. Similarly, to private annotations, you might want to highlight a specific portion in the text just for yourself. Upon selecting the text, you would instead click "Highlight".
 
 ## Groups
 
-Another important function of Hypothes.is is the creation of groups. When you select which group you are annotating under, you can view annotations just made by that group. Similarly, you can post annotations that are only visible to people in that group, such as your own team. To select which group you are currently posting to, go to the top right dropdown as shown here: ![Group dropdown](review_files/group.png)
+Another important function of Hypothes.is is the creation of groups. When you select which group you are annotating under, you can view annotations just made by that group. Similarly, you can post annotations that are only visible to people in that group, such as your own team. To select which group you are currently posting to, go to the top right dropdown as shown here: ![Group dropdown](images/group.png)
 
 After creating a group or being invited to one, you can now select to post only to that group when creating an annotation. Additionally, when you have this group selected, you can choose to only read annotations made by members of this group.
 
 Overall, the functioning of commenting should be quite similar by now after working in FRI for the past few semesters. This framework just makes it easier to comment on currently published reports. Good luck!
+
+## Peer Review of RD Report
+
+Provide at least 10 specific comments using hypothes.is to improve the results and discussion section. Focus on the results section, including code blocks, visualization, and technical writing.
+
