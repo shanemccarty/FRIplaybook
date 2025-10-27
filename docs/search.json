@@ -888,5 +888,60 @@
       "Publish and Review",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Publish in Quarto Pub</span>"
     ]
+  },
+  {
+    "objectID": "review.html",
+    "href": "review.html",
+    "title": "18  Peer Review with Hypothes.is",
+    "section": "",
+    "text": "18.1 Why Peer Review?\nPeer review is an essential part of scientific communication.\nBy critically evaluating each other’s work, you:",
+    "crumbs": [
+      "Publish and Review",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Review in Hypothes.is</span>"
+    ]
+  },
+  {
+    "objectID": "review.html#why-peer-review",
+    "href": "review.html#why-peer-review",
+    "title": "18  Peer Review with Hypothes.is",
+    "section": "",
+    "text": "Develop analytical skills by identifying strengths and areas for improvement\nImprove your own writing by seeing how others approach similar challenges\nBuild collaborative habits essential for research environments\nProvide actionable feedback that directly improves the final product",
+    "crumbs": [
+      "Publish and Review",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Review in Hypothes.is</span>"
+    ]
+  },
+  {
+    "objectID": "review.html#example-zero-sum-beliefs-report",
+    "href": "review.html#example-zero-sum-beliefs-report",
+    "title": "18  Peer Review with Hypothes.is",
+    "section": "18.2 Example: Zero Sum Beliefs Report",
+    "text": "18.2 Example: Zero Sum Beliefs Report\nTo follow along with this chapter, see the Zero Sum Paper which we will add comments to.\nUpon opening the paper, you should see the following: \nClicking the arrow in the top right corner will produce this menu: \nIf you have not created an account yet, you can sign up using your Bmail. The menu more or less provides the instructions, but here is an example annotation: \nYou can annotate text by selecting anything in the report and choosing “Annotate”. Note that this annotation can be made public or private. Similarly, to private annotations, you might want to highlight a specific portion in the text just for yourself. Upon selecting the text, you would instead click “Highlight”.",
+    "crumbs": [
+      "Publish and Review",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Review in Hypothes.is</span>"
+    ]
+  },
+  {
+    "objectID": "review.html#groups",
+    "href": "review.html#groups",
+    "title": "18  Peer Review with Hypothes.is",
+    "section": "18.3 Groups",
+    "text": "18.3 Groups\nAnother important function of Hypothes.is is the creation of groups. When you select which group you are annotating under, you can view annotations just made by that group. Similarly, you can post annotations that are only visible to people in that group, such as your own team. To select which group you are currently posting to, go to the top right dropdown as shown here: \nAfter creating a group or being invited to one, you can now select to post only to that group when creating an annotation. Additionally, when you have this group selected, you can choose to only read annotations made by members of this group.\nOverall, the functioning of commenting should be quite similar by now after working in FRI for the past few semesters. This framework just makes it easier to comment on currently published reports. Good luck!",
+    "crumbs": [
+      "Publish and Review",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Review in Hypothes.is</span>"
+    ]
+  },
+  {
+    "objectID": "review.html#peer-review-of-rd-report",
+    "href": "review.html#peer-review-of-rd-report",
+    "title": "18  Peer Review with Hypothes.is",
+    "section": "18.4 Peer Review of RD Report",
+    "text": "18.4 Peer Review of RD Report\nProvide at least 10 specific comments using hypothes.is to improve the results and discussion section. Focus on the results section, including code blocks, visualization, and technical writing.",
+    "crumbs": [
+      "Publish and Review",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Review in Hypothes.is</span>"
+    ]
   }
 ]

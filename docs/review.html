@@ -6,12 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Shane McCarty, PhD">
 <meta name="author" content="Gavin Rualo">
-<meta name="author" content="Erica Sava">
-<meta name="keywords" content="tidyr, wide format, long format">
+<meta name="keywords" content="peer review, hypothes.is">
 
-<title>7&nbsp; Format data in tidyr – The Quantitative Playbook for Public Health Research in R</title>
+<title>18&nbsp; Peer Review with Hypothes.is – The Quantitative Playbook for Public Health Research in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -69,8 +32,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./dplyr.html" rel="next">
-<link href="./import-live.html" rel="prev">
+<link href="./quartopub.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -111,6 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -122,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyr.html">Tidying Your Data</a></li><li class="breadcrumb-item"><a href="./tidyr.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quartopub.html">Publish and Review</a></li><li class="breadcrumb-item"><a href="./review.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -244,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link active">
+  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
   </div>
 </li>
@@ -354,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
+  <a href="./review.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
@@ -370,24 +333,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-formats" id="toc-data-formats" class="nav-link active" data-scroll-target="#data-formats"><span class="header-section-number">7.1</span> Data Formats</a>
-  <ul class="collapse">
-  <li><a href="#long-form" id="toc-long-form" class="nav-link" data-scroll-target="#long-form"><span class="header-section-number">7.1.1</span> Long Form</a></li>
-  <li><a href="#wide-form" id="toc-wide-form" class="nav-link" data-scroll-target="#wide-form"><span class="header-section-number">7.1.2</span> Wide Form</a></li>
-  <li><a href="#r-code" id="toc-r-code" class="nav-link" data-scroll-target="#r-code"><span class="header-section-number">7.1.3</span> R Code</a></li>
-  </ul></li>
-  <li><a href="#teams" id="toc-teams" class="nav-link" data-scroll-target="#teams"><span class="header-section-number">7.2</span> Teams</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">7.3</span> Resources</a></li>
+  <li><a href="#why-peer-review" id="toc-why-peer-review" class="nav-link active" data-scroll-target="#why-peer-review"><span class="header-section-number">18.1</span> Why Peer Review?</a></li>
+  <li><a href="#example-zero-sum-beliefs-report" id="toc-example-zero-sum-beliefs-report" class="nav-link" data-scroll-target="#example-zero-sum-beliefs-report"><span class="header-section-number">18.2</span> Example: Zero Sum Beliefs Report</a></li>
+  <li><a href="#groups" id="toc-groups" class="nav-link" data-scroll-target="#groups"><span class="header-section-number">18.3</span> Groups</a></li>
+  <li><a href="#peer-review-of-rd-report" id="toc-peer-review-of-rd-report" class="nav-link" data-scroll-target="#peer-review-of-rd-report"><span class="header-section-number">18.4</span> Peer Review of RD Report</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/tidyr.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/review.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyr.html">Tidying Your Data</a></li><li class="breadcrumb-item"><a href="./tidyr.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quartopub.html">Publish and Review</a></li><li class="breadcrumb-item"><a href="./review.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format data in tidyr</span></h1>
-<p class="subtitle lead">How to reshape data between long and wide formats</p>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Peer Review with Hypothes.is</span></h1>
 </div>
 
 
@@ -395,18 +353,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Shane McCarty, PhD </p>
              <p>Gavin Rualo </p>
-             <p>Erica Sava </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">10.20.2025</p>
+      <p class="date">10.27.2025</p>
     </div>
   </div>
   
@@ -416,14 +372,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter teaches researchers to reshape data between long and wide formats using tidyr in R. Researchers learn when to use each format: long format for visualization and mixed models (one row per observation) versus wide format for within-person analyses (one row per participant). Through examples with longitudinal wellbeing and sleep data, the chapter demonstrates pivot_wider() for converting repeated measures to separate columns and pivot_longer() for transforming multiple columns into rows. Researchers master key parameters including names_from, values_from, names_glue, and names_pattern to create meaningful variable names during reshaping. The chapter is essential for teams collecting pre/post intervention data or daily diary responses. By the end, researchers will confidently restructure their datasets to match analytical and visualization requirements.</p>
+    <p>This chapter introduces Hypothes.is as a tool for conducting structured peer review of Quarto reports. Learn how to provide constructive feedback on your peers’ work, collaborate within groups, and use annotation features to improve scientific communication. The platform enables targeted, visible feedback that strengthens both the reviewer’s critical thinking skills and the author’s final product.</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>tidyr, wide format, long format</p>
+    <p>peer review, hypothes.is</p>
   </div>
 </div>
 
@@ -436,223 +392,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>📖 <code>tidyr</code> resources
+<span class="screen-reader-only">Tip</span>📖 Peer Review resources
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><a href="https://r4ds.hadley.nz/data-tidy.html">R4DS Book Chapter 5</a></li>
-<li><a href="https://www.datacamp.com/courses/reshaping-data-with-tidyr">Datacamp</a></li>
-<li><a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">Cheat Sheet</a></li>
-<li><a href="https://rstudio.github.io/cheatsheets/html/tidyr.html">Posit page</a></li>
-<li><a href="https://tidyr.tidyverse.org/">Offical Tidyverse page</a></li>
+<li><a href="https://quarto.org/docs/output-formats/html-basics.html#commenting">Documentation</a></li>
+<li><a href="https://web.hypothes.is/help/annotating-with-groups/">Annotating with Groups</a></li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>For Teams 2 and 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is a required module for Teams 2 and 4 given their long data format.</p>
-</div>
-</div>
-<section id="data-formats" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="data-formats"><span class="header-section-number">7.1</span> Data Formats</h2>
-<section id="long-form" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="long-form"><span class="header-section-number">7.1.1</span> Long Form</h3>
-<p>Imagine you collected data on <code>WELLBEING</code> and <code>SLEEP</code> at Day 1 and Day 7 of a 7-day study for a participant whose participant ID is <code>PASSWORD</code>. This data is correct, but problematic for analyzing within-person change because abc123 appears on its own row twice. Our preference is one row per participant.</p>
-<table class="caption-top table">
-<caption><em>Example of long form data format where each case/row refers to a SURVEY RESPONSE submitted on Day 1 or 7.</em></caption>
-<thead>
-<tr class="header">
-<th><code>PASSWORD</code></th>
-<th><code>DAY</code></th>
-<th><code>WELLBEING</code></th>
-<th><code>SLEEP</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>abc123</td>
-<td>1</td>
-<td>3.2</td>
-<td>42</td>
-</tr>
-<tr class="even">
-<td>gobills7</td>
-<td>1</td>
-<td>7.8</td>
-<td>83</td>
-</tr>
-<tr class="odd">
-<td>abc123</td>
-<td>7</td>
-<td>1.2</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td>gobills7</td>
-<td>7</td>
-<td>5.8</td>
-<td>68</td>
-</tr>
-</tbody>
-</table>
+<section id="why-peer-review" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="why-peer-review"><span class="header-section-number">18.1</span> Why Peer Review?</h2>
+<p>Peer review is an essential part of scientific communication.</p>
+<p>By critically evaluating each other’s work, you:</p>
+<ul>
+<li>Develop analytical skills by identifying strengths and areas for improvement</li>
+<li>Improve your own writing by seeing how others approach similar challenges</li>
+<li>Build collaborative habits essential for research environments</li>
+<li>Provide actionable feedback that directly improves the final product</li>
+</ul>
 </section>
-<section id="wide-form" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="wide-form"><span class="header-section-number">7.1.2</span> Wide Form</h3>
-<p>Using the <code>tidyr</code> package, long form data can be converted to wide form using the <code>DAY</code> variable. In this case, survey responses are removed from a row and moved to new columns that capture Day 7 responses at Time 2 (T2) using the <code>PASSWORD</code>.</p>
-<table class="caption-top table">
-<caption><em>Example of wide form data format where each case/row refers to a specific PARTICIPANT. Now, there are only 2 rows x 4 columns with <code>DAY</code></em> dropped from the columns because there is no longer a <code>DAY</code>.</caption>
-<colgroup>
-<col style="width: 17%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 17%">
-<col style="width: 17%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><code>PASSWORD</code></th>
-<th><code>WELLBEING_T1</code></th>
-<th><code>WELLBEING_T2</code></th>
-<th><code>SLEEP_T1</code></th>
-<th><code>SLEEP_T2</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>abc123</td>
-<td>3.2</td>
-<td>1.2</td>
-<td>42</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td>gobills7</td>
-<td>7.8</td>
-<td>5.8</td>
-<td>83</td>
-<td>18</td>
-</tr>
-</tbody>
-</table>
+<section id="example-zero-sum-beliefs-report" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="example-zero-sum-beliefs-report"><span class="header-section-number">18.2</span> Example: Zero Sum Beliefs Report</h2>
+<p>To follow along with this chapter, see the <a href="https://fripublichealth.quarto.pub/zerosum/">Zero Sum Paper</a> which we will add comments to.</p>
+<p>Upon opening the paper, you should see the following: <img src="images/review-login.png" class="img-fluid" alt="First Page"></p>
+<p>Clicking the arrow in the top right corner will produce this menu: <img src="images/review-menu.png" class="img-fluid" alt="menu"></p>
+<p>If you have not created an account yet, you can sign up using your Bmail. The menu more or less provides the instructions, but here is an example annotation: <img src="images/review-annotation.png" class="img-fluid" alt="First annotation"></p>
+<p>You can annotate text by selecting anything in the report and choosing “Annotate”. Note that this annotation can be made public or private. Similarly, to private annotations, you might want to highlight a specific portion in the text just for yourself. Upon selecting the text, you would instead click “Highlight”.</p>
 </section>
-<section id="r-code" class="level3" data-number="7.1.3">
-<h3 data-number="7.1.3" class="anchored" data-anchor-id="r-code"><span class="header-section-number">7.1.3</span> R Code</h3>
-<section id="example-1" class="level4">
-<h4 class="anchored" data-anchor-id="example-1">Example 1</h4>
-<p>The code used to transition from long to wide data format here is as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: long-to-wide</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Convert to wide format</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> DAY,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="fu">c</span>(WELLBEING, SLEEP), </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_glue =</span> <span class="st">"{.value}_T{DAY}"</span> </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Here, we reference the “DAY” column in the long dataset as the column we are trying to eliminate as we transition to wide format. As seen in the wide format, we now have two separate columns for wellbeing and sleep: one at day 1 and another at day 7.</p>
+<section id="groups" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="groups"><span class="header-section-number">18.3</span> Groups</h2>
+<p>Another important function of Hypothes.is is the creation of groups. When you select which group you are annotating under, you can view annotations just made by that group. Similarly, you can post annotations that are only visible to people in that group, such as your own team. To select which group you are currently posting to, go to the top right dropdown as shown here: <img src="images/review-group.png" class="img-fluid" alt="Group dropdown"></p>
+<p>After creating a group or being invited to one, you can now select to post only to that group when creating an annotation. Additionally, when you have this group selected, you can choose to only read annotations made by members of this group.</p>
+<p>Overall, the functioning of commenting should be quite similar by now after working in FRI for the past few semesters. This framework just makes it easier to comment on currently published reports. Good luck!</p>
 </section>
-<section id="example-2" class="level4">
-<h4 class="anchored" data-anchor-id="example-2">Example 2</h4>
-<p>Another example can be found in the next chapter on <a href="./violin.html">visualizing pre and posttest scores</a>.</p>
-<p>Below is the example code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create long format with separate columns for each SE type</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(oralhealthdata_prepost,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"BSE_T1"</span>, <span class="st">"BSE_T2"</span>, <span class="st">"CSE_T1"</span>, <span class="st">"CSE_T2"</span>, <span class="st">"ISE_T1"</span>, <span class="st">"ISE_T2"</span>),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"SE_type"</span>, <span class="st">"Time"</span>),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_pattern =</span> <span class="st">"(.+)_(.+)"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">"SE"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert T1/T2 to before/after</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(longdata<span class="sc">$</span>Time <span class="sc">==</span> <span class="st">"T1"</span>, <span class="st">"before"</span>, <span class="st">"after"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot wider to get separate columns for each SE type</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(longdata,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from =</span> SE_type,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from =</span> SE)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only the desired columns</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> longdata[, <span class="fu">c</span>(<span class="st">"Time"</span>, <span class="st">"BSE"</span>, <span class="st">"CSE"</span>, <span class="st">"ISE"</span>)]</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata<span class="sc">$</span>Time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'before'</span>,<span class="st">'after'</span>))</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>longdata_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(longdata, <span class="at">cols =</span> <span class="fu">c</span>(BSE, CSE, ISE), </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SelfEfficacy"</span>, </span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Score"</span>)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>SelfEfficacy <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata_long<span class="sc">$</span>SelfEfficacy, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE"</span>, <span class="st">"CSE"</span>, <span class="st">"ISE"</span>))</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata_long<span class="sc">$</span>Time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>))</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>longdata_long <span class="ot">&lt;-</span> longdata <span class="sc">%&gt;%</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(BSE, CSE, ISE), </span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SelfEfficacy"</span>, </span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Score"</span>)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable combining 'SelfEfficacy' and 'Time'</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>SelfEfficacyTime <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(longdata_long<span class="sc">$</span>SelfEfficacy, longdata_long<span class="sc">$</span>Time),</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE before"</span>, <span class="st">"BSE after"</span>, <span class="st">"CSE before"</span>, <span class="st">"CSE after"</span>, <span class="st">"ISE before"</span>, <span class="st">"ISE after"</span>)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In this example, Erica converts from wide to long data in order to more easily compare time 1 vs time 2 data. This data format is not only for binary time categories either, it can be applicable to projects with data across multiple days.</p>
-</section>
-</section>
-</section>
-<section id="teams" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="teams"><span class="header-section-number">7.2</span> Teams</h2>
-<p>Team 1, 3, and 5 will export data in wide format and will not use <code>tidyr</code>. Teams 2 and 4 will need to use <code>tidyr</code> to convert their data from long form into wide form.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Team 2
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The Day 1/7 Survey is in long format because a person takes the same survey at Day 1 and 7, resulting in two entries per person. The Daily Survey is in long format because a person takes the same survey 6-7 days, resulting in multiple entries per person.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Team 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Survey is in long format due to participants completing the survey twice at the start of the intervention (pretest) and at the end (posttest).</p>
-</div>
-</div>
-</div>
-</section>
-<section id="resources" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="resources"><span class="header-section-number">7.3</span> Resources</h2>
-<p>At present, the best resource is: <a href="https://shanghai.hosting.nyu.edu/data/r/reshaping.html">Reshaping data between long and wide formats (Dai, 2020)</a></p>
+<section id="peer-review-of-rd-report" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="peer-review-of-rd-report"><span class="header-section-number">18.4</span> Peer Review of RD Report</h2>
+<p>Provide at least 10 specific comments using hypothes.is to improve the results and discussion section. Focus on the results section, including code blocks, visualization, and technical writing.</p>
 
 
 </section>
@@ -1060,14 +837,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./import-live.html" class="pagination-link" aria-label="Import Data Live">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import Data Live</span></span>
+      <a href="./quartopub.html" class="pagination-link" aria-label="Publish in Quarto Pub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./dplyr.html" class="pagination-link" aria-label="Mutate Variables">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1075,4 +849,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/tidyr.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/review.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

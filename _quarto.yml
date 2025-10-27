@@ -65,6 +65,8 @@ book:
       chapters:    
         - text: "Publish in Quarto Pub"
           file: quartopub.qmd
+        - text: "Review in Hypothes.is"
+          file: review.qmd      
 # Filters - WebR only for now
 filters:
   - webr

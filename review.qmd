@@ -47,7 +47,7 @@ You can annotate text by selecting anything in the report and choosing "Annotate
 
 ## Groups
 
-Another important function of Hypothes.is is the creation of groups. When you select which group you are annotating under, you can view annotations just made by that group. Similarly, you can post annotations that are only visible to people in that group, such as your own team. To select which group you are currently posting to, go to the top right dropdown as shown here: ![Group dropdown](images/group.png)
+Another important function of Hypothes.is is the creation of groups. When you select which group you are annotating under, you can view annotations just made by that group. Similarly, you can post annotations that are only visible to people in that group, such as your own team. To select which group you are currently posting to, go to the top right dropdown as shown here: ![Group dropdown](images/review-group.png)
 
 After creating a group or being invited to one, you can now select to post only to that group when creating an annotation. Additionally, when you have this group selected, you can choose to only read annotations made by members of this group.
 
