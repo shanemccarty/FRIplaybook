@@ -68,8 +68,8 @@ For individual lab and report quarto reports:
 
 -   Your individual lab was renamed to `lab.qmd`
 -   Your results and discussion report should be named: `RDreport.qmd`
--   After submitting your `RDreport.qmd`, you should go to the files tab, check the box next to `RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `yourlastname_report.qmd`
--   Your final report should be named: `yourlastname_report.qmd`
+-   After submitting your `RDreport.qmd`, you should go to the files tab, check the box next to `RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `YOURLASTNAME_report.qmd`
+-   Your final report should be named: `YOURLASTNAME_report.qmd`
 
 ::: callout-important
 ## Requirement
@@ -92,9 +92,9 @@ For your draft and final team MMR manuscript, you should:
 
 -   rename this specific posit cloud project from #1: Vivian -\> #1: Vivian & Team (to notify me where to look for your team's MMR work)
 
--   create a `team_RD.qmd` file
+-   create a `teamRD.qmd` file
 
--   create a `team_final.qmd` file
+-   create a `teamfinal.qmd` file
 
 ## YAML
 
