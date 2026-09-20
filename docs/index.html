@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Shane McCarty, PhD">
-<meta name="dcterms.date" content="2025-10-22">
+<meta name="dcterms.date" content="2026-09-20">
 
 <title>The Quantitative Playbook for Public Health Research in R</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,18 +35,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./example.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-a6e161b2431e1f94a14e0f5d32135a3c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3736c44766b80259c5adcd002f0c6134.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -73,6 +78,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -97,9 +103,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
         <div class="sidebar-tools-main">
@@ -140,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Get Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -148,20 +152,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Playbook</span></span></a>
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
       </ul>
@@ -169,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Importing Your Data</span></a>
+ <span class="menu-text">Import, Tidy &amp; Transform</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -178,19 +200,37 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -198,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Tidying Your Data</span></a>
+ <span class="menu-text">Map Your Analysis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -206,8 +246,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -215,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Transforming Your Data</span></a>
+ <span class="menu-text">Compare Groups</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -223,20 +275,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -244,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Visualizing Your Data</span></a>
+ <span class="menu-text">Examine Relationships</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -252,14 +304,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Writing Reproducibly</span></a>
+ <span class="menu-text">Write Your Report</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -276,25 +328,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -302,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish and Review</span></a>
+ <span class="menu-text">Publish &amp; Review</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -311,13 +357,42 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
       </ul>
@@ -332,7 +407,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#the-purpose-of-the-course" id="toc-the-purpose-of-the-course" class="nav-link" data-scroll-target="#the-purpose-of-the-course">The Purpose of the Course</a></li>
+  <li><a href="#the-purpose-of-the-playbook" id="toc-the-purpose-of-the-playbook" class="nav-link" data-scroll-target="#the-purpose-of-the-playbook">The Purpose of the Playbook</a></li>
+  <li><a href="#the-data-science-workflow" id="toc-the-data-science-workflow" class="nav-link" data-scroll-target="#the-data-science-workflow">The Data Science Workflow</a></li>
+  <li><a href="#the-analysis-map" id="toc-the-analysis-map" class="nav-link" data-scroll-target="#the-analysis-map">The Analysis Map</a></li>
+  <li><a href="#what-makes-this-guide-different" id="toc-what-makes-this-guide-different" class="nav-link" data-scroll-target="#what-makes-this-guide-different">What Makes This Guide Different?</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#how-to-read-this-playbook" id="toc-how-to-read-this-playbook" class="nav-link" data-scroll-target="#how-to-read-this-playbook">How to Read This Playbook</a>
+  <ul class="collapse">
+  <li><a href="#the-play-the-lab-your-turn" id="toc-the-play-the-lab-your-turn" class="nav-link" data-scroll-target="#the-play-the-lab-your-turn">The Play, The Lab, Your Turn</a></li>
+  <li><a href="#meet-the-ref" id="toc-meet-the-ref" class="nav-link" data-scroll-target="#meet-the-ref">Meet the Ref</a></li>
+  <li><a href="#this-is-a-reference-guide" id="toc-this-is-a-reference-guide" class="nav-link" data-scroll-target="#this-is-a-reference-guide">This is a reference guide</a></li>
+  <li><a href="#the-color-key" id="toc-the-color-key" class="nav-link" data-scroll-target="#the-color-key">The color key</a></li>
+  </ul></li>
+  <li><a href="#how-to-cite-this-guide" id="toc-how-to-cite-this-guide" class="nav-link" data-scroll-target="#how-to-cite-this-guide">How to Cite This Guide</a>
+  <ul class="collapse">
+  <li><a href="#editor-and-chapter-authors" id="toc-editor-and-chapter-authors" class="nav-link" data-scroll-target="#editor-and-chapter-authors">Editor and Chapter Authors</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -350,16 +444,16 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Editor</div>
     <div class="quarto-title-meta-contents">
              <p>Shane McCarty, PhD </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Edition 2 (v2.0)</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 22, 2025</p>
+      <p class="date">September 20, 2026</p>
     </div>
   </div>
   
@@ -373,11 +467,267 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>In the <a href="https://fripublichealth.quarto.pub">FRI Public Health research stream at Binghamton University</a>, student research teams explore a variety of biopsychosocial factors affecting human physical and mental health. Some teams collect biological measures using the <a href="https://choosemuse.com/?srsltid=AfmBOoqKfaSoTl_atcO2MGY8AjAQHZzj5G-Ll4_b9TnblqCRTNvubHuQ">MUSE S headband</a> and <a href="https://community.fitbit.com/t5/Community/ct-p/EN">fitbit charge 6</a>. Most teams collect self-report survey data on psychological and sociodemographics via <a href="https://www.qualtrics.com">Qualtrics</a>. Some teams design online behavioral experiments to examine cause-and-effect relationships. To analyze quantitative data in R, the FRI Public Health Lab has created this playbook with a variety of “plays” (R code) for students in the quantitative data analysis track to use for their team-based research projects.</p>
-<p>The most successful sports teams rely on well-designed plays to navigate complex game situations. The FRI Public Health research stream uses strategic data analysis “plays” to tackle the multifaceted challenges of health promotion and disease prevention. Our research stream explores the intricate biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like MUSE S and Fitbits, psychological insights via survey questionnaires and interviews, and behavioral patterns through online experiments. Ultimately, our research aims to connect the dots between biological, social, political, commercial, and economic determinants of health behavior, outcomes, and inequities.</p>
-<p>Like a coach calling the right play at the crucial moment, this playbook equips you and your research teams with proven strategies from the tidyverse for importing data, tidying data in <code>tidyr</code>, transforming data in <code>dplyr</code>, visualizing data in <code>ggplot2</code>, modeling with <code>stats</code>, and writing reproducibly in <code>quarto</code> with R. Each “play” in this guide has been field-tested by research teams who have successfully used quantitative techniques to answer pressing questions about physical and mental health. Whether you’re facing a complex dataset for the first time or looking to refine your analytical strategy, this playbook offers guidance for you to turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.</p>
+<p>The most successful sports teams rely on well-designed plays to navigate complex game situations. The <a href="https://fripublichealth.quarto.pub">FRI Public Health research stream at Binghamton University</a> uses strategic data analysis “plays” to tackle the multifaceted challenges of health promotion and disease prevention. Student research teams explore the biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like the <a href="https://choosemuse.com">MUSE S headband</a> and the <a href="https://community.fitbit.com/t5/Community/ct-p/EN">Fitbit Charge 6</a>, psychological and sociodemographic data through survey questionnaires in <a href="https://www.qualtrics.com">Qualtrics</a> and interviews, and behavioral patterns through online experiments. Ultimately, our research aims to connect the dots between biological, social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. To analyze quantitative data in R, the FRI Public Health Lab has created this playbook with a variety of “plays” (R code) for students in the quantitative data analysis track to use for their team-based research projects.</p>
+<p>Like a coach calling the right play at the crucial moment, this playbook equips you and your research team with proven strategies from the tidyverse for importing data, tidying data in <code>tidyr</code>, transforming data in <code>dplyr</code>, visualizing data in <code>ggplot2</code>, modeling with <code>stats</code>, and writing reproducibly in <code>quarto</code> with R. Each “play” in this guide has been field-tested by research teams who have used quantitative techniques to answer pressing questions about physical and mental health.</p>
+<p>You do not need to memorize the whole playbook. <strong>The Analysis Map</strong> takes you from your research question to the right plot and the right statistical test, so you only study the plays you need. Each chapter then teaches its play three times: you watch it (<strong>The Play</strong>), you practice it with a shared dataset (<strong>The Lab</strong>), and you run it with your own team’s data (<strong>Your Turn</strong>).</p>
+<p>Whether you are facing a dataset for the first time or refining your analytical strategy, this playbook helps you turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.</p>
+<section id="the-purpose-of-the-course" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="the-purpose-of-the-course">The Purpose of the Course</h2>
+<p>The purpose of the FRI Public Health courses is to develop your research skills: the conceptual skills to design a study, and the analytical skills to answer your own research questions with the right technique. This is not a statistics course or a programming course, but we have compiled many resources for you to explore if you want to learn more. We hope that you feel more motivated to learn programming skills (and add a Digital and Data Studies (DiDa) minor), enjoy learning a new data analysis skill (one that may inspire a career in epidemiology, biostatistics, or data science), and learn how to persist through some difficult moments with coding.</p>
+</section>
+<section id="the-purpose-of-the-playbook" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="the-purpose-of-the-playbook">The Purpose of the Playbook</h2>
+<p>The purpose of the playbook is to teach you the basics of coding in RStudio so that you can complete your <em>RD Report</em> and <em>Final Report</em>. For the remaining weeks until your <em>RD Report</em>, you will read select chapters in the playbook and complete <strong>The Lab</strong> in each one, which is your chance to apply your skills to the lab dataset. Labs are not graded and are not turned in; you check your own work. All of this prepares you for a quick turnaround: you will download your team’s final dataset after Fall break, and then you will have two weeks to conduct your own analyses for the <em>RD Report</em>.</p>
+<p>The playbook and labs are self-paced. Some weeks you will have more time than others; that is fine.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Don’t fall two weeks behind
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you get two or more weeks behind on the chapters and labs, it will be very difficult to catch up in time for your <em>RD Report</em>.</p>
+</div>
+</div>
+</section>
+<section id="the-data-science-workflow" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="the-data-science-workflow">The Data Science Workflow</h2>
+<p>This playbook applies the data science workflow in <em>R for Data Science (2e)</em> (<a href="https://r4ds.hadley.nz/whole-game.html">Wickham et al., 2023</a>) to help researchers examine public health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.</p>
+<p>By the end of this guide, you will be able to:</p>
+<ol type="1">
+<li><strong>Import</strong> - Load data from various files, such as text (.csv), excel (.xlsx), and SPSS (.sav)</li>
+<li><strong>Tidy</strong> - Organize data into a consistent, analysis-ready structure using <code>tidyr</code></li>
+<li><strong>Transform</strong> - Clean, recode, and create new variables using <code>dplyr</code> and <code>psych</code></li>
+<li><strong>Visualize</strong> - Create informative graphs and charts with <code>ggplot2</code></li>
+<li><strong>Model</strong> - Apply statistical methods (e.g., regression, paired t-test) to answer questions</li>
+<li><strong>Communicate</strong> - Generate reproducible reports with Quarto to advance transparent scientific practices and multiple products (e.g., report, manuscript, presentation)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://r4ds.hadley.nz/whole-game.html#fig-ds-whole-game"><img src="images/intro-workflow.png" class="img-fluid figure-img"></a></p>
+<figcaption>Source: The Data Science Workflow (Wickham et al., 2023)</figcaption>
+</figure>
+</div>
+<p>Each section builds on previous concepts, taking you from raw data files to a publication-ready, reproducible scientific report.</p>
+</section>
+<section id="the-analysis-map" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="the-analysis-map">The Analysis Map</h2>
+<p>The data science workflow tells you the <strong>steps</strong>. It does not tell you <strong>which plot to make or which statistical test to run</strong> for your research question. For that, this playbook adds a second visual: the Analysis Map. It takes you from your research question, through describing your data and checking whether it is normal, to the plot and the statistical test that fit a <em>comparison</em> question or a <em>relationship</em> question.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/analysis-map.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="The Analysis Map: from your research question to your plot and your statistical test. Every name in blue is a chapter."><img src="images/analysis-map.svg" class="img-fluid figure-img" alt="A flowchart. Your research question leads to Describe Your Data, where you check whether your outcome is normal. From there one arrow leads to Compare Groups and one to Examine Relationships. Under Compare Groups: Visualize a Comparison, then Compare 2 Groups (independent t-test or Mann-Whitney U), Compare 1 Group, Pre/Post (paired t-test or Wilcoxon signed-rank), and Compare 3+ Groups (ANOVA or Kruskal-Wallis). Under Examine Relationships: Visualize a Relationship, then Relate 2 Variables (Pearson or Spearman correlation) and Relate 3+ Variables (linear regression). In each box the first test is for normal data and the second is for data that are not normal."></a></p>
+<figcaption><em>The Analysis Map: from your research question to your plot and your statistical test. Every name in blue is a chapter.</em></figcaption>
+</figure>
+</div>
+<p>This playbook combines the two. You follow the workflow to <strong>import, tidy, and transform</strong> your data. Then you follow the Analysis Map (in the part called <em>Map Your Analysis</em>) to <strong>visualize</strong> and <strong>model</strong> your data. Finally, you <strong>communicate</strong> what you found in a reproducible report.</p>
+</section>
+<section id="what-makes-this-guide-different" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="what-makes-this-guide-different">What Makes This Guide Different?</h2>
+<ul>
+<li><strong>Interactive Learning</strong>: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using <a href="https://docs.r-wasm.org/webr/latest/">WebR</a>—no software installation required</li>
+<li><strong>Public Health Data</strong>: Examples use public health datasets, such as <a href="https://www.kaggle.com/code/pralabhpoudel/does-smoking-makes-your-insurance-high">insurance claims from kaggle</a>, a lab dataset about what people believe about mental health (synthetic data made for this course), and simulated survey data modeled on past team projects</li>
+<li><strong>Complete Workflow</strong>: Covers the whole workflow, from raw data to a publication-ready report, so you can look up the step you need</li>
+<li><strong>Practical Focus</strong>: Emphasizes “plays” (R code chunks) you’ll actually use in public health research and practice</li>
+</ul>
+</section>
+<section id="prerequisites" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p><strong>Technical Requirements:</strong></p>
+<ul>
+<li><p>A web browser (Chrome, Firefox, Safari, or Edge) for interactive WebR examples</p></li>
+<li><p>R and RStudio installed on your computer (see <a href="./RStudio.html">RStudio Software</a>)</p></li>
+</ul>
+<p><strong>Background Knowledge:</strong></p>
+<ul>
+<li><p>Basic familiarity with public health concepts</p></li>
+<li><p>Introductory statistics (descriptive statistics, hypothesis testing, p-values)</p></li>
+<li><p>No R experience is needed, only the motivation to learn</p></li>
+</ul>
+</section>
+<section id="how-to-read-this-playbook" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="how-to-read-this-playbook">How to Read This Playbook</h2>
+<section id="the-play-the-lab-your-turn" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="the-play-the-lab-your-turn">The Play, The Lab, Your Turn</h3>
+<p>Most chapters that use data are built the same way, and you will go through them three times with three different datasets.</p>
+<ol type="1">
+<li><strong>The Play.</strong> First, you <em>watch the play</em>. The chapter walks through the code step by step with an example dataset and shows you the output. Your only job is to read and understand what each line does.</li>
+<li><strong>The Lab.</strong> Next, you <em>run the play</em>. During your R Lab, you try the same play yourself with the lab dataset that everyone in the course shares. Labs are not graded. Because everyone uses the same data, the chapter can show you the answer you should get, so you can check your own work and fix it on the spot.</li>
+<li><strong>Your Turn.</strong> Finally, you <em>call your own play</em>. After you finish all of the R Labs, you come back to the chapter with your team’s dataset. You copy the play, change the lines marked <code># REPLACE</code>, and produce the plot or the test for your own research question. There is no answer key for your data, so each chapter gives you the same checklist your instructor uses.</li>
+</ol>
+<p>By the third pass, you have seen the play, practiced it with support, and run it on your own. That is how a team learns a playbook, and it is how you will learn R.</p>
+</section>
+<section id="meet-the-ref" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="meet-the-ref">Meet the Ref</h3>
+<p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon, a cartoon raccoon in a striped referee shirt with a whistle around his neck" width="90"></p>
+<p>Ref the Raccoon is the referee of this playbook. You will meet him in the chapter <em>Find the Ref</em>, where he runs the routine that starts and ends every coding session. After that, he opens and closes The Lab in each chapter, he shows you the right answer in boxes called <strong>Ref’s check</strong>, and he blows the whistle on a <strong>foul</strong>: a mistake that gives you a wrong answer without any error message. In Your Turn, there is no Ref. It’s game time!</p>
+</section>
+<section id="this-is-a-reference-guide" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="this-is-a-reference-guide">This is a reference guide</h3>
+<p>Nobody reads this playbook from front to back, and you do not need to learn everything in it. Find your research question on the Analysis Map, go to the chapter it points to, and start at <strong>Your Turn</strong>. Go back to The Play when you get stuck.</p>
+</section>
+<section id="the-color-key" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="the-color-key">The color key</h3>
+<p>Every colored box means the same thing in every chapter.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Color</th>
+<th>Name</th>
+<th>The question it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="key key-red">Red</span></td>
+<td><strong>Required</strong></td>
+<td>What must be in my RD Report and Final Report?</td>
+</tr>
+<tr class="even">
+<td><span class="key key-red">Red</span></td>
+<td><strong>Important</strong></td>
+<td>What do I have to know or do so that my work does not break?</td>
+</tr>
+<tr class="odd">
+<td><span class="key key-yellow">Yellow</span></td>
+<td><strong>Caution</strong></td>
+<td>Where do people go wrong?</td>
+</tr>
+<tr class="even">
+<td><span class="key key-green">Green</span></td>
+<td><strong>Go</strong></td>
+<td>What is the recommended move?</td>
+</tr>
+<tr class="odd">
+<td><span class="key key-blue">Blue</span></td>
+<td><strong>Resources</strong></td>
+<td>Where can I get more help? (never required)</td>
+</tr>
+<tr class="even">
+<td><span class="key key-gray">Gray</span></td>
+<td></td>
+<td>Answers, checklists, and notices. Click to open.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read every <span class="key key-red">red</span> box. Follow <span class="key key-green">green</span>. Slow down at <span class="key key-yellow">yellow</span>. Open <span class="key key-blue">blue</span> only when you want more.</strong></p>
+<p>Here is what the boxes look like in a chapter:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: a figure caption
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every plot in your RD Report and Final Report needs a caption that starts with “Figure 1.”, “Figure 2.”, and so on.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: The two rules
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Install a package once. Load it every time you open RStudio.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Points can hide behind other points
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When many people have the same two scores, a scatterplot draws their dots on top of each other. Check for stacked points before you trust what you see.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: Open your project, not a file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Start every session by opening your RStudio Project. R will then find your data files without any extra code.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: <code>ggplot2</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- Single source for the ggplot2 resource links. Included in the Preface (color key example), How Code Builds a Plot, Visualize a Comparison, and Visualize a Relationship. Edit it here once; every place updates. -->
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html">Intro to ggplot2</a></li>
+<li><a href="https://ggplot2.tidyverse.org">Documentation</a></li>
+<li><a href="https://r4ds.hadley.nz/data-visualize.html">R4DS Book Chapter 1</a></li>
+<li><a href="https://r4ds.hadley.nz/visualize.html">R4DS Book Ch. 9 - 11</a></li>
+<li><a href="https://ggplot2-book.org">ggplot2 Book</a></li>
+<li><a href="https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2">Datacamp</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/data-visualization.html">Posit Cheatsheet</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">PDF Cheatsheet</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Click the blue banner (or the <strong>&gt;</strong> at its right edge) to open the resources, and click it again to close them. You will find a Resources box like this at the top of most chapters, and sometimes inside a chapter. It is never required. Open it when you want to learn more.</p>
+</section>
+</section>
+<section id="how-to-cite-this-guide" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="how-to-cite-this-guide">How to Cite This Guide</h2>
+<p><u>You can cite this guide as:</u></p>
+<p>McCarty, S. (Ed.). (2026). <em>The Quantitative Playbook for Public Health Research in R</em> (2nd ed.). <a href="https://shanemccarty.github.io/FRIplaybook/" class="uri">https://shanemccarty.github.io/FRIplaybook/</a></p>
+<p><u>Or, you can cite a specific chapter:</u></p>
+<p>Silhavy, A. &amp; McCarty, S. (2026). Visualize a relationship: How to build scatterplots to show how two scores go together. In S. McCarty (Ed.), <em>The Quantitative Playbook for Public Health Research in R</em> (2nd ed.). <a href="https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html" class="uri">https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html</a></p>
+<section id="editor-and-chapter-authors" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="editor-and-chapter-authors">Editor and Chapter Authors</h3>
+<ul>
+<li><p>Editor: <a href="https://shane.quarto.pub">Shane McCarty, PhD</a></p></li>
+<li><p>Chapter Authors</p>
+<ul>
+<li><p><a href="https://zihanhei.quarto.pub">Zihan Hei</a></p></li>
+<li><p>Gavin Rualo</p></li>
+<li><p>Andrew Silhavy</p></li>
+<li><p>Allison Anemone</p></li>
+<li><p>Mara Estreich</p></li>
+<li><p>Jeff John</p></li>
+<li><p>Erica Sava</p></li>
+<li><p>Zach Spiegel</p></li>
+<li><p>Yoomin (Ashley) Kim</p></li>
+</ul></li>
+</ul>
+<p>After generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -785,14 +1135,46 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="The Playbook">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Playbook</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./example.html" class="pagination-link" aria-label="Reproducible Reports">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+</body></html>

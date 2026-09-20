@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zihan Hei">
 <meta name="keywords" content="quarto pub, personal website, publish">
 
-<title>17&nbsp; Publish Your Report to Quarto Pub – The Quantitative Playbook for Public Health Research in R</title>
+<title>23&nbsp; Publish Your Report to Quarto Pub – The Quantitative Playbook for Public Health Research in R</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,15 +74,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./citations.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-a6e161b2431e1f94a14e0f5d32135a3c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3736c44766b80259c5adcd002f0c6134.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-87aed0b8589e23e45aa8556edf37a91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -107,9 +111,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -121,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quartopub.html">Publish and Review</a></li><li class="breadcrumb-item"><a href="./quartopub.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quartopub.html">Publish &amp; Review</a></li><li class="breadcrumb-item"><a href="./quartopub.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -134,9 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
         <div class="sidebar-tools-main">
@@ -177,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Get Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -185,20 +188,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Playbook</span></span></a>
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Build a Plot in Layers</span></span></a>
   </div>
 </li>
       </ul>
@@ -206,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Importing Your Data</span></a>
+ <span class="menu-text">Import, Tidy &amp; Transform</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -215,19 +236,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -235,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Tidying Your Data</span></a>
+ <span class="menu-text">Map Your Analysis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -243,8 +282,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Transforming Your Data</span></a>
+ <span class="menu-text">Compare Groups</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -260,20 +305,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">ANOVA &amp; ANCOVA</span></span></a>
   </div>
 </li>
       </ul>
@@ -281,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Visualizing Your Data</span></a>
+ <span class="menu-text">Examine Relationships</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -289,14 +334,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Three or More Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Writing Reproducibly</span></a>
+ <span class="menu-text">Write Your Report</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -313,25 +358,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -339,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish and Review</span></a>
+ <span class="menu-text">Publish &amp; Review</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -348,13 +387,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
       </ul>
@@ -369,25 +431,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin"><span class="header-section-number">17.1</span> Before You Begin</a></li>
-  <li><a href="#prepare-the-_publish.yml-file" id="toc-prepare-the-_publish.yml-file" class="nav-link" data-scroll-target="#prepare-the-_publish.yml-file"><span class="header-section-number">17.2</span> Prepare the <code>_publish.yml</code> File</a></li>
-  <li><a href="#publish-from-the-terminal" id="toc-publish-from-the-terminal" class="nav-link" data-scroll-target="#publish-from-the-terminal"><span class="header-section-number">17.3</span> Publish from the “Terminal”</a>
+  <li><a href="#before-you-begin" id="toc-before-you-begin" class="nav-link active" data-scroll-target="#before-you-begin"><span class="header-section-number">23.1</span> Before You Begin</a></li>
+  <li><a href="#prepare-the-_publish.yml-file" id="toc-prepare-the-_publish.yml-file" class="nav-link" data-scroll-target="#prepare-the-_publish.yml-file"><span class="header-section-number">23.2</span> Prepare the <code>_publish.yml</code> File</a></li>
+  <li><a href="#publish-from-the-terminal" id="toc-publish-from-the-terminal" class="nav-link" data-scroll-target="#publish-from-the-terminal"><span class="header-section-number">23.3</span> Publish from the “Terminal”</a>
   <ul class="collapse">
-  <li><a href="#step-1-under-terminal" id="toc-step-1-under-terminal" class="nav-link" data-scroll-target="#step-1-under-terminal"><span class="header-section-number">17.3.1</span> Step 1: Under Terminal</a></li>
-  <li><a href="#step-2-authorize-your-account" id="toc-step-2-authorize-your-account" class="nav-link" data-scroll-target="#step-2-authorize-your-account"><span class="header-section-number">17.3.2</span> Step 2: Authorize Your Account</a></li>
-  <li><a href="#step-3-name-your-website" id="toc-step-3-name-your-website" class="nav-link" data-scroll-target="#step-3-name-your-website"><span class="header-section-number">17.3.3</span> Step 3: Name Your Website</a></li>
-  <li><a href="#step-4-confirm-and-view-your-website" id="toc-step-4-confirm-and-view-your-website" class="nav-link" data-scroll-target="#step-4-confirm-and-view-your-website"><span class="header-section-number">17.3.4</span> Step 4: Confirm and View Your Website</a></li>
+  <li><a href="#step-1-under-terminal" id="toc-step-1-under-terminal" class="nav-link" data-scroll-target="#step-1-under-terminal"><span class="header-section-number">23.3.1</span> Step 1: Under Terminal</a></li>
+  <li><a href="#step-2-authorize-your-account" id="toc-step-2-authorize-your-account" class="nav-link" data-scroll-target="#step-2-authorize-your-account"><span class="header-section-number">23.3.2</span> Step 2: Authorize Your Account</a></li>
+  <li><a href="#step-3-name-your-website" id="toc-step-3-name-your-website" class="nav-link" data-scroll-target="#step-3-name-your-website"><span class="header-section-number">23.3.3</span> Step 3: Name Your Website</a></li>
+  <li><a href="#step-4-confirm-and-view-your-website" id="toc-step-4-confirm-and-view-your-website" class="nav-link" data-scroll-target="#step-4-confirm-and-view-your-website"><span class="header-section-number">23.3.4</span> Step 4: Confirm and View Your Website</a></li>
   </ul></li>
-  <li><a href="#troubleshooting-and-tips" id="toc-troubleshooting-and-tips" class="nav-link" data-scroll-target="#troubleshooting-and-tips"><span class="header-section-number">17.4</span> Troubleshooting and Tips</a></li>
+  <li><a href="#troubleshooting-and-tips" id="toc-troubleshooting-and-tips" class="nav-link" data-scroll-target="#troubleshooting-and-tips"><span class="header-section-number">23.4</span> Troubleshooting and Tips</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/quartopub.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quartopub.html">Publish and Review</a></li><li class="breadcrumb-item"><a href="./quartopub.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quartopub.html">Publish &amp; Review</a></li><li class="breadcrumb-item"><a href="./quartopub.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish Your Report to Quarto Pub</span></h1>
+<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish Your Report to Quarto Pub</span></h1>
 </div>
 
 
@@ -428,15 +490,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>📖 resources
+<span class="screen-reader-only">Resources</span>Resources
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://quarto.org/docs/publishing/quarto-pub.html">Quarto Publish Guide</a></li>
@@ -444,8 +508,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 </div>
-<section id="before-you-begin" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="before-you-begin"><span class="header-section-number">17.1</span> Before You Begin</h2>
+</div>
+<section id="before-you-begin" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="before-you-begin"><span class="header-section-number">23.1</span> Before You Begin</h2>
 <p>Make sure you have:</p>
 <ul>
 <li><p>A working Quarto project in Posit Cloud.</p></li>
@@ -459,8 +524,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="prepare-the-_publish.yml-file" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="prepare-the-_publish.yml-file"><span class="header-section-number">17.2</span> Prepare the <code>_publish.yml</code> File</h2>
+<section id="prepare-the-_publish.yml-file" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="prepare-the-_publish.yml-file"><span class="header-section-number">23.2</span> Prepare the <code>_publish.yml</code> File</h2>
 <p>In your <code>_publish.yml</code> file, add the following code (if not already present):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>source: project</span>
@@ -472,11 +537,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Tokens are automatically handled by Quarto during the publishing process.</p>
 <hr>
 </section>
-<section id="publish-from-the-terminal" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="publish-from-the-terminal"><span class="header-section-number">17.3</span> Publish from the “Terminal”</h2>
+<section id="publish-from-the-terminal" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="publish-from-the-terminal"><span class="header-section-number">23.3</span> Publish from the “Terminal”</h2>
 <p>Following the step by step process, and you can publish your report to your own Quarto website!!</p>
-<section id="step-1-under-terminal" class="level3" data-number="17.3.1">
-<h3 data-number="17.3.1" class="anchored" data-anchor-id="step-1-under-terminal"><span class="header-section-number">17.3.1</span> Step 1: Under Terminal</h3>
+<section id="step-1-under-terminal" class="level3" data-number="23.3.1">
+<h3 data-number="23.3.1" class="anchored" data-anchor-id="step-1-under-terminal"><span class="header-section-number">23.3.1</span> Step 1: Under Terminal</h3>
 <ul>
 <li><p>Click the tab for Terminal (between the Console and Background Jobs tabs) in Posit Cloud (you should see something like <code>/cloud/project</code>).</p></li>
 <li><p>Type the following command and press Enter:</p></li>
@@ -487,25 +552,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Next, When prompted with “Publish update to:”, click <strong>Add a new destination…</strong></li>
 </ul>
-<p>(see the <a href="#fig-quartopub" class="quarto-xref">Figure&nbsp;<span>17.1</span></a> below):</p>
+<p>(see the <a href="#fig-quartopub" class="quarto-xref">Figure&nbsp;<span>23.1</span></a> below):</p>
 <div id="fig-quartopub" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-quartopub-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/quartopub_1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quartopub-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.1: Quarto publish command and destination selection
+Figure&nbsp;23.1: Quarto publish command and destination selection
 </figcaption>
 </figure>
 </div>
 <hr>
 </section>
-<section id="step-2-authorize-your-account" class="level3" data-number="17.3.2">
-<h3 data-number="17.3.2" class="anchored" data-anchor-id="step-2-authorize-your-account"><span class="header-section-number">17.3.2</span> Step 2: Authorize Your Account</h3>
+<section id="step-2-authorize-your-account" class="level3" data-number="23.3.2">
+<h3 data-number="23.3.2" class="anchored" data-anchor-id="step-2-authorize-your-account"><span class="header-section-number">23.3.2</span> Step 2: Authorize Your Account</h3>
 <ul>
-<li><p>Under “Publish with account:” section choose “<strong>Use another account…</strong>” (see the <a href="#fig-chooseaccount" class="quarto-xref">Figure&nbsp;<span>17.2</span></a> below)</p></li>
-<li><p>Next, the system will ask to authorize your account in order to publish to Quarto Pub. In the Authorize (Y/n) section, type “<strong>Y</strong>” for Yes. (see the <a href="#fig-authorize" class="quarto-xref">Figure&nbsp;<span>17.3</span></a> below)</p></li>
-<li><p>In addition, you will get an url, click it and you will see your quarto account, click “ALLOW”, this way you allow to publish into quarto. (see the <a href="#fig-linktoauthorization" class="quarto-xref">Figure&nbsp;<span>17.4</span></a> and <a href="#fig-authorizationpage" class="quarto-xref">Figure&nbsp;<span>17.5</span></a> below)</p></li>
+<li><p>Under “Publish with account:” section choose “<strong>Use another account…</strong>” (see the <a href="#fig-chooseaccount" class="quarto-xref">Figure&nbsp;<span>23.2</span></a> below)</p></li>
+<li><p>Next, the system will ask to authorize your account in order to publish to Quarto Pub. In the Authorize (Y/n) section, type “<strong>Y</strong>” for Yes. (see the <a href="#fig-authorize" class="quarto-xref">Figure&nbsp;<span>23.3</span></a> below)</p></li>
+<li><p>In addition, you will get an url, click it and you will see your quarto account, click “ALLOW”, this way you allow to publish into quarto. (see the <a href="#fig-linktoauthorization" class="quarto-xref">Figure&nbsp;<span>23.4</span></a> and <a href="#fig-authorizationpage" class="quarto-xref">Figure&nbsp;<span>23.5</span></a> below)</p></li>
 </ul>
 <div id="fig-chooseaccount" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -513,7 +578,7 @@ Figure&nbsp;17.1: Quarto publish command and destination selection
 <img src="images/quartopub_2.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chooseaccount-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.2: Choose “Use another account”
+Figure&nbsp;23.2: Choose “Use another account”
 </figcaption>
 </figure>
 </div>
@@ -523,7 +588,7 @@ Figure&nbsp;17.2: Choose “Use another account”
 <img src="images/quartopub_3.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-authorize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.3: Authorize publishing in terminal
+Figure&nbsp;23.3: Authorize publishing in terminal
 </figcaption>
 </figure>
 </div>
@@ -533,7 +598,7 @@ Figure&nbsp;17.3: Authorize publishing in terminal
 <img src="images/quartopub_4.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linktoauthorization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.4: Click authorization link
+Figure&nbsp;23.4: Click authorization link
 </figcaption>
 </figure>
 </div>
@@ -543,17 +608,17 @@ Figure&nbsp;17.4: Click authorization link
 <img src="images/quartopub-auth.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-authorizationpage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.5: Allow publishing access
+Figure&nbsp;23.5: Allow publishing access
 </figcaption>
 </figure>
 </div>
 <hr>
 </section>
-<section id="step-3-name-your-website" class="level3" data-number="17.3.3">
-<h3 data-number="17.3.3" class="anchored" data-anchor-id="step-3-name-your-website"><span class="header-section-number">17.3.3</span> Step 3: Name Your Website</h3>
+<section id="step-3-name-your-website" class="level3" data-number="23.3.3">
+<h3 data-number="23.3.3" class="anchored" data-anchor-id="step-3-name-your-website"><span class="header-section-number">23.3.3</span> Step 3: Name Your Website</h3>
 <ul>
-<li><p>When prompted for “Site name:”, scroll down to “<strong>Use another name…</strong>” (see the <a href="#fig-sitename" class="quarto-xref">Figure&nbsp;<span>17.6</span></a> below)</p></li>
-<li><p>Next, in “Publish with name” section, <strong>enter a short name</strong> for your report. (see the <a href="#fig-createname" class="quarto-xref">Figure&nbsp;<span>17.7</span></a>)</p>
+<li><p>When prompted for “Site name:”, scroll down to “<strong>Use another name…</strong>” (see the <a href="#fig-sitename" class="quarto-xref">Figure&nbsp;<span>23.6</span></a> below)</p></li>
+<li><p>Next, in “Publish with name” section, <strong>enter a short name</strong> for your report. (see the <a href="#fig-createname" class="quarto-xref">Figure&nbsp;<span>23.7</span></a>)</p>
 <ul>
 <li><p>different examples:</p>
 <ul>
@@ -570,7 +635,7 @@ Figure&nbsp;17.5: Allow publishing access
 <img src="images/quartopub_6.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sitename-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.6: Select “Use another name”
+Figure&nbsp;23.6: Select “Use another name”
 </figcaption>
 </figure>
 </div>
@@ -580,20 +645,20 @@ Figure&nbsp;17.6: Select “Use another name”
 <img src="images/quartopub_7.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-createname-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.7: Create a name for your report
+Figure&nbsp;23.7: Create a name for your report
 </figcaption>
 </figure>
 </div>
 <hr>
 </section>
-<section id="step-4-confirm-and-view-your-website" class="level3" data-number="17.3.4">
-<h3 data-number="17.3.4" class="anchored" data-anchor-id="step-4-confirm-and-view-your-website"><span class="header-section-number">17.3.4</span> Step 4: Confirm and View Your Website</h3>
+<section id="step-4-confirm-and-view-your-website" class="level3" data-number="23.3.4">
+<h3 data-number="23.3.4" class="anchored" data-anchor-id="step-4-confirm-and-view-your-website"><span class="header-section-number">23.3.4</span> Step 4: Confirm and View Your Website</h3>
 <p>Once publishing completes successfully, you’ll see a message in the terminal with a link to your new Quarto Pub website. Click the link to open your published report!</p>
 <hr>
 </section>
 </section>
-<section id="troubleshooting-and-tips" class="level2" data-number="17.4">
-<h2 data-number="17.4" class="anchored" data-anchor-id="troubleshooting-and-tips"><span class="header-section-number">17.4</span> Troubleshooting and Tips</h2>
+<section id="troubleshooting-and-tips" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="troubleshooting-and-tips"><span class="header-section-number">23.4</span> Troubleshooting and Tips</h2>
 <ul>
 <li><p>If you receive an authorization error, sign out of all Google accounts, then log in again with your school email.</p></li>
 <li><p>To update your site later, simply run:</p>
@@ -605,9 +670,34 @@ Figure&nbsp;17.7: Create a name for your report
 </ul>
 
 
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1011,12 +1101,12 @@ Figure&nbsp;17.7: Create a name for your report
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./citations.html" class="pagination-link" aria-label="Citations &amp; Refs">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./review.html" class="pagination-link" aria-label="Review in Hypothes.is">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

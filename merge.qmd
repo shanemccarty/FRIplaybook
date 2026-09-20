@@ -19,8 +19,8 @@ execute:
   message: false
 ---
 
-::: callout-tip
-## 📖 `dplyr` resources
+::: {.callout-note collapse="true"}
+## Resources: `dplyr`
 
 -   [Mutate Joins](https://dplyr.tidyverse.org/reference/mutate-joins.html)
 -   [Documentation](https://dplyr.tidyverse.org/index.html)

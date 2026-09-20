@@ -20,8 +20,8 @@ nocite: |
 
 ------------------------------------------------------------------------
 
-::: callout-tip
-## 📖 resources
+::: {.callout-note collapse="true"}
+## Resources
 
 -   [APA Style Guide](https://apastyle.apa.org)
 -   [APA In-Text Citations](https://apastyle.apa.org/style-grammar-guidelines/citations)
@@ -31,10 +31,10 @@ nocite: |
 -   [Quarto Citations](https://quarto.org/docs/authoring/citations.html)
 :::
 
-::: {.callout-important appearance="simple"}
-## Required
+::: {.callout-important}
+## Required: citations in your Final Report
 
-Your *Final* *Report* and *Team* *Manuscript* will include in-text citations and references using this chapter. However, the *Results* & *Discussion* report draft will not require citations and references.
+Your *Final* *Report* will include in-text citations and references using this chapter. However, the *Results* & *Discussion* report draft will not require citations and references.
 :::
 
 ## **Add "bibliography: references.bib" to the YAML**
@@ -165,9 +165,9 @@ By default, Quarto will automatically generate a list of cited works and will be
 
 For more information about citations in Quarto, check out the Quarto website: <https://quarto.org/docs/authoring/citations.html>
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: citations in your Final Report
 
-Citations and references are not required for the Results & Discussion Report ( `RDreport.qmd` ), but they are required for the final report.
+Citations and references are not required for the Results & Discussion Report ( `Lastname_RDreport.qmd` ), but they are required for your final report (`Lastname_finalreport.qmd`).
 
 :::

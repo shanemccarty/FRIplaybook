@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zihan Hei">
 
-<title>16&nbsp; APA Citations &amp; References – The Quantitative Playbook for Public Health Research in R</title>
+<title>23&nbsp; APA Citations &amp; References – The Quantitative Playbook for Public Health Research in R</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -87,18 +90,17 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./quartopub.html" rel="next">
-<link href="./write-functions.html" rel="prev">
+<link href="./write-intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-a6e161b2431e1f94a14e0f5d32135a3c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3736c44766b80259c5adcd002f0c6134.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -128,6 +130,7 @@ div.csl-indent {
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -139,7 +142,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Writing Reproducibly</a></li><li class="breadcrumb-item"><a href="./citations.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Write Your Report</a></li><li class="breadcrumb-item"><a href="./citations.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,9 +155,7 @@ div.csl-indent {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
         <div class="sidebar-tools-main">
@@ -195,7 +196,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Get Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -203,20 +204,38 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Playbook</span></span></a>
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
       </ul>
@@ -224,7 +243,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Importing Your Data</span></a>
+ <span class="menu-text">Import, Tidy &amp; Transform</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -233,19 +252,37 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -253,7 +290,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Tidying Your Data</span></a>
+ <span class="menu-text">Map Your Analysis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -261,8 +298,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -270,7 +319,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Transforming Your Data</span></a>
+ <span class="menu-text">Compare Groups</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -278,20 +327,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +348,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Visualizing Your Data</span></a>
+ <span class="menu-text">Examine Relationships</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -307,14 +356,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ggplot2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Visualize in ggplot2</span></span></a>
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -322,7 +371,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Writing Reproducibly</span></a>
+ <span class="menu-text">Write Your Report</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -331,25 +380,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
       </ul>
@@ -357,7 +400,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish and Review</span></a>
+ <span class="menu-text">Publish &amp; Review</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -366,13 +409,42 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
   </div>
 </li>
       </ul>
@@ -387,24 +459,24 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#add-bibliography-references.bib-to-the-yaml" id="toc-add-bibliography-references.bib-to-the-yaml" class="nav-link active" data-scroll-target="#add-bibliography-references.bib-to-the-yaml"><span class="header-section-number">16.1</span> <strong>Add “bibliography: references.bib” to the YAML</strong></a></li>
-  <li><a href="#download-the-apa.csl-file-from-zotero" id="toc-download-the-apa.csl-file-from-zotero" class="nav-link" data-scroll-target="#download-the-apa.csl-file-from-zotero"><span class="header-section-number">16.2</span> <strong>Download the <code>apa.csl</code> file from Zotero</strong></a>
+  <li><a href="#add-bibliography-references.bib-to-the-yaml" id="toc-add-bibliography-references.bib-to-the-yaml" class="nav-link active" data-scroll-target="#add-bibliography-references.bib-to-the-yaml"><span class="header-section-number">23.1</span> <strong>Add “bibliography: references.bib” to the YAML</strong></a></li>
+  <li><a href="#download-the-apa.csl-file-from-zotero" id="toc-download-the-apa.csl-file-from-zotero" class="nav-link" data-scroll-target="#download-the-apa.csl-file-from-zotero"><span class="header-section-number">23.2</span> <strong>Download the <code>apa.csl</code> file from Zotero</strong></a>
   <ul class="collapse">
-  <li><a href="#find-apa-style-in-zotero" id="toc-find-apa-style-in-zotero" class="nav-link" data-scroll-target="#find-apa-style-in-zotero"><span class="header-section-number">16.2.1</span> Find APA Style in Zotero</a></li>
-  <li><a href="#finding-the-csl-file" id="toc-finding-the-csl-file" class="nav-link" data-scroll-target="#finding-the-csl-file"><span class="header-section-number">16.2.2</span> Finding the CSL File</a></li>
+  <li><a href="#find-apa-style-in-zotero" id="toc-find-apa-style-in-zotero" class="nav-link" data-scroll-target="#find-apa-style-in-zotero"><span class="header-section-number">23.2.1</span> Find APA Style in Zotero</a></li>
+  <li><a href="#finding-the-csl-file" id="toc-finding-the-csl-file" class="nav-link" data-scroll-target="#finding-the-csl-file"><span class="header-section-number">23.2.2</span> Finding the CSL File</a></li>
   </ul></li>
-  <li><a href="#insert-citations-in-visual-mode" id="toc-insert-citations-in-visual-mode" class="nav-link" data-scroll-target="#insert-citations-in-visual-mode"><span class="header-section-number">16.3</span> <strong>Insert Citations in Visual Mode</strong></a></li>
-  <li><a href="#including-uncited-items" id="toc-including-uncited-items" class="nav-link" data-scroll-target="#including-uncited-items"><span class="header-section-number">16.4</span> <strong>Including Uncited Items</strong></a></li>
-  <li><a href="#bibliography-generation" id="toc-bibliography-generation" class="nav-link" data-scroll-target="#bibliography-generation"><span class="header-section-number">16.5</span> <strong>Bibliography Generation</strong></a></li>
+  <li><a href="#insert-citations-in-visual-mode" id="toc-insert-citations-in-visual-mode" class="nav-link" data-scroll-target="#insert-citations-in-visual-mode"><span class="header-section-number">23.3</span> <strong>Insert Citations in Visual Mode</strong></a></li>
+  <li><a href="#including-uncited-items" id="toc-including-uncited-items" class="nav-link" data-scroll-target="#including-uncited-items"><span class="header-section-number">23.4</span> <strong>Including Uncited Items</strong></a></li>
+  <li><a href="#bibliography-generation" id="toc-bibliography-generation" class="nav-link" data-scroll-target="#bibliography-generation"><span class="header-section-number">23.5</span> <strong>Bibliography Generation</strong></a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/citations.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Writing Reproducibly</a></li><li class="breadcrumb-item"><a href="./citations.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readme.html">Write Your Report</a></li><li class="breadcrumb-item"><a href="./citations.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">APA Citations &amp; References</span></h1>
+<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">APA Citations &amp; References</span></h1>
 <p class="subtitle lead">How to cite and reference sources in Quarto using APA style (7th)</p>
 </div>
 
@@ -441,15 +513,17 @@ div.csl-indent {
 
 
 <hr>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>📖 resources
+<span class="screen-reader-only">Resources</span>Resources
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://apastyle.apa.org">APA Style Guide</a></li>
@@ -461,21 +535,22 @@ div.csl-indent {
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-important callout-titled">
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Required
+<span class="screen-reader-only">Important</span>Required: citations in your Final Report
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Your <em>Final</em> <em>Report</em> and <em>Team</em> <em>Manuscript</em> will include in-text citations and references using this chapter. However, the <em>Results</em> &amp; <em>Discussion</em> report draft will not require citations and references.</p>
+<p>Your <em>Final</em> <em>Report</em> will include in-text citations and references using this chapter. However, the <em>Results</em> &amp; <em>Discussion</em> report draft will not require citations and references.</p>
 </div>
 </div>
-<section id="add-bibliography-references.bib-to-the-yaml" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="add-bibliography-references.bib-to-the-yaml"><span class="header-section-number">16.1</span> <strong>Add “bibliography: references.bib” to the YAML</strong></h2>
+<section id="add-bibliography-references.bib-to-the-yaml" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="add-bibliography-references.bib-to-the-yaml"><span class="header-section-number">23.1</span> <strong>Add “bibliography: references.bib” to the YAML</strong></h2>
 <p>This line tells Quarto to create and use a file called <code>references.bib</code>, which you can find in the <strong>Files</strong> section.</p>
 <p>To format your references in APA style, also include the line <code>csl: apa.csl</code> in the YAML header.</p>
 <div class="cell">
@@ -490,10 +565,10 @@ div.csl-indent {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="download-the-apa.csl-file-from-zotero" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="download-the-apa.csl-file-from-zotero"><span class="header-section-number">16.2</span> <strong>Download the <code>apa.csl</code> file from Zotero</strong></h2>
-<section id="find-apa-style-in-zotero" class="level3" data-number="16.2.1">
-<h3 data-number="16.2.1" class="anchored" data-anchor-id="find-apa-style-in-zotero"><span class="header-section-number">16.2.1</span> Find APA Style in Zotero</h3>
+<section id="download-the-apa.csl-file-from-zotero" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="download-the-apa.csl-file-from-zotero"><span class="header-section-number">23.2</span> <strong>Download the <code>apa.csl</code> file from Zotero</strong></h2>
+<section id="find-apa-style-in-zotero" class="level3" data-number="23.2.1">
+<h3 data-number="23.2.1" class="anchored" data-anchor-id="find-apa-style-in-zotero"><span class="header-section-number">23.2.1</span> Find APA Style in Zotero</h3>
 <ol type="1">
 <li><p><strong>Open Zotero.</strong></p></li>
 <li><p>Go to the <strong>menu bar</strong> (top left).</p>
@@ -513,8 +588,8 @@ div.csl-indent {
 <li><p>Click the name of the style and Zotero will <strong>automatically install</strong> it into your local Zotero library.</p></li>
 </ol>
 </section>
-<section id="finding-the-csl-file" class="level3" data-number="16.2.2">
-<h3 data-number="16.2.2" class="anchored" data-anchor-id="finding-the-csl-file"><span class="header-section-number">16.2.2</span> Finding the CSL File</h3>
+<section id="finding-the-csl-file" class="level3" data-number="23.2.2">
+<h3 data-number="23.2.2" class="anchored" data-anchor-id="finding-the-csl-file"><span class="header-section-number">23.2.2</span> Finding the CSL File</h3>
 <p>We need the actual <code>.csl</code> file for Quarto:</p>
 <ol type="1">
 <li>After installing it, go to Zotero’s data directory:</li>
@@ -544,8 +619,8 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="insert-citations-in-visual-mode" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="insert-citations-in-visual-mode"><span class="header-section-number">16.3</span> <strong>Insert Citations in Visual Mode</strong></h2>
+<section id="insert-citations-in-visual-mode" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="insert-citations-in-visual-mode"><span class="header-section-number">23.3</span> <strong>Insert Citations in Visual Mode</strong></h2>
 <ol type="1">
 <li><p>Find your article’s <strong>DOI</strong> and copy it.</p></li>
 <li><p>In the <strong>Visual</strong> editor, click <strong>Insert</strong> —&gt; <strong>Citation</strong>.</p></li>
@@ -559,8 +634,8 @@ div.csl-indent {
 <li><p>If you want to cite multiple sources in one set of parentheses, separate them with semicolons: (<span class="citation" data-cites="offer2025">Offer et al. (<a href="#ref-offer2025" role="doc-biblioref">2025</a>)</span>; <span class="citation" data-cites="johnson2018">Johnson (<a href="#ref-johnson2018" role="doc-biblioref">2018</a>)</span>; <span class="citation" data-cites="obrien2024">O’Brien et al. (<a href="#ref-obrien2024" role="doc-biblioref">2024</a>)</span>)</p></li>
 </ul>
 </section>
-<section id="including-uncited-items" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="including-uncited-items"><span class="header-section-number">16.4</span> <strong>Including Uncited Items</strong></h2>
+<section id="including-uncited-items" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="including-uncited-items"><span class="header-section-number">23.4</span> <strong>Including Uncited Items</strong></h2>
 <p>If you want certain references to appear in your bibliography without citing them in the text, you can define a <code>nocite</code> field in your YAML like this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -587,8 +662,8 @@ div.csl-indent {
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="bibliography-generation" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="bibliography-generation"><span class="header-section-number">16.5</span> <strong>Bibliography Generation</strong></h2>
+<section id="bibliography-generation" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="bibliography-generation"><span class="header-section-number">23.5</span> <strong>Bibliography Generation</strong></h2>
 <p>By default, Quarto will automatically generate a list of cited works and will be placed at the end of the document.</p>
 <p>For more information about citations in Quarto, check out the Quarto website: <a href="https://quarto.org/docs/authoring/citations.html" class="uri">https://quarto.org/docs/authoring/citations.html</a></p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -597,11 +672,11 @@ div.csl-indent {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Requirement
+<span class="screen-reader-only">Important</span>Required: citations in your Final Report
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Citations and references are not required for the Results &amp; Discussion Report ( <code>RDreport.qmd</code> ), but they are required for the final report.</p>
+<p>Citations and references are not required for the Results &amp; Discussion Report ( <code>Lastname_RDreport.qmd</code> ), but they are required for your final report (<code>Lastname_finalreport.qmd</code>).</p>
 </div>
 </div>
 
@@ -611,16 +686,16 @@ div.csl-indent {
 Johnson, S. G. B. (2018). Why do people believe in a zero-sum economy? <em>Behavioral and Brain Sciences</em>, <em>41</em>. <a href="https://doi.org/10.1017/s0140525x18000389">https://doi.org/10.1017/s0140525x18000389</a>
 </div>
 <div id="ref-kannan2014" class="csl-entry" role="listitem">
-Kannan, V. D., &amp; Veazie, P. J. (2014). Predictors of Avoiding Medical Care and Reasons for Avoidance Behavior. <em>Medical Care</em>, <em>52</em>(4), 336–345. <a href="https://doi.org/10.1097/mlr.0000000000000100">https://doi.org/10.1097/mlr.0000000000000100</a>
+Kannan, V. D., &amp; Veazie, P. J. (2014). Predictors of avoiding medical care and reasons for avoidance behavior. <em>Medical Care</em>, <em>52</em>(4), 336–345. <a href="https://doi.org/10.1097/mlr.0000000000000100">https://doi.org/10.1097/mlr.0000000000000100</a>
 </div>
 <div id="ref-McCarty2025" class="csl-entry" role="listitem">
-McCarty, S. (2025). <em>The Quantitative Playbook for Public Health Research in R.</em> <a href="https://shanemccarty.github.io/FRIplaybook/">https://shanemccarty.github.io/FRIplaybook/</a>
+McCarty, S. (2025). <em>The quantitative playbook for public health research in r.</em> <a href="https://shanemccarty.github.io/FRIplaybook/">https://shanemccarty.github.io/FRIplaybook/</a>
 </div>
 <div id="ref-obrien2024" class="csl-entry" role="listitem">
 O’Brien, A. G., Meese, W. B., Taber, J. M., Johnson, A. E., Hinojosa, B. M., Burton, R., Ranjan, S., Rodarte, E. D., Coward, C., &amp; Howell, J. L. (2024). Why do people avoid health risk information? A qualitative analysis. <em>SSM - Qualitative Research in Health</em>, <em>6</em>, 100461. <a href="https://doi.org/10.1016/j.ssmqr.2024.100461">https://doi.org/10.1016/j.ssmqr.2024.100461</a>
 </div>
 <div id="ref-offer2025" class="csl-entry" role="listitem">
-Offer, K., Oglanova, N., Oswald, L., &amp; Hertwig, R. (2025). Prevalence and predictors of medical information avoidance: a systematic review and meta-analysis. <em>Annals of Behavioral Medicine</em>, <em>59</em>(1). <a href="https://doi.org/10.1093/abm/kaaf058">https://doi.org/10.1093/abm/kaaf058</a>
+Offer, K., Oglanova, N., Oswald, L., &amp; Hertwig, R. (2025). Prevalence and predictors of medical information avoidance: A systematic review and meta-analysis. <em>Annals of Behavioral Medicine</em>, <em>59</em>(1). <a href="https://doi.org/10.1093/abm/kaaf058">https://doi.org/10.1093/abm/kaaf058</a>
 </div>
 </div>
 </section>
@@ -1028,13 +1103,13 @@ Offer, K., Oglanova, N., Oswald, L., &amp; Hertwig, R. (2025). Prevalence and pr
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./write-functions.html" class="pagination-link" aria-label="Methods &amp; Results">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span>
+      <a href="./write-intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./quartopub.html" class="pagination-link" aria-label="Publish in Quarto Pub">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

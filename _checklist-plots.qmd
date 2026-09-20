@@ -1,0 +1,19 @@
+<!-- Single source for the plot checklist. Included in Visualize a Comparison and Visualize a Relationship ("Your Turn"), and later in the Final Report Checklist page. Edit it here once; every place updates. -->
+
+
+| Criteria | Ask yourself |
+|------------|--------------------------------------------------------|
+| **Data and mapping** | Is the cleaned dataset used, with the correct variables on x and y? |
+| **Geometry** | Is this the best plot for the data (e.g., scatterplot for two continuous variables; barplot or boxplot for groups)? |
+| **Stacked points** | If points sit on top of each other, are they jittered, and does the caption say so? |
+| **Groups** | Were very small groups combined or excluded? Does the caption say what was combined or excluded, with the counts? |
+| **Stats** | Is there a line of best fit on a scatterplot? Are there error bars on a barplot? (Error bars are required in the Final Report, not the RD Report.) |
+| **Axes and labels** | Are both axes labeled in plain words (not variable names)? Does each axis cover the full range of the scale? |
+| **Facets** | Would a facet (one panel per group) help answer your research question? |
+| **Appearance** | Is there an accurate title? Is a non-default theme used (the same theme in every plot)? Does color add meaning? |
+| **Code formatting** | Can you read the code without scrolling to the right? Does the plot print without errors or extra output? |
+| **Figure caption** | Does the chunk have `fig-cap`, starting with "Figure 1.", "Figure 2.", and enough detail to stand alone? |
+| **Alt text** | Does the chunk have `fig-alt` that describes what the plot shows? |
+| **ggsave( )** | Is the plot saved with `ggsave()` into the `plots` folder of your RStudio Project, with a clear file name? |
+| **Stands alone** | Could a reader understand the figure without reading your text? |
+| **Referenced in text** | Does your results paragraph point to it (e.g., "Figure 1 shows the association between ...")? |

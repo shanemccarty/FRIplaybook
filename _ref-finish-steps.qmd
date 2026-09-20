@@ -1,0 +1,6 @@
+<!-- Single source for Ref's end-of-session routine (steps 7-10). Included in find-the-ref.qmd; can also close each lab page. -->
+
+7.  **Save** your `.qmd` file (Cmd + S on Mac / Ctrl + S on Windows). If the file name at the top of the script editor is red with a \*, it is not saved.
+8.  **Render** your `.qmd` file. If it renders without errors, your code works from top to bottom and you will be able to pick up next time without surprises. If it does not render, leave yourself a comment that says where the problem is.
+9.  **Back up your files to your ELN.** Open your individual ELN (your Google Drive folder) in your browser and open your **R Labs** folder. Click + New \> File upload, go to your `Lastname_FRI` project folder, and select the files you worked on today: your `.qmd` files and your `.R` files (such as `install.R`). You can also drag the files from your project folder into the browser window. If Google Drive asks what to do with a file that is already there, choose **Replace existing file**. Google Drive keeps the older versions for you.
+10. **Quit RStudio.** If RStudio asks to save your workspace, choose **Don't Save**.

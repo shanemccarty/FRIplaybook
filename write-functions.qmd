@@ -3,7 +3,7 @@ title: "Writing Methods & Results Reproducibly"
 subtitle: "How to use R functions and inline code to embed statistics in text"
 author: "Zihan Hei"
 abstract: |
-  This chapter teaches researchers to write reproducible results sections by computing statistics in R and embedding them directly into manuscript text. Students learn a two-step process: (1) calculate statistics using R functions and store them as objects, and (2) insert those values into prose using Quarto's inline code syntax. Through five practical examples, the chapter covers calculating sample sizes, computing percentages, formatting numbers as words, creating descriptive statistics tables, and running statistical tests. By replacing manually typed numbers with code-generated values, researchers eliminate transcription errors and create manuscripts that automatically update when data or analyses change, following reproducible research best practices.By the end of this chapter, researchers will be able to transform static numbers in their research papers into dynamic, code-generated values for research reproducibility. 
+  This chapter teaches researchers to write reproducible results sections by computing statistics in R and embedding them directly into report text. Students learn a two-step process: (1) calculate statistics using R functions and store them as objects, and (2) insert those values into prose using Quarto's inline code syntax. Through five practical examples, the chapter covers calculating sample sizes, computing percentages, formatting numbers as words, creating descriptive statistics tables, and running statistical tests. By replacing manually typed numbers with code-generated values, researchers eliminate transcription errors and create reports that automatically update when data or analyses change, following reproducible research best practices.By the end of this chapter, researchers will be able to transform static numbers in their research papers into dynamic, code-generated values for research reproducibility. 
 keywords:
   - quarto publishing
   - in line coding
@@ -17,10 +17,10 @@ editor: visual
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
-::: {.callout-important appearance="simple"}
-## Advanced Module
+::: {.callout-important}
+## Important: Advanced module (not required)
 
-This is an *advanced* *chapter* and not required for your report or manuscript!
+This is an *advanced* *chapter* and not required for your report!
 :::
 
 In reproducible research, writing *numbers* *manually* (e.g., "We surveyed 120 people.") can lead to errors if you import data later (after you have collected 140 people). Instead, use **R functions** inside **Quarto** to turn your results directly into sentences!
@@ -1474,7 +1474,7 @@ total_responses
 
 ## use in line code
 
-In your manuscript, write like this:
+In your report, write like this:
 
 ```{markdown}
 We surveyed a total of `r total_responses` participants.
@@ -1523,7 +1523,7 @@ mixed_other
 
 ### use inline r code with `total_responses`
 
-In your manuscript, write like this:
+In your report, write like this:
 
 ```{markdown}
 Out of `r total_responses` participants, The final sample was roughly balanced in terms of 
@@ -1552,7 +1552,7 @@ library(stringr)
 
 ### report numbers as words
 
-In your manuscript, write like this:
+In your report, write like this:
 
 ```{markdown}
 A total of `r str_to_title(as.character(english(total_responses)))` participants were included in the analysis.
@@ -1593,7 +1593,7 @@ knitr::kable(desc_table_continuous, digits = 2)
 
 ### create table
 
-In your manuscript, write like this:
+In your report, write like this:
 
 ```{markdown}
 Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. 
@@ -1632,7 +1632,7 @@ kw.ZEROSUM_1.party
 
 ### include inline R code with reporting
 
-In your manuscript, write like this:
+In your report, write like this:
 
 ```{markdown}
 There was no significant difference in ZEROSUM_1 scores across political party groups, 

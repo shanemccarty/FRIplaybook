@@ -28,51 +28,49 @@ execute:
   message: false
 ---
 
-::: callout-tip
-## 📖 `quarto` resources
+::: {.callout-note collapse="true"}
+## Resources: `quarto`
 
--   [Primary website](https://quarto.org)
--   [R4DS Book Chapter](https://r4ds.hadley.nz/quarto.html)
--   [Youtube: Getting Started](https://www.youtube.com/watch?v=_f3latmOhew)
--   [Youtube: Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
--   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
--   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
+- [Primary website](https://quarto.org)
+- Read: [R4DS Ch. 28 Quarto](https://r4ds.hadley.nz/quarto.html)
+- Read: [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+- [Youtube: Getting Started](https://www.youtube.com/watch?v=_f3latmOhew)
+- [Youtube: Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
+- [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
+- [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
 :::
 
-::: {.callout-important appearance="simple"}
-## Required
+::: {.callout-important}
+## Required: reports are `.qmd` files
 
-Your *R&D Report* and *R&D Team Manuscript* will be a `.qmd` file with code chunks containing: label, fig-cap, fig-alt, source information, and explanation.
+The *AIM report* was written and saved as a word document (`.docx`) format, which is different than a Quarto report (`.qmd`). Your *RD Report* and *Final Report* will be `.qmd` files with code chunks containing: label, fig-cap, fig-alt, source information, and explanation. You will do your writing in a Google Doc and then paste your writing into RStudio, within a `.qmd` Quarto Markdown document.
 :::
 
-::: {.callout-caution collapse="true"}
-## updated 10/18/2025
-:::
+In RStudio, you should see the *Source* and *Visual* editor options in the top left corner of the script editor. You can toggle back and forth between the two options.
 
-In your Posit Cloud window browser, you should see the *source* and *visual* editor options in the top left corner of your screen. You can toggle back and forth between the two options.
+- The source option is your best option for coding in R with line items.
 
--   The source option is your best option for coding in R with line items.
-
--   The visual editor is your best place to see the quarto markdown document (.qmd) before it is officially rendered as an HTML output.
+- The visual editor is your best place to see the quarto markdown document (.qmd) before it is officially rendered as an HTML output.
 
 ## Create a Quarto Markdown Document
 
--   File \> New File \> Quarto Document
--   Complete Title and Author Name, Create
--   File \> Save As \> name-it-now.qmd
--   Check the file shows up in your files in the bottom right window as .qmd file
+- File \> New File \> Quarto Document
+- Complete Title and Author Name, Create
+- File \> Save As \> name-it-now.qmd
+- Check the file shows up in your files in the bottom right window as .qmd file
 
 ### Quarto Document File Names
 
 For individual lab and report quarto reports:
 
--   Your individual lab was renamed to `lab.qmd`
--   Your results and discussion report should be named: `RDreport.qmd`
--   After submitting your `RDreport.qmd`, you should go to the files tab, check the box next to `RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `YOURLASTNAME_report.qmd`
--   Your final report should be named: `YOURLASTNAME_report.qmd`
+- Create a new `.qmd` document for each lab, naming them: `Lastname_lab1.qmd`, `Lastname_lab2.qmd`, `Lastname_lab3.qmd`, `Lastname_lab4.qmd`, and `Lastname_lab5.qmd`
+- Your results and discussion (RD) report should be named: `Lastname_RDreport.qmd`
+- After submitting your `Lastname_RDreport.qmd`, you should go to the files tab, check the box next to `Lastname_RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `Lastname_finalreport.qmd`
+- Your final report should be named: `Lastname_finalreport.qmd`
+- Replace `Lastname` with your own last name (e.g., `McCarty_RDreport.qmd`)
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: file names
 
 Please name your quarto markdown files (`.qmd`) correctly.
 :::
@@ -86,28 +84,15 @@ Your previously created objects (e.g., `alldata`, `select_data`, `VARIABLE1`) ar
 rm(list = ls())
 ```
 
-For your draft and final team MMR manuscript, you should:
-
--   pick one quantitative team member to store the team files in their posit cloud project
-
--   rename this specific posit cloud project from #1: Vivian -\> #1: Vivian & Team (to notify me where to look for your team's MMR work)
-
--   create a `teamRD.qmd` file
-
--   create a `teamfinal.qmd` file
-
 ## YAML
 
 YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
 
-::: {.callout-important appearance="simple"}
-## Required
+::: {.callout-important}
+## Important: `code-fold: false` in your YAML
 
 On Oct 27th, the YAML was updated to `code-fold: false`. This improved the HTML output of your report by including all of the code.
-
 :::
-
-
 
 ```{YAML}
 ---
@@ -156,27 +141,27 @@ format:
     
 ```
 
-::: callout-important
-### Requirement
+::: {.callout-important}
+## Required: the YAML header
 
--   Use the above YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+- Use the above YAML format at the top of ALL Quarto markdown document files (`.qmd`).
 
--   title, subtitle, name, email should be revised
+- title, subtitle, name, email should be revised
 
--   url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team \# (e.g., team2.html, team3.html)
+- url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team \# (e.g., team2.html, team3.html)
 
--   abstract and keywords should be included
+- abstract and keywords should be included
 :::
 
 For more information, see:
 
--   [YAML](https://quarto.org/docs/reference/formats/html.html)
+- [YAML](https://quarto.org/docs/reference/formats/html.html)
 
--   [Front Matter](https://quarto.org/docs/authoring/front-matter.html)
+- [Front Matter](https://quarto.org/docs/authoring/front-matter.html)
 
--   [code-overflow](https://quarto.org/docs/output-formats/html-code.html#code-overflow)
+- [code-overflow](https://quarto.org/docs/output-formats/html-code.html#code-overflow)
 
--   [Authors & Affiliations](https://quarto.org/docs/journals/authors.html)
+- [Authors & Affiliations](https://quarto.org/docs/journals/authors.html)
 
 ## Code Chunks
 
@@ -184,9 +169,9 @@ A traditional R script (`.R`) involves code throughout the entire script. A Quar
 
 ### Example Code Chunk
 
-Below is an example from the @ggplot2.qmd chapter of an informative `label` for your code chunk and a very detailed figure caption ( `fig-cap`). Also, notice that all code chunk options start with `#|` and use a `:`.
+Below is an example from the [Visualize a Relationship](visualize-relationship.qmd) chapter of an informative `label` for your code chunk and a very detailed figure caption ( `fig-cap`). Also, notice that all code chunk options start with `#|` and use a `:`.
 
-For more examples, see @ggplot2.qmd.
+For more examples, see [Visualize a Relationship](visualize-relationship.qmd) and [Visualize a Comparison](visualize-comparison.qmd).
 
 ```{r}
 #| label: scatterplot-BMI-insurance
@@ -206,8 +191,8 @@ Your `#| label:` should be lowercase with dashs between words to create a comple
 
 ```
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: a label for every code chunk
 
 Every code chunk must have a `#| label:` at the start of the chunk.
 :::
@@ -220,8 +205,8 @@ Every code chunk must have a `#| label:` at the start of the chunk.
 
 ```
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: a figure caption for every plot
 
 Every plot should include a detailed figure caption using `#| fig-cap:`
 :::
@@ -236,8 +221,8 @@ Every image and figure/plot/graph/table should be accessible to people with blin
 #| fig-alt: provide info for accessiblity
 ```
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: alt text for every figure
 
 Every figure and image should include alternative text using `#| fig-alt:`
 :::
@@ -246,8 +231,8 @@ For more information on how improve the accessiblity of an image, see [figures-a
 
 #### Provide Sources for ALL Code Chunks
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: the source of your code
 
 At the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).
 :::
@@ -269,8 +254,8 @@ The format is different for the code chunk options that use `#|` (e.g., `#| labe
 
 #### Provide Explanation for ALL Code Chunks
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: an explanation in your own words
 
 You will explain the code chunk in your own words using `#explanation:` at the bottom of your code chunk.
 :::

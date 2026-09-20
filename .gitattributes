@@ -1,0 +1,11 @@
+# Tells GitHub how to count languages for the repo's language bar (it changes nothing else).
+# The rendered website and the Quarto extensions are not our source code:
+docs/** linguist-generated
+site_libs/** linguist-vendored
+_extensions/** linguist-vendored
+_freeze/** linguist-generated
+*.scss linguist-vendored
+*.tex linguist-generated
+# The book is written in Quarto (.qmd) files with R code; count them as R:
+*.qmd linguist-language=R linguist-detectable
+*.R linguist-detectable

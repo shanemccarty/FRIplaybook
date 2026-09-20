@@ -109,5 +109,38 @@
   },
   "merge.qmd": {
     "merge.html": "c04aeae7"
+  },
+  "RStudio.qmd": {
+    "RStudio.html": "a0c25d08"
+  },
+  "find-the-ref.qmd": {
+    "find-the-ref.html": "5e6da076"
+  },
+  "library.qmd": {
+    "library.html": "06068767"
+  },
+  "layers.qmd": {
+    "layers.html": "368cfd7c"
+  },
+  "analysis-map.qmd": {
+    "analysis-map.html": "e6e184fb"
+  },
+  "visualize-comparison.qmd": {
+    "visualize-comparison.html": "9cec85fa"
+  },
+  "visualize-relationship.qmd": {
+    "visualize-relationship.html": "6623188e"
+  },
+  "describe.qmd": {
+    "describe.html": "ee5136d3"
+  },
+  "ANOVA.qmd": {
+    "ANOVA.html": "5e27257c"
+  },
+  "statistics.qmd": {
+    "statistics.html": "9e102823"
+  },
+  "data-equity.qmd": {
+    "data-equity.html": "45e38ecc"
   }
 }

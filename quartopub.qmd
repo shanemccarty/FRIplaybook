@@ -21,8 +21,8 @@ bibliography: references.bib
 csl: apa.csl
 ---
 
-::: callout-tip
-## 📖 resources
+::: {.callout-note collapse="true"}
+## Resources
 
 -   [Quarto Publish Guide](https://quarto.org/docs/publishing/quarto-pub.html)
 -   [Quarto Pub dashboard](https://quartopub.com/)

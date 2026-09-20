@@ -1,0 +1,10 @@
+<!-- Single source for the ggplot2 resource links. Included in the Preface (color key example), How Code Builds a Plot, Visualize a Comparison, and Visualize a Relationship. Edit it here once; every place updates. -->
+
+- [Intro to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+- [Documentation](https://ggplot2.tidyverse.org)
+- [R4DS Book Chapter 1](https://r4ds.hadley.nz/data-visualize.html)
+- [R4DS Book Ch. 9 - 11](https://r4ds.hadley.nz/visualize.html)
+- [ggplot2 Book](https://ggplot2-book.org)
+- [Datacamp](https://www.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2)
+- [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-visualization.html)
+- [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-visualization.pdf)

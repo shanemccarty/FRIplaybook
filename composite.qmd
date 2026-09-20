@@ -32,8 +32,8 @@ execute:
   message: false
 ---
 
-::: callout-tip
-## 📖 `psych` resources
+::: {.callout-note collapse="true"}
+## Resources: `psych`
 
 -   [Documentation](https://cran.r-project.org/web/packages/psych/psych.pdf)
 -   [Personality Project in R](https://personality-project.org/r/psych/)
@@ -153,7 +153,7 @@ On the original scale, "Very often" = 5. However, because this is a **negatively
 Therefore, if someone reports "Very often" (5) for `FOCUS_6`, after reverse coding it becomes 1, correctly reflecting LOW promotion focus.
 
 ::: callout-important
-## Understanding the `-` symbol
+## Important: Understanding the `-` symbol
 
 The minus sign (`-`) before an item name tells `scoreItems()` to reverse code that item.
 
@@ -219,12 +219,9 @@ focus_scores
 -   Use at least 3-4 items per scale
 :::
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: report Cronbach's alpha
 
-In the measures section of your `RDreport.qmd` and final report, please include the results of the reliability analysis (aka cronbach's alpha).
+In the measures section of your `Lastname_RDreport.qmd` and final report, please include the results of the reliability analysis (aka cronbach's alpha).
 :::
 
-::: callout-warning
-This page is under construction. It will be updated in the future!
-:::

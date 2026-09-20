@@ -1,0 +1,20 @@
+<!-- Single source for the regression checklist. Included in Relate 3+ Variables ("Your Turn"), and later in the Final Report Checklist page. Edit it here once; every place updates. -->
+
+
+| Criteria | Ask yourself |
+|------------|--------------------------------------------------------|
+| **Right test** | Does the Analysis Map lead here (one continuous outcome, two or more predictors)? |
+| **Missing codes** | Were codes such as -99 and -50 changed to `NA` before the model was run? |
+| **Categorical predictors** | Is every categorical predictor a `factor()` with labels, not a number? Does your text name the comparison group? |
+| **Outcome kept whole** | Is the outcome the full score (not cut into "high" and "low")? |
+| **Plot first** | Is there a scatterplot of the outcome and your main predictor before the model? |
+| **Model statement** | Does the text say which test was run, the outcome, and every predictor? |
+| **Each predictor** | Do you report *b* and *p* for every predictor, including the ones that were not significant? |
+| **Sample size** | Is *n* reported from `nobs()`, not from the number of rows in the dataset? |
+| **R-squared** | Is R-squared reported and explained in plain words (percent of the differences in the outcome)? |
+| **Residuals** | Is there a histogram of the residuals, and one sentence on its shape? |
+| **Interpretation** | Does the text connect the result to your hypothesis, with "holding the other predictors constant"? |
+| **No causal words** | Did you avoid "causes", "leads to", "impacts", and "effect of"? |
+| **Table** | Is there a regression table made with `kable()`, with a caption starting "Table 1."? |
+| **Inline numbers** | Do the numbers in your sentences come from inline R code, not typed by hand? |
+| **Referenced in text** | Does your results paragraph point to the table and the figure? |

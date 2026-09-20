@@ -2,78 +2,118 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/index.html</loc>
-    <lastmod>2025-10-22T04:43:11.157Z</lastmod>
+    <lastmod>2026-09-20T18:33:53.547Z</lastmod>
   </url>
   <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/intro.html</loc>
-    <lastmod>2025-10-24T01:01:30.287Z</lastmod>
+    <loc>https://shanemccarty.github.io/FRIplaybook/RStudio.html</loc>
+    <lastmod>2026-09-20T17:44:22.173Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/find-the-ref.html</loc>
+    <lastmod>2026-09-20T16:50:00.718Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/library.html</loc>
+    <lastmod>2026-09-20T16:50:00.700Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/example.html</loc>
-    <lastmod>2025-10-22T04:28:56.417Z</lastmod>
+    <lastmod>2026-09-20T18:31:52.918Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/codechunks.html</loc>
-    <lastmod>2025-11-11T18:50:27.151Z</lastmod>
+    <lastmod>2026-09-20T18:41:37.030Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/layers.html</loc>
+    <lastmod>2026-09-20T18:18:10.134Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/export.html</loc>
-    <lastmod>2025-10-22T05:02:29.598Z</lastmod>
+    <lastmod>2026-09-20T04:56:17.865Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/import-once.html</loc>
-    <lastmod>2025-10-27T22:34:01.678Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/import-live.html</loc>
-    <lastmod>2025-10-22T04:29:49.048Z</lastmod>
+    <lastmod>2026-09-20T15:31:06.443Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/tidyr.html</loc>
-    <lastmod>2025-10-23T15:38:27.181Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/dplyr.html</loc>
-    <lastmod>2025-10-25T17:10:02.514Z</lastmod>
+    <lastmod>2026-09-20T15:26:00.035Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/merge.html</loc>
-    <lastmod>2025-10-27T22:34:04.826Z</lastmod>
+    <lastmod>2025-10-28T02:34:04.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/dplyr.html</loc>
+    <lastmod>2026-09-20T17:57:21.068Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/composite.html</loc>
-    <lastmod>2025-10-27T22:34:00.470Z</lastmod>
+    <lastmod>2026-09-20T17:57:21.067Z</lastmod>
   </url>
   <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/ggplot2.html</loc>
-    <lastmod>2025-11-01T19:09:09.600Z</lastmod>
+    <loc>https://shanemccarty.github.io/FRIplaybook/analysis-map.html</loc>
+    <lastmod>2026-09-20T18:07:45.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/visualize-comparison.html</loc>
+    <lastmod>2026-09-20T16:50:00.704Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/violin.html</loc>
-    <lastmod>2025-10-27T14:36:13.667Z</lastmod>
+    <lastmod>2026-09-20T15:26:00.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html</loc>
+    <lastmod>2026-09-20T18:15:23.635Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/readme.html</loc>
-    <lastmod>2025-10-22T04:31:31.551Z</lastmod>
+    <lastmod>2026-09-20T15:31:06.446Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/write-intro.html</loc>
-    <lastmod>2025-10-22T15:36:58.868Z</lastmod>
-  </url>
-  <url>
-    <loc>https://shanemccarty.github.io/FRIplaybook/write-functions.html</loc>
-    <lastmod>2025-11-01T19:30:16.951Z</lastmod>
+    <lastmod>2026-09-20T15:31:06.447Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/citations.html</loc>
-    <lastmod>2025-10-23T15:51:06.566Z</lastmod>
+    <lastmod>2026-09-20T15:31:06.448Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/quartopub.html</loc>
-    <lastmod>2025-10-27T15:45:35.235Z</lastmod>
+    <lastmod>2026-09-20T15:26:00.052Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/review.html</loc>
-    <lastmod>2025-10-27T22:49:55.664Z</lastmod>
+    <lastmod>2026-09-20T15:26:00.053Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/import-live.html</loc>
+    <lastmod>2026-09-20T15:31:06.449Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/write-functions.html</loc>
+    <lastmod>2026-09-20T15:31:06.452Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/regression.html</loc>
+    <lastmod>2026-09-20T18:07:45.266Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/describe.html</loc>
+    <lastmod>2026-09-20T18:07:45.269Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/ANOVA.html</loc>
+    <lastmod>2026-09-20T18:07:45.264Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/statistics.html</loc>
+    <lastmod>2026-09-20T18:07:45.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/data-equity.html</loc>
+    <lastmod>2026-09-20T17:47:50.291Z</lastmod>
   </url>
 </urlset>

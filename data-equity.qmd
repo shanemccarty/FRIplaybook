@@ -1,0 +1,30 @@
+---
+title: "Data Equity"
+subtitle: "Who is counted, who decides, and who benefits"
+author:
+  - Shane McCarty, PhD
+abstract: |
+  This short chapter explains why data equity matters in public health research and lists resources for researchers who want to learn more.
+keywords:
+  - data equity
+  - data feminism
+  - race and methodology
+  - research ethics
+date: 09.20.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+---
+
+Data are never neutral. People decide which questions get asked, who is invited to answer, which boxes appear on a survey, which small groups get combined or dropped, and how a difference between groups gets explained. Each of those decisions can make some people visible and others invisible, and each one can either challenge or repeat an unfair story about why health differs from one group to another. **Data equity** means making those decisions on purpose: asking who is counted and who is missing, reporting what you combined or excluded and why, describing differences between groups as the result of people's conditions and experiences (not as something caused by their identity), and sharing what you learn with the communities the data came from. Public health exists to reduce inequities in health. The way we collect, analyze, and report data should serve that goal, too.
+
+You have already practiced some of this in the playbook: you report the counts when you combine or exclude a small group, and you write "scored lower than" and do not write "because they are". The resources below go much further.
+
+::: callout-note
+## Resources: data equity
+
+-   D'Ignazio, C., & Klein, L. F. (2020). [*Data Feminism*](https://data-feminism.mitpress.mit.edu). MIT Press. (free to read online)
+-   Zuberi, T., & Bonilla-Silva, E. (Eds.). (2008). [*White Logic, White Methods: Racism and Methodology*](https://www.bloomsbury.com/us/white-logic-white-methods-9780742542808/). Rowman & Littlefield.
+:::

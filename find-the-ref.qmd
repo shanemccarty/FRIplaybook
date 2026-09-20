@@ -1,0 +1,117 @@
+---
+title: "Find the Ref"
+subtitle: "How to start and end every coding session"
+author: "Shane McCarty, PhD"
+abstract: |
+  This chapter introduces Ref the Raccoon, the referee of this playbook, and the routine he runs at the start and the end of every coding session. Researchers learn the six steps to reopen their RStudio Project and get their data, packages, and variables back, the four steps to finish a work session and back up their files to their ELN, how to fix the problems that most often appear at the start of a session, and where Ref shows up in the rest of the playbook (The Play, The Lab, and Your Turn). Use this chapter at the start of every lab and every time you sit down to work on your report.
+keywords:
+  - Ref the Raccoon
+  - RStudio project
+  - routine
+  - load library
+  - environment
+  - backup
+  - ELN
+  - troubleshooting
+date: 09.20.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+execute:
+  eval: false
+---
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon, a cartoon raccoon in a striped referee shirt with a whistle around his neck"}
+:::
+
+::: ref-say
+**Meet Ref.** I am Ref the Raccoon. A referee is there to keep the game fair and to help you play it right. Find me **first**, every time you sit down to code, and find me **last**, before you leave. This chapter is my routine. It takes about a minute at the start and a minute at the end, and it prevents most of the problems that stop people in their tracks.
+:::
+::::::
+
+## Why you need this chapter: the kitchen
+
+Think of RStudio as a kitchen.
+
+| In the kitchen | In RStudio |
+|----------------------------|--------------------------------------------|
+| The **recipe** | Your code, saved in your `.qmd` file |
+| The **groceries** in the pantry | Your data files, saved in your project folder |
+| The **countertop** while you cook | R's memory (the Environment tab): loaded packages, imported data, new variables |
+
+When you close RStudio, the countertop is wiped clean. The recipe and the groceries are still there. **Your files are safe. The countertop is not.** That is on purpose, for two reasons.
+
+**1. Leftovers ruin the dish.** While you cook, the countertop fills up: a sauce you made before you fixed the recipe, or an ingredient from a step you later crossed out. If you keep cooking with what is on the counter, the dish can taste fine and still not match the recipe. In R, a plot or a statistic can look fine and still not match the code in your file, and R will not warn you. When you start with a clean counter and cook from the top of the recipe, every result comes from the code that is actually written down.
+
+**2. Someone else has to cook it, too.** Your teammate and your instructor do not have your countertop. They only have your recipe and your groceries (your `.qmd` file and your data file). If they follow the recipe in their own kitchen, they should get the same dish: the same plots and the same statistics. That is what *reproducible* means. A recipe that only works with yesterday's leftovers is not a recipe, and next month you will not be able to cook it either.
+
+::: callout-important
+## Important: Clean counter, cook from the top
+
+Every time you sit down to work, start with an empty Environment and re-run your code from the top. It takes about a minute, and it proves that your work is reproducible.
+:::
+
+## Once per computer
+
+You did most of this when you first set up your computer. You do **not** repeat it each time.
+
+-   Install R and RStudio ([RStudio Software](RStudio.qmd))
+-   Create your RStudio Project, `Lastname_FRI`
+-   Run your `install.R` file to install your packages ([Install and Load Packages](library.qmd))
+-   Create a folder called **R Labs** inside your individual ELN (your Google Drive folder). In Google Drive, open your ELN and click + New \> New folder.
+
+## Ref's kickoff: every time you sit down to work
+
+{{< include _ref-start-steps.qmd >}}
+
+::: callout-tip
+## Starting a new lab or a new report?
+
+Do steps 1 and 2. Then create a new Quarto document (File \> New File \> Quarto Document...), save it **inside your project folder**, and copy the load-library chunk from your last `.qmd` file into the top of the new one.
+:::
+
+## Ref's final whistle: before you leave
+
+Keep counting. Steps 7 to 10 finish your session and back up your work.
+
+{{< include _ref-finish-steps.qmd >}}
+
+::: callout-important
+## Important: Your ELN is your backup
+
+Laptops get lost, broken, and replaced. Your individual ELN is a Google Drive folder that does not. Get in the habit of backing up to your **R Labs** folder at the end of **every** work session, not only when something is due. A backup takes less than a minute. Redoing a lab or a report takes hours.
+:::
+
+## If something goes wrong when you come back
+
+| What you see | What it means | The fix |
+|----|----|----|
+| `could not find function "read_excel"` (or another function) | The package is not loaded in this session. | Run your load-library chunk (step 4). |
+| `object 'mydata' not found` | R forgot the object when you closed RStudio. | Run All Chunks Above (step 5). |
+| `cannot open file ... No such file or directory` or `path does not exist` | R is looking in the wrong folder, or the file is not in your project. | Check step 2. If the project name is missing in the top right corner, you opened a file and not the project. Go back to step 1. |
+| `there is no package called ‘psych’` | The package is not installed on this computer. | Add the package to your `install.R` file and run `install.R` again. Then run your load-library chunk. |
+| The files tab does not show your files | You are not in your project. | File \> Open Project... and choose `Lastname_FRI.Rproj`. |
+| Your laptop is lost or broken, or a file is gone | Your project folder is gone, but your backup is not. | Download your files from the **R Labs** folder in your ELN into a new `Lastname_FRI` project. |
+
+Still stuck? Restart R (Session \> Restart R) and start again at step 4. A fresh start fixes more problems than you would expect.
+
+## Where you will find Ref in this playbook
+
+Most chapters that use data have the same three sections, and you will go through them with three different datasets.
+
+| Section | Dataset | What you do |
+|------------|------------|--------------------------------------------|
+| **The Play** | an example dataset | **Watch the play.** Read the code and the output, step by step. |
+| **The Lab** | the lab dataset | **Run the play.** Try it yourself during your R Lab, then check your own work. Labs are not graded. |
+| **Your Turn** | your team's dataset | **Call your own play.** After you finish all of the R Labs, come back and run the play for your own research questions. |
+
+Ref does not talk all the time. Look for him in these places:
+
+-   **Ref's kickoff** opens The Lab, and **Ref's final whistle** closes it. They are short reminders of the routine in this chapter.
+-   **Ref's check** boxes in The Lab show you the answer you should get, so you can check your own work. Try the play first, then open the box.
+-   A **foul** is a mistake that gives you a wrong answer *without* any error message. These are the mistakes you cannot catch on your own, so Ref blows the whistle.
+-   In **Your Turn**, there is no Ref. It's game time! You run the play with your own data and check your own work with the same checklist your instructor uses.

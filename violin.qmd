@@ -42,8 +42,8 @@ execute:
 
 ------------------------------------------------------------------------
 
-::: callout-tip
-## 📖 `haven` and `geom_violin ( )` resources
+::: {.callout-note collapse="true"}
+## Resources: `haven` and `geom_violin ( )`
 
 -   [`haven` package for SPSS data](https://haven.tidyverse.org)
 -   [geom_violin with ggplot2](https://ggplot2.tidyverse.org/reference/geom_violin.html)
@@ -227,8 +227,8 @@ ggplot(longdata_long,
 
 ```
 
-::: callout-tip
-## 📖 raincloud plot resources
+::: {.callout-note collapse="true"}
+## Resources: raincloud plot
 
 There are many different ways to create raincloud plots:
 

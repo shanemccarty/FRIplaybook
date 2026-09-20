@@ -17,8 +17,8 @@ execute:
   message: false
 ---
 
-::: callout-tip
-## 📖 Peer Review resources
+::: {.callout-note collapse="true"}
+## Resources: Peer Review
 
 -   [Documentation](https://quarto.org/docs/output-formats/html-basics.html#commenting)
 -   [Annotating with Groups](https://web.hypothes.is/help/annotating-with-groups/)

@@ -1,0 +1,8 @@
+<!-- Single source for Ref's start-of-session routine (steps 1-6). Included in find-the-ref.qmd; can also open each lab page. -->
+
+1.  **Open your project, not a file.** Find your `Lastname_FRI` folder and double-click `Lastname_FRI.Rproj`. (Or, in RStudio: File \> Open Project...)
+2.  **Check that you are in your project.** The project name `Lastname_FRI` appears in the top right corner of RStudio, and the **files tab** shows your data file and your `.qmd` files.
+3.  **Open the `.qmd` file you are working on** by clicking it in the files tab.
+4.  **Run your load-library chunk.** It is the first code chunk in your `.qmd`. Click the green ▶ arrow in the top right corner of the chunk.
+5.  **Run everything above where you stopped.** Click inside the chunk where you want to start working. Then click the **Run All Chunks Above** button (the gray ▼ with a line under it, next to the green arrow). Your data and variables are now back in the **environment tab**.
+6.  **Keep going.** Start writing and running code where you left off.

@@ -3,26 +3,60 @@ title: "Reproducible Reports"
 authors:
   - Shane McCarty, PhD
   - Zihan Hei
+  - Claude (Anthropic)
 format: html
 ---
 
-The growing concern about the inability to reproduce published scientific research findings is known as the **replication or reproducibility crisis**.  
+::: callout-tip
+## Go: Start here
+
+This is the first chapter on purpose. Before you install anything or write any code, look at where you are headed: a finished report in which every plot and every number was made by code. In the next chapter, [How Code Builds a Plot](layers.qmd), you will run some code yourself, right in your browser.
+:::
+
+## Why Reproducibility Matters
+
+Science is supposed to correct itself: if a finding is real, other researchers should be able to repeat the study and find it again. In the 2010s, researchers tested that promise, and many well-known findings failed. In the largest project, 270 researchers repeated 100 published psychology studies, and fewer than half of them produced the same result a second time ([Open Science Collaboration, 2015](https://doi.org/10.1126/science.aac4716)). Similar problems were found in medicine, economics, and other fields. This is called the **replication crisis** (or reproducibility crisis).
 
 A *Nature* paper by [Baker (2016)](https://www.nature.com/articles/533452a) states: "More than 70% of researchers have tried and failed to reproduce another scientist's experiments, and more than half have failed to reproduce their own experiments."
 
-The failure to reproduce research is a function of *systems pressure* (defunding of public higher education), *intentional actions* (fraudulent scientific practices), *unintentional* *decision-making* (e.g., human error when clicking software, poor note-taking), and *scientific* *training* (e.g., methodology sections without clear protocols and details). Reproducible research is both an intentional practice and the outcome of scientific training emphasizing a specific workflow.
+In *Science Fictions*, the psychologist Stuart Ritchie ([2020](https://en.wikipedia.org/wiki/Science_Fictions)) argues that four problems are behind it: **fraud** (making up data), **bias** (publishing only the results that "worked"), **negligence** (honest mistakes, such as a typo in a spreadsheet or a number copied incorrectly into a paper), and **hype** (claiming more than the results show). Most researchers will never commit fraud. Negligence is different: anyone can copy the wrong number into a table, forget which version of the data they used, or lose track of how a variable was cleaned.
+
+<!-- SHANE: paste one or two direct quotes from your copy of Science Fictions here, with page numbers. Format:
+
+> "QUOTE" (Ritchie, 2020, p. XX)
+
+Good places to look: (1) the opening pages, where he explains why a finding only counts once it has been repeated; (2) the Negligence chapter, for a sentence on how ordinary errors (typos, spreadsheet mistakes, numbers that do not add up) end up in published papers; (3) the final chapters on fixing science, for a sentence on sharing data and code.
+-->
+
+A reproducible report is your protection against negligence. In a Quarto report, the plots, tables, and numbers are made by code, in the same file as your writing. Nothing is copied and pasted by hand. Anyone who has your data file and your `.qmd` file can run the report and get the same results, including you, six months from now.
 
 A primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.
 
 ## Reproducible Reports
 
-You and your team will produce a reproducible Quarto Markdown report (`.qmd`) for your individual report and team manuscript. Specific instructions are provided in the next chapter.
+Students on the quantitative and mixed-methods data analysis tracks will produce a reproducible Quarto Markdown report  for your individual report. You will learn how to start your own Quarto report later, in [Start a Report](codechunks.qmd). Right now, you do not need any software. Peruse a range of individual and team manuscripts that were published as Quarto reports.
+
+### Quarto Examples
 
 Quarto provided two examples of a reproducible report and manuscript:
 
 -   [Standard Quarto Report Example](https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html)
 
 -   [Standard Quarto Manuscript Example](https://quarto-ext.github.io/manuscript-template-jupyter/)
+
+### FRI-PH Cohort 11 Examples
+
+FRI-PH Cohort 11 produced individual reports and a team manuscript. Cohort 12 will ONLY produce an individual report. Below are examples of individual reports from students: 
+
+-   [Individual Report on Sleep](https://danicalyktey.quarto.pub/sleep/)
+
+-   [Individual Report on Cooking Self-Efficacy](https://yoominkim.quarto.pub/indvidualfinalreport/)
+
+-   [Team Manuscript on Violence Prevention](https://vraposo.quarto.pub/mixed-methods-analysis-of-preferences-for-community-based-violence-prevention-and-intervention-approaches/)
+
+- [Team Manuscript on Veggies](https://avishnevetsk.quarto.pub/is-the-binghamton-community-eating-enough-vegetables/)
+
+### FRI-PH Lab Examples
 
 The FRI Public Health Lab has produced Quarto manuscripts from active research projects:
 
@@ -31,3 +65,11 @@ The FRI Public Health Lab has produced Quarto manuscripts from active research p
 -   [Zero Sum Full Manuscript](https://fripublichealth.quarto.pub/zerosum/)
 
 -   [Zero Sum Mini Manuscript](https://fripublichealth.quarto.pub/zerosum/example-preview.html)
+
+**References**
+
+Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. *Nature, 533*, 452–454. <https://doi.org/10.1038/533452a>
+
+Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. *Science, 349*(6251), aac4716. <https://doi.org/10.1126/science.aac4716>
+
+Ritchie, S. (2020). *Science fictions: How fraud, bias, negligence, and hype undermine the search for truth*. Metropolitan Books.

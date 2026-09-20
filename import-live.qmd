@@ -22,17 +22,17 @@ execute:
   echo: true
 ---
 
-::: {.callout-tip icon="false"}
-## 📖 `qualtrRics` resources
+::: {.callout-note collapse="true"}
+## Resources: `qualtrRics`
 
 -   [Documentation](https://cran.r-project.org/web/packages/qualtRics/vignettes/qualtRics.html)
 -   [Qualtrics website](https://api.qualtrics.com/docs/)
 :::
 
-::: {.callout-important appearance="simple"}
-## Advanced Module
+::: {.callout-important}
+## Important: Advanced module (not required)
 
-This is an *advanced* *chapter* and not required for your report or manuscript!
+This is an *advanced* *chapter* and not required for your report!
 :::
 
 ## Benefits of `qualtRics` Continuous Importing of Survey Data

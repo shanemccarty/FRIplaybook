@@ -6,8 +6,8 @@ book:
   title: "The Quantitative Playbook for Public Health Research in R"
   subtitle: "R Plays to Promote and Protect Health"
   author: "Shane McCarty, PhD"
-  date: "10/22/2025"
-  version: "Version 0.931 (draft)"
+  date: "09/20/2026"
+  version: "Edition 2 (v2.0)"       # shown on the Preface via index.qmd (language: title-block-published); keep the two in sync
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -16,57 +16,105 @@ book:
   site-url: "https://shanemccarty.github.io/FRIplaybook"  # ADDED: This is important!
   
   chapters:
-    - index.qmd
-    - part: "Introduction"
+    - index.qmd                              # Preface
+
+    # --- R LABS: one short page per lab that LINKS into the chapters below ---
+    # --- (remove the "#" when the lab pages exist) ---
+    # - part: "R Labs"
+    #   chapters:
+    #     - lab1.qmd
+    #     - lab2.qmd
+    #     - lab3.qmd
+    #     - lab4.qmd
+    #     - lab5.qmd
+
+    - part: "Get Started"
       chapters:
-        - text: "The Playbook"
-          file: intro.qmd
-        - text: "Reproducible Reports"
+        # Order (2026-09-20): see it -> try it in the browser -> set it up -> routine -> do it for real
+        - text: "Reproducible Reports"        # the WHY: a finished report, made from code
           file: example.qmd
+        - text: "How Code Builds a Plot"      # WebR: runs in the browser, nothing to install yet
+          file: layers.qmd
+        - text: "RStudio Software"
+          file: RStudio.qmd
+        - text: "Install and Load Packages"
+          file: library.qmd
+        - text: "Find the Ref"                # after Packages: the routine uses install.R and library()
+          file: find-the-ref.qmd
         - text: "Start a Report"
           file: codechunks.qmd
-    - part: "Importing Your Data"
+
+    - part: "Import, Tidy & Transform"
       chapters:
         - text: "Export Survey Data"
           file: export.qmd
         - text: "Import Data Once"
           file: import-once.qmd
-        - text: "Import Data Live"
-          file: import-live.qmd
-    - part: "Tidying Your Data"
-      chapters:
         - text: "Format Data in tidyr"
           file: tidyr.qmd
-    - part: "Transforming Your Data"
-      chapters:
-        - text: "Mutate Variables"
-          file: dplyr.qmd
         - text: "Combine Datasets"
           file: merge.qmd
+        - text: "Mutate Variables"
+          file: dplyr.qmd
         - text: "Creating Composites"
           file: composite.qmd
-    - part: "Visualizing Your Data"
+
+    - part: "Map Your Analysis"
       chapters:
-        - text: "Visualize in ggplot2"
-          file: ggplot2.qmd
-        - text: "Visualize Pre/Post Data"
+        - text: "The Analysis Map"
+          file: analysis-map.qmd
+        - text: "Describe Your Data"          # short version: normality checks; descriptives table to be added
+          file: describe.qmd
+        - text: "Statistics"                  # resources page
+          file: statistics.qmd
+
+    - part: "Compare Groups"
+      chapters:
+        - text: "Visualize a Comparison"
+          file: visualize-comparison.qmd
+        # - text: "Compare 2 Groups"      # independent t-test / Mann-Whitney U
+        #   file: two-groups.qmd
+        - text: "Visualize Pre/Post Data"     # becomes "Compare 1 Group, Pre/Post" (paired t-test / Wilcoxon)
           file: violin.qmd
-    - part: "Writing Reproducibly"
-      chapters:    
+        - text: "Compare 3+ Groups"             # short version: three or more groups (ANOVA / Kruskal-Wallis / ANCOVA); replaces planned three-groups.qmd
+          file: ANOVA.qmd
+
+    - part: "Examine Relationships"
+      chapters:
+        - text: "Visualize a Relationship"
+          file: visualize-relationship.qmd
+        # - text: "Relate 2 Variables"             # Pearson / Spearman
+        #   file: two-variables.qmd
+        - text: "Relate 3+ Variables"     # multiple linear regression
+          file: regression.qmd
+
+    - part: "Write Your Report"
+      chapters:
         - text: "Read Me"
           file: readme.qmd
         - text: "Introduction"
           file: write-intro.qmd
-        - text: "Methods & Results"
-          file: write-functions.qmd
         - text: "Citations & Refs"
           file: citations.qmd
-    - part: "Publish and Review"
-      chapters:    
+        # - text: "Final Report Checklist"
+        #   file: checklist.qmd
+
+    - part: "Publish & Review"
+      chapters:
         - text: "Publish in Quarto Pub"
           file: quartopub.qmd
         - text: "Review in Hypothes.is"
-          file: review.qmd      
+          file: review.qmd
+
+    - part: "Advanced Plays"
+      chapters:
+        - text: "Data Equity"
+          file: data-equity.qmd
+        - text: "Import Data Live"
+          file: import-live.qmd
+        - text: "Methods & Results"
+          file: write-functions.qmd
+
 # Filters - WebR only for now
 filters:
   - webr
@@ -92,6 +140,7 @@ live:
 format:
   html:
     theme: cosmo  # SIMPLIFIED: Remove custom scss for now if files don't exist
+    css: custom.css   # Ref the Raccoon boxes + ggplot2 layer colors, for every chapter
     respect-user-color-scheme: true
     highlight-style: 
       light: github
@@ -106,7 +155,7 @@ format:
     number-sections: true
     number-depth: 3
     page-footer:
-      left: "© 2025 FRI Public Health Research Stream"
+      left: "© 2026 FRI Public Health Research Stream"
       right: 
         - icon: github
           href: https://shanemccarty.github.io/FRIplaybook
@@ -127,13 +176,20 @@ execute:
   freeze: auto
 
 lang: en
+language:                          # default titles for the four callout colors (see Preface: How to Read This Playbook)
+  callout-note-title: "Resources"      # blue   - optional help and extra material
+  callout-tip-title: "Go"              # green  - the recommended move
+  callout-warning-title: "Caution"     # yellow - where people go wrong
+  callout-important-title: "Important"  # red    - titled "Required: ..." (must be in your reports) or "Important: ..." (must know or do)
 
 params:
   organization: "FRI Public Health Research Stream"
   contact_email: "fripublichealth@binghamton.edu"
-  version: "0.84"
+  version: "2.0"
+  edition: "2"
   authors:
     lead: "Shane McCarty, PhD"
     contributors:
       - name: "Zihan Hei"
       - name: "Gavin Rualo"
+      - name: "Yoomin (Ashley) Kim"

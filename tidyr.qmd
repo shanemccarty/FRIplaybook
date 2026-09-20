@@ -16,8 +16,8 @@ date-format: "MM.DD.YYYY"
 format: html
 ---
 
-::: callout-tip
-## 📖 `tidyr` resources
+::: {.callout-note collapse="true"}
+## Resources: `tidyr`
 
 -   [R4DS Book Chapter 5](https://r4ds.hadley.nz/data-tidy.html)
 -   [Datacamp](https://www.datacamp.com/courses/reshaping-data-with-tidyr)
@@ -26,8 +26,8 @@ format: html
 -   [Offical Tidyverse page](https://tidyr.tidyverse.org/)
 :::
 
-::: {.callout-important appearance="simple"}
-## For Teams 2 and 4
+::: {.callout-important}
+## Important: For Teams 2 and 4
 
 This is a required module for Teams 2 and 4 given their long data format.
 :::

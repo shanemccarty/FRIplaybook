@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Allison Anemone">
+<meta name="author" content="Andrew Silhavy">
+<meta name="author" content="Shane McCarty, PhD">
+<meta name="keywords" content="linear regression, multiple regression, lm, predictors, residuals, relationship">
+
+<title>20&nbsp; Relate 3+ Variables – The Quantitative Playbook for Public Health Research in R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./readme.html" rel="next">
+<link href="./visualize-relationship.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships</a></li><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Get Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Import, Tidy &amp; Transform</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./merge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Map Your Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Compare Groups</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examine Relationships</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Write Your Report</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./citations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Publish &amp; Review</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-this-chapter-works" id="toc-how-this-chapter-works" class="nav-link active" data-scroll-target="#how-this-chapter-works"><span class="header-section-number">20.1</span> How This Chapter Works</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">20.2</span> 📋 The Play</a>
+  <ul class="collapse">
+  <li><a href="#example-data-pregnancy" id="toc-example-data-pregnancy" class="nav-link" data-scroll-target="#example-data-pregnancy"><span class="header-section-number">20.2.1</span> Example Data: <code>pregnancy</code></a></li>
+  <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">20.2.2</span> Load and Import</a></li>
+  <li><a href="#step-1-get-the-data-ready" id="toc-step-1-get-the-data-ready" class="nav-link" data-scroll-target="#step-1-get-the-data-ready"><span class="header-section-number">20.2.3</span> Step 1: Get the data ready</a></li>
+  <li><a href="#step-2-look-before-you-test" id="toc-step-2-look-before-you-test" class="nav-link" data-scroll-target="#step-2-look-before-you-test"><span class="header-section-number">20.2.4</span> Step 2: Look before you test</a></li>
+  <li><a href="#step-3-one-predictor-simple-regression" id="toc-step-3-one-predictor-simple-regression" class="nav-link" data-scroll-target="#step-3-one-predictor-simple-regression"><span class="header-section-number">20.2.5</span> Step 3: One predictor (simple regression)</a></li>
+  <li><a href="#step-4-three-predictors-multiple-regression" id="toc-step-4-three-predictors-multiple-regression" class="nav-link" data-scroll-target="#step-4-three-predictors-multiple-regression"><span class="header-section-number">20.2.6</span> Step 4: Three predictors (multiple regression)</a></li>
+  <li><a href="#step-5-check-the-residuals" id="toc-step-5-check-the-residuals" class="nav-link" data-scroll-target="#step-5-check-the-residuals"><span class="header-section-number">20.2.7</span> Step 5: Check the residuals</a></li>
+  <li><a href="#step-6-report-it" id="toc-step-6-report-it" class="nav-link" data-scroll-target="#step-6-report-it"><span class="header-section-number">20.2.8</span> Step 6: Report it</a></li>
+  </ul></li>
+  <li><a href="#sec-regression-lab" id="toc-sec-regression-lab" class="nav-link" data-scroll-target="#sec-regression-lab"><span class="header-section-number">20.3</span> 🏈 The Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-play-1-draw-left-one-predictor" id="toc-lab-play-1-draw-left-one-predictor" class="nav-link" data-scroll-target="#lab-play-1-draw-left-one-predictor"><span class="header-section-number">20.3.1</span> Lab Play 1: Draw Left (one predictor)</a></li>
+  <li><a href="#lab-play-2-draw-right-add-a-binary-predictor" id="toc-lab-play-2-draw-right-add-a-binary-predictor" class="nav-link" data-scroll-target="#lab-play-2-draw-right-add-a-binary-predictor"><span class="header-section-number">20.3.2</span> Lab Play 2: Draw Right (add a binary predictor)</a></li>
+  <li><a href="#lab-play-3-draw-middle-add-a-dummy-coded-predictor" id="toc-lab-play-3-draw-middle-add-a-dummy-coded-predictor" class="nav-link" data-scroll-target="#lab-play-3-draw-middle-add-a-dummy-coded-predictor"><span class="header-section-number">20.3.3</span> Lab Play 3: Draw Middle (add a dummy-coded predictor)</a></li>
+  </ul></li>
+  <li><a href="#sec-regression-yourturn" id="toc-sec-regression-yourturn" class="nav-link" data-scroll-target="#sec-regression-yourturn"><span class="header-section-number">20.4</span> 🏆 Your Turn</a>
+  <ul class="collapse">
+  <li><a href="#checklist-for-your-rd-report-and-final-report" id="toc-checklist-for-your-rd-report-and-final-report" class="nav-link" data-scroll-target="#checklist-for-your-rd-report-and-final-report"><span class="header-section-number">20.4.1</span> Checklist for your RD Report and Final Report</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/regression.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships</a></li><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></h1>
+<p class="subtitle lead">Linear regression: how to run it and report it</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Allison Anemone </p>
+             <p>Andrew Silhavy </p>
+             <p>Shane McCarty, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">09.20.2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This chapter teaches researchers to examine a relationship question with a linear regression in R. Researchers start with a simple regression (one predictor and one outcome), learn to read the intercept, the slope, the p-value, and R-squared, and then add more predictors to build a multiple linear regression, including a categorical predictor such as gender. The chapter shows how to check the residuals, how to report a regression in a sentence and in a table, and which common shortcuts to avoid (leaving a category as a number, and cutting a score into two groups). In The Lab, researchers run three models with the lab dataset (one predictor, a binary predictor, and a dummy-coded predictor) and check their own answers. In Your Turn, researchers use a copy-ready template and a checklist for their own research question.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>linear regression, multiple regression, lm, predictors, residuals, relationship</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: regression
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://moderndive.com/v2/regression.html">ModernDive Ch. 5: Basic Regression</a></li>
+<li><a href="https://moderndive.com/v2/multiple-regression.html">ModernDive Ch. 6: Multiple Regression</a></li>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html">Documentation for <code>lm()</code></a></li>
+</ul>
+</div>
+</div>
+</div>
+<section id="how-this-chapter-works" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="how-this-chapter-works"><span class="header-section-number">20.1</span> How This Chapter Works</h2>
+<p>You will go through this chapter three times, with three different datasets.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Pass</th>
+<th>Section</th>
+<th>Dataset</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><a href="#the-play">The Play</a></td>
+<td><code>pregnancy</code> (example, simulated)</td>
+<td><strong>Watch the play.</strong> Read the code and the output, step by step.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><a href="#sec-regression-lab">The Lab</a></td>
+<td>lab dataset</td>
+<td><strong>Run the play.</strong> Run two regressions yourself during the R Lab, then check your own work. Labs are not graded.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><a href="#sec-regression-yourturn">Your Turn</a></td>
+<td>your team’s dataset</td>
+<td><strong>Call your own play.</strong> After you finish all of the R Labs, come back and run the regression for your own research question.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: Know your route first
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This chapter is the last step on <a href="./analysis-map.html">The Analysis Map</a> for a <strong>relationship</strong> question with <strong>three or more variables</strong>: one outcome that is a score, and two or more predictors. Make your scatterplot first in <a href="./visualize-relationship.html">Visualize a Relationship</a>.</p>
+</div>
+</div>
+</section>
+<section id="the-play" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">20.2</span> 📋 The Play</h2>
+<section id="example-data-pregnancy" class="level3" data-number="20.2.1">
+<h3 data-number="20.2.1" class="anchored" data-anchor-id="example-data-pregnancy"><span class="header-section-number">20.2.1</span> Example Data: <code>pregnancy</code></h3>
+<p>The example comes from an FRI Public Health team that surveyed people about health beliefs during pregnancy. One of their questions was: <strong>do people with lower social status perceive more barriers to following health advice during pregnancy, after we account for their age and gender?</strong></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: This example dataset is simulated
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To protect the people who took the team’s survey, the file used in this chapter does <strong>not</strong> contain their answers. It is a <em>simulated</em> dataset: a computer generated every row so that the variables and their averages look like the team’s data. Use it to learn the play. Do not cite its results.</p>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 48%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>What it is</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>BARRIERS</code></td>
+<td>the <strong>outcome</strong>: perceived barriers (the mean of 9 survey items)</td>
+<td>1 = low to 5 = high</td>
+</tr>
+<tr class="even">
+<td><code>SSS</code></td>
+<td>subjective social status (a ladder with 10 rungs)</td>
+<td>1 = bottom to 10 = top</td>
+</tr>
+<tr class="odd">
+<td><code>AGE</code></td>
+<td>age in years</td>
+<td>18 and up</td>
+</tr>
+<tr class="even">
+<td><code>GENDER</code></td>
+<td>gender</td>
+<td>1 = Woman, 2 = Man</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="load-and-import" class="level3" data-number="20.2.2">
+<h3 data-number="20.2.2" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">20.2.2</span> Load and Import</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pregnancy <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/pregnancy_beliefs_SIMULATED.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pregnancy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      ID                 AGE            GENDER             SSS        
+ Length:160         Min.   :18.00   Min.   :-99.000   Min.   :-99.00  
+ Class :character   1st Qu.:19.00   1st Qu.:  1.000   1st Qu.:  5.00  
+ Mode  :character   Median :22.00   Median :  1.000   Median :  6.00  
+                    Mean   :28.53   Mean   : -0.675   Mean   :  2.35  
+                    3rd Qu.:34.25   3rd Qu.:  1.000   3rd Qu.:  7.00  
+                    Max.   :63.00   Max.   :  2.000   Max.   : 10.00  
+                    NA's   :4                                         
+    BARRIERS    
+ Min.   :1.000  
+ 1st Qu.:1.670  
+ Median :2.220  
+ Mean   :2.226  
+ 3rd Qu.:2.697  
+ Max.   :4.000  
+                </code></pre>
+</div>
+</div>
+<p>Look at the minimum of <code>SSS</code> and <code>GENDER</code>. A value of -99 is not a real answer. It is the code for “Prefer not to answer”, and it has to become missing (<code>NA</code>) before you analyze anything.</p>
+</section>
+<section id="step-1-get-the-data-ready" class="level3" data-number="20.2.3">
+<h3 data-number="20.2.3" class="anchored" data-anchor-id="step-1-get-the-data-ready"><span class="header-section-number">20.2.3</span> Step 1: Get the data ready</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pregnancy <span class="ot">&lt;-</span> pregnancy <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">SSS    =</span> <span class="fu">na_if</span>(SSS, <span class="sc">-</span><span class="dv">99</span>),                       <span class="co"># -99 becomes NA (missing)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">GENDER =</span> <span class="fu">na_if</span>(GENDER, <span class="sc">-</span><span class="dv">99</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">GENDER =</span> <span class="fu">factor</span>(GENDER,                         <span class="co"># tell R that GENDER is a category</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Woman"</span>, <span class="st">"Man"</span>)))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pregnancy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      ID                 AGE          GENDER         SSS        
+ Length:160         Min.   :18.00   Woman:125   Min.   : 2.000  
+ Class :character   1st Qu.:19.00   Man  : 32   1st Qu.: 5.000  
+ Mode  :character   Median :22.00   NA's :  3   Median : 6.000  
+                    Mean   :28.53               Mean   : 6.299  
+                    3rd Qu.:34.25               3rd Qu.: 7.750  
+                    Max.   :63.00               Max.   :10.000  
+                    NA's   :4                   NA's   :6       
+    BARRIERS    
+ Min.   :1.000  
+ 1st Qu.:1.670  
+ Median :2.220  
+ Mean   :2.226  
+ 3rd Qu.:2.697  
+ Max.   :4.000  
+                </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Don’t leave a category as a number
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the data file, <code>GENDER</code> is stored as the numbers 1 and 2. If you leave it that way, R treats gender as a <em>score</em>, as if a man were “one unit more” than a woman. <code>factor()</code> tells R that the numbers are labels for groups. Do this for <strong>every</strong> categorical predictor before you run a regression.</p>
+</div>
+</div>
+</section>
+<section id="step-2-look-before-you-test" class="level3" data-number="20.2.4">
+<h3 data-number="20.2.4" class="anchored" data-anchor-id="step-2-look-before-you-test"><span class="header-section-number">20.2.4</span> Step 2: Look before you test</h3>
+<p>Always make the plot first (see <a href="./visualize-relationship.html">Visualize a Relationship</a>). <code>BARRIERS</code> is a mean of survey items, so points can stack. Jitter them.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot_sss_barriers <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> pregnancy,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> SSS,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> BARRIERS)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">1</span>, <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Social Status and Perceived Barriers"</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Subjective social status (1 = bottom rung, 10 = top rung)"</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Perceived barriers (1 = low, 5 = high)"</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plot_sss_barriers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regression_files/figure-html/plot-sss-barriers-1.png" class="img-fluid figure-img" alt="A scatterplot with subjective social status on the x axis and perceived barriers on the y axis. The line of best fit slopes downward." width="672"></p>
+<figcaption>Figure 1. Subjective social status and perceived barriers in the simulated pregnancy dataset. Points are jittered; the line is a linear line of best fit.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The line slopes downward: people who place themselves higher on the ladder report fewer barriers. A regression puts a number on that line and tests it.</p>
+</section>
+<section id="step-3-one-predictor-simple-regression" class="level3" data-number="20.2.5">
+<h3 data-number="20.2.5" class="anchored" data-anchor-id="step-3-one-predictor-simple-regression"><span class="header-section-number">20.2.5</span> Step 3: One predictor (simple regression)</h3>
+<p>The function is <code>lm()</code>, which stands for <em>linear model</em>. Read the formula <code>BARRIERS ~ SSS</code> as “<strong><code>BARRIERS</code> is predicted by <code>SSS</code></strong>”. The outcome always goes on the left of the <code>~</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(BARRIERS <span class="sc">~</span> SSS, <span class="at">data =</span> pregnancy)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_simple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = BARRIERS ~ SSS, data = pregnancy)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.39107 -0.50107 -0.05018  0.49349  1.67425 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.04994    0.22107  13.796  &lt; 2e-16 ***
+SSS         -0.13177    0.03392  -3.884 0.000153 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.7037 on 152 degrees of freedom
+  (6 observations deleted due to missingness)
+Multiple R-squared:  0.0903,    Adjusted R-squared:  0.08432 
+F-statistic: 15.09 on 1 and 152 DF,  p-value: 0.0001527</code></pre>
+</div>
+</div>
+<p>How to read the output:</p>
+<ul>
+<li><strong><code>(Intercept)</code>, Estimate = 3.05.</strong> This is where the line starts: the predicted <code>BARRIERS</code> score for a person whose <code>SSS</code> is 0. It is rarely interesting by itself.</li>
+<li><strong><code>SSS</code>, Estimate = -0.13.</strong> This is the <strong>slope</strong>, and it is the number you care about. For every one rung higher on the ladder, the predicted <code>BARRIERS</code> score goes <em>down</em> by 0.13 points. A negative slope is a line that goes down. A positive slope is a line that goes up.</li>
+<li><strong><code>Pr(&gt;|t|)</code></strong> is the <strong>p-value</strong> for that slope. Here it is less than .001, which is smaller than .05, so the relationship is statistically significant.</li>
+<li><strong><code>Multiple R-squared</code> = 0.09.</strong> <code>SSS</code> explains about 9% of the differences between people in <code>BARRIERS</code>. In survey research, small values like this are common.</li>
+<li>At the bottom, R tells you how many people were left out because of missing answers. Report the number of people who were <em>in</em> the model: <code>nobs(model_simple)</code> = 154.</li>
+</ul>
+</section>
+<section id="step-4-three-predictors-multiple-regression" class="level3" data-number="20.2.6">
+<h3 data-number="20.2.6" class="anchored" data-anchor-id="step-4-three-predictors-multiple-regression"><span class="header-section-number">20.2.6</span> Step 4: Three predictors (multiple regression)</h3>
+<p>To add predictors, add them to the formula with <code>+</code>. This answers the team’s real question: is social status still related to barriers <strong>after we account for</strong> age and gender?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model_multiple <span class="ot">&lt;-</span> <span class="fu">lm</span>(BARRIERS <span class="sc">~</span> SSS <span class="sc">+</span> AGE <span class="sc">+</span> GENDER, <span class="at">data =</span> pregnancy)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_multiple)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = BARRIERS ~ SSS + AGE + GENDER, data = pregnancy)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.50023 -0.48651 -0.02719  0.52032  1.71508 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.050186   0.235938  12.928  &lt; 2e-16 ***
+SSS         -0.126588   0.034820  -3.636 0.000385 ***
+AGE         -0.002173   0.004318  -0.503 0.615577    
+GENDERMan    0.130783   0.142325   0.919 0.359684    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6986 on 144 degrees of freedom
+  (12 observations deleted due to missingness)
+Multiple R-squared:  0.09423,   Adjusted R-squared:  0.07536 
+F-statistic: 4.993 on 3 and 144 DF,  p-value: 0.002524</code></pre>
+</div>
+</div>
+<p>Each slope now means “the change in <code>BARRIERS</code> for one more unit of this predictor, <strong>when the other predictors stay the same</strong>.”</p>
+<ul>
+<li><strong><code>SSS</code></strong> (b = -0.13, p &lt; .001): still negative and still significant. Social status is related to barriers even when you compare people of the same age and gender.</li>
+<li><strong><code>AGE</code></strong> (b = -0.002, p = .616): the slope is almost zero and the p-value is larger than .05. Age is not related to barriers in this sample.</li>
+<li><strong><code>GENDERMan</code></strong> (b = 0.13, p = .360): for a category, R picks the first group (<code>Woman</code>) as the comparison group and reports how different the <em>other</em> group is. Men scored 0.13 points higher than women, and that difference is not significant.</li>
+<li><strong>n = 148.</strong> A person is dropped if they are missing <strong>any</strong> variable in the model, so the more predictors you add, the fewer people you keep.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Related does not mean caused
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A regression on survey data tells you that two things go together. It does not tell you that one <em>causes</em> the other. Write “is related to”, “is associated with”, or “predicts”. Do not write “leads to”, “affects”, or “causes”.</p>
+</div>
+</div>
+</section>
+<section id="step-5-check-the-residuals" class="level3" data-number="20.2.7">
+<h3 data-number="20.2.7" class="anchored" data-anchor-id="step-5-check-the-residuals"><span class="header-section-number">20.2.7</span> Step 5: Check the residuals</h3>
+<p>A <strong>residual</strong> is how far each person is from the line. A linear regression works best when the residuals are roughly bell-shaped (normal). This is the “is it normal?” question from the Analysis Map, asked about the residuals and not about the raw scores.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">residual =</span> <span class="fu">resid</span>(model_multiple)),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Residual (actual score minus predicted score)"</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of people"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regression_files/figure-html/plot-residuals-1.png" class="img-fluid figure-img" alt="A histogram of regression residuals centered on zero with a roughly symmetric bell shape." width="576"></p>
+<figcaption>Figure 2. Histogram of the residuals from the multiple regression. The shape is roughly bell-shaped.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If your histogram has one long tail or two humps, talk to your instructor before you report the model.</p>
+</section>
+<section id="step-6-report-it" class="level3" data-number="20.2.8">
+<h3 data-number="20.2.8" class="anchored" data-anchor-id="step-6-report-it"><span class="header-section-number">20.2.8</span> Step 6: Report it</h3>
+<p>Report the slope (b), the p-value, and the number of people for each predictor, and R-squared for the whole model.</p>
+<blockquote class="blockquote">
+<p>A multiple linear regression (n = 148) showed that subjective social status was negatively associated with perceived barriers (b = -0.13, p &lt; .001), after accounting for age and gender. Age (b = -0.002, p = .616) and gender (b = 0.13, p = .360) were not significantly associated with perceived barriers. Together, the three predictors explained 9% of the variance in perceived barriers (R² = .09).</p>
+</blockquote>
+<p>You can also print the coefficients as a table:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(model_multiple)<span class="sc">$</span>coefficients,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Table 1. Multiple linear regression predicting perceived barriers."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Table 1. Multiple linear regression predicting perceived barriers.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">3.050</td>
+<td style="text-align: right;">0.236</td>
+<td style="text-align: right;">12.928</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SSS</td>
+<td style="text-align: right;">-0.127</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">-3.636</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AGE</td>
+<td style="text-align: right;">-0.002</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">-0.503</td>
+<td style="text-align: right;">0.616</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GENDERMan</td>
+<td style="text-align: right;">0.131</td>
+<td style="text-align: right;">0.142</td>
+<td style="text-align: right;">0.919</td>
+<td style="text-align: right;">0.360</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Don’t cut your score into two groups
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is tempting to turn a score into “high” and “low” (or 0 and 1) and then run a regression on the 0s and 1s. Don’t. You throw away most of the information in your score, the cut point is arbitrary, and small groups give unstable results. Keep your outcome as a score and use <code>lm()</code>. If your outcome really <em>is</em> a category (yes or no), <code>lm()</code> is the wrong tool: you need a logistic regression, which is not covered in this playbook. Talk to your instructor.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-regression-lab" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="sec-regression-lab"><span class="header-section-number">20.3</span> 🏈 The Lab</h2>
+<p>You watched the play above with the simulated <code>pregnancy</code> dataset (Pass 1). Now run three plays yourself with the <strong>lab dataset</strong>, a survey about what people believe about mental health.</p>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s kickoff.</strong> This lab is not graded, so I am here to help you check your own work. Try each play <strong>before</strong> you open my check or the solution. If your answer does not match, that is not a penalty. It is how you find out what to fix.</p>
+</div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Lab play</th>
+<th>What is new</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Draw Left</td>
+<td>one predictor: read a slope, a p-value, and R-squared</td>
+</tr>
+<tr class="even">
+<td>Draw Right</td>
+<td>add a <strong>binary</strong> predictor (two groups)</td>
+</tr>
+<tr class="odd">
+<td>Draw Middle</td>
+<td>add a <strong>dummy-coded</strong> predictor (five groups)</td>
+</tr>
+</tbody>
+</table>
+<p>All three plays use the same outcome: positive mental well-being (<code>WELLBEING</code>, the average of 8 items, 1 to 5). The first predictor is always perceived social support (<code>SUPPORT</code>, the average of 8 items, 1 to 5).</p>
+<p><strong>Before you start</strong></p>
+<ol type="1">
+<li>Open your RStudio Project and your lab <code>.qmd</code> file.</li>
+<li>Load the clean lab data by running this chunk. It runs the cleaning script you built in the earlier labs.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)   <span class="co"># creates mh_clean</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mh_clean)         <span class="co"># how many people are in the clean dataset?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: how many rows?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>nrow(mh_clean)</code> should be <strong>188</strong>.</p>
+</div>
+</div>
+</div>
+<section id="lab-play-1-draw-left-one-predictor" class="level3" data-number="20.3.1">
+<h3 data-number="20.3.1" class="anchored" data-anchor-id="lab-play-1-draw-left-one-predictor"><span class="header-section-number">20.3.1</span> Lab Play 1: Draw Left (one predictor)</h3>
+<p><strong>Research question:</strong> Do people with more social support (<code>SUPPORT</code>) report higher well-being (<code>WELLBEING</code>)?</p>
+<p><strong>Your task:</strong> Make a scatterplot with <code>SUPPORT</code> on the x axis and <code>WELLBEING</code> on the y axis, with a line of best fit. Then run the simple regression with <code>lm()</code> and <code>summary()</code>. Write down the slope for <code>SUPPORT</code>, its p-value, R-squared, and the number of people in the model.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you get?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Your line of best fit should go <strong>up</strong>: more support, higher well-being.</li>
+<li>Slope for <code>SUPPORT</code>: <strong>b = 0.40</strong>. For every one point higher in social support, predicted well-being is 0.40 points higher.</li>
+<li>p-value: <strong>p &lt; .001</strong>, so the relationship is statistically significant.</li>
+<li>R-squared: <strong>0.16</strong>. Social support explains about 16% of the differences in well-being.</li>
+<li>People in the model: <strong>n = 188</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh_clean,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SUPPORT, <span class="at">y =</span> WELLBEING)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Perceived social support (1 to 5)"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Positive mental well-being (1 to 5)"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regression_files/figure-html/lab-solution-play1-1.png" class="img-fluid figure-img" alt="A scatterplot with social support on the x axis and well-being on the y axis. The line of best fit slopes upward." width="672"></p>
+<figcaption>Figure 3. Social support and well-being in the lab dataset. The line is a linear line of best fit.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>model_lab_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(WELLBEING <span class="sc">~</span> SUPPORT, <span class="at">data =</span> mh_clean)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_lab_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = WELLBEING ~ SUPPORT, data = mh_clean)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.63903 -0.39229  0.01805  0.43951  1.69087 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.92051    0.22781    8.43 9.33e-15 ***
+SUPPORT      0.40436    0.06717    6.02 9.13e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6194 on 186 degrees of freedom
+Multiple R-squared:  0.163, Adjusted R-squared:  0.1585 
+F-statistic: 36.24 on 1 and 186 DF,  p-value: 9.129e-09</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nobs</span>(model_lab_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 188</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-2-draw-right-add-a-binary-predictor" class="level3" data-number="20.3.2">
+<h3 data-number="20.3.2" class="anchored" data-anchor-id="lab-play-2-draw-right-add-a-binary-predictor"><span class="header-section-number">20.3.2</span> Lab Play 2: Draw Right (add a binary predictor)</h3>
+<p><strong>Research question:</strong> After we account for social support, does well-being differ between People of Color and White respondents?</p>
+<p>The survey asked one question about racial/ethnic identity (<code>RACE</code>):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>American Indian or Alaska Native</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Asian</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Black or African American</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Hispanic or Latino</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Middle Eastern or North African</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Native Hawaiian or Pacific Islander</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>White</td>
+</tr>
+<tr class="even">
+<td>-99</td>
+<td>Prefer Not To Say (already <code>NA</code> in <code>mh_clean</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>binary</strong> predictor has two groups. <strong>Your task:</strong></p>
+<ol type="1">
+<li>Use <code>mutate()</code>, <code>case_when()</code>, and <code>factor()</code> to make a new variable <code>POC</code> with two groups: <code>"White"</code> (code 7) and <code>"Person of color"</code> (codes 1 to 6). List <code>"White"</code> first in <code>levels =</code> so that it is the comparison group.</li>
+<li>Check your work with <code>count(RACE, POC)</code>.</li>
+<li>Run <code>lm(WELLBEING ~ SUPPORT + POC)</code>.</li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you get?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">POC</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">White</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Person of color</td>
+<td style="text-align: right;">85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">2.064</td>
+<td style="text-align: right;">0.228</td>
+<td style="text-align: right;">9.049</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SUPPORT</td>
+<td style="text-align: right;">0.401</td>
+<td style="text-align: right;">0.066</td>
+<td style="text-align: right;">6.053</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">POCPerson of color</td>
+<td style="text-align: right;">-0.275</td>
+<td style="text-align: right;">0.090</td>
+<td style="text-align: right;">-3.062</td>
+<td style="text-align: right;">0.003</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>The row is named <code>POCPerson of color</code>. R adds the name of the group to the name of the variable. The group you do <strong>not</strong> see (<code>White</code>) is the comparison group.</li>
+<li><strong>b = -0.27, p = .003</strong>: at the same level of social support, People of Color scored 0.27 points lower in well-being than White respondents.</li>
+<li><code>SUPPORT</code> is still positive and significant (b = 0.40, p &lt; .001).</li>
+<li>People in the model: <strong>n = 185</strong>. That is 3 fewer than in Lab Play 1, because 3 people chose “Prefer Not To Say”.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POC =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(RACE <span class="sc">==</span> <span class="dv">7</span>      <span class="sc">~</span> <span class="st">"White"</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                RACE <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>  <span class="sc">~</span> <span class="st">"Person of color"</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"White"</span>, <span class="st">"Person of color"</span>)))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(RACE, POC)        <span class="co"># ALWAYS check a transformation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 3
+   RACE POC                 n
+  &lt;dbl&gt; &lt;fct&gt;           &lt;int&gt;
+1     1 Person of color     4
+2     2 Person of color    22
+3     3 Person of color    35
+4     4 Person of color    19
+5     5 Person of color     4
+6     6 Person of color     1
+7     7 White             100
+8    NA &lt;NA&gt;                3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_lab_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(WELLBEING <span class="sc">~</span> SUPPORT <span class="sc">+</span> POC, <span class="at">data =</span> mh_clean)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_lab_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = WELLBEING ~ SUPPORT + POC, data = mh_clean)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.76792 -0.44243  0.03282  0.45856  1.55819 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         2.06373    0.22806   9.049  &lt; 2e-16 ***
+SUPPORT             0.40099    0.06624   6.053 7.93e-09 ***
+POCPerson of color -0.27456    0.08967  -3.062  0.00253 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6078 on 182 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.2007,    Adjusted R-squared:  0.1919 
+F-statistic: 22.85 on 2 and 182 DF,  p-value: 1.397e-09</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nobs</span>(model_lab_2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 185</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: A group difference is not an explanation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This model tells you that two groups differ. It does not tell you why. In public health, differences between racial and ethnic groups point to differences in people’s conditions and experiences (for example, discrimination or access to care). They are not caused by the identity itself. Write “scored lower than”, and use your literature review to discuss why.</p>
+</div>
+</div>
+</section>
+<section id="lab-play-3-draw-middle-add-a-dummy-coded-predictor" class="level3" data-number="20.3.3">
+<h3 data-number="20.3.3" class="anchored" data-anchor-id="lab-play-3-draw-middle-add-a-dummy-coded-predictor"><span class="header-section-number">20.3.3</span> Lab Play 3: Draw Middle (add a dummy-coded predictor)</h3>
+<p><strong>Research question:</strong> Two groups hide a lot. Does the difference in well-being look the same for every racial/ethnic group?</p>
+<p>A predictor with three or more groups has to be <strong>dummy coded</strong>: one 0/1 column for every group except the comparison group. You do not need to make those columns. When the predictor is a <code>factor()</code>, <code>lm()</code> makes them for you, and you get one row in the output for each group (compared with the first level).</p>
+<p><strong>Your task:</strong></p>
+<ol type="1">
+<li>Count the people in each <code>RACE</code> group. Three groups are very small (codes 1, 5, and 6). Combine them into <code>"Another identity"</code>.</li>
+<li>Make <code>RACE_5</code>, a factor with five levels in this order: <code>"White"</code>, <code>"Asian"</code>, <code>"Black"</code>, <code>"Hispanic or Latino"</code>, <code>"Another identity"</code>.</li>
+<li>Run <code>lm(WELLBEING ~ SUPPORT + RACE_5)</code>, make a histogram of the residuals, and write one sentence that reports the result.</li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you get?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">RACE_5</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">White</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Asian</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Black</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hispanic or Latino</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Another identity</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">Std. Error</th>
+<th style="text-align: right;">t value</th>
+<th style="text-align: right;">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">2.057</td>
+<td style="text-align: right;">0.229</td>
+<td style="text-align: right;">8.973</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SUPPORT</td>
+<td style="text-align: right;">0.403</td>
+<td style="text-align: right;">0.067</td>
+<td style="text-align: right;">6.052</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RACE_5Asian</td>
+<td style="text-align: right;">-0.395</td>
+<td style="text-align: right;">0.144</td>
+<td style="text-align: right;">-2.749</td>
+<td style="text-align: right;">0.007</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RACE_5Black</td>
+<td style="text-align: right;">-0.281</td>
+<td style="text-align: right;">0.120</td>
+<td style="text-align: right;">-2.352</td>
+<td style="text-align: right;">0.020</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RACE_5Hispanic or Latino</td>
+<td style="text-align: right;">-0.103</td>
+<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">-0.674</td>
+<td style="text-align: right;">0.501</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RACE_5Another identity</td>
+<td style="text-align: right;">-0.317</td>
+<td style="text-align: right;">0.212</td>
+<td style="text-align: right;">-1.495</td>
+<td style="text-align: right;">0.137</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>You should see <strong>four</strong> <code>RACE_5</code> rows. Each one compares that group with White respondents, at the same level of social support.</li>
+<li>Asian (b = -0.39, p = .007) and Black (b = -0.28, p = .020) respondents scored significantly lower than White respondents. Hispanic or Latino respondents did not differ significantly (b = -0.10, p = .501). The binary variable in Lab Play 2 hid this.</li>
+<li>“Another identity” (b = -0.32, p = .137) has only 9 people. With a group this small, a real difference is hard to detect. Report the count, and do not read much into this row.</li>
+<li>People in the model: <strong>n = 185</strong>. R-squared: <strong>0.21</strong>.</li>
+<li>Your residual histogram should be roughly bell-shaped and centered on zero.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(RACE)             <span class="co"># which groups are very small?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+   RACE     n
+  &lt;dbl&gt; &lt;int&gt;
+1     1     4
+2     2    22
+3     3    35
+4     4    19
+5     5     4
+6     6     1
+7     7   100
+8    NA     3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RACE_5 =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(RACE <span class="sc">==</span> <span class="dv">7</span>            <span class="sc">~</span> <span class="st">"White"</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                   RACE <span class="sc">==</span> <span class="dv">2</span>            <span class="sc">~</span> <span class="st">"Asian"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                                   RACE <span class="sc">==</span> <span class="dv">3</span>            <span class="sc">~</span> <span class="st">"Black"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                                   RACE <span class="sc">==</span> <span class="dv">4</span>            <span class="sc">~</span> <span class="st">"Hispanic or Latino"</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                                   RACE <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>) <span class="sc">~</span> <span class="st">"Another identity"</span>),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"White"</span>, <span class="st">"Asian"</span>, <span class="st">"Black"</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Hispanic or Latino"</span>, <span class="st">"Another identity"</span>)))</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>model_lab_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(WELLBEING <span class="sc">~</span> SUPPORT <span class="sc">+</span> RACE_5, <span class="at">data =</span> mh_clean)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_lab_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = WELLBEING ~ SUPPORT + RACE_5, data = mh_clean)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.76985 -0.44573  0.00821  0.41316  1.55859 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                2.0568     0.2292   8.973 3.86e-16 ***
+SUPPORT                    0.4031     0.0666   6.052 8.18e-09 ***
+RACE_5Asian               -0.3949     0.1436  -2.749  0.00659 ** 
+RACE_5Black               -0.2814     0.1196  -2.352  0.01974 *  
+RACE_5Hispanic or Latino  -0.1027     0.1524  -0.674  0.50135    
+RACE_5Another identity    -0.3169     0.2119  -1.495  0.13660    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6087 on 179 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.2114,    Adjusted R-squared:  0.1894 
+F-statistic: 9.597 on 5 and 179 DF,  p-value: 3.946e-08</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nobs</span>(model_lab_3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 185</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">residual =</span> <span class="fu">resid</span>(model_lab_3)),</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Residual (actual score minus predicted score)"</span>) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of people"</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="regression_files/figure-html/lab-solution-play3-1.png" class="img-fluid figure-img" alt="A histogram of regression residuals from the lab dataset, centered on zero and roughly bell-shaped." width="576"></p>
+<figcaption>Figure 4. Histogram of the residuals from the lab regression.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A multiple linear regression (n = 185) showed that perceived social support was positively associated with well-being (b = 0.40, p &lt; .001), after accounting for racial/ethnic identity. Compared with White respondents, Asian (b = -0.39, p = .007) and Black (b = -0.28, p = .020) respondents reported lower well-being; Hispanic or Latino respondents (p = .501) and respondents with another identity (n = 9; p = .137) did not differ significantly (R² = .21).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s call: fouls to check if your numbers do not match
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Your slope is for the wrong variable</strong> → the outcome goes on the <strong>left</strong> of the <code>~</code>. <code>WELLBEING ~ SUPPORT</code>, not <code>SUPPORT ~ WELLBEING</code>.</li>
+<li><strong>One row named <code>RACE</code> with a single slope</strong> → you used <code>RACE</code> (numbers) when you needed <code>POC</code> or <code>RACE_5</code> (a factor). R treated the codes 1 to 7 as a score. This gives you a wrong answer without any error message.</li>
+<li><strong>Your comparison group is not White</strong> → R uses the <strong>first</strong> level as the comparison group. If you leave out <code>levels =</code>, R sorts the groups by the alphabet.</li>
+<li><strong>A group is missing from <code>count()</code></strong> → look for a typo in <code>case_when()</code>. Any answer you do not list becomes <code>NA</code>.</li>
+<li><strong>Your n is 188</strong> → that is the number of rows in the dataset, not the number of people in the model. Use <code>nobs()</code>.</li>
+<li><strong><code>object 'WELLBEING' not found</code></strong> → <code>WELLBEING</code> and <code>SUPPORT</code> are created in <code>lab_prep.R</code>. Run <code>source("lab_prep.R")</code> first.</li>
+<li><strong><code>could not find function "ggplot"</code></strong> → run your load-library chunk.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s final whistle.</strong> That is the end of the lab. Save your <code>.qmd</code>, render it, and back up your <code>.qmd</code> and <code>.R</code> files to the <strong>R Labs</strong> folder in your ELN before you quit RStudio.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-regression-yourturn" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="sec-regression-yourturn"><span class="header-section-number">20.4</span> 🏆 Your Turn</h2>
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>There is no Ref. It’s game time, your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nobody has analyzed your team’s data before, so there is no answer to check against. Copy the play, change every line marked <code># REPLACE</code>, and use the checklist at the end of this section to check your own work. It is the same checklist your instructor uses.</p>
+</div>
+</div>
+<p>Once you finish all of the R Labs, come back here with <strong>your team’s dataset</strong> and run the regression for your relationship research question.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. every categorical predictor must be a factor (skip this if you have none)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>yourdata <span class="ot">&lt;-</span> yourdata <span class="sc">|&gt;</span>                          <span class="co"># REPLACE with your clean dataset</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GROUPVARIABLE =</span> <span class="fu">factor</span>(GROUPVARIABLE,   <span class="co"># REPLACE with your categorical predictor</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),               <span class="co"># REPLACE with its codes</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"REPLACE"</span>, <span class="st">"REPLACE"</span>)))  <span class="co"># REPLACE with its labels; the FIRST one is the comparison group</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. run the model: OUTCOME ~ PREDICTOR1 + PREDICTOR2 + ...</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>model_REPLACE <span class="ot">&lt;-</span> <span class="fu">lm</span>(OUTCOME <span class="sc">~</span> PREDICTOR1 <span class="sc">+</span> PREDICTOR2 <span class="sc">+</span> GROUPVARIABLE,   <span class="co"># REPLACE every name</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> yourdata)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_REPLACE)      <span class="co"># slopes (Estimate), p-values (Pr(&gt;|t|)), and R-squared</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">nobs</span>(model_REPLACE)         <span class="co"># the number of people in the model</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. check the residuals</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">residual =</span> <span class="fu">resid</span>(model_REPLACE)),</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. a table for your report</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(model_REPLACE)<span class="sc">$</span>coefficients, <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">"Table 1. REPLACE with a caption that can stand alone."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then write your results sentence. Use this pattern, and say whether your hypothesis was supported.</p>
+<blockquote class="blockquote">
+<p>A multiple linear regression (n = ___) showed that ______ was ______ (positively / negatively / not significantly) associated with ______ (b = ___, p = ___), after accounting for ______. The predictors explained ___% of the variance in ______ (R² = ___).</p>
+</blockquote>
+<section id="checklist-for-your-rd-report-and-final-report" class="level3" data-number="20.4.1">
+<h3 data-number="20.4.1" class="anchored" data-anchor-id="checklist-for-your-rd-report-and-final-report"><span class="header-section-number">20.4.1</span> Checklist for your RD Report and Final Report</h3>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Open the regression checklist
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- Single source for the regression checklist. Included in Relate 3+ Variables ("Your Turn"), and later in the Final Report Checklist page. Edit it here once; every place updates. -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Ask yourself</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Right test</strong></td>
+<td>Does the Analysis Map lead here (one continuous outcome, two or more predictors)?</td>
+</tr>
+<tr class="even">
+<td><strong>Missing codes</strong></td>
+<td>Were codes such as -99 and -50 changed to <code>NA</code> before the model was run?</td>
+</tr>
+<tr class="odd">
+<td><strong>Categorical predictors</strong></td>
+<td>Is every categorical predictor a <code>factor()</code> with labels, not a number? Does your text name the comparison group?</td>
+</tr>
+<tr class="even">
+<td><strong>Outcome kept whole</strong></td>
+<td>Is the outcome the full score (not cut into “high” and “low”)?</td>
+</tr>
+<tr class="odd">
+<td><strong>Plot first</strong></td>
+<td>Is there a scatterplot of the outcome and your main predictor before the model?</td>
+</tr>
+<tr class="even">
+<td><strong>Model statement</strong></td>
+<td>Does the text say which test was run, the outcome, and every predictor?</td>
+</tr>
+<tr class="odd">
+<td><strong>Each predictor</strong></td>
+<td>Do you report <em>b</em> and <em>p</em> for every predictor, including the ones that were not significant?</td>
+</tr>
+<tr class="even">
+<td><strong>Sample size</strong></td>
+<td>Is <em>n</em> reported from <code>nobs()</code>, not from the number of rows in the dataset?</td>
+</tr>
+<tr class="odd">
+<td><strong>R-squared</strong></td>
+<td>Is R-squared reported and explained in plain words (percent of the differences in the outcome)?</td>
+</tr>
+<tr class="even">
+<td><strong>Residuals</strong></td>
+<td>Is there a histogram of the residuals, and one sentence on its shape?</td>
+</tr>
+<tr class="odd">
+<td><strong>Interpretation</strong></td>
+<td>Does the text connect the result to your hypothesis, with “holding the other predictors constant”?</td>
+</tr>
+<tr class="even">
+<td><strong>No causal words</strong></td>
+<td>Did you avoid “causes”, “leads to”, “impacts”, and “effect of”?</td>
+</tr>
+<tr class="odd">
+<td><strong>Table</strong></td>
+<td>Is there a regression table made with <code>kable()</code>, with a caption starting “Table 1.”?</td>
+</tr>
+<tr class="even">
+<td><strong>Inline numbers</strong></td>
+<td>Do the numbers in your sentences come from inline R code, not typed by hand?</td>
+</tr>
+<tr class="odd">
+<td><strong>Referenced in text</strong></td>
+<td>Does your results paragraph point to the table and the figure?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shanemccarty\.github\.io\/FRIplaybook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./visualize-relationship.html" class="pagination-link" aria-label="Visualize a Relationship">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./readme.html" class="pagination-link" aria-label="Read Me">
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/regression.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

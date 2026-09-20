@@ -14,10 +14,10 @@ engine: knitr
 editor: visual
 ---
 
-::: {.callout-important appearance="simple"}
-## Required
+::: {.callout-important}
+## Required: headings and backticks
 
-Your *R&D Report*, *Team R&D Manuscript*, *Final Report*, and *Final Manuscript* will include headings based on the checklist and backticks for variables, such as `EFFICACY`.
+Your *RD Report* and *Final Report* will include headings based on the checklist and backticks for variables, such as `EFFICACY`.
 :::
 
 ## Markdown
@@ -86,8 +86,8 @@ Use markdown syntax to create headings based on the checklist for your report.
 
 You can use a backtick to denote code or the name of a variable by placing a word within \`\`. For example, if I put EFFICACY between \`\` then it returns `EFFICACY` . This will be important for naming variables in your report.
 
-::: callout-important
-## Requirement
+::: {.callout-important}
+## Required: backticks for variable names
 
 Use \` \` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.
 :::
@@ -98,7 +98,7 @@ Reminder: It is useful to switch back and forth between *Source* and *Visual* mo
 
 ## Get started with Quarto Video
 
-This 22-minute video provided a basic overview of the Quarto features, which will help you improve your introduction section of your final report and team manuscript.
+This 22-minute video provided a basic overview of the Quarto features, which will help you improve your introduction section of your final report.
 
 {{< video https://www.youtube.com/watch?v=_f3latmOhew >}}
 

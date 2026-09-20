@@ -1,0 +1,566 @@
+---
+title: "Visualize a Comparison"
+subtitle: "How to build barplots and violin plots to compare groups"
+author:
+  - Andrew Silhavy
+  - Shane McCarty, PhD
+abstract: |
+  This chapter teaches researchers to visualize comparative research questions, which examine differences in a continuous score between groups. Using real insurance data, researchers build a barplot of group means one layer at a time and see a violin plot of the same kind of data. In The Lab, researchers make a barplot with the original survey groups, then transform the groups (combine small groups, exclude answers that are not groups) to make a clearer barplot, and report what they did in the figure caption. In Your Turn, researchers use copy-ready templates and a checklist to build the comparison plot for their own research question.
+keywords:
+  - ggplot2
+  - barplot
+  - violin plot
+  - comparison
+  - case_when
+  - factor
+date: 09.20.2026
+date-format: "MM.DD.YYYY"
+format:
+  html: 
+    css: custom.css
+editor: visual
+execute:
+  cache: false   # this chapter reads lab_prep.R and the lab dataset; a cache would keep OLD data after they change
+  warning: false
+  message: false
+---
+
+::: {.callout-note collapse="true"}
+## Resources: `ggplot2`
+
+{{< include _resources-ggplot2.qmd >}}
+:::
+
+## How This Chapter Works
+
+You will go through this chapter three times, with three different datasets.
+
+| Pass | Section | Dataset | What you do |
+|------|-----------|-------------|--------------------------------------------|
+| 1 | [The Play](#the-play) | `insurance` (example) | **Watch the play.** Read the code and the output, step by step. |
+| 2 | [The Lab](#sec-comparison-lab) | lab dataset | **Run the play.** Make two barplots yourself during the R Lab, then check your own work. Labs are not graded. |
+| 3 | [Your Turn](#sec-comparison-yourturn) | your team's dataset | **Call your own play.** After you finish all of the R Labs, come back and make the plot for your own research question. |
+
+::: {.callout-tip}
+## Go: Know your route first
+
+This chapter is the Visualize step on [The Analysis Map](analysis-map.qmd) for a **comparison** question: groups (a categorical variable) and one continuous score. New to `ggplot2` layers? Read [How Code Builds a Plot](layers.qmd) first.
+:::
+
+## 📋 The Play {#the-play}
+
+### Example Data: `insurance`
+
+The example dataset is from the "Medical Cost Personal Costs" database on Kaggle. For this chapter, we refer to it as `insurance`.
+
+```{r}
+#| label: import-data-insurance
+insurance <- read.csv("data/insurance.csv")
+```
+
+```{r}
+#| label: load-library-ggplot2
+library(ggplot2)
+```
+
+### Comparative Research
+
+Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:
+
+- 🏷️ **Nominal Data** (Gender Identity)
+
+  - Man
+  - Woman
+  - Non-Binary
+
+- 📶 **Ordinal Data** (Age Group)
+
+  - 18 - 35
+  - 36 - 54
+  - 55 - 75
+  - 76+
+
+#### STEP-BY-STEP TO BUILD A BARPLOT WITH `geom_bar()`
+
+Bar plots are useful for comparing mean scores across groups.
+
+#### [Step 1: Set up data]{.data-layer}
+
+```{r}
+ggplot(data = insurance)
+```
+
+#### [Step 2: Set up mapping]{.mapping-layer}
+
+```{r}
+#| label: plot-region-charges-data-mapping 
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+ggplot(data = insurance,
+       mapping = aes(
+         x = region,
+         y = charges))
+
+```
+
+::: callout-note
+## 📊 Layers: Data + Mapping
+
+- [**Data**]{style="color: #E69F00; font-weight: bold;"}: `insurance` dataset
+- [**Mapping**]{style="color: #56B4E9; font-weight: bold;"}: `aes(x = region, y = charges)`
+:::
+
+#### [Step 3: Add geometry (bars)]{.layers-layer}
+
+```{r}
+#| label: plot-region-charges-bar 
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)) +
+  geom_bar(stat = 'summary', fun = 'mean')
+
+plot_region_charges
+```
+
+::: callout-note
+## 🎨 Layer: Geometries
+
+- [**Geometry**]{style="color: #009E73; font-weight: bold;"}: `geom_bar()` creates bars
+
+- [**Statistics**]{style="color: #F0E442; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"}: `stat = 'summary', fun = 'mean'` calculates means
+:::
+
+::: {.callout-warning}
+## Caution: Saving a plot does not show it
+
+`plot_region_charges <- ggplot(...)` saves the plot as an object in your environment. To see it, type the object's name on its own line (or use `print()`), like the last line of the code above.
+:::
+
+#### [Step 4: Customize bars]{.theme-layer}
+
+```{r}
+#| label: plot-region-charges-bar-custom
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)) +
+  geom_bar(
+    stat = 'summary',
+    fun = 'mean',
+    fill = "#005a43")
+
+plot_region_charges
+```
+
+::: callout-note
+## 🎨 Layer: Theme (color)
+
+- Setting `fill = "#005a43"` customizes bar colors
+:::
+
+#### [Step 5: Add labels and themes]{.theme-layer}
+
+```{r}
+#| label: plot-region-charges-bar-custom-labelsthemes
+#| fig-cap: "a barplot depicting differences in charges by region"
+#| fig-alt: a barplot of insurance charges by region  
+#| fig-height: 6
+#| fig-width: 8
+
+plot_region_charges <- ggplot(
+  data = insurance,
+  mapping = aes(
+    x = region,
+    y = charges)) + 
+  geom_bar(
+    stat = 'summary', fun = 'mean', fill = "#005a43") + 
+  ggtitle("Mean Insurance Charges Based on Region") + 
+  xlab("Region") +
+  ylab("Insurance Charges") +
+  theme_bw()
+
+plot_region_charges
+```
+
+::: callout-note
+## 🎨 Layer: Theme
+
+- [**Theme**]{style="color: #CC79A7; font-weight: bold;"}: Labels and `theme_bw()` enhance appearance
+:::
+
+#### Violin Plots with `geom_violin()`
+
+Violin plots provide a different way to visualize information to capture the distribution of data for each category.
+
+```{r}
+#| label: plot-smoker-charges 
+#| fig-cap: "a violin plot depicting differences in insurance charges based on smoker status"
+#| fig-alt: the figure 
+#| fig-height: 6
+#| fig-width: 8
+
+ggplot(data = insurance,
+       mapping = aes(
+         x = smoker,
+         y = charges,
+         fill = smoker)) + 
+  geom_violin() +
+  ggtitle("Distribution of Insurance Charges by Smoking Status") +
+  xlab("Smoker (Y/N)") +
+  ylab("Insurance Charges") +
+  theme_bw()
+
+#plot above plot without using plot = argument
+ggsave("plots/plot2_smoker.png",
+       width = 10, height = 8, dpi = 300)
+```
+
+To learn more about how to use violin plots for pre/post data, see the chapter on visualizing pre/post scores.
+
+::: {.callout-tip}
+## Go: Save your plot with `ggsave()`
+
+Every plot in your *RD Report* and *Final Report* must be saved with `ggsave()`, so you can add it to your team poster. Save the plot to an object, then add two lines:
+
+``` r
+ggsave("plots/plot1_clear_name.png",
+       plot = plot_name, width = 10, height = 8, dpi = 300)
+```
+
+The full explanation is in [How Code Builds a Plot](layers.qmd#save).
+:::
+
+```{r}
+#| label: lab-setup
+#| include: false
+source("lab_prep.R")   # creates mh_raw and mh_clean from the lab dataset
+```
+
+## 🏈 The Lab {#sec-comparison-lab}
+
+You watched the play above with the `insurance` dataset (Pass 1). Now run two plays yourself with the **lab dataset**, a survey about what people believe about mental health.
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** This lab is not graded, so I am here to help you check your own work. Try each play **before** you open my check or the solution. If your answer does not match, that is not a penalty. It is how you find out what to fix.
+:::
+::::::
+
+| Lab play | What is new |
+|----------------|------------------------------------------------|
+| Sweep Left | a barplot with the **original** groups |
+| Sweep Right | **transform** the groups first, then make a better barplot |
+
+**Before you start**
+
+1.  Open your RStudio Project and your lab `.qmd` file.
+2.  Load the clean lab data by running this chunk. It runs the cleaning script you built in the earlier labs.
+
+```{r}
+#| label: lab-load
+#| eval: false
+source("lab_prep.R")   # creates mh_clean
+nrow(mh_clean)         # how many people are in the clean dataset?
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how many rows?
+
+`nrow(mh_clean)` should be **`r nrow(mh_clean)`**. If you get `r nrow(mh_raw)`, you are looking at the raw data: the duplicate response and the people who failed the attention checks have not been removed yet.
+:::
+
+### Lab Play 1: Sweep Left (a barplot with the original groups)
+
+**Research question:** Does the belief that mental health is *social* (`SOCIAL`, 1 to 5) differ by political beliefs?
+
+The survey asked: *What label best captures your political beliefs?* The answers are stored as numbers in `POLITICALBELIEFS`.
+
+| Code | Label |
+|------|-------|
+| 1 | Leftist |
+| 2 | Liberal |
+| 3 | Moderate |
+| 4 | Conservative |
+| 5 | Far Right/Alt-Right |
+| 6 | Libertarian |
+| -99 | Prefer not to say |
+| -50 | None of the above or Don't Know |
+
+**Your task, part 1:** Look at the original data first. How many people chose each answer?
+
+```{r}
+#| label: lab-count-original
+#| eval: false
+mh_clean |>
+  count(POLITICALBELIEFS)
+```
+
+**Your task, part 2:** Give the numbers their labels with `factor()`, then go back to [the barplot play](#the-play) and make a barplot of the mean of `SOCIAL` for every group.
+
+```{r}
+#| label: lab-factor-hint
+#| eval: false
+mh_clean <- mh_clean |>
+  mutate(POLITICALBELIEFS_f = factor(
+    POLITICALBELIEFS,
+    levels = c(1, 2, 3, 4, 5, 6, -99, -50),
+    labels = c("Leftist", "Liberal", "Moderate", "Conservative",
+               "Far Right/Alt-Right", "Libertarian",
+               "Prefer not to say", "None/Don't know")))
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how many people are behind each bar?
+
+```{r}
+#| label: lab-check-play3
+#| echo: false
+mh_clean <- mh_clean |>
+  mutate(POLITICALBELIEFS_f = factor(
+    POLITICALBELIEFS,
+    levels = c(1, 2, 3, 4, 5, 6, -99, -50),
+    labels = c("Leftist", "Liberal", "Moderate", "Conservative",
+               "Far Right/Alt-Right", "Libertarian",
+               "Prefer not to say", "None/Don't know")))
+lab_p3 <- mh_clean |>
+  group_by(POLITICALBELIEFS_f) |>
+  summarise(n = n(), mean = mean(SOCIAL, na.rm = TRUE))
+n_lib  <- sum(mh_clean$POLITICALBELIEFS == 6)
+n_pnts <- sum(mh_clean$POLITICALBELIEFS == -99)
+n_dk   <- sum(mh_clean$POLITICALBELIEFS == -50)
+knitr::kable(lab_p3, digits = 2, col.names = c("Political label", "n", "Mean SOCIAL"))
+```
+
+-   You should see **eight** bars. Your counts and bar heights should match the table.
+-   Now be the referee of your own plot. The Libertarian bar is the average of only **`r n_lib`** people, so it tells you almost nothing about Libertarians. "Prefer not to say" (`r n_pnts`) and "None/Don't know" (`r n_dk`) are not political groups at all. Eight bars also make it hard to see the main pattern. Lab Play 2 fixes all three problems.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: plot-lab-label-original
+#| fig-cap: "Figure 1. Mean agreement that mental health is social (SOCIAL, 1 to 5) for all eight original political label responses in the lab dataset."
+#| fig-alt: "A barplot with eight bars, one for each original political label response, including Libertarian, Prefer not to say, and None or Don't know."
+#| fig-height: 5
+#| fig-width: 8
+
+plot_label_original <- ggplot(
+  data = mh_clean,
+  mapping = aes(
+    x = POLITICALBELIEFS_f,
+    y = SOCIAL)) +
+  geom_bar(
+    stat = 'summary', fun = 'mean', fill = "#005a43") +
+  ylim(0, 5) +
+  ggtitle("Mean SOCIAL Conception of Mental Health by Political Label (original groups)") +
+  xlab("Political label") +
+  ylab("Mental health is social (1 = disagree, 5 = agree)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1))
+
+print(plot_label_original)
+```
+:::
+
+### Lab Play 2: Sweep Right (transform the groups, then a barplot)
+
+Researchers often **combine** small groups into larger ones and **exclude** answers that are not groups. This is a decision *you* make, so you must tell your reader exactly what you did.
+
+**Your task, part 1:** Transform `POLITICALBELIEFS` into a new variable with three groups.
+
+-   **Left** = Leftist (1) or Liberal (2)
+-   **Moderate** = Moderate (3)
+-   **Right** = Conservative (4) or Far Right/Alt-Right (5)
+-   Exclude Libertarian (6) because only `r n_lib` people chose it, and exclude "Prefer not to say" (-99) and "None of the above or Don't Know" (-50).
+
+```{r}
+#| label: lab-transform-hint
+#| eval: false
+mh_clean <- mh_clean |>
+  mutate(POL_LMR = case_when(
+    POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+    POLITICALBELIEFS == 3         ~ "Moderate",
+    POLITICALBELIEFS %in% c(4, 5) ~ "Right"))   # every other answer becomes NA (missing)
+
+# ALWAYS check a transformation: did every answer go where you wanted?
+mh_clean |>
+  count(POLITICALBELIEFS, POL_LMR)
+
+# keep only the people who are in one of the three groups
+mh_lmr <- mh_clean |>
+  filter(!is.na(POL_LMR))
+```
+
+**Your task, part 2:** Make the barplot again with `mh_lmr` and `POL_LMR`. Write a figure caption that tells the reader how the groups were made and how many people were excluded, with the counts.
+
+::: {.callout-warning icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Foul: `== 1 | 2` does not mean "1 or 2"
+
+`POLITICALBELIEFS == 1 | 2` looks right, but R reads it in a way that puts **everyone** in the first group. To say "is one of these values", use `%in%`, like this: `POLITICALBELIEFS %in% c(1, 2)`. The `count(POLITICALBELIEFS, POL_LMR)` check will catch this foul for you.
+:::
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: did your transformation work?
+
+```{r}
+#| label: lab-check-play4
+#| echo: false
+mh_clean <- mh_clean |>
+  mutate(POL_LMR = case_when(
+    POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+    POLITICALBELIEFS == 3         ~ "Moderate",
+    POLITICALBELIEFS %in% c(4, 5) ~ "Right"))
+mh_lmr <- mh_clean |> filter(!is.na(POL_LMR))
+lab_p4 <- mh_lmr |>
+  group_by(POL_LMR) |>
+  summarise(n = n(), mean = mean(SOCIAL, na.rm = TRUE))
+knitr::kable(lab_p4, digits = 2, col.names = c("Political beliefs", "n", "Mean SOCIAL"))
+```
+
+-   `mh_lmr` should have **`r nrow(mh_lmr)`** people. You excluded `r nrow(mh_clean) - nrow(mh_lmr)`: `r n_lib` Libertarian, `r n_pnts` "Prefer not to say", and `r n_dk` "None of the above or Don't Know".
+-   You should see exactly **three** bars, and the counts and bar heights should match the table.
+-   Tallest bar: **`r lab_p4$POL_LMR[which.max(lab_p4$mean)]`**. Shortest bar: **`r lab_p4$POL_LMR[which.min(lab_p4$mean)]`**. The pattern is much easier to see with three bars than with eight. You will learn to test whether this difference is statistically significant later in this part of the playbook (Compare Groups).
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: plot-lab-label-lmr
+#| fig-cap: !expr 'paste0("Figure 2. Mean agreement that mental health is social (SOCIAL, 1 to 5) by political beliefs in the lab dataset (n = ", nrow(mh_lmr), "). Left combines Leftist and Liberal; Right combines Conservative and Far Right/Alt-Right. Excluded: Libertarian (n = ", n_lib, "), Prefer not to say (n = ", n_pnts, "), and None of the above or Do not Know (n = ", n_dk, ").")'
+#| fig-alt: "A barplot with three bars for left, moderate, and right respondents. The left bar is tallest and the right bar is shortest."
+#| fig-height: 5
+#| fig-width: 7
+
+plot_label_lmr <- ggplot(
+  data = mh_lmr,
+  mapping = aes(
+    x = POL_LMR,
+    y = SOCIAL)) +
+  geom_bar(
+    stat = 'summary', fun = 'mean', fill = "#005a43") +
+  ylim(0, 5) +
+  ggtitle("Mean SOCIAL Conception of Mental Health by Political Beliefs") +
+  xlab("Political beliefs") +
+  ylab("Mental health is social (1 = disagree, 5 = agree)") +
+  theme_bw()
+
+print(plot_label_lmr)
+```
+
+:::
+
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your plot does not match
+
+-   **Bars in strange places with numbers on the x axis** → you plotted `POLITICALBELIEFS` (numbers). Plot `POLITICALBELIEFS_f` (the factor with labels).
+-   **A bar labeled `NA` in Lab Play 2** → you plotted `mh_clean` when you meant `mh_lmr`, or you skipped the `filter(!is.na(POL_LMR))` step.
+-   **Everyone is in the "Left" group** → you wrote `== 1 | 2`. Use `%in% c(1, 2)`.
+-   **An error that mentions `stat_count()`** → you left out `stat = 'summary', fun = 'mean'` inside `geom_bar()`. Without it, `geom_bar()` tries to count people when you want it to show each group's average.
+-   **`object 'SOCIAL' not found`** → `SOCIAL` is a composite created in `lab_prep.R`. Run `source("lab_prep.R")` first.
+-   **An error that mentions `+`** → each ggplot line must *end* with `+`. A line that *starts* with `+` breaks the plot.
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's final whistle.** That is the end of the lab. Save your `.qmd`, render it, and back up your `.qmd` and `.R` files to the **R Labs** folder in your ELN before you quit RStudio.
+:::
+::::::
+
+## 🏆 Your Turn {#sec-comparison-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play that matches your research question, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own plot. It is the same checklist your instructor uses.
+:::
+
+Once you finish all of the R Labs, come back here with **your team's dataset** and make the plot for your comparison research question.
+
+### The comparison play
+
+```{r}
+#| label: plot-REPLACE             # REPLACE with a short name, e.g., plot-efficacy-gender
+#| fig-cap: "Figure 1. REPLACE with a caption that can stand alone."
+#| fig-alt: "REPLACE with a description of what the plot shows."
+#| eval: false
+
+yourdata_groups <- yourdata |>              # REPLACE with your clean dataset
+  filter(!is.na(GROUPVARIABLE))             # REPLACE with your grouping variable
+
+plot_REPLACE <- ggplot(                     # REPLACE the plot name
+  data = yourdata_groups,
+  mapping = aes(
+    x = GROUPVARIABLE,                      # REPLACE with your grouping variable
+    y = OUTCOME)) +                         # REPLACE with your continuous outcome
+  geom_bar(
+    stat = 'summary', fun = 'mean', fill = "#005a43") +
+  ggtitle("REPLACE with your title") +
+  xlab("REPLACE with a plain-words label") +
+  ylab("REPLACE with a plain-words label and the scale range") +
+  theme_bw()
+
+print(plot_REPLACE)
+ggsave("plots/REPLACE.png",                 # REPLACE with a clear file name
+       plot = plot_REPLACE,
+       width = 10, height = 8, dpi = 300)
+```
+
+### If you need to combine or exclude groups first
+
+Do this **before** the comparison play above, then use your new dataset and your new grouping variable in the barplot.
+
+```{r}
+#| label: transform-REPLACE        # REPLACE with a short name, e.g., transform-politics
+#| eval: false
+
+yourdata <- yourdata |>                     # REPLACE with your clean dataset
+  mutate(NEWGROUP = case_when(              # REPLACE NEWGROUP with a name for your new variable
+    GROUPVARIABLE %in% c(1, 2) ~ "REPLACE", # REPLACE the codes and the label for group 1
+    GROUPVARIABLE == 3         ~ "REPLACE", # REPLACE the code and the label for group 2
+    GROUPVARIABLE %in% c(4, 5) ~ "REPLACE"))# REPLACE the codes and the label for group 3
+                                            # every answer you leave out becomes NA (missing)
+
+yourdata |>
+  count(GROUPVARIABLE, NEWGROUP)            # check: did every answer go where you wanted?
+
+yourdata_groups <- yourdata |>
+  filter(!is.na(NEWGROUP))                  # keep only people who are in one of your groups
+```
+
+In your figure caption, tell the reader which answers you combined, which answers you excluded, and how many people were excluded (for example, "Excluded: Libertarian (n = 4)").
+
+
+### Checklist for your RD Report and Final Report
+
+::: {.callout-note .gray collapse="true"}
+## Open the plot checklist
+
+{{< include _checklist-plots.qmd >}}
+:::

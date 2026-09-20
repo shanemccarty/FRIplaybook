@@ -22,20 +22,15 @@ editor: visual
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
-::: callout-tip
-## 📖 import resources
+::: {.callout-note collapse="true"}
+## Resources: import
 
--   [R4DS Book Chapter 4](https://r4ds.hadley.nz/data-import.html)
--   [R4DS Book Chapter 20-24](https://r4ds.hadley.nz/import.html)
--   [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)
--   [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-import.pdf)
+- [R4DS Book Chapter 4](https://r4ds.hadley.nz/data-import.html)
+- [R4DS Book Chapter 20-24](https://r4ds.hadley.nz/import.html)
+- [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/data-import.html?_gl=1*2grk0d*_ga*ODQ0NjUzMTM1LjE3NjA0MDU5Nzk.*_ga_2C0WZ1JHG0*czE3NjA0OTMzNDgkbzMkZzAkdDE3NjA0OTMzNDgkajYwJGwwJGgw)
+- [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/data-import.pdf)
 :::
 
-::: {.callout-caution collapse="true"}
-## Updated 10/20/2025 8:30pm
-
-[Section 5.3.3](#row1) was updated to handle missing data correctly. Responses (-99, and -50) will be changed to `NA`. Check `View()` to ensure there are no -99 and -50 values. You can run a histogram to check too!
-:::
 
 ```{r}
 #| include: false
@@ -49,15 +44,15 @@ The first step of the data science workflow is to *import your data*. Public hea
 
 **Common data sources:**
 
--   Survey platforms (Qualtrics, REDCap)
+- Survey platforms (Qualtrics, REDCap)
 
--   R packages (e.g., `NHANES`)
+- R packages (e.g., `NHANES`)
 
--   Other statistical softwares (e.g., SPSS, SAS, Stata)
+- Other statistical softwares (e.g., SPSS, SAS, Stata)
 
--   Spreadsheets (Excel, Google Sheets)
+- Spreadsheets (Excel, Google Sheets)
 
--   Databases (SQL)
+- Databases (SQL)
 
 ```{r}
 #| label: load-packages
@@ -77,21 +72,21 @@ library(haven)     # Read SPSS/SAS/Stata files
 
 You will learn how to import different datasets:
 
--   datasets in R packages `NHANES` and `YRBS`
+- datasets in R packages `NHANES` and `YRBS`
 
--   class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course
+- class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course
 
--   team dataset "oralhealth"
+- team dataset "oralhealth"
 
 ### File Formats
 
--   National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package `NHANES`
+- National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package `NHANES`
 
--   a `.xlsx` file format of the class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.xlsx`
+- a `.xlsx` file format of the class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.xlsx`
 
--   a `.csv` file format of the class dataset "health beliefs (cohort 11)" collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.csv`
+- a `.csv` file format of the class dataset "health beliefs (cohort 11)" collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.csv`
 
--   a `.sav` file format from SPSS of the FRI team project on oral health `10.31.2024.oralhealth.sav`.
+- a `.sav` file format from SPSS of the FRI team project on oral health `10.31.2024.oralhealth.sav`.
 
 ## Import Examples
 
@@ -167,6 +162,8 @@ View(NHANESraw)
 Use the `readxl` package to import Excel files (.xlsx or .xls). The primary advantage of using Excel files is the ability to manually inspect your data using Excel or Google sheets before you import into R. Below are code chunks that can be copied into your report if you are using an excel file with the **header in row 1**.
 
 ::: callout-important
+## Important: Use the `.clean` data file
+
 Use the .clean data file: `r current_date`.data.team1.clean.xlsx with a header in row 1 only. If you manually inspect your data and you see labels in row 2, you need to clean the dataset.
 :::
 

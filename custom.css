@@ -64,3 +64,47 @@ h4:has(+ * :contains("Step 1")) {
   color: #D55E00 !important;
   font-weight: bold;
 }
+
+/* ---------- Ref the Raccoon boxes ---------- */
+.ref {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 1.2em 0;
+  padding: 12px 16px;
+  border-left: 5px solid #005a43;
+  border-radius: 6px;
+  background-color: #f1f7f4;
+  color: #1d1f23;
+}
+.ref .ref-face { flex: 0 0 64px; }
+.ref .ref-face p { margin: 0; }
+.ref .ref-face img { width: 64px; height: auto; margin: 0; }
+.ref .ref-say { flex: 1 1 auto; min-width: 0; }
+.ref .ref-say > :first-child { margin-top: 0; }
+.ref .ref-say > :last-child { margin-bottom: 0; }
+.ref .ref-say code { color: #1d1f23; }
+.ref.ref-check { border-left-color: #0072B2; background-color: #eef5fb; }
+.ref.ref-foul  { border-left-color: #d9480f; background-color: #fff4ec; }
+/* Ref's face inside a collapsible callout title */
+.callout-title-container img.ref-mini,
+.callout-title img.ref-mini { width: 30px; height: auto; margin: -4px 6px -4px 0; vertical-align: middle; }
+
+
+/* ---- callout color system (Preface: How to Read This Playbook) ----
+   blue = Resources (default) | green = Go (default) | red = Required (default)
+   yellow = Caution | gray = answers, checklists, notices (no message, just content) */
+div.callout-warning.callout { border-left-color: #e6b800; }
+div.callout-warning.callout-style-default > .callout-header { background-color: #fff6cc; }
+div.callout-warning .callout-icon::before { filter: hue-rotate(15deg) saturate(1.3); }
+div.callout.gray { border-left-color: #8a8f98; }
+div.callout.gray.callout-style-default > .callout-header { background-color: #eef0f2; }
+div.callout.gray .callout-icon::before { filter: grayscale(1); }
+
+/* ---- color key swatches in the Preface (same colors as the callout banners; the word stays, so it never relies on color alone) ---- */
+.key { display: inline-block; padding: 0 .55em; border-radius: 4px; border-left: 5px solid; font-weight: 600; color: #222; }
+.key-red    { background: #fbe9eb; border-color: #dc3545; }
+.key-yellow { background: #fff6cc; border-color: #e6b800; }
+.key-green  { background: #e6f4ee; border-color: #198754; }
+.key-blue   { background: #e7f0fe; border-color: #0d6efd; }
+.key-gray   { background: #eef0f2; border-color: #8a8f98; }

@@ -24,8 +24,8 @@ execute:
   message: false
 ---
 
-::: callout-tip
-## 📖 `dplyr` resources
+::: {.callout-note collapse="true"}
+## Resources: `dplyr`
 
 -   [Documentation](https://dplyr.tidyverse.org/index.html)
 -   [R4DS Book Chapter 3](https://r4ds.hadley.nz/data-transform.html)
@@ -122,6 +122,3 @@ alldata <- alldata %>%
 table(alldata$Education_Level, alldata$education_3cat, useNA = "ifany")
 ```
 
-::: callout-warning
-This page is under construction. It will include more information soon!
-:::
