@@ -63,7 +63,7 @@ In RStudio, you should see the *Source* and *Visual* editor options in the top l
 
 For individual lab and report quarto reports:
 
-- Create a new `.qmd` document for each lab, naming them: `Lastname_lab1.qmd`, `Lastname_lab2.qmd`, `Lastname_lab3.qmd`, `Lastname_lab4.qmd`, and `Lastname_lab5.qmd`
+- Create a new `.qmd` document for each lab, naming them: `Lastname_lab2.qmd`, `Lastname_lab3.qmd`, `Lastname_lab4.qmd`, and `Lastname_lab5.qmd`. There is no file for Lab 1: there is nothing you need to do in RStudio for Lab 1 except to play around with the software. We will dive in for Lab 2!
 - Your results and discussion (RD) report should be named: `Lastname_RDreport.qmd`
 - After submitting your `Lastname_RDreport.qmd`, you should go to the files tab, check the box next to `Lastname_RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `Lastname_finalreport.qmd`
 - Your final report should be named: `Lastname_finalreport.qmd`
@@ -75,9 +75,9 @@ For individual lab and report quarto reports:
 Please name your quarto markdown files (`.qmd`) correctly.
 :::
 
-### Clearing Environment in Posit Cloud
+### Clearing Your Environment in RStudio
 
-Your previously created objects (e.g., `alldata`, `select_data`, `VARIABLE1`) are stored in your environment even when you return to your posit cloud account. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your `.qmd` document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.
+Your previously created objects (e.g., `alldata`, `select_data`, `VARIABLE1`) can stay in your environment (the **environment tab**) while you work in RStudio. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your `.qmd` document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.
 
 ```{r}
 # Remove all objects from the global environment
@@ -87,12 +87,6 @@ rm(list = ls())
 ## YAML
 
 YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
-
-::: {.callout-important}
-## Important: `code-fold: false` in your YAML
-
-On Oct 27th, the YAML was updated to `code-fold: false`. This improved the HTML output of your report by including all of the code.
-:::
 
 ```{YAML}
 ---
@@ -104,7 +98,6 @@ author:
     email: youremail@binghamton.edu 
     affiliation: 
       - name: Binghamton University
-        url: "https://fripublichealth.quarto.pub/team1.html"
     attributes:
       corresponding: true
 abstract: |
@@ -147,8 +140,6 @@ format:
 - Use the above YAML format at the top of ALL Quarto markdown document files (`.qmd`).
 
 - title, subtitle, name, email should be revised
-
-- url should be updated from "https://fripublichealth.quarto.pub/team1.html" to reflect your team \# (e.g., team2.html, team3.html)
 
 - abstract and keywords should be included
 :::

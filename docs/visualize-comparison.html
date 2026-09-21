@@ -10,7 +10,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="ggplot2, barplot, violin plot, comparison, case_when, factor">
 
-<title>16&nbsp; Visualize a Comparison – The Quantitative Playbook for Public Health Research in R</title>
+<title>15&nbsp; Visualize a Comparison – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups</a></li><li class="breadcrumb-item"><a href="./visualize-comparison.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./visualize-comparison.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
+      <a href="./">The Quantitative Playbook for R</a> 
         <div class="sidebar-tools-main">
     <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
     <div class="dropdown">
@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Get Started</span></a>
+ <span class="menu-text">Get Started (Lab 1)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -193,19 +193,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./library.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Import, Tidy &amp; Transform</span></a>
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -245,26 +245,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -272,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Map Your Analysis</span></a>
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -281,19 +275,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -301,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Compare Groups</span></a>
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -310,19 +304,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">ANOVA &amp; ANCOVA</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -330,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Examine Relationships</span></a>
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -339,13 +333,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Three or More Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -353,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Write Your Report</span></a>
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -362,19 +356,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -382,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish &amp; Review</span></a>
+ <span class="menu-text">Advanced Plays</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -390,43 +396,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced Plays</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -441,22 +424,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#how-this-chapter-works" id="toc-how-this-chapter-works" class="nav-link active" data-scroll-target="#how-this-chapter-works"><span class="header-section-number">16.1</span> How This Chapter Works</a></li>
-  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">16.2</span> 📋 The Play</a>
+  <li><a href="#how-this-chapter-works" id="toc-how-this-chapter-works" class="nav-link active" data-scroll-target="#how-this-chapter-works"><span class="header-section-number">15.1</span> How This Chapter Works</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">15.2</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link" data-scroll-target="#example-data-insurance"><span class="header-section-number">16.2.1</span> Example Data: <code>insurance</code></a></li>
-  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">16.2.2</span> Comparative Research</a></li>
+  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link" data-scroll-target="#example-data-insurance"><span class="header-section-number">15.2.1</span> Example Data: <code>insurance</code></a></li>
+  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">15.2.2</span> Comparative Research</a></li>
   </ul></li>
-  <li><a href="#sec-comparison-lab" id="toc-sec-comparison-lab" class="nav-link" data-scroll-target="#sec-comparison-lab"><span class="header-section-number">16.3</span> 🏈 The Lab</a>
+  <li><a href="#sec-comparison-lab" id="toc-sec-comparison-lab" class="nav-link" data-scroll-target="#sec-comparison-lab"><span class="header-section-number">15.3</span> 🏈 The Lab</a>
   <ul class="collapse">
-  <li><a href="#lab-play-1-sweep-left-a-barplot-with-the-original-groups" id="toc-lab-play-1-sweep-left-a-barplot-with-the-original-groups" class="nav-link" data-scroll-target="#lab-play-1-sweep-left-a-barplot-with-the-original-groups"><span class="header-section-number">16.3.1</span> Lab Play 1: Sweep Left (a barplot with the original groups)</a></li>
-  <li><a href="#lab-play-2-sweep-right-transform-the-groups-then-a-barplot" id="toc-lab-play-2-sweep-right-transform-the-groups-then-a-barplot" class="nav-link" data-scroll-target="#lab-play-2-sweep-right-transform-the-groups-then-a-barplot"><span class="header-section-number">16.3.2</span> Lab Play 2: Sweep Right (transform the groups, then a barplot)</a></li>
+  <li><a href="#lab-play-1-sweep-left-a-barplot-with-the-original-groups" id="toc-lab-play-1-sweep-left-a-barplot-with-the-original-groups" class="nav-link" data-scroll-target="#lab-play-1-sweep-left-a-barplot-with-the-original-groups"><span class="header-section-number">15.3.1</span> Lab Play 1: Sweep Left (a barplot with the original groups)</a></li>
+  <li><a href="#lab-play-2-sweep-right-transform-the-groups-then-a-barplot" id="toc-lab-play-2-sweep-right-transform-the-groups-then-a-barplot" class="nav-link" data-scroll-target="#lab-play-2-sweep-right-transform-the-groups-then-a-barplot"><span class="header-section-number">15.3.2</span> Lab Play 2: Sweep Right (transform the groups, then a barplot)</a></li>
   </ul></li>
-  <li><a href="#sec-comparison-yourturn" id="toc-sec-comparison-yourturn" class="nav-link" data-scroll-target="#sec-comparison-yourturn"><span class="header-section-number">16.4</span> 🏆 Your Turn</a>
+  <li><a href="#sec-comparison-yourturn" id="toc-sec-comparison-yourturn" class="nav-link" data-scroll-target="#sec-comparison-yourturn"><span class="header-section-number">15.4</span> 🏆 Your Turn</a>
   <ul class="collapse">
-  <li><a href="#the-comparison-play" id="toc-the-comparison-play" class="nav-link" data-scroll-target="#the-comparison-play"><span class="header-section-number">16.4.1</span> The comparison play</a></li>
-  <li><a href="#if-you-need-to-combine-or-exclude-groups-first" id="toc-if-you-need-to-combine-or-exclude-groups-first" class="nav-link" data-scroll-target="#if-you-need-to-combine-or-exclude-groups-first"><span class="header-section-number">16.4.2</span> If you need to combine or exclude groups first</a></li>
-  <li><a href="#checklist-for-your-rd-report-and-final-report" id="toc-checklist-for-your-rd-report-and-final-report" class="nav-link" data-scroll-target="#checklist-for-your-rd-report-and-final-report"><span class="header-section-number">16.4.3</span> Checklist for your RD Report and Final Report</a></li>
+  <li><a href="#the-comparison-play" id="toc-the-comparison-play" class="nav-link" data-scroll-target="#the-comparison-play"><span class="header-section-number">15.4.1</span> The comparison play</a></li>
+  <li><a href="#if-you-need-to-combine-or-exclude-groups-first" id="toc-if-you-need-to-combine-or-exclude-groups-first" class="nav-link" data-scroll-target="#if-you-need-to-combine-or-exclude-groups-first"><span class="header-section-number">15.4.2</span> If you need to combine or exclude groups first</a></li>
+  <li><a href="#checklist-for-your-rd-report-and-final-report" id="toc-checklist-for-your-rd-report-and-final-report" class="nav-link" data-scroll-target="#checklist-for-your-rd-report-and-final-report"><span class="header-section-number">15.4.3</span> Checklist for your RD Report and Final Report</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/visualize-comparison.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -464,9 +447,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups</a></li><li class="breadcrumb-item"><a href="./visualize-comparison.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./visualize-comparison.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></h1>
 <p class="subtitle lead">How to build barplots and violin plots to compare groups</p>
 </div>
 
@@ -535,8 +518,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="how-this-chapter-works" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="how-this-chapter-works"><span class="header-section-number">16.1</span> How This Chapter Works</h2>
+<section id="how-this-chapter-works" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="how-this-chapter-works"><span class="header-section-number">15.1</span> How This Chapter Works</h2>
 <p>You will go through this chapter three times, with three different datasets.</p>
 <table class="caption-top table">
 <thead>
@@ -582,10 +565,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-play" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">16.2</span> 📋 The Play</h2>
-<section id="example-data-insurance" class="level3" data-number="16.2.1">
-<h3 data-number="16.2.1" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">16.2.1</span> Example Data: <code>insurance</code></h3>
+<section id="the-play" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">15.2</span> 📋 The Play</h2>
+<section id="example-data-insurance" class="level3" data-number="15.2.1">
+<h3 data-number="15.2.1" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">15.2.1</span> Example Data: <code>insurance</code></h3>
 <p>The example dataset is from the “Medical Cost Personal Costs” database on Kaggle. For this chapter, we refer to it as <code>insurance</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>insurance <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -594,8 +577,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="comparative-research" class="level3" data-number="16.2.2">
-<h3 data-number="16.2.2" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">16.2.2</span> Comparative Research</h3>
+<section id="comparative-research" class="level3" data-number="15.2.2">
+<h3 data-number="15.2.2" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">15.2.2</span> Comparative Research</h3>
 <p>Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:</p>
 <ul>
 <li><p>🏷️ <strong>Nominal Data</strong> (Gender Identity)</p>
@@ -838,8 +821,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="sec-comparison-lab" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="sec-comparison-lab"><span class="header-section-number">16.3</span> 🏈 The Lab</h2>
+<section id="sec-comparison-lab" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="sec-comparison-lab"><span class="header-section-number">15.3</span> 🏈 The Lab</h2>
 <p>You watched the play above with the <code>insurance</code> dataset (Pass 1). Now run two plays yourself with the <strong>lab dataset</strong>, a survey about what people believe about mental health.</p>
 <div class="ref ref-tip">
 <div class="ref-face">
@@ -896,8 +879,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="lab-play-1-sweep-left-a-barplot-with-the-original-groups" class="level3" data-number="16.3.1">
-<h3 data-number="16.3.1" class="anchored" data-anchor-id="lab-play-1-sweep-left-a-barplot-with-the-original-groups"><span class="header-section-number">16.3.1</span> Lab Play 1: Sweep Left (a barplot with the original groups)</h3>
+<section id="lab-play-1-sweep-left-a-barplot-with-the-original-groups" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="lab-play-1-sweep-left-a-barplot-with-the-original-groups"><span class="header-section-number">15.3.1</span> Lab Play 1: Sweep Left (a barplot with the original groups)</h3>
 <p><strong>Research question:</strong> Does the belief that mental health is <em>social</em> (<code>SOCIAL</code>, 1 to 5) differ by political beliefs?</p>
 <p>The survey asked: <em>What label best captures your political beliefs?</em> The answers are stored as numbers in <code>POLITICALBELIEFS</code>.</p>
 <table class="caption-top table">
@@ -1072,8 +1055,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="lab-play-2-sweep-right-transform-the-groups-then-a-barplot" class="level3" data-number="16.3.2">
-<h3 data-number="16.3.2" class="anchored" data-anchor-id="lab-play-2-sweep-right-transform-the-groups-then-a-barplot"><span class="header-section-number">16.3.2</span> Lab Play 2: Sweep Right (transform the groups, then a barplot)</h3>
+<section id="lab-play-2-sweep-right-transform-the-groups-then-a-barplot" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="lab-play-2-sweep-right-transform-the-groups-then-a-barplot"><span class="header-section-number">15.3.2</span> Lab Play 2: Sweep Right (transform the groups, then a barplot)</h3>
 <p>Researchers often <strong>combine</strong> small groups into larger ones and <strong>exclude</strong> answers that are not groups. This is a decision <em>you</em> make, so you must tell your reader exactly what you did.</p>
 <p><strong>Your task, part 1:</strong> Transform <code>POLITICALBELIEFS</code> into a new variable with three groups.</p>
 <ul>
@@ -1233,8 +1216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="sec-comparison-yourturn" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="sec-comparison-yourturn"><span class="header-section-number">16.4</span> 🏆 Your Turn</h2>
+<section id="sec-comparison-yourturn" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="sec-comparison-yourturn"><span class="header-section-number">15.4</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1249,8 +1232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Once you finish all of the R Labs, come back here with <strong>your team’s dataset</strong> and make the plot for your comparison research question.</p>
-<section id="the-comparison-play" class="level3" data-number="16.4.1">
-<h3 data-number="16.4.1" class="anchored" data-anchor-id="the-comparison-play"><span class="header-section-number">16.4.1</span> The comparison play</h3>
+<section id="the-comparison-play" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="the-comparison-play"><span class="header-section-number">15.4.1</span> The comparison play</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>yourdata_groups <span class="ot">&lt;-</span> yourdata <span class="sc">|&gt;</span>              <span class="co"># REPLACE with your clean dataset</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(GROUPVARIABLE))             <span class="co"># REPLACE with your grouping variable</span></span>
@@ -1273,8 +1256,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="if-you-need-to-combine-or-exclude-groups-first" class="level3" data-number="16.4.2">
-<h3 data-number="16.4.2" class="anchored" data-anchor-id="if-you-need-to-combine-or-exclude-groups-first"><span class="header-section-number">16.4.2</span> If you need to combine or exclude groups first</h3>
+<section id="if-you-need-to-combine-or-exclude-groups-first" class="level3" data-number="15.4.2">
+<h3 data-number="15.4.2" class="anchored" data-anchor-id="if-you-need-to-combine-or-exclude-groups-first"><span class="header-section-number">15.4.2</span> If you need to combine or exclude groups first</h3>
 <p>Do this <strong>before</strong> the comparison play above, then use your new dataset and your new grouping variable in the barplot.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>yourdata <span class="ot">&lt;-</span> yourdata <span class="sc">|&gt;</span>                     <span class="co"># REPLACE with your clean dataset</span></span>
@@ -1292,8 +1275,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In your figure caption, tell the reader which answers you combined, which answers you excluded, and how many people were excluded (for example, “Excluded: Libertarian (n = 4)”).</p>
 </section>
-<section id="checklist-for-your-rd-report-and-final-report" class="level3" data-number="16.4.3">
-<h3 data-number="16.4.3" class="anchored" data-anchor-id="checklist-for-your-rd-report-and-final-report"><span class="header-section-number">16.4.3</span> Checklist for your RD Report and Final Report</h3>
+<section id="checklist-for-your-rd-report-and-final-report" class="level3" data-number="15.4.3">
+<h3 data-number="15.4.3" class="anchored" data-anchor-id="checklist-for-your-rd-report-and-final-report"><span class="header-section-number">15.4.3</span> Checklist for your RD Report and Final Report</h3>
 <div class="gray callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1789,12 +1772,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./statistics.html" class="pagination-link" aria-label="Statistics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./violin.html" class="pagination-link" aria-label="Visualize Pre/Post Data">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

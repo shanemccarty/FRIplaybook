@@ -15,7 +15,7 @@ bibliography: references.bib
 csl: apa.csl
   
 nocite: |
-  @kannan2014, @McCarty2025
+  @kannan2014, @McCarty2026
 ---
 
 ------------------------------------------------------------------------
@@ -95,7 +95,7 @@ We need the actual `.csl` file for Quarto:
 
 2.  Find the file named something like `apa.csl` or `apa-7th-edition.csl`.
 
-3.  Upload it into your Quarto project folder, and in your YAML, include:
+3.  Copy it into your `Lastname_FRI` project folder (in Finder or File Explorer, drag the file into the folder), and in your YAML, include:
 
 ```{markdown}
 ---
@@ -141,9 +141,9 @@ This means "\@kannan2014" will not appear in the body text, but it will still be
 For example, if you want to include Dr.Shane's *Quantitative Playbook* (which doesn't have a DOI but has a web link), you can manually add it to your `references.bib` file:
 
 ```{markdown}
-@article{McCarty2025, 
-  title = {The Quantitative Playbook for Public Health Research in R},
-  year = {2025},
+@article{McCarty2026, 
+  title = {The Quantitative Playbook for R: Plays for Public Health \& Community Health Research},
+  year = {2026},
   author = {McCarty, S.},
   url = {https://shanemccarty.github.io/FRIplaybook/},
   langid = {en}
@@ -155,7 +155,7 @@ After this, make sure you put it in the YAML using `nocite`:
 ```{markdown}
 ---
 nocite: |
-  @McCarty2025
+  @McCarty2026
 ---
 ```
 

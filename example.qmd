@@ -3,7 +3,6 @@ title: "Reproducible Reports"
 authors:
   - Shane McCarty, PhD
   - Zihan Hei
-  - Claude (Anthropic)
 format: html
 ---
 
@@ -21,16 +20,42 @@ A *Nature* paper by [Baker (2016)](https://www.nature.com/articles/533452a) stat
 
 In *Science Fictions*, the psychologist Stuart Ritchie ([2020](https://en.wikipedia.org/wiki/Science_Fictions)) argues that four problems are behind it: **fraud** (making up data), **bias** (publishing only the results that "worked"), **negligence** (honest mistakes, such as a typo in a spreadsheet or a number copied incorrectly into a paper), and **hype** (claiming more than the results show). Most researchers will never commit fraud. Negligence is different: anyone can copy the wrong number into a table, forget which version of the data they used, or lose track of how a variable was cleaned.
 
-<!-- SHANE: paste one or two direct quotes from your copy of Science Fictions here, with page numbers. Format:
+A reproducible report is your protection against negligence. To see why, you need to know that there are two ways to tell statistical software what to do.
 
-> "QUOTE" (Ritchie, 2020, p. XX)
+-   **Point and click.** Some statistical programs, such as the widely-used SPSS software, work like most apps you already use. You open your data, choose an analysis from a drop-down menu (for example, Analyze \> Compare Means), check a few boxes, and click OK. The result appears in a window. It feels easy, but when you close the program, there is no record of what you clicked. It is like giving directions by pointing: it works in the moment, and nobody can follow it later.
+-   **Code.** In other programs, such as R, you type your instructions as text, one line at a time, and save them in a file. It is like writing the directions down: anyone can follow them again, step by step, and get to the same place.
 
-Good places to look: (1) the opening pages, where he explains why a finding only counts once it has been repeated; (2) the Negligence chapter, for a sentence on how ordinary errors (typos, spreadsheet mistakes, numbers that do not add up) end up in published papers; (3) the final chapters on fixing science, for a sentence on sharing data and code.
--->
+Now compare the two ways of getting a result into a paper:
 
-A reproducible report is your protection against negligence. In a Quarto report, the plots, tables, and numbers are made by code, in the same file as your writing. Nothing is copied and pasted by hand. Anyone who has your data file and your `.qmd` file can run the report and get the same results, including you, six months from now.
+| | Point and click in SPSS, then copy and paste into a doc | Code in R to produce a reproducible report |
+|---|---|---|
+| **How the result is made** | You click through menus. Nothing records which options you chose. | Every step is written down as a line of code. |
+| **How it gets into your paper** | You copy numbers and paste plots into a Word document by hand. | The code makes the plot, table, or number inside the report itself. |
+| **When the data change** | You redo every click and every paste, and hope you miss nothing. | You run the report again. Everything updates. |
+| **When someone checks your work** | They have to trust you. | They run your file and get the same results. |
 
-A primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.
+That is the primary objective of this playbook: to make community health research more reproducible. You will write your analysis line by line in [**R**](https://www.r-project.org), and you will publish it with [**Quarto**](https://quarto.org), where the code, the results, and your writing live in one `.qmd` file. Anyone who has your data file and your `.qmd` file can run the report and get the same results, including you, six months from now.
+
+Doing this takes the right kind of software, which is the subject of the next section.
+
+## Software for Reproducibility
+
+Researchers analyze data with many different programs. The column on the right of the table above (code in a reproducible report) is only possible with some of them. The programs differ in three ways that matter for reproducibility: whether the analysis is written down as **code**, whether the software is **free and open source**, and the **disciplines and fields** that use it (which affects how easy it is to find help, and whether someone else can run your analysis).
+
+| Software | How you work | License | Cost | Disciplines and fields |
+|----------|--------------|------------|------|-------------------------------|
+| **R** | Code | Open source | Free | Statistics, public health, social sciences |
+| **Python** | Code | Open source | Free | Data science, computer science, engineering |
+| **SPSS** | Mostly menus | Commercial | Paid | Psychology, social sciences |
+| **SAS** | Code | Commercial | Paid | Biostatistics, clinical trials, government statistics |
+| **Stata** | Code and menus | Commercial | Paid | Economics, epidemiology, policy research |
+
+Why this playbook uses R:
+
+-   **It is code.** Every step of your analysis is written down, so it can be checked, repeated, and fixed. A series of clicks in a menu leaves no record.
+-   **It is free and open source.** You can install it on any computer, and you will still have it after you graduate. Anyone who wants to check your work can run it, too, without buying a license.
+-   **It is widely used.** A large community means free books, free courses, and an answer online for almost every error message.
+-   **It was built for statistics and graphics**, and with Quarto, your code, results, and writing live in one reproducible report.
 
 ## Reproducible Reports
 

@@ -64,14 +64,26 @@ You did most of this when you first set up your computer. You do **not** repeat 
 -   Run your `install.R` file to install your packages ([Install and Load Packages](library.qmd))
 -   Create a folder called **R Labs** inside your individual ELN (your Google Drive folder). In Google Drive, open your ELN and click + New \> New folder.
 
-## Ref's kickoff: every time you sit down to work
+## Ref's kickoff: every time you start RStudio
 
 {{< include _ref-start-steps.qmd >}}
 
 ::: callout-tip
-## Starting a new lab or a new report?
+## Go: Starting a new lab? Make a new file first
 
-Do steps 1 and 2. Then create a new Quarto document (File \> New File \> Quarto Document...), save it **inside your project folder**, and copy the load-library chunk from your last `.qmd` file into the top of the new one.
+The six steps above are for a day when you **continue** a file you already started. On a day when you **start a new lab** (or a new report), there is no file to open yet, so steps 3 to 6 change:
+
+1.  Do steps 1 and 2 above, so that you are inside your project.
+2.  Make a new, empty report file: File \> New File \> Quarto Document..., then click Create.
+3.  Save it right away: File \> Save As..., and name it for the lab, for example `Lastname_lab3.qmd`. Check that it shows up in your **files tab**. If it does, it is inside your project folder.
+4.  Add your packages to the new file. A new `.qmd` file starts out empty, so it has no `library()` lines yet, and without them R cannot use `ggplot2` or any other package in this file. You already wrote those lines once, so copy them:
+    a.  Open your last lab file (for example, `Lastname_lab2.qmd`).
+    b.  Find the first gray code box near the top. It is the one with lines such as `library(tidyverse)`.
+    c.  Copy that whole box, from the line that starts with ```` ```{r} ```` to the line with ```` ``` ````.
+    d.  Go back to your new file and paste it at the top, under the title section.
+
+    Lab 2 is your first file (there is no file for Lab 1), so there is nothing to copy from yet. For Lab 2, type your `library()` lines as shown in [Install and Load Packages](library.qmd#sec-load-block).
+5.  Run that chunk with the green ▶ arrow, and start the lab.
 :::
 
 ## Ref's final whistle: before you leave

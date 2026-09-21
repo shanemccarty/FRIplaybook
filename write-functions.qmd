@@ -1,5 +1,5 @@
 ---
-title: "Writing Methods & Results Reproducibly"
+title: "Writing Functions in Methods and Results"
 subtitle: "How to use R functions and inline code to embed statistics in text"
 author: "Zihan Hei"
 abstract: |
@@ -17,7 +17,7 @@ editor: visual
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
-::: {.callout-important}
+::: callout-important
 ## Important: Advanced module (not required)
 
 This is an *advanced* *chapter* and not required for your report!
@@ -1652,7 +1652,7 @@ Kruskal-Wallis χ²(2) = 1.5, p = 0.473.
 ::: {.callout-warning collapse="true"}
 ## ⚠️ Danger: Common Mistakes
 
--   **Object not found errors** - Make sure you create objects, such as `total_responses`, before using functions, such as `percent()`, before referencing them inline
--   **Wrong variable names** - R is case-sensitive: `age` ≠ `AGE`
--   **Missing packages** - Load `scales` and `english` if outputting english text
+- **Object not found errors** - Make sure you create objects, such as `total_responses`, before using functions, such as `percent()`, before referencing them inline
+- **Wrong variable names** - R is case-sensitive: `age` ≠ `AGE`
+- **Missing packages** - Load `scales` and `english` if outputting english text
 :::

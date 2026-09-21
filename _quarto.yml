@@ -3,63 +3,50 @@ project:
   output-dir: docs
 
 book:
-  title: "The Quantitative Playbook for Public Health Research in R"
-  subtitle: "R Plays to Promote and Protect Health"
+  title: "The Quantitative Playbook for R"
+  subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
   date: "09/20/2026"
-  version: "Edition 2 (v2.0)"       # shown on the Preface via index.qmd (language: title-block-published); keep the two in sync
+  version: "Edition 2 (v2.01)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
   downloads: []  # CHANGED: Removed pdf and epub since they're not rendering
   sharing: [twitter, linkedin]
-  site-url: "https://shanemccarty.github.io/FRIplaybook"  # ADDED: This is important!
+  site-url: "https://shanemccarty.github.io/FRIplaybook"  
   
   chapters:
     - index.qmd                              # Preface
-
-    # --- R LABS: one short page per lab that LINKS into the chapters below ---
-    # --- (remove the "#" when the lab pages exist) ---
-    # - part: "R Labs"
-    #   chapters:
-    #     - lab1.qmd
-    #     - lab2.qmd
-    #     - lab3.qmd
-    #     - lab4.qmd
-    #     - lab5.qmd
-
-    - part: "Get Started"
+    - part: "Get Started (Lab 1)"
       chapters:
         # Order (2026-09-20): see it -> try it in the browser -> set it up -> routine -> do it for real
         - text: "Reproducible Reports"        # the WHY: a finished report, made from code
           file: example.qmd
-        - text: "How Code Builds a Plot"      # WebR: runs in the browser, nothing to install yet
+        - text: "Coding a Plot"      # WebR: runs in the browser, nothing to install yet
           file: layers.qmd
-        - text: "RStudio Software"
+        - text: "R Software"
           file: RStudio.qmd
-        - text: "Install and Load Packages"
+        - text: "R Packages"
           file: library.qmd
         - text: "Find the Ref"                # after Packages: the routine uses install.R and library()
           file: find-the-ref.qmd
         - text: "Start a Report"
           file: codechunks.qmd
 
-    - part: "Import, Tidy & Transform"
+    - part: "Clean Data (Lab 2)"
       chapters:
         - text: "Export Survey Data"
           file: export.qmd
         - text: "Import Data Once"
           file: import-once.qmd
-        - text: "Format Data in tidyr"
-          file: tidyr.qmd
-        - text: "Combine Datasets"
-          file: merge.qmd
+        - text: "Pre/Post Data"               # Teams 3 and 5; combines the old tidyr.qmd + merge.qmd (2026-09-20)
+          file: prepost.qmd
         - text: "Mutate Variables"
           file: dplyr.qmd
         - text: "Creating Composites"
           file: composite.qmd
 
-    - part: "Map Your Analysis"
+    - part: "Map Your Analysis (Lab 3)"
       chapters:
         - text: "The Analysis Map"
           file: analysis-map.qmd
@@ -68,7 +55,7 @@ book:
         - text: "Statistics"                  # resources page
           file: statistics.qmd
 
-    - part: "Compare Groups"
+    - part: "Compare Groups (Lab 4)"
       chapters:
         - text: "Visualize a Comparison"
           file: visualize-comparison.qmd
@@ -79,7 +66,7 @@ book:
         - text: "Compare 3+ Groups"             # short version: three or more groups (ANOVA / Kruskal-Wallis / ANCOVA); replaces planned three-groups.qmd
           file: ANOVA.qmd
 
-    - part: "Examine Relationships"
+    - part: "Examine Relationships (Lab 5)"
       chapters:
         - text: "Visualize a Relationship"
           file: visualize-relationship.qmd
@@ -88,7 +75,7 @@ book:
         - text: "Relate 3+ Variables"     # multiple linear regression
           file: regression.qmd
 
-    - part: "Write Your Report"
+    - part: "Write Your Report (Lab 6)"
       chapters:
         - text: "Read Me"
           file: readme.qmd
@@ -96,15 +83,12 @@ book:
           file: write-intro.qmd
         - text: "Citations & Refs"
           file: citations.qmd
-        # - text: "Final Report Checklist"
-        #   file: checklist.qmd
-
-    - part: "Publish & Review"
-      chapters:
         - text: "Publish in Quarto Pub"
           file: quartopub.qmd
         - text: "Review in Hypothes.is"
           file: review.qmd
+        # - text: "Final Report Checklist"
+        #   file: checklist.qmd
 
     - part: "Advanced Plays"
       chapters:
@@ -112,7 +96,7 @@ book:
           file: data-equity.qmd
         - text: "Import Data Live"
           file: import-live.qmd
-        - text: "Methods & Results"
+        - text: "Write Functions"
           file: write-functions.qmd
 
 # Filters - WebR only for now
@@ -172,7 +156,7 @@ execute:
   echo: true
   warning: false
   message: false
-  cache: true
+  cache: false   # 2026-09-20: the knitr cache kept OLD data and OLD package lists (it caused "WELLBEING not found" and "no package called NHANES"). freeze: auto already skips chapters that did not change.
   freeze: auto
 
 lang: en
@@ -185,7 +169,7 @@ language:                          # default titles for the four callout colors 
 params:
   organization: "FRI Public Health Research Stream"
   contact_email: "fripublichealth@binghamton.edu"
-  version: "2.0"
+  version: "2.01"
   edition: "2"
   authors:
     lead: "Shane McCarty, PhD"

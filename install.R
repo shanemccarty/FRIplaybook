@@ -19,8 +19,6 @@ install_extras <- FALSE
 
 extras <- c(
   "see",        # half-violin plots (Visualize Pre/Post Data)
-  "gghalves",   # half-violin plots (Visualize Pre/Post Data)
-  "ggdist",     # raincloud plots (Visualize Pre/Post Data)
   "english",    # write numbers as words (Methods & Results)
   "NHANES"      # CDC practice dataset (Import Data Once)
 )

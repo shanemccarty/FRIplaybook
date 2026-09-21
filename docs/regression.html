@@ -11,7 +11,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="linear regression, multiple regression, lm, predictors, residuals, relationship">
 
-<title>20&nbsp; Relate 3+ Variables – The Quantitative Playbook for Public Health Research in R</title>
+<title>19&nbsp; Relate 3+ Variables – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships</a></li><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships (Lab 5)</a></li><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
+      <a href="./">The Quantitative Playbook for R</a> 
         <div class="sidebar-tools-main">
     <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
     <div class="dropdown">
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Get Started</span></a>
+ <span class="menu-text">Get Started (Lab 1)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -194,19 +194,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./library.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Import, Tidy &amp; Transform</span></a>
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -246,26 +246,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -273,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Map Your Analysis</span></a>
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -282,19 +276,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -302,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Compare Groups</span></a>
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -311,19 +305,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -331,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Examine Relationships</span></a>
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -340,13 +334,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -354,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Write Your Report</span></a>
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -363,19 +357,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -383,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish &amp; Review</span></a>
+ <span class="menu-text">Advanced Plays</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -391,43 +397,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced Plays</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,27 +425,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#how-this-chapter-works" id="toc-how-this-chapter-works" class="nav-link active" data-scroll-target="#how-this-chapter-works"><span class="header-section-number">20.1</span> How This Chapter Works</a></li>
-  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">20.2</span> 📋 The Play</a>
+  <li><a href="#how-this-chapter-works" id="toc-how-this-chapter-works" class="nav-link active" data-scroll-target="#how-this-chapter-works"><span class="header-section-number">19.1</span> How This Chapter Works</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">19.2</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#example-data-pregnancy" id="toc-example-data-pregnancy" class="nav-link" data-scroll-target="#example-data-pregnancy"><span class="header-section-number">20.2.1</span> Example Data: <code>pregnancy</code></a></li>
-  <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">20.2.2</span> Load and Import</a></li>
-  <li><a href="#step-1-get-the-data-ready" id="toc-step-1-get-the-data-ready" class="nav-link" data-scroll-target="#step-1-get-the-data-ready"><span class="header-section-number">20.2.3</span> Step 1: Get the data ready</a></li>
-  <li><a href="#step-2-look-before-you-test" id="toc-step-2-look-before-you-test" class="nav-link" data-scroll-target="#step-2-look-before-you-test"><span class="header-section-number">20.2.4</span> Step 2: Look before you test</a></li>
-  <li><a href="#step-3-one-predictor-simple-regression" id="toc-step-3-one-predictor-simple-regression" class="nav-link" data-scroll-target="#step-3-one-predictor-simple-regression"><span class="header-section-number">20.2.5</span> Step 3: One predictor (simple regression)</a></li>
-  <li><a href="#step-4-three-predictors-multiple-regression" id="toc-step-4-three-predictors-multiple-regression" class="nav-link" data-scroll-target="#step-4-three-predictors-multiple-regression"><span class="header-section-number">20.2.6</span> Step 4: Three predictors (multiple regression)</a></li>
-  <li><a href="#step-5-check-the-residuals" id="toc-step-5-check-the-residuals" class="nav-link" data-scroll-target="#step-5-check-the-residuals"><span class="header-section-number">20.2.7</span> Step 5: Check the residuals</a></li>
-  <li><a href="#step-6-report-it" id="toc-step-6-report-it" class="nav-link" data-scroll-target="#step-6-report-it"><span class="header-section-number">20.2.8</span> Step 6: Report it</a></li>
+  <li><a href="#example-data-pregnancy" id="toc-example-data-pregnancy" class="nav-link" data-scroll-target="#example-data-pregnancy"><span class="header-section-number">19.2.1</span> Example Data: <code>pregnancy</code></a></li>
+  <li><a href="#load-and-import" id="toc-load-and-import" class="nav-link" data-scroll-target="#load-and-import"><span class="header-section-number">19.2.2</span> Load and Import</a></li>
+  <li><a href="#step-1-get-the-data-ready" id="toc-step-1-get-the-data-ready" class="nav-link" data-scroll-target="#step-1-get-the-data-ready"><span class="header-section-number">19.2.3</span> Step 1: Get the data ready</a></li>
+  <li><a href="#step-2-look-before-you-test" id="toc-step-2-look-before-you-test" class="nav-link" data-scroll-target="#step-2-look-before-you-test"><span class="header-section-number">19.2.4</span> Step 2: Look before you test</a></li>
+  <li><a href="#step-3-one-predictor-simple-regression" id="toc-step-3-one-predictor-simple-regression" class="nav-link" data-scroll-target="#step-3-one-predictor-simple-regression"><span class="header-section-number">19.2.5</span> Step 3: One predictor (simple regression)</a></li>
+  <li><a href="#step-4-three-predictors-multiple-regression" id="toc-step-4-three-predictors-multiple-regression" class="nav-link" data-scroll-target="#step-4-three-predictors-multiple-regression"><span class="header-section-number">19.2.6</span> Step 4: Three predictors (multiple regression)</a></li>
+  <li><a href="#step-5-check-the-residuals" id="toc-step-5-check-the-residuals" class="nav-link" data-scroll-target="#step-5-check-the-residuals"><span class="header-section-number">19.2.7</span> Step 5: Check the residuals</a></li>
+  <li><a href="#step-6-report-it" id="toc-step-6-report-it" class="nav-link" data-scroll-target="#step-6-report-it"><span class="header-section-number">19.2.8</span> Step 6: Report it</a></li>
   </ul></li>
-  <li><a href="#sec-regression-lab" id="toc-sec-regression-lab" class="nav-link" data-scroll-target="#sec-regression-lab"><span class="header-section-number">20.3</span> 🏈 The Lab</a>
+  <li><a href="#sec-regression-lab" id="toc-sec-regression-lab" class="nav-link" data-scroll-target="#sec-regression-lab"><span class="header-section-number">19.3</span> 🏈 The Lab</a>
   <ul class="collapse">
-  <li><a href="#lab-play-1-draw-left-one-predictor" id="toc-lab-play-1-draw-left-one-predictor" class="nav-link" data-scroll-target="#lab-play-1-draw-left-one-predictor"><span class="header-section-number">20.3.1</span> Lab Play 1: Draw Left (one predictor)</a></li>
-  <li><a href="#lab-play-2-draw-right-add-a-binary-predictor" id="toc-lab-play-2-draw-right-add-a-binary-predictor" class="nav-link" data-scroll-target="#lab-play-2-draw-right-add-a-binary-predictor"><span class="header-section-number">20.3.2</span> Lab Play 2: Draw Right (add a binary predictor)</a></li>
-  <li><a href="#lab-play-3-draw-middle-add-a-dummy-coded-predictor" id="toc-lab-play-3-draw-middle-add-a-dummy-coded-predictor" class="nav-link" data-scroll-target="#lab-play-3-draw-middle-add-a-dummy-coded-predictor"><span class="header-section-number">20.3.3</span> Lab Play 3: Draw Middle (add a dummy-coded predictor)</a></li>
+  <li><a href="#lab-play-1-draw-left-one-predictor" id="toc-lab-play-1-draw-left-one-predictor" class="nav-link" data-scroll-target="#lab-play-1-draw-left-one-predictor"><span class="header-section-number">19.3.1</span> Lab Play 1: Draw Left (one predictor)</a></li>
+  <li><a href="#lab-play-2-draw-right-add-a-binary-predictor" id="toc-lab-play-2-draw-right-add-a-binary-predictor" class="nav-link" data-scroll-target="#lab-play-2-draw-right-add-a-binary-predictor"><span class="header-section-number">19.3.2</span> Lab Play 2: Draw Right (add a binary predictor)</a></li>
+  <li><a href="#lab-play-3-draw-middle-add-a-dummy-coded-predictor" id="toc-lab-play-3-draw-middle-add-a-dummy-coded-predictor" class="nav-link" data-scroll-target="#lab-play-3-draw-middle-add-a-dummy-coded-predictor"><span class="header-section-number">19.3.3</span> Lab Play 3: Draw Middle (add a dummy-coded predictor)</a></li>
   </ul></li>
-  <li><a href="#sec-regression-yourturn" id="toc-sec-regression-yourturn" class="nav-link" data-scroll-target="#sec-regression-yourturn"><span class="header-section-number">20.4</span> 🏆 Your Turn</a>
+  <li><a href="#sec-regression-yourturn" id="toc-sec-regression-yourturn" class="nav-link" data-scroll-target="#sec-regression-yourturn"><span class="header-section-number">19.4</span> 🏆 Your Turn</a>
   <ul class="collapse">
-  <li><a href="#checklist-for-your-rd-report-and-final-report" id="toc-checklist-for-your-rd-report-and-final-report" class="nav-link" data-scroll-target="#checklist-for-your-rd-report-and-final-report"><span class="header-section-number">20.4.1</span> Checklist for your RD Report and Final Report</a></li>
+  <li><a href="#checklist-for-your-rd-report-and-final-report" id="toc-checklist-for-your-rd-report-and-final-report" class="nav-link" data-scroll-target="#checklist-for-your-rd-report-and-final-report"><span class="header-section-number">19.4.1</span> Checklist for your RD Report and Final Report</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/regression.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -470,9 +453,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships</a></li><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships (Lab 5)</a></li><li class="breadcrumb-item"><a href="./regression.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></h1>
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></h1>
 <p class="subtitle lead">Linear regression: how to run it and report it</p>
 </div>
 
@@ -536,8 +519,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="how-this-chapter-works" class="level2" data-number="20.1">
-<h2 data-number="20.1" class="anchored" data-anchor-id="how-this-chapter-works"><span class="header-section-number">20.1</span> How This Chapter Works</h2>
+<section id="how-this-chapter-works" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="how-this-chapter-works"><span class="header-section-number">19.1</span> How This Chapter Works</h2>
 <p>You will go through this chapter three times, with three different datasets.</p>
 <table class="caption-top table">
 <thead>
@@ -583,10 +566,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-play" class="level2" data-number="20.2">
-<h2 data-number="20.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">20.2</span> 📋 The Play</h2>
-<section id="example-data-pregnancy" class="level3" data-number="20.2.1">
-<h3 data-number="20.2.1" class="anchored" data-anchor-id="example-data-pregnancy"><span class="header-section-number">20.2.1</span> Example Data: <code>pregnancy</code></h3>
+<section id="the-play" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">19.2</span> 📋 The Play</h2>
+<section id="example-data-pregnancy" class="level3" data-number="19.2.1">
+<h3 data-number="19.2.1" class="anchored" data-anchor-id="example-data-pregnancy"><span class="header-section-number">19.2.1</span> Example Data: <code>pregnancy</code></h3>
 <p>The example comes from an FRI Public Health team that surveyed people about health beliefs during pregnancy. One of their questions was: <strong>do people with lower social status perceive more barriers to following health advice during pregnancy, after we account for their age and gender?</strong></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -638,8 +621,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="load-and-import" class="level3" data-number="20.2.2">
-<h3 data-number="20.2.2" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">20.2.2</span> Load and Import</h3>
+<section id="load-and-import" class="level3" data-number="19.2.2">
+<h3 data-number="19.2.2" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">19.2.2</span> Load and Import</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -668,8 +651,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Look at the minimum of <code>SSS</code> and <code>GENDER</code>. A value of -99 is not a real answer. It is the code for “Prefer not to answer”, and it has to become missing (<code>NA</code>) before you analyze anything.</p>
 </section>
-<section id="step-1-get-the-data-ready" class="level3" data-number="20.2.3">
-<h3 data-number="20.2.3" class="anchored" data-anchor-id="step-1-get-the-data-ready"><span class="header-section-number">20.2.3</span> Step 1: Get the data ready</h3>
+<section id="step-1-get-the-data-ready" class="level3" data-number="19.2.3">
+<h3 data-number="19.2.3" class="anchored" data-anchor-id="step-1-get-the-data-ready"><span class="header-section-number">19.2.3</span> Step 1: Get the data ready</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pregnancy <span class="ot">&lt;-</span> pregnancy <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -713,8 +696,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="step-2-look-before-you-test" class="level3" data-number="20.2.4">
-<h3 data-number="20.2.4" class="anchored" data-anchor-id="step-2-look-before-you-test"><span class="header-section-number">20.2.4</span> Step 2: Look before you test</h3>
+<section id="step-2-look-before-you-test" class="level3" data-number="19.2.4">
+<h3 data-number="19.2.4" class="anchored" data-anchor-id="step-2-look-before-you-test"><span class="header-section-number">19.2.4</span> Step 2: Look before you test</h3>
 <p>Always make the plot first (see <a href="./visualize-relationship.html">Visualize a Relationship</a>). <code>BARRIERS</code> is a mean of survey items, so points can stack. Jitter them.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot_sss_barriers <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
@@ -743,8 +726,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The line slopes downward: people who place themselves higher on the ladder report fewer barriers. A regression puts a number on that line and tests it.</p>
 </section>
-<section id="step-3-one-predictor-simple-regression" class="level3" data-number="20.2.5">
-<h3 data-number="20.2.5" class="anchored" data-anchor-id="step-3-one-predictor-simple-regression"><span class="header-section-number">20.2.5</span> Step 3: One predictor (simple regression)</h3>
+<section id="step-3-one-predictor-simple-regression" class="level3" data-number="19.2.5">
+<h3 data-number="19.2.5" class="anchored" data-anchor-id="step-3-one-predictor-simple-regression"><span class="header-section-number">19.2.5</span> Step 3: One predictor (simple regression)</h3>
 <p>The function is <code>lm()</code>, which stands for <em>linear model</em>. Read the formula <code>BARRIERS ~ SSS</code> as “<strong><code>BARRIERS</code> is predicted by <code>SSS</code></strong>”. The outcome always goes on the left of the <code>~</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(BARRIERS <span class="sc">~</span> SSS, <span class="at">data =</span> pregnancy)</span>
@@ -781,8 +764,8 @@ F-statistic: 15.09 on 1 and 152 DF,  p-value: 0.0001527</code></pre>
 <li>At the bottom, R tells you how many people were left out because of missing answers. Report the number of people who were <em>in</em> the model: <code>nobs(model_simple)</code> = 154.</li>
 </ul>
 </section>
-<section id="step-4-three-predictors-multiple-regression" class="level3" data-number="20.2.6">
-<h3 data-number="20.2.6" class="anchored" data-anchor-id="step-4-three-predictors-multiple-regression"><span class="header-section-number">20.2.6</span> Step 4: Three predictors (multiple regression)</h3>
+<section id="step-4-three-predictors-multiple-regression" class="level3" data-number="19.2.6">
+<h3 data-number="19.2.6" class="anchored" data-anchor-id="step-4-three-predictors-multiple-regression"><span class="header-section-number">19.2.6</span> Step 4: Three predictors (multiple regression)</h3>
 <p>To add predictors, add them to the formula with <code>+</code>. This answers the team’s real question: is social status still related to barriers <strong>after we account for</strong> age and gender?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model_multiple <span class="ot">&lt;-</span> <span class="fu">lm</span>(BARRIERS <span class="sc">~</span> SSS <span class="sc">+</span> AGE <span class="sc">+</span> GENDER, <span class="at">data =</span> pregnancy)</span>
@@ -833,8 +816,8 @@ F-statistic: 4.993 on 3 and 144 DF,  p-value: 0.002524</code></pre>
 </div>
 </div>
 </section>
-<section id="step-5-check-the-residuals" class="level3" data-number="20.2.7">
-<h3 data-number="20.2.7" class="anchored" data-anchor-id="step-5-check-the-residuals"><span class="header-section-number">20.2.7</span> Step 5: Check the residuals</h3>
+<section id="step-5-check-the-residuals" class="level3" data-number="19.2.7">
+<h3 data-number="19.2.7" class="anchored" data-anchor-id="step-5-check-the-residuals"><span class="header-section-number">19.2.7</span> Step 5: Check the residuals</h3>
 <p>A <strong>residual</strong> is how far each person is from the line. A linear regression works best when the residuals are roughly bell-shaped (normal). This is the “is it normal?” question from the Analysis Map, asked about the residuals and not about the raw scores.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">residual =</span> <span class="fu">resid</span>(model_multiple)),</span>
@@ -854,8 +837,8 @@ F-statistic: 4.993 on 3 and 144 DF,  p-value: 0.002524</code></pre>
 </div>
 <p>If your histogram has one long tail or two humps, talk to your instructor before you report the model.</p>
 </section>
-<section id="step-6-report-it" class="level3" data-number="20.2.8">
-<h3 data-number="20.2.8" class="anchored" data-anchor-id="step-6-report-it"><span class="header-section-number">20.2.8</span> Step 6: Report it</h3>
+<section id="step-6-report-it" class="level3" data-number="19.2.8">
+<h3 data-number="19.2.8" class="anchored" data-anchor-id="step-6-report-it"><span class="header-section-number">19.2.8</span> Step 6: Report it</h3>
 <p>Report the slope (b), the p-value, and the number of people for each predictor, and R-squared for the whole model.</p>
 <blockquote class="blockquote">
 <p>A multiple linear regression (n = 148) showed that subjective social status was negatively associated with perceived barriers (b = -0.13, p &lt; .001), after accounting for age and gender. Age (b = -0.002, p = .616) and gender (b = 0.13, p = .360) were not significantly associated with perceived barriers. Together, the three predictors explained 9% of the variance in perceived barriers (R² = .09).</p>
@@ -925,8 +908,8 @@ F-statistic: 4.993 on 3 and 144 DF,  p-value: 0.002524</code></pre>
 </div>
 </section>
 </section>
-<section id="sec-regression-lab" class="level2" data-number="20.3">
-<h2 data-number="20.3" class="anchored" data-anchor-id="sec-regression-lab"><span class="header-section-number">20.3</span> 🏈 The Lab</h2>
+<section id="sec-regression-lab" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="sec-regression-lab"><span class="header-section-number">19.3</span> 🏈 The Lab</h2>
 <p>You watched the play above with the simulated <code>pregnancy</code> dataset (Pass 1). Now run three plays yourself with the <strong>lab dataset</strong>, a survey about what people believe about mental health.</p>
 <div class="ref ref-tip">
 <div class="ref-face">
@@ -984,8 +967,8 @@ F-statistic: 4.993 on 3 and 144 DF,  p-value: 0.002524</code></pre>
 </div>
 </div>
 </div>
-<section id="lab-play-1-draw-left-one-predictor" class="level3" data-number="20.3.1">
-<h3 data-number="20.3.1" class="anchored" data-anchor-id="lab-play-1-draw-left-one-predictor"><span class="header-section-number">20.3.1</span> Lab Play 1: Draw Left (one predictor)</h3>
+<section id="lab-play-1-draw-left-one-predictor" class="level3" data-number="19.3.1">
+<h3 data-number="19.3.1" class="anchored" data-anchor-id="lab-play-1-draw-left-one-predictor"><span class="header-section-number">19.3.1</span> Lab Play 1: Draw Left (one predictor)</h3>
 <p><strong>Research question:</strong> Do people with more social support (<code>SUPPORT</code>) report higher well-being (<code>WELLBEING</code>)?</p>
 <p><strong>Your task:</strong> Make a scatterplot with <code>SUPPORT</code> on the x axis and <code>WELLBEING</code> on the y axis, with a line of best fit. Then run the simple regression with <code>lm()</code> and <code>summary()</code>. Write down the slope for <code>SUPPORT</code>, its p-value, R-squared, and the number of people in the model.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
@@ -1070,8 +1053,8 @@ F-statistic: 36.24 on 1 and 186 DF,  p-value: 9.129e-09</code></pre>
 </div>
 </div>
 </section>
-<section id="lab-play-2-draw-right-add-a-binary-predictor" class="level3" data-number="20.3.2">
-<h3 data-number="20.3.2" class="anchored" data-anchor-id="lab-play-2-draw-right-add-a-binary-predictor"><span class="header-section-number">20.3.2</span> Lab Play 2: Draw Right (add a binary predictor)</h3>
+<section id="lab-play-2-draw-right-add-a-binary-predictor" class="level3" data-number="19.3.2">
+<h3 data-number="19.3.2" class="anchored" data-anchor-id="lab-play-2-draw-right-add-a-binary-predictor"><span class="header-section-number">19.3.2</span> Lab Play 2: Draw Right (add a binary predictor)</h3>
 <p><strong>Research question:</strong> After we account for social support, does well-being differ between People of Color and White respondents?</p>
 <p>The survey asked one question about racial/ethnic identity (<code>RACE</code>):</p>
 <table class="caption-top table">
@@ -1285,8 +1268,8 @@ F-statistic: 22.85 on 2 and 182 DF,  p-value: 1.397e-09</code></pre>
 </div>
 </div>
 </section>
-<section id="lab-play-3-draw-middle-add-a-dummy-coded-predictor" class="level3" data-number="20.3.3">
-<h3 data-number="20.3.3" class="anchored" data-anchor-id="lab-play-3-draw-middle-add-a-dummy-coded-predictor"><span class="header-section-number">20.3.3</span> Lab Play 3: Draw Middle (add a dummy-coded predictor)</h3>
+<section id="lab-play-3-draw-middle-add-a-dummy-coded-predictor" class="level3" data-number="19.3.3">
+<h3 data-number="19.3.3" class="anchored" data-anchor-id="lab-play-3-draw-middle-add-a-dummy-coded-predictor"><span class="header-section-number">19.3.3</span> Lab Play 3: Draw Middle (add a dummy-coded predictor)</h3>
 <p><strong>Research question:</strong> Two groups hide a lot. Does the difference in well-being look the same for every racial/ethnic group?</p>
 <p>A predictor with three or more groups has to be <strong>dummy coded</strong>: one 0/1 column for every group except the comparison group. You do not need to make those columns. When the predictor is a <code>factor()</code>, <code>lm()</code> makes them for you, and you get one row in the output for each group (compared with the first level).</p>
 <p><strong>Your task:</strong></p>
@@ -1541,8 +1524,8 @@ F-statistic: 9.597 on 5 and 179 DF,  p-value: 3.946e-08</code></pre>
 </div>
 </section>
 </section>
-<section id="sec-regression-yourturn" class="level2" data-number="20.4">
-<h2 data-number="20.4" class="anchored" data-anchor-id="sec-regression-yourturn"><span class="header-section-number">20.4</span> 🏆 Your Turn</h2>
+<section id="sec-regression-yourturn" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="sec-regression-yourturn"><span class="header-section-number">19.4</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1585,8 +1568,8 @@ F-statistic: 9.597 on 5 and 179 DF,  p-value: 3.946e-08</code></pre>
 <blockquote class="blockquote">
 <p>A multiple linear regression (n = ___) showed that ______ was ______ (positively / negatively / not significantly) associated with ______ (b = ___, p = ___), after accounting for ______. The predictors explained ___% of the variance in ______ (R² = ___).</p>
 </blockquote>
-<section id="checklist-for-your-rd-report-and-final-report" class="level3" data-number="20.4.1">
-<h3 data-number="20.4.1" class="anchored" data-anchor-id="checklist-for-your-rd-report-and-final-report"><span class="header-section-number">20.4.1</span> Checklist for your RD Report and Final Report</h3>
+<section id="checklist-for-your-rd-report-and-final-report" class="level3" data-number="19.4.1">
+<h3 data-number="19.4.1" class="anchored" data-anchor-id="checklist-for-your-rd-report-and-final-report"><span class="header-section-number">19.4.1</span> Checklist for your RD Report and Final Report</h3>
 <div class="gray callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2086,12 +2069,12 @@ F-statistic: 9.597 on 5 and 179 DF,  p-value: 3.946e-08</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./visualize-relationship.html" class="pagination-link" aria-label="Visualize a Relationship">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./readme.html" class="pagination-link" aria-label="Read Me">
-        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -74,9 +74,9 @@ You do not need a long list of packages. The packages below are the ones that th
 
 | Step | Package | What you use it for | Chapters that use it |
 |----|----|----|----|
-| Import | readxl | `read_excel()` to import your `.xlsx` survey data | Import Data Once, Start a Report, Combine Datasets, Creating Composites |
+| Import | readxl | `read_excel()` to import your `.xlsx` survey data | Import Data Once, Start a Report, Pre/Post Data, Creating Composites |
 | Import | haven | `read_sav()` to import SPSS `.sav` files | Import Data Once, Mutate Variables, Visualize Pre/Post Data |
-| Tidy | tidyr\* | `pivot_longer()` and `pivot_wider()` to reshape long ↔ wide data | Format Data in tidyr, Visualize Pre/Post Data |
+| Tidy | tidyr\* | `pivot_longer()` and `pivot_wider()` to reshape long ↔ wide data | Pre/Post Data, Visualize Pre/Post Data |
 | Tidy | naniar | `replace_with_na_all()` to turn codes like -99 into missing values | Mutate Variables, Visualize Pre/Post Data |
 | Transform | dplyr\* | `select()`, `filter()`, `mutate()`, and joins | almost every chapter |
 | Transform | psych | `scoreItems()` and `alpha()` for composites and reliability; `describe()` for descriptive statistics | Creating Composites, Methods & Results |
@@ -91,7 +91,7 @@ You do not need a long list of packages. The packages below are the ones that th
 
 | Package | What you use it for | Chapter that uses it |
 |----|----|----|
-| see, gghalves, ggdist | half-violin and raincloud plots | Visualize Pre/Post Data |
+| see | half-violin plots | Visualize Pre/Post Data |
 | english | write numbers as words (e.g., "twelve") | Methods & Results (advanced) |
 | NHANES | CDC practice dataset | Import Data Once (example only) |
 
@@ -164,8 +164,6 @@ install.packages("rmarkdown") ## needed for RStudio to render Quarto reports wit
 
 ## EXTRAS: remove the # only if you use that chapter
 # install.packages("see")      ## half-violin plots (Visualize Pre/Post Data)
-# install.packages("gghalves") ## half-violin plots (Visualize Pre/Post Data)
-# install.packages("ggdist")   ## raincloud plots (Visualize Pre/Post Data)
 # install.packages("english")  ## write numbers as words (Methods & Results)
 # install.packages("NHANES")   ## CDC practice dataset (Import Data Once)
 ```
@@ -178,7 +176,7 @@ Note: See the tidyverse lines under TRANSFORM and VISUALIZE. You do not need to 
 Keep `install.packages()` in your `install.R` file (or type it in the console). Do **not** put it inside a code chunk in a `.qmd` report. Otherwise, R will try to download the package every time you render, which is slow and often causes the render to fail.
 :::
 
-## Loading libraries in your report
+## Loading libraries in your report {#sec-load-block}
 
 Every Quarto report (`.qmd`) should start with one code chunk that loads the packages the report uses. Use the same workflow order and comments as your `install.R` file. Only load what you actually use.
 

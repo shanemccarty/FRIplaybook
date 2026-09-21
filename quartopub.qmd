@@ -28,17 +28,29 @@ csl: apa.csl
 -   [Quarto Pub dashboard](https://quartopub.com/)
 :::
 
+::: callout-important
+## Required: what to submit on Brightspace
+
+You need to submit your *RD Report* and your *Final Report* on Brightspace. Each submission has three parts:
+
+1.  your `.qmd` file (`Lastname_RDreport.qmd` or `Lastname_finalreport.qmd`)
+2.  your dataset in `.xlsx` format
+3.  a link to your published Quarto report
+
+This chapter shows you how to publish your report and get that link. You can see examples of published Quarto reports in [Reproducible Reports](example.qmd) (Chapter 1).
+:::
+
 ## Before You Begin
 
 Make sure you have:
 
--   A working Quarto project in Posit Cloud.
+-   Your `Lastname_FRI` RStudio Project, with a report (`.qmd`) that renders without errors.
 
 -   An active Quarto account linked to your school Google email.
 
     -   Sign in to [Quarto pub](https://quartopub.com/) with your school email account using google sign in.
 
--   Your`_quarto.yml` and `_publish.yml` files are in your project folder on Posit Cloud
+-   Your `_quarto.yml` and `_publish.yml` files are in your `Lastname_FRI` project folder on your computer
 
     -   You can download these files from [306 Quant Track drive](https://drive.google.com/drive/folders/10AG6VkIKUBODfI4_p84Ozohu0dx3xLa3?usp=share_link)
 
@@ -61,11 +73,17 @@ Tokens are automatically handled by Quarto during the publishing process.
 
 ## Publish from the "Terminal"
 
+::: callout-warning
+## Caution: The screenshots are from an older setup
+
+The pictures in this chapter were taken in Posit Cloud (RStudio in a web browser), so the Terminal in them shows `/cloud/project`. In RStudio on your computer, the steps and the questions in the Terminal are the same. Only the folder name on the Terminal line is different.
+:::
+
 Following the step by step process, and you can publish your report to your own Quarto website!!
 
 ### Step 1: Under Terminal
 
--   Click the tab for Terminal (between the Console and Background Jobs tabs) in Posit Cloud (you should see something like `/cloud/project`).
+-   Click the tab for Terminal (between the Console and Background Jobs tabs) in RStudio. The line where you type should end with the name of your project folder, `Lastname_FRI`. If it does not, you did not open your project: see [Find the Ref](find-the-ref.qmd).
 
 -   Type the following command and press Enter:
 
@@ -87,7 +105,7 @@ quarto publish quarto-pub
 
 -   Next, the system will ask to authorize your account in order to publish to Quarto Pub. In the Authorize (Y/n) section, type "**Y**" for Yes. (see the @fig-authorize below)
 
--   In addition, you will get an url, click it and you will see your quarto account, click "ALLOW", this way you allow to publish into quarto. (see the @fig-linktoauthorization and @fig-authorizationpage below)
+-   Your web browser will then open the Quarto Pub authorization page. (If it does not open by itself, the Terminal shows a link: copy it into your browser.) You will see your Quarto account. Click "ALLOW" to allow publishing. (see the @fig-linktoauthorization and @fig-authorizationpage below)
 
 ![Choose "Use another account"](images/quartopub_2.png){#fig-chooseaccount}
 

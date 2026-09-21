@@ -206,11 +206,11 @@ When a Quarto document (`.qmd`) is rendered, R looks for data files starting fro
 You may see code that sets the working directory by hand or imports a file with its full location on one person's computer:
 
 ``` r
-setwd("/Users/allisonanemone/FRI")
-read.csv("/Users/allisonanemone/Downloads/alldata_vaccinations.csv")
+setwd("/Users/yourname/FRI")
+read.csv("/Users/yourname/Downloads/alldata_vaccinations.csv")
 ```
 
-This code only works on that one computer. It will fail on your teammates' computers and on your instructor's computer, because the folder `/Users/allisonanemone/` does not exist there. With a project and file names only, the same code runs for everyone who has the project folder.
+This code only works on that one computer. It will fail on your teammates' computers and on your instructor's computer, because the folder `/Users/yourname/` does not exist there. With a project and file names only, the same code runs for everyone who has the project folder.
 :::
 
 ::: callout-tip
@@ -244,8 +244,8 @@ As you begin working in RStudio, you may encounter some errors. These are normal
 
 - **Object not found** → This means that the object (such as a variable or dataset) has not been created yet. Make sure you have run the code that defines the object before trying to use it.
 - **Cannot open file** → This usually means that RStudio cannot find the file you are trying to import. Check that you have opened your RStudio Project, that the file is in your project folder, and that the file name is spelled exactly right (including the file type, such as `.csv`).
-- **Could not find function** → This error occurs when a function is not recognized. This is often because a package has not been loaded. Make sure you have run `library(package_name)` before using functions from that package.
-- **There is no package called…** → This means the package has not been installed yet. Run `install.packages("package_name")` to install it, then `library(package_name)` to load it.
+- **Could not find function** → This error occurs when a function is not recognized. This is often because a package has not been loaded. Make sure you have run `library(thepackagename)` before using functions from that package.
+- **There is no package called…** → This means the package has not been installed yet. Run `install.packages("thepackagename")` to install it, then `library(thepackagename)` to load it.
 
 ## Summary
 

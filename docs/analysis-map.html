@@ -9,7 +9,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="data analysis plan, decision tree, comparative research, relationship research, data types, normality">
 
-<title>13&nbsp; The Analysis Map – The Quantitative Playbook for Public Health Research in R</title>
+<title>12&nbsp; The Analysis Map – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./analysis-map.html">Map Your Analysis</a></li><li class="breadcrumb-item"><a href="./analysis-map.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./analysis-map.html">Map Your Analysis (Lab 3)</a></li><li class="breadcrumb-item"><a href="./analysis-map.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
+      <a href="./">The Quantitative Playbook for R</a> 
         <div class="sidebar-tools-main">
     <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
     <div class="dropdown">
@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Get Started</span></a>
+ <span class="menu-text">Get Started (Lab 1)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -160,19 +160,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./library.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -192,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Import, Tidy &amp; Transform</span></a>
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -212,26 +212,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -239,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Map Your Analysis</span></a>
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -248,19 +242,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -268,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Compare Groups</span></a>
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -277,19 +271,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -297,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Examine Relationships</span></a>
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -306,13 +300,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -320,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Write Your Report</span></a>
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -329,19 +323,31 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -349,7 +355,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish &amp; Review</span></a>
+ <span class="menu-text">Advanced Plays</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -357,43 +363,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced Plays</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -408,26 +391,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-map" id="toc-the-map" class="nav-link active" data-scroll-target="#the-map"><span class="header-section-number">13.1</span> The Map</a></li>
-  <li><a href="#how-to-read-the-map" id="toc-how-to-read-the-map" class="nav-link" data-scroll-target="#how-to-read-the-map"><span class="header-section-number">13.2</span> How to Read the Map</a></li>
-  <li><a href="#comparison-or-relationship" id="toc-comparison-or-relationship" class="nav-link" data-scroll-target="#comparison-or-relationship"><span class="header-section-number">13.3</span> Comparison or Relationship?</a>
+  <li><a href="#the-map" id="toc-the-map" class="nav-link active" data-scroll-target="#the-map"><span class="header-section-number">12.1</span> The Map</a></li>
+  <li><a href="#how-to-read-the-map" id="toc-how-to-read-the-map" class="nav-link" data-scroll-target="#how-to-read-the-map"><span class="header-section-number">12.2</span> How to Read the Map</a></li>
+  <li><a href="#comparison-or-relationship" id="toc-comparison-or-relationship" class="nav-link" data-scroll-target="#comparison-or-relationship"><span class="header-section-number">12.3</span> Comparison or Relationship?</a>
   <ul class="collapse">
-  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">13.3.1</span> Comparison Research</a></li>
-  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">13.3.2</span> Relationship Research</a></li>
+  <li><a href="#comparative-research" id="toc-comparative-research" class="nav-link" data-scroll-target="#comparative-research"><span class="header-section-number">12.3.1</span> Comparison Research</a></li>
+  <li><a href="#relationship-research" id="toc-relationship-research" class="nav-link" data-scroll-target="#relationship-research"><span class="header-section-number">12.3.2</span> Relationship Research</a></li>
   </ul></li>
-  <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">13.4</span> Understanding Data Types</a></li>
-  <li><a href="#sec-map-lab" id="toc-sec-map-lab" class="nav-link" data-scroll-target="#sec-map-lab"><span class="header-section-number">13.5</span> 🏈 The Lab</a></li>
-  <li><a href="#sec-map-yourturn" id="toc-sec-map-yourturn" class="nav-link" data-scroll-target="#sec-map-yourturn"><span class="header-section-number">13.6</span> 🏆 Your Turn</a></li>
-  <li><a href="#many-models" id="toc-many-models" class="nav-link" data-scroll-target="#many-models"><span class="header-section-number">13.7</span> Many Models, One Short List</a></li>
+  <li><a href="#understanding-data-types" id="toc-understanding-data-types" class="nav-link" data-scroll-target="#understanding-data-types"><span class="header-section-number">12.4</span> Understanding Data Types</a></li>
+  <li><a href="#sec-map-lab" id="toc-sec-map-lab" class="nav-link" data-scroll-target="#sec-map-lab"><span class="header-section-number">12.5</span> 🏈 The Lab</a></li>
+  <li><a href="#sec-map-yourturn" id="toc-sec-map-yourturn" class="nav-link" data-scroll-target="#sec-map-yourturn"><span class="header-section-number">12.6</span> 🏆 Your Turn</a></li>
+  <li><a href="#many-models" id="toc-many-models" class="nav-link" data-scroll-target="#many-models"><span class="header-section-number">12.7</span> Many Models, One Short List</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/analysis-map.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./analysis-map.html">Map Your Analysis</a></li><li class="breadcrumb-item"><a href="./analysis-map.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./analysis-map.html">Map Your Analysis (Lab 3)</a></li><li class="breadcrumb-item"><a href="./analysis-map.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></h1>
 <p class="subtitle lead">How to get from your research question to your plot and your statistical test</p>
 </div>
 
@@ -487,8 +470,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="the-map" class="level2 page-columns page-full" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="the-map"><span class="header-section-number">13.1</span> The Map</h2>
+<section id="the-map" class="level2 page-columns page-full" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="the-map"><span class="header-section-number">12.1</span> The Map</h2>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p class="page-columns page-full"><a href="images/analysis-map.svg" class="lightbox page-columns page-full" data-gallery="quarto-lightbox-gallery-1" title="The Analysis Map takes you from your research question to your plot and your statistical test. Every name in blue is a chapter in this playbook."><img src="images/analysis-map.svg" class="column-page img-fluid figure-img" alt="A flowchart. Your research question leads to Describe Your Data, where you check whether your outcome is normal. From there one arrow leads to Compare Groups and one to Examine Relationships. Under Compare Groups: Visualize a Comparison, then Compare 2 Groups (independent t-test or Mann-Whitney U), Compare 1 Group, Pre/Post (paired t-test or Wilcoxon signed-rank), and Compare 3+ Groups (ANOVA or Kruskal-Wallis). Under Examine Relationships: Visualize a Relationship, then Relate 2 Variables (Pearson or Spearman correlation) and Relate 3+ Variables (linear regression). In each box the first test is for normal data and the second is for data that are not normal."></a></p>
@@ -497,8 +480,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Click the map to make it bigger.</p>
 </section>
-<section id="how-to-read-the-map" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="how-to-read-the-map"><span class="header-section-number">13.2</span> How to Read the Map</h2>
+<section id="how-to-read-the-map" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="how-to-read-the-map"><span class="header-section-number">12.2</span> How to Read the Map</h2>
 <p>Start at the top left with your research question, and follow the arrows. Every name in blue is a chapter in this playbook. There are four steps.</p>
 <ol type="1">
 <li><strong>Describe Your Data.</strong> Make a descriptives table and a histogram of the outcome (the score) in your research question. Decide whether the histogram is roughly bell-shaped (normal) or not. Remember your answer. You will need it at step 4.</li>
@@ -520,11 +503,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="comparison-or-relationship" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="comparison-or-relationship"><span class="header-section-number">13.3</span> Comparison or Relationship?</h2>
+<section id="comparison-or-relationship" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="comparison-or-relationship"><span class="header-section-number">12.3</span> Comparison or Relationship?</h2>
 <p>Your research question can be classified as <strong>comparative</strong> research or <strong>relationship</strong> research (<a href="https://pubmed.ncbi.nlm.nih.gov/35470596/">Barroga &amp; Matanguihan, 2022</a>).</p>
-<section id="comparative-research" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">13.3.1</span> Comparison Research</h3>
+<section id="comparative-research" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="comparative-research"><span class="header-section-number">12.3.1</span> Comparison Research</h3>
 <p>Comparative research questions examine mean score differences on a continuous (quantitative) variable based on real or artificial (researcher-decided) group membership. Simply put, comparative research offers a way of comparing different categories to one another. These categories can be:</p>
 <ul>
 <li><p>🏷️ <strong>Nominal Data</strong> (Racial/Ethnic Identity)</p>
@@ -547,13 +530,13 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="relationship-research" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">13.3.2</span> Relationship Research</h3>
+<section id="relationship-research" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="relationship-research"><span class="header-section-number">12.3.2</span> Relationship Research</h3>
 <p>For relationship research, the variables are 📏 <strong>Continuous</strong> because they range along a continuum, such as a scale for beliefs from 1 (strongly disagree) to 6 (strongly agree). to build a custom scatterplot.</p>
 </section>
 </section>
-<section id="understanding-data-types" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">13.4</span> Understanding Data Types</h2>
+<section id="understanding-data-types" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="understanding-data-types"><span class="header-section-number">12.4</span> Understanding Data Types</h2>
 <p>To read the map, you need to know what type of data each of your variables is:</p>
 <p><strong>Qualitative Data:</strong></p>
 <ul>
@@ -566,8 +549,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>📏 <strong>Continuous</strong>: Measurable data (e.g., height, weight)</p></li>
 </ul>
 </section>
-<section id="sec-map-lab" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="sec-map-lab"><span class="header-section-number">13.5</span> 🏈 The Lab</h2>
+<section id="sec-map-lab" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-map-lab"><span class="header-section-number">12.5</span> 🏈 The Lab</h2>
 <div class="ref ref-tip">
 <div class="ref-face">
 <p><a href="images/ref.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></a></p>
@@ -614,8 +597,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="sec-map-yourturn" class="level2" data-number="13.6">
-<h2 data-number="13.6" class="anchored" data-anchor-id="sec-map-yourturn"><span class="header-section-number">13.6</span> 🏆 Your Turn</h2>
+<section id="sec-map-yourturn" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="sec-map-yourturn"><span class="header-section-number">12.6</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -636,8 +619,8 @@ ul.task-list li input[type="checkbox"] {
 <p>On the Analysis Map, my question lands in the box ________. I will visualize my data with a ________ (barplot / violin plot / scatterplot). The histogram of my outcome is ________ (normal / not normal), so I will use the ________ test.</p>
 </blockquote>
 </section>
-<section id="many-models" class="level2" data-number="13.7">
-<h2 data-number="13.7" class="anchored" data-anchor-id="many-models"><span class="header-section-number">13.7</span> Many Models, One Short List</h2>
+<section id="many-models" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="many-models"><span class="header-section-number">12.7</span> Many Models, One Short List</h2>
 <p>The Analysis Map is short on purpose. In <em>The Model Thinker</em>, Scott Page (<a href="https://sites.lsa.umich.edu/scottepage/home/the-model-thinker/">2018</a>) argues that data does not explain itself. People move from data to information, from information to knowledge, and from knowledge to wisdom by using <strong>models</strong>: simplified, formal ways of describing how something works. Every model leaves things out, so no single model is ever the full story. Page’s advice is to become a <strong>many-model thinker</strong>: learn several models, know what each one assumes, and look at the same problem through more than one of them.</p>
 <p>The statistical tests on the Analysis Map are models, too. A t-test is a model of two groups. A regression is a model of a straight line. They are the right models for the research questions in this course, and they are the only ones you will choose from for your <em>RD Report</em> and <em>Final Report</em>. They are not the only ones that exist. Logistic regression, multilevel models, network models, machine learning, and many others answer questions that these tests cannot. If your question does not fit the map, that does not mean it is a bad question. It means it needs a different model, so talk to your instructor. You can find places to keep learning in <a href="./statistics.html">Statistics</a>.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -1056,12 +1039,12 @@ ul.task-list li input[type="checkbox"] {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./composite.html" class="pagination-link" aria-label="Creating Composites">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./describe.html" class="pagination-link" aria-label="Describe Your Data">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

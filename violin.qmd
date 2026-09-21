@@ -55,17 +55,13 @@ A team of FRI students in the Public Health stream designed a study on oral heal
 
 ## Library
 
-```{r converting SPSS to R}
+```{r}
 #| label: library-SPSS-violin
 
-library(haven) ## for SPSS data
-library(naniar)
-library(dplyr)
-library(ggplot2) ## for data viz
-library(ggdist)
-library(gghalves)
-library(see)
-library(tidyverse)
+library(haven)      ## for SPSS data
+library(naniar)     ## to replace codes like -99 with NA
+library(tidyverse)  ## dplyr, tidyr, and ggplot2
+library(see)        ## for geom_violinhalf(), the half-violin plot
 oralhealthdata_prepost <- read_sav("data/3.19.2025.oralhealth.erica.sav",
 user_na = FALSE)
 
@@ -121,7 +117,7 @@ longdata_long$SelfEfficacyTime <- factor(
 
 ```
 
-More more information on `tidyr`, see the [tidyr chapter](#tidyr.qmd).
+For more information on `tidyr`, see [Pre/Post Data](prepost.qmd).
 
 ## Visualizing with violin plots
 

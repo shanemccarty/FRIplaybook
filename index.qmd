@@ -2,18 +2,18 @@
 # These two labels change ONLY the Preface page (the book's title page). Chapters still say "Author(s)" and "Published".
 language:
   title-block-author-single: "Editor"
-  title-block-published: "Edition 2 (v2.0)"
+  title-block-published: "Edition 2 (v2.01)"
 ---
 
 # Preface {.unnumbered}
 
-The most successful sports teams rely on well-designed plays to navigate complex game situations. The [FRI Public Health research stream at Binghamton University](https://fripublichealth.quarto.pub) uses strategic data analysis "plays" to tackle the multifaceted challenges of health promotion and disease prevention. Student research teams explore the biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like the [MUSE S headband](https://choosemuse.com) and the [Fitbit Charge 6](https://community.fitbit.com/t5/Community/ct-p/EN), psychological and sociodemographic data through survey questionnaires in [Qualtrics](https://www.qualtrics.com) and interviews, and behavioral patterns through online experiments. Ultimately, our research aims to connect the dots between biological, social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. To analyze quantitative data in R, the FRI Public Health Lab has created this playbook with a variety of "plays" (R code) for students in the quantitative data analysis track to use for their team-based research projects.
+The most successful sports teams rely on well-designed plays to navigate complex game situations. The [FRI Public Health research stream at Binghamton University](https://fripublichealth.quarto.pub) uses strategic data analysis "plays" to tackle the multifaceted challenges of health promotion and disease prevention in our communities. Student research teams explore the biopsychosocial factors affecting human physical and mental health by collecting physiological data through wearables like the [MUSE S headband](https://choosemuse.com) and the [Fitbit Charge 6](https://community.fitbit.com/t5/Community/ct-p/EN), psychological and sociodemographic data through survey questionnaires in [Qualtrics](https://www.qualtrics.com) and interviews, and behavioral patterns through online experiments. Ultimately, our research aims to connect the dots between biological, social, political, commercial, and economic determinants of health behavior, outcomes, and inequities. To analyze quantitative data in R, the FRI Public Health Lab has created this playbook with a variety of "plays" (R code) for students in the quantitative data analysis track to use for their team-based research projects.
 
 Like a coach calling the right play at the crucial moment, this playbook equips you and your research team with proven strategies from the tidyverse for importing data, tidying data in `tidyr`, transforming data in `dplyr`, visualizing data in `ggplot2`, modeling with `stats`, and writing reproducibly in `quarto` with R. Each "play" in this guide has been field-tested by research teams who have used quantitative techniques to answer pressing questions about physical and mental health.
 
 You do not need to memorize the whole playbook. **The Analysis Map** takes you from your research question to the right plot and the right statistical test, so you only study the plays you need. Each chapter then teaches its play three times: you watch it (**The Play**), you practice it with a shared dataset (**The Lab**), and you run it with your own team's data (**Your Turn**).
 
-Whether you are facing a dataset for the first time or refining your analytical strategy, this playbook helps you turn data into information, information into knowledge, and knowledge into wisdom in order to improve public health outcomes.
+Whether you are facing a dataset for the first time or refining your analytical strategy, this playbook helps you turn data into information, information into knowledge, and knowledge into wisdom in order to improve community health.
 
 ## The Purpose of the Course {.unnumbered}
 
@@ -32,7 +32,7 @@ If you get two or more weeks behind on the chapters and labs, it will be very di
 :::
 
 ## The Data Science Workflow {.unnumbered}
-This playbook applies the data science workflow in *R for Data Science (2e)* ([Wickham et al., 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine public health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
+This playbook applies the data science workflow in *R for Data Science (2e)* ([Wickham et al., 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine community health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
 
 By the end of this guide, you will be able to:
 
@@ -57,9 +57,9 @@ This playbook combines the two. You follow the workflow to **import, tidy, and t
 
 ## What Makes This Guide Different? {.unnumbered}
 -   **Interactive Learning**: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using [WebR](https://docs.r-wasm.org/webr/latest/)—no software installation required
--   **Public Health Data**: Examples use public health datasets, such as [insurance claims from kaggle](https://www.kaggle.com/code/pralabhpoudel/does-smoking-makes-your-insurance-high), a lab dataset about what people believe about mental health (synthetic data made for this course), and simulated survey data modeled on past team projects
+-   **Community Health Data**: Examples use public health and community health datasets, such as [insurance claims from kaggle](https://www.kaggle.com/code/pralabhpoudel/does-smoking-makes-your-insurance-high), a lab dataset about what people believe about mental health (synthetic data made for this course), and simulated survey data modeled on past team projects
 -   **Complete Workflow**: Covers the whole workflow, from raw data to a publication-ready report, so you can look up the step you need
--   **Practical Focus**: Emphasizes "plays" (R code chunks) you'll actually use in public health research and practice
+-   **Practical Focus**: Emphasizes "plays" (R code chunks) you'll actually use in community health research and practice
 
 ## Prerequisites {.unnumbered}
 **Technical Requirements:**
@@ -70,7 +70,7 @@ This playbook combines the two. You follow the workflow to **import, tidy, and t
 
 **Background Knowledge:**
 
--   Basic familiarity with public health concepts
+-   Basic familiarity with public health and community health concepts
 
 -   Introductory statistics (descriptive statistics, hypothesis testing, p-values)
 
@@ -109,9 +109,10 @@ Every colored box means the same thing in every chapter.
 | [Yellow]{.key .key-yellow} | **Caution** | Where do people go wrong? |
 | [Green]{.key .key-green} | **Go** | What is the recommended move? |
 | [Blue]{.key .key-blue} | **Resources** | Where can I get more help? (never required) |
-| [Gray]{.key .key-gray} | | Answers, checklists, and notices. Click to open. |
+| [Gray]{.key .key-gray} | **Team** | What applies only to my team? (for example, your team's file names) Click to open. |
+| [Gray]{.key .key-gray} | | Also used for answers and checklists. Click to open. |
 
-**Read every [red]{.key .key-red} box. Follow [green]{.key .key-green}. Slow down at [yellow]{.key .key-yellow}. Open [blue]{.key .key-blue} only when you want more.**
+**Read every [red]{.key .key-red} box. Follow [green]{.key .key-green}. Slow down at [yellow]{.key .key-yellow}. Open [blue]{.key .key-blue} only when you want more. Open the [gray]{.key .key-gray} box with your team's name.**
 
 Here is what the boxes look like in a chapter:
 
@@ -139,6 +140,12 @@ When many people have the same two scores, a scatterplot draws their dots on top
 Start every session by opening your RStudio Project. R will then find your data files without any extra code.
 :::
 
+::: {.callout-note .gray collapse="true"}
+## 📁 Team 1 File Names
+
+A gray box holds information for one team, such as the file names that team should use. Open the box for your team and skip the others.
+:::
+
 ::: {.callout-note collapse="true"}
 ## Resources: `ggplot2`
 
@@ -150,11 +157,11 @@ Click the blue banner (or the **\>** at its right edge) to open the resources, a
 ## How to Cite This Guide {.unnumbered}
 [You can cite this guide as:]{.underline}
 
-McCarty, S. (Ed.). (2026). *The Quantitative Playbook for Public Health Research in R* (2nd ed.). <https://shanemccarty.github.io/FRIplaybook/>
+McCarty, S. (Ed.). (2026). *The Quantitative Playbook for R: Plays for Public Health & Community Health Research* (2nd ed.). <https://shanemccarty.github.io/FRIplaybook/>
 
 [Or, you can cite a specific chapter:]{.underline}
 
-Silhavy, A. & McCarty, S. (2026). Visualize a relationship: How to build scatterplots to show how two scores go together. In S. McCarty (Ed.), *The Quantitative Playbook for Public Health Research in R* (2nd ed.). <https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html>
+Silhavy, A. & McCarty, S. (2026). Visualize a relationship: How to build scatterplots to show how two scores go together. In S. McCarty (Ed.), *The Quantitative Playbook for R: Plays for Public Health & Community Health Research* (2nd ed.). <https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html>
 
 ### Editor and Chapter Authors {.unnumbered}
 -   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)

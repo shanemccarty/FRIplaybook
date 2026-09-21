@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Reproducible Reports – The Quantitative Playbook for Public Health Research in R</title>
+<title>1&nbsp; Reproducible Reports – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -86,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started</a></li><li class="breadcrumb-item"><a href="./example.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started (Lab 1)</a></li><li class="breadcrumb-item"><a href="./example.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">The Quantitative Playbook for Public Health Research in R</a> 
+      <a href="./">The Quantitative Playbook for R</a> 
         <div class="sidebar-tools-main">
     <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
     <div class="dropdown">
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Get Started</span></a>
+ <span class="menu-text">Get Started (Lab 1)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -155,19 +155,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">RStudio Software</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./library.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Install and Load Packages</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Import, Tidy &amp; Transform</span></a>
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -207,26 +207,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tidyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Format Data in tidyr</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./merge.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Combine Datasets</span></span></a>
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -234,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Map Your Analysis</span></a>
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -243,19 +237,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Compare Groups</span></a>
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -272,19 +266,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -292,7 +286,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Examine Relationships</span></a>
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -301,13 +295,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -315,7 +309,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Write Your Report</span></a>
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -324,19 +318,31 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -344,7 +350,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Publish &amp; Review</span></a>
+ <span class="menu-text">Advanced Plays</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -352,43 +358,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced Plays</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Methods &amp; Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -404,11 +387,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#why-reproducibility-matters" id="toc-why-reproducibility-matters" class="nav-link active" data-scroll-target="#why-reproducibility-matters"><span class="header-section-number">1.1</span> Why Reproducibility Matters</a></li>
-  <li><a href="#reproducible-reports" id="toc-reproducible-reports" class="nav-link" data-scroll-target="#reproducible-reports"><span class="header-section-number">1.2</span> Reproducible Reports</a>
+  <li><a href="#software-for-reproducibility" id="toc-software-for-reproducibility" class="nav-link" data-scroll-target="#software-for-reproducibility"><span class="header-section-number">1.2</span> Software for Reproducibility</a></li>
+  <li><a href="#reproducible-reports" id="toc-reproducible-reports" class="nav-link" data-scroll-target="#reproducible-reports"><span class="header-section-number">1.3</span> Reproducible Reports</a>
   <ul class="collapse">
-  <li><a href="#quarto-examples" id="toc-quarto-examples" class="nav-link" data-scroll-target="#quarto-examples"><span class="header-section-number">1.2.1</span> Quarto Examples</a></li>
-  <li><a href="#fri-ph-cohort-11-examples" id="toc-fri-ph-cohort-11-examples" class="nav-link" data-scroll-target="#fri-ph-cohort-11-examples"><span class="header-section-number">1.2.2</span> FRI-PH Cohort 11 Examples</a></li>
-  <li><a href="#fri-ph-lab-examples" id="toc-fri-ph-lab-examples" class="nav-link" data-scroll-target="#fri-ph-lab-examples"><span class="header-section-number">1.2.3</span> FRI-PH Lab Examples</a></li>
+  <li><a href="#quarto-examples" id="toc-quarto-examples" class="nav-link" data-scroll-target="#quarto-examples"><span class="header-section-number">1.3.1</span> Quarto Examples</a></li>
+  <li><a href="#fri-ph-cohort-11-examples" id="toc-fri-ph-cohort-11-examples" class="nav-link" data-scroll-target="#fri-ph-cohort-11-examples"><span class="header-section-number">1.3.2</span> FRI-PH Cohort 11 Examples</a></li>
+  <li><a href="#fri-ph-lab-examples" id="toc-fri-ph-lab-examples" class="nav-link" data-scroll-target="#fri-ph-lab-examples"><span class="header-section-number">1.3.3</span> FRI-PH Lab Examples</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/example.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -416,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started</a></li><li class="breadcrumb-item"><a href="./example.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started (Lab 1)</a></li><li class="breadcrumb-item"><a href="./example.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></h1>
 </div>
@@ -430,7 +414,6 @@ ul.task-list li input[type="checkbox"] {
     <div class="quarto-title-meta-contents">
              <p>Shane McCarty, PhD </p>
              <p>Zihan Hei </p>
-             <p>Claude (Anthropic) </p>
           </div>
   </div>
     
@@ -461,28 +444,130 @@ ul.task-list li input[type="checkbox"] {
 <p>Science is supposed to correct itself: if a finding is real, other researchers should be able to repeat the study and find it again. In the 2010s, researchers tested that promise, and many well-known findings failed. In the largest project, 270 researchers repeated 100 published psychology studies, and fewer than half of them produced the same result a second time (<a href="https://doi.org/10.1126/science.aac4716">Open Science Collaboration, 2015</a>). Similar problems were found in medicine, economics, and other fields. This is called the <strong>replication crisis</strong> (or reproducibility crisis).</p>
 <p>A <em>Nature</em> paper by <a href="https://www.nature.com/articles/533452a">Baker (2016)</a> states: “More than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments.”</p>
 <p>In <em>Science Fictions</em>, the psychologist Stuart Ritchie (<a href="https://en.wikipedia.org/wiki/Science_Fictions">2020</a>) argues that four problems are behind it: <strong>fraud</strong> (making up data), <strong>bias</strong> (publishing only the results that “worked”), <strong>negligence</strong> (honest mistakes, such as a typo in a spreadsheet or a number copied incorrectly into a paper), and <strong>hype</strong> (claiming more than the results show). Most researchers will never commit fraud. Negligence is different: anyone can copy the wrong number into a table, forget which version of the data they used, or lose track of how a variable was cleaned.</p>
-<!-- SHANE: paste one or two direct quotes from your copy of Science Fictions here, with page numbers. Format:
-
-> "QUOTE" (Ritchie, 2020, p. XX)
-
-Good places to look: (1) the opening pages, where he explains why a finding only counts once it has been repeated; (2) the Negligence chapter, for a sentence on how ordinary errors (typos, spreadsheet mistakes, numbers that do not add up) end up in published papers; (3) the final chapters on fixing science, for a sentence on sharing data and code.
--->
-<p>A reproducible report is your protection against negligence. In a Quarto report, the plots, tables, and numbers are made by code, in the same file as your writing. Nothing is copied and pasted by hand. Anyone who has your data file and your <code>.qmd</code> file can run the report and get the same results, including you, six months from now.</p>
-<p>A primary objective of this playbook is to increase the reproducibility of public health research using line-by-line coding in R with Quarto for publishing the research with code chunks to confirm accuracy.</p>
+<p>A reproducible report is your protection against negligence. To see why, you need to know that there are two ways to tell statistical software what to do.</p>
+<ul>
+<li><strong>Point and click.</strong> Some statistical programs, such as the widely-used SPSS software, work like most apps you already use. You open your data, choose an analysis from a drop-down menu (for example, Analyze &gt; Compare Means), check a few boxes, and click OK. The result appears in a window. It feels easy, but when you close the program, there is no record of what you clicked. It is like giving directions by pointing: it works in the moment, and nobody can follow it later.</li>
+<li><strong>Code.</strong> In other programs, such as R, you type your instructions as text, one line at a time, and save them in a file. It is like writing the directions down: anyone can follow them again, step by step, and get to the same place.</li>
+</ul>
+<p>Now compare the two ways of getting a result into a paper:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Point and click in SPSS, then copy and paste into a doc</th>
+<th>Code in R to produce a reproducible report</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>How the result is made</strong></td>
+<td>You click through menus. Nothing records which options you chose.</td>
+<td>Every step is written down as a line of code.</td>
+</tr>
+<tr class="even">
+<td><strong>How it gets into your paper</strong></td>
+<td>You copy numbers and paste plots into a Word document by hand.</td>
+<td>The code makes the plot, table, or number inside the report itself.</td>
+</tr>
+<tr class="odd">
+<td><strong>When the data change</strong></td>
+<td>You redo every click and every paste, and hope you miss nothing.</td>
+<td>You run the report again. Everything updates.</td>
+</tr>
+<tr class="even">
+<td><strong>When someone checks your work</strong></td>
+<td>They have to trust you.</td>
+<td>They run your file and get the same results.</td>
+</tr>
+</tbody>
+</table>
+<p>That is the primary objective of this playbook: to make community health research more reproducible. You will write your analysis line by line in <a href="https://www.r-project.org"><strong>R</strong></a>, and you will publish it with <a href="https://quarto.org"><strong>Quarto</strong></a>, where the code, the results, and your writing live in one <code>.qmd</code> file. Anyone who has your data file and your <code>.qmd</code> file can run the report and get the same results, including you, six months from now.</p>
+<p>Doing this takes the right kind of software, which is the subject of the next section.</p>
 </section>
-<section id="reproducible-reports" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="reproducible-reports"><span class="header-section-number">1.2</span> Reproducible Reports</h2>
+<section id="software-for-reproducibility" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="software-for-reproducibility"><span class="header-section-number">1.2</span> Software for Reproducibility</h2>
+<p>Researchers analyze data with many different programs. The column on the right of the table above (code in a reproducible report) is only possible with some of them. The programs differ in three ways that matter for reproducibility: whether the analysis is written down as <strong>code</strong>, whether the software is <strong>free and open source</strong>, and the <strong>disciplines and fields</strong> that use it (which affects how easy it is to find help, and whether someone else can run your analysis).</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 42%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Software</th>
+<th>How you work</th>
+<th>License</th>
+<th>Cost</th>
+<th>Disciplines and fields</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td>Code</td>
+<td>Open source</td>
+<td>Free</td>
+<td>Statistics, public health, social sciences</td>
+</tr>
+<tr class="even">
+<td><strong>Python</strong></td>
+<td>Code</td>
+<td>Open source</td>
+<td>Free</td>
+<td>Data science, computer science, engineering</td>
+</tr>
+<tr class="odd">
+<td><strong>SPSS</strong></td>
+<td>Mostly menus</td>
+<td>Commercial</td>
+<td>Paid</td>
+<td>Psychology, social sciences</td>
+</tr>
+<tr class="even">
+<td><strong>SAS</strong></td>
+<td>Code</td>
+<td>Commercial</td>
+<td>Paid</td>
+<td>Biostatistics, clinical trials, government statistics</td>
+</tr>
+<tr class="odd">
+<td><strong>Stata</strong></td>
+<td>Code and menus</td>
+<td>Commercial</td>
+<td>Paid</td>
+<td>Economics, epidemiology, policy research</td>
+</tr>
+</tbody>
+</table>
+<p>Why this playbook uses R:</p>
+<ul>
+<li><strong>It is code.</strong> Every step of your analysis is written down, so it can be checked, repeated, and fixed. A series of clicks in a menu leaves no record.</li>
+<li><strong>It is free and open source.</strong> You can install it on any computer, and you will still have it after you graduate. Anyone who wants to check your work can run it, too, without buying a license.</li>
+<li><strong>It is widely used.</strong> A large community means free books, free courses, and an answer online for almost every error message.</li>
+<li><strong>It was built for statistics and graphics</strong>, and with Quarto, your code, results, and writing live in one reproducible report.</li>
+</ul>
+</section>
+<section id="reproducible-reports" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="reproducible-reports"><span class="header-section-number">1.3</span> Reproducible Reports</h2>
 <p>Students on the quantitative and mixed-methods data analysis tracks will produce a reproducible Quarto Markdown report for your individual report. You will learn how to start your own Quarto report later, in <a href="./codechunks.html">Start a Report</a>. Right now, you do not need any software. Peruse a range of individual and team manuscripts that were published as Quarto reports.</p>
-<section id="quarto-examples" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="quarto-examples"><span class="header-section-number">1.2.1</span> Quarto Examples</h3>
+<section id="quarto-examples" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="quarto-examples"><span class="header-section-number">1.3.1</span> Quarto Examples</h3>
 <p>Quarto provided two examples of a reproducible report and manuscript:</p>
 <ul>
 <li><p><a href="https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html">Standard Quarto Report Example</a></p></li>
 <li><p><a href="https://quarto-ext.github.io/manuscript-template-jupyter/">Standard Quarto Manuscript Example</a></p></li>
 </ul>
 </section>
-<section id="fri-ph-cohort-11-examples" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="fri-ph-cohort-11-examples"><span class="header-section-number">1.2.2</span> FRI-PH Cohort 11 Examples</h3>
+<section id="fri-ph-cohort-11-examples" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="fri-ph-cohort-11-examples"><span class="header-section-number">1.3.2</span> FRI-PH Cohort 11 Examples</h3>
 <p>FRI-PH Cohort 11 produced individual reports and a team manuscript. Cohort 12 will ONLY produce an individual report. Below are examples of individual reports from students:</p>
 <ul>
 <li><p><a href="https://danicalyktey.quarto.pub/sleep/">Individual Report on Sleep</a></p></li>
@@ -491,8 +576,8 @@ Good places to look: (1) the opening pages, where he explains why a finding only
 <li><p><a href="https://avishnevetsk.quarto.pub/is-the-binghamton-community-eating-enough-vegetables/">Team Manuscript on Veggies</a></p></li>
 </ul>
 </section>
-<section id="fri-ph-lab-examples" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="fri-ph-lab-examples"><span class="header-section-number">1.2.3</span> FRI-PH Lab Examples</h3>
+<section id="fri-ph-lab-examples" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="fri-ph-lab-examples"><span class="header-section-number">1.3.3</span> FRI-PH Lab Examples</h3>
 <p>The FRI Public Health Lab has produced Quarto manuscripts from active research projects:</p>
 <ul>
 <li><p><a href="https://zihanhei.quarto.pub/avoider-report/">Health Avoiders Manuscript</a></p></li>
@@ -916,8 +1001,8 @@ Good places to look: (1) the opening pages, where he explains why a finding only
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./layers.html" class="pagination-link" aria-label="How Code Builds a Plot">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">How Code Builds a Plot</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./layers.html" class="pagination-link" aria-label="Coding a Plot">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

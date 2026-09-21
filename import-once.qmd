@@ -15,9 +15,13 @@ keywords:
   - missing data
 date: 10.20.2025
 date-format: "MM.DD.YYYY"
-format: live-html
+format:
+  live-html:
+    css: custom.css
 engine: knitr
 editor: visual
+execute:
+  cache: false   # reads the lab dataset; also, an old cache listed packages (NHANES) that are not installed on every computer
 ---
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
@@ -56,6 +60,7 @@ The first step of the data science workflow is to *import your data*. Public hea
 
 ```{r}
 #| label: load-packages
+#| eval: false
 #| autorun: true
 #| completion: true
 #| warning: false
@@ -93,13 +98,16 @@ You will learn how to import different datasets:
 ### Import from `NHANES` package
 
 ```{r}
-#| label: install NHANES
+#| label: install-NHANES
+#| eval: false
 install.packages("NHANES")
 ```
 
 ### Load libraries
 
 ```{r}
+#| label: load-libraries-example
+#| eval: false
 #| autorun: false
 #| completion: true
 #| echo: true
@@ -149,7 +157,7 @@ NHANESraw[1:10, 1:6]
 
 #### View Data
 
-In Posit Cloud, you can use `View()` in your CONSOLE to view the dataframe.
+In RStudio, you can use `View()` in your CONSOLE to view the dataframe.
 
 ```{{r}}
 library(NHANES)
@@ -202,3 +210,162 @@ names(safetydata)
 # Get a summary of all variables
 summary(safetydata)
 ```
+
+```{r}
+#| label: lab-import-setup
+#| include: false
+#| cache: false
+library(readxl)
+mh_raw_check <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet = "data")
+mh_codebook_check <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet = "codebook")
+```
+
+## 🏈 The Lab {#sec-import-lab}
+
+You watched the play above with example datasets. Now import the **lab dataset** yourself: a survey about what people believe about mental health. Everyone in the course uses the same file, so you can check your answers.
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** This lab is not graded, so I am here to help you check your own work. Try each step **before** you open my check. If your answer does not match, that is not a penalty. It is how you find out what to fix.
+:::
+::::::
+
+**Before you start**
+
+1.  Get the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from your instructor. Put it in a folder called **data** inside your `Lastname_FRI` project folder.
+2.  Open your RStudio Project and your lab `.qmd` file, and run your `library()` chunk. You need `readxl`.
+
+### Lab Play 1: Import the data
+
+The file has more than one sheet. The survey answers are on the sheet called `data`. Import that sheet and name the object `mh_raw`. Then find out how many rows (people) and columns (variables) it has.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how big is the dataset?
+
+`mh_raw` should have **`r nrow(mh_raw_check)` rows** and **`r ncol(mh_raw_check)` columns**. Look in your **environment tab**: it shows the same two numbers next to `mh_raw`.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-import-solution
+#| eval: false
+library(readxl)
+
+mh_raw <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx",
+                     sheet = "data")
+
+nrow(mh_raw)   # how many people?
+ncol(mh_raw)   # how many variables?
+```
+:::
+
+### Lab Play 2: View the variables
+
+Look at the column names with `names()`, look at the first rows with `head()`, and get a summary of one variable, `POLITICALBELIEFS`, with `summary(mh_raw$POLITICALBELIEFS)`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you see?
+
+-   The first five column names are: `r paste0("\x60", names(mh_raw_check)[1:5], "\x60", collapse = ", ")`. The last one is `r paste0("\x60", tail(names(mh_raw_check), 1), "\x60")`.
+-   `POLITICALBELIEFS` has a minimum of `r min(mh_raw_check$POLITICALBELIEFS, na.rm = TRUE)` and a maximum of `r max(mh_raw_check$POLITICALBELIEFS, na.rm = TRUE)`.
+-   A minimum of -99 is not a real answer. The answers to this question run from 1 to 6, and -99 is the code for "Prefer not to say". You will turn those codes into missing values (`NA`) the same way this chapter did for `safetydata`.
+:::
+
+### Lab Play 3: Do the variable names match the survey?
+
+This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics. If a name is misspelled, or a question was never named, you will see it here first (for example, a column called `Q17` and no column called `STIG3`).
+
+For the lab dataset, the survey's variable names are listed on the sheet called `codebook`. Import that sheet, and compare its `Variable` column with `names(mh_raw)`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: do they match?
+
+```{r}
+#| label: lab-import-check-names
+#| echo: false
+#| cache: false
+cb_names <- mh_codebook_check$Variable
+missing_from_data <- setdiff(cb_names, names(mh_raw_check))
+```
+
+-   The survey variables in `mh_raw` should appear in the codebook, spelled the same way.
+-   `setdiff(names(mh_raw), mh_codebook$Variable)` should return **`r length(setdiff(names(mh_raw_check), cb_names))` names**, and all of them should start with `r paste0("\x60", unique(sub("_[0-9]+$", "", setdiff(names(mh_raw_check), cb_names))), "\x60", collapse = ", ")`. The codebook describes that group of columns in one line, so they do not match one by one. That is fine.
+-   If you see any **other** name in that list, the data and the survey do not agree, and you would need to find out why.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-import-solution-names
+#| eval: false
+names(mh_raw)                  # the VARIABLES in your dataset
+head(mh_raw, 10)               # the first 10 people
+summary(mh_raw$POLITICALBELIEFS)   # one variable: look at the minimum
+
+mh_codebook <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx",
+                          sheet = "codebook")
+
+# names that are in the data and NOT in the codebook
+setdiff(names(mh_raw), mh_codebook$Variable)
+```
+:::
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
+
+-   **`path does not exist`** → the file is not where the code says it is. Check that the file is inside a **data** folder in your project, that the name is spelled exactly the same, and that you opened your **project** (not only a file).
+-   **You have 1 column, or the wrong columns** → you imported the wrong sheet. Add `sheet = "data"`.
+-   **`could not find function "read_excel"`** → run `library(readxl)`.
+-   **Your first row of data is question text** → the file still has two header rows. See [Export Survey Data](export.qmd) and delete row 2 in the `.clean` file. (The lab dataset has one header row, so you should not see this in the lab.)
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's final whistle.** That is the end of the lab. Save your `.qmd`, render it, and back up your `.qmd` and `.R` files to the **R Labs** folder in your ELN before you quit RStudio.
+:::
+::::::
+
+## 🏆 Your Turn {#sec-import-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Nobody has imported your team's data before, so there is no answer to check against. Use the checklist below.
+:::
+
+Once you finish all of the R Labs, come back here with **your team's `.clean` data file**.
+
+```{r}
+#| label: import-REPLACE
+#| eval: false
+library(readxl)
+
+yourdata <- read_excel("data/REPLACE.data.team#.clean.xlsx")   # REPLACE with your file name
+
+yourdata[yourdata == -99] <- NA    # prefer not to answer -> missing
+yourdata[yourdata == -50] <- NA    # don't know -> missing
+
+names(yourdata)      # the VARIABLES
+head(yourdata, 10)   # the first 10 people
+summary(yourdata)    # minimum and maximum of every variable
+```
+
+| Criteria | Ask yourself |
+|------------|--------------------------------------------------------|
+| **One header row** | Is row 1 the variable names, and is row 2 a person (not question text)? |
+| **Rows** | Does the number of rows match the number of responses in Qualtrics? |
+| **Variable names** | Open your exported survey (`.docx`) next to `names(yourdata)`. Does every column name match the variable name you chose in Qualtrics, spelled the same way and in capital letters? |
+| **Unnamed questions** | Do you see names such as `Q17` or `Q23_1`? Those questions were never named. Fix the names in Qualtrics and export again. Do not rename them by hand in Excel. |
+| **Minimum and maximum** | For each scale, do the minimum and maximum match the response options (for example, 1 to 5)? Are -99 and -50 gone? |
+| **Team agreement** | Did every teammate import the same file, with the same date in its name? |

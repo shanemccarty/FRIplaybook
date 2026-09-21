@@ -93,7 +93,7 @@ If the group is stored as 1, 2, 3, R treats it as a score and gives you a wrong 
 
 `aov()` needs **one row per person**, with **one column for the outcome** and **one column for the group**. Most survey data already look like this, so there is nothing to change.
 
-You only need to reshape when the scores you want to compare sit in **separate columns** (for example, `score_time1`, `score_time2`, `score_time3`). Then use `pivot_longer()` from [Format Data in tidyr](tidyr.qmd) to stack them into one outcome column and one group column. Note that the same people measured three times is a repeated-measures design, which this chapter does not cover. Talk to your instructor.
+You only need to reshape when the scores you want to compare sit in **separate columns** (for example, `score_time1`, `score_time2`, `score_time3`). Then use `pivot_longer()` from [Pre/Post Data](prepost.qmd) to stack them into one outcome column and one group column. Note that the same people measured three times is a repeated-measures design, which this chapter does not cover. Talk to your instructor.
 :::
 
 ## ANOVA

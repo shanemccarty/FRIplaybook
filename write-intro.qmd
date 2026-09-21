@@ -94,7 +94,7 @@ Use \` \` between CAPITALIZED variable names in your report if you are referring
 
 ## Source vs. Visual
 
-Reminder: It is useful to switch back and forth between *Source* and *Visual* mode in Posit Cloud to see the code vs. rendered versions.
+Reminder: It is useful to switch back and forth between *Source* and *Visual* mode in RStudio to see the code vs. rendered versions.
 
 ## Get started with Quarto Video
 
