@@ -25,6 +25,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: `ggplot2`
 
@@ -44,7 +46,7 @@ You will go through this chapter three times, with three different datasets.
 ::: {.callout-tip}
 ## Go: Know your route first
 
-This chapter is the Visualize step on [The Analysis Map](analysis-map.qmd) for a **comparison** question: groups (a categorical variable) and one continuous score. New to `ggplot2` layers? Read [How Code Builds a Plot](layers.qmd) first.
+This chapter is the Visualize step on [The Analysis Map](analysis-map.qmd) for a **comparison** question: groups (a categorical variable) and one continuous score. New to `ggplot2` layers? Read [Coding a Plot](layers.qmd) first.
 :::
 
 ## 📋 The Play {#the-play}
@@ -243,7 +245,7 @@ ggsave("plots/plot1_clear_name.png",
        plot = plot_name, width = 10, height = 8, dpi = 300)
 ```
 
-The full explanation is in [How Code Builds a Plot](layers.qmd#save).
+The full explanation is in [Coding a Plot](layers.qmd#save).
 :::
 
 ```{r}
@@ -564,3 +566,5 @@ In your figure caption, tell the reader which answers you combined, which answer
 
 {{< include _checklist-plots.qmd >}}
 :::
+
+{{< include _ref-whistle-box.qmd >}}

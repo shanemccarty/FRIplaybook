@@ -1,0 +1,363 @@
+---
+title: "Coding a Plot"
+subtitle: "Build a plot one layer at a time in your web browser"
+author:
+  - Andrew Silhavy
+  - Shane McCarty, PhD
+abstract: |
+  This chapter shows researchers what code does before they install any software. Using real insurance data and code cells that run in the web browser (WebR), researchers watch one plot being built one layer at a time with ggplot2's "grammar of graphics" (data, mapping, geometries, statistics, facets, coordinates, and theme), and they try small changes to see how the output changes. The chapter ends with how most chapters in this playbook work (The Play, The Lab, Your Turn) and, for later, how to choose one theme for all of your plots and how to save a plot with ggsave().
+keywords:
+  - ggplot2
+  - grammar of graphics
+  - layers
+  - theme
+  - ggsave
+  - WebR
+date: 09.20.2026
+date-format: "MM.DD.YYYY"
+format:
+  html: 
+    css: custom.css
+editor: visual
+execute:
+  warning: false
+  message: false
+webr:
+  packages: ['ggplot2']      # this chapter only needs ggplot2, so the live cells load faster than with the book-wide list
+  autoload-packages: false
+  show-startup-message: true
+---
+
+::: {.callout-note collapse="true"}
+## Resources: `ggplot2`
+
+{{< include _resources-ggplot2.qmd >}}
+:::
+
+::: callout-warning
+## Caution: Be patient, this page is slow to load
+
+The gray code boxes with a **Run Code** button run R inside your web browser, so you do not need to install anything yet. The first time you open this page, your browser has to download R. **That can take 30 to 60 seconds**, and longer on campus Wi-Fi. Wait until the status at the top of the page says **Ready** before you click Run Code. A laptop works better than a phone. If a box never becomes ready, keep reading: every step also shows the code and the plot it makes.
+:::
+
+## Start Here: What Does Code Do?
+
+Code is a set of written instructions. You write a line, R follows it, and you see the result. In this chapter you do not need to understand every word of the code, and you do not need to write any code yourself. Your only job is to notice two things:
+
+1.  **Code builds.** Each new line adds something to the plot.
+2.  **Small changes matter.** Change one word or one number, run it again, and the plot changes.
+
+::: callout-tip
+## Go: Read the step, look at the plot, then try it
+
+Each step below shows the code and the plot it makes. Under it is a **Try it** box where you can run the same code yourself and change one thing. You cannot break anything. If you get an error, reload the page and start again.
+:::
+
+```{webr-r}
+#| context: setup
+download.file("https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv", "insurance.csv")
+insurance <- read.csv("insurance.csv")
+library(ggplot2)
+```
+
+## Example Data: `insurance` {#example-data-insurance}
+
+The example dataset is from the "Medical Cost Personal Costs" database on Kaggle. For this chapter, we refer to it as `insurance`.
+
+In R, anything you give a name to is called an **object**. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. Here, the box is named `insurance`, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a **dataset**. Every time you see the word `insurance` in the code below, it means "use that dataset".
+
+### What do I do in this chapter?
+
+In this chapter you will see two kinds of gray boxes.
+
+A box with a small **clipboard icon** in its corner shows code and the result it made when this page was built. The clipboard copies the code so that you can paste it somewhere else. **You will not use the clipboard in this chapter.** There is nothing to copy, paste, or type. Here is an example:
+
+```{r}
+#| label: example-static-setup
+#| include: false
+insurance <- read.csv("data/insurance.csv")   # hidden: lets the example below show the same code as the live box
+```
+
+```{r}
+#| label: example-static-head
+head(insurance)
+```
+
+A box with a **Run Code** button is live. When you click the button, R runs that code inside your browser and shows you the result underneath. Try it now. Wait until the status at the top of the page says **Ready**, then click **Run Code**. You should see the same first six people in the dataset.
+
+```{webr-r}
+head(insurance)
+```
+
+That is all you do in this chapter: read the code, click **Run Code**, and watch what the code makes.
+
+### Load and Import
+
+These two lines *import* the data and *load* the `ggplot2` package. Think of **R** as a new **phone** and a ***package*** as an ***app***. A new **phone** can do a few things by itself, and ***apps*** add everything else. In the same way, **R** can do basic math and statistics, and `ggplot2` is the ***app*** that adds ***plots***. You install an ***app*** once, and you open it every time you want to use it. `library(ggplot2)` is how you open the ***app***.
+
+```{r}
+#| label: import-data-insurance
+insurance <- read.csv("data/insurance.csv")
+```
+
+```{r}
+#| label: load-library-ggplot2
+library(ggplot2)
+```
+
+### Look at the data
+
+Each row is one person. Each column is one variable, such as `age`, `smoker`, and `charges` (the person's medical costs).
+
+```{r}
+#| label: review-header
+head(insurance, 10)
+```
+
+## How do I visualize data in R?
+
+The `ggplot2` packages uses seven layers to produce plots/figures for your paper and team poster:
+
+1.  **Data**: The dataset you're visualizing
+
+2.  **Mapping**: Which variables go on which axes (aesthetics)
+
+3.  **Geometries**: The type of plot (points, lines, bars, etc.)
+
+4.  **Facets**: Subplots based on categorical variables
+
+5.  **Statistics**: Statistical transformations of the data
+
+6.  **Coordinates**: The coordinate system (usually Cartesian)
+
+7.  **Theme**: Visual styling and appearance
+
+[![source: \[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html)](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+
+## Color-Coded Learning Guide
+
+In this chapter, headings are color-coded to match the `ggplot2` layers:
+
+:::::::::: {style="display: flex; flex-direction: column; gap: 12px; max-width: 700px; margin: 20px 0;"}
+::: {style="padding: 12px 15px; background-color: #E69F00; color: white; border-radius: 8px;"}
+```         
+📊 Data: The dataset
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #56B4E9; color: white; border-radius: 8px;"}
+```         
+🗺️ Mapping: Which variables go where
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #009E73; color: white; border-radius: 8px;"}
+```         
+📍 Geometries: Points, bars, lines
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #F0E442; color: black; border-radius: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);"}
+```         
+📏 Scales/Statistics: Axes, calculations
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #0072B2; color: white; border-radius: 8px;"}
+```         
+🔲 Facets: Separate panels
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #D55E00; color: white; border-radius: 8px;"}
+```         
+📐 Coordinates: Coordinate system
+```
+:::
+
+::: {style="padding: 12px 15px; background-color: #CC79A7; color: white; border-radius: 8px;"}
+```         
+🎨 Theme: Visual appearance
+```
+:::
+::::::::::
+
+Watch for these colors as you build plots step-by-step! 🎨
+
+In summary, researchers construct a plot using `ggplot2` components in the same way a chef constructs lasagna in layers, one steps at a time.
+
+![*In ggplot2, add layers as you would in making lasagna*](images/ggplot2-lasagna.png)
+
+## Build One Plot, One Layer at a Time
+
+A histogram is the simplest plot: it shows how one variable is spread out. You will use histograms later to describe your data and to check whether it is normal. Watch how each line adds one layer.
+
+#### [Step 1: Set up data]{.data-layer}
+
+```{r}
+ggplot(data = insurance)
+```
+
+You get an empty gray box. R knows which data to use, but not what to draw.
+
+**Try it.** Click Run Code. You should see the same empty box.
+
+```{webr-r}
+ggplot(data = insurance)
+```
+
+#### [Step 2: Set up mapping]{.mapping-layer}
+
+A histogram needs only one variable, on the x axis.
+
+```{r}
+ggplot(data = insurance,
+       mapping = aes(x = charges))
+```
+
+Now the x axis has numbers, because R knows that `charges` goes there. There is still nothing drawn.
+
+**Try it.** Run the code. Then change `charges` to `age` and run it again. What changed on the x axis?
+
+```{webr-r}
+ggplot(data = insurance,
+       mapping = aes(x = charges))
+```
+
+#### [Step 3: Add geometry (bars)]{.layers-layer}
+
+```{r}
+ggplot(data = insurance,
+       mapping = aes(x = charges)) +
+  geom_histogram(bins = 30)
+```
+
+One more line, and the bars appear. The `+` at the end of a line means "and then add this".
+
+**Try it.** Run the code. Then change `30` to `5`, and then to `100`. Same data, same plot type, a very different picture.
+
+```{webr-r}
+ggplot(data = insurance,
+       mapping = aes(x = charges)) +
+  geom_histogram(bins = 30)
+```
+
+::: callout-warning
+## Caution: Don't start a line with `+`
+
+Layers are joined with a `+` at the **end** of a line. If a line **starts** with `+`, R runs the plot without that layer and then gives you an error. Look at the code above: the `+` comes at the end of the line, right before `geom_histogram()`.
+:::
+
+#### [Step 4: Add labels and a theme]{.theme-layer}
+
+```{r}
+#| label: plot-charges-histogram
+#| fig-cap: "Figure 1. A histogram of insurance charges. Most people have low charges and a few people have very high charges."
+#| fig-alt: "A histogram of insurance charges with a tall peak on the left and a long tail to the right."
+#| fig-height: 5
+#| fig-width: 7
+
+plot_charges <- ggplot(data = insurance,
+       mapping = aes(x = charges)) +
+  geom_histogram(bins = 30, fill = "#005a43", color = "white") +
+  ggtitle("Distribution of Insurance Charges") +
+  xlab("Insurance Charges") +
+  ylab("Number of People") +
+  theme_bw()
+
+plot_charges
+```
+
+**Try it.** Run the code. Then change `"#005a43"` to `"purple"`. Then delete the `+` at the end of one line and run it. You will get an error. That is normal: put the `+` back and run it again.
+
+```{webr-r}
+ggplot(data = insurance,
+       mapping = aes(x = charges)) +
+  geom_histogram(bins = 30, fill = "#005a43", color = "white") +
+  ggtitle("Distribution of Insurance Charges") +
+  xlab("Insurance Charges") +
+  ylab("Number of People") +
+  theme_bw()
+```
+
+::: callout-warning
+## Caution: Saving a plot does not show it
+
+`plot_charges <- ggplot(...)` saves the plot as an object in your environment. To see it, type the object's name on its own line (or use `print()`), like the last line of the code above.
+:::
+
+## What You Just Learned About Code
+
+- **Code runs from top to bottom**, one line at a time.
+- **Each line adds one thing.** You built a plot in four steps: data, mapping, bars, then labels and a theme.
+- **Small changes give different results.** One number changed the whole shape of the histogram.
+- **Errors are normal, and they can be fixed.** A missing `+` broke the plot, and putting it back fixed it.
+
+That is how all of the code in this playbook works, not only plots.
+
+## How Most Chapters Work
+
+You just watched a play and tried it in your browser. From here on, most chapters that use data give you three passes:
+
+1.  **The Play.** You watch: the chapter walks through the code with an example dataset, as this chapter did.
+2.  **The Lab.** You practice in RStudio with the lab dataset that everyone shares. Labs are not graded. Ref the Raccoon, the referee of this playbook, shows you the answer you should get, so you can check your own work.
+3.  **Your Turn.** You run the play with your own team's data. There is no Ref, but there is a checklist.
+
+To do The Lab and Your Turn, you need R and RStudio on your own computer. That is the next chapter: [RStudio Software](RStudio.qmd).
+
+## Come Back Later: Themes, Colors, and Saving a Plot
+
+Skip the rest of this chapter on your first read. Come back when you are making plots for your *RD Report*.
+
+### Pick One Theme
+
+`theme_bw()` controls the overall look of the plot. There are several [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html) to choose from.
+
+::: {.callout-important .required}
+## Required for Team Poster: pick one theme for your team
+
+Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in your individual reports and the team poster!
+:::
+
+::: {.callout-note collapse="true"}
+## Resources: colors in `ggplot2`
+
+- [4 ways to use colors in ggplot2 more efficiently](https://albert-rapp.de/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html)
+- [Dealing with colors in ggplot2](https://r-graph-gallery.com/ggplot2-color.html)
+- [Customizing ggplot2 color and fill scales](https://sjspielman.github.io/introverse/articles/color_fill_scales.html)
+- [How to use better colors in ggplot (youtube)](https://www.youtube.com/watch?v=ZVSbY4z7tMY)
+:::
+
+### Save Your Plot with `ggsave()` {#save}
+
+[ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. The plot is saved as a file inside your RStudio Project folder, so you can add it to your team poster.
+
+```{r}
+# Print and save to the plots folder
+print(plot_charges)
+ggsave("plots/plot1_charges_histogram.png", 
+       plot = plot_charges,
+       width = 10, height = 8, dpi = 300)
+```
+
+::: {.callout-important .required}
+## Required: `ggsave( )`
+
+Your *RD Report* and *Final Report* must include `ggsave( )` for plots, because you will want to easily export these plots and then add them onto your team poster. **You do not need to do this now.** You will do it later, with the plots you make from your team's real dataset. Here is how it will work:
+
+The use of `plots/` in the `ggsave()` code chunk saves the image into a folder called **plots** inside your project. If you do not have a **plots** folder yet, the console will ask you whether to create it: type "1" and click return/enter.
+
+In your **files tab**, click the **plots** folder to see your saved images.
+
+Then, upload the plot (and your other plots) to your team's google drive \> Team Survey Data \> Quant Data \> Plots. The image file is in the **plots** folder inside your `Lastname_FRI` project folder on your computer.
+
+![](images/ggplot2-ggsave.png){fig-alt="a screenshot of the console output after running the ggsave code"}
+
+![](images/ggplot2-ggsave-plotsfolder.png){fig-alt="a screenshot of the files tab showing the saved image files inside the plots folder"}
+:::
+
+::: callout-warning
+## Caution: Don't use spaces, colons, or slashes in file names
+
+Use letters, numbers, underscores (`_`), and hyphens (`-`) only: `plot1_charges_histogram.png` or `plot1-charges-histogram.png`. Do not use spaces, colons, or slashes in a file name. Some computers cannot save or open those files.
+:::

@@ -17,7 +17,7 @@ Whether you are facing a dataset for the first time or refining your analytical 
 
 ## The Purpose of the Course {.unnumbered}
 
-The purpose of the FRI Public Health courses is to develop your research skills: the conceptual skills to design a study, and the analytical skills to answer your own research questions with the right technique. This is not a statistics course or a programming course, but we have compiled many resources for you to explore if you want to learn more. We hope that you feel more motivated to learn programming skills (and add a Digital and Data Studies (DiDa) minor), enjoy learning a new data analysis skill (one that may inspire a career in epidemiology, biostatistics, or data science), and learn how to persist through some difficult moments with coding.
+The purpose of the FRI Public Health courses is to develop your research skills: the conceptual skills to design a study, and the analytical skills to answer your own research questions with the right technique. This is not a statistics course or a programming course, but we have compiled many resources for you to explore if you want to learn more. We hope that you enjoy learning a new data analysis skill (one that may inspire a career in epidemiology, biostatistics, or data science), feel more motivated to learn advanced programming skills (from the Digital and Data Studies [DiDa] minor), and learn how to troubleshoot and problem-solve during some difficult moments with coding.
 
 ## The Purpose of the Playbook {.unnumbered}
 
@@ -66,7 +66,7 @@ This playbook combines the two. You follow the workflow to **import, tidy, and t
 
 -   A web browser (Chrome, Firefox, Safari, or Edge) for interactive WebR examples
 
--   R and RStudio installed on your computer (see [RStudio Software](RStudio.qmd))
+-   R and RStudio installed on your computer (see [R Software](RStudio.qmd))
 
 **Background Knowledge:**
 
@@ -102,21 +102,19 @@ Nobody reads this playbook from front to back, and you do not need to learn ever
 
 Every colored box means the same thing in every chapter.
 
-| Color | Name | The question it answers |
+| Color | Name | The question it answers, and what to do |
 |-----------|---------------|----------------------------------------------|
-| [Red]{.key .key-red} | **Required** | What must be in my RD Report and Final Report? |
-| [Red]{.key .key-red} | **Important** | What do I have to know or do so that my work does not break? |
-| [Yellow]{.key .key-yellow} | **Caution** | Where do people go wrong? |
-| [Green]{.key .key-green} | **Go** | What is the recommended move? |
-| [Blue]{.key .key-blue} | **Resources** | Where can I get more help? (never required) |
-| [Gray]{.key .key-gray} | **Team** | What applies only to my team? (for example, your team's file names) Click to open. |
-| [Gray]{.key .key-gray} | | Also used for answers and checklists. Click to open. |
+| [Dark red 📝]{.key .key-darkred} | **Required** | What must be in my RD Report and Final Report? The paper-and-pencil icon means "this goes in your report, and it is graded." **Read every one.** |
+| [Red]{.key .key-red} | **Important** | What do I have to know or do so that my work does not break? Not graded on its own. **Read every one.** |
+| [Yellow]{.key .key-yellow} | **Caution** | Where do people go wrong? **Slow down.** |
+| [Green]{.key .key-green} | **Go** | What is the recommended move? **Follow it.** |
+| [Blue]{.key .key-blue} | **Resources** | Where can I get more help? Never required. **Open it only when you want more.** |
+| [Gray]{.key .key-gray} | **Team** | What applies only to my team? (for example, your team's file names) **Open the one with your team's name.** |
+| [Gray]{.key .key-gray} | | Also used for answers and checklists. **Click to open.** |
 
-**Read every [red]{.key .key-red} box. Follow [green]{.key .key-green}. Slow down at [yellow]{.key .key-yellow}. Open [blue]{.key .key-blue} only when you want more. Open the [gray]{.key .key-gray} box with your team's name.**
+Here is what the boxes look like in a chapter. The two red boxes are easy to confuse, so look for the paper and pencil: a [dark red]{.key .key-darkred} box with a 📝 is something graders check for; a [red]{.key .key-red} box with a ! is something to know or do so that your work does not break.
 
-Here is what the boxes look like in a chapter:
-
-::: callout-important
+::: {.callout-important .required}
 ## Required: a figure caption
 
 Every plot in your RD Report and Final Report needs a caption that starts with "Figure 1.", "Figure 2.", and so on.
@@ -163,7 +161,7 @@ McCarty, S. (Ed.). (2026). *The Quantitative Playbook for R: Plays for Public He
 
 Silhavy, A. & McCarty, S. (2026). Visualize a relationship: How to build scatterplots to show how two scores go together. In S. McCarty (Ed.), *The Quantitative Playbook for R: Plays for Public Health & Community Health Research* (2nd ed.). <https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html>
 
-### Editor and Chapter Authors {.unnumbered}
+### Editor, Chapter Authors, and Chapter Reviewers {.unnumbered}
 -   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)
 
 -   Chapter Authors
@@ -183,6 +181,16 @@ Silhavy, A. & McCarty, S. (2026). Visualize a relationship: How to build scatter
     -   Erica Sava
 
     -   Zach Spiegel
+
+    -   Yoomin (Ashley) Kim
+
+-   Chapter Reviewers
+
+    -   Danica Lyktey
+
+    -   Vivian Raposo
+
+    -   Anna Vishnevetsky
 
     -   Yoomin (Ashley) Kim
 

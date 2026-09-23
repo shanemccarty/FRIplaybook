@@ -1,0 +1,168 @@
+---
+title: "Compare 3+ Groups"
+subtitle: "ANOVA, Kruskal-Wallis, and ANCOVA"
+author:
+  - Shane McCarty, PhD
+abstract: |
+  This chapter shows researchers how to compare the average score of three or more groups with a one-way ANOVA, how to find out which groups differ with a Tukey follow-up test, how to use the Kruskal-Wallis test when the outcome is not normal, and how to add a covariate with an ANCOVA.
+keywords:
+  - ANOVA
+  - ANCOVA
+  - Tukey
+  - Kruskal-Wallis
+  - covariate
+  - comparison
+date: 09.20.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+execute:
+  cache: false   # this chapter reads lab_prep.R and the lab dataset; a cache would keep OLD data after they change
+  warning: false
+  message: false
+---
+
+## When do you use this chapter?
+
+Your research question is a **comparison**, and you have **three or more different groups** and **one continuous outcome**.
+
+| Test | Use it when |
+|--------------------|----------------------------------------------------|
+| **ANOVA** | three or more groups, outcome is normal |
+| **Kruskal-Wallis** | three or more groups, outcome is **not** normal |
+| **ANCOVA** | an ANOVA, plus one continuous variable you want to account for (a **covariate**), such as age |
+
+::: {.callout-tip}
+## Go: Do these two things first
+
+1.  Check whether your outcome is normal in [Describe Your Data](describe.qmd).
+2.  Make the barplot or violin plot in [Visualize a Comparison](visualize-comparison.qmd).
+:::
+
+## The example data
+
+The example uses the lab dataset and two questions.
+
+-   **Normal outcome (ANOVA and ANCOVA):** do people in poor or fair, good, and very good or excellent general health differ in well-being (`WELLBEING`)?
+-   **Outcome that is not normal (Kruskal-Wallis):** do people on the political left, in the middle, and on the right differ in how much they believe mental health problems have social causes (`SOCIAL`)?
+
+```{r}
+#| label: load-anova
+library(tidyverse)
+source("lab_prep.R")   # creates mh_clean
+
+mh_clean <- mh_clean |>
+  mutate(HEALTH_3 = factor(case_when(
+    HEALTHSTATUS %in% c(1, 2) ~ "Poor or fair",
+    HEALTHSTATUS == 3         ~ "Good",
+    HEALTHSTATUS %in% c(4, 5) ~ "Very good or excellent"),
+    levels = c("Poor or fair", "Good", "Very good or excellent")))   # the group must be a factor
+
+mh_clean |>
+  filter(!is.na(HEALTH_3)) |>
+  group_by(HEALTH_3) |>
+  summarise(n = n(),
+            mean = mean(WELLBEING, na.rm = TRUE),
+            sd = sd(WELLBEING, na.rm = TRUE))
+
+mh_lmr <- mh_clean |>
+  mutate(POL_LMR = case_when(
+    POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+    POLITICALBELIEFS == 3         ~ "Moderate",
+    POLITICALBELIEFS %in% c(4, 5) ~ "Right")) |>
+  filter(!is.na(POL_LMR)) |>                 # keep only the three groups
+  mutate(POL_LMR = factor(POL_LMR))          # the group must be a factor
+
+mh_lmr |>
+  group_by(POL_LMR) |>
+  summarise(n = n(),
+            mean = mean(SOCIAL, na.rm = TRUE),
+            sd = sd(SOCIAL, na.rm = TRUE))
+```
+
+::: {.callout-warning}
+## Caution: Don't leave your group as a number
+
+If the group is stored as 1, 2, 3, R treats it as a score and gives you a wrong answer with no error message. Make it a `factor()` first.
+:::
+
+::: {.callout-tip}
+## Go: Check the shape of your data
+
+`aov()` needs **one row per person**, with **one column for the outcome** and **one column for the group**. Most survey data already look like this, so there is nothing to change.
+
+You only need to reshape when the scores you want to compare sit in **separate columns** (for example, `score_time1`, `score_time2`, `score_time3`). Then use `pivot_longer()` from [Pre/Post Data](prepost.qmd) to stack them into one outcome column and one group column. Note that the same people measured three times is a repeated-measures design, which this chapter does not cover. Talk to your instructor.
+:::
+
+## ANOVA
+
+An ANOVA asks one question: is **at least one** group average different from the others?
+
+```{r}
+#| label: anova-model
+model_anova <- aov(WELLBEING ~ HEALTH_3, data = mh_clean)
+summary(model_anova)
+```
+
+Read the `HEALTH_3` row: `F value` is the test statistic, and `Pr(>F)` is the p-value. If p is smaller than .05, the groups are not all the same.
+
+### Which groups differ? The Tukey follow-up test
+
+A significant ANOVA does not tell you **which** groups differ. Run the follow-up test only when the ANOVA is significant.
+
+```{r}
+#| label: anova-tukey
+TukeyHSD(model_anova)
+```
+
+Each row compares two groups. `diff` is the difference between the two averages, and `p adj` is the p-value for that pair.
+
+## If your outcome is not normal: Kruskal-Wallis
+
+`SOCIAL` is skewed and does not pass the checks in [Describe Your Data](describe.qmd), so the political groups are compared with the Kruskal-Wallis test.
+
+```{r}
+#| label: kruskal
+kruskal.test(SOCIAL ~ POL_LMR, data = mh_lmr)
+```
+
+The follow-up test for a significant Kruskal-Wallis test compares the groups two at a time.
+
+```{r}
+#| label: kruskal-followup
+pairwise.wilcox.test(mh_lmr$SOCIAL, mh_lmr$POL_LMR, p.adjust.method = "holm")
+```
+
+## ANCOVA: add a covariate
+
+An ANCOVA asks the same question as an ANOVA **after accounting for** another continuous variable. Here the covariate is age. Put the covariate **first** in the formula.
+
+```{r}
+#| label: ancova-model
+model_ancova <- aov(WELLBEING ~ AGE + HEALTH_3, data = mh_clean)
+summary(model_ancova)
+```
+
+Read the `HEALTH_3` row the same way as before. It now means "do the groups differ, for people of the same age?"
+
+::: {.callout-warning}
+## Caution: Three things to know about ANCOVA
+
+-   The order in the formula matters in `aov()`. The covariate goes first, and the group goes last.
+-   People who are missing the covariate are dropped, so your n can get smaller. Check it with `nobs(model_ancova)`.
+-   An ANCOVA is a linear regression with a categorical predictor. See [Relate 3+ Variables](regression.qmd) for how to read slopes and check residuals.
+:::
+
+## Report it
+
+> A one-way ANOVA showed that \_\_\_\_\_\_\_\_ (differed / did not differ) across \_\_\_\_\_\_\_\_ groups, F(\_\_, \_\_) = \_\_\_, p = \_\_\_. A Tukey follow-up test showed that \_\_\_\_\_\_\_\_ scored higher than \_\_\_\_\_\_\_\_ (p = \_\_\_).
+
+For an ANCOVA, add: "after accounting for \_\_\_\_\_\_\_\_".
+
+::: {.callout-warning}
+## Caution: Different does not mean caused
+
+A survey comparison tells you that groups differ. It does not tell you why. Write "differed" or "scored higher", not "caused" or "led to".
+:::

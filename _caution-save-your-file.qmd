@@ -1,0 +1,20 @@
+<!-- Single source for the "save before you close" caution. Included in RStudio.qmd, codechunks.qmd (ch. 5), and find-the-ref.qmd (ch. 6). Edit it here only. -->
+
+::: callout-warning
+## Caution: Save your file before you close RStudio
+
+RStudio does not save your `.qmd` or `.R` file for you. If the file name on its tab is **red with a \***, your latest changes exist only on the screen, and closing RStudio throws them away. Two different questions come up when you quit, and they need opposite answers.
+
+**Do this**
+
+-   Press **Cmd + S** (Mac) or **Ctrl + S** (Windows) every few minutes, and always before you Render. The file name on the tab turns black when it is saved.
+-   Before you quit, click **File \> Save All**.
+-   If RStudio asks *"Save changes to report.qmd?"*, click **Save**. That question is about your file.
+-   Copy your `.qmd` and `.R` files to your ELN at the end of every session ([Find the Ref](find-the-ref.qmd)).
+
+**Do not do this**
+
+-   Do not close RStudio, or your laptop, while a file name is still red.
+-   Do not click **Don't Save** when the question names a file (`report.qmd`, `install.R`). Only the question about the **workspace** (`.RData`) gets **Don't Save**: the workspace is leftovers, and your file is the recipe.
+-   Do not rely on Render to save for you. It usually does, but only for the file you rendered, and only if the render starts.
+:::

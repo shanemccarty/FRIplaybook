@@ -55,13 +55,28 @@ When you close RStudio, the countertop is wiped clean. The recipe and the grocer
 Every time you sit down to work, start with an empty Environment and re-run your code from the top. It takes about a minute, and it proves that your work is reproducible.
 :::
 
+### How to clean the counter
+
+Objects from earlier work (`alldata`, `select_data`, `VARIABLE1`) stay in the **environment tab** until you clear them. If you turned off "Restore .RData" in [R Software](RStudio.qmd), the counter is already clean every time you open RStudio. During a session, there are two ways to wipe it:
+
+-   **Session \> Restart R.** This is the cleanest option: it empties the environment *and* unloads every package, so what happens next is exactly what a render will see.
+-   **`rm(list = ls())`** in the console. This removes every object but leaves packages loaded. Use it when you want a quick reset without restarting.
+
+```{r}
+# Remove all objects from the global environment
+rm(list = ls())
+```
+
+Then run your load-library chunk and continue from the top.
+
 ## Once per computer
 
 You did most of this when you first set up your computer. You do **not** repeat it each time.
 
--   Install R and RStudio ([RStudio Software](RStudio.qmd))
+-   Install R and RStudio ([R Software](RStudio.qmd))
 -   Create your RStudio Project, `Lastname_FRI`
--   Run your `install.R` file to install your packages ([Install and Load Packages](library.qmd))
+-   Run your `install.R` file to install your packages ([R Packages](library.qmd))
+-   Create your first report file, with its load-library chunk ([Start a Report](codechunks.qmd)). You repeat this once per lab, not per session.
 -   Create a folder called **R Labs** inside your individual ELN (your Google Drive folder). In Google Drive, open your ELN and click + New \> New folder.
 
 ## Ref's kickoff: every time you start RStudio
@@ -71,26 +86,18 @@ You did most of this when you first set up your computer. You do **not** repeat 
 ::: callout-tip
 ## Go: Starting a new lab? Make a new file first
 
-The six steps above are for a day when you **continue** a file you already started. On a day when you **start a new lab** (or a new report), there is no file to open yet, so steps 3 to 6 change:
-
-1.  Do steps 1 and 2 above, so that you are inside your project.
-2.  Make a new, empty report file: File \> New File \> Quarto Document..., then click Create.
-3.  Save it right away: File \> Save As..., and name it for the lab, for example `Lastname_lab3.qmd`. Check that it shows up in your **files tab**. If it does, it is inside your project folder.
-4.  Add your packages to the new file. A new `.qmd` file starts out empty, so it has no `library()` lines yet, and without them R cannot use `ggplot2` or any other package in this file. You already wrote those lines once, so copy them:
-    a.  Open your last lab file (for example, `Lastname_lab2.qmd`).
-    b.  Find the first gray code box near the top. It is the one with lines such as `library(tidyverse)`.
-    c.  Copy that whole box, from the line that starts with ```` ```{r} ```` to the line with ```` ``` ````.
-    d.  Go back to your new file and paste it at the top, under the title section.
-
-    Lab 2 is your first file (there is no file for Lab 1), so there is nothing to copy from yet. For Lab 2, type your `library()` lines as shown in [Install and Load Packages](library.qmd#sec-load-block).
-5.  Run that chunk with the green ▶ arrow, and start the lab.
+The six steps above are for a day when you **continue** a file you already started. On the first day of a new lab there is no file to open yet. Do steps 1 and 2, then create and name the new `.qmd` file and paste in your load-library chunk exactly as in [Start a Report](codechunks.qmd) (the previous chapter). Save it, check that it appears in the files tab, and pick up at step 4.
 :::
 
-## Ref's final whistle: before you leave
+## Ref's final whistle: before you quit RStudio
 
 Keep counting. Steps 7 to 10 finish your session and back up your work.
 
 {{< include _ref-finish-steps.qmd >}}
+
+{{< include _caution-save-your-file.qmd >}}
+
+{{< include _important-fresh-run.qmd >}}
 
 ::: callout-important
 ## Important: Your ELN is your backup
@@ -111,6 +118,17 @@ Laptops get lost, broken, and replaced. Your individual ELN is a Google Drive fo
 
 Still stuck? Restart R (Session \> Restart R) and start again at step 4. A fresh start fixes more problems than you would expect.
 
+## Ref's Quick Checklist {#sec-ref-checklist}
+
+The whole routine on one line each. The first row happens once; the next two happen every time you code. Every coding chapter from here on opens and closes with a gray Ref box that links back to this list.
+
+| | Step | Do |
+|--|--|----|
+| 🛠️ | **Once per computer** (not every session) | Install R and RStudio → Create `Lastname_FRI` project → **Source `install.R`**. Source it again only when a chapter adds a new package, or R says `there is no package called ...` |
+| 🏁 | **Kickoff** | **Open Project** (`Lastname_FRI.Rproj`) → **Open `.qmd`** → **Run load-library chunk** → **Run All Chunks Above** → **Code** |
+| 🔔 | **Final whistle** | **Save** (Cmd/Ctrl + S) → **Render** → **Back up to ELN** (R Labs folder) → **Quit, Don't Save workspace** |
+| 🚑 | **Something wrong?** | Session \> Restart R, then start at the kickoff. Still stuck: the table above. |
+
 ## Where you will find Ref in this playbook
 
 Most chapters that use data have the same three sections, and you will go through them with three different datasets.
@@ -123,7 +141,7 @@ Most chapters that use data have the same three sections, and you will go throug
 
 Ref does not talk all the time. Look for him in these places:
 
--   **Ref's kickoff** opens The Lab, and **Ref's final whistle** closes it. They are short reminders of the routine in this chapter.
+-   **Ref's kickoff** opens every coding chapter and The Lab, and **Ref's final whistle** closes them. They are one-line reminders that link to the Quick Checklist above.
 -   **Ref's check** boxes in The Lab show you the answer you should get, so you can check your own work. Try the play first, then open the box.
 -   A **foul** is a mistake that gives you a wrong answer *without* any error message. These are the mistakes you cannot catch on your own, so Ref blows the whistle.
 -   In **Your Turn**, there is no Ref. It's game time! You run the play with your own data and check your own work with the same checklist your instructor uses.

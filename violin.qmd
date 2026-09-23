@@ -40,6 +40,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ------------------------------------------------------------------------
 
 ::: {.callout-note collapse="true"}
@@ -247,3 +249,5 @@ There are many different ways to create raincloud plots:
 Now you can confidently create your own violin and raincloud plots in R!!!
 
 ![](images/violin-cat.png){width="50%" height="50%"}
+
+{{< include _ref-whistle-box.qmd >}}

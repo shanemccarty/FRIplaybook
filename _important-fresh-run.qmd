@@ -1,0 +1,14 @@
+<!-- Single source for the "fresh run before you submit" rule. Included in find-the-ref.qmd and quartopub.qmd. Edit it here only. -->
+
+::: callout-important
+## Important: Close the project, reopen it, and run everything before you submit
+
+Code that worked while you were editing can still fail from a clean start, because something you ran earlier by hand (a package, an object, a data file in the wrong place) was propping it up. Before you submit your *RD Report* or *Final Report*, and before you publish it, prove that it runs on its own:
+
+1.  **Close the project:** File \> Close Project. If RStudio asks about the workspace, choose **Don't Save**.
+2.  **Open the project fresh:** double-click `Lastname_FRI.Rproj`. The environment tab should be empty.
+3.  **Run all of the code from the top.** For a `.qmd` report, click **Render**; it starts a fresh R session and runs every chunk from the first line to the last, the same job **Source** does for an `.R` script.
+4.  **Check the result.** The report should open with every plot, table, and number in place, and the console should show no errors. If it stops, fix the first error, then start again from step 1.
+
+Only when a fresh run works from top to bottom is the report ready to submit and publish. If it works on your computer this way, it will work on your instructor's.
+:::

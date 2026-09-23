@@ -1,0 +1,547 @@
+---
+title: "Relate 3+ Variables"
+subtitle: "Linear regression: how to run it and report it"
+author:
+  - Allison Anemone
+  - Andrew Silhavy
+  - Shane McCarty, PhD
+abstract: |
+  This chapter teaches researchers to examine a relationship question with a linear regression in R. Researchers start with a simple regression (one predictor and one outcome), learn to read the intercept, the slope, the p-value, and R-squared, and then add more predictors to build a multiple linear regression, including a categorical predictor such as gender. The chapter shows how to check the residuals, how to report a regression in a sentence and in a table, and which common shortcuts to avoid (leaving a category as a number, and cutting a score into two groups). In The Lab, researchers run three models with the lab dataset (one predictor, a binary predictor, and a dummy-coded predictor) and check their own answers. In Your Turn, researchers use a copy-ready template and a checklist for their own research question.
+keywords:
+  - linear regression
+  - multiple regression
+  - lm
+  - predictors
+  - residuals
+  - relationship
+date: 09.20.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+execute:
+  cache: false   # this chapter reads lab_prep.R and the lab dataset; a cache would keep OLD data after they change
+  warning: false
+  message: false
+---
+
+::: {.callout-note collapse="true"}
+## Resources: regression
+
+-   [ModernDive Ch. 5: Basic Regression](https://moderndive.com/v2/regression.html)
+-   [ModernDive Ch. 6: Multiple Regression](https://moderndive.com/v2/multiple-regression.html)
+-   [Documentation for `lm()`](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/lm.html)
+:::
+
+## How This Chapter Works
+
+You will go through this chapter three times, with three different datasets.
+
+| Pass | Section | Dataset | What you do |
+|------|-----------|-------------|--------------------------------------------|
+| 1 | [The Play](#the-play) | `pregnancy` (example, simulated) | **Watch the play.** Read the code and the output, step by step. |
+| 2 | [The Lab](#sec-regression-lab) | lab dataset | **Run the play.** Run two regressions yourself during the R Lab, then check your own work. Labs are not graded. |
+| 3 | [Your Turn](#sec-regression-yourturn) | your team's dataset | **Call your own play.** After you finish all of the R Labs, come back and run the regression for your own research question. |
+
+::: {.callout-tip}
+## Go: Know your route first
+
+This chapter is the last step on [The Analysis Map](analysis-map.qmd) for a **relationship** question with **three or more variables**: one outcome that is a score, and two or more predictors. Make your scatterplot first in [Visualize a Relationship](visualize-relationship.qmd).
+:::
+
+## 📋 The Play {#the-play}
+
+### Example Data: `pregnancy`
+
+The example comes from an FRI Public Health team that surveyed people about health beliefs during pregnancy. One of their questions was: **do people with lower social status perceive more barriers to following health advice during pregnancy, after we account for their age and gender?**
+
+::: {.callout-warning}
+## Caution: This example dataset is simulated
+
+To protect the people who took the team's survey, the file used in this chapter does **not** contain their answers. It is a *simulated* dataset: a computer generated every row so that the variables and their averages look like the team's data. Use it to learn the play. Do not cite its results.
+:::
+
+| Variable | What it is | Values |
+|-------------|----------------------------------|-----------------------|
+| `BARRIERS` | the **outcome**: perceived barriers (the mean of 9 survey items) | 1 = low to 5 = high |
+| `SSS` | subjective social status (a ladder with 10 rungs) | 1 = bottom to 10 = top |
+| `AGE` | age in years | 18 and up |
+| `GENDER` | gender | 1 = Woman, 2 = Man |
+
+### Load and Import
+
+```{r}
+#| label: load-library-regression
+library(tidyverse)
+```
+
+```{r}
+#| label: import-pregnancy
+pregnancy <- read.csv("data/pregnancy_beliefs_SIMULATED.csv")
+
+summary(pregnancy)
+```
+
+Look at the minimum of `SSS` and `GENDER`. A value of -99 is not a real answer. It is the code for "Prefer not to answer", and it has to become missing (`NA`) before you analyze anything.
+
+### Step 1: Get the data ready
+
+```{r}
+#| label: clean-pregnancy
+pregnancy <- pregnancy |>
+  mutate(
+    SSS    = na_if(SSS, -99),                       # -99 becomes NA (missing)
+    GENDER = na_if(GENDER, -99),
+    GENDER = factor(GENDER,                         # tell R that GENDER is a category
+                    levels = c(1, 2),
+                    labels = c("Woman", "Man")))
+
+summary(pregnancy)
+```
+
+::: {.callout-warning}
+## Caution: Don't leave a category as a number
+
+In the data file, `GENDER` is stored as the numbers 1 and 2. If you leave it that way, R treats gender as a *score*, as if a man were "one unit more" than a woman. `factor()` tells R that the numbers are labels for groups. Do this for **every** categorical predictor before you run a regression.
+:::
+
+### Step 2: Look before you test
+
+Always make the plot first (see [Visualize a Relationship](visualize-relationship.qmd)). `BARRIERS` is a mean of survey items, so points can stack. Jitter them.
+
+```{r}
+#| label: plot-sss-barriers
+#| fig-cap: "Figure 1. Subjective social status and perceived barriers in the simulated pregnancy dataset. Points are jittered; the line is a linear line of best fit."
+#| fig-alt: "A scatterplot with subjective social status on the x axis and perceived barriers on the y axis. The line of best fit slopes downward."
+#| fig-height: 5
+#| fig-width: 7
+
+plot_sss_barriers <- ggplot(
+  data = pregnancy,
+  mapping = aes(
+    x = SSS,
+    y = BARRIERS)) +
+  geom_jitter(width = 0.15, height = 0.05, alpha = 0.6) +
+  geom_smooth(method = "lm") +
+  xlim(1, 10) +
+  ylim(1, 5) +
+  ggtitle("Social Status and Perceived Barriers") +
+  xlab("Subjective social status (1 = bottom rung, 10 = top rung)") +
+  ylab("Perceived barriers (1 = low, 5 = high)") +
+  theme_bw()
+
+plot_sss_barriers
+```
+
+The line slopes downward: people who place themselves higher on the ladder report fewer barriers. A regression puts a number on that line and tests it.
+
+### Step 3: One predictor (simple regression)
+
+The function is `lm()`, which stands for *linear model*. Read the formula `BARRIERS ~ SSS` as "**`BARRIERS` is predicted by `SSS`**". The outcome always goes on the left of the `~`.
+
+```{r}
+#| label: model-simple
+model_simple <- lm(BARRIERS ~ SSS, data = pregnancy)
+
+summary(model_simple)
+```
+
+```{r}
+#| label: model-simple-values
+#| echo: false
+cs <- summary(model_simple)$coefficients
+```
+
+How to read the output:
+
+-   **`(Intercept)`, Estimate = `r sprintf("%.2f", cs[1, 1])`.** This is where the line starts: the predicted `BARRIERS` score for a person whose `SSS` is 0. It is rarely interesting by itself.
+-   **`SSS`, Estimate = `r sprintf("%.2f", cs[2, 1])`.** This is the **slope**, and it is the number you care about. For every one rung higher on the ladder, the predicted `BARRIERS` score goes *down* by `r sprintf("%.2f", abs(cs[2, 1]))` points. A negative slope is a line that goes down. A positive slope is a line that goes up.
+-   **`Pr(>|t|)`** is the **p-value** for that slope. Here it is `r ifelse(cs[2, 4] < .001, "less than .001", sprintf("%.3f", cs[2, 4]))`, which is smaller than .05, so the relationship is statistically significant.
+-   **`Multiple R-squared` = `r sprintf("%.2f", summary(model_simple)$r.squared)`.** `SSS` explains about `r round(summary(model_simple)$r.squared * 100)`% of the differences between people in `BARRIERS`. In survey research, small values like this are common.
+-   At the bottom, R tells you how many people were left out because of missing answers. Report the number of people who were *in* the model: `nobs(model_simple)` = `r nobs(model_simple)`.
+
+### Step 4: Three predictors (multiple regression)
+
+To add predictors, add them to the formula with `+`. This answers the team's real question: is social status still related to barriers **after we account for** age and gender?
+
+```{r}
+#| label: model-multiple
+model_multiple <- lm(BARRIERS ~ SSS + AGE + GENDER, data = pregnancy)
+
+summary(model_multiple)
+```
+
+```{r}
+#| label: model-multiple-values
+#| echo: false
+cm <- summary(model_multiple)$coefficients
+pfmt <- function(p) ifelse(p < .001, "< .001", paste("=", sub("^0", "", sprintf("%.3f", p))))
+```
+
+Each slope now means "the change in `BARRIERS` for one more unit of this predictor, **when the other predictors stay the same**."
+
+-   **`SSS`** (b = `r sprintf("%.2f", cm["SSS", 1])`, p `r pfmt(cm["SSS", 4])`): still negative and still significant. Social status is related to barriers even when you compare people of the same age and gender.
+-   **`AGE`** (b = `r sprintf("%.3f", cm["AGE", 1])`, p `r pfmt(cm["AGE", 4])`): the slope is almost zero and the p-value is larger than .05. Age is not related to barriers in this sample.
+-   **`GENDERMan`** (b = `r sprintf("%.2f", cm["GENDERMan", 1])`, p `r pfmt(cm["GENDERMan", 4])`): for a category, R picks the first group (`Woman`) as the comparison group and reports how different the *other* group is. Men scored `r sprintf("%.2f", abs(cm["GENDERMan", 1]))` points `r ifelse(cm["GENDERMan", 1] > 0, "higher", "lower")` than women, and that difference is not significant.
+-   **n = `r nobs(model_multiple)`.** A person is dropped if they are missing **any** variable in the model, so the more predictors you add, the fewer people you keep.
+
+::: {.callout-warning}
+## Caution: Related does not mean caused
+
+A regression on survey data tells you that two things go together. It does not tell you that one *causes* the other. Write "is related to", "is associated with", or "predicts". Do not write "leads to", "affects", or "causes".
+:::
+
+### Step 5: Check the residuals
+
+A **residual** is how far each person is from the line. A linear regression works best when the residuals are roughly bell-shaped (normal). This is the "is it normal?" question from the Analysis Map, asked about the residuals and not about the raw scores.
+
+```{r}
+#| label: plot-residuals
+#| fig-cap: "Figure 2. Histogram of the residuals from the multiple regression. The shape is roughly bell-shaped."
+#| fig-alt: "A histogram of regression residuals centered on zero with a roughly symmetric bell shape."
+#| fig-height: 4
+#| fig-width: 6
+
+ggplot(data = data.frame(residual = resid(model_multiple)),
+       mapping = aes(x = residual)) +
+  geom_histogram(bins = 20, fill = "#005a43", color = "white") +
+  xlab("Residual (actual score minus predicted score)") +
+  ylab("Number of people") +
+  theme_bw()
+```
+
+If your histogram has one long tail or two humps, talk to your instructor before you report the model.
+
+### Step 6: Report it
+
+Report the slope (b), the p-value, and the number of people for each predictor, and R-squared for the whole model.
+
+> A multiple linear regression (n = `r nobs(model_multiple)`) showed that subjective social status was negatively associated with perceived barriers (b = `r sprintf("%.2f", cm["SSS", 1])`, p `r pfmt(cm["SSS", 4])`), after accounting for age and gender. Age (b = `r sprintf("%.3f", cm["AGE", 1])`, p `r pfmt(cm["AGE", 4])`) and gender (b = `r sprintf("%.2f", cm["GENDERMan", 1])`, p `r pfmt(cm["GENDERMan", 4])`) were not significantly associated with perceived barriers. Together, the three predictors explained `r round(summary(model_multiple)$r.squared * 100)`% of the variance in perceived barriers (R² = `r sub("^0", "", sprintf("%.2f", summary(model_multiple)$r.squared))`).
+
+You can also print the coefficients as a table:
+
+```{r}
+#| label: table-regression
+knitr::kable(summary(model_multiple)$coefficients,
+             digits = 3,
+             caption = "Table 1. Multiple linear regression predicting perceived barriers.")
+```
+
+::: {.callout-warning}
+## Caution: Don't cut your score into two groups
+
+It is tempting to turn a score into "high" and "low" (or 0 and 1) and then run a regression on the 0s and 1s. Don't. You throw away most of the information in your score, the cut point is arbitrary, and small groups give unstable results. Keep your outcome as a score and use `lm()`. If your outcome really *is* a category (yes or no), `lm()` is the wrong tool: you need a logistic regression, which is not covered in this playbook. Talk to your instructor.
+:::
+
+```{r}
+#| label: lab-setup
+#| include: false
+source("lab_prep.R")   # creates mh_raw and mh_clean from the lab dataset
+```
+
+## 🏈 The Lab {#sec-regression-lab}
+
+You watched the play above with the simulated `pregnancy` dataset (Pass 1). Now run three plays yourself with the **lab dataset**, a survey about what people believe about mental health.
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** This lab is not graded, so I am here to help you check your own work. Try each play **before** you open my check or the solution. If your answer does not match, that is not a penalty. It is how you find out what to fix.
+:::
+::::::
+
+| Lab play | What is new |
+|----------------|------------------------------------------------|
+| Draw Left | one predictor: read a slope, a p-value, and R-squared |
+| Draw Right | add a **binary** predictor (two groups) |
+| Draw Middle | add a **dummy-coded** predictor (five groups) |
+
+All three plays use the same outcome: positive mental well-being (`WELLBEING`, the average of 8 items, 1 to 5). The first predictor is always perceived social support (`SUPPORT`, the average of 8 items, 1 to 5).
+
+**Before you start**
+
+1.  Open your RStudio Project and your lab `.qmd` file.
+2.  Load the clean lab data by running this chunk. It runs the cleaning script you built in the earlier labs.
+
+```{r}
+#| label: lab-load
+#| eval: false
+source("lab_prep.R")   # creates mh_clean
+nrow(mh_clean)         # how many people are in the clean dataset?
+```
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how many rows?
+
+`nrow(mh_clean)` should be **`r nrow(mh_clean)`**.
+:::
+
+### Lab Play 1: Draw Left (one predictor)
+
+**Research question:** Do people with more social support (`SUPPORT`) report higher well-being (`WELLBEING`)?
+
+**Your task:** Make a scatterplot with `SUPPORT` on the x axis and `WELLBEING` on the y axis, with a line of best fit. Then run the simple regression with `lm()` and `summary()`. Write down the slope for `SUPPORT`, its p-value, R-squared, and the number of people in the model.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
+
+```{r}
+#| label: lab-check-play1
+#| echo: false
+lab_m1 <- lm(WELLBEING ~ SUPPORT, data = mh_clean)
+c1 <- summary(lab_m1)$coefficients
+```
+
+-   Your line of best fit should go **up**: more support, higher well-being.
+-   Slope for `SUPPORT`: **b = `r sprintf("%.2f", c1["SUPPORT", 1])`**. For every one point higher in social support, predicted well-being is `r sprintf("%.2f", abs(c1["SUPPORT", 1]))` points `r ifelse(c1["SUPPORT", 1] < 0, "lower", "higher")`.
+-   p-value: **p `r pfmt(c1["SUPPORT", 4])`**, so the relationship is `r ifelse(c1["SUPPORT", 4] < .05, "statistically significant", "not statistically significant")`.
+-   R-squared: **`r sprintf("%.2f", summary(lab_m1)$r.squared)`**. Social support explains about `r round(summary(lab_m1)$r.squared * 100)`% of the differences in well-being.
+-   People in the model: **n = `r nobs(lab_m1)`**.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-solution-play1
+#| fig-cap: "Figure 3. Social support and well-being in the lab dataset. The line is a linear line of best fit."
+#| fig-alt: "A scatterplot with social support on the x axis and well-being on the y axis. The line of best fit slopes upward."
+#| fig-height: 5
+#| fig-width: 7
+ggplot(data = mh_clean,
+       mapping = aes(x = SUPPORT, y = WELLBEING)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm") +
+  xlab("Perceived social support (1 to 5)") +
+  ylab("Positive mental well-being (1 to 5)") +
+  theme_bw()
+
+model_lab_1 <- lm(WELLBEING ~ SUPPORT, data = mh_clean)
+
+summary(model_lab_1)
+nobs(model_lab_1)
+```
+:::
+
+### Lab Play 2: Draw Right (add a binary predictor)
+
+**Research question:** After we account for social support, does well-being differ between People of Color and White respondents?
+
+The survey asked one question about racial/ethnic identity (`RACE`):
+
+| Code | Answer                                 |
+|------|----------------------------------------|
+| 1    | American Indian or Alaska Native       |
+| 2    | Asian                                  |
+| 3    | Black or African American              |
+| 4    | Hispanic or Latino                     |
+| 5    | Middle Eastern or North African        |
+| 6    | Native Hawaiian or Pacific Islander    |
+| 7    | White                                  |
+| -99  | Prefer Not To Say (already `NA` in `mh_clean`) |
+
+A **binary** predictor has two groups. **Your task:**
+
+1.  Use `mutate()`, `case_when()`, and `factor()` to make a new variable `POC` with two groups: `"White"` (code 7) and `"Person of color"` (codes 1 to 6). List `"White"` first in `levels =` so that it is the comparison group.
+2.  Check your work with `count(RACE, POC)`.
+3.  Run `lm(WELLBEING ~ SUPPORT + POC)`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
+
+```{r}
+#| label: lab-check-play2
+#| echo: false
+mh_clean <- mh_clean |>
+  mutate(POC = factor(case_when(RACE == 7      ~ "White",
+                                RACE %in% 1:6  ~ "Person of color"),
+                      levels = c("White", "Person of color")))
+lab_m2 <- lm(WELLBEING ~ SUPPORT + POC, data = mh_clean)
+c2 <- summary(lab_m2)$coefficients
+knitr::kable(count(mh_clean, POC), col.names = c("POC", "n"))
+knitr::kable(c2, digits = 3)
+```
+
+-   The row is named `POCPerson of color`. R adds the name of the group to the name of the variable. The group you do **not** see (`White`) is the comparison group.
+-   **b = `r sprintf("%.2f", c2["POCPerson of color", 1])`, p `r pfmt(c2["POCPerson of color", 4])`**: at the same level of social support, People of Color scored `r sprintf("%.2f", abs(c2["POCPerson of color", 1]))` points `r ifelse(c2["POCPerson of color", 1] < 0, "lower", "higher")` in well-being than White respondents.
+-   `SUPPORT` is still positive and significant (b = `r sprintf("%.2f", c2["SUPPORT", 1])`, p `r pfmt(c2["SUPPORT", 4])`).
+-   People in the model: **n = `r nobs(lab_m2)`**. That is `r nobs(lab_m1) - nobs(lab_m2)` fewer than in Lab Play 1, because `r nobs(lab_m1) - nobs(lab_m2)` people chose "Prefer Not To Say".
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-solution-play2
+mh_clean <- mh_clean |>
+  mutate(POC = factor(case_when(RACE == 7      ~ "White",
+                                RACE %in% 1:6  ~ "Person of color"),
+                      levels = c("White", "Person of color")))
+
+mh_clean |>
+  count(RACE, POC)        # ALWAYS check a transformation
+
+model_lab_2 <- lm(WELLBEING ~ SUPPORT + POC, data = mh_clean)
+
+summary(model_lab_2)
+nobs(model_lab_2)
+```
+:::
+
+::: {.callout-warning}
+## Caution: A group difference is not an explanation
+
+This model tells you that two groups differ. It does not tell you why. In public health, differences between racial and ethnic groups point to differences in people's conditions and experiences (for example, discrimination or access to care). They are not caused by the identity itself. Write "scored lower than", and use your literature review to discuss why.
+:::
+
+### Lab Play 3: Draw Middle (add a dummy-coded predictor)
+
+**Research question:** Two groups hide a lot. Does the difference in well-being look the same for every racial/ethnic group?
+
+A predictor with three or more groups has to be **dummy coded**: one 0/1 column for every group except the comparison group. You do not need to make those columns. When the predictor is a `factor()`, `lm()` makes them for you, and you get one row in the output for each group (compared with the first level).
+
+**Your task:**
+
+1.  Count the people in each `RACE` group. Three groups are very small (codes 1, 5, and 6). Combine them into `"Another identity"`.
+2.  Make `RACE_5`, a factor with five levels in this order: `"White"`, `"Asian"`, `"Black"`, `"Hispanic or Latino"`, `"Another identity"`.
+3.  Run `lm(WELLBEING ~ SUPPORT + RACE_5)`, make a histogram of the residuals, and write one sentence that reports the result.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
+
+```{r}
+#| label: lab-check-play3
+#| echo: false
+mh_clean <- mh_clean |>
+  mutate(RACE_5 = factor(case_when(RACE == 7            ~ "White",
+                                   RACE == 2            ~ "Asian",
+                                   RACE == 3            ~ "Black",
+                                   RACE == 4            ~ "Hispanic or Latino",
+                                   RACE %in% c(1, 5, 6) ~ "Another identity"),
+                         levels = c("White", "Asian", "Black",
+                                    "Hispanic or Latino", "Another identity")))
+lab_m3 <- lm(WELLBEING ~ SUPPORT + RACE_5, data = mh_clean)
+c3 <- summary(lab_m3)$coefficients
+knitr::kable(count(mh_clean, RACE_5), col.names = c("RACE_5", "n"))
+knitr::kable(c3, digits = 3)
+```
+
+-   You should see **four** `RACE_5` rows. Each one compares that group with White respondents, at the same level of social support.
+-   Asian (b = `r sprintf("%.2f", c3["RACE_5Asian", 1])`, p `r pfmt(c3["RACE_5Asian", 4])`) and Black (b = `r sprintf("%.2f", c3["RACE_5Black", 1])`, p `r pfmt(c3["RACE_5Black", 4])`) respondents scored significantly lower than White respondents. Hispanic or Latino respondents did not differ significantly (b = `r sprintf("%.2f", c3["RACE_5Hispanic or Latino", 1])`, p `r pfmt(c3["RACE_5Hispanic or Latino", 4])`). The binary variable in Lab Play 2 hid this.
+-   "Another identity" (b = `r sprintf("%.2f", c3["RACE_5Another identity", 1])`, p `r pfmt(c3["RACE_5Another identity", 4])`) has only `r sum(mh_clean$RACE_5 == "Another identity", na.rm = TRUE)` people. With a group this small, a real difference is hard to detect. Report the count, and do not read much into this row.
+-   People in the model: **n = `r nobs(lab_m3)`**. R-squared: **`r sprintf("%.2f", summary(lab_m3)$r.squared)`**.
+-   Your residual histogram should be roughly bell-shaped and centered on zero.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-solution-play3
+#| fig-cap: "Figure 4. Histogram of the residuals from the lab regression."
+#| fig-alt: "A histogram of regression residuals from the lab dataset, centered on zero and roughly bell-shaped."
+#| fig-height: 4
+#| fig-width: 6
+mh_clean |>
+  count(RACE)             # which groups are very small?
+
+mh_clean <- mh_clean |>
+  mutate(RACE_5 = factor(case_when(RACE == 7            ~ "White",
+                                   RACE == 2            ~ "Asian",
+                                   RACE == 3            ~ "Black",
+                                   RACE == 4            ~ "Hispanic or Latino",
+                                   RACE %in% c(1, 5, 6) ~ "Another identity"),
+                         levels = c("White", "Asian", "Black",
+                                    "Hispanic or Latino", "Another identity")))
+
+model_lab_3 <- lm(WELLBEING ~ SUPPORT + RACE_5, data = mh_clean)
+
+summary(model_lab_3)
+nobs(model_lab_3)
+
+ggplot(data = data.frame(residual = resid(model_lab_3)),
+       mapping = aes(x = residual)) +
+  geom_histogram(bins = 20, fill = "#005a43", color = "white") +
+  xlab("Residual (actual score minus predicted score)") +
+  ylab("Number of people") +
+  theme_bw()
+```
+
+A multiple linear regression (n = `r nobs(lab_m3)`) showed that perceived social support was positively associated with well-being (b = `r sprintf("%.2f", c3["SUPPORT", 1])`, p `r pfmt(c3["SUPPORT", 4])`), after accounting for racial/ethnic identity. Compared with White respondents, Asian (b = `r sprintf("%.2f", c3["RACE_5Asian", 1])`, p `r pfmt(c3["RACE_5Asian", 4])`) and Black (b = `r sprintf("%.2f", c3["RACE_5Black", 1])`, p `r pfmt(c3["RACE_5Black", 4])`) respondents reported lower well-being; Hispanic or Latino respondents (p `r pfmt(c3["RACE_5Hispanic or Latino", 4])`) and respondents with another identity (n = `r sum(mh_clean$RACE_5 == "Another identity", na.rm = TRUE)`; p `r pfmt(c3["RACE_5Another identity", 4])`) did not differ significantly (R² = `r sub("^0", "", sprintf("%.2f", summary(lab_m3)$r.squared))`).
+:::
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
+
+-   **Your slope is for the wrong variable** → the outcome goes on the **left** of the `~`. `WELLBEING ~ SUPPORT`, not `SUPPORT ~ WELLBEING`.
+-   **One row named `RACE` with a single slope** → you used `RACE` (numbers) when you needed `POC` or `RACE_5` (a factor). R treated the codes 1 to 7 as a score. This gives you a wrong answer without any error message.
+-   **Your comparison group is not White** → R uses the **first** level as the comparison group. If you leave out `levels =`, R sorts the groups by the alphabet.
+-   **A group is missing from `count()`** → look for a typo in `case_when()`. Any answer you do not list becomes `NA`.
+-   **Your n is `r nrow(mh_clean)`** → that is the number of rows in the dataset, not the number of people in the model. Use `nobs()`.
+-   **`object 'WELLBEING' not found`** → `WELLBEING` and `SUPPORT` are created in `lab_prep.R`. Run `source("lab_prep.R")` first.
+-   **`could not find function "ggplot"`** → run your load-library chunk.
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's final whistle.** That is the end of the lab. Save your `.qmd`, render it, and back up your `.qmd` and `.R` files to the **R Labs** folder in your ELN before you quit RStudio.
+:::
+::::::
+
+## 🏆 Your Turn {#sec-regression-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own work. It is the same checklist your instructor uses.
+:::
+
+Once you finish all of the R Labs, come back here with **your team's dataset** and run the regression for your relationship research question.
+
+```{r}
+#| label: model-REPLACE             # REPLACE with a short name, e.g., model-stress-sleep
+#| eval: false
+
+# 1. every categorical predictor must be a factor (skip this if you have none)
+yourdata <- yourdata |>                          # REPLACE with your clean dataset
+  mutate(GROUPVARIABLE = factor(GROUPVARIABLE,   # REPLACE with your categorical predictor
+                                levels = c(1, 2),               # REPLACE with its codes
+                                labels = c("REPLACE", "REPLACE")))  # REPLACE with its labels; the FIRST one is the comparison group
+
+# 2. run the model: OUTCOME ~ PREDICTOR1 + PREDICTOR2 + ...
+model_REPLACE <- lm(OUTCOME ~ PREDICTOR1 + PREDICTOR2 + GROUPVARIABLE,   # REPLACE every name
+                    data = yourdata)
+
+summary(model_REPLACE)      # slopes (Estimate), p-values (Pr(>|t|)), and R-squared
+nobs(model_REPLACE)         # the number of people in the model
+
+# 3. check the residuals
+ggplot(data = data.frame(residual = resid(model_REPLACE)),
+       mapping = aes(x = residual)) +
+  geom_histogram(bins = 20) +
+  theme_bw()
+
+# 4. a table for your report
+knitr::kable(summary(model_REPLACE)$coefficients, digits = 3,
+             caption = "Table 1. REPLACE with a caption that can stand alone.")
+```
+
+Then write your results sentence. Use this pattern, and say whether your hypothesis was supported.
+
+> A multiple linear regression (n = \_\_\_) showed that \_\_\_\_\_\_ was \_\_\_\_\_\_ (positively / negatively / not significantly) associated with \_\_\_\_\_\_ (b = \_\_\_, p = \_\_\_), after accounting for \_\_\_\_\_\_. The predictors explained \_\_\_% of the variance in \_\_\_\_\_\_ (R² = \_\_\_).
+
+### Checklist for your RD Report and Final Report
+
+::: {.callout-note .gray collapse="true"}
+## Open the regression checklist
+
+{{< include _checklist-regression.qmd >}}
+:::

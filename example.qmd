@@ -9,7 +9,7 @@ format: html
 ::: callout-tip
 ## Go: Start here
 
-This is the first chapter on purpose. Before you install anything or write any code, look at where you are headed: a finished report in which every plot and every number was made by code. In the next chapter, [How Code Builds a Plot](layers.qmd), you will run some code yourself, right in your browser.
+This is the first chapter on purpose. Before you install anything or write any code, look at where you are headed: a finished report in which every plot and every number was made by code. In the next chapter, [Coding a Plot](layers.qmd), you will run some code yourself, right in your browser.
 :::
 
 ## Why Reproducibility Matters

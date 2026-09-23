@@ -1,0 +1,179 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "The Quantitative Playbook for R"
+  subtitle: "Plays for Public Health & Community Health Research"
+  author: "Shane McCarty, PhD"
+  date: "09/20/2026"
+  version: "Edition 2 (v2.01)"      
+  search: true
+  repo-url: https://shanemccarty.github.io/FRIplaybook
+  repo-actions: [edit, issue]
+  downloads: []  # CHANGED: Removed pdf and epub since they're not rendering
+  sharing: [twitter, linkedin]
+  site-url: "https://shanemccarty.github.io/FRIplaybook"  
+  
+  chapters:
+    - index.qmd                              # Preface
+    - part: "Get Started (Lab 1)"
+      chapters:
+        # Order (2026-09-20): see it -> try it in the browser -> set it up -> routine -> do it for real
+        - text: "Reproducible Reports"        # the WHY: a finished report, made from code
+          file: example.qmd
+        - text: "Coding a Plot"      # WebR: runs in the browser, nothing to install yet
+          file: layers.qmd
+        - text: "R Software"
+          file: RStudio.qmd
+        - text: "R Packages"
+          file: library.qmd
+        - text: "Find the Ref"                # after Packages: the routine uses install.R and library()
+          file: find-the-ref.qmd
+        - text: "Start a Report"
+          file: codechunks.qmd
+
+    - part: "Clean Data (Lab 2)"
+      chapters:
+        - text: "Export Survey Data"
+          file: export.qmd
+        - text: "Import Data Once"
+          file: import-once.qmd
+        - text: "Pre/Post Data"               # Teams 3 and 5; combines the old tidyr.qmd + merge.qmd (2026-09-20)
+          file: prepost.qmd
+        - text: "Mutate Variables"
+          file: dplyr.qmd
+        - text: "Creating Composites"
+          file: composite.qmd
+
+    - part: "Map Your Analysis (Lab 3)"
+      chapters:
+        - text: "The Analysis Map"
+          file: analysis-map.qmd
+        - text: "Describe Your Data"          # short version: normality checks; descriptives table to be added
+          file: describe.qmd
+        - text: "Statistics"                  # resources page
+          file: statistics.qmd
+
+    - part: "Compare Groups (Lab 4)"
+      chapters:
+        - text: "Visualize a Comparison"
+          file: visualize-comparison.qmd
+        # - text: "Compare 2 Groups"      # independent t-test / Mann-Whitney U
+        #   file: two-groups.qmd
+        - text: "Visualize Pre/Post Data"     # becomes "Compare 1 Group, Pre/Post" (paired t-test / Wilcoxon)
+          file: violin.qmd
+        - text: "Compare 3+ Groups"             # short version: three or more groups (ANOVA / Kruskal-Wallis / ANCOVA); replaces planned three-groups.qmd
+          file: ANOVA.qmd
+
+    - part: "Examine Relationships (Lab 5)"
+      chapters:
+        - text: "Visualize a Relationship"
+          file: visualize-relationship.qmd
+        # - text: "Relate 2 Variables"             # Pearson / Spearman
+        #   file: two-variables.qmd
+        - text: "Relate 3+ Variables"     # multiple linear regression
+          file: regression.qmd
+
+    - part: "Write Your Report (Lab 6)"
+      chapters:
+        - text: "Read Me"
+          file: readme.qmd
+        - text: "Introduction"
+          file: write-intro.qmd
+        - text: "Citations & Refs"
+          file: citations.qmd
+        - text: "Publish in Quarto Pub"
+          file: quartopub.qmd
+        - text: "Review in Hypothes.is"
+          file: review.qmd
+        # - text: "Final Report Checklist"
+        #   file: checklist.qmd
+
+    - part: "Advanced Plays"
+      chapters:
+        - text: "Data Equity"
+          file: data-equity.qmd
+        - text: "Import Data Live"
+          file: import-live.qmd
+        - text: "Write Functions"
+          file: write-functions.qmd
+
+# Filters - WebR only for now
+filters:
+  - webr
+
+# WebR configuration
+webr:
+  packages: ['ggplot2', 'dplyr', 'tidyr', 'readr', 'haven', 'readxl', 'NHANES', 'psych']  # ADDED: psych
+  autoload-packages: false
+  show-startup-message: true
+  show-header-message: true
+  channel-type: "automatic"
+  home-dir: "/home/web_user"
+  base-url: "https://webr.r-wasm.org/latest/"
+
+# Quarto Live configuration
+live:
+  show-editor: true
+  show-console: true
+  editor-theme: "textmate"
+  editor-font-size: 14
+  console-font-size: 14
+
+format:
+  html:
+    theme: cosmo  # SIMPLIFIED: Remove custom scss for now if files don't exist
+    css: custom.css   # Ref the Raccoon boxes + ggplot2 layer colors, for every chapter
+    respect-user-color-scheme: true
+    highlight-style: 
+      light: github
+      dark: github-dark
+    # Code display settings
+    code-fold: false
+    code-overflow: wrap
+    code-line-numbers: false
+    code-copy: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    number-depth: 3
+    page-footer:
+      left: "© 2026 FRI Public Health Research Stream"
+      right: 
+        - icon: github
+          href: https://shanemccarty.github.io/FRIplaybook
+        - icon: house
+          href: https://fripublichealth.quarto.pub
+    search: true
+
+# Bibliography configuration (comment out if files don't exist yet)
+# bibliography: references.bib
+# csl: apa.csl
+
+# Code execution
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false   # 2026-09-20: the knitr cache kept OLD data and OLD package lists (it caused "WELLBEING not found" and "no package called NHANES"). freeze: auto already skips chapters that did not change.
+  freeze: auto
+
+lang: en
+language:                          # default titles for the four callout colors (see Preface: How to Read This Playbook)
+  callout-note-title: "Resources"      # blue   - optional help and extra material
+  callout-tip-title: "Go"              # green  - the recommended move
+  callout-warning-title: "Caution"     # yellow - where people go wrong
+  callout-important-title: "Important"  # red    - titled "Required: ..." (must be in your reports) or "Important: ..." (must know or do)
+
+params:
+  organization: "FRI Public Health Research Stream"
+  contact_email: "fripublichealth@binghamton.edu"
+  version: "2.01"
+  edition: "2"
+  authors:
+    lead: "Shane McCarty, PhD"
+    contributors:
+      - name: "Zihan Hei"
+      - name: "Gavin Rualo"
+      - name: "Yoomin (Ashley) Kim"

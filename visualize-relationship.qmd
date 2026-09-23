@@ -24,6 +24,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: `ggplot2`
 
@@ -43,7 +45,7 @@ You will go through this chapter three times, with three different datasets.
 ::: {.callout-tip}
 ## Go: Know your route first
 
-This chapter is the Visualize step on [The Analysis Map](analysis-map.qmd) for a **relationship** question: two continuous scores. New to `ggplot2` layers? Read [How Code Builds a Plot](layers.qmd) first.
+This chapter is the Visualize step on [The Analysis Map](analysis-map.qmd) for a **relationship** question: two continuous scores. New to `ggplot2` layers? Read [Coding a Plot](layers.qmd) first.
 :::
 
 ## 📋 The Play {#the-play}
@@ -235,7 +237,7 @@ ggplot(data = insurance, mapping = aes(x = bmi, y = charges, color = smoker)) +
 - [**Theme**]{style="color: #CC79A7; font-weight: bold;"}: `theme_bw()` controls the overall visual appearance
 :::
 
-::: {.callout-important}
+::: {.callout-important .required}
 ## Required for Team Poster: pick one theme for your team
 
 Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in your individual reports and the team poster!
@@ -272,7 +274,7 @@ ggplot(data = insurance,
 Using `xlim()` and `ylim()` removes any data points outside the specified range. This can affect trend lines!
 :::
 
-::: {.callout-important}
+::: {.callout-important .required}
 ## Required: x and y axes cover the full scale
 
 If your response options range from 1 to 6. Use `ylim( )` to adjust the y-axis to range from 1 to 6 too.
@@ -288,7 +290,7 @@ ggsave("plots/plot1_clear_name.png",
        plot = plot_name, width = 10, height = 8, dpi = 300)
 ```
 
-The full explanation is in [How Code Builds a Plot](layers.qmd#save).
+The full explanation is in [Coding a Plot](layers.qmd#save).
 :::
 
 ```{r}
@@ -529,3 +531,5 @@ ggsave("plots/REPLACE.png",                 # REPLACE with a clear file name
 
 {{< include _checklist-plots.qmd >}}
 :::
+
+{{< include _ref-whistle-box.qmd >}}

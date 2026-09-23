@@ -1,0 +1,14 @@
+<!-- Single source for the 'write your analysis in a .qmd' rule. Included in RStudio.qmd (three places to write code) and codechunks.qmd (Code Chunks). Edit it here only. -->
+
+::: callout-important
+## Important: Write your analysis in a `.qmd` file, not in the console
+
+In this course, all of the code for your reports goes in code chunks inside your `.qmd` file. Here is why.
+
+-   **It can be checked.** Your instructor, your teammates, and later readers can open your `.qmd` and see exactly how every number and plot was made. Code typed in the console leaves no record, so nobody can review it, and neither can you.
+-   **It can be published.** Rendering a `.qmd` turns your code, results, and writing into one web page with a URL, which is what you submit ([Publish](quartopub.qmd)). A console session cannot be published.
+-   **It can be redone.** Render runs every chunk from a fresh start, so your report proves that the analysis works from top to bottom. That is what *reproducible* means, and it is the point of Chapter 1.
+-   **It keeps the explanation next to the code.** A `.qmd` holds your Methods and Results paragraphs beside the code that produced them, so the writing and the numbers cannot drift apart.
+
+Use the console to try things. When a line works and belongs in your analysis, put it in a chunk in your `.qmd`.
+:::

@@ -6,8 +6,8 @@ book:
   title: "The Quantitative Playbook for R"
   subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
-  date: "09/20/2026"
-  version: "Edition 2 (v2.01)"      
+  date: "09/22/2026"
+  version: "Edition 2 (v2.03)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -28,10 +28,10 @@ book:
           file: RStudio.qmd
         - text: "R Packages"
           file: library.qmd
-        - text: "Find the Ref"                # after Packages: the routine uses install.R and library()
-          file: find-the-ref.qmd
-        - text: "Start a Report"
+        - text: "Start a Report"              # create the first .qmd, load-library chunk, Render
           file: codechunks.qmd
+        - text: "Find the Ref"                # after Start a Report: the routine opens, runs, and renders a .qmd that now exists
+          file: find-the-ref.qmd
 
     - part: "Clean Data (Lab 2)"
       chapters:
@@ -164,7 +164,8 @@ language:                          # default titles for the four callout colors 
   callout-note-title: "Resources"      # blue   - optional help and extra material
   callout-tip-title: "Go"              # green  - the recommended move
   callout-warning-title: "Caution"     # yellow - where people go wrong
-  callout-important-title: "Important"  # red    - titled "Required: ..." (must be in your reports) or "Important: ..." (must know or do)
+  callout-important-title: "Important"  # red    - "Important: ..." (must know or do). Add the class .required for dark red
+                                        #          "Required: ..." boxes (must be in your reports): ::: {.callout-important .required}
 
 params:
   organization: "FRI Public Health Research Stream"

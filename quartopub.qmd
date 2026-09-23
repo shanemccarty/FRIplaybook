@@ -21,6 +21,8 @@ bibliography: references.bib
 csl: apa.csl
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources
 
@@ -28,7 +30,7 @@ csl: apa.csl
 -   [Quarto Pub dashboard](https://quartopub.com/)
 :::
 
-::: callout-important
+::: {.callout-important .required}
 ## Required: what to submit on Brightspace
 
 You need to submit your *RD Report* and your *Final Report* on Brightspace. Each submission has three parts:
@@ -39,6 +41,8 @@ You need to submit your *RD Report* and your *Final Report* on Brightspace. Each
 
 This chapter shows you how to publish your report and get that link. You can see examples of published Quarto reports in [Reproducible Reports](example.qmd) (Chapter 1).
 :::
+
+{{< include _important-fresh-run.qmd >}}
 
 ## Before You Begin
 
@@ -158,3 +162,5 @@ Once publishing completes successfully, you’ll see a message in the terminal w
 -   Your `_publish.yml` should **never contain tokens or IDs** you did not generate yourself.
 
 -   To delete a published site, go to your [Quarto Pub dashboard](https://quartopub.com/) and remove it manually.
+
+{{< include _ref-whistle-box.qmd >}}

@@ -24,6 +24,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ## When do you use this chapter?
 
 Your research question is a **comparison**, and you have **three or more different groups** and **one continuous outcome**.
@@ -166,3 +168,5 @@ For an ANCOVA, add: "after accounting for \_\_\_\_\_\_\_\_".
 
 A survey comparison tells you that groups differ. It does not tell you why. Write "differed" or "scored higher", not "caused" or "led to".
 :::
+
+{{< include _ref-whistle-box.qmd >}}

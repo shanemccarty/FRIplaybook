@@ -410,7 +410,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"download.file(\"https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv\", \"insurance.csv\")\ninsurance <- read.csv(\"insurance.csv\")\nlibrary(ggplot2)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(insurance)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges\") +\n  ylab(\"Number of People\") +\n  theme_bw()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"download.file(\"https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv\", \"insurance.csv\")\ninsurance <- read.csv(\"insurance.csv\")\nlibrary(ggplot2)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(insurance)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges\") +\n  ylab(\"Number of People\") +\n  theme_bw()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges) +\n  ylab(\"Number of People\") +\n  theme_bw()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1763,14 +1763,14 @@ globalThis.qwebrExecuteCode = async function (
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
       </ul>
@@ -2365,7 +2365,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The gray code boxes with a <strong>Run Code</strong> button run R inside your web browser, so you do not need to install anything yet. The first time you open this page, your browser has to download R. <strong>That can take 30 to 60 seconds</strong>, and longer on campus Wi-Fi. Wait until the status at the top of the page says <strong>Ready</strong> before you click Run Code. A laptop works better than a phone. If a box never becomes ready, keep reading: every step also shows the code and the plot it makes.</p>
+<p>The gray code boxes with a <strong>Run Code</strong> button run R inside your web browser, so you do not need to install anything yet. The first time you open this page, your browser has to download R. <strong>That can take 30 to 60 seconds</strong>, and longer on campus Wi-Fi. Wait until the status at the top of the page says <strong>Ready</strong> before you click Run Code. If a box never becomes ready, keep reading: every step also shows the code and the plot it makes.</p>
 </div>
 </div>
 <section id="start-here-what-does-code-do" class="level2" data-number="2.1">
@@ -2394,11 +2394,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="example-data-insurance" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">2.2</span> Example Data: <code>insurance</code></h2>
 <p>The example dataset is from the “Medical Cost Personal Costs” database on Kaggle. For this chapter, we refer to it as <code>insurance</code>.</p>
-<p>In R, anything you give a name to is called an <strong>object</strong>. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. Here, the box is named <code>insurance</code>, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a <strong>dataset</strong>. Every time you see the word <code>insurance</code> in the code below, it means “use that dataset”.</p>
 <section id="what-do-i-do-in-this-chapter" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="what-do-i-do-in-this-chapter"><span class="header-section-number">2.2.1</span> What do I do in this chapter?</h3>
-<p>In this chapter you will see two kinds of gray boxes.</p>
-<p>A box with a small <strong>clipboard icon</strong> in its corner shows code and the result it made when this page was built. The clipboard copies the code so that you can paste it somewhere else. <strong>You will not use the clipboard in this chapter.</strong> There is nothing to copy, paste, or type. Here is an example:</p>
+<p>You will read a little code, run it, and see what it makes. Before the first line of code, you need two words: <strong>object</strong> and <strong>function</strong>. Almost every line of R code uses both.</p>
+<p><strong>An object is a thing with a name.</strong> In R, anything you give a name to is called an <strong>object</strong>. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. In this chapter the box is named <code>insurance</code>, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a <strong>dataset</strong>. Every time you see the word <code>insurance</code> in the code below, it means “use that dataset”.</p>
+<p><strong>A function is an action.</strong> A <strong>function</strong> is a command that does one job. You can spot a function because its name is followed by parentheses, like <code>head()</code>. Whatever you put inside the parentheses is what the function works on, called the function’s <strong>input</strong>. If objects are the nouns of R, functions are the verbs. To see how many verbs R has, skim the <a href="https://r-statistics.co/R-Cheat-Sheet.html">R Cheat Sheet: 200 Essential Functions</a>. Each function comes with a one-line description and a short example you can run in your browser. You do not need to learn them now.</p>
+<p><strong><code>head()</code> shows the top of a dataset.</strong> The first function in this chapter is <code>head()</code>. It shows the first six rows of a dataset, so you can check what is inside without printing all 1,338 rows. <code>head(insurance)</code> means “show me the first six rows of <code>insurance</code>”: the function is <code>head()</code>, and the object it works on is <code>insurance</code>.</p>
+<p>Now look at the two kinds of gray boxes you will see in this chapter.</p>
+<p>A box with a small <strong>clipboard icon</strong> in its corner shows code and the result it made when this page was built. The clipboard copies the code so that you can paste it somewhere else, such as your own report. <strong>You will not use the clipboard the first time you read this chapter, for Lab 1.</strong> For now, you are looking at the code to learn what it does. Later, when you write your RD Report and Final Report, you will come back, click the clipboard, and paste the code into your own file. Here is an example:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2428,7 +2431,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="look-at-the-data" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="look-at-the-data"><span class="header-section-number">2.2.3</span> Look at the data</h3>
-<p>Each row is one person. Each column is one variable, such as <code>age</code>, <code>smoker</code>, and <code>charges</code> (the person’s medical costs).</p>
+<p>Each row is one participant. Each column is one variable, such as <code>age</code>, <code>smoker</code>, and <code>charges</code> (the participant’s medical costs). This time <code>head()</code> has two inputs, separated by a comma: the dataset, and the number <code>10</code>, which tells <code>head()</code> to show ten rows instead of six.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2503,7 +2506,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="build-one-plot-one-layer-at-a-time" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="build-one-plot-one-layer-at-a-time"><span class="header-section-number">2.5</span> Build One Plot, One Layer at a Time</h2>
-<p>A histogram is the simplest plot: it shows how one variable is spread out. You will use histograms later to describe your data and to check whether it is normal. Watch how each line adds one layer.</p>
+<p>In this section you build one plot, a <strong>histogram</strong>, one layer at a time.</p>
+<p><strong>What is a histogram?</strong> A histogram shows how the values of <strong>one continuous variable</strong> are spread out. A continuous variable is a number that can take many values along a scale, such as age, income, or medical charges. To draw a histogram, R does three things:</p>
+<ol type="1">
+<li>It splits the range of the variable into equal slices, called <strong>bins</strong> (for example, charges from $0 to $2,000, from $2,000 to $4,000, and so on).</li>
+<li>It counts how many participants fall into each bin. That count is called the <strong>frequency</strong>.</li>
+<li>It draws one bar per bin. The bar’s position on the <strong>x axis</strong> shows the range of values, and the bar’s height on the <strong>y axis</strong> shows the frequency.</li>
+</ol>
+<p>So you only tell R which variable goes on the x axis. The y axis is always the frequency, and R counts it for you.</p>
+<p><strong>How to read one.</strong> Tall bars are values that many participants have. Short bars are values that few participants have. Look at the shape: where the tallest bars are (the most common values), how wide the bars spread (the range), and whether one side stretches out farther than the other (a <em>tail</em>). A histogram looks a lot like a bar chart, but a bar chart counts <strong>categories</strong> (such as smokers and non-smokers) and has gaps between its bars. A histogram counts <strong>ranges of numbers</strong>, so its bars touch.</p>
+<p>You will use histograms again to describe your own data and to check whether a variable is normal (see <a href="./describe.html">Describe Your Data</a>). Watch how each line of code below adds one layer.</p>
 <section id="step-1-set-up-data" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-set-up-data"><span class="data-layer">Step 1: Set up data</span></h4>
 <div class="cell">
@@ -2536,9 +2548,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <p>Now the x axis has numbers, because R knows that <code>charges</code> goes there. There is still nothing drawn.</p>
-<p><strong>Try it.</strong> Run the code. Then change <code>charges</code> to <code>age</code> and run it again. What changed on the x axis?</p>
+<p><strong>Try it.</strong> Run the code. Then change <code>charges</code> to <code>age</code> and run it again. What changed on the x axis? <code>aes(x = ...)</code> tells R which variable goes on the x axis, so the numbers along the bottom change from dollar amounts (charges run from about 1,000 to 64,000) to years (age runs from 18 to 64). The label under the axis changes too. Everything else stays the same, because you have not changed the data or added anything to draw.</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Close every <code>(</code> with a <code>)</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every opening parenthesis <code>(</code> needs a closing <code>)</code>. Look at the code above: <code>ggplot(</code> opens on the first line, <code>aes(</code> opens on the second, and the line ends with <code>))</code>, one <code>)</code> for each. If you leave a <code>(</code> hanging without its <code>)</code>, R waits for the rest of the command and shows a <code>+</code> in the Console instead of the <code>&gt;</code> prompt. Nothing runs until you close it. When that happens, click in the Console, press Esc, add the missing <code>)</code>, and run the code again. Before you run a code block, count the <code>(</code> and the <code>)</code>: the numbers must match.</p>
+</div>
+</div>
 </section>
 <section id="step-3-add-geometry-bars" class="level4">
 <h4 class="anchored" data-anchor-id="step-3-add-geometry-bars"><span class="layers-layer">Step 3: Add geometry (bars)</span></h4>
@@ -2554,8 +2579,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </div>
-<p>One more line, and the bars appear. The <code>+</code> at the end of a line means “and then add this”.</p>
-<p><strong>Try it.</strong> Run the code. Then change <code>30</code> to <code>5</code>, and then to <code>100</code>. Same data, same plot type, a very different picture.</p>
+<p>One more line, and the bars appear. The <code>+</code> at the end of a line means “and then add this”. Notice that the code never mentions the y axis: <code>geom_histogram()</code> counts the participants in each bin and puts that frequency on the y axis for you.</p>
+<p><strong>Read the plot.</strong> The tallest bars are on the left: most participants have low charges (about 3 in 4 have charges under $15,000). A few bars stretch far to the right, out past $40,000. That long stretch on one side is called a <strong>right tail</strong>, and it means a small number of participants have very high charges. A histogram with a long tail on one side is called <strong>skewed</strong>.</p>
+<p><strong>Try it.</strong> Run the code. Then change <code>30</code> to <code>5</code>, and then to <code>100</code>. Same data, same plot type, a very different picture. <code>bins</code> is the number of bars: R splits the x axis into that many equal-width slices and counts how many people fall in each one. With <code>bins = 5</code>, each bar covers a wide range of charges, so the plot is smooth but hides detail. With <code>bins = 100</code>, each bar covers a narrow range, so you see every bump and gap, including some that are only noise. There is no single right number. Try a few and pick one that shows the shape without the noise.</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -2574,6 +2600,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="step-4-add-labels-and-a-theme" class="level4">
 <h4 class="anchored" data-anchor-id="step-4-add-labels-and-a-theme"><span class="theme-layer">Step 4: Add labels and a theme</span></h4>
+<p>The plot works, but its axes still show the raw names <code>charges</code> and <code>count</code>. Now add a title and axis labels that a reader of your report will understand. The y axis label describes the frequency that R counted, so it always says what was counted, such as “Number of Participants”. You do not need <code>y =</code> anywhere in the code; a histogram’s y axis is always the frequency.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> charges)) <span class="sc">+</span></span>
@@ -2593,7 +2620,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </div>
-<p><strong>Try it.</strong> Run the code. Then change <code>"#005a43"</code> to <code>"purple"</code>. Then delete the <code>+</code> at the end of one line and run it. You will get an error. That is normal: put the <code>+</code> back and run it again.</p>
+<p><strong>Try it.</strong> Run the code. Then change <code>"#005a43"</code> to <code>"purple"</code>. <code>fill</code> is the color inside each bar, and <code>color</code> is the color of the bar’s outline, which is why the bars have thin white edges. <code>"#005a43"</code> is a hex code for Binghamton green; <code>"purple"</code> is one of the color names R already knows. Next, change the text inside <code>xlab("...")</code> and run again: <code>xlab()</code> and <code>ylab()</code> set the axis labels, and <code>ggtitle()</code> sets the title above the plot. Finally, change <code>theme_bw()</code> to <code>theme_minimal()</code>: a theme controls everything that is not data, such as the background color and gridlines. Then delete the <code>+</code> at the end of one line and run it. You will get an error. That is normal: put the <code>+</code> back and run it again.</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -2607,6 +2634,59 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-body-container callout-body">
 <p><code>plot_charges &lt;- ggplot(...)</code> saves the plot as an object in your environment. To see it, type the object’s name on its own line (or use <code>print()</code>), like the last line of the code above.</p>
+</div>
+</div>
+</section>
+<section id="step-5-find-the-foul" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-find-the-foul">Step 5: Find the foul</h4>
+<p>When code does not work, most people’s first move is to change everything: rewrite the plot, copy new code from somewhere else, or start over. Don’t. The problem is usually <strong>one small character</strong>: a missing <code>)</code>, a missing <code>"</code>, a missing comma or <code>+</code>, or a capital letter where there should not be one. Look for the small mistake first. Big changes can add new problems on top of the one you had.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: Look small before you change anything
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Read the error message.</strong> It names a line or a word. Start there, and then look at the line just above it, because the mistake is often one line earlier than R says.</li>
+<li><strong>Count the <code>(</code> and the <code>)</code>.</strong> The numbers must match.</li>
+<li><strong>Check every <code>"</code>.</strong> Text such as <code>"Insurance Charges"</code> needs a quote at both ends.</li>
+<li><strong>Check the end of each line.</strong> Every layer except the last one ends with <code>+</code>.</li>
+<li><strong>Check the spelling and the capital letters.</strong> <code>Charges</code> is not <code>charges</code>.</li>
+<li><strong>Fix one thing and run the code again.</strong> R reports only the first problem it finds, so a new error after a fix often means you are getting closer.</li>
+</ol>
+</div>
+</div>
+<p><strong>Try it.</strong> The code below is the plot from Step 4 with two small mistakes in it. Run it and read the error. Then find and fix both mistakes without rewriting anything else. You are done when the green histogram appears. (If the Run Code box never loads, you can still find both mistakes by reading.)</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Answer: the two fouls
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Foul 1: a missing <code>"</code> on line 5.</strong> <code>xlab("Insurance Charges) +</code> opens the text with <code>"</code> but never closes it, so R reads everything up to the next <code>"</code> as one long label. The error points at line 6 (something like <em>unexpected symbol</em>), but the mistake is on line 5. The fix: <code>xlab("Insurance Charges") +</code>.</p>
+<p><strong>Foul 2: a missing <code>)</code> on line 2.</strong> <code>aes(x = charges)</code> closes <code>aes(</code>, but nothing closes <code>ggplot(</code>. After you fix Foul 1, R reaches the end of the code still waiting for that <code>)</code> and says something like <em>unexpected end of input</em>. The fix: <code>mapping = aes(x = charges)) +</code>, with two <code>)</code>, just like Step 4.</p>
+<p>The fixed code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> charges)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Insurance Charges"</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of People"</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Two characters fixed, nothing rewritten. That is how most broken code gets fixed.</p>
+</div>
 </div>
 </div>
 </section>
@@ -2637,7 +2717,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="pick-one-theme" class="level3" data-number="2.8.1">
 <h3 data-number="2.8.1" class="anchored" data-anchor-id="pick-one-theme"><span class="header-section-number">2.8.1</span> Pick One Theme</h3>
 <p><code>theme_bw()</code> controls the overall look of the plot. There are several <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">complete themes</a> to choose from.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="required callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2651,7 +2731,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2660,7 +2740,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://albert-rapp.de/posts/ggplot2-tips/07_four_ways_colors_more_efficiently/07_four_ways_colors_more_efficiently.html">4 ways to use colors in ggplot2 more efficiently</a></li>
@@ -2676,8 +2756,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="2.8.2" class="anchored" data-anchor-id="save"><span class="header-section-number">2.8.2</span> Save Your Plot with <code>ggsave()</code></h3>
 <p><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave( )</a> is a specific function to save a plot as an image in .jpg or .png image. The plot is saved as a file inside your RStudio Project folder, so you can add it to your team poster.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print and save to the plots folder</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_charges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print and save to the plots folder</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_charges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2685,11 +2765,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1_charges_histogram.png"</span>, </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> plot_charges,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1_charges_histogram.png"</span>, </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> plot_charges,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div class="required callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

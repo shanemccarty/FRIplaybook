@@ -209,14 +209,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
       </ul>
@@ -482,8 +482,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<!-- Single source for the collapsed kickoff reminder at the START of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s kickoff: find the Ref before you code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Open Project → Open <code>.qmd</code> → Run load-library chunk → Run All Chunks Above → code.</strong> If anything looks wrong, use <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -492,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://quarto.org/docs/publishing/quarto-pub.html">Quarto Publish Guide</a></li>
@@ -501,16 +518,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: what to submit on Brightspace
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You need to submit your <em>RD Report</em> and your <em>Final Report</em> on Brightspace. Each submission has three parts:</p>
+<ol type="1">
+<li>your <code>.qmd</code> file (<code>Lastname_RDreport.qmd</code> or <code>Lastname_finalreport.qmd</code>)</li>
+<li>your dataset in <code>.xlsx</code> format</li>
+<li>a link to your published Quarto report</li>
+</ol>
+<p>This chapter shows you how to publish your report and get that link. You can see examples of published Quarto reports in <a href="./example.html">Reproducible Reports</a> (Chapter 1).</p>
+</div>
+</div>
+<!-- Single source for the "fresh run before you submit" rule. Included in find-the-ref.qmd and quartopub.qmd. Edit it here only. -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: Close the project, reopen it, and run everything before you submit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Code that worked while you were editing can still fail from a clean start, because something you ran earlier by hand (a package, an object, a data file in the wrong place) was propping it up. Before you submit your <em>RD Report</em> or <em>Final Report</em>, and before you publish it, prove that it runs on its own:</p>
+<ol type="1">
+<li><strong>Close the project:</strong> File &gt; Close Project. If RStudio asks about the workspace, choose <strong>Don’t Save</strong>.</li>
+<li><strong>Open the project fresh:</strong> double-click <code>Lastname_FRI.Rproj</code>. The environment tab should be empty.</li>
+<li><strong>Run all of the code from the top.</strong> For a <code>.qmd</code> report, click <strong>Render</strong>; it starts a fresh R session and runs every chunk from the first line to the last, the same job <strong>Source</strong> does for an <code>.R</code> script.</li>
+<li><strong>Check the result.</strong> The report should open with every plot, table, and number in place, and the console should show no errors. If it stops, fix the first error, then start again from step 1.</li>
+</ol>
+<p>Only when a fresh run works from top to bottom is the report ready to submit and publish. If it works on your computer this way, it will work on your instructor’s.</p>
+</div>
+</div>
 <section id="before-you-begin" class="level2" data-number="23.1">
 <h2 data-number="23.1" class="anchored" data-anchor-id="before-you-begin"><span class="header-section-number">23.1</span> Before You Begin</h2>
 <p>Make sure you have:</p>
 <ul>
-<li><p>A working Quarto project in Posit Cloud.</p></li>
+<li><p>Your <code>Lastname_FRI</code> RStudio Project, with a report (<code>.qmd</code>) that renders without errors.</p></li>
 <li><p>An active Quarto account linked to your school Google email.</p>
 <ul>
 <li>Sign in to <a href="https://quartopub.com/">Quarto pub</a> with your school email account using google sign in.</li>
 </ul></li>
-<li><p>Your<code>_quarto.yml</code> and <code>_publish.yml</code> files are in your project folder on Posit Cloud</p>
+<li><p>Your <code>_quarto.yml</code> and <code>_publish.yml</code> files are in your <code>Lastname_FRI</code> project folder on your computer</p>
 <ul>
 <li>You can download these files from <a href="https://drive.google.com/drive/folders/10AG6VkIKUBODfI4_p84Ozohu0dx3xLa3?usp=share_link">306 Quant Track drive</a></li>
 </ul></li>
@@ -531,11 +588,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="publish-from-the-terminal" class="level2" data-number="23.3">
 <h2 data-number="23.3" class="anchored" data-anchor-id="publish-from-the-terminal"><span class="header-section-number">23.3</span> Publish from the “Terminal”</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: The screenshots are from an older setup
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The pictures in this chapter were taken in Posit Cloud (RStudio in a web browser), so the Terminal in them shows <code>/cloud/project</code>. In RStudio on your computer, the steps and the questions in the Terminal are the same. Only the folder name on the Terminal line is different.</p>
+</div>
+</div>
 <p>Following the step by step process, and you can publish your report to your own Quarto website!!</p>
 <section id="step-1-under-terminal" class="level3" data-number="23.3.1">
 <h3 data-number="23.3.1" class="anchored" data-anchor-id="step-1-under-terminal"><span class="header-section-number">23.3.1</span> Step 1: Under Terminal</h3>
 <ul>
-<li><p>Click the tab for Terminal (between the Console and Background Jobs tabs) in Posit Cloud (you should see something like <code>/cloud/project</code>).</p></li>
+<li><p>Click the tab for Terminal (between the Console and Background Jobs tabs) in RStudio. The line where you type should end with the name of your project folder, <code>Lastname_FRI</code>. If it does not, you did not open your project: see <a href="./find-the-ref.html">Find the Ref</a>.</p></li>
 <li><p>Type the following command and press Enter:</p></li>
 </ul>
 <div class="cell">
@@ -562,7 +632,7 @@ Figure&nbsp;23.1: Quarto publish command and destination selection
 <ul>
 <li><p>Under “Publish with account:” section choose “<strong>Use another account…</strong>” (see the <a href="#fig-chooseaccount" class="quarto-xref">Figure&nbsp;<span>23.2</span></a> below)</p></li>
 <li><p>Next, the system will ask to authorize your account in order to publish to Quarto Pub. In the Authorize (Y/n) section, type “<strong>Y</strong>” for Yes. (see the <a href="#fig-authorize" class="quarto-xref">Figure&nbsp;<span>23.3</span></a> below)</p></li>
-<li><p>In addition, you will get an url, click it and you will see your quarto account, click “ALLOW”, this way you allow to publish into quarto. (see the <a href="#fig-linktoauthorization" class="quarto-xref">Figure&nbsp;<span>23.4</span></a> and <a href="#fig-authorizationpage" class="quarto-xref">Figure&nbsp;<span>23.5</span></a> below)</p></li>
+<li><p>Your web browser will then open the Quarto Pub authorization page. (If it does not open by itself, the Terminal shows a link: copy it into your browser.) You will see your Quarto account. Click “ALLOW” to allow publishing. (see the <a href="#fig-linktoauthorization" class="quarto-xref">Figure&nbsp;<span>23.4</span></a> and <a href="#fig-authorizationpage" class="quarto-xref">Figure&nbsp;<span>23.5</span></a> below)</p></li>
 </ul>
 <div id="fig-chooseaccount" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -660,6 +730,23 @@ Figure&nbsp;23.7: Create a name for your report
 <li><p>Your <code>_publish.yml</code> should <strong>never contain tokens or IDs</strong> you did not generate yourself.</p></li>
 <li><p>To delete a published site, go to your <a href="https://quartopub.com/">Quarto Pub dashboard</a> and remove it manually.</p></li>
 </ul>
+<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you leave
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
 
 
 </section>

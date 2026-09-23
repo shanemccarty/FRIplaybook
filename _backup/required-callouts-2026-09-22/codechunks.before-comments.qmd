@@ -1,0 +1,320 @@
+---
+title: "Start a Quarto Markdown Document"
+subtitle: "How to start a report with YAML and code chunks"
+author: "Shane McCarty, PhD"
+abstract: |
+  This chapter introduces researchers to creating and structuring Quarto markdown documents (.qmd)
+  for reproducible research. Researchers learn to set up new Quarto documents, configure metadata
+  using YAML headers, and write formatted text using markdown syntax. The chapter demonstrates
+  proper code chunk structure with descriptive labels, detailed figure captions, and execution
+  options. Rtudents explore essential practices including file naming conventions, environment
+  management, and documentation through code sources and explanations. By the end of this
+  chapter, researchers will understand how to create professional, well-documented Quarto reports
+  that integrate narrative text with embedded R code, following reproducible research standards
+  for public health manuscripts.
+keywords:
+  - quarto
+  - YAML
+  - markdown
+  - code chunks
+  - reproducible research
+  - file management
+date: 10.18.2025
+date-format: "MM.DD.YYYY"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+::: {.callout-note collapse="true"}
+## Resources: `quarto`
+
+- [Primary website](https://quarto.org)
+- Read: [R4DS Ch. 28 Quarto](https://r4ds.hadley.nz/quarto.html)
+- Read: [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+- [Youtube: Getting Started](https://www.youtube.com/watch?v=_f3latmOhew)
+- [Youtube: Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
+- [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
+- [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
+:::
+
+::: {.callout-important .required}
+## Required: reports are `.qmd` files
+
+The *AIM report* was written and saved as a word document (`.docx`) format, which is different than a Quarto report (`.qmd`). Your *RD Report* and *Final Report* will be `.qmd` files with code chunks containing: label, fig-cap, fig-alt, source information, and explanation. You will do your writing in a Google Doc and then paste your writing into RStudio, within a `.qmd` Quarto Markdown document.
+:::
+
+In RStudio, you should see the *Source* and *Visual* editor options in the top left corner of the script editor. You can toggle back and forth between the two options.
+
+- The source option is your best option for coding in R with line items.
+
+- The visual editor is your best place to see the quarto markdown document (.qmd) before it is officially rendered as an HTML output.
+
+## Create a Quarto Markdown Document
+
+- File \> New File \> Quarto Document
+- Complete Title and Author Name, Create
+- File \> Save As \> name-it-now.qmd
+- Check the file shows up in your files in the bottom right window as .qmd file
+
+### Quarto Document File Names
+
+For individual lab and report quarto reports:
+
+- Create a new `.qmd` document for each lab, naming them: `Lastname_lab2.qmd`, `Lastname_lab3.qmd`, `Lastname_lab4.qmd`, and `Lastname_lab5.qmd`. There is no file for Lab 1: there is nothing you need to do in RStudio for Lab 1 except to play around with the software. We will dive in for Lab 2!
+- Your results and discussion (RD) report should be named: `Lastname_RDreport.qmd`
+- After submitting your `Lastname_RDreport.qmd`, you should go to the files tab, check the box next to `Lastname_RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `Lastname_finalreport.qmd`
+- Your final report should be named: `Lastname_finalreport.qmd`
+- Replace `Lastname` with your own last name (e.g., `McCarty_RDreport.qmd`)
+
+::: {.callout-important .required}
+## Required: file names
+
+Please name your quarto markdown files (`.qmd`) correctly.
+:::
+
+### Clearing Your Environment in RStudio
+
+Your previously created objects (e.g., `alldata`, `select_data`, `VARIABLE1`) can stay in your environment (the **environment tab**) while you work in RStudio. It is important to clear all objects from your environment before beginning your next assignment. Also, this code is important to use when you want to double check that your `.qmd` document will render correctly. You can clear all of the objects and then run your entire .qmd document to check for errors.
+
+```{r}
+# Remove all objects from the global environment
+rm(list = ls())
+```
+
+## YAML
+
+YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too.
+
+```{YAML}
+---
+title: "title your report here"
+subtitle: "insert subtitle here"
+date: "`r Sys.Date()`"
+author:
+  - name: "your name"
+    email: youremail@binghamton.edu 
+    affiliation: 
+      - name: Binghamton University
+    attributes:
+      corresponding: true
+abstract: |
+    TBD goes here
+keywords:
+  - insert keyword 1
+  - insert keyword 2
+  - insert keyword 3
+  - insert keyword 4
+  - insert keyword 5
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    fig-width: 8
+    fig-height: 4
+    code-fold: false
+    code-overflow: wrap
+    embed-resources: true
+    theme: cosmo
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    fig-width: 6
+    fig-height: 4
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+---
+    
+```
+
+::: {.callout-important .required}
+## Required: the YAML header
+
+- Use the above YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+
+- title, subtitle, name, email should be revised
+
+- abstract and keywords should be included
+:::
+
+For more information, see:
+
+- [YAML](https://quarto.org/docs/reference/formats/html.html)
+
+- [Front Matter](https://quarto.org/docs/authoring/front-matter.html)
+
+- [code-overflow](https://quarto.org/docs/output-formats/html-code.html#code-overflow)
+
+- [Authors & Affiliations](https://quarto.org/docs/journals/authors.html)
+
+## Code Chunks
+
+A traditional R script (`.R`) involves code throughout the entire script. A Quarto Markdown Document (`.qmd`) integrates the R programming language with markdown language into a single document that can include a mix of code and written content. We use `report.qmd` and other `.qmd` files to write a reproducible manuscript using written text within embedded code chunks.
+
+### Example Code Chunk
+
+Below is an example from the [Visualize a Relationship](visualize-relationship.qmd) chapter of an informative `label` for your code chunk and a very detailed figure caption ( `fig-cap`). Also, notice that all code chunk options start with `#|` and use a `:`.
+
+For more examples, see [Visualize a Relationship](visualize-relationship.qmd) and [Visualize a Comparison](visualize-comparison.qmd).
+
+```{r}
+#| label: scatterplot-BMI-insurance
+#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables
+#| echo: fenced
+#| eval: false
+```
+
+### Template Code Chunk
+
+#### Label for All Code Chunks
+
+Your `#| label:` should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.
+
+```{{r}}
+#| label: import-data-xlsx
+
+```
+
+::: {.callout-important .required}
+## Required: a label for every code chunk
+
+Every code chunk must have a `#| label:` at the start of the chunk.
+:::
+
+#### Figure Caption (Fig-Cap) for Plot Code Chunks
+
+```{{r}}
+#| label: you-need-to-revise-this
+#| fig-cap: provide a detailed figure caption
+
+```
+
+::: {.callout-important .required}
+## Required: a figure caption for every plot
+
+Every plot should include a detailed figure caption using `#| fig-cap:`
+:::
+
+#### Alternative Text for Figures and Images (Fig-Alt) {#alt-text}
+
+Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.
+
+```{{r}}
+#| label: you-need-to-revise-this
+#| fig-cap: provide a detailed figure caption
+#| fig-alt: provide info for accessiblity
+```
+
+::: {.callout-important .required}
+## Required: alt text for every figure
+
+Every figure and image should include alternative text using `#| fig-alt:`
+:::
+
+For more information on how improve the accessiblity of an image, see [figures-alt-text on Quarto](https://quarto.org/docs/authoring/figures.html#alt-text) to use alt text to increase accessiblity.
+
+#### Provide Sources for ALL Code Chunks
+
+::: {.callout-important .required}
+## Required: the source of your code
+
+At the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).
+:::
+
+```{{r}}
+#| label: you-need-to-revise-this
+
+#source example 1: The FRI Playbook (McCarty, 2025)   
+#source example 2: Writing Reproducible Results (Hei, 2025)   
+#source example 3: Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html
+
+```
+
+::: callout-tip
+## "#\|" vs. "\#"
+
+The format is different for the code chunk options that use `#|` (e.g., `#| label:`) vs. sourcing using `#` to comment (e.g., `#source:`). The #source will be at the bottom of your code chunk.
+:::
+
+#### Provide Explanation for ALL Code Chunks
+
+::: {.callout-important .required}
+## Required: an explanation in your own words
+
+You will explain the code chunk in your own words using `#explanation:` at the bottom of your code chunk.
+:::
+
+##### Example of Non-Figure Code Chunk
+
+All of your R code chunks for non-figures should follow this format:
+
+```{{r}}
+#| label: import-data-csv-insurance
+
+insurance <- read.csv("data/insurance.csv")
+
+#source: (Wickham et al., 2023) https://r4ds.hadley.nz/data-import.html#practical-advice
+#explanation: importing the insurance data from a comma-separated values (CSV) based on import code from R4DS book 
+
+```
+
+##### Example of Figure Code Chunk
+
+All of your R code chunks for figures should follow this format:
+
+```{{r}}
+#| label: scatterplot-BMI-insurance
+#| fig-cap: A scatterplot depicting the relationship between body mass index and insurance charges with a line of best fit to demonstrate the liner relationship between the two variables
+#| fig-alt: the scatterplot shows BMI on the x axis and insurance charges on the y axis with the grouping variable of smoker. The smokers are denoted in teal and the non-smokers are in red. The smokers and non-smokers have a different slope, showing a different relationship/slope for BMI and insurance chargers based on smoker status.
+
+ggplot(data = insurance,
+       mapping = aes(
+         x = bmi,
+         y = charges,
+         color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+  
+#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)
+#explanation: the insurance data is being used with BMI for the x variable and insurance charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurance charges
+
+```
+
+#### Setting library code chunk
+
+By setting the `#| output:` to `false`, none of the output from running the code will show up. Only the code chunk for loading the library has `#| output: false`. The output is "attaching package (`readxl`), which is not necessary for our report. In almost all cases, your code chunk will NOT include the `output` option. If you do include it, it will mostly be set to `true` in order for you to output results, a plot, etc.
+
+```{r}
+#| label: load-library-readxl
+#| echo: fenced
+#| output: false
+
+library(readxl)
+
+```
+
+#### Code Chunk Options
+
+For more information on code chunks, see [code chunk options](https://r4ds.hadley.nz/quarto.html#chunk-options).
+
+```{{r}}
+#| label: example-with-options
+#| eval: true          # Whether to execute the code
+#| output: true        # Whether to display output
+#| warning: false      # Hide warnings
+#| message: false      # Hide messages
+#| error: false        # Hide errors
+#| fig-cap: "Caption"  # Figure caption
+#| fig-width: 8        # Figure width in inches
+#| fig-height: 6       # Figure height in inches
+
+# Your code here below these code chunk options
+
+```

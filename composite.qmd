@@ -32,6 +32,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: `psych`
 
@@ -219,9 +221,10 @@ focus_scores
 -   Use at least 3-4 items per scale
 :::
 
-::: {.callout-important}
+::: {.callout-important .required}
 ## Required: report Cronbach's alpha
 
 In the measures section of your `Lastname_RDreport.qmd` and final report, please include the results of the reliability analysis (aka cronbach's alpha).
 :::
 
+{{< include _ref-whistle-box.qmd >}}

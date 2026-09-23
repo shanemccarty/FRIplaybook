@@ -24,6 +24,8 @@ execute:
   cache: false   # reads the lab dataset; also, an old cache listed packages (NHANES) that are not installed on every computer
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ::: {.callout-note collapse="true"}
@@ -369,3 +371,5 @@ summary(yourdata)    # minimum and maximum of every variable
 | **Unnamed questions** | Do you see names such as `Q17` or `Q23_1`? Those questions were never named. Fix the names in Qualtrics and export again. Do not rename them by hand in Excel. |
 | **Minimum and maximum** | For each scale, do the minimum and maximum match the response options (for example, 1 to 5)? Are -99 and -50 gone? |
 | **Team agreement** | Did every teammate import the same file, with the same date in its name? |
+
+{{< include _ref-whistle-box.qmd >}}

@@ -30,6 +30,8 @@ execute:
   cache: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: joins and `tidyr`
 
@@ -317,7 +319,7 @@ long_data <- wide_data |>
 ```
 
 | Criteria | Ask yourself |
-|----------------|--------------------------------------------------------|
+|----|----|
 | **Same code in both files** | Is there a `PASSWORD` column in both datasets, spelled the same way? |
 | **Clean passwords** | Did you make the passwords lowercase and remove extra spaces in **both** datasets before joining? |
 | **Duplicates** | Did you look for passwords that appear more than once? Did your team agree on one rule for which response to keep? |
@@ -326,3 +328,5 @@ long_data <- wide_data |>
 | **Reported in methods** | Do you report how many people took the pretest, how many were matched, and how many were not? |
 | **Column names** | If a variable name already contains a `_` (for example, `SLEEP_HOURS_pre`), did you check that `pivot_longer()` split it in the right place? |
 | **Both shapes kept** | Do you have `wide_data` for your test and `long_data` for your plot? |
+
+{{< include _ref-whistle-box.qmd >}}

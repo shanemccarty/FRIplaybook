@@ -1,0 +1,7 @@
+<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+
+::: {.callout-note .gray collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's final whistle: before you quit RStudio
+
+**Save → Render → Back up to ELN → Quit, Don't Save workspace.** Details: [Ref's Quick Checklist](find-the-ref.qmd#sec-ref-checklist).
+:::

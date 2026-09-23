@@ -9,7 +9,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="Ref the Raccoon, RStudio project, routine, load library, environment, backup, ELN, troubleshooting">
 
-<title>5&nbsp; Find the Ref – The Quantitative Playbook for R</title>
+<title>6&nbsp; Find the Ref – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,8 +70,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./codechunks.html" rel="next">
-<link href="./library.html" rel="prev">
+<link href="./export.html" rel="next">
+<link href="./codechunks.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started (Lab 1)</a></li><li class="breadcrumb-item"><a href="./find-the-ref.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started (Lab 1)</a></li><li class="breadcrumb-item"><a href="./find-the-ref.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -174,14 +209,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
       </ul>
@@ -388,21 +423,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-you-need-this-chapter-the-kitchen" id="toc-why-you-need-this-chapter-the-kitchen" class="nav-link active" data-scroll-target="#why-you-need-this-chapter-the-kitchen"><span class="header-section-number">5.1</span> Why you need this chapter: the kitchen</a></li>
-  <li><a href="#once-per-computer" id="toc-once-per-computer" class="nav-link" data-scroll-target="#once-per-computer"><span class="header-section-number">5.2</span> Once per computer</a></li>
-  <li><a href="#refs-kickoff-every-time-you-start-rstudio" id="toc-refs-kickoff-every-time-you-start-rstudio" class="nav-link" data-scroll-target="#refs-kickoff-every-time-you-start-rstudio"><span class="header-section-number">5.3</span> Ref’s kickoff: every time you start RStudio</a></li>
-  <li><a href="#refs-final-whistle-before-you-leave" id="toc-refs-final-whistle-before-you-leave" class="nav-link" data-scroll-target="#refs-final-whistle-before-you-leave"><span class="header-section-number">5.4</span> Ref’s final whistle: before you leave</a></li>
-  <li><a href="#if-something-goes-wrong-when-you-come-back" id="toc-if-something-goes-wrong-when-you-come-back" class="nav-link" data-scroll-target="#if-something-goes-wrong-when-you-come-back"><span class="header-section-number">5.5</span> If something goes wrong when you come back</a></li>
-  <li><a href="#where-you-will-find-ref-in-this-playbook" id="toc-where-you-will-find-ref-in-this-playbook" class="nav-link" data-scroll-target="#where-you-will-find-ref-in-this-playbook"><span class="header-section-number">5.6</span> Where you will find Ref in this playbook</a></li>
+  <li><a href="#why-you-need-this-chapter-the-kitchen" id="toc-why-you-need-this-chapter-the-kitchen" class="nav-link active" data-scroll-target="#why-you-need-this-chapter-the-kitchen"><span class="header-section-number">6.1</span> Why you need this chapter: the kitchen</a>
+  <ul class="collapse">
+  <li><a href="#how-to-clean-the-counter" id="toc-how-to-clean-the-counter" class="nav-link" data-scroll-target="#how-to-clean-the-counter"><span class="header-section-number">6.1.1</span> How to clean the counter</a></li>
+  </ul></li>
+  <li><a href="#once-per-computer" id="toc-once-per-computer" class="nav-link" data-scroll-target="#once-per-computer"><span class="header-section-number">6.2</span> Once per computer</a></li>
+  <li><a href="#refs-kickoff-every-time-you-start-rstudio" id="toc-refs-kickoff-every-time-you-start-rstudio" class="nav-link" data-scroll-target="#refs-kickoff-every-time-you-start-rstudio"><span class="header-section-number">6.3</span> Ref’s kickoff: every time you start RStudio</a></li>
+  <li><a href="#refs-final-whistle-before-you-leave" id="toc-refs-final-whistle-before-you-leave" class="nav-link" data-scroll-target="#refs-final-whistle-before-you-leave"><span class="header-section-number">6.4</span> Ref’s final whistle: before you leave</a></li>
+  <li><a href="#if-something-goes-wrong-when-you-come-back" id="toc-if-something-goes-wrong-when-you-come-back" class="nav-link" data-scroll-target="#if-something-goes-wrong-when-you-come-back"><span class="header-section-number">6.5</span> If something goes wrong when you come back</a></li>
+  <li><a href="#sec-ref-checklist" id="toc-sec-ref-checklist" class="nav-link" data-scroll-target="#sec-ref-checklist"><span class="header-section-number">6.6</span> Ref’s Quick Checklist</a></li>
+  <li><a href="#where-you-will-find-ref-in-this-playbook" id="toc-where-you-will-find-ref-in-this-playbook" class="nav-link" data-scroll-target="#where-you-will-find-ref-in-this-playbook"><span class="header-section-number">6.7</span> Where you will find Ref in this playbook</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/find-the-ref.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started (Lab 1)</a></li><li class="breadcrumb-item"><a href="./find-the-ref.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./example.html">Get Started (Lab 1)</a></li><li class="breadcrumb-item"><a href="./find-the-ref.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></h1>
 <p class="subtitle lead">How to start and end every coding session</p>
 </div>
 
@@ -452,8 +491,8 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Meet Ref.</strong> I am Ref the Raccoon. A referee is there to keep the game fair and to help you play it right. Find me <strong>first</strong>, every time you sit down to code, and find me <strong>last</strong>, before you leave. This chapter is my routine. It takes about a minute at the start and a minute at the end, and it prevents most of the problems that stop people in their tracks.</p>
 </div>
 </div>
-<section id="why-you-need-this-chapter-the-kitchen" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="why-you-need-this-chapter-the-kitchen"><span class="header-section-number">5.1</span> Why you need this chapter: the kitchen</h2>
+<section id="why-you-need-this-chapter-the-kitchen" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="why-you-need-this-chapter-the-kitchen"><span class="header-section-number">6.1</span> Why you need this chapter: the kitchen</h2>
 <p>Think of RStudio as a kitchen.</p>
 <table class="caption-top table">
 <colgroup>
@@ -497,19 +536,33 @@ ul.task-list li input[type="checkbox"] {
 <p>Every time you sit down to work, start with an empty Environment and re-run your code from the top. It takes about a minute, and it proves that your work is reproducible.</p>
 </div>
 </div>
+<section id="how-to-clean-the-counter" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="how-to-clean-the-counter"><span class="header-section-number">6.1.1</span> How to clean the counter</h3>
+<p>Objects from earlier work (<code>alldata</code>, <code>select_data</code>, <code>VARIABLE1</code>) stay in the <strong>environment tab</strong> until you clear them. If you turned off “Restore .RData” in <a href="./RStudio.html">R Software</a>, the counter is already clean every time you open RStudio. During a session, there are two ways to wipe it:</p>
+<ul>
+<li><strong>Session &gt; Restart R.</strong> This is the cleanest option: it empties the environment <em>and</em> unloads every package, so what happens next is exactly what a render will see.</li>
+<li><strong><code>rm(list = ls())</code></strong> in the console. This removes every object but leaves packages loaded. Use it when you want a quick reset without restarting.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all objects from the global environment</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then run your load-library chunk and continue from the top.</p>
 </section>
-<section id="once-per-computer" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="once-per-computer"><span class="header-section-number">5.2</span> Once per computer</h2>
+</section>
+<section id="once-per-computer" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="once-per-computer"><span class="header-section-number">6.2</span> Once per computer</h2>
 <p>You did most of this when you first set up your computer. You do <strong>not</strong> repeat it each time.</p>
 <ul>
-<li>Install R and RStudio (<a href="./RStudio.html">RStudio Software</a>)</li>
+<li>Install R and RStudio (<a href="./RStudio.html">R Software</a>)</li>
 <li>Create your RStudio Project, <code>Lastname_FRI</code></li>
-<li>Run your <code>install.R</code> file to install your packages (<a href="./library.html">Install and Load Packages</a>)</li>
+<li>Run your <code>install.R</code> file to install your packages (<a href="./library.html">R Packages</a>)</li>
+<li>Create your first report file, with its load-library chunk (<a href="./codechunks.html">Start a Report</a>). You repeat this once per lab, not per session.</li>
 <li>Create a folder called <strong>R Labs</strong> inside your individual ELN (your Google Drive folder). In Google Drive, open your ELN and click + New &gt; New folder.</li>
 </ul>
 </section>
-<section id="refs-kickoff-every-time-you-start-rstudio" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="refs-kickoff-every-time-you-start-rstudio"><span class="header-section-number">5.3</span> Ref’s kickoff: every time you start RStudio</h2>
+<section id="refs-kickoff-every-time-you-start-rstudio" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="refs-kickoff-every-time-you-start-rstudio"><span class="header-section-number">6.3</span> Ref’s kickoff: every time you start RStudio</h2>
 <!-- Single source for Ref's start-of-session routine (steps 1-6). Included in find-the-ref.qmd; can also open each lab page. -->
 <ol type="1">
 <li><strong>Open your project, not a file.</strong> Find your <code>Lastname_FRI</code> folder and double-click <code>Lastname_FRI.Rproj</code>. (Or, in RStudio: File &gt; Open Project…)</li>
@@ -529,26 +582,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The six steps above are for a day when you <strong>continue</strong> a file you already started. On a day when you <strong>start a new lab</strong> (or a new report), there is no file to open yet, so steps 3 to 6 change:</p>
-<ol type="1">
-<li>Do steps 1 and 2 above, so that you are inside your project.</li>
-<li>Make a new, empty report file: File &gt; New File &gt; Quarto Document…, then click Create.</li>
-<li>Save it right away: File &gt; Save As…, and name it for the lab, for example <code>Lastname_lab3.qmd</code>. Check that it shows up in your <strong>files tab</strong>. If it does, it is inside your project folder.</li>
-<li>Add your packages to the new file. A new <code>.qmd</code> file starts out empty, so it has no <code>library()</code> lines yet, and without them R cannot use <code>ggplot2</code> or any other package in this file. You already wrote those lines once, so copy them:
-<ol type="a">
-<li>Open your last lab file (for example, <code>Lastname_lab2.qmd</code>).</li>
-<li>Find the first gray code box near the top. It is the one with lines such as <code>library(tidyverse)</code>.</li>
-<li>Copy that whole box, from the line that starts with <code>```{r}</code> to the line with <code>```</code>.</li>
-<li>Go back to your new file and paste it at the top, under the title section.</li>
-</ol>
-Lab 2 is your first file (there is no file for Lab 1), so there is nothing to copy from yet. For Lab 2, type your <code>library()</code> lines as shown in <a href="./library.html#sec-load-block">Install and Load Packages</a>.</li>
-<li>Run that chunk with the green ▶ arrow, and start the lab.</li>
-</ol>
+<p>The six steps above are for a day when you <strong>continue</strong> a file you already started. On the first day of a new lab there is no file to open yet. Do steps 1 and 2, then create and name the new <code>.qmd</code> file and paste in your load-library chunk exactly as in <a href="./codechunks.html">Start a Report</a> (the previous chapter). Save it, check that it appears in the files tab, and pick up at step 4.</p>
 </div>
 </div>
 </section>
-<section id="refs-final-whistle-before-you-leave" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="refs-final-whistle-before-you-leave"><span class="header-section-number">5.4</span> Ref’s final whistle: before you leave</h2>
+<section id="refs-final-whistle-before-you-leave" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="refs-final-whistle-before-you-leave"><span class="header-section-number">6.4</span> Ref’s final whistle: before you leave</h2>
 <p>Keep counting. Steps 7 to 10 finish your session and back up your work.</p>
 <!-- Single source for Ref's end-of-session routine (steps 7-10). Included in find-the-ref.qmd; can also close each lab page. -->
 <ol start="7" type="1">
@@ -561,6 +600,54 @@ Lab 2 is your first file (there is no file for Lab 1), so there is nothing to co
 <li><strong>Back up your files to your ELN.</strong> Open your individual ELN (your Google Drive folder) in your browser and open your <strong>R Labs</strong> folder. Click + New &gt; File upload, go to your <code>Lastname_FRI</code> project folder, and select the files you worked on today: your <code>.qmd</code> files and your <code>.R</code> files (such as <code>install.R</code>). You can also drag the files from your project folder into the browser window. If Google Drive asks what to do with a file that is already there, choose <strong>Replace existing file</strong>. Google Drive keeps the older versions for you.</li>
 <li><strong>Quit RStudio.</strong> If RStudio asks to save your workspace, choose <strong>Don’t Save</strong>, because the workspace is the countertop, not the recipe. It holds the leftovers from today: your datasets and variables, including any made by code you later changed or deleted. If you save it, R puts those leftovers back the next time you open RStudio, and your results may no longer match your code. Your <code>.qmd</code> file and your data file are already saved, and they are all you need to make everything again.</li>
 </ol>
+<!-- Single source for the "save before you close" caution. Included in RStudio.qmd, codechunks.qmd (ch. 5), and find-the-ref.qmd (ch. 6). Edit it here only. -->
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Save your file before you close RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio does not save your <code>.qmd</code> or <code>.R</code> file for you. If the file name on its tab is <strong>red with a *</strong>, your latest changes exist only on the screen, and closing RStudio throws them away. Two different questions come up when you quit, and they need opposite answers.</p>
+<p><strong>Do this</strong></p>
+<ul>
+<li>Press <strong>Cmd + S</strong> (Mac) or <strong>Ctrl + S</strong> (Windows) every few minutes, and always before you Render. The file name on the tab turns black when it is saved.</li>
+<li>Before you quit, click <strong>File &gt; Save All</strong>.</li>
+<li>If RStudio asks <em>“Save changes to report.qmd?”</em>, click <strong>Save</strong>. That question is about your file.</li>
+<li>Copy your <code>.qmd</code> and <code>.R</code> files to your ELN at the end of every session (<a href="./find-the-ref.html">Find the Ref</a>).</li>
+</ul>
+<p><strong>Do not do this</strong></p>
+<ul>
+<li>Do not close RStudio, or your laptop, while a file name is still red.</li>
+<li>Do not click <strong>Don’t Save</strong> when the question names a file (<code>report.qmd</code>, <code>install.R</code>). Only the question about the <strong>workspace</strong> (<code>.RData</code>) gets <strong>Don’t Save</strong>: the workspace is leftovers, and your file is the recipe.</li>
+<li>Do not rely on Render to save for you. It usually does, but only for the file you rendered, and only if the render starts.</li>
+</ul>
+</div>
+</div>
+<!-- Single source for the "fresh run before you submit" rule. Included in find-the-ref.qmd and quartopub.qmd. Edit it here only. -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: Close the project, reopen it, and run everything before you submit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Code that worked while you were editing can still fail from a clean start, because something you ran earlier by hand (a package, an object, a data file in the wrong place) was propping it up. Before you submit your <em>RD Report</em> or <em>Final Report</em>, and before you publish it, prove that it runs on its own:</p>
+<ol type="1">
+<li><strong>Close the project:</strong> File &gt; Close Project. If RStudio asks about the workspace, choose <strong>Don’t Save</strong>.</li>
+<li><strong>Open the project fresh:</strong> double-click <code>Lastname_FRI.Rproj</code>. The environment tab should be empty.</li>
+<li><strong>Run all of the code from the top.</strong> For a <code>.qmd</code> report, click <strong>Render</strong>; it starts a fresh R session and runs every chunk from the first line to the last, the same job <strong>Source</strong> does for an <code>.R</code> script.</li>
+<li><strong>Check the result.</strong> The report should open with every plot, table, and number in place, and the console should show no errors. If it stops, fix the first error, then start again from step 1.</li>
+</ol>
+<p>Only when a fresh run works from top to bottom is the report ready to submit and publish. If it works on your computer this way, it will work on your instructor’s.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -575,8 +662,8 @@ Lab 2 is your first file (there is no file for Lab 1), so there is nothing to co
 </div>
 </div>
 </section>
-<section id="if-something-goes-wrong-when-you-come-back" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="if-something-goes-wrong-when-you-come-back"><span class="header-section-number">5.5</span> If something goes wrong when you come back</h2>
+<section id="if-something-goes-wrong-when-you-come-back" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="if-something-goes-wrong-when-you-come-back"><span class="header-section-number">6.5</span> If something goes wrong when you come back</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -625,8 +712,43 @@ Lab 2 is your first file (there is no file for Lab 1), so there is nothing to co
 </table>
 <p>Still stuck? Restart R (Session &gt; Restart R) and start again at step 4. A fresh start fixes more problems than you would expect.</p>
 </section>
-<section id="where-you-will-find-ref-in-this-playbook" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="where-you-will-find-ref-in-this-playbook"><span class="header-section-number">5.6</span> Where you will find Ref in this playbook</h2>
+<section id="sec-ref-checklist" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-ref-checklist"><span class="header-section-number">6.6</span> Ref’s Quick Checklist</h2>
+<p>The whole routine on one line each. Every coding chapter from here on opens and closes with a gray Ref box that links back to this list.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Step</th>
+<th>Do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🏁</td>
+<td><strong>Kickoff</strong></td>
+<td><strong>Open Project</strong> (<code>Lastname_FRI.Rproj</code>) → <strong>Open <code>.qmd</code></strong> → <strong>Run load-library chunk</strong> → <strong>Run All Chunks Above</strong> → <strong>Code</strong></td>
+</tr>
+<tr class="even">
+<td>🔔</td>
+<td><strong>Final whistle</strong></td>
+<td><strong>Save</strong> (Cmd/Ctrl + S) → <strong>Render</strong> → <strong>Back up to ELN</strong> (R Labs folder) → <strong>Quit, Don’t Save workspace</strong></td>
+</tr>
+<tr class="odd">
+<td>🚑</td>
+<td><strong>Something wrong?</strong></td>
+<td>Session &gt; Restart R, then start at the kickoff. Still stuck: the table above.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="where-you-will-find-ref-in-this-playbook" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="where-you-will-find-ref-in-this-playbook"><span class="header-section-number">6.7</span> Where you will find Ref in this playbook</h2>
 <p>Most chapters that use data have the same three sections, and you will go through them with three different datasets.</p>
 <table class="caption-top table">
 <colgroup>
@@ -661,7 +783,7 @@ Lab 2 is your first file (there is no file for Lab 1), so there is nothing to co
 </table>
 <p>Ref does not talk all the time. Look for him in these places:</p>
 <ul>
-<li><strong>Ref’s kickoff</strong> opens The Lab, and <strong>Ref’s final whistle</strong> closes it. They are short reminders of the routine in this chapter.</li>
+<li><strong>Ref’s kickoff</strong> opens every coding chapter and The Lab, and <strong>Ref’s final whistle</strong> closes them. They are one-line reminders that link to the Quick Checklist above.</li>
 <li><strong>Ref’s check</strong> boxes in The Lab show you the answer you should get, so you can check your own work. Try the play first, then open the box.</li>
 <li>A <strong>foul</strong> is a mistake that gives you a wrong answer <em>without</em> any error message. These are the mistakes you cannot catch on your own, so Ref blows the whistle.</li>
 <li>In <strong>Your Turn</strong>, there is no Ref. It’s game time! You run the play with your own data and check your own work with the same checklist your instructor uses.</li>
@@ -1073,13 +1195,13 @@ Lab 2 is your first file (there is no file for Lab 1), so there is nothing to co
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./library.html" class="pagination-link" aria-label="R Packages">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span>
+      <a href="./codechunks.html" class="pagination-link" aria-label="Start a Report">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./codechunks.html" class="pagination-link" aria-label="Start a Report">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./export.html" class="pagination-link" aria-label="Export Survey Data">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -32,6 +32,6 @@ This playbook is not a statistics course. The [Analysis Map](analysis-map.qmd) t
 
 -   [Introduction to Statistics in R](https://www.datacamp.com/courses/introduction-to-statistics-in-r) (DataCamp course)
 -   Batra, N., et al. (2021). [*The Epidemiologist R Handbook*](https://www.epirhandbook.com/en/) (free online handbook for applied epidemiology and public health)
--   Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [*Statistical Inference via Data Science: A ModernDive into R and the Tidyverse*](https://moderndive.com/v2/) (2nd ed.). CRC Press. (free online; also used in [Install and Load Packages](library.qmd) and [Relate 3+ Variables](regression.qmd))
+-   Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [*Statistical Inference via Data Science: A ModernDive into R and the Tidyverse*](https://moderndive.com/v2/) (2nd ed.). CRC Press. (free online; also used in [R Packages](library.qmd) and [Relate 3+ Variables](regression.qmd))
 -   James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). [*An Introduction to Statistical Learning with Applications in R*](https://www.statlearning.com) (2nd ed.). Springer. (free PDF on the book's website)
 :::

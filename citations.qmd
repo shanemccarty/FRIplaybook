@@ -18,6 +18,8 @@ nocite: |
   @kannan2014, @McCarty2026
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ------------------------------------------------------------------------
 
 ::: {.callout-note collapse="true"}
@@ -31,7 +33,7 @@ nocite: |
 -   [Quarto Citations](https://quarto.org/docs/authoring/citations.html)
 :::
 
-::: {.callout-important}
+::: {.callout-important .required}
 ## Required: citations in your Final Report
 
 Your *Final* *Report* will include in-text citations and references using this chapter. However, the *Results* & *Discussion* report draft will not require citations and references.
@@ -165,9 +167,11 @@ By default, Quarto will automatically generate a list of cited works and will be
 
 For more information about citations in Quarto, check out the Quarto website: <https://quarto.org/docs/authoring/citations.html>
 
-::: {.callout-important}
+::: {.callout-important .required}
 ## Required: citations in your Final Report
 
 Citations and references are not required for the Results & Discussion Report ( `Lastname_RDreport.qmd` ), but they are required for your final report (`Lastname_finalreport.qmd`).
 
 :::
+
+{{< include _ref-whistle-box.qmd >}}

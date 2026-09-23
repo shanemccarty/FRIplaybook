@@ -69,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./find-the-ref.html" rel="next">
+<link href="./codechunks.html" rel="next">
 <link href="./RStudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -211,14 +211,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
       </ul>
@@ -697,7 +697,7 @@ Figure&nbsp;4.1: The packages used in this playbook, organized by the steps of t
 </div>
 </div>
 <p><strong>Example install.R file</strong></p>
-<p>In your RStudio Project, create a new file that is “R Script” and title it <code>install.R</code>. Run the whole file <strong>one time</strong> by clicking the “Source” button. It may take several minutes. You do not need to run it again unless you get a new computer or need a new package.</p>
+<p>In your RStudio Project, create a new file that is “R Script” and title it <code>install.R</code>. Run the whole file <strong>one time</strong> by clicking the “Source” button. It may take several minutes. If it stops with an error, run the file a few lines at a time to find the package that failed (see <a href="./RStudio.html">R Software</a>, Running code). You do not need to run it again unless you get a new computer or need a new package.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## install.R</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Run this file ONE time on your computer.</span></span>
@@ -768,6 +768,24 @@ Figure&nbsp;4.1: The packages used in this playbook, organized by the steps of t
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)     <span class="co"># tables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When you render a report, R starts a fresh session. This means the packages you loaded by hand in the console do not count: if the <code>library()</code> line is not in the report, the render will fail even though your code worked in the console.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: Do I have to rerun this chunk every time I open my report?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Yes and no, depending on what you are doing.</p>
+<ul>
+<li><strong>Rendering: no.</strong> Render starts a fresh R session and runs your whole file from the first line to the last, so it runs the load-library chunk itself. As long as the chunk is at the top of your report, rendering will never fail because a package was not loaded.</li>
+<li><strong>Working on your report between renders: yes.</strong> When you open RStudio, its memory is empty, so a chunk in the middle of your report (say, a plot) will fail until the chunks above it have run. That is why <a href="./find-the-ref.html">Ref’s kickoff</a> has you run the load-library chunk (step 4) and then <strong>Run All Chunks Above</strong> (step 5): the gray ▼ with a line under it, next to the green arrow on the chunk, or <strong>Cmd + Option + P</strong> (Mac) / <strong>Ctrl + Alt + P</strong> (Windows). This runs the load-library chunk, the import chunk, and everything else above the chunk you are on, in order.</li>
+</ul>
+<p>This is also why we ask you not to save your workspace (Chapter 3): starting empty every time is what makes the render match what you see while you work.</p>
+</div>
+</div>
 </section>
 <section id="common-errors" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="common-errors"><span class="header-section-number">4.5</span> Common Errors</h2>
@@ -1189,8 +1207,8 @@ Figure&nbsp;4.1: The packages used in this playbook, organized by the steps of t
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./find-the-ref.html" class="pagination-link" aria-label="Find the Ref">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./codechunks.html" class="pagination-link" aria-label="Start a Report">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

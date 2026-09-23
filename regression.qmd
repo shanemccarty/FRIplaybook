@@ -26,6 +26,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: regression
 
@@ -545,3 +547,5 @@ Then write your results sentence. Use this pattern, and say whether your hypothe
 
 {{< include _checklist-regression.qmd >}}
 :::
+
+{{< include _ref-whistle-box.qmd >}}

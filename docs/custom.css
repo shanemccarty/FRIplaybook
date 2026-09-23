@@ -92,8 +92,15 @@ h4:has(+ * :contains("Step 1")) {
 
 
 /* ---- callout color system (Preface: How to Read This Playbook) ----
-   blue = Resources (default) | green = Go (default) | red = Required (default)
+   blue = Resources (default) | green = Go (default)
+   red = Important (default .callout-important) | dark red + memo (paper and pencil) icon = Required (.callout-important .required)
    yellow = Caution | gray = answers, checklists, notices (no message, just content) */
+/* Required: dark red banner and a memo (paper and pencil) icon, so it never looks like an Important box.
+   Not a clipboard: Quarto already puts a gray clipboard (copy) icon on every code block. */
+div.callout-important.required.callout { border-left-color: #8b1a1a; }
+div.callout-important.required.callout-style-default > .callout-header { background-color: #f3d9d9; }
+div.callout-important.required .callout-title-container { color: #5c0f0f; }
+div.callout-important.required .callout-icon::before { background-image: none; content: "\1F4DD"; font-size: 1.05rem; line-height: 1; margin-right: .45em; }
 div.callout-warning.callout { border-left-color: #e6b800; }
 div.callout-warning.callout-style-default > .callout-header { background-color: #fff6cc; }
 div.callout-warning .callout-icon::before { filter: hue-rotate(15deg) saturate(1.3); }
@@ -103,7 +110,8 @@ div.callout.gray .callout-icon::before { filter: grayscale(1); }
 
 /* ---- color key swatches in the Preface (same colors as the callout banners; the word stays, so it never relies on color alone) ---- */
 .key { display: inline-block; padding: 0 .55em; border-radius: 4px; border-left: 5px solid; font-weight: 600; color: #222; }
-.key-red    { background: #fbe9eb; border-color: #dc3545; }
+.key-red     { background: #fbe9eb; border-color: #dc3545; }
+.key-darkred { background: #f3d9d9; border-color: #8b1a1a; color: #5c0f0f; }
 .key-yellow { background: #fff6cc; border-color: #e6b800; }
 .key-green  { background: #e6f4ee; border-color: #198754; }
 .key-blue   { background: #e7f0fe; border-color: #0d6efd; }

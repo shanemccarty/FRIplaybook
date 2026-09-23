@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Shane McCarty, PhD">
-<meta name="dcterms.date" content="2026-09-20">
+<meta name="dcterms.date" content="2026-09-22">
 
 <title>The Quantitative Playbook for R</title>
 <style>
@@ -176,14 +176,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
       </ul>
@@ -407,7 +407,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#how-to-cite-this-guide" id="toc-how-to-cite-this-guide" class="nav-link" data-scroll-target="#how-to-cite-this-guide">How to Cite This Guide</a>
   <ul class="collapse">
-  <li><a href="#editor-and-chapter-authors" id="toc-editor-and-chapter-authors" class="nav-link" data-scroll-target="#editor-and-chapter-authors">Editor and Chapter Authors</a></li>
+  <li><a href="#editor-chapter-authors-and-chapter-reviewers" id="toc-editor-chapter-authors-and-chapter-reviewers" class="nav-link" data-scroll-target="#editor-chapter-authors-and-chapter-reviewers">Editor, Chapter Authors, and Chapter Reviewers</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -436,7 +436,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Edition 2 (v2.01)</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 20, 2026</p>
+      <p class="date">September 22, 2026</p>
     </div>
   </div>
   
@@ -456,7 +456,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Whether you are facing a dataset for the first time or refining your analytical strategy, this playbook helps you turn data into information, information into knowledge, and knowledge into wisdom in order to improve community health.</p>
 <section id="the-purpose-of-the-course" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="the-purpose-of-the-course">The Purpose of the Course</h2>
-<p>The purpose of the FRI Public Health courses is to develop your research skills: the conceptual skills to design a study, and the analytical skills to answer your own research questions with the right technique. This is not a statistics course or a programming course, but we have compiled many resources for you to explore if you want to learn more. We hope that you feel more motivated to learn programming skills (and add a Digital and Data Studies (DiDa) minor), enjoy learning a new data analysis skill (one that may inspire a career in epidemiology, biostatistics, or data science), and learn how to persist through some difficult moments with coding.</p>
+<p>The purpose of the FRI Public Health courses is to develop your research skills: the conceptual skills to design a study, and the analytical skills to answer your own research questions with the right technique. This is not a statistics course or a programming course, but we have compiled many resources for you to explore if you want to learn more. We hope that you enjoy learning a new data analysis skill (one that may inspire a career in epidemiology, biostatistics, or data science), feel more motivated to learn advanced programming skills (from the Digital and Data Studies [DiDa] minor), and learn how to troubleshoot and problem-solve during some difficult moments with coding.</p>
 </section>
 <section id="the-purpose-of-the-playbook" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="the-purpose-of-the-playbook">The Purpose of the Playbook</h2>
@@ -521,7 +521,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Technical Requirements:</strong></p>
 <ul>
 <li><p>A web browser (Chrome, Firefox, Safari, or Edge) for interactive WebR examples</p></li>
-<li><p>R and RStudio installed on your computer (see <a href="./RStudio.html">RStudio Software</a>)</p></li>
+<li><p>R and RStudio installed on your computer (see <a href="./RStudio.html">R Software</a>)</p></li>
 </ul>
 <p><strong>Background Knowledge:</strong></p>
 <ul>
@@ -564,50 +564,49 @@ ul.task-list li input[type="checkbox"] {
 <tr class="header">
 <th>Color</th>
 <th>Name</th>
-<th>The question it answers</th>
+<th>The question it answers, and what to do</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="key key-red">Red</span></td>
+<td><span class="key key-darkred">Dark red 📝</span></td>
 <td><strong>Required</strong></td>
-<td>What must be in my RD Report and Final Report?</td>
+<td>What must be in my RD Report and Final Report? The paper-and-pencil icon means “this goes in your report, and it is graded.” <strong>Read every one.</strong></td>
 </tr>
 <tr class="even">
 <td><span class="key key-red">Red</span></td>
 <td><strong>Important</strong></td>
-<td>What do I have to know or do so that my work does not break?</td>
+<td>What do I have to know or do so that my work does not break? Not graded on its own. <strong>Read every one.</strong></td>
 </tr>
 <tr class="odd">
 <td><span class="key key-yellow">Yellow</span></td>
 <td><strong>Caution</strong></td>
-<td>Where do people go wrong?</td>
+<td>Where do people go wrong? <strong>Slow down.</strong></td>
 </tr>
 <tr class="even">
 <td><span class="key key-green">Green</span></td>
 <td><strong>Go</strong></td>
-<td>What is the recommended move?</td>
+<td>What is the recommended move? <strong>Follow it.</strong></td>
 </tr>
 <tr class="odd">
 <td><span class="key key-blue">Blue</span></td>
 <td><strong>Resources</strong></td>
-<td>Where can I get more help? (never required)</td>
+<td>Where can I get more help? Never required. <strong>Open it only when you want more.</strong></td>
 </tr>
 <tr class="even">
 <td><span class="key key-gray">Gray</span></td>
 <td><strong>Team</strong></td>
-<td>What applies only to my team? (for example, your team’s file names) Click to open.</td>
+<td>What applies only to my team? (for example, your team’s file names) <strong>Open the one with your team’s name.</strong></td>
 </tr>
 <tr class="odd">
 <td><span class="key key-gray">Gray</span></td>
 <td></td>
-<td>Also used for answers and checklists. Click to open.</td>
+<td>Also used for answers and checklists. <strong>Click to open.</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Read every <span class="key key-red">red</span> box. Follow <span class="key key-green">green</span>. Slow down at <span class="key key-yellow">yellow</span>. Open <span class="key key-blue">blue</span> only when you want more. Open the <span class="key key-gray">gray</span> box with your team’s name.</strong></p>
-<p>Here is what the boxes look like in a chapter:</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>Here is what the boxes look like in a chapter. The two red boxes are easy to confuse, so look for the paper and pencil: a <span class="key key-darkred">dark red</span> box with a 📝 is something graders check for; a <span class="key key-red">red</span> box with a ! is something to know or do so that your work does not break.</p>
+<div class="required callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -687,7 +686,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- Single source for the ggplot2 resource links. Included in the Preface (color key example), How Code Builds a Plot, Visualize a Comparison, and Visualize a Relationship. Edit it here once; every place updates. -->
+<!-- Single source for the ggplot2 resource links. Included in the Preface (color key example), Coding a Plot, Visualize a Comparison, and Visualize a Relationship. Edit it here once; every place updates. -->
 <ul>
 <li><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html">Intro to ggplot2</a></li>
 <li><a href="https://ggplot2.tidyverse.org">Documentation</a></li>
@@ -710,8 +709,8 @@ ul.task-list li input[type="checkbox"] {
 <p>McCarty, S. (Ed.). (2026). <em>The Quantitative Playbook for R: Plays for Public Health &amp; Community Health Research</em> (2nd ed.). <a href="https://shanemccarty.github.io/FRIplaybook/" class="uri">https://shanemccarty.github.io/FRIplaybook/</a></p>
 <p><u>Or, you can cite a specific chapter:</u></p>
 <p>Silhavy, A. &amp; McCarty, S. (2026). Visualize a relationship: How to build scatterplots to show how two scores go together. In S. McCarty (Ed.), <em>The Quantitative Playbook for R: Plays for Public Health &amp; Community Health Research</em> (2nd ed.). <a href="https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html" class="uri">https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html</a></p>
-<section id="editor-and-chapter-authors" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="editor-and-chapter-authors">Editor and Chapter Authors</h3>
+<section id="editor-chapter-authors-and-chapter-reviewers" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="editor-chapter-authors-and-chapter-reviewers">Editor, Chapter Authors, and Chapter Reviewers</h3>
 <ul>
 <li><p>Editor: <a href="https://shane.quarto.pub">Shane McCarty, PhD</a></p></li>
 <li><p>Chapter Authors</p>
@@ -724,6 +723,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Jeff John</p></li>
 <li><p>Erica Sava</p></li>
 <li><p>Zach Spiegel</p></li>
+<li><p>Yoomin (Ashley) Kim</p></li>
+</ul></li>
+<li><p>Chapter Reviewers</p>
+<ul>
+<li><p>Danica Lyktey</p></li>
+<li><p>Vivian Raposo</p></li>
+<li><p>Anna Vishnevetsky</p></li>
 <li><p>Yoomin (Ashley) Kim</p></li>
 </ul></li>
 </ul>

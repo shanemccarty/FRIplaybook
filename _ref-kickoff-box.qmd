@@ -1,0 +1,7 @@
+<!-- Single source for the collapsed kickoff reminder at the START of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+
+::: {.callout-note .gray collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's kickoff: find the Ref before you code
+
+**Open Project → Open `.qmd` → Run load-library chunk → Run All Chunks Above → code.** If anything looks wrong, use [Ref's Quick Checklist](find-the-ref.qmd#sec-ref-checklist).
+:::

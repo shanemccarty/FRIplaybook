@@ -22,6 +22,8 @@ execute:
   echo: true
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: `qualtrRics`
 
@@ -142,3 +144,5 @@ responses_df <- daily_download_responses_csv(file_id)
 ```
 
 Finally, we set up our dataframes. These dataframes are now in your environment and can update charts or tables every time you reload the export!
+
+{{< include _ref-whistle-box.qmd >}}

@@ -209,14 +209,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
       </ul>
@@ -432,12 +432,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#navigating-the-layout" id="toc-navigating-the-layout" class="nav-link" data-scroll-target="#navigating-the-layout"><span class="header-section-number">3.3</span> Navigating the Layout</a></li>
   <li><a href="#scripts-and-quarto-documents" id="toc-scripts-and-quarto-documents" class="nav-link" data-scroll-target="#scripts-and-quarto-documents"><span class="header-section-number">3.4</span> Scripts and Quarto Documents</a>
   <ul class="collapse">
-  <li><a href="#creating-and-saving-a-new-script" id="toc-creating-and-saving-a-new-script" class="nav-link" data-scroll-target="#creating-and-saving-a-new-script"><span class="header-section-number">3.4.1</span> Creating and saving a new script</a></li>
-  <li><a href="#rstudio-projects-and-the-working-directory" id="toc-rstudio-projects-and-the-working-directory" class="nav-link" data-scroll-target="#rstudio-projects-and-the-working-directory"><span class="header-section-number">3.4.2</span> RStudio Projects and the Working Directory</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">3.4.3</span> Quarto</a></li>
-  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">3.4.4</span> Running code</a></li>
-  <li><a href="#organizing-scripts" id="toc-organizing-scripts" class="nav-link" data-scroll-target="#organizing-scripts"><span class="header-section-number">3.4.5</span> Organizing scripts</a></li>
-  <li><a href="#common-errors" id="toc-common-errors" class="nav-link" data-scroll-target="#common-errors"><span class="header-section-number">3.4.6</span> Common errors</a></li>
+  <li><a href="#three-places-to-write-code" id="toc-three-places-to-write-code" class="nav-link" data-scroll-target="#three-places-to-write-code"><span class="header-section-number">3.4.1</span> Three places to write code</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"><span class="header-section-number">3.4.2</span> Scripts</a></li>
+  <li><a href="#creating-and-saving-a-new-script" id="toc-creating-and-saving-a-new-script" class="nav-link" data-scroll-target="#creating-and-saving-a-new-script"><span class="header-section-number">3.4.3</span> Creating and saving a new script</a></li>
+  <li><a href="#rstudio-projects-and-the-working-directory" id="toc-rstudio-projects-and-the-working-directory" class="nav-link" data-scroll-target="#rstudio-projects-and-the-working-directory"><span class="header-section-number">3.4.4</span> RStudio Projects and the Working Directory</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">3.4.5</span> Quarto</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">3.4.6</span> Running code</a></li>
+  <li><a href="#organizing-scripts" id="toc-organizing-scripts" class="nav-link" data-scroll-target="#organizing-scripts"><span class="header-section-number">3.4.7</span> Organizing scripts</a></li>
+  <li><a href="#common-errors" id="toc-common-errors" class="nav-link" data-scroll-target="#common-errors"><span class="header-section-number">3.4.8</span> Common errors</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.5</span> Summary</a>
   <ul class="collapse">
@@ -525,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In <a href="./layers.html">How Code Builds a Plot</a>, you ran R code in your web browser. In this chapter you put R on your own computer, so that you can run code with your own data, save your work, and write your reports.</p>
+<p>In <a href="./layers.html">Coding a Plot</a>, you ran R code in your web browser. In this chapter you put R on your own computer, so that you can run code with your own data, save your work, and write your reports.</p>
 </div>
 </div>
 <section id="what-is-r-and-rstudio" class="level2" data-number="3.1">
@@ -546,29 +548,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Because RStudio runs on top of R, R must be installed <strong>before</strong> installing and using RStudio.</p>
 <section id="download-r" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="download-r"><span class="header-section-number">3.2.1</span> Download R</h3>
+<p>R comes from a website called <strong>CRAN</strong> (the Comprehensive R Archive Network). It is a plain, text-only page, and that is normal.</p>
 <ol type="1">
-<li><p>Go to the following website: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p></li>
-<li><p>Scroll down to and click “Download and Install R”. This will bring you to the R Project website page.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rstudio-posit-download.png" class="img-fluid figure-img" alt="Posit download page showing two steps: 1 Install R, with a Download and Install R button, and 2 Install RStudio, with a drop-down menu to choose your operating system version."></p>
-<figcaption>The Posit download page with “1: Install R” and “2: Install RStudio”</figcaption>
-</figure>
-</div></li>
-<li><p>From here, select the “Download R for ____” option for your computer software.</p>
+<li><p>Go to <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p></li>
+<li><p>At the top of the page, under <strong>Download and Install R</strong>, click the link for your computer: “Download R for macOS” or “Download R for Windows”.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/rstudio-cran.png" class="img-fluid figure-img" alt="CRAN home page with links to Download R for Linux, Download R for macOS, and Download R for Windows."></p>
-<figcaption>The Comprehensive R Archive Network (CRAN) page</figcaption>
+<figcaption>The CRAN home page</figcaption>
 </figure>
 </div></li>
-<li><p>Follow the instructions below depending on your software.</p></li>
+<li><p>Follow the instructions below for your computer. The version number you see (for example, R-4.6.1) will be higher than in these screenshots, because R is updated a few times a year. That is fine: always take the newest version.</p></li>
 </ol>
 <section id="mac" class="level4">
 <h4 class="anchored" data-anchor-id="mac">Mac</h4>
 <ol type="1">
 <li><p>Click “Download R for macOS.”</p></li>
-<li><p>Download the specific package depending on your chip/processor.</p>
+<li><p>Under <strong>Latest release</strong>, there are two packages. Download the one that matches your chip: <strong>For Apple silicon (M1, M2, …) Macs</strong> or <strong>For older Intel Macs</strong>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -584,14 +580,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/rstudio-r-mac-pkg.png" class="img-fluid figure-img" style="width:70.0%" alt="CRAN macOS page listing R-4.5.2-arm64.pkg for Apple silicon (M1, M2, and later) Macs and R-4.5.2-x86_64.pkg for older Intel Macs."></p>
-<figcaption>Choose the package that matches your Mac</figcaption>
+<p><img src="images/rstudio-r-mac-pkg.png" class="img-fluid figure-img" style="width:70.0%" alt="CRAN macOS page listing an arm64 .pkg file for Apple silicon Macs and an x86_64 .pkg file for older Intel Macs."></p>
+<figcaption>Choose the package that matches your Mac (your version number will be newer)</figcaption>
 </figure>
 </div></li>
-<li><p>Follow the steps on your Mac to finish downloading the package. This is similar to how other apps would be downloaded.</p>
+<li><p>Open the downloaded <code>.pkg</code> file and click <strong>Continue</strong> through the installer, the same way you install other apps. If your Mac asks whether the installer may access your Downloads folder, click <strong>Allow</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/rstudio-r-mac-installer.png" class="img-fluid figure-img" style="width:70.0%" alt="Welcome screen of the R 4.5.2 for macOS installer with a Continue button."></p>
+<p><img src="images/rstudio-r-mac-installer.png" class="img-fluid figure-img" style="width:70.0%" alt="Welcome screen of the R for macOS installer with a Continue button."></p>
 <figcaption>The R installer for macOS</figcaption>
 </figure>
 </div>
@@ -614,38 +610,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>The R for Windows page on CRAN</figcaption>
 </figure>
 </div></li>
-<li><p>Click the “Download R-4.x.x for Windows” link at the top of the page (the version number changes over time).</p></li>
-<li><p>Open the file and follow the steps on your computer to finish downloading the package.</p></li>
+<li><p>Click the large link at the top of the page, “Download R-4.x.x for Windows” (the version number changes over time).</p></li>
+<li><p>Open the downloaded <code>.exe</code> file and click <strong>Next</strong> through the installer. The default settings are fine.</p></li>
 </ol>
 </section>
 </section>
 <section id="download-rstudio" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="download-rstudio"><span class="header-section-number">3.2.2</span> Download RStudio</h3>
 <ol type="1">
-<li><p>Go back to the Posit website: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p></li>
-<li><p>Scroll down to “Install RStudio.”</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rstudio-posit-download.png" class="img-fluid figure-img" alt="Posit download page showing two steps: 1 Install R, and 2 Install RStudio, with a drop-down menu to choose your operating system version."></p>
-<figcaption>Return to the Posit download page for step “2: Install RStudio”</figcaption>
-</figure>
-</div></li>
-<li><p>If the page shows a drop-down, select the option that matches your computer’s operating system version.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rstudio-choose-os.png" class="img-fluid figure-img" style="width:70.0%" alt="Install RStudio drop-down menu open with two options: macOS 14+ and macOS 10.12 - 13."></p>
-<figcaption>Select your operating system version</figcaption>
-</figure>
-</div></li>
-<li><p>Press “Download RStudio Desktop for _______.”</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rstudio-download-button.png" class="img-fluid figure-img" style="width:70.0%" alt="Install RStudio section with macOS 14+ selected and a blue button labeled Download RStudio Desktop for macOS 14+."></p>
-<figcaption>Download RStudio Desktop</figcaption>
-</figure>
-</div></li>
-<li><p>For both Mac and Windows, finish downloading RStudio by following the prompts on your computer, similar to how other apps are downloaded.</p></li>
-<li><p>You have now downloaded RStudio. Open RStudio, and it should look like this:</p>
+<li><p>Go to <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>. This address now opens the <strong>RStudio IDE User Guide</strong> on Posit’s documentation site. Do not be surprised: that is the right page.</p></li>
+<li><p>Scroll down to the heading <strong>Direct Downloads (Open Source)</strong>. You will see a table with one row per operating system.</p>
+<!-- SHANE: screenshot to add: docs.posit.co/ide/user, the "Direct Downloads (Open Source)" table (Platform / Download columns). Suggested file: images/rstudio-direct-downloads.png --></li>
+<li><p>Click the file in the <strong>Download</strong> column that matches your computer:</p>
+<ul>
+<li><strong>Mac:</strong> the row <strong>macOS 14+</strong>, a <code>.dmg</code> file.</li>
+<li><strong>Windows:</strong> the row <strong>Windows 11</strong>, an <code>.exe</code> file (not the zip archive).</li>
+</ul>
+<p>The file name includes a version number such as <code>2026.09.0</code>. Newer is fine.</p></li>
+<li><p>Open the downloaded file and follow the prompts, the same way you install other apps. On a Mac, drag the RStudio icon into the Applications folder when the window asks you to.</p></li>
+<li><p>Open RStudio. It should look like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/rstudio-first-open.png" class="img-fluid figure-img" alt="RStudio window on first launch with three panels: the console on the left, the environment on the upper right, and the files tab on the lower right."></p>
@@ -653,6 +636,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div></li>
 </ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Older computers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The download table lists <strong>macOS 14+</strong> and <strong>Windows 11</strong>. If your computer is older than that, ask an instructor before class: there are older RStudio versions that still work, and the FRI lab computers have RStudio installed.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="navigating-the-layout" class="level2" data-number="3.3">
@@ -675,9 +671,69 @@ Figure&nbsp;3.1: The four main panels of RStudio
 </section>
 <section id="scripts-and-quarto-documents" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="scripts-and-quarto-documents"><span class="header-section-number">3.4</span> Scripts and Quarto Documents</h2>
-<p>A script is a text file that contains code. It allows us to enter commands and save our work, then return to it later. Unlike the console, where commands run immediately and are not saved, scripts allow us to store a set of commands for future use or sharing.</p>
-<section id="creating-and-saving-a-new-script" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="creating-and-saving-a-new-script"><span class="header-section-number">3.4.1</span> Creating and saving a new script</h3>
+<section id="three-places-to-write-code" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="three-places-to-write-code"><span class="header-section-number">3.4.1</span> Three places to write code</h3>
+<p>You can type R code in three places in RStudio, and each one has a job.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Where</th>
+<th>What happens to the code</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Console</strong> (bottom left)</td>
+<td>Runs immediately. <strong>Not saved.</strong> Gone when you close RStudio.</td>
+<td>Quick checks and one-time commands: <code>getwd()</code>, <code>head(mydata)</code>, looking up a value, installing a package.</td>
+</tr>
+<tr class="even">
+<td><strong><code>.R</code> script</strong></td>
+<td>Saved as a file. Runs when you click Run or Source. Code only, with <code>#</code> comments.</td>
+<td>Code that is not part of any report, such as your <code>install.R</code> file.</td>
+</tr>
+<tr class="odd">
+<td><strong><code>.qmd</code> Quarto document</strong></td>
+<td>Saved as a file. Runs when you click Render. Code chunks <strong>and</strong> your writing in one file, which becomes a web page.</td>
+<td>Everything for your <em>RD Report</em> and <em>Final Report</em>: every import, plot, and analysis.</td>
+</tr>
+</tbody>
+</table>
+<p>Think of the console as scratch paper and the two file types as the notebook. Scratch paper is the right place to try one line or check a number. Nobody keeps scratch paper.</p>
+<!-- Single source for the 'write your analysis in a .qmd' rule. Included in RStudio.qmd (three places to write code) and codechunks.qmd (Code Chunks). Edit it here only. -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: Write your analysis in a <code>.qmd</code> file, not in the console
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this course, all of the code for your reports goes in code chunks inside your <code>.qmd</code> file. Here is why.</p>
+<ul>
+<li><strong>It can be checked.</strong> Your instructor, your teammates, and later readers can open your <code>.qmd</code> and see exactly how every number and plot was made. Code typed in the console leaves no record, so nobody can review it, and neither can you.</li>
+<li><strong>It can be published.</strong> Rendering a <code>.qmd</code> turns your code, results, and writing into one web page with a URL, which is what you submit (<a href="./quartopub.html">Publish</a>). A console session cannot be published.</li>
+<li><strong>It can be redone.</strong> Render runs every chunk from a fresh start, so your report proves that the analysis works from top to bottom. That is what <em>reproducible</em> means, and it is the point of Chapter 1.</li>
+<li><strong>It keeps the explanation next to the code.</strong> A <code>.qmd</code> holds your Methods and Results paragraphs beside the code that produced them, so the writing and the numbers cannot drift apart.</li>
+</ul>
+<p>Use the console to try things. When a line works and belongs in your analysis, put it in a chunk in your <code>.qmd</code>.</p>
+</div>
+</div>
+</section>
+<section id="scripts" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="scripts"><span class="header-section-number">3.4.2</span> Scripts</h3>
+<p>A script is a text file that contains code. It allows us to enter commands and save our work, then return to it later. Unlike the console, where commands run immediately and are not saved, scripts allow us to store a set of commands for future use or sharing. In this course the one script you need is <code>install.R</code> (<a href="./library.html">R Packages</a>).</p>
+</section>
+<section id="creating-and-saving-a-new-script" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="creating-and-saving-a-new-script"><span class="header-section-number">3.4.3</span> Creating and saving a new script</h3>
 <p>In the upper left hand corner, press the green icon with the plus sign, then click “R Script.” A blank script will appear in the script editor.</p>
 <p>To save a new script, press the single disk icon in the toolbar. A pop-up should appear to save the script. Name the file and save it to the appropriate place.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -687,12 +743,13 @@ Figure&nbsp;3.1: The four main panels of RStudio
 </figure>
 </div>
 </section>
-<section id="rstudio-projects-and-the-working-directory" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="rstudio-projects-and-the-working-directory"><span class="header-section-number">3.4.2</span> RStudio Projects and the Working Directory</h3>
+<section id="rstudio-projects-and-the-working-directory" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="rstudio-projects-and-the-working-directory"><span class="header-section-number">3.4.4</span> RStudio Projects and the Working Directory</h3>
 <p>The <strong>working directory</strong> is the folder on your computer where R looks for files and saves new ones. If the file you want to import is not in the working directory, R will not be able to find it and you will see a “cannot open file” error.</p>
 <p>The easiest way to manage the working directory is to let RStudio do it for you with an <strong>RStudio Project</strong>. A project is simply a folder on your computer that contains a small <code>.Rproj</code> file. Whenever you open the project, RStudio automatically sets the working directory to that folder. You will keep everything for your individual report — data files, R scripts, and Quarto documents — together in this one folder.</p>
-<section id="create-your-project-do-this-once" class="level4">
-<h4 class="anchored" data-anchor-id="create-your-project-do-this-once">Create your project (do this once)</h4>
+<p>The rest of this section has three parts: what you <strong>set up once</strong>, what you do <strong>every time</strong> you work, and two <strong>important guidelines</strong> about where your files go.</p>
+<section id="set-up-once-create-your-project" class="level4">
+<h4 class="anchored" data-anchor-id="set-up-once-create-your-project">Set up once: create your project</h4>
 <ol type="1">
 <li>Click File &gt; New Project…</li>
 <li>Choose <strong>New Directory</strong>, then <strong>New Project</strong>.</li>
@@ -702,8 +759,8 @@ Figure&nbsp;3.1: The four main panels of RStudio
 </ol>
 <p>You will know you are in your project when its name (<code>Lastname_FRI</code>) appears in the top right corner of RStudio, and the <strong>files tab</strong> shows the contents of your project folder, including the file <code>Lastname_FRI.Rproj</code>.</p>
 </section>
-<section id="open-your-project-do-this-every-time" class="level4">
-<h4 class="anchored" data-anchor-id="open-your-project-do-this-every-time">Open your project (do this every time)</h4>
+<section id="every-time-open-your-project-and-start-clean" class="level4">
+<h4 class="anchored" data-anchor-id="every-time-open-your-project-and-start-clean">Every time: open your project and start clean</h4>
 <p>Always start your work by opening the project, not an individual file. You can either:</p>
 <ul>
 <li>double-click the <code>Lastname_FRI.Rproj</code> file in your project folder (Finder on Mac or File Explorer on Windows), or</li>
@@ -711,10 +768,44 @@ Figure&nbsp;3.1: The four main panels of RStudio
 </ul>
 <p>To confirm that the working directory is your project folder, copy and paste this code into the console (which is the tab in the bottom left corner of RStudio) and then press “return” (on a mac) and “enter” on a windows computer:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: Start each session with a clean slate
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Change this setting once, and it protects every session after that. Go to Tools &gt; Global Options &gt; General. Under <em>Workspace</em>, uncheck “Restore .RData into workspace at startup” and set “Save workspace to .RData on exit” to <strong>Never</strong>. This way, your results always come from the code in your script or Quarto document rather than from leftover objects.</p>
+</div>
+</div>
 </section>
-<section id="keep-your-files-in-the-project-folder" class="level4">
-<h4 class="anchored" data-anchor-id="keep-your-files-in-the-project-folder">Keep your files in the project folder</h4>
-<p>Move or download your data files into your project folder. They will then show up in the files tab. Save your R scripts and Quarto documents in the same folder.</p>
+<section id="important-guidelines-where-your-files-go" class="level4">
+<h4 class="anchored" data-anchor-id="important-guidelines-where-your-files-go">Important guidelines: where your files go</h4>
+<p>Every data file you use must be <strong>inside</strong> your project folder. A file that is still in your Downloads folder, on your Desktop, or in Google Drive is not in your project, and R will not find it. “Move the file into your project folder” means exactly that. Your project folder is an ordinary folder on your computer (the one you created in Finder or File Explorer, which contains <code>Lastname_FRI.Rproj</code>). You move files into it the way you move any file on your computer: in Finder or File Explorer, not inside RStudio. RStudio’s <strong>Files</strong> tab is only a window that shows what is in that folder, so once the file is there, it appears in the tab on its own.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: How to move a data file into your project folder
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Download the file.</strong> Get the data file from Brightspace or your team’s Google Drive. Your computer saves it in the <strong>Downloads</strong> folder.</p></li>
+<li><p><strong>Open your project folder.</strong> In RStudio’s <strong>Files</strong> tab (bottom right), click the gear icon labeled <strong>More</strong> and choose <strong>Show Folder in New Window</strong>. Your project folder opens in Finder (Mac) or File Explorer (Windows).</p>
+<!-- SHANE: screenshot to add: the Files tab with the More (gear) menu open and "Show Folder in New Window" highlighted. Suggested file: images/rstudio-show-folder.png --></li>
+<li><p><strong>Drag the file in.</strong> Open your Downloads folder in a second window and drag the data file into the project folder window, next to <code>Lastname_FRI.Rproj</code>. (Dragging <strong>moves</strong> the file. If you would rather keep a copy in Downloads, hold Option on a Mac or Ctrl on Windows while you drag.)</p></li>
+<li><p><strong>Check.</strong> Go back to RStudio. The file now appears in the <strong>Files</strong> tab. If it does not, click the refresh icon at the top right of the Files tab.</p>
+<!-- SHANE: screenshot to add: the Files tab showing Lastname_FRI.Rproj and a data file side by side. Suggested file: images/rstudio-files-tab-data.png --></li>
+</ol>
+</div>
+</div>
+<p>Save your R scripts and Quarto documents in the same folder (File &gt; Save As will already point there when the project is open).</p>
 <p>Because the working directory is the project folder, you can import data using just the file name:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"alldata_vaccinations.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -736,7 +827,7 @@ Figure&nbsp;3.1: The four main panels of RStudio
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Avoid <code>setwd()</code> and full file paths
+<span class="screen-reader-only">Caution</span>Caution: Avoid <code>setwd()</code> and full file paths
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -746,41 +837,95 @@ Figure&nbsp;3.1: The four main panels of RStudio
 <p>This code only works on that one computer. It will fail on your teammates’ computers and on your instructor’s computer, because the folder <code>/Users/yourname/</code> does not exist there. With a project and file names only, the same code runs for everyone who has the project folder.</p>
 </div>
 </div>
+</section>
+</section>
+<section id="quarto" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="quarto"><span class="header-section-number">3.4.5</span> Quarto</h3>
+<p>Quarto is a publishing system that allows us to combine text and code to produce reports, presentations and websites. Quarto documents are made using <strong><code>.qmd</code> files</strong>. To open a <code>.qmd</code> file and begin a Quarto document, press the green plus sign in the upper left hand corner, then click “Quarto Document.” Quarto documents are saved the same way as scripts.</p>
+<p>A <code>.qmd</code> file has two faces. In RStudio you see plain text with a few markers: a header between <code>---</code> lines, <code>#</code> for headings, and code chunks between <code>```{r}</code> and <code>```</code>. When you click <strong>Render</strong>, Quarto runs the code and turns the text into a finished report: a web page with a title, headings, formatted paragraphs, citations, and your results filled in. Here are the two faces of the same file, from a report by one of this playbook’s authors:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qmd-to-report.png" class="img-fluid figure-img" alt="Side by side: on the left, the RStudio editor showing lines 1 to 17 of report.qmd, with a YAML header between two lines of three dashes, a line reading pound sign Introduction, a paragraph containing the citation keys at-howell2020 and at-sweeny2010 highlighted in yellow, and a line reading pound sign Method. A green arrow labeled Render points to the right, where the same content appears as a formatted web page: a large title, the author and affiliation, a table of contents, an Introduction heading, the paragraph with the citations turned into linked author names and years, and a Method heading."></p>
+<figcaption>The same report as a <code>.qmd</code> file in RStudio (left) and as the published report (right). Source: Hei, Z. (2025). <em>Predicting health information avoidance using machine learning models</em>. <a href="https://zihanhei.quarto.pub/avoider-report/" class="uri">https://zihanhei.quarto.pub/avoider-report/</a></figcaption>
+</figure>
+</div>
+<p>Notice three things. The YAML header at the top of the file (lines 1 to 11) became the title, author, and table of contents. <code># Introduction</code> and <code># Method</code> became headings. And the citation keys <code>[@howell2020; @sweeny2010]</code> (highlighted) became real citations, “Howell, Lipsey, and Shepperd 2020; Sweeny et al.&nbsp;2010,” which also appear in a reference list at the end. You type plain text; Render does the formatting.</p>
+<p>Text written normally in Quarto appears as regular text in the output. In order to include and run code in our final reports, code must be written in code chunks.</p>
+<p>The first time you render a Quarto document, RStudio may ask to install packages it needs (such as <code>rmarkdown</code> and <code>knitr</code>). Click Yes.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: Everything about Quarto reports is in one chapter
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section is only an introduction. <a href="./codechunks.html">Start a Report</a> walks you through the header, code chunks, labels, captions, and comments step by step, and its Resources box links to the Quarto guides you will need.</p>
+</div>
+</div>
+<!-- Single source for the "save before you close" caution. Included in RStudio.qmd, codechunks.qmd (ch. 5), and find-the-ref.qmd (ch. 6). Edit it here only. -->
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Save your file before you close RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio does not save your <code>.qmd</code> or <code>.R</code> file for you. If the file name on its tab is <strong>red with a *</strong>, your latest changes exist only on the screen, and closing RStudio throws them away. Two different questions come up when you quit, and they need opposite answers.</p>
+<p><strong>Do this</strong></p>
+<ul>
+<li>Press <strong>Cmd + S</strong> (Mac) or <strong>Ctrl + S</strong> (Windows) every few minutes, and always before you Render. The file name on the tab turns black when it is saved.</li>
+<li>Before you quit, click <strong>File &gt; Save All</strong>.</li>
+<li>If RStudio asks <em>“Save changes to report.qmd?”</em>, click <strong>Save</strong>. That question is about your file.</li>
+<li>Copy your <code>.qmd</code> and <code>.R</code> files to your ELN at the end of every session (<a href="./find-the-ref.html">Find the Ref</a>).</li>
+</ul>
+<p><strong>Do not do this</strong></p>
+<ul>
+<li>Do not close RStudio, or your laptop, while a file name is still red.</li>
+<li>Do not click <strong>Don’t Save</strong> when the question names a file (<code>report.qmd</code>, <code>install.R</code>). Only the question about the <strong>workspace</strong> (<code>.RData</code>) gets <strong>Don’t Save</strong>: the workspace is leftovers, and your file is the recipe.</li>
+<li>Do not rely on Render to save for you. It usually does, but only for the file you rendered, and only if the render starts.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="running-code" class="level3" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="running-code"><span class="header-section-number">3.4.6</span> Running code</h3>
+<p>Code in the editor does nothing until you send it to the console. There are three sizes of “run”, and you will use all three.</p>
+<!-- SHANE: screenshot to add: the top right of the editor pane with the Run button (green arrow), its ▼ menu open, and the Source button visible. Suggested file: images/rstudio-run-source.png -->
+<ul>
+<li><strong>One line or a few lines.</strong> Put the cursor on a line, or highlight several lines, then click <strong>Run</strong> or press <strong>Cmd + Enter</strong> (Mac) / <strong>Ctrl + Enter</strong> (Windows). This is the everyday way to work: write a line, run it, look at the result.</li>
+<li><strong>One chunk</strong> (in a <code>.qmd</code> file). Click the green ▶ arrow in the top right corner of the chunk. The gray ▼ next to it is <strong>Run All Chunks Above</strong>, which runs every chunk before this one, in order.</li>
+<li><strong>The whole file.</strong> For an <code>.R</code> script such as <code>install.R</code>, click <strong>Source</strong> at the top right of the editor. It runs the file from the first line to the last. For a <code>.qmd</code> report, the whole-file button is <strong>Render</strong> (see the Quarto section above), which does the same thing and then builds the report.</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Go</span>Start each session with a clean slate
+<span class="screen-reader-only">Go</span>Go: When the whole file stops with an error, run it in pieces
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Go to Tools &gt; Global Options &gt; General. Under <em>Workspace</em>, uncheck “Restore .RData into workspace at startup” and set “Save workspace to .RData on exit” to <strong>Never</strong>. This way, your results always come from the code in your script or Quarto document rather than from leftover objects.</p>
+<p><strong>Source</strong> and <strong>Render</strong> stop at the first error. The console shows the error message, but it does not always make clear <em>which</em> line caused it, especially when the message is about a missing package or an object that was never created. When that happens, do not guess and do not rewrite the file. Go back to the top and run it in pieces: one chunk at a time with the green arrow, or a few lines at a time with Cmd/Ctrl + Enter. The first piece that fails is where the problem is, and the lines above it are now known to work. Then use the checklist in <strong>Common errors</strong> below and the small-mistakes routine from <a href="./layers.html">Coding a Plot</a> (Step 5, Find the foul).</p>
 </div>
 </div>
 </section>
+<section id="organizing-scripts" class="level3" data-number="3.4.7">
+<h3 data-number="3.4.7" class="anchored" data-anchor-id="organizing-scripts"><span class="header-section-number">3.4.7</span> Organizing scripts</h3>
+<p>Lines that start with <code>#</code> are <strong>comments</strong>: notes to yourself and other readers that R shows but does not run. A comment above each section of a script says what that section is for, which makes a long script easier to read and makes it easier to find the right place when an error message points you back to it. Comments are also how you record the source of your code and explain it in your own words, which are requirements for your reports. Here is the idea in three lines:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORT: read the team data file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"alldata_vaccinations.csv"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey)   <span class="co"># CHECK: the first six rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You will see comments in practice in the next chapter, <a href="./library.html">R Packages</a>, where the <code>install.R</code> file has one comment for each step of the workflow. <a href="./codechunks.html">Start a Report</a> then explains comments in detail when you build your first code chunk, including the <code>#source:</code> and <code>#explanation:</code> lines your reports need.</p>
 </section>
-<section id="quarto" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="quarto"><span class="header-section-number">3.4.3</span> Quarto</h3>
-<p>Quarto is a publishing system that allows us to combine text and code to produce reports, presentations and websites. Quarto documents are made using <strong><code>.qmd</code> files</strong>. To open a <code>.qmd</code> file and begin a Quarto document, press the green plus sign in the upper left hand corner, then click “Quarto Document.” Quarto documents are saved the same way as scripts.</p>
-<p>Text written normally in Quarto appears as regular text in the output. In order to include and run code in our final reports, code must be written in code chunks.</p>
-<p>The first time you render a Quarto document, RStudio may ask to install packages it needs (such as <code>rmarkdown</code> and <code>knitr</code>). Click Yes.</p>
-</section>
-<section id="running-code" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="running-code"><span class="header-section-number">3.4.4</span> Running code</h3>
-<p>Code in the script can be sent to the R console for execution.</p>
-<ul>
-<li>To run the whole script: press the “Source” button on the upper right of the script editor (or select all of the code and press “Run”).</li>
-<li>To run one or a few lines: highlight the code you want to run, then press the “Run” button, or use the shortcut, Cmd + Enter (Mac) / Ctrl + Enter (Windows).</li>
-</ul>
-</section>
-<section id="organizing-scripts" class="level3" data-number="3.4.5">
-<h3 data-number="3.4.5" class="anchored" data-anchor-id="organizing-scripts"><span class="header-section-number">3.4.5</span> Organizing scripts</h3>
-<p>We can organize our scripts by including comments, using the <code>#</code> symbol. Any text in the line after the symbol will appear in the console, along with the following code and output, but will not be executed. As our script begins to fill up, it can get confusing knowing what each piece of code is for. If we use the <code>#</code> symbol above each section of code, we can note the purpose of the code. Additionally, when executing code, we may run into errors. The <code>#</code> symbol will help us locate the errors from the console in the scripts.</p>
-</section>
-<section id="common-errors" class="level3" data-number="3.4.6">
-<h3 data-number="3.4.6" class="anchored" data-anchor-id="common-errors"><span class="header-section-number">3.4.6</span> Common errors</h3>
+<section id="common-errors" class="level3" data-number="3.4.8">
+<h3 data-number="3.4.8" class="anchored" data-anchor-id="common-errors"><span class="header-section-number">3.4.8</span> Common errors</h3>
 <p>As you begin working in RStudio, you may encounter some errors. These are normal and can usually be fixed easily. A list of common errors is below:</p>
 <ul>
 <li><strong>Object not found</strong> → This means that the object (such as a variable or dataset) has not been created yet. Make sure you have run the code that defines the object before trying to use it.</li>

@@ -41,7 +41,7 @@ editor: visual
 ::: callout-tip
 ## Go: You have already run R code
 
-In [How Code Builds a Plot](layers.qmd), you ran R code in your web browser. In this chapter you put R on your own computer, so that you can run code with your own data, save your work, and write your reports.
+In [Coding a Plot](layers.qmd), you ran R code in your web browser. In this chapter you put R on your own computer, so that you can run code with your own data, save your work, and write your reports.
 :::
 
 ## What is R and RStudio?
@@ -63,23 +63,21 @@ Because RStudio runs on top of R, R must be installed **before** installing and 
 
 ### Download R
 
-1.  Go to the following website: <https://posit.co/download/rstudio-desktop/>
+R comes from a website called **CRAN** (the Comprehensive R Archive Network). It is a plain, text-only page, and that is normal.
 
-2.  Scroll down to and click "Download and Install R". This will bring you to the R Project website page.
+1.  Go to <https://cran.r-project.org/>.
 
-    ![The Posit download page with "1: Install R" and "2: Install RStudio"](images/rstudio-posit-download.png){fig-alt="Posit download page showing two steps: 1 Install R, with a Download and Install R button, and 2 Install RStudio, with a drop-down menu to choose your operating system version."}
+2.  At the top of the page, under **Download and Install R**, click the link for your computer: "Download R for macOS" or "Download R for Windows".
 
-3.  From here, select the "Download R for \_\_\_\_" option for your computer software.
+    ![The CRAN home page](images/rstudio-cran.png){fig-alt="CRAN home page with links to Download R for Linux, Download R for macOS, and Download R for Windows."}
 
-    ![The Comprehensive R Archive Network (CRAN) page](images/rstudio-cran.png){fig-alt="CRAN home page with links to Download R for Linux, Download R for macOS, and Download R for Windows."}
-
-4.  Follow the instructions below depending on your software.
+3.  Follow the instructions below for your computer. The version number you see (for example, R-4.6.1) will be higher than in these screenshots, because R is updated a few times a year. That is fine: always take the newest version.
 
 #### Mac
 
 1.  Click "Download R for macOS."
 
-2.  Download the specific package depending on your chip/processor.
+2.  Under **Latest release**, there are two packages. Download the one that matches your chip: **For Apple silicon (M1, M2, ...) Macs** or **For older Intel Macs**.
 
     ::: callout-tip
     ## Hint: Apple silicon or Intel?
@@ -87,11 +85,11 @@ Because RStudio runs on top of R, R must be installed **before** installing and 
     To see if your Mac is silicon or Intel, go to the Apple icon on the top left corner and select *About This Mac*. If you see **Chip** followed by Apple M1, M2, M3, or M4, it is silicon; if it says **Processor** followed by Intel Core, it is Intel.
     :::
 
-    ![Choose the package that matches your Mac](images/rstudio-r-mac-pkg.png){fig-alt="CRAN macOS page listing R-4.5.2-arm64.pkg for Apple silicon (M1, M2, and later) Macs and R-4.5.2-x86_64.pkg for older Intel Macs." width="70%"}
+    ![Choose the package that matches your Mac (your version number will be newer)](images/rstudio-r-mac-pkg.png){fig-alt="CRAN macOS page listing an arm64 .pkg file for Apple silicon Macs and an x86_64 .pkg file for older Intel Macs." width="70%"}
 
-3.  Follow the steps on your Mac to finish downloading the package. This is similar to how other apps would be downloaded.
+3.  Open the downloaded `.pkg` file and click **Continue** through the installer, the same way you install other apps. If your Mac asks whether the installer may access your Downloads folder, click **Allow**.
 
-    ![The R installer for macOS](images/rstudio-r-mac-installer.png){fig-alt="Welcome screen of the R 4.5.2 for macOS installer with a Continue button." width="70%"}
+    ![The R installer for macOS](images/rstudio-r-mac-installer.png){fig-alt="Welcome screen of the R for macOS installer with a Continue button." width="70%"}
 
     ![The installation was successful](images/rstudio-r-mac-success.png){fig-alt="Final screen of the R installer for macOS with a green check mark and the message: The installation was successful." width="70%"}
 
@@ -103,31 +101,36 @@ Because RStudio runs on top of R, R must be installed **before** installing and 
 
     ![The R for Windows page on CRAN](images/rstudio-r-windows.png){fig-alt="CRAN R for Windows page with subdirectories base, contrib, old contrib, and Rtools. The base row includes the link: install R for the first time."}
 
-3.  Click the "Download R-4.x.x for Windows" link at the top of the page (the version number changes over time).
+3.  Click the large link at the top of the page, "Download R-4.x.x for Windows" (the version number changes over time).
 
-4.  Open the file and follow the steps on your computer to finish downloading the package.
+4.  Open the downloaded `.exe` file and click **Next** through the installer. The default settings are fine.
 
 ### Download RStudio
 
-1.  Go back to the Posit website: <https://posit.co/download/rstudio-desktop/>
+1.  Go to <https://posit.co/download/rstudio-desktop/>. This address now opens the **RStudio IDE User Guide** on Posit's documentation site. Do not be surprised: that is the right page.
 
-2.  Scroll down to "Install RStudio."
+2.  Scroll down to the heading **Direct Downloads (Open Source)**. You will see a table with one row per operating system.
 
-    ![Return to the Posit download page for step "2: Install RStudio"](images/rstudio-posit-download.png){fig-alt="Posit download page showing two steps: 1 Install R, and 2 Install RStudio, with a drop-down menu to choose your operating system version."}
+    <!-- SHANE: screenshot to add: docs.posit.co/ide/user, the "Direct Downloads (Open Source)" table (Platform / Download columns). Suggested file: images/rstudio-direct-downloads.png -->
 
-3.  If the page shows a drop-down, select the option that matches your computer's operating system version.
+3.  Click the file in the **Download** column that matches your computer:
 
-    ![Select your operating system version](images/rstudio-choose-os.png){fig-alt="Install RStudio drop-down menu open with two options: macOS 14+ and macOS 10.12 - 13." width="70%"}
+    -   **Mac:** the row **macOS 14+**, a `.dmg` file.
+    -   **Windows:** the row **Windows 11**, an `.exe` file (not the zip archive).
 
-4.  Press "Download RStudio Desktop for \_\_\_\_\_\_\_."
+    The file name includes a version number such as `2026.09.0`. Newer is fine.
 
-    ![Download RStudio Desktop](images/rstudio-download-button.png){fig-alt="Install RStudio section with macOS 14+ selected and a blue button labeled Download RStudio Desktop for macOS 14+." width="70%"}
+4.  Open the downloaded file and follow the prompts, the same way you install other apps. On a Mac, drag the RStudio icon into the Applications folder when the window asks you to.
 
-5.  For both Mac and Windows, finish downloading RStudio by following the prompts on your computer, similar to how other apps are downloaded.
-
-6.  You have now downloaded RStudio. Open RStudio, and it should look like this:
+5.  Open RStudio. It should look like this:
 
     ![RStudio when you open it for the first time](images/rstudio-first-open.png){fig-alt="RStudio window on first launch with three panels: the console on the left, the environment on the upper right, and the files tab on the lower right."}
+
+::: callout-warning
+## Caution: Older computers
+
+The download table lists **macOS 14+** and **Windows 11**. If your computer is older than that, ask an instructor before class: there are older RStudio versions that still work, and the FRI lab computers have RStudio installed.
+:::
 
 ## Navigating the Layout
 
@@ -145,7 +148,23 @@ There are many tabs located in the lower right corner. The **files tab** allows 
 
 ## Scripts and Quarto Documents
 
-A script is a text file that contains code. It allows us to enter commands and save our work, then return to it later. Unlike the console, where commands run immediately and are not saved, scripts allow us to store a set of commands for future use or sharing.
+### Three places to write code
+
+You can type R code in three places in RStudio, and each one has a job.
+
+| Where | What happens to the code | Use it for |
+|----|----|----|
+| **Console** (bottom left) | Runs immediately. **Not saved.** Gone when you close RStudio. | Quick checks and one-time commands: `getwd()`, `head(mydata)`, looking up a value, installing a package. |
+| **`.R` script** | Saved as a file. Runs when you click Run or Source. Code only, with `#` comments. | Code that is not part of any report, such as your `install.R` file. |
+| **`.qmd` Quarto document** | Saved as a file. Runs when you click Render. Code chunks **and** your writing in one file, which becomes a web page. | Everything for your *RD Report* and *Final Report*: every import, plot, and analysis. |
+
+Think of the console as scratch paper and the two file types as the notebook. Scratch paper is the right place to try one line or check a number. Nobody keeps scratch paper.
+
+{{< include _important-write-in-qmd.qmd >}}
+
+### Scripts
+
+A script is a text file that contains code. It allows us to enter commands and save our work, then return to it later. Unlike the console, where commands run immediately and are not saved, scripts allow us to store a set of commands for future use or sharing. In this course the one script you need is `install.R` ([R Packages](library.qmd)).
 
 ### Creating and saving a new script
 
@@ -161,7 +180,9 @@ The **working directory** is the folder on your computer where R looks for files
 
 The easiest way to manage the working directory is to let RStudio do it for you with an **RStudio Project**. A project is simply a folder on your computer that contains a small `.Rproj` file. Whenever you open the project, RStudio automatically sets the working directory to that folder. You will keep everything for your individual report — data files, R scripts, and Quarto documents — together in this one folder.
 
-#### Create your project (do this once)
+The rest of this section has three parts: what you **set up once**, what you do **every time** you work, and two **important guidelines** about where your files go.
+
+#### Set up once: create your project
 
 1.  Click File \> New Project...
 2.  Choose **New Directory**, then **New Project**.
@@ -171,7 +192,7 @@ The easiest way to manage the working directory is to let RStudio do it for you 
 
 You will know you are in your project when its name (`Lastname_FRI`) appears in the top right corner of RStudio, and the **files tab** shows the contents of your project folder, including the file `Lastname_FRI.Rproj`.
 
-#### Open your project (do this every time)
+#### Every time: open your project and start clean
 
 Always start your work by opening the project, not an individual file. You can either:
 
@@ -184,9 +205,31 @@ To confirm that the working directory is your project folder, copy and paste thi
 getwd()
 ```
 
-#### Keep your files in the project folder
+::: callout-tip
+## Go: Start each session with a clean slate
 
-Move or download your data files into your project folder. They will then show up in the files tab. Save your R scripts and Quarto documents in the same folder.
+Change this setting once, and it protects every session after that. Go to Tools \> Global Options \> General. Under *Workspace*, uncheck "Restore .RData into workspace at startup" and set "Save workspace to .RData on exit" to **Never**. This way, your results always come from the code in your script or Quarto document rather than from leftover objects.
+:::
+
+#### Important guidelines: where your files go
+
+Every data file you use must be **inside** your project folder. A file that is still in your Downloads folder, on your Desktop, or in Google Drive is not in your project, and R will not find it. "Move the file into your project folder" means exactly that. Your project folder is an ordinary folder on your computer (the one you created in Finder or File Explorer, which contains `Lastname_FRI.Rproj`). You move files into it the way you move any file on your computer: in Finder or File Explorer, not inside RStudio. RStudio's **Files** tab is only a window that shows what is in that folder, so once the file is there, it appears in the tab on its own.
+
+::: callout-tip
+## Go: How to move a data file into your project folder
+
+1.  **Download the file.** Get the data file from Brightspace or your team's Google Drive. Your computer saves it in the **Downloads** folder.
+2.  **Open your project folder.** In RStudio's **Files** tab (bottom right), click the gear icon labeled **More** and choose **Show Folder in New Window**. Your project folder opens in Finder (Mac) or File Explorer (Windows).
+
+    <!-- SHANE: screenshot to add: the Files tab with the More (gear) menu open and "Show Folder in New Window" highlighted. Suggested file: images/rstudio-show-folder.png -->
+
+3.  **Drag the file in.** Open your Downloads folder in a second window and drag the data file into the project folder window, next to `Lastname_FRI.Rproj`. (Dragging **moves** the file. If you would rather keep a copy in Downloads, hold Option on a Mac or Ctrl on Windows while you drag.)
+4.  **Check.** Go back to RStudio. The file now appears in the **Files** tab. If it does not, click the refresh icon at the top right of the Files tab.
+
+    <!-- SHANE: screenshot to add: the Files tab showing Lastname_FRI.Rproj and a data file side by side. Suggested file: images/rstudio-files-tab-data.png -->
+:::
+
+Save your R scripts and Quarto documents in the same folder (File \> Save As will already point there when the project is open).
 
 Because the working directory is the project folder, you can import data using just the file name:
 
@@ -201,7 +244,7 @@ When a Quarto document (`.qmd`) is rendered, R looks for data files starting fro
 :::
 
 ::: callout-warning
-## Avoid `setwd()` and full file paths
+## Caution: Avoid `setwd()` and full file paths
 
 You may see code that sets the working directory by hand or imports a file with its full location on one person's computer:
 
@@ -213,30 +256,55 @@ read.csv("/Users/yourname/Downloads/alldata_vaccinations.csv")
 This code only works on that one computer. It will fail on your teammates' computers and on your instructor's computer, because the folder `/Users/yourname/` does not exist there. With a project and file names only, the same code runs for everyone who has the project folder.
 :::
 
-::: callout-tip
-## Start each session with a clean slate
-
-Go to Tools \> Global Options \> General. Under *Workspace*, uncheck "Restore .RData into workspace at startup" and set "Save workspace to .RData on exit" to **Never**. This way, your results always come from the code in your script or Quarto document rather than from leftover objects.
-:::
-
 ### Quarto
 
 Quarto is a publishing system that allows us to combine text and code to produce reports, presentations and websites. Quarto documents are made using **`.qmd` files**. To open a `.qmd` file and begin a Quarto document, press the green plus sign in the upper left hand corner, then click "Quarto Document." Quarto documents are saved the same way as scripts.
+
+A `.qmd` file has two faces. In RStudio you see plain text with a few markers: a header between `---` lines, `#` for headings, and code chunks between ```` ```{r} ```` and ```` ``` ````. When you click **Render**, Quarto runs the code and turns the text into a finished report: a web page with a title, headings, formatted paragraphs, citations, and your results filled in. Here are the two faces of the same file, from a report by one of this playbook's authors:
+
+![The same report as a `.qmd` file in RStudio (left) and as the published report (right). Source: Hei, Z. (2025). *Predicting health information avoidance using machine learning models*. <https://zihanhei.quarto.pub/avoider-report/>](images/qmd-to-report.png){fig-alt="Side by side: on the left, the RStudio editor showing lines 1 to 17 of report.qmd, with a YAML header between two lines of three dashes, a line reading pound sign Introduction, a paragraph containing the citation keys at-howell2020 and at-sweeny2010 highlighted in yellow, and a line reading pound sign Method. A green arrow labeled Render points to the right, where the same content appears as a formatted web page: a large title, the author and affiliation, a table of contents, an Introduction heading, the paragraph with the citations turned into linked author names and years, and a Method heading."}
+
+Notice three things. The YAML header at the top of the file (lines 1 to 11) became the title, author, and table of contents. `# Introduction` and `# Method` became headings. And the citation keys `[@howell2020; @sweeny2010]` (highlighted) became real citations, "Howell, Lipsey, and Shepperd 2020; Sweeny et al. 2010," which also appear in a reference list at the end. You type plain text; Render does the formatting.
 
 Text written normally in Quarto appears as regular text in the output. In order to include and run code in our final reports, code must be written in code chunks.
 
 The first time you render a Quarto document, RStudio may ask to install packages it needs (such as `rmarkdown` and `knitr`). Click Yes.
 
+::: callout-note
+## Resources: Everything about Quarto reports is in one chapter
+
+This section is only an introduction. [Start a Report](codechunks.qmd) walks you through the header, code chunks, labels, captions, and comments step by step, and its Resources box links to the Quarto guides you will need.
+:::
+
+{{< include _caution-save-your-file.qmd >}}
+
 ### Running code
 
-Code in the script can be sent to the R console for execution.
+Code in the editor does nothing until you send it to the console. There are three sizes of "run", and you will use all three.
 
-- To run the whole script: press the "Source" button on the upper right of the script editor (or select all of the code and press "Run").
-- To run one or a few lines: highlight the code you want to run, then press the "Run" button, or use the shortcut, Cmd + Enter (Mac) / Ctrl + Enter (Windows).
+<!-- SHANE: screenshot to add: the top right of the editor pane with the Run button (green arrow), its ▼ menu open, and the Source button visible. Suggested file: images/rstudio-run-source.png -->
+
+- **One line or a few lines.** Put the cursor on a line, or highlight several lines, then click **Run** or press **Cmd + Enter** (Mac) / **Ctrl + Enter** (Windows). This is the everyday way to work: write a line, run it, look at the result.
+- **One chunk** (in a `.qmd` file). Click the green ▶ arrow in the top right corner of the chunk. The gray ▼ next to it is **Run All Chunks Above**, which runs every chunk before this one, in order.
+- **The whole file.** For an `.R` script such as `install.R`, click **Source** at the top right of the editor. It runs the file from the first line to the last. For a `.qmd` report, the whole-file button is **Render** (see the Quarto section above), which does the same thing and then builds the report.
+
+::: callout-tip
+## Go: When the whole file stops with an error, run it in pieces
+
+**Source** and **Render** stop at the first error. The console shows the error message, but it does not always make clear *which* line caused it, especially when the message is about a missing package or an object that was never created. When that happens, do not guess and do not rewrite the file. Go back to the top and run it in pieces: one chunk at a time with the green arrow, or a few lines at a time with Cmd/Ctrl + Enter. The first piece that fails is where the problem is, and the lines above it are now known to work. Then use the checklist in **Common errors** below and the small-mistakes routine from [Coding a Plot](layers.qmd) (Step 5, Find the foul).
+:::
 
 ### Organizing scripts
 
-We can organize our scripts by including comments, using the `#` symbol. Any text in the line after the symbol will appear in the console, along with the following code and output, but will not be executed. As our script begins to fill up, it can get confusing knowing what each piece of code is for. If we use the `#` symbol above each section of code, we can note the purpose of the code. Additionally, when executing code, we may run into errors. The `#` symbol will help us locate the errors from the console in the scripts.
+Lines that start with `#` are **comments**: notes to yourself and other readers that R shows but does not run. A comment above each section of a script says what that section is for, which makes a long script easier to read and makes it easier to find the right place when an error message points you back to it. Comments are also how you record the source of your code and explain it in your own words, which are requirements for your reports. Here is the idea in three lines:
+
+``` r
+# IMPORT: read the team data file
+survey <- read.csv("alldata_vaccinations.csv")
+head(survey)   # CHECK: the first six rows
+```
+
+You will see comments in practice in the next chapter, [R Packages](library.qmd), where the `install.R` file has one comment for each step of the workflow. [Start a Report](codechunks.qmd) then explains comments in detail when you build your first code chunk, including the `#source:` and `#explanation:` lines your reports need.
 
 ### Common errors
 

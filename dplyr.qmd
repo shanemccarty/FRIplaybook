@@ -24,6 +24,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ::: {.callout-note collapse="true"}
 ## Resources: `dplyr`
 
@@ -122,3 +124,4 @@ alldata <- alldata %>%
 table(alldata$Education_Level, alldata$education_3cat, useNA = "ifany")
 ```
 
+{{< include _ref-whistle-box.qmd >}}

@@ -25,6 +25,8 @@ execute:
   message: false
 ---
 
+{{< include _ref-kickoff-box.qmd >}}
+
 ## Why check for normality?
 
 Most statistical tests come in two versions.
@@ -191,3 +193,5 @@ Decide normal or not normal **before** you run your statistical test, and keep t
 
 For a linear regression, you check the **residuals** of the model, not the raw outcome. See [Relate 3+ Variables](regression.qmd).
 :::
+
+{{< include _ref-whistle-box.qmd >}}

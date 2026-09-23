@@ -1,4 +1,4 @@
-<!-- Single source for the ggplot2 resource links. Included in the Preface (color key example), How Code Builds a Plot, Visualize a Comparison, and Visualize a Relationship. Edit it here once; every place updates. -->
+<!-- Single source for the ggplot2 resource links. Included in the Preface (color key example), Coding a Plot, Visualize a Comparison, and Visualize a Relationship. Edit it here once; every place updates. -->
 
 - [Intro to ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 - [Documentation](https://ggplot2.tidyverse.org)
