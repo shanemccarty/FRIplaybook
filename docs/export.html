@@ -10,7 +10,7 @@
 <meta name="author" content="James Giallella">
 <meta name="keywords" content="export, qualtrics, label variables, recode values">
 
-<title>7&nbsp; Export Survey Data – The Quantitative Playbook for R</title>
+<title>8&nbsp; Export Survey Data – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./import-once.html" rel="next">
-<link href="./find-the-ref.html" rel="prev">
+<link href="./qualtrics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./export.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./export.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,32 +198,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -240,19 +252,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,19 +281,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -298,13 +310,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -321,31 +333,31 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -362,19 +374,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -389,21 +401,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#name-and-recode-variables-in-qualtrics" id="toc-name-and-recode-variables-in-qualtrics" class="nav-link active" data-scroll-target="#name-and-recode-variables-in-qualtrics"><span class="header-section-number">7.1</span> Name and Recode Variables in Qualtrics</a></li>
-  <li><a href="#export-survey-questionsitems-.docx" id="toc-export-survey-questionsitems-.docx" class="nav-link" data-scroll-target="#export-survey-questionsitems-.docx"><span class="header-section-number">7.2</span> Export Survey Questions/Items (<code>.docx</code>)</a></li>
-  <li><a href="#export-survey-data-.xlsx" id="toc-export-survey-data-.xlsx" class="nav-link" data-scroll-target="#export-survey-data-.xlsx"><span class="header-section-number">7.3</span> Export Survey Data (<code>.xlsx</code>)</a></li>
-  <li><a href="#rename-files-and-download" id="toc-rename-files-and-download" class="nav-link" data-scroll-target="#rename-files-and-download"><span class="header-section-number">7.4</span> Rename Files and Download</a></li>
-  <li><a href="#common-pitfalls-to-avoid" id="toc-common-pitfalls-to-avoid" class="nav-link" data-scroll-target="#common-pitfalls-to-avoid"><span class="header-section-number">7.5</span> Common Pitfalls to Avoid</a></li>
+  <li><a href="#export-the-final-survey-questions-.docx" id="toc-export-the-final-survey-questions-.docx" class="nav-link active" data-scroll-target="#export-the-final-survey-questions-.docx"><span class="header-section-number">8.1</span> Export the Final Survey Questions (<code>.docx</code>)</a></li>
+  <li><a href="#export-survey-data-.xlsx" id="toc-export-survey-data-.xlsx" class="nav-link" data-scroll-target="#export-survey-data-.xlsx"><span class="header-section-number">8.2</span> Export Survey Data (<code>.xlsx</code>)</a></li>
+  <li><a href="#rename-files-and-download" id="toc-rename-files-and-download" class="nav-link" data-scroll-target="#rename-files-and-download"><span class="header-section-number">8.3</span> Rename Files and Download</a></li>
+  <li><a href="#common-pitfalls-to-avoid" id="toc-common-pitfalls-to-avoid" class="nav-link" data-scroll-target="#common-pitfalls-to-avoid"><span class="header-section-number">8.4</span> Common Pitfalls to Avoid</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/export.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./export.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./export.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></h1>
-<p class="subtitle lead">How to name variables and recode values in Qualtrics</p>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></h1>
+<p class="subtitle lead">How to export the final survey questions and the survey data from Qualtrics</p>
 </div>
 
 
@@ -437,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter guides researchers through the complete process of exporting survey data from Qualtrics for analysis in R (for quanitative track) or NVivo (for qualitative track). Researchers learn to prepare their data by naming variables and recoding values directly in Qualtrics before export, ensuring numerical values are properly assigned to response options. The chapter covers three essential exports: the survey instrument as a Word document for documentation, the raw dataset as an Excel file with numerical values, and a cleaned version with duplicate header rows removed. Researchers practice proper file naming conventions using date-stamped formats (MONTH.DAY.YEAR.data.team#.filetype) to track multiple data exports throughout their research project. By the end of this chapter, researchers will have properly formatted, team-specific datasets ready for import into data analysis software, following reproducible research standards for data management and version control.</p>
+    <p>This chapter guides researchers through the complete process of exporting survey data from Qualtrics for analysis in R (for quanitative track) or NVivo (for qualitative track). Naming variables and recoding values come first, in the previous chapter; this chapter covers three exports: the survey instrument as a Word document for documentation, the raw dataset as an Excel file with numerical values, and a cleaned version with duplicate header rows removed. Researchers practice proper file naming conventions using date-stamped formats (MONTH.DAY.YEAR.data.team#.filetype) to track multiple data exports throughout their research project. By the end of this chapter, researchers will have properly formatted, team-specific datasets ready for import into data analysis software, following reproducible research standards for data management and version control.</p>
   </div>
 </div>
 
@@ -451,40 +462,50 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Some researchers collect data via survey software – such as Qualtrics, RedCap, and others. To ensure data is exported correctly, follow these specific instructions below.</p>
-<section id="name-and-recode-variables-in-qualtrics" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="name-and-recode-variables-in-qualtrics"><span class="header-section-number">7.1</span> Name and Recode Variables in Qualtrics</h2>
+<p>Some researchers collect data via survey software, such as Qualtrics and REDCap. This chapter is the export itself: the final Word copy of the survey questions, then the data as an Excel file, then a clean copy of that file with one header row. The naming and recoding that must come first are in <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>.</p>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: triple-check the coded values before you export any data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go back to <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a> and <strong>triple-check</strong> that the exported survey questions show a numerical value for every response option, based on your team’s meeting and your final review. Once the data are exported and people start their individual reports, a wrong or missing number cannot be fixed. This is the step that is irreversible later on.</p>
+</div>
+</div>
+<section id="export-the-final-survey-questions-.docx" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="export-the-final-survey-questions-.docx"><span class="header-section-number">8.1</span> Export the Final Survey Questions (<code>.docx</code>)</h2>
+<p>You exported a draft of the survey questions right after your team’s recoding meeting. Now export the <strong>final</strong> version, after every last change to the survey, so that the document on Google Drive matches the data you are about to download.</p>
 <ul class="task-list">
-<li><p><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label></p>
+<li><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label>
 <ul class="task-list">
 <li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
 </ul></li>
-<li><p><label><input type="checkbox">Recode variables in Qualtrics</label></p></li>
-<li><p><label><input type="checkbox">Visit “Recode Values” section of the <a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/">Qualtrics guide</a></label></p></li>
-<li><p><label><input type="checkbox">Follow the instructions on how to <a href="https://docs.google.com/document/d/15ynxeoIaLhABAAeDLJYV1MwQRwpI8LM24Zd3tOwxcFQ/edit?tab=t.0#heading=h.25d8wyh38wre">name and recode values</a></label></p></li>
-<li><p><label><input type="checkbox">Click “publish” in Qualtrics to save your recodes</label></p></li>
+<li><label><input type="checkbox">Click on Survey &gt; Import/Export &gt; <strong>Export Survey to Word</strong>. In the dialog, make sure <strong>Show coded values</strong> is checked (<a href="./qualtrics.html#sec-export-word">how to</a>), then click <strong>Export</strong>.</label></li>
+<li><label><input type="checkbox">Open the file in Microsoft Word (not Google Docs). Every answer choice must show its number in parentheses, for example “Poor (1)”, and the numbers must match your team codebook. If any are missing, go back to Recode values in Qualtrics, fix them, <strong>Publish</strong>, and export again.</label></li>
+<li><label><input type="checkbox">Save it as <code>Final.TeamSurveyQuestions.docx</code>.</label></li>
+<li><label><input type="checkbox">Open your “Team Survey Data” folder on Google Drive and click + New &gt; File Upload and select your document.</label></li>
+<li><label><input type="checkbox">Open your <code>TeamCodebook.docx</code> in the same folder and update any row that changed since the draft, so that the codebook and the final survey questions agree.</label></li>
 </ul>
-</section>
-<section id="export-survey-questionsitems-.docx" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="export-survey-questionsitems-.docx"><span class="header-section-number">7.2</span> Export Survey Questions/Items (<code>.docx</code>)</h2>
-<ul class="task-list">
-<li><p><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label></p>
-<ul class="task-list">
-<li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
-</ul></li>
-<li><p><label><input type="checkbox">Click on Survey &gt; Import/Export &gt; “Export Survey to Word” to download a copy of the entire survey questions/statements as they would appear in the online Qualtrics survey. As a reminder, you already did this for your IRB submission.</label></p></li>
-<li><p><label><input type="checkbox">Open the document in Microsoft Word (not google docs) to confirm it works. Then, save it as <code>09.28.2026.Lastname.Survey.docx</code>, or change the date to the current date.</label></p></li>
-<li><p><label><input type="checkbox">Open your “Team Survey Data” on google drive and click + New &gt; File Upload and select your document.</label></p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/export-survey.png" class="img-fluid figure-img"></p>
-<figcaption><em>Click on Survey &gt; Import/Export &gt; Export Survey to Word</em></figcaption>
-</figure>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: the final Word export and codebook, by the end of the October 9 lecture
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By the end of the <strong>October 9 lecture</strong>, after your team’s final review, your team’s Google Drive should hold the final version of the Qualtrics survey questions, <code>Final.TeamSurveyQuestions.docx</code>, and an updated <code>TeamCodebook.docx</code> that matches it. (The draft versions, <code>Draft.TeamSurveyQuestions.docx</code> and the first <code>TeamCodebook.docx</code>, should already be there from the October 2 lecture; see <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>.) These are not graded. They are what your team, and your instructors, will rely on when a number in the data needs explaining.</p>
+</div>
 </div>
 </section>
-<section id="export-survey-data-.xlsx" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="export-survey-data-.xlsx"><span class="header-section-number">7.3</span> Export Survey Data (<code>.xlsx</code>)</h2>
+<section id="export-survey-data-.xlsx" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="export-survey-data-.xlsx"><span class="header-section-number">8.2</span> Export Survey Data (<code>.xlsx</code>)</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">At the top, go to Data &amp; Analysis tab (top navigation bar) and ensure that “Data” is selected (from the second navigation bar)</label></li>
 </ul>
@@ -497,7 +518,9 @@ ul.task-list li input[type="checkbox"] {
 <ul class="task-list">
 <li><p><label><input type="checkbox">On the upper right side, click Export &amp; Import ^, then select Export Data…</label></p></li>
 <li><p><label><input type="checkbox">Click the Excel tab, check download all fields, check <em>export values</em> (and do NOT select <em>export labels</em>), and click the download button.</label></p></li>
+<li><p><label><input type="checkbox">Open <strong>More options</strong> and leave <strong>Split multi-value fields into columns</strong> checked. This is what makes a select-all question, such as the select-all version of <code>RACIALIZED</code>, export as one column per box (<code>RACIALIZED_1</code> … <code>RACIALIZED_8</code>, <code>RACIALIZED_99</code>). <a href="./dplyr.html">Transforming Your Data</a> combines those columns into one variable in R. (If your team asked <code>RACIALIZED</code> as single choice, it exports as one column and this option changes nothing.)</label></p></li>
 </ul>
+<!-- SHANE: screenshot to add: the Export Data dialog with More options open and "Split multi-value fields into columns" checked. Suggested file: images/export-more-options.png -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/export-excel.png" class="img-fluid figure-img"></p>
@@ -505,27 +528,44 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Open the file in Microsoft Word as <code>.docx</code> and check that numerical values are shown in parentheses (e.g., Poor (1) next to the response options</label></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/export-survey-recode.png" class="img-fluid figure-img"></p>
-<figcaption>*Confirm your closed-ended questions/items have response options with numerical values for each response option</figcaption>
-</figure>
-</div>
-<ul class="task-list">
-<li><label><input type="checkbox">Upload both files to “Team Survey Data” folder in your Team ELN</label></li>
+<li><label><input type="checkbox">Upload the <code>.xlsx</code> file to the “Team Survey Data” folder in your Team ELN, next to <code>Final.TeamSurveyQuestions.docx</code></label></li>
 </ul>
 </section>
-<section id="rename-files-and-download" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="rename-files-and-download"><span class="header-section-number">7.4</span> Rename Files and Download</h2>
+<section id="rename-files-and-download" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="rename-files-and-download"><span class="header-section-number">8.3</span> Rename Files and Download</h2>
 <ul class="task-list">
-<li><p><label><input type="checkbox"><strong>Rename <code>.xlsx</code> file</strong> using the date of the export in this format: MONTH.DAY.YEAR.data.team#.filetype. For example, if the date is 10.19.2026 then the correct format of the files should be: 10.19.2026.data.team1.xlsx</label></p></li>
-<li><p><label><input type="checkbox"><strong>Make a copy</strong> of the 10.19.2026.data.team1.xlsx and rename it to: 10.19.2026.data.team1.clean.xlsx.</label></p></li>
-<li><p><label><input type="checkbox">In google sheets, <strong>open up the file with .clean</strong> added to the original file (i.e., 10.19.2026.data.team1.clean.xlsx) and <strong>delete the second row (with labels and questions/items)</strong>. You’ll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate those labels.</label></p></li>
+<li><p><label><input type="checkbox"><strong>Rename <code>.xlsx</code> file</strong> using the date of the export in this format: MONTH.DAY.YEAR.data.team#.filetype. For example, if the date is 10.09.2026 then the correct format of the files should be: 10.09.2026.data.team1.xlsx</label></p></li>
+<li><p><label><input type="checkbox"><strong>Make a copy</strong> of the 10.09.2026.data.team1.xlsx and rename it to: 10.09.2026.data.team1.clean.xlsx.</label></p></li>
+<li><p><label><input type="checkbox">In google sheets, <strong>open up the file with .clean</strong> added to the original file (i.e., 10.09.2026.data.team1.clean.xlsx) and <strong>delete the second row (with labels and questions/items)</strong>. You’ll notice that the dataset has two headers for variables and labels. You need to delete Row 2 to eliminate those labels.</label></p></li>
 <li><p><label><input type="checkbox">Go to File &gt; <strong>Download</strong> &gt; Microsoft Excel.</label></p></li>
 </ul>
-<p>Once you have completed these steps, you can move to the next chapter to import your data (10.19.2026.data.team1.clean.xlsx) to R or NVivo.</p>
+<p>Once you have completed these steps, you can move to the next chapter to import your data (10.09.2026.data.team1.clean.xlsx) to R or NVivo.</p>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>📁 Pre/post teams (Teams 3 and 5): one survey, one file
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your participants take the <strong>same</strong> Qualtrics survey twice, at pretest and at posttest, so there is one survey and <strong>one</strong> export, named like everyone else’s (10.09.2026.data.team3.clean.xlsx). Two things have to be in it: the question that says which time a response is (the shared variable for pre/post teams in <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>), and <code>PASSWORD</code>, which links a person’s two rows (<a href="./prepost.html">Pre/Post Data</a>). Check both columns are there before you go on.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: meet with a Quant Peer Mentor before you analyze your team data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After data collection ends and you have downloaded your team dataset, meet with a Quant Peer Mentor during lab before you go further. The quant PM lab schedule is in Column E of the “Student Lab Hours (ANTH306-f2026)” Google Sheet.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -536,88 +576,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Rename files</strong> using the date of the export, following MONTH.DAY.YEAR.data.team#.filetype. For example, if you export on 10.19.2026 then the correct format of the files should be: 10.19.2026.data.team1.xlsx. Then, 10.19.2026.data.team1.xlsx should be changed to 09.20.2026.data.team1.clean.xlsx after removing the second row.</p>
-<p>It is important to include the date in your file names because you may download data at different stages of the recruitment process (e.g., after a brief pilot phase, halfway, and at the end). For example, a team that keeps collecting data after 10.19.2026 will export again at the end, and that later date goes in the file name of the final dataset (for example, 11.06.2026.data.team2.xlsx).</p>
-</div>
-</div>
-<div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>📁 Team 1 File Names
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Your files should be named:</strong></p>
-<ul>
-<li>10.19.2026.data.team1.xlsx</li>
-<li>10.19.2026.data.team1.clean.xlsx</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>📁 Team 2 File Names
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Your files should be named:</strong></p>
-<ul>
-<li>10.19.2026.data.team2.xlsx</li>
-<li>10.19.2026.data.team2.clean.xlsx</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>📁 Team 3 File Names
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Your files should be named:</strong></p>
-<ul>
-<li>10.19.2026.data.team3.xlsx</li>
-<li>10.19.2026.data.team3.clean.xlsx</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>📁 Team 4 File Names
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Your files should be named:</strong></p>
-<ul>
-<li>10.19.2026.data.team4.xlsx</li>
-<li>10.19.2026.data.team4.clean.xlsx</li>
-</ul>
-</div>
+<p><strong>Rename files</strong> using the date of the export, following MONTH.DAY.YEAR.data.team#.filetype. For example, if you export on 10.09.2026 then the correct format of the files should be: 10.09.2026.data.team1.xlsx. Then, 10.09.2026.data.team1.xlsx should be changed to 10.09.2026.data.team1.clean.xlsx after removing the second row.</p>
+<p>It is important to include the date in your file names because you may download data at different stages of the recruitment process (e.g., after a brief pilot phase, halfway, and at the end). For example, a team that keeps collecting data after 10.09.2026 will export again at the end, and that later date goes in the file name of the final dataset (for example, 11.13.2026.data.team2.xlsx).</p>
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
@@ -626,7 +586,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>📁 Team 5 File Names
+<span class="screen-reader-only">Resources</span>📁 Team 1 File Names
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -634,17 +594,97 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <p><strong>Your files should be named:</strong></p>
 <ul>
-<li>10.19.2026.data.team5.xlsx</li>
-<li>10.19.2026.data.team5.clean.xlsx</li>
+<li>10.09.2026.data.team1.xlsx</li>
+<li>10.09.2026.data.team1.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>📁 Team 2 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.09.2026.data.team2.xlsx</li>
+<li>10.09.2026.data.team2.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>📁 Team 3 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.09.2026.data.team3.xlsx</li>
+<li>10.09.2026.data.team3.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>📁 Team 4 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.09.2026.data.team4.xlsx</li>
+<li>10.09.2026.data.team4.clean.xlsx</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>📁 Team 5 File Names
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Your files should be named:</strong></p>
+<ul>
+<li>10.09.2026.data.team5.xlsx</li>
+<li>10.09.2026.data.team5.clean.xlsx</li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="common-pitfalls-to-avoid" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="common-pitfalls-to-avoid"><span class="header-section-number">7.5</span> Common Pitfalls to Avoid</h2>
+<section id="common-pitfalls-to-avoid" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="common-pitfalls-to-avoid"><span class="header-section-number">8.4</span> Common Pitfalls to Avoid</h2>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -653,7 +693,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>Naming Files –</strong> Make sure there are NO spaces anywhere in your file. Your file should be ONE object without spaces.</li>
@@ -1069,13 +1109,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./find-the-ref.html" class="pagination-link" aria-label="Find the Ref">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span>
+      <a href="./qualtrics.html" class="pagination-link" aria-label="Name &amp; Recode Vars">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./import-once.html" class="pagination-link" aria-label="Import Data Once">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -406,7 +406,7 @@ ggplot(data = mh_clean, mapping = aes(x = STIGMA, y = EFFICACY)) +
 ::: {.callout-warning icon="false"}
 ## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Foul: stacked points
 
-`EFFICACY` is the average of three survey items on a 6-point scale, so it can only take a few values (1, 1.33, 1.67, 2, and so on). `STIGMA` is the same kind of variable. When two people have the same two scores, `geom_point()` draws one dot **on top of** the other, and your plot hides most of your sample. This happens with almost every survey scale, so check for it every time.
+`EFFICACY` is the average of three survey items on a 6-point scale, so it can only take a few values (1, 1.33, 1.67, 2, and so on). `STIGMA` averages eight items, so it has more possible values, but still far fewer than there are people. When two people have the same two scores, `geom_point()` draws one dot **on top of** the other, and your plot hides most of your sample. This happens with almost every survey scale, so check for it every time.
 :::
 
 **Your task, part 2:** Fix it. Replace `geom_point()` with `geom_jitter()`. Jitter nudges each dot a tiny random distance so that stacked dots separate. Adding `alpha = 0.5` makes the dots see-through, so darker areas show where more people are.
@@ -506,7 +506,7 @@ Once you finish all of the R Labs, come back here with **your team's dataset** a
 #| eval: false
 
 plot_REPLACE <- ggplot(                     # REPLACE the plot name
-  data = yourdata,                          # REPLACE with your clean dataset
+  data = alldata,                          # alldata = your team's imported .clean dataset (Import Data Once)
   mapping = aes(
     x = VARIABLE1,                          # REPLACE with your predictor
     y = VARIABLE2)) +                       # REPLACE with your outcome

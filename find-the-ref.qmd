@@ -110,7 +110,7 @@ Laptops get lost, broken, and replaced. Your individual ELN is a Google Drive fo
 | What you see | What it means | The fix |
 |----|----|----|
 | `could not find function "read_excel"` (or another function) | The package is not loaded in this session. | Run your load-library chunk (step 4). |
-| `object 'mydata' not found` | R forgot the object when you closed RStudio. | Run All Chunks Above (step 5). |
+| `object 'alldata' not found` | R forgot the object when you closed RStudio. | Run All Chunks Above (step 5). |
 | `cannot open file ... No such file or directory` or `path does not exist` | R is looking in the wrong folder, or the file is not in your project. | Check step 2. If the project name is missing in the top right corner, you opened a file and not the project. Go back to step 1. |
 | `there is no package called ‘psych’` | The package is not installed on this computer. | Add the package to your `install.R` file and run `install.R` again. Then run your load-library chunk. |
 | The files tab does not show your files | You are not in your project. | File \> Open Project... and choose `Lastname_FRI.Rproj`. |
@@ -145,3 +145,11 @@ Ref does not talk all the time. Look for him in these places:
 -   **Ref's check** boxes in The Lab show you the answer you should get, so you can check your own work. Try the play first, then open the box.
 -   A **foul** is a mistake that gives you a wrong answer *without* any error message. These are the mistakes you cannot catch on your own, so Ref blows the whistle.
 -   In **Your Turn**, there is no Ref. It's game time! You run the play with your own data and check your own work with the same checklist your instructor uses.
+
+## You're the quarterback
+
+Ref calls the fouls, but Ref does not run the plays. You do. In this playbook **you are the quarterback**: the person in charge of carrying out the plan. Your peer mentors and Dr. Shane are your coaches. We wrote the playbook, we run the practices (the R Labs), and we are there to help. But a coach cannot play the game for you. When it is time to import your team's data, build a composite, or run a model for your *RD Report*, you are the one who decides what to do and does it. The playbook shows you how; only you can do the work.
+
+That takes a certain mindset. Coding is a way of thinking, not a list of commands to memorize. You will make mistakes, and that is normal: an error message tells you what to fix. It is not a judgment of whether you can do this. Every mistake in this playbook is correctable, and most take one line. You will also try things that do not work: a plot that does not show what you meant, a recode that puts people in the wrong group, a chunk that runs but answers a different question. None of that is wasted. Each one teaches you what the code actually does, which is exactly what you need to know.
+
+You are not doing this alone. Come to R Lab with your questions, the error message on your screen, and the thing you tried. Check in with your peer mentor coaches when something is not working and problem-solve together; that is what lab time is for. Do not sit stuck for an hour on your own when three minutes with a coach would get you moving again. Ask early, ask often, and then go do it yourself.

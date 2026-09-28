@@ -28,8 +28,8 @@ execute:
 - [tidyverse packages](https://www.tidyverse.org/packages/) (which packages `library(tidyverse)` loads, and which it does not)
 :::
 
-::: {.callout-important}
-## Important: The two rules
+::: callout-important
+## The two rules
 
 1.  **Install once.** `install.packages("name")` downloads a package to your computer. You only do this one time per computer.
 2.  **Load every time.** `library(name)` turns the package on for your current R session. You do this every time you open RStudio, at the top of every script and report.
@@ -74,13 +74,13 @@ You do not need a long list of packages. The packages below are the ones that th
 
 | Step | Package | What you use it for | Chapters that use it |
 |----|----|----|----|
-| Import | readxl | `read_excel()` to import your `.xlsx` survey data | Import Data Once, Start a Report, Pre/Post Data, Creating Composites |
+| Import | readxl | `read_excel()` to import your `.xlsx` survey data | Import Data Once, Start a Report, Combine Datasets, Creating Composites |
 | Import | haven | `read_sav()` to import SPSS `.sav` files | Import Data Once, Mutate Variables, Visualize Pre/Post Data |
-| Tidy | tidyr\* | `pivot_longer()` and `pivot_wider()` to reshape long ↔ wide data | Pre/Post Data, Visualize Pre/Post Data |
+| Tidy | tidyr\* | `pivot_longer()` and `pivot_wider()` to reshape long ↔ wide data | Format Data in tidyr, Visualize Pre/Post Data |
 | Tidy | naniar | `replace_with_na_all()` to turn codes like -99 into missing values | Mutate Variables, Visualize Pre/Post Data |
 | Transform | dplyr\* | `select()`, `filter()`, `mutate()`, and joins | almost every chapter |
 | Transform | psych | `scoreItems()` and `alpha()` for composites and reliability; `describe()` for descriptive statistics | Creating Composites, Methods & Results |
-| Visualize | ggplot2\* | all plots | Coding a Plot, Visualize a Comparison, Visualize a Relationship, Visualize Pre/Post Data |
+| Visualize | ggplot2\* | all plots | Build a Plot in Layers, Visualize a Comparison, Visualize a Relationship, Visualize Pre/Post Data |
 | Model | stats (base) | `t.test()`, `kruskal.test()`, `cor.test()`, `lm()` | comes with R: nothing to install or load |
 | Communicate | knitr | `kable()` for tables in your report | Mutate Variables, Creating Composites, Methods & Results |
 | Communicate | rmarkdown | lets RStudio render a `.qmd` report that contains R code | every report |
@@ -91,9 +91,8 @@ You do not need a long list of packages. The packages below are the ones that th
 
 | Package | What you use it for | Chapter that uses it |
 |----|----|----|
-| see | half-violin plots | Visualize Pre/Post Data |
+| see, gghalves, ggdist | half-violin and raincloud plots | Visualize Pre/Post Data |
 | english | write numbers as words (e.g., "twelve") | Methods & Results (advanced) |
-| NHANES | CDC practice dataset | Import Data Once (example only) |
 
 The advanced chapters Import Data Live (`httr`, `jsonlite`, `readr`) and Methods & Results (`scales`, `stringr`, `tibble`) use a few more packages, but these are all installed automatically with the `tidyverse`, so there is nothing extra to install.
 
@@ -124,7 +123,7 @@ flowchart LR
 
 **Example install.R file**
 
-In your RStudio Project, create a new file that is "R Script" and title it `install.R`. Run the whole file **one time** by clicking the "Source" button. It may take several minutes. If it stops with an error, run the file a few lines at a time to find the package that failed (see [R Software](RStudio.qmd), Running code). You do not need to run it again unless you get a new computer or need a new package.
+In your RStudio Project, create a new file that is "R Script" and title it `install.R`. Run the whole file **one time** by clicking the "Source" button. It may take several minutes. You do not need to run it again unless you get a new computer or need a new package.
 
 ```{r}
 #| label: install-R-file
@@ -164,8 +163,9 @@ install.packages("rmarkdown") ## needed for RStudio to render Quarto reports wit
 
 ## EXTRAS: remove the # only if you use that chapter
 # install.packages("see")      ## half-violin plots (Visualize Pre/Post Data)
+# install.packages("gghalves") ## half-violin plots (Visualize Pre/Post Data)
+# install.packages("ggdist")   ## raincloud plots (Visualize Pre/Post Data)
 # install.packages("english")  ## write numbers as words (Methods & Results)
-# install.packages("NHANES")   ## CDC practice dataset (Import Data Once)
 ```
 
 Note: See the tidyverse lines under TRANSFORM and VISUALIZE. You do not need to install packages twice. You can comment out the line of code but still note the purpose it serves.
@@ -176,7 +176,7 @@ Note: See the tidyverse lines under TRANSFORM and VISUALIZE. You do not need to 
 Keep `install.packages()` in your `install.R` file (or type it in the console). Do **not** put it inside a code chunk in a `.qmd` report. Otherwise, R will try to download the package every time you render, which is slow and often causes the render to fail.
 :::
 
-## Loading libraries in your report {#sec-load-block}
+## Loading libraries in your report
 
 Every Quarto report (`.qmd`) should start with one code chunk that loads the packages the report uses. Use the same workflow order and comments as your `install.R` file. Only load what you actually use.
 
@@ -198,17 +198,6 @@ library(knitr)     # tables
 ```
 
 When you render a report, R starts a fresh session. This means the packages you loaded by hand in the console do not count: if the `library()` line is not in the report, the render will fail even though your code worked in the console.
-
-::: callout-tip
-## Go: Do I have to rerun this chunk every time I open my report?
-
-Yes and no, depending on what you are doing.
-
--   **Rendering: no.** Render starts a fresh R session and runs your whole file from the first line to the last, so it runs the load-library chunk itself. As long as the chunk is at the top of your report, rendering will never fail because a package was not loaded.
--   **Working on your report between renders: yes.** When you open RStudio, its memory is empty, so a chunk in the middle of your report (say, a plot) will fail until the chunks above it have run. That is why [Ref's kickoff](find-the-ref.qmd) has you run the load-library chunk (step 4) and then **Run All Chunks Above** (step 5): the gray ▼ with a line under it, next to the green arrow on the chunk, or **Cmd + Option + P** (Mac) / **Ctrl + Alt + P** (Windows). This runs the load-library chunk, the import chunk, and everything else above the chunk you are on, in order.
-
-This is also why we ask you not to save your workspace (Chapter 3): starting empty every time is what makes the render match what you see while you work.
-:::
 
 ## Common Errors
 

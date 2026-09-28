@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="data import, csv, excel, SPSS, NHANES, missing data">
+<meta name="keywords" content="data import, csv, excel, SPSS, missing data">
 
-<title>8&nbsp; Import Data Once – The Quantitative Playbook for R</title>
+<title>9&nbsp; Import Data Once – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -408,7 +408,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"library(NHANES)\nnames(NHANESraw)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"names-NHANES","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"str(NHANESraw)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"data-structure-NHANES","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(NHANES)\nNHANESraw[1:10, 1:6] ","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"download.file(\"https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv\", \"insurance.csv\")\ninsurance <- read.csv(\"insurance.csv\")","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(insurance)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1675,7 +1675,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./import-once.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./import-once.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1784,32 +1784,38 @@ globalThis.qwebrExecuteCode = async function (
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -1826,19 +1832,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -1855,19 +1861,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -1884,13 +1890,13 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -1907,31 +1913,31 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -1948,19 +1954,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -1975,24 +1981,21 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction-to-data-import" id="toc-introduction-to-data-import" class="nav-link active" data-scroll-target="#introduction-to-data-import"><span class="header-section-number">8.1</span> Introduction to Data Import</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets"><span class="header-section-number">8.2</span> Datasets</a>
+  <li><a href="#introduction-to-data-import" id="toc-introduction-to-data-import" class="nav-link active" data-scroll-target="#introduction-to-data-import"><span class="header-section-number">9.1</span> Introduction to Data Import</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">9.2</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats"><span class="header-section-number">8.2.1</span> File Formats</a></li>
+  <li><a href="#play-1-read-the-import-line" id="toc-play-1-read-the-import-line" class="nav-link" data-scroll-target="#play-1-read-the-import-line"><span class="header-section-number">9.2.1</span> Play 1: Read the import line</a></li>
+  <li><a href="#play-2-look-at-what-you-imported" id="toc-play-2-look-at-what-you-imported" class="nav-link" data-scroll-target="#play-2-look-at-what-you-imported"><span class="header-section-number">9.2.2</span> Play 2: Look at what you imported</a></li>
+  <li><a href="#play-3-same-play-excel-file" id="toc-play-3-same-play-excel-file" class="nav-link" data-scroll-target="#play-3-same-play-excel-file"><span class="header-section-number">9.2.3</span> Play 3: Same play, Excel file</a></li>
   </ul></li>
-  <li><a href="#import-examples" id="toc-import-examples" class="nav-link" data-scroll-target="#import-examples"><span class="header-section-number">8.3</span> Import Examples</a>
+  <li><a href="#sec-import-lab" id="toc-sec-import-lab" class="nav-link" data-scroll-target="#sec-import-lab"><span class="header-section-number">9.3</span> 🏈 The Lab</a>
   <ul class="collapse">
-  <li><a href="#import-from-nhanes-package" id="toc-import-from-nhanes-package" class="nav-link" data-scroll-target="#import-from-nhanes-package"><span class="header-section-number">8.3.1</span> Import from <code>NHANES</code> package</a></li>
-  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries"><span class="header-section-number">8.3.2</span> Load libraries</a></li>
-  <li><a href="#row1" id="toc-row1" class="nav-link" data-scroll-target="#row1"><span class="header-section-number">8.3.3</span> Import Excel <code>.xlsx</code> file</a></li>
+  <li><a href="#lab-play-1-import-the-data" id="toc-lab-play-1-import-the-data" class="nav-link" data-scroll-target="#lab-play-1-import-the-data"><span class="header-section-number">9.3.1</span> Lab Play 1: Import the data</a></li>
+  <li><a href="#lab-play-2-view-the-variables" id="toc-lab-play-2-view-the-variables" class="nav-link" data-scroll-target="#lab-play-2-view-the-variables"><span class="header-section-number">9.3.2</span> Lab Play 2: View the variables</a></li>
+  <li><a href="#lab-play-3-do-the-variable-names-match-the-survey" id="toc-lab-play-3-do-the-variable-names-match-the-survey" class="nav-link" data-scroll-target="#lab-play-3-do-the-variable-names-match-the-survey"><span class="header-section-number">9.3.3</span> Lab Play 3: Do the variable names match the survey?</a></li>
+  <li><a href="#lab-play-4-turn-the-missing-codes-into-na" id="toc-lab-play-4-turn-the-missing-codes-into-na" class="nav-link" data-scroll-target="#lab-play-4-turn-the-missing-codes-into-na"><span class="header-section-number">9.3.4</span> Lab Play 4: Turn the missing codes into <code>NA</code></a></li>
   </ul></li>
-  <li><a href="#sec-import-lab" id="toc-sec-import-lab" class="nav-link" data-scroll-target="#sec-import-lab"><span class="header-section-number">8.4</span> 🏈 The Lab</a>
-  <ul class="collapse">
-  <li><a href="#lab-play-1-import-the-data" id="toc-lab-play-1-import-the-data" class="nav-link" data-scroll-target="#lab-play-1-import-the-data"><span class="header-section-number">8.4.1</span> Lab Play 1: Import the data</a></li>
-  <li><a href="#lab-play-2-view-the-variables" id="toc-lab-play-2-view-the-variables" class="nav-link" data-scroll-target="#lab-play-2-view-the-variables"><span class="header-section-number">8.4.2</span> Lab Play 2: View the variables</a></li>
-  <li><a href="#lab-play-3-do-the-variable-names-match-the-survey" id="toc-lab-play-3-do-the-variable-names-match-the-survey" class="nav-link" data-scroll-target="#lab-play-3-do-the-variable-names-match-the-survey"><span class="header-section-number">8.4.3</span> Lab Play 3: Do the variable names match the survey?</a></li>
-  </ul></li>
-  <li><a href="#sec-import-yourturn" id="toc-sec-import-yourturn" class="nav-link" data-scroll-target="#sec-import-yourturn"><span class="header-section-number">8.5</span> 🏆 Your Turn</a></li>
+  <li><a href="#sec-import-yourturn" id="toc-sec-import-yourturn" class="nav-link" data-scroll-target="#sec-import-yourturn"><span class="header-section-number">9.4</span> 🏆 Your Turn</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/import-once.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2283,9 +2286,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./import-once.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./import-once.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></h1>
 <p class="subtitle lead">How to use readr, readxl, and haven</p>
 </div>
 
@@ -2314,14 +2317,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter supports researchers in importing data from various sources and file formats commonly used in public health research. Researchers learn to load datasets from R packages (NHANES), import Excel spreadsheets, read csv files, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Researchers also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, researchers will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.</p>
+    <p>This chapter supports researchers in importing data from various sources and file formats commonly used in public health research. Researchers re-read the import line they first ran in Coding a Plot, learn its three parts (object, function, file path), import the same data as a .csv and as an Excel file, and inspect the result with head(), names(), nrow(), and ncol(). The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Researchers also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, researchers will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>data import, csv, excel, SPSS, NHANES, missing data</p>
+    <p>data import, csv, excel, SPSS, missing data</p>
   </div>
 </div>
 
@@ -2366,399 +2369,143 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 </div>
-<section id="introduction-to-data-import" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="introduction-to-data-import"><span class="header-section-number">8.1</span> Introduction to Data Import</h2>
-<p>The first step of the data science workflow is to <em>import your data</em>. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected using the survey software Qualtrics.</p>
-<p><strong>Common data sources:</strong></p>
-<ul>
-<li><p>Survey platforms (Qualtrics, REDCap)</p></li>
-<li><p>R packages (e.g., <code>NHANES</code>)</p></li>
-<li><p>Other statistical softwares (e.g., SPSS, SAS, Stata)</p></li>
-<li><p>Spreadsheets (Excel, Google Sheets)</p></li>
-<li><p>Databases (SQL)</p></li>
-</ul>
-<div class="cell" data-autorun="true" data-completion="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages (do this each session)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)    <span class="co"># CDC health data</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># Data wrangling (includes readr)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)    <span class="co"># Read Excel files</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)     <span class="co"># Read SPSS/SAS/Stata files</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="introduction-to-data-import" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="introduction-to-data-import"><span class="header-section-number">9.1</span> Introduction to Data Import</h2>
+<p>The first step of the data science workflow is to <strong>import your data</strong>: to bring a file from your project folder into R’s memory, as an object you can use. Public health researchers import data from many sources: survey platforms (Qualtrics, REDCap), spreadsheets (Excel, Google Sheets), other statistical software (SPSS, SAS, Stata), and R packages. In FRI Public Health, your team’s data comes from Qualtrics as an Excel file (<a href="./export.html">Export Survey Data</a>).</p>
+<p>You have already imported data once. In <a href="./layers.html">Coding a Plot</a>, the first line of code was:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>insurance <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You watched it run without an explanation. Now you will read it, because every import you ever write has the same three parts.</p>
 </section>
-<section id="datasets" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="datasets"><span class="header-section-number">8.2</span> Datasets</h2>
-<p>You will learn how to import different datasets:</p>
-<ul>
-<li><p>datasets in R packages <code>NHANES</code> and <code>YRBS</code></p></li>
-<li><p>class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course</p></li>
-<li><p>team dataset “oralhealth”</p></li>
-</ul>
-<section id="file-formats" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="file-formats"><span class="header-section-number">8.2.1</span> File Formats</h3>
-<ul>
-<li><p>National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package <code>NHANES</code></p></li>
-<li><p>a <code>.xlsx</code> file format of the class dataset “health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.xlsx</code></p></li>
-<li><p>a <code>.csv</code> file format of the class dataset “health beliefs (cohort 11)” collected in the Research Methods I (ANTH206) course <code>03.15.2025.prolifichealthbeliefs.csv</code></p></li>
-<li><p>a <code>.sav</code> file format from SPSS of the FRI team project on oral health <code>10.31.2024.oralhealth.sav</code>.</p></li>
-</ul>
-</section>
-</section>
-<section id="import-examples" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="import-examples"><span class="header-section-number">8.3</span> Import Examples</h2>
-<section id="import-from-nhanes-package" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="import-from-nhanes-package"><span class="header-section-number">8.3.1</span> Import from <code>NHANES</code> package</h3>
+<section id="the-play" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">9.2</span> 📋 The Play</h2>
+<section id="play-1-read-the-import-line" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="play-1-read-the-import-line"><span class="header-section-number">9.2.1</span> Play 1: Read the import line</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"NHANES"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>insurance <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>What it is</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>insurance</code></td>
+<td>the <strong>object</strong> name you choose</td>
+<td>the labeled box that will hold the data (<a href="./layers.html">Coding a Plot</a>)</td>
+</tr>
+<tr class="even">
+<td><code>&lt;-</code></td>
+<td>the <strong>assignment arrow</strong></td>
+<td>“put what is on the right into the box on the left”</td>
+</tr>
+<tr class="odd">
+<td><code>read.csv( )</code></td>
+<td>the <strong>function</strong></td>
+<td>reads a <code>.csv</code> file (comma-separated values, a plain-text spreadsheet)</td>
+</tr>
+<tr class="even">
+<td><code>"data/insurance.csv"</code></td>
+<td>the function’s <strong>input</strong>: a file path in quotes</td>
+<td>the folder <code>data</code> inside your project, then the file name, then its extension <code>.csv</code></td>
+</tr>
+</tbody>
+</table>
+<p>Read it from right to left: open the file <code>insurance.csv</code> in the folder <code>data</code>, read it as a table, and call that table <code>insurance</code>. R looks for the <code>data</code> folder starting from your project folder, which is why the project matters (<a href="./RStudio.html">R Software</a>). Nothing appears on the screen when this line runs. Look at the <strong>environment tab</strong> instead: <code>insurance</code> is there, with its number of rows (obs.) and columns (variables).</p>
 </section>
-<section id="load-libraries" class="level3" data-number="8.3.2">
-<h3 data-number="8.3.2" class="anchored" data-anchor-id="load-libraries"><span class="header-section-number">8.3.2</span> Load libraries</h3>
-<div class="cell" data-autorun="false" data-completion="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)     <span class="co"># for number formatting like comma()</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(english)    <span class="co"># to convert numbers to words</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)    <span class="co"># for text functions like str_c()</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="play-2-look-at-what-you-imported" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="play-2-look-at-what-you-imported"><span class="header-section-number">9.2.2</span> Play 2: Look at what you imported</h3>
+<p>These are the same checks you ran in <a href="./layers.html">Coding a Plot</a>, and you will run them on every dataset for the rest of the course. <code>head()</code> shows the first six rows. <code>names()</code> lists the variables. <code>nrow()</code> and <code>ncol()</code> count the people and the variables.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age    sex    bmi children smoker    region   charges
+1  19 female 27.900        0    yes southwest 16884.924
+2  18   male 33.770        1     no southeast  1725.552
+3  28   male 33.000        3     no southeast  4449.462
+4  33   male 22.705        0     no northwest 21984.471
+5  32   male 28.880        0     no northwest  3866.855
+6  31 female 25.740        0     no southeast  3756.622</code></pre>
 </div>
-<section id="column-names" class="level4">
-<h4 class="anchored" data-anchor-id="column-names">Column Names</h4>
-<p>Review the column names (aka the variables) in the dataset.</p>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "age"      "sex"      "bmi"      "children" "smoker"   "region"   "charges" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(insurance)   <span class="co"># how many people?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1338</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(insurance)   <span class="co"># how many variables?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+<p><code>head()</code> is also how you catch the two most common import problems at once: a first row that is question text instead of a person (two header rows, <a href="./export.html">Export Survey Data</a>), and a column of numbers that came in as text (the values are in quotes, or the column shows <code>&lt;chr&gt;</code> instead of <code>&lt;dbl&gt;</code>).</p>
+<p><strong>Try it.</strong> Run <code>head(insurance)</code>, then change it to <code>head(insurance, 10)</code> and to <code>tail(insurance)</code>. The second input to <code>head()</code> is the number of rows; <code>tail()</code> shows the last rows instead of the first.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="data-structure" class="level4">
-<h4 class="anchored" data-anchor-id="data-structure">Data Structure</h4>
-<p>Now, you will view the structure of the NHANES data</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="data-header" class="level4">
-<h4 class="anchored" data-anchor-id="data-header">Data Header</h4>
-<p>Review the first 10 responses for the first 6 columns</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="view-data" class="level4">
-<h4 class="anchored" data-anchor-id="view-data">View Data</h4>
-<p>In RStudio, you can use <code>View()</code> in your CONSOLE to view the dataframe.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View data</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(NHANESraw)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="row1" class="level3" data-number="8.3.3">
-<h3 data-number="8.3.3" class="anchored" data-anchor-id="row1"><span class="header-section-number">8.3.3</span> Import Excel <code>.xlsx</code> file</h3>
-<p>Use the <code>readxl</code> package to import Excel files (.xlsx or .xls). The primary advantage of using Excel files is the ability to manually inspect your data using Excel or Google sheets before you import into R. Below are code chunks that can be copied into your report if you are using an excel file with the <strong>header in row 1</strong>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="play-3-same-play-excel-file" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="play-3-same-play-excel-file"><span class="header-section-number">9.2.3</span> Play 3: Same play, Excel file</h3>
+<p>Your team’s data is an Excel file (<code>.xlsx</code>), not a <code>.csv</code>. The import line has the <strong>same three parts</strong>. Only the function changes, because the file type changed, and that function comes from the <code>readxl</code> package, so <code>library(readxl)</code> has to run first (<a href="./library.html">R Packages</a>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>insurance_xl <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/insurance.xlsx"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance_xl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+    age sex      bmi children smoker region    charges
+  &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;
+1    19 female  27.9        0 yes    southwest  16885.
+2    18 male    33.8        1 no     southeast   1726.
+3    28 male    33          3 no     southeast   4449.
+4    33 male    22.7        0 no     northwest  21984.
+5    32 male    28.9        0 no     northwest   3867.
+6    31 female  25.7        0 no     southeast   3757.</code></pre>
+</div>
+</div>
+<p>Compare the two <code>head()</code> outputs. Same people, same variables, same numbers. The file type does not change the data; it only changes which function reads it. (<code>read_excel()</code> prints the output as a <em>tibble</em>, which shows the number of rows and the type of each column, such as <code>&lt;dbl&gt;</code> for numbers and <code>&lt;chr&gt;</code> for text, under the column names. That extra line is useful, not a problem.)</p>
+<p>For your team’s data, the line looks like this (Team 1, exported on the October 9 lecture; the object is named <code>alldata</code> because it holds every response, and later chapters filter it down):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/10.09.2026.data.team1.clean.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>An Excel file can hold several sheets. <code>read_excel()</code> reads the <strong>first</strong> sheet unless you say otherwise, and Excel names that sheet <code>Sheet1</code> by default. Your <code>.clean</code> file has one sheet, and the lab file keeps its data on the first sheet, so in both cases the file name is enough. If you ever need a different sheet (the lab file also has a <code>codebook</code> sheet), add a second input, <code>sheet =</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mh_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"codebook"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="required callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Important: Use the <code>.clean</code> data file
+<span class="screen-reader-only">Important</span>Required: import from the <code>.clean</code> file, with the file name only
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use the .clean data file: 09.22.2026.data.team1.clean.xlsx with a header in row 1 only. If you manually inspect your data and you see labels in row 2, you need to clean the dataset.</p>
+<p>Your report imports your team’s <code>.clean</code> file (one header row, <a href="./export.html">Export Survey Data</a>) from the <code>data</code> folder of your project, using the path <code>"data/…"</code> and nothing else: no <code>setwd()</code>, no <code>/Users/yourname/…</code>. That is what makes the same code run on your teammates’ computers and your instructor’s.</p>
 </div>
 </div>
-<div class="cell" data-autorun="true" data-completion="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>safetydata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"10.20.2025.data.team1.clean.xlsx"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>safetydata[safetydata <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>safetydata[safetydata <span class="sc">==</span> <span class="sc">-</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="do">##explanation: all -99 and -50 data will be treated as missing data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 10 rows</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(safetydata, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 88
-   StartDate           EndDate             Status IPAddress       Progress
-   &lt;dttm&gt;              &lt;dttm&gt;               &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
- 1 2025-09-17 14:41:41 2025-09-17 14:56:14      0 149.125.90.78        100
- 2 2025-09-17 14:58:26 2025-09-17 15:09:09      0 149.125.71.249       100
- 3 2025-09-17 15:10:40 2025-09-17 15:52:03      0 149.125.5.92         100
- 4 2025-09-17 15:58:56 2025-09-17 16:12:55      0 174.254.231.34       100
- 5 2025-09-17 19:23:33 2025-09-17 19:37:52      0 149.125.118.117      100
- 6 2025-09-18 11:49:00 2025-09-18 11:56:18      0 149.125.188.203      100
- 7 2025-09-18 11:56:04 2025-09-18 13:06:41      0 69.207.149.41        100
- 8 2025-09-17 16:05:31 2025-09-18 13:37:48      0 174.197.199.232      100
- 9 2025-09-18 13:21:08 2025-09-18 13:40:41      0 149.125.48.210       100
-10 2025-09-18 13:35:06 2025-09-18 13:53:33      0 149.125.63.60        100
-# ℹ 83 more variables: `Duration (in seconds)` &lt;dbl&gt;, Finished &lt;dbl&gt;,
-#   RecordedDate &lt;dttm&gt;, ResponseId &lt;chr&gt;, RecipientLastName &lt;lgl&gt;,
-#   RecipientFirstName &lt;lgl&gt;, RecipientEmail &lt;lgl&gt;, ExternalReference &lt;lgl&gt;,
-#   LocationLatitude &lt;dbl&gt;, LocationLongitude &lt;dbl&gt;, DistributionChannel &lt;chr&gt;,
-#   UserLanguage &lt;chr&gt;, Q_RecaptchaScore &lt;dbl&gt;, CONSENT &lt;dbl&gt;, SAFE_QUAL &lt;chr&gt;,
-#   REDUCEVIOLENCE_QUAL &lt;chr&gt;, FIXED_CRIMES_QUAL &lt;chr&gt;,
-#   FIXED_CRIMINALS_QUAL &lt;chr&gt;, COMM_FEEL &lt;dbl&gt;, COMM_HELP &lt;dbl&gt;, …</code></pre>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: other file types
 </div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View column names, which are the VARIABLES</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(safetydata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "StartDate"                "EndDate"                 
- [3] "Status"                   "IPAddress"               
- [5] "Progress"                 "Duration (in seconds)"   
- [7] "Finished"                 "RecordedDate"            
- [9] "ResponseId"               "RecipientLastName"       
-[11] "RecipientFirstName"       "RecipientEmail"          
-[13] "ExternalReference"        "LocationLatitude"        
-[15] "LocationLongitude"        "DistributionChannel"     
-[17] "UserLanguage"             "Q_RecaptchaScore"        
-[19] "CONSENT"                  "SAFE_QUAL"               
-[21] "REDUCEVIOLENCE_QUAL"      "FIXED_CRIMES_QUAL"       
-[23] "FIXED_CRIMINALS_QUAL"     "COMM_FEEL"               
-[25] "COMM_HELP"                "COMM_NEIGHBORS"          
-[27] "NOTCOMM_UNSAFE"           "NOTCOMM_RELY"            
-[29] "NOTCOMM_DISTRUST"         "EFFECT_CARE_COMM"        
-[31] "EFFECT_CARE_EDUCATION"    "EFFECT_CARE_HVIP"        
-[33] "EFFECT_CARE_MHRESOURCES"  "EFFECT_CARE_WELFARE"     
-[35] "EFFECT_FEAR_LEG"          "EFFECT_FEAR_POLICE"      
-[37] "EFFECT_FEAR_DEPORT"       "EFFECT_FEAR_ARMY"        
-[39] "FIXEDPERSON1_BASIC"       "FIXEDPERSON2_DIFF"       
-[41] "FIXEDPERSON3_CHANGE_R"    "FIXEDPERSON4_OLD"        
-[43] "FIXEDPERSON_ALWAYS_R"     "FIXEDPERSON_CERTAIN"     
-[45] "FIXEDPERSON_MATTER_R"     "FIXEDPERSON_ALL_R"       
-[47] "MOREFIREARMS_01"          "GENDER"                  
-[49] "RACIALIZED"               "RACIALIZED_8_TEXT"       
-[51] "POLITICAL_BELIEFS"        "POLITICAL_BELIEFS_8_TEXT"
-[53] "SOCIALSTATUS"             "AGE"                     
-[55] "ZIP"                      "PREVENTABILITY1_CAN"     
-[57] "PREVENTABILITY2_HELP"     "PREVENTABILITY3_TAUGHT"  
-[59] "PREVENTABILITY4_DOING"    "PREVENTABILITY5_LEARN"   
-[61] "PREVENTABILITY6_UPSTAND"  "PROMOTABILITY1_CARING"   
-[63] "PROMOTABILITY2_DO"        "PROMOTABILITY3_TAUGHT"   
-[65] "PROMOTABILITY4_SAYING"    "PROMOTABILITY5_LEARN"    
-[67] "PROMOTABILITY6_UPSTAND"   "EFFECTIVE_SAFETY_1"      
-[69] "EFFECTIVE_SAFETY_2"       "EFFECTIVE_SAFETY_3"      
-[71] "EFFECTIVE_SAFETY_4"       "EFFECTIVE_SAFETY_5"      
-[73] "EFFECTIVE_SAFETY_6"       "EFFECTIVE_SAFETY_7"      
-[75] "EFFECTIVE_SAFETY_8"       "EFFECTIVE_PREVENT_1"     
-[77] "EFFECTIVE_PREVENT_2"      "EFFECTIVE_PREVENT_3"     
-[79] "EFFECTIVE_PREVENT_4"      "EFFECTIVE_PREVENT_5"     
-[81] "EFFECTIVE_PREVENT_6"      "EFFECTIVE_PREVENT_7"     
-[83] "EFFECTIVE_PREVENT_8"      "HEALTHSTATUS"            
-[85] "HOPE"                     "ANXIETY"                 
-[87] "FINDSURVEY"               "FINDSURVEY_5_TEXT"       </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a summary of all variables</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(safetydata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   StartDate                      EndDate                        Status 
- Min.   :2025-09-17 14:37:57   Min.   :2025-09-17 14:38:13   Min.   :0  
- 1st Qu.:2025-09-18 13:41:55   1st Qu.:2025-09-18 13:54:21   1st Qu.:0  
- Median :2025-09-27 16:09:29   Median :2025-09-27 16:34:53   Median :0  
- Mean   :2025-09-27 18:04:40   Mean   :2025-09-27 19:15:15   Mean   :0  
- 3rd Qu.:2025-10-08 12:43:40   3rd Qu.:2025-10-08 12:44:09   3rd Qu.:0  
- Max.   :2025-10-19 14:02:05   Max.   :2025-10-19 14:21:53   Max.   :0  
-                                                                        
-  IPAddress            Progress      Duration (in seconds)    Finished     
- Length:180         Min.   :  0.00   Min.   :     7.0      Min.   :0.0000  
- Class :character   1st Qu.:  5.00   1st Qu.:    21.0      1st Qu.:0.0000  
- Mode  :character   Median :  5.00   Median :    78.5      Median :0.0000  
-                    Mean   : 42.48   Mean   :  4234.6      Mean   :0.3556  
-                    3rd Qu.:100.00   3rd Qu.:   857.0      3rd Qu.:1.0000  
-                    Max.   :100.00   Max.   :304917.0      Max.   :1.0000  
-                                                                           
-  RecordedDate                  ResponseId        RecipientLastName
- Min.   :2025-09-17 14:56:15   Length:180         Mode:logical     
- 1st Qu.:2025-09-24 16:16:24   Class :character   NA's:180         
- Median :2025-09-29 21:46:56   Mode  :character                    
- Mean   :2025-10-02 07:31:26                                       
- 3rd Qu.:2025-10-10 12:02:35                                       
- Max.   :2025-10-19 16:55:15                                       
-                                                                   
- RecipientFirstName RecipientEmail ExternalReference LocationLatitude
- Mode:logical       Mode:logical   Mode:logical      Min.   :28.01   
- NA's:180           NA's:180       NA's:180          1st Qu.:40.83   
-                                                     Median :42.10   
-                                                     Mean   :41.62   
-                                                     3rd Qu.:42.10   
-                                                     Max.   :43.12   
-                                                                     
- LocationLongitude DistributionChannel UserLanguage       Q_RecaptchaScore
- Min.   :-82.49    Length:180          Length:180         Min.   :0.7000  
- 1st Qu.:-75.89    Class :character    Class :character   1st Qu.:1.0000  
- Median :-75.64    Mode  :character    Mode  :character   Median :1.0000  
- Mean   :-75.01                                           Mean   :0.9922  
- 3rd Qu.:-73.92                                           3rd Qu.:1.0000  
- Max.   :-73.48                                           Max.   :1.0000  
-                                                                          
-    CONSENT       SAFE_QUAL         REDUCEVIOLENCE_QUAL FIXED_CRIMES_QUAL 
- Min.   :1.000   Length:180         Length:180          Length:180        
- 1st Qu.:1.000   Class :character   Class :character    Class :character  
- Median :1.000   Mode  :character   Mode  :character    Mode  :character  
- Mean   :1.011                                                            
- 3rd Qu.:1.000                                                            
- Max.   :2.000                                                            
-                                                                          
- FIXED_CRIMINALS_QUAL   COMM_FEEL       COMM_HELP     COMM_NEIGHBORS 
- Length:180           Min.   :1.000   Min.   :1.000   Min.   :2.000  
- Class :character     1st Qu.:3.500   1st Qu.:4.000   1st Qu.:4.000  
- Mode  :character     Median :4.000   Median :4.000   Median :5.000  
-                      Mean   :4.147   Mean   :4.473   Mean   :4.458  
-                      3rd Qu.:5.000   3rd Qu.:5.000   3rd Qu.:5.000  
-                      Max.   :6.000   Max.   :6.000   Max.   :6.000  
-                      NA's   :105     NA's   :106     NA's   :108    
- NOTCOMM_UNSAFE   NOTCOMM_RELY   NOTCOMM_DISTRUST EFFECT_CARE_COMM
- Min.   :1.000   Min.   :1.000   Min.   :1.000    Min.   :1.000   
- 1st Qu.:1.250   1st Qu.:2.000   1st Qu.:2.000    1st Qu.:4.000   
- Median :2.000   Median :3.000   Median :2.000    Median :5.000   
- Mean   :2.284   Mean   :3.085   Mean   :2.649    Mean   :4.792   
- 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000    3rd Qu.:5.250   
- Max.   :6.000   Max.   :5.000   Max.   :5.000    Max.   :6.000   
- NA's   :106     NA's   :109     NA's   :106      NA's   :108     
- EFFECT_CARE_EDUCATION EFFECT_CARE_HVIP EFFECT_CARE_MHRESOURCES
- Min.   :1.000         Min.   :2.000    Min.   :1.00           
- 1st Qu.:4.000         1st Qu.:3.000    1st Qu.:5.00           
- Median :5.000         Median :4.000    Median :5.00           
- Mean   :4.811         Mean   :3.985    Mean   :5.11           
- 3rd Qu.:6.000         3rd Qu.:5.000    3rd Qu.:6.00           
- Max.   :6.000         Max.   :6.000    Max.   :6.00           
- NA's   :106           NA's   :114      NA's   :107            
- EFFECT_CARE_WELFARE EFFECT_FEAR_LEG EFFECT_FEAR_POLICE EFFECT_FEAR_DEPORT
- Min.   :1.00        Min.   :1.000   Min.   :1.00       Min.   :1.000     
- 1st Qu.:4.00        1st Qu.:4.000   1st Qu.:2.00       1st Qu.:1.000     
- Median :5.00        Median :4.000   Median :4.00       Median :1.000     
- Mean   :4.80        Mean   :4.222   Mean   :3.32       Mean   :1.795     
- 3rd Qu.:5.75        3rd Qu.:5.000   3rd Qu.:4.00       3rd Qu.:2.000     
- Max.   :6.00        Max.   :6.000   Max.   :6.00       Max.   :6.000     
- NA's   :110         NA's   :108     NA's   :105        NA's   :107       
- EFFECT_FEAR_ARMY FIXEDPERSON1_BASIC FIXEDPERSON2_DIFF FIXEDPERSON3_CHANGE_R
- Min.   :1.000    Min.   :1.000      Min.   :2.000     Min.   :1.000        
- 1st Qu.:1.000    1st Qu.:4.000      1st Qu.:3.000     1st Qu.:2.000        
- Median :2.000    Median :5.000      Median :4.000     Median :3.000        
- Mean   :2.097    Mean   :4.536      Mean   :4.029     Mean   :2.833        
- 3rd Qu.:3.000    3rd Qu.:5.000      3rd Qu.:5.000     3rd Qu.:3.000        
- Max.   :6.000    Max.   :6.000      Max.   :6.000     Max.   :6.000        
- NA's   :108      NA's   :111        NA's   :111       NA's   :114          
- FIXEDPERSON4_OLD FIXEDPERSON_ALWAYS_R FIXEDPERSON_CERTAIN FIXEDPERSON_MATTER_R
- Min.   :2.000    Min.   :1.000        Min.   :1.000       Min.   :1.000       
- 1st Qu.:3.000    1st Qu.:2.000        1st Qu.:4.000       1st Qu.:2.000       
- Median :5.000    Median :3.000        Median :4.000       Median :3.000       
- Mean   :4.319    Mean   :2.794        Mean   :4.329       Mean   :2.985       
- 3rd Qu.:5.000    3rd Qu.:3.000        3rd Qu.:5.000       3rd Qu.:4.000       
- Max.   :6.000    Max.   :6.000        Max.   :6.000       Max.   :6.000       
- NA's   :111      NA's   :112          NA's   :110         NA's   :114         
- FIXEDPERSON_ALL_R MOREFIREARMS_01       GENDER        RACIALIZED       
- Min.   :1.000     Min.   :0.00000   Min.   :0.0000   Length:180        
- 1st Qu.:2.000     1st Qu.:0.00000   1st Qu.:0.0000   Class :character  
- Median :3.000     Median :0.00000   Median :0.0000   Mode  :character  
- Mean   :2.954     Mean   :0.01429   Mean   :0.3333                     
- 3rd Qu.:4.000     3rd Qu.:0.00000   3rd Qu.:1.0000                     
- Max.   :5.000     Max.   :1.00000   Max.   :2.0000                     
- NA's   :115       NA's   :110       NA's   :111                        
- RACIALIZED_8_TEXT POLITICAL_BELIEFS POLITICAL_BELIEFS_8_TEXT  SOCIALSTATUS  
- Mode:logical      Min.   :1.000     Mode:logical             Min.   :2.000  
- NA's:180          1st Qu.:2.000     NA's:180                 1st Qu.:5.000  
-                   Median :3.000                              Median :6.000  
-                   Mean   :3.018                              Mean   :5.824  
-                   3rd Qu.:4.000                              3rd Qu.:7.000  
-                   Max.   :7.000                              Max.   :9.000  
-                   NA's   :125                                NA's   :112    
-     AGE                ZIP            PREVENTABILITY1_CAN PREVENTABILITY2_HELP
- Length:180         Length:180         Min.   :2.000       Min.   :1.000       
- Class :character   Class :character   1st Qu.:4.000       1st Qu.:5.000       
- Mode  :character   Mode  :character   Median :5.000       Median :5.000       
-                                       Mean   :4.767       Mean   :5.098       
-                                       3rd Qu.:5.000       3rd Qu.:6.000       
-                                       Max.   :6.000       Max.   :6.000       
-                                       NA's   :120         NA's   :119         
- PREVENTABILITY3_TAUGHT PREVENTABILITY4_DOING PREVENTABILITY5_LEARN
- Min.   :2.0            Min.   :1.000         Min.   :3.000        
- 1st Qu.:5.0            1st Qu.:5.000         1st Qu.:5.000        
- Median :5.0            Median :5.000         Median :5.000        
- Mean   :5.1            Mean   :5.117         Mean   :5.233        
- 3rd Qu.:6.0            3rd Qu.:6.000         3rd Qu.:6.000        
- Max.   :6.0            Max.   :6.000         Max.   :6.000        
- NA's   :120            NA's   :120           NA's   :120          
- PREVENTABILITY6_UPSTAND PROMOTABILITY1_CARING PROMOTABILITY2_DO
- Min.   :3.000           Min.   :2.000         Min.   :4.000    
- 1st Qu.:5.000           1st Qu.:5.000         1st Qu.:5.000    
- Median :5.000           Median :5.000         Median :5.000    
- Mean   :5.117           Mean   :5.233         Mean   :5.217    
- 3rd Qu.:6.000           3rd Qu.:6.000         3rd Qu.:6.000    
- Max.   :6.000           Max.   :6.000         Max.   :6.000    
- NA's   :120             NA's   :120           NA's   :120      
- PROMOTABILITY3_TAUGHT PROMOTABILITY4_SAYING PROMOTABILITY5_LEARN
- Min.   :1.000         Min.   :1.00          Min.   :3.000       
- 1st Qu.:5.000         1st Qu.:5.00          1st Qu.:5.000       
- Median :5.000         Median :5.00          Median :5.000       
- Mean   :5.197         Mean   :5.18          Mean   :5.148       
- 3rd Qu.:6.000         3rd Qu.:6.00          3rd Qu.:6.000       
- Max.   :6.000         Max.   :6.00          Max.   :6.000       
- NA's   :119           NA's   :119           NA's   :119         
- PROMOTABILITY6_UPSTAND EFFECTIVE_SAFETY_1 EFFECTIVE_SAFETY_2
- Min.   :3.0            Min.   :1.000      Min.   :1.0       
- 1st Qu.:5.0            1st Qu.:1.750      1st Qu.:2.0       
- Median :5.0            Median :4.000      Median :4.0       
- Mean   :5.2            Mean   :3.783      Mean   :3.9       
- 3rd Qu.:6.0            3rd Qu.:6.000      3rd Qu.:6.0       
- Max.   :6.0            Max.   :8.000      Max.   :8.0       
- NA's   :120            NA's   :120        NA's   :120       
- EFFECTIVE_SAFETY_3 EFFECTIVE_SAFETY_4 EFFECTIVE_SAFETY_5 EFFECTIVE_SAFETY_6
- Min.   :1.00       Min.   :1.000      Min.   :1.000      Min.   :1.0       
- 1st Qu.:3.00       1st Qu.:5.000      1st Qu.:3.000      1st Qu.:2.0       
- Median :5.00       Median :7.000      Median :5.000      Median :3.0       
- Mean   :4.35       Mean   :5.767      Mean   :4.583      Mean   :3.1       
- 3rd Qu.:6.00       3rd Qu.:7.000      3rd Qu.:6.000      3rd Qu.:4.0       
- Max.   :8.00       Max.   :8.000      Max.   :7.000      Max.   :8.0       
- NA's   :120        NA's   :120        NA's   :120        NA's   :120       
- EFFECTIVE_SAFETY_7 EFFECTIVE_SAFETY_8 EFFECTIVE_PREVENT_1 EFFECTIVE_PREVENT_2
- Min.   :1.000      Min.   :3.000      Min.   :1.000       Min.   :1.00       
- 1st Qu.:2.000      1st Qu.:8.000      1st Qu.:2.000       1st Qu.:2.00       
- Median :3.000      Median :8.000      Median :4.000       Median :4.00       
- Mean   :2.883      Mean   :7.633      Mean   :4.121       Mean   :3.69       
- 3rd Qu.:4.000      3rd Qu.:8.000      3rd Qu.:6.000       3rd Qu.:6.00       
- Max.   :6.000      Max.   :8.000      Max.   :8.000       Max.   :8.00       
- NA's   :120        NA's   :120        NA's   :122         NA's   :122        
- EFFECTIVE_PREVENT_3 EFFECTIVE_PREVENT_4 EFFECTIVE_PREVENT_5
- Min.   :1.000       Min.   :1.00        Min.   :1.000      
- 1st Qu.:2.000       1st Qu.:5.25        1st Qu.:4.000      
- Median :4.000       Median :7.00        Median :5.000      
- Mean   :3.672       Mean   :5.81        Mean   :4.897      
- 3rd Qu.:5.000       3rd Qu.:7.00        3rd Qu.:6.000      
- Max.   :8.000       Max.   :8.00        Max.   :8.000      
- NA's   :122         NA's   :122         NA's   :122        
- EFFECTIVE_PREVENT_6 EFFECTIVE_PREVENT_7 EFFECTIVE_PREVENT_8  HEALTHSTATUS  
- Min.   :1.000       Min.   :1           Min.   :1.000       Min.   :2.000  
- 1st Qu.:2.000       1st Qu.:2           1st Qu.:7.250       1st Qu.:3.000  
- Median :3.000       Median :3           Median :8.000       Median :3.000  
- Mean   :3.483       Mean   :3           Mean   :7.328       Mean   :3.361  
- 3rd Qu.:5.000       3rd Qu.:4           3rd Qu.:8.000       3rd Qu.:4.000  
- Max.   :8.000       Max.   :8           Max.   :8.000       Max.   :5.000  
- NA's   :122         NA's   :122         NA's   :122         NA's   :119    
-      HOPE          ANXIETY        FINDSURVEY    FINDSURVEY_5_TEXT 
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Length:180        
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   Class :character  
- Median :3.000   Median :3.000   Median :3.000   Mode  :character  
- Mean   :3.131   Mean   :3.131   Mean   :2.935                     
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000                     
- Max.   :5.000   Max.   :5.000   Max.   :5.000                     
- NA's   :119     NA's   :119     NA's   :118                       </code></pre>
+<div class="callout-body-container callout-body">
+<p>The pattern holds for every file type: only the function changes. <code>read_sav()</code> from the <code>haven</code> package reads SPSS <code>.sav</code> files, <code>read_csv()</code> from <code>readr</code> (part of the tidyverse) is a faster <code>read.csv()</code>, and <code>read_dta()</code> reads Stata files. See the <a href="https://rstudio.github.io/cheatsheets/html/data-import.html">Posit data import cheatsheet</a>.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="sec-import-lab" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="sec-import-lab"><span class="header-section-number">8.4</span> 🏈 The Lab</h2>
+<section id="sec-import-lab" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sec-import-lab"><span class="header-section-number">9.3</span> 🏈 The Lab</h2>
 <p>You watched the play above with example datasets. Now import the <strong>lab dataset</strong> yourself: a survey about what people believe about mental health. Everyone in the course uses the same file, so you can check your answers.</p>
 <div class="ref ref-tip">
 <div class="ref-face">
@@ -2773,11 +2520,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Get the lab data file, <code>ANTH306_LayConceptionsMH_SYNTHETIC.xlsx</code>, from your instructor. Put it in a folder called <strong>data</strong> inside your <code>Lastname_FRI</code> project folder.</li>
 <li>Open your RStudio Project and your lab <code>.qmd</code> file, and run your <code>library()</code> chunk. You need <code>readxl</code>.</li>
 </ol>
-<section id="lab-play-1-import-the-data" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="lab-play-1-import-the-data"><span class="header-section-number">8.4.1</span> Lab Play 1: Import the data</h3>
-<p>The file has more than one sheet. The survey answers are on the sheet called <code>data</code>. Import that sheet and name the object <code>mh_raw</code>. Then find out how many rows (people) and columns (variables) it has.</p>
+<section id="lab-play-1-import-the-data" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="lab-play-1-import-the-data"><span class="header-section-number">9.3.1</span> Lab Play 1: Import the data</h3>
+<p>The file has more than one sheet. The survey answers are on the first sheet, <code>Sheet1</code>, which is the one <code>read_excel()</code> reads by default. Import it and name the object <code>mh_raw</code>. Then find out how many rows (people) and columns (variables) it has.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2786,14 +2533,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><code>mh_raw</code> should have <strong>200 rows</strong> and <strong>112 columns</strong>. Look in your <strong>environment tab</strong>: it shows the same two numbers next to <code>mh_raw</code>.</p>
+<p><code>mh_raw</code> should have <strong>200 rows</strong> and <strong>130 columns</strong>. Look in your <strong>environment tab</strong>: it shows the same two numbers next to <code>mh_raw</code>.</p>
 </div>
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2802,26 +2549,25 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mh_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sheet =</span> <span class="st">"data"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mh_raw)   <span class="co"># how many people?</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mh_raw)   <span class="co"># how many variables?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mh_raw <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mh_raw)   <span class="co"># how many people?</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mh_raw)   <span class="co"># how many variables?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="lab-play-2-view-the-variables" class="level3" data-number="8.4.2">
-<h3 data-number="8.4.2" class="anchored" data-anchor-id="lab-play-2-view-the-variables"><span class="header-section-number">8.4.2</span> Lab Play 2: View the variables</h3>
+<section id="lab-play-2-view-the-variables" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="lab-play-2-view-the-variables"><span class="header-section-number">9.3.2</span> Lab Play 2: View the variables</h3>
 <p>Look at the column names with <code>names()</code>, look at the first rows with <code>head()</code>, and get a summary of one variable, <code>POLITICALBELIEFS</code>, with <code>summary(mh_raw$POLITICALBELIEFS)</code>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2830,23 +2576,23 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>The first five column names are: <code>ResponseId</code>, <code>StartDate</code>, <code>EndDate</code>, <code>Duration_sec</code>, <code>Progress</code>. The last one is <code>SERIOUS</code>.</li>
 <li><code>POLITICALBELIEFS</code> has a minimum of -99 and a maximum of 6.</li>
-<li>A minimum of -99 is not a real answer. The answers to this question run from 1 to 6, and -99 is the code for “Prefer not to say”. You will turn those codes into missing values (<code>NA</code>) the same way this chapter did for <code>safetydata</code>.</li>
+<li>A minimum of -99 is not a real answer. The answers to this question run from 1 to 6, and -99 is the code for “Prefer not to say”. You will turn those codes into missing values (<code>NA</code>) in Lab Play 4.</li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id="lab-play-3-do-the-variable-names-match-the-survey" class="level3" data-number="8.4.3">
-<h3 data-number="8.4.3" class="anchored" data-anchor-id="lab-play-3-do-the-variable-names-match-the-survey"><span class="header-section-number">8.4.3</span> Lab Play 3: Do the variable names match the survey?</h3>
+<section id="lab-play-3-do-the-variable-names-match-the-survey" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="lab-play-3-do-the-variable-names-match-the-survey"><span class="header-section-number">9.3.3</span> Lab Play 3: Do the variable names match the survey?</h3>
 <p>This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics. If a name is misspelled, or a question was never named, you will see it here first (for example, a column called <code>Q17</code> and no column called <code>STIG3</code>).</p>
 <p>For the lab dataset, the survey’s variable names are listed on the sheet called <code>codebook</code>. Import that sheet, and compare its <code>Variable</code> column with <code>names(mh_raw)</code>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2855,7 +2601,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>The survey variables in <code>mh_raw</code> should appear in the codebook, spelled the same way.</li>
@@ -2866,7 +2612,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2875,24 +2621,69 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mh_raw)                  <span class="co"># the VARIABLES in your dataset</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mh_raw, <span class="dv">10</span>)               <span class="co"># the first 10 people</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mh_raw<span class="sc">$</span>POLITICALBELIEFS)   <span class="co"># one variable: look at the minimum</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>mh_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"codebook"</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names that are in the data and NOT in the codebook</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">names</span>(mh_raw), mh_codebook<span class="sc">$</span>Variable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mh_raw)                  <span class="co"># the VARIABLES in your dataset</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mh_raw, <span class="dv">10</span>)               <span class="co"># the first 10 people</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mh_raw<span class="sc">$</span>POLITICALBELIEFS)   <span class="co"># one variable: look at the minimum</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>mh_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"codebook"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names that are in the data and NOT in the codebook</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">names</span>(mh_raw), mh_codebook<span class="sc">$</span>Variable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-4-turn-the-missing-codes-into-na" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="lab-play-4-turn-the-missing-codes-into-na"><span class="header-section-number">9.3.4</span> Lab Play 4: Turn the missing codes into <code>NA</code></h3>
+<p>Lab Play 2 found a minimum of <code>-99</code> in <code>POLITICALBELIEFS</code>. In this survey, <code>-99</code> means “Prefer not to say” and <code>-50</code> means “Don’t know” (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>). If they stay as numbers, R will average them into every score. Replace both codes with <code>NA</code>, R’s word for missing, everywhere in the dataset, then run <code>summary(mh_raw$POLITICALBELIEFS)</code> again.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: did the codes go away?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>summary(mh_raw$POLITICALBELIEFS)</code> now shows a minimum of <strong>1</strong> and a new entry, <code>NA's</code>, with the number of people who did not answer.</li>
+<li>The number of rows has <strong>not</strong> changed. Replacing a value with <code>NA</code> keeps the person; it only blanks that one answer.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mh_raw[mh_raw <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># prefer not to say -&gt; missing</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mh_raw[mh_raw <span class="sc">==</span> <span class="sc">-</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># don't know -&gt; missing</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mh_raw<span class="sc">$</span>POLITICALBELIEFS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>mh_raw == -99</code> finds every cell equal to -99, and <code>&lt;- NA</code> writes <code>NA</code> into those cells. <a href="./dplyr.html">Transforming Your Data</a> shows the tidyverse way to do the same thing, <code>replace_with_na_all()</code>.</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2901,11 +2692,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong><code>path does not exist</code></strong> → the file is not where the code says it is. Check that the file is inside a <strong>data</strong> folder in your project, that the name is spelled exactly the same, and that you opened your <strong>project</strong> (not only a file).</li>
-<li><strong>You have 1 column, or the wrong columns</strong> → you imported the wrong sheet. Add <code>sheet = "data"</code>.</li>
+<li><strong>You have 1 column, or the wrong columns</strong> → you imported the wrong sheet. <code>read_excel()</code> reads the first sheet unless you add <code>sheet =</code>; check that your data are on the first sheet, or name the sheet you want.</li>
 <li><strong><code>could not find function "read_excel"</code></strong> → run <code>library(readxl)</code>.</li>
 <li><strong>Your first row of data is question text</strong> → the file still has two header rows. See <a href="./export.html">Export Survey Data</a> and delete row 2 in the <code>.clean</code> file. (The lab dataset has one header row, so you should not see this in the lab.)</li>
 </ul>
@@ -2922,8 +2713,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </section>
 </section>
-<section id="sec-import-yourturn" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="sec-import-yourturn"><span class="header-section-number">8.5</span> 🏆 Your Turn</h2>
+<section id="sec-import-yourturn" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sec-import-yourturn"><span class="header-section-number">9.4</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2937,18 +2728,31 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Nobody has imported your team’s data before, so there is no answer to check against. Use the checklist below.</p>
 </div>
 </div>
-<p>Once you finish all of the R Labs, come back here with <strong>your team’s <code>.clean</code> data file</strong>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: meet with a Quant Peer Mentor before you analyze your team data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After data collection ends and you have downloaded your team dataset, meet with a Quant Peer Mentor during lab before you go further. The quant PM lab schedule is in Column E of the “Student Lab Hours (ANTH306-f2026)” Google Sheet.</p>
+</div>
+</div>
+<p>Once you finish all of the R Labs, come back here with <strong>your team’s <code>.clean</code> data file</strong>. Name the object <code>alldata</code>: it holds every response, and later chapters filter it down (for example, to serious responses only) into smaller objects with their own names. The example below is for Team 1 exporting on the October 9 lecture; change the team number and the date to match your file.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>yourdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/REPLACE.data.team#.clean.xlsx"</span>)   <span class="co"># REPLACE with your file name</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>yourdata[yourdata <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># prefer not to answer -&gt; missing</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>yourdata[yourdata <span class="sc">==</span> <span class="sc">-</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># don't know -&gt; missing</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(yourdata)      <span class="co"># the VARIABLES</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yourdata, <span class="dv">10</span>)   <span class="co"># the first 10 people</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(yourdata)    <span class="co"># minimum and maximum of every variable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/10.09.2026.data.team1.clean.xlsx"</span>)   <span class="co"># Team 1 example: use your team number and export date</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>alldata[alldata <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># prefer not to say -&gt; missing</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>alldata[alldata <span class="sc">==</span> <span class="sc">-</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># don't know -&gt; missing</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(alldata)      <span class="co"># the VARIABLES</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(alldata, <span class="dv">10</span>)   <span class="co"># the first 10 people</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(alldata)    <span class="co"># minimum and maximum of every variable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <table class="caption-top table">
 <colgroup>
@@ -2972,7 +2776,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tr>
 <tr class="odd">
 <td><strong>Variable names</strong></td>
-<td>Open your exported survey (<code>.docx</code>) next to <code>names(yourdata)</code>. Does every column name match the variable name you chose in Qualtrics, spelled the same way and in capital letters?</td>
+<td>Open your exported survey (<code>.docx</code>) next to <code>names(alldata)</code>. Does every column name match the variable name you chose in Qualtrics, spelled the same way and in capital letters?</td>
 </tr>
 <tr class="even">
 <td><strong>Unnamed questions</strong></td>
@@ -2990,16 +2794,16 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </table>
 <!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you leave
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you quit RStudio
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
 </div>
@@ -3413,12 +3217,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./export.html" class="pagination-link" aria-label="Export Survey Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./prepost.html" class="pagination-link" aria-label="Pre/Post Data">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

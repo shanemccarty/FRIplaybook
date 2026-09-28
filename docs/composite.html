@@ -9,7 +9,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="composite scores, Cronbach’s alpha, reliability, survey scales">
 
-<title>11&nbsp; Creating Composite Scores from Multi-Item Measures – The Quantitative Playbook for R</title>
+<title>13&nbsp; Creating Composite Scores from Multi-Item Measures – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,32 +232,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -274,19 +286,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,19 +315,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -332,13 +344,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -355,31 +367,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -396,19 +408,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -423,26 +435,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="header-section-number">11.1</span> Dataset</a>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset"><span class="header-section-number">13.1</span> Dataset</a>
   <ul class="collapse">
-  <li><a href="#load-library" id="toc-load-library" class="nav-link" data-scroll-target="#load-library"><span class="header-section-number">11.1.1</span> Load Library</a></li>
-  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import"><span class="header-section-number">11.1.2</span> Import</a></li>
-  <li><a href="#scoring-key-to-create-composites" id="toc-scoring-key-to-create-composites" class="nav-link" data-scroll-target="#scoring-key-to-create-composites"><span class="header-section-number">11.1.3</span> Scoring Key to Create Composites</a></li>
-  <li><a href="#scoring-key-with-reverse-items" id="toc-scoring-key-with-reverse-items" class="nav-link" data-scroll-target="#scoring-key-with-reverse-items"><span class="header-section-number">11.1.4</span> Scoring Key with Reverse Items</a></li>
+  <li><a href="#load-library" id="toc-load-library" class="nav-link" data-scroll-target="#load-library"><span class="header-section-number">13.1.1</span> Load Library</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import"><span class="header-section-number">13.1.2</span> Import</a></li>
+  <li><a href="#scoring-key-to-create-composites" id="toc-scoring-key-to-create-composites" class="nav-link" data-scroll-target="#scoring-key-to-create-composites"><span class="header-section-number">13.1.3</span> Scoring Key to Create Composites</a></li>
+  <li><a href="#scoring-key-with-reverse-items" id="toc-scoring-key-with-reverse-items" class="nav-link" data-scroll-target="#scoring-key-with-reverse-items"><span class="header-section-number">13.1.4</span> Scoring Key with Reverse Items</a></li>
   </ul></li>
-  <li><a href="#reliability-analysis" id="toc-reliability-analysis" class="nav-link" data-scroll-target="#reliability-analysis"><span class="header-section-number">11.2</span> Reliability Analysis</a>
+  <li><a href="#reliability-analysis" id="toc-reliability-analysis" class="nav-link" data-scroll-target="#reliability-analysis"><span class="header-section-number">13.2</span> Reliability Analysis</a>
   <ul class="collapse">
-  <li><a href="#interpreting-cronbachs-alpha" id="toc-interpreting-cronbachs-alpha" class="nav-link" data-scroll-target="#interpreting-cronbachs-alpha"><span class="header-section-number">11.2.1</span> Interpreting Cronbach’s Alpha</a></li>
+  <li><a href="#interpreting-cronbachs-alpha" id="toc-interpreting-cronbachs-alpha" class="nav-link" data-scroll-target="#interpreting-cronbachs-alpha"><span class="header-section-number">13.2.1</span> Interpreting Cronbach’s Alpha</a></li>
   </ul></li>
+  <li><a href="#sec-composite-lab" id="toc-sec-composite-lab" class="nav-link" data-scroll-target="#sec-composite-lab"><span class="header-section-number">13.3</span> 🏈 The Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-play-1-a-unidimensional-scale-wellbeing" id="toc-lab-play-1-a-unidimensional-scale-wellbeing" class="nav-link" data-scroll-target="#lab-play-1-a-unidimensional-scale-wellbeing"><span class="header-section-number">13.3.1</span> Lab Play 1: A unidimensional scale (WELLBEING)</a></li>
+  <li><a href="#lab-play-2-a-multidimensional-scale-stigma-with-two-subscales" id="toc-lab-play-2-a-multidimensional-scale-stigma-with-two-subscales" class="nav-link" data-scroll-target="#lab-play-2-a-multidimensional-scale-stigma-with-two-subscales"><span class="header-section-number">13.3.2</span> Lab Play 2: A multidimensional scale (STIGMA with two subscales)</a></li>
+  <li><a href="#lab-play-3-a-scale-that-is-summed-not-averaged-the-k10" id="toc-lab-play-3-a-scale-that-is-summed-not-averaged-the-k10" class="nav-link" data-scroll-target="#lab-play-3-a-scale-that-is-summed-not-averaged-the-k10"><span class="header-section-number">13.3.3</span> Lab Play 3: A scale that is summed, not averaged (the K10)</a></li>
+  <li><a href="#lab-play-4-write-the-sentence-for-your-methods-section" id="toc-lab-play-4-write-the-sentence-for-your-methods-section" class="nav-link" data-scroll-target="#lab-play-4-write-the-sentence-for-your-methods-section"><span class="header-section-number">13.3.4</span> Lab Play 4: Write the sentence for your Methods section</a></li>
+  </ul></li>
+  <li><a href="#sec-composite-yourturn" id="toc-sec-composite-yourturn" class="nav-link" data-scroll-target="#sec-composite-yourturn"><span class="header-section-number">13.4</span> 🏆 Your Turn</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">13.5</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/composite.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./composite.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composite Scores from Multi-Item Measures</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composite Scores from Multi-Item Measures</span></h1>
 <p class="subtitle lead">How to create a composite and check reliability of the measure</p>
 </div>
 
@@ -516,15 +537,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="dataset" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">11.1</span> Dataset</h2>
-<p>The health beliefs dataset includes a range of variables, including promotion focus and prevention focus.</p>
+<section id="dataset" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="dataset"><span class="header-section-number">13.1</span> Dataset</h2>
+<p>The health beliefs dataset includes a range of variables, including promotion focus and prevention focus, measured with the 11-item Regulatory Focus Questionnaire (RFQ; Higgins et al., 2001). The RFQ has two subscales: six promotion items and five prevention items.</p>
 <ul>
 <li><p>Promotion focus: a general regulatory motivational preference toward growth and change, attention to positive things, and success seeking</p></li>
 <li><p>Prevention focus: a general regulatory motivational preference toward maintaining the status quo, avoiding negative things, and aversion to threats</p></li>
 </ul>
-<section id="load-library" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="load-library"><span class="header-section-number">11.1.1</span> Load Library</h3>
+<section id="load-library" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="load-library"><span class="header-section-number">13.1.1</span> Load Library</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
@@ -533,8 +554,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="import" class="level3" data-number="11.1.2">
-<h3 data-number="11.1.2" class="anchored" data-anchor-id="import"><span class="header-section-number">11.1.2</span> Import</h3>
+<section id="import" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="import"><span class="header-section-number">13.1.2</span> Import</h3>
 <div class="cell" data-autorun="true" data-completion="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import Excel file</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>healthbeliefsdata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/03.15.2025.prolifichealthbeliefs.xlsx"</span>,</span>
@@ -546,8 +567,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="do">##explanation: all -99 and -50 data will be treated as missing data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="scoring-key-to-create-composites" class="level3" data-number="11.1.3">
-<h3 data-number="11.1.3" class="anchored" data-anchor-id="scoring-key-to-create-composites"><span class="header-section-number">11.1.3</span> Scoring Key to Create Composites</h3>
+<section id="scoring-key-to-create-composites" class="level3" data-number="13.1.3">
+<h3 data-number="13.1.3" class="anchored" data-anchor-id="scoring-key-to-create-composites"><span class="header-section-number">13.1.3</span> Scoring Key to Create Composites</h3>
 <p>In psychology, researchers aim to measure a construct using multiple items. For example, promotion focus (<code>PROMOFOCUS</code>) and prevention focus (<code>PREVFOCUS</code>) are two separate measures with 6 items and 5 items, respectively. To create a composite measure, each item is added and divided by the number of items, resulting in an average score for the measure.</p>
 <ul>
 <li><code>PROMOFOCUS</code>: ( <code>FOCUS_1</code> + <code>FOCUS_2</code> + <code>FOCUS_3</code> + <code>FOCUS_4</code> + <code>FOCUS_5</code> + <code>FOCUS_6</code> ) / 6</li>
@@ -581,8 +602,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="scoring-key-with-reverse-items" class="level3" data-number="11.1.4">
-<h3 data-number="11.1.4" class="anchored" data-anchor-id="scoring-key-with-reverse-items"><span class="header-section-number">11.1.4</span> Scoring Key with Reverse Items</h3>
+<section id="scoring-key-with-reverse-items" class="level3" data-number="13.1.4">
+<h3 data-number="13.1.4" class="anchored" data-anchor-id="scoring-key-with-reverse-items"><span class="header-section-number">13.1.4</span> Scoring Key with Reverse Items</h3>
 <section id="affirmative-items" class="level4">
 <h4 class="anchored" data-anchor-id="affirmative-items">Affirmative Items</h4>
 <p>Below are two examples of FOCUS items:</p>
@@ -652,8 +673,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="reliability-analysis" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="reliability-analysis"><span class="header-section-number">11.2</span> Reliability Analysis</h2>
+<section id="reliability-analysis" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="reliability-analysis"><span class="header-section-number">13.2</span> Reliability Analysis</h2>
 <p>A reliability analysis of the <strong>composite measure(s)</strong> determines if the items accurately fact reflect your theoretical/conceptual construct. The indicator ranges from 0 to 1 with 1 reflecting higher correlations among the items.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View reliability statistics</span></span>
@@ -706,8 +727,8 @@ PREVFOCUS  0.14  0.69
  print with the short option = FALSE</code></pre>
 </div>
 </div>
-<section id="interpreting-cronbachs-alpha" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="interpreting-cronbachs-alpha"><span class="header-section-number">11.2.1</span> Interpreting Cronbach’s Alpha</h3>
+<section id="interpreting-cronbachs-alpha" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="interpreting-cronbachs-alpha"><span class="header-section-number">13.2.1</span> Interpreting Cronbach’s Alpha</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -771,21 +792,315 @@ PREVFOCUS  0.14  0.69
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the measures section of your <code>Lastname_RDreport.qmd</code> and final report, please include the results of the reliability analysis (aka cronbach’s alpha).</p>
+<p>In the Measures section of your <em>RD Report</em> and <em>Final Report</em>, report the results of the reliability analysis (Cronbach’s alpha) from <strong>your</strong> sample for every composite you use, including each subscale. Lab Play 4 below shows the sentence.</p>
 </div>
 </div>
-<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
-<div class="gray callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+</section>
+</section>
+<section id="sec-composite-lab" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="sec-composite-lab"><span class="header-section-number">13.3</span> 🏈 The Lab</h2>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s kickoff.</strong> The play used one dataset with two separate scales. Your team’s survey will have both kinds of multi-item measure: a <strong>unidimensional</strong> scale (one construct, one score, such as <code>WELLBEING1</code> to <code>WELLBEING8</code>) and a <strong>multidimensional</strong> scale (one construct with subscales, such as stigma with public and self stigma). The lab practices both on the lab dataset, and ends with the sentence you will write in your Methods section. Try each play before you open my check.</p>
+</div>
+</div>
+<p><strong>Before you start.</strong> Open your lab <code>.qmd</code>, run your load-library chunk (<code>psych</code> must be loaded), and run <code>source("lab_prep.R")</code> so that <code>mh_clean</code> is in your environment. <code>mh_clean</code> already contains <code>WELLBEING</code> and <code>STIGMA</code> made with <code>rowMeans()</code>. In this lab you will make them again with <code>scoreItems()</code>, which also gives you the reliability.</p>
+<section id="lab-play-1-a-unidimensional-scale-wellbeing" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="lab-play-1-a-unidimensional-scale-wellbeing"><span class="header-section-number">13.3.1</span> Lab Play 1: A unidimensional scale (WELLBEING)</h3>
+<p>Positive mental well-being is measured with eight items, <code>WELLBEING1</code> to <code>WELLBEING8</code>, all worded in the same direction, on a 1-to-5 frequency scale (<em>none of the time</em> to <em>all of the time</em>). Make a scoring key with one entry, run <code>scoreItems()</code> with <code>impute = "none"</code>, read the alpha, and add the score to <code>mh_clean</code> as <code>WELLBEING_SI</code>. Then check that it equals the <code>WELLBEING</code> that <code>lab_prep.R</code> made.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Missing answers: <code>impute</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When a participant skipped an item, <code>scoreItems()</code> fills in the item’s median for that person by default (<code>impute = "median"</code>). With <code>impute = "none"</code>, it averages the items the person did answer, which is what <code>rowMeans(na.rm = TRUE)</code> does. Both are defensible. Pick one for your report, use it for every composite, and say which one you used in your Methods.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you leave
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Cronbach’s alpha for <code>WELLBEING</code> is <strong>.81</strong>: good, by the table above.</li>
+<li>No item is reverse-scored, so the key has no <code>-</code> signs.</li>
+<li><code>all.equal()</code> returns <code>TRUE</code>: with <code>impute = "none"</code>, <code>scoreItems()</code> and <code>rowMeans(na.rm = TRUE)</code> give the same average. The difference is that <code>scoreItems()</code> also reports reliability. (Leave out <code>impute = "none"</code> and the scores differ slightly for the people who skipped an item.)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wb_keys <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">WELLBEING =</span> <span class="fu">c</span>(<span class="st">"WELLBEING1"</span>, <span class="st">"WELLBEING2"</span>, <span class="st">"WELLBEING3"</span>, <span class="st">"WELLBEING4"</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"WELLBEING5"</span>, <span class="st">"WELLBEING6"</span>, <span class="st">"WELLBEING7"</span>, <span class="st">"WELLBEING8"</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lab_wb <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(wb_keys, mh_clean, <span class="at">impute =</span> <span class="st">"none"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>lab_wb                                     <span class="co"># alpha is in the first table</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>mh_clean<span class="sc">$</span>WELLBEING_SI <span class="ot">&lt;-</span> lab_wb<span class="sc">$</span>scores[, <span class="st">"WELLBEING"</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">as.numeric</span>(mh_clean<span class="sc">$</span>WELLBEING_SI), mh_clean<span class="sc">$</span>WELLBEING)   <span class="co"># same score as rowMeans()</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#source: The Quantitative Playbook for R (McCarty, 2026); psych package (Revelle)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: one key with eight items, no reverse items; scoreItems() returns the mean of the eight items and Cronbach's alpha</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-2-a-multidimensional-scale-stigma-with-two-subscales" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="lab-play-2-a-multidimensional-scale-stigma-with-two-subscales"><span class="header-section-number">13.3.2</span> Lab Play 2: A multidimensional scale (STIGMA with two subscales)</h3>
+<p>Stigma has eight items in two subscales: public stigma (<code>STIGMA_PUB1</code> to <code>STIGMA_PUB4_R</code>) and self stigma (<code>STIGMA_SELF1_R</code> to <code>STIGMA_SELF4_R</code>). Three items end in <code>_R</code>: they are reverse items, stored in the original direction (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>), so they need a <code>-</code> in the key. Make a key with <strong>three</strong> entries, <code>STIGMA_PUB</code>, <code>STIGMA_SELF</code>, and <code>STIGMA</code> (all eight), run <code>scoreItems()</code>, and add all three scores to <code>mh_clean</code>. Then look at how the two subscales relate.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Alphas: <strong><code>STIGMA_PUB</code> = .72</strong>, <strong><code>STIGMA_SELF</code> = .68</strong>, and the full <strong><code>STIGMA</code> = .80</strong>. The eight-item total is more reliable than either four-item subscale. That is usual: alpha rises with the number of items, which is one reason to report the total as well as the subscales.</li>
+<li>The two subscale scores correlate at <strong>r = .60</strong>: related, as parts of one construct should be, but far from identical, which is why the subscales are worth keeping.</li>
+<li>If an alpha is much lower than these, or the output warns that some items correlate negatively with the total, you forgot a <code>-</code> on a reverse item. Fix the key and run it again.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>stig_keys <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">STIGMA_PUB  =</span> <span class="fu">c</span>(<span class="st">"STIGMA_PUB1"</span>, <span class="st">"STIGMA_PUB2"</span>, <span class="st">"STIGMA_PUB3"</span>, <span class="st">"-STIGMA_PUB4_R"</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">STIGMA_SELF =</span> <span class="fu">c</span>(<span class="st">"-STIGMA_SELF1_R"</span>, <span class="st">"STIGMA_SELF2"</span>, <span class="st">"STIGMA_SELF3"</span>, <span class="st">"-STIGMA_SELF4_R"</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">STIGMA      =</span> <span class="fu">c</span>(<span class="st">"STIGMA_PUB1"</span>, <span class="st">"STIGMA_PUB2"</span>, <span class="st">"STIGMA_PUB3"</span>, <span class="st">"-STIGMA_PUB4_R"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"-STIGMA_SELF1_R"</span>, <span class="st">"STIGMA_SELF2"</span>, <span class="st">"STIGMA_SELF3"</span>, <span class="st">"-STIGMA_SELF4_R"</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>lab_stig <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(stig_keys, mh_clean, <span class="at">impute =</span> <span class="st">"none"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>lab_stig                                   <span class="co"># three alphas</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>mh_clean<span class="sc">$</span>STIGMA_PUB  <span class="ot">&lt;-</span> lab_stig<span class="sc">$</span>scores[, <span class="st">"STIGMA_PUB"</span>]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>mh_clean<span class="sc">$</span>STIGMA_SELF <span class="ot">&lt;-</span> lab_stig<span class="sc">$</span>scores[, <span class="st">"STIGMA_SELF"</span>]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>mh_clean<span class="sc">$</span>STIGMA      <span class="ot">&lt;-</span> lab_stig<span class="sc">$</span>scores[, <span class="st">"STIGMA"</span>]</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mh_clean<span class="sc">$</span>STIGMA_PUB, mh_clean<span class="sc">$</span>STIGMA_SELF, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#source: The Quantitative Playbook for R (McCarty, 2026); psych package (Revelle)</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: one key per subscale plus one for the total; the minus sign reverses the _R items before averaging; the subscale correlation shows they measure related but different parts of stigma</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-3-a-scale-that-is-summed-not-averaged-the-k10" class="level3" data-number="13.3.3">
+<h3 data-number="13.3.3" class="anchored" data-anchor-id="lab-play-3-a-scale-that-is-summed-not-averaged-the-k10"><span class="header-section-number">13.3.3</span> Lab Play 3: A scale that is summed, not averaged (the K10)</h3>
+<p>The ten <code>DISTRESS</code> items are the Kessler Psychological Distress Scale (K10; Kessler et al., 2002), and Kessler’s scoring <strong>adds</strong> the items (10 to 50) instead of averaging them, because the published cut-offs are for the total (<a href="./dplyr.html">Transforming Your Data</a>). <code>scoreItems()</code> can do that too: add <code>totals = TRUE</code>. (Keep the default <code>impute</code> here: a sum of only the answered items would be too low, and <code>scoreItems()</code> warns you about that.) Score the K10 and compare with <code>K10_TOTAL</code> from <code>lab_prep.R</code>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Alpha for the K10 is <strong>.87</strong>, good. Alpha is the same whether you sum or average: it depends on the items, not on the scoring.</li>
+<li>With <code>totals = TRUE</code>, the scores run from 10 to 50 and equal <code>K10_TOTAL</code> for everyone who answered all ten items. The 23 people who skipped an item have <code>NA</code> in <code>K10_TOTAL</code> (<code>rowSums()</code> needs every item) but get a score from <code>scoreItems()</code>, which filled in the median. Say which rule you used.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>k10_keys <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">K10 =</span> <span class="fu">paste0</span>(<span class="st">"DISTRESS"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))     <span class="co"># the same as typing the ten names</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>lab_k10  <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(k10_keys, mh_clean, <span class="at">totals =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>lab_k10</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">cbind</span>(lab_k10<span class="sc">$</span>scores, mh_clean<span class="sc">$</span>K10_TOTAL))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#source: The Quantitative Playbook for R (McCarty, 2026); Kessler et al. (2002)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: totals = TRUE makes scoreItems() sum the items instead of averaging them, which is how the K10 is scored</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-4-write-the-sentence-for-your-methods-section" class="level3" data-number="13.3.4">
+<h3 data-number="13.3.4" class="anchored" data-anchor-id="lab-play-4-write-the-sentence-for-your-methods-section"><span class="header-section-number">13.3.4</span> Lab Play 4: Write the sentence for your Methods section</h3>
+<p>Every composite in your report needs one sentence in the Measures part of your Methods: what the scale measures, how many items, the response scale, how it was scored, any reverse items, and the reliability in <strong>this</strong> sample. Write those sentences for <code>WELLBEING</code> and <code>STIGMA</code>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: a model sentence for each
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>Positive mental well-being was measured with eight items about the past two weeks (1 = <em>none of the time</em> to 5 = <em>all of the time</em>), averaged so that higher scores mean greater well-being (Cronbach’s α = .81).</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Mental health stigma was measured with eight items on a 5-point agreement scale, in two subscales: public stigma (4 items, one reverse-scored; α = .72) and self stigma (4 items, two reverse-scored; α = .68). Reverse items were recoded before averaging, and the eight items were also averaged into a total stigma score (α = .80), with higher scores meaning more stigma. Scores were the mean of the items a participant answered.</p>
+</blockquote>
+<p>Notice that a reader can rebuild your score from the sentence: number of items, direction, reverse items, averaging or summing, and the alpha you found, not the alpha in the original paper.</p>
+</div>
+</div>
+</div>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref-whistle.svg" class="img-fluid" alt="Ref the raccoon blowing his whistle"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s final whistle.</strong> Put the sentences from Lab Play 4 in your coding journal: you will reuse their shape for your own measures. Save, render, back up to your ELN.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-composite-yourturn" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="sec-composite-yourturn"><span class="header-section-number">13.4</span> 🏆 Your Turn</h2>
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>There is no Ref. It’s game time, your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Score every multi-item measure in your team’s survey with <code>scoreItems()</code>, using your team codebook (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>) to tell you which items belong together, which are subscales, and which are reverse items. Then use the checklist.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>my_keys <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">MEASURE    =</span> <span class="fu">c</span>(<span class="st">"ITEM1"</span>, <span class="st">"ITEM2"</span>, <span class="st">"-ITEM3_R"</span>, <span class="st">"ITEM4"</span>),        <span class="co"># REPLACE: one entry per composite; - for reverse items</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBSCALE_A =</span> <span class="fu">c</span>(<span class="st">"ITEM1"</span>, <span class="st">"ITEM2"</span>),                              <span class="co"># REPLACE: subscales, if your measure has them</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">SUBSCALE_B =</span> <span class="fu">c</span>(<span class="st">"-ITEM3_R"</span>, <span class="st">"ITEM4"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>my_scores <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(my_keys, alldata, <span class="at">impute =</span> <span class="st">"none"</span>)   <span class="co"># alldata = your team's imported .clean dataset</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>my_scores                                         <span class="co"># alpha for every entry in the key</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>alldata<span class="sc">$</span>MEASURE <span class="ot">&lt;-</span> my_scores<span class="sc">$</span>scores[, <span class="st">"MEASURE"</span>]  <span class="co"># REPLACE: add each score you will use</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Ask yourself</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Items from the codebook</strong></td>
+<td>Does every entry in the key match the items listed for that measure in your team codebook, spelled exactly?</td>
+</tr>
+<tr class="even">
+<td><strong>Reverse items</strong></td>
+<td>Does every item whose name ends in <code>_R</code> have a <code>-</code> in front of it, and no other item does?</td>
+</tr>
+<tr class="odd">
+<td><strong>Subscales and total</strong></td>
+<td>If the measure has subscales, did you score each subscale <em>and</em> the total?</td>
+</tr>
+<tr class="even">
+<td><strong>Sum or mean</strong></td>
+<td>Did you score the way the published scale is scored (<code>totals = TRUE</code> for a summed scale such as the K10)?</td>
+</tr>
+<tr class="odd">
+<td><strong>Alpha</strong></td>
+<td>Is every alpha at least .70? If not, did you check the reverse items first, and then decide (and record) what to do?</td>
+</tr>
+<tr class="even">
+<td><strong>Methods sentence</strong></td>
+<td>Does each composite have a Methods sentence with the number of items, response scale, direction, reverse items, scoring, and the alpha from your sample?</td>
+</tr>
+<tr class="odd">
+<td><strong>Score in the data</strong></td>
+<td>Did you add each score to <code>alldata</code> with a name that follows the naming rules (<code>WELLBEING</code>, <code>STIGMA_PUB</code>, not <code>score1</code>)?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="references"><span class="header-section-number">13.5</span> References</h2>
+<p>Andrews, G., &amp; Slade, T. (2001). Interpreting scores on the Kessler Psychological Distress Scale (K10). <em>Australian and New Zealand Journal of Public Health, 25</em>(6), 494–497. <a href="https://doi.org/10.1111/j.1467-842X.2001.tb00310.x" class="uri">https://doi.org/10.1111/j.1467-842X.2001.tb00310.x</a></p>
+<p>Higgins, E. T., Friedman, R. S., Harlow, R. E., Idson, L. C., Ayduk, O. N., &amp; Taylor, A. (2001). Achievement orientations from subjective histories of success: Promotion pride versus prevention pride. <em>European Journal of Social Psychology, 31</em>(1), 3–23. <a href="https://doi.org/10.1002/ejsp.27" class="uri">https://doi.org/10.1002/ejsp.27</a></p>
+<p>Kessler, R. C., Andrews, G., Colpe, L. J., Hiripi, E., Mroczek, D. K., Normand, S.-L. T., Walters, E. E., &amp; Zaslavsky, A. M. (2002). Short screening scales to monitor population prevalences and trends in non-specific psychological distress. <em>Psychological Medicine, 32</em>(6), 959–976. <a href="https://doi.org/10.1017/S0033291702006074" class="uri">https://doi.org/10.1017/S0033291702006074</a></p>
+<p>Kessler, R. C., Barker, P. R., Colpe, L. J., Epstein, J. F., Gfroerer, J. C., Hiripi, E., Howes, M. J., Normand, S.-L. T., Manderscheid, R. W., Walters, E. E., &amp; Zaslavsky, A. M. (2003). Screening for serious mental illness in the general population. <em>Archives of General Psychiatry, 60</em>(2), 184–189. <a href="https://doi.org/10.1001/archpsyc.60.2.184" class="uri">https://doi.org/10.1001/archpsyc.60.2.184</a></p>
+<p>Revelle, W. (2024). <em>psych: Procedures for psychological, psychometric, and personality research</em> (R package). Northwestern University. <a href="https://CRAN.R-project.org/package=psych" class="uri">https://CRAN.R-project.org/package=psych</a></p>
+<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you quit RStudio
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
 </div>
@@ -793,7 +1108,6 @@ PREVFOCUS  0.14  0.69
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1200,12 +1514,12 @@ PREVFOCUS  0.14  0.69
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./dplyr.html" class="pagination-link" aria-label="Mutate Variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./analysis-map.html" class="pagination-link" aria-label="The Analysis Map">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

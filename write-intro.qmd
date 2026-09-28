@@ -100,7 +100,7 @@ Reminder: It is useful to switch back and forth between *Source* and *Visual* mo
 
 ## Get started with Quarto Video
 
-This 22-minute video provided a basic overview of the Quarto features, which will help you improve your introduction section of your final report.
+This 22-minute video provided a basic overview of the Quarto features, which will help you improve the introduction section of your *Final Report*.
 
 {{< video https://www.youtube.com/watch?v=_f3latmOhew >}}
 

@@ -19,8 +19,7 @@ install_extras <- FALSE
 
 extras <- c(
   "see",        # half-violin plots (Visualize Pre/Post Data)
-  "english",    # write numbers as words (Methods & Results)
-  "NHANES"      # CDC practice dataset (Import Data Once)
+  "english"     # write numbers as words (Methods & Results)
 )
 
 if (install_extras) packages <- c(packages, extras)

@@ -5,13 +5,12 @@ authors:
   - Zihan Hei
   - Shane McCarty, PhD
 abstract: |
-  This chapter supports researchers in importing data from various sources and file formats commonly used in public health research. Researchers learn to load datasets from R packages (NHANES), import Excel spreadsheets, read csv files, and work with SPSS data files. The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Researchers also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, researchers will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.
+  This chapter supports researchers in importing data from various sources and file formats commonly used in public health research. Researchers re-read the import line they first ran in Coding a Plot, learn its three parts (object, function, file path), import the same data as a .csv and as an Excel file, and inspect the result with head(), names(), nrow(), and ncol(). The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Researchers also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, researchers will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.
 keywords:
   - data import
   - csv
   - excel
   - SPSS
-  - NHANES
   - missing data
 date: 10.20.2025
 date-format: "MM.DD.YYYY"
@@ -38,187 +37,110 @@ execute:
 :::
 
 
-```{r}
-#| include: false
-current_date <- format(Sys.Date(), "%m.%d.%Y")
-
-```
-
 ## Introduction to Data Import
 
-The first step of the data science workflow is to *import your data*. Public health researchers work with data from many sources and in many formats. In FRI-PH, we will import data from a survey collected using the survey software Qualtrics.
+The first step of the data science workflow is to **import your data**: to bring a file from your project folder into R's memory, as an object you can use. Public health researchers import data from many sources: survey platforms (Qualtrics, REDCap), spreadsheets (Excel, Google Sheets), other statistical software (SPSS, SAS, Stata), and R packages. In FRI Public Health, your team's data comes from Qualtrics as an Excel file ([Export Survey Data](export.qmd)).
 
-**Common data sources:**
+You have already imported data once. In [Coding a Plot](layers.qmd), the first line of code was:
 
-- Survey platforms (Qualtrics, REDCap)
+```r
+insurance <- read.csv("data/insurance.csv")
+```
 
-- R packages (e.g., `NHANES`)
+You watched it run without an explanation. Now you will read it, because every import you ever write has the same three parts.
 
-- Other statistical softwares (e.g., SPSS, SAS, Stata)
+## 📋 The Play {#the-play}
 
-- Spreadsheets (Excel, Google Sheets)
-
-- Databases (SQL)
+### Play 1: Read the import line
 
 ```{r}
-#| label: load-packages
-#| eval: false
-#| autorun: true
-#| completion: true
-#| warning: false
+#| label: play-import-csv
+insurance <- read.csv("data/insurance.csv")
+```
+
+| Part | What it is | What it does |
+|----|----|----|
+| `insurance` | the **object** name you choose | the labeled box that will hold the data ([Coding a Plot](layers.qmd)) |
+| `<-` | the **assignment arrow** | "put what is on the right into the box on the left" |
+| `read.csv( )` | the **function** | reads a `.csv` file (comma-separated values, a plain-text spreadsheet) |
+| `"data/insurance.csv"` | the function's **input**: a file path in quotes | the folder `data` inside your project, then the file name, then its extension `.csv` |
+
+Read it from right to left: open the file `insurance.csv` in the folder `data`, read it as a table, and call that table `insurance`. R looks for the `data` folder starting from your project folder, which is why the project matters ([R Software](RStudio.qmd)). Nothing appears on the screen when this line runs. Look at the **environment tab** instead: `insurance` is there, with its number of rows (obs.) and columns (variables).
+
+### Play 2: Look at what you imported
+
+These are the same checks you ran in [Coding a Plot](layers.qmd), and you will run them on every dataset for the rest of the course. `head()` shows the first six rows. `names()` lists the variables. `nrow()` and `ncol()` count the people and the variables.
+
+```{r}
+#| label: play-head-csv
+head(insurance)
+```
+
+```{r}
+#| label: play-names-csv
+names(insurance)
+nrow(insurance)   # how many people?
+ncol(insurance)   # how many variables?
+```
+
+`head()` is also how you catch the two most common import problems at once: a first row that is question text instead of a person (two header rows, [Export Survey Data](export.qmd)), and a column of numbers that came in as text (the values are in quotes, or the column shows `<chr>` instead of `<dbl>`).
+
+**Try it.** Run `head(insurance)`, then change it to `head(insurance, 10)` and to `tail(insurance)`. The second input to `head()` is the number of rows; `tail()` shows the last rows instead of the first.
+
+```{webr-r}
+#| context: setup
+download.file("https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv", "insurance.csv")
+insurance <- read.csv("insurance.csv")
+```
+
+```{webr-r}
+head(insurance)
+```
+
+### Play 3: Same play, Excel file
+
+Your team's data is an Excel file (`.xlsx`), not a `.csv`. The import line has the **same three parts**. Only the function changes, because the file type changed, and that function comes from the `readxl` package, so `library(readxl)` has to run first ([R Packages](library.qmd)).
+
+```{r}
+#| label: play-import-xlsx
 #| message: false
-
-# Load packages (do this each session)
-library(NHANES)    # CDC health data
-library(tidyverse) # Data wrangling (includes readr)
-library(readxl)    # Read Excel files
-library(haven)     # Read SPSS/SAS/Stata files
+library(readxl)
+insurance_xl <- read_excel("data/insurance.xlsx")
+head(insurance_xl)
 ```
 
-## Datasets
+Compare the two `head()` outputs. Same people, same variables, same numbers. The file type does not change the data; it only changes which function reads it. (`read_excel()` prints the output as a *tibble*, which shows the number of rows and the type of each column, such as `<dbl>` for numbers and `<chr>` for text, under the column names. That extra line is useful, not a problem.)
 
-You will learn how to import different datasets:
+For your team's data, the line looks like this (Team 1, exported on the October 9 lecture; the object is named `alldata` because it holds every response, and later chapters filter it down):
 
-- datasets in R packages `NHANES` and `YRBS`
-
-- class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course
-
-- team dataset "oralhealth"
-
-### File Formats
-
-- National Health and Nutrition Examination Survey dataset from the Centers for Disease Control and Prevention (CDC) using the R package `NHANES`
-
-- a `.xlsx` file format of the class dataset "health beliefs (cohort 11) collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.xlsx`
-
-- a `.csv` file format of the class dataset "health beliefs (cohort 11)" collected in the Research Methods I (ANTH206) course `03.15.2025.prolifichealthbeliefs.csv`
-
-- a `.sav` file format from SPSS of the FRI team project on oral health `10.31.2024.oralhealth.sav`.
-
-## Import Examples
-
-### Import from `NHANES` package
-
-```{r}
-#| label: install-NHANES
-#| eval: false
-install.packages("NHANES")
+```r
+alldata <- read_excel("data/10.09.2026.data.team1.clean.xlsx")
 ```
 
-### Load libraries
+An Excel file can hold several sheets. `read_excel()` reads the **first** sheet unless you say otherwise, and Excel names that sheet `Sheet1` by default. Your `.clean` file has one sheet, and the lab file keeps its data on the first sheet, so in both cases the file name is enough. If you ever need a different sheet (the lab file also has a `codebook` sheet), add a second input, `sheet =`:
 
-```{r}
-#| label: load-libraries-example
-#| eval: false
-#| autorun: false
-#| completion: true
-#| echo: true
-#| output: true
-#| warning: false
-#| error: false
-
-library(tidyverse)
-library(psych)
-library(knitr)
-library(tibble)
-library(dplyr)
-library(tidyr)
-library(scales)     # for number formatting like comma()
-library(english)    # to convert numbers to words
-library(stringr)    # for text functions like str_c()
-library(NHANES)
+```r
+mh_codebook <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet = "codebook")
 ```
 
-#### Column Names
+::: {.callout-important .required}
+## Required: import from the `.clean` file, with the file name only
 
-Review the column names (aka the variables) in the dataset.
-
-```{webr-r}
-#| label: names-NHANES
-library(NHANES)
-names(NHANESraw)
-```
-
-#### Data Structure
-
-Now, you will view the structure of the NHANES data
-
-```{webr-r}
-#| label: data-structure-NHANES
-str(NHANESraw)
-```
-
-#### Data Header
-
-Review the first 10 responses for the first 6 columns
-
-```{webr-r}
-library(NHANES)
-NHANESraw[1:10, 1:6] 
-```
-
-#### View Data
-
-In RStudio, you can use `View()` in your CONSOLE to view the dataframe.
-
-```{{r}}
-library(NHANES)
-# View data
-View(NHANESraw)
-```
-
-### Import Excel `.xlsx` file {#row1}
-
-Use the `readxl` package to import Excel files (.xlsx or .xls). The primary advantage of using Excel files is the ability to manually inspect your data using Excel or Google sheets before you import into R. Below are code chunks that can be copied into your report if you are using an excel file with the **header in row 1**.
-
-::: callout-important
-## Important: Use the `.clean` data file
-
-Use the .clean data file: `r current_date`.data.team1.clean.xlsx with a header in row 1 only. If you manually inspect your data and you see labels in row 2, you need to clean the dataset.
+Your report imports your team's `.clean` file (one header row, [Export Survey Data](export.qmd)) from the `data` folder of your project, using the path `"data/…"` and nothing else: no `setwd()`, no `/Users/yourname/…`. That is what makes the same code run on your teammates' computers and your instructor's.
 :::
 
-```{r}
-#| label: import-excel-header1
-#| autorun: true
-#| completion: true
-#| echo: true
-#| output: false
-#| warning: false
-#| error: false
+::: callout-note
+## Resources: other file types
 
-library(readxl)
-# Import Excel file
-safetydata <- read_excel(
-    "10.20.2025.data.team1.clean.xlsx",
-    col_names = TRUE)
-
-safetydata[safetydata == -99] <- NA
-safetydata[safetydata == -50] <- NA
-
-##explanation: all -99 and -50 data will be treated as missing data
-```
-
-```{r}
-# View first 10 rows
-head(safetydata, 10)
-```
-
-```{r}
-# View column names, which are the VARIABLES
-names(safetydata)
-```
-
-```{r}
-# Get a summary of all variables
-summary(safetydata)
-```
+The pattern holds for every file type: only the function changes. `read_sav()` from the `haven` package reads SPSS `.sav` files, `read_csv()` from `readr` (part of the tidyverse) is a faster `read.csv()`, and `read_dta()` reads Stata files. See the [Posit data import cheatsheet](https://rstudio.github.io/cheatsheets/html/data-import.html).
+:::
 
 ```{r}
 #| label: lab-import-setup
 #| include: false
 #| cache: false
 library(readxl)
-mh_raw_check <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet = "data")
+mh_raw_check <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx")
 mh_codebook_check <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet = "codebook")
 ```
 
@@ -239,11 +161,12 @@ You watched the play above with example datasets. Now import the **lab dataset**
 **Before you start**
 
 1.  Get the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from your instructor. Put it in a folder called **data** inside your `Lastname_FRI` project folder.
-2.  Open your RStudio Project and your lab `.qmd` file, and run your `library()` chunk. You need `readxl`.
+2.  Your instructor also gives you a short R script, `lab_prep.R`. Put it in your `Lastname_FRI` project folder itself, next to `Lastname_FRI.Rproj` (not inside **data**). You will not use it in this chapter; from [Transforming Your Data](dplyr.qmd) on, every Lab starts by running it.
+3.  Open your RStudio Project and your lab `.qmd` file, and run your `library()` chunk. You need `readxl`.
 
 ### Lab Play 1: Import the data
 
-The file has more than one sheet. The survey answers are on the sheet called `data`. Import that sheet and name the object `mh_raw`. Then find out how many rows (people) and columns (variables) it has.
+The file has more than one sheet. The survey answers are on the first sheet, `Sheet1`, which is the one `read_excel()` reads by default. Import it and name the object `mh_raw`. Then find out how many rows (people) and columns (variables) it has.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how big is the dataset?
@@ -259,8 +182,7 @@ The file has more than one sheet. The survey answers are on the sheet called `da
 #| eval: false
 library(readxl)
 
-mh_raw <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx",
-                     sheet = "data")
+mh_raw <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx")
 
 nrow(mh_raw)   # how many people?
 ncol(mh_raw)   # how many variables?
@@ -276,12 +198,12 @@ Look at the column names with `names()`, look at the first rows with `head()`, a
 
 -   The first five column names are: `r paste0("\x60", names(mh_raw_check)[1:5], "\x60", collapse = ", ")`. The last one is `r paste0("\x60", tail(names(mh_raw_check), 1), "\x60")`.
 -   `POLITICALBELIEFS` has a minimum of `r min(mh_raw_check$POLITICALBELIEFS, na.rm = TRUE)` and a maximum of `r max(mh_raw_check$POLITICALBELIEFS, na.rm = TRUE)`.
--   A minimum of -99 is not a real answer. The answers to this question run from 1 to 6, and -99 is the code for "Prefer not to say". You will turn those codes into missing values (`NA`) the same way this chapter did for `safetydata`.
+-   A minimum of -99 is not a real answer. The answers to this question run from 1 to 6, and -99 is the code for "Prefer not to say". You will turn those codes into missing values (`NA`) in Lab Play 4.
 :::
 
 ### Lab Play 3: Do the variable names match the survey?
 
-This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics. If a name is misspelled, or a question was never named, you will see it here first (for example, a column called `Q17` and no column called `STIG3`).
+This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics. If a name is misspelled, or a question was never named, you will see it here first (for example, a column called `Q17` and no column called `STIGMA_PUB3`).
 
 For the lab dataset, the survey's variable names are listed on the sheet called `codebook`. Import that sheet, and compare its `Variable` column with `names(mh_raw)`.
 
@@ -319,11 +241,37 @@ setdiff(names(mh_raw), mh_codebook$Variable)
 ```
 :::
 
+### Lab Play 4: Turn the missing codes into `NA`
+
+Lab Play 2 found a minimum of `-99` in `POLITICALBELIEFS`. In this survey, `-99` means "Prefer not to say" and `-50` means "Don't know" ([Name and Recode Variables in Qualtrics](qualtrics.qmd)). If they stay as numbers, R will average them into every score. Replace both codes with `NA`, R's word for missing, everywhere in the dataset, then run `summary(mh_raw$POLITICALBELIEFS)` again.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: did the codes go away?
+
+-   `summary(mh_raw$POLITICALBELIEFS)` now shows a minimum of **`r min(mh_raw_check$POLITICALBELIEFS[!mh_raw_check$POLITICALBELIEFS %in% c(-99, -50)], na.rm = TRUE)`** and a new entry, `NA's`, with the number of people who did not answer.
+-   The number of rows has **not** changed. Replacing a value with `NA` keeps the person; it only blanks that one answer.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-import-solution-na
+#| eval: false
+mh_raw[mh_raw == -99] <- NA    # prefer not to say -> missing
+mh_raw[mh_raw == -50] <- NA    # don't know -> missing
+
+summary(mh_raw$POLITICALBELIEFS)
+```
+
+`mh_raw == -99` finds every cell equal to -99, and `<- NA` writes `NA` into those cells. [Transforming Your Data](dplyr.qmd) shows the tidyverse way to do the same thing, `replace_with_na_all()`.
+:::
+
 ::: {.callout-warning collapse="true" icon="false"}
 ## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
 
 -   **`path does not exist`** → the file is not where the code says it is. Check that the file is inside a **data** folder in your project, that the name is spelled exactly the same, and that you opened your **project** (not only a file).
--   **You have 1 column, or the wrong columns** → you imported the wrong sheet. Add `sheet = "data"`.
+-   **You have 1 column, or the wrong columns** → you imported the wrong sheet. `read_excel()` reads the first sheet unless you add `sheet =`; check that your data are on the first sheet, or name the sheet you want.
 -   **`could not find function "read_excel"`** → run `library(readxl)`.
 -   **Your first row of data is question text** → the file still has two header rows. See [Export Survey Data](export.qmd) and delete row 2 in the `.clean` file. (The lab dataset has one header row, so you should not see this in the lab.)
 :::
@@ -346,28 +294,34 @@ setdiff(names(mh_raw), mh_codebook$Variable)
 Nobody has imported your team's data before, so there is no answer to check against. Use the checklist below.
 :::
 
-Once you finish all of the R Labs, come back here with **your team's `.clean` data file**.
+::: callout-warning
+## Caution: meet with a Quant Peer Mentor before you analyze your team data
+
+After data collection ends and you have downloaded your team dataset, meet with a Quant Peer Mentor during lab before you go further. The quant PM lab schedule is in Column E of the "Student Lab Hours (ANTH306-f2026)" Google Sheet.
+:::
+
+Once you finish all of the R Labs, come back here with **your team's `.clean` data file**. Name the object `alldata`: it holds every response, and later chapters filter it down (for example, to serious responses only) into smaller objects with their own names. The example below is for Team 1 exporting on the October 9 lecture; change the team number and the date to match your file.
 
 ```{r}
-#| label: import-REPLACE
+#| label: import-data-team
 #| eval: false
 library(readxl)
 
-yourdata <- read_excel("data/REPLACE.data.team#.clean.xlsx")   # REPLACE with your file name
+alldata <- read_excel("data/10.09.2026.data.team1.clean.xlsx")   # Team 1 example: use your team number and export date
 
-yourdata[yourdata == -99] <- NA    # prefer not to answer -> missing
-yourdata[yourdata == -50] <- NA    # don't know -> missing
+alldata[alldata == -99] <- NA    # prefer not to say -> missing
+alldata[alldata == -50] <- NA    # don't know -> missing
 
-names(yourdata)      # the VARIABLES
-head(yourdata, 10)   # the first 10 people
-summary(yourdata)    # minimum and maximum of every variable
+names(alldata)      # the VARIABLES
+head(alldata, 10)   # the first 10 people
+summary(alldata)    # minimum and maximum of every variable
 ```
 
 | Criteria | Ask yourself |
 |------------|--------------------------------------------------------|
 | **One header row** | Is row 1 the variable names, and is row 2 a person (not question text)? |
 | **Rows** | Does the number of rows match the number of responses in Qualtrics? |
-| **Variable names** | Open your exported survey (`.docx`) next to `names(yourdata)`. Does every column name match the variable name you chose in Qualtrics, spelled the same way and in capital letters? |
+| **Variable names** | Open your exported survey (`.docx`) next to `names(alldata)`. Does every column name match the variable name you chose in Qualtrics, spelled the same way and in capital letters? |
 | **Unnamed questions** | Do you see names such as `Q17` or `Q23_1`? Those questions were never named. Fix the names in Qualtrics and export again. Do not rename them by hand in Excel. |
 | **Minimum and maximum** | For each scale, do the minimum and maximum match the response options (for example, 1 to 5)? Are -99 and -50 gone? |
 | **Team agreement** | Did every teammate import the same file, with the same date in its name? |

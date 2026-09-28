@@ -154,7 +154,7 @@ You can type R code in three places in RStudio, and each one has a job.
 
 | Where | What happens to the code | Use it for |
 |----|----|----|
-| **Console** (bottom left) | Runs immediately. **Not saved.** Gone when you close RStudio. | Quick checks and one-time commands: `getwd()`, `head(mydata)`, looking up a value, installing a package. |
+| **Console** (bottom left) | Runs immediately. **Not saved.** Gone when you close RStudio. | Quick checks and one-time commands: `getwd()`, `head(alldata)`, looking up a value, installing a package. |
 | **`.R` script** | Saved as a file. Runs when you click Run or Source. Code only, with `#` comments. | Code that is not part of any report, such as your `install.R` file. |
 | **`.qmd` Quarto document** | Saved as a file. Runs when you click Render. Code chunks **and** your writing in one file, which becomes a web page. | Everything for your *RD Report* and *Final Report*: every import, plot, and analysis. |
 
@@ -266,7 +266,7 @@ A `.qmd` file has two faces. In RStudio you see plain text with a few markers: a
 
 Notice three things. The YAML header at the top of the file (lines 1 to 11) became the title, author, and table of contents. `# Introduction` and `# Method` became headings. And the citation keys `[@howell2020; @sweeny2010]` (highlighted) became real citations, "Howell, Lipsey, and Shepperd 2020; Sweeny et al. 2010," which also appear in a reference list at the end. You type plain text; Render does the formatting.
 
-Text written normally in Quarto appears as regular text in the output. In order to include and run code in our final reports, code must be written in code chunks.
+Text written normally in Quarto appears as regular text in the output. In order to include and run code in your *RD Report* and *Final Report*, code must be written in code chunks.
 
 The first time you render a Quarto document, RStudio may ask to install packages it needs (such as `rmarkdown` and `knitr`). Click Yes.
 

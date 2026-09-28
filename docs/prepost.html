@@ -11,7 +11,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="Team 3, Team 5, pre/post, pretest, posttest, left_join, PASSWORD, tidyr, wide format, long format">
 
-<title>9&nbsp; Pre/Post Data – The Quantitative Playbook for R</title>
+<title>10&nbsp; Pre/Post Data – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./dplyr.html" rel="next">
+<link href="./vignette.html" rel="next">
 <link href="./import-once.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./prepost.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./prepost.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -234,32 +234,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -276,19 +288,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -305,19 +317,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -334,13 +346,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -357,31 +369,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -398,19 +410,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -425,33 +437,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#who-needs-this-chapter" id="toc-who-needs-this-chapter" class="nav-link active" data-scroll-target="#who-needs-this-chapter"><span class="header-section-number">9.1</span> Who needs this chapter?</a></li>
-  <li><a href="#the-idea-one-code-links-two-responses" id="toc-the-idea-one-code-links-two-responses" class="nav-link" data-scroll-target="#the-idea-one-code-links-two-responses"><span class="header-section-number">9.2</span> The idea: one code links two responses</a></li>
-  <li><a href="#two-shapes-of-data" id="toc-two-shapes-of-data" class="nav-link" data-scroll-target="#two-shapes-of-data"><span class="header-section-number">9.3</span> Two shapes of data</a>
+  <li><a href="#who-needs-this-chapter" id="toc-who-needs-this-chapter" class="nav-link active" data-scroll-target="#who-needs-this-chapter"><span class="header-section-number">10.1</span> Who needs this chapter?</a></li>
+  <li><a href="#the-idea-one-code-links-two-responses" id="toc-the-idea-one-code-links-two-responses" class="nav-link" data-scroll-target="#the-idea-one-code-links-two-responses"><span class="header-section-number">10.2</span> The idea: one code links two responses</a></li>
+  <li><a href="#two-shapes-of-data" id="toc-two-shapes-of-data" class="nav-link" data-scroll-target="#two-shapes-of-data"><span class="header-section-number">10.3</span> Two shapes of data</a>
   <ul class="collapse">
-  <li><a href="#wide-format-one-row-per-person" id="toc-wide-format-one-row-per-person" class="nav-link" data-scroll-target="#wide-format-one-row-per-person"><span class="header-section-number">9.3.1</span> Wide format: one row per person</a></li>
-  <li><a href="#long-format-one-row-per-response" id="toc-long-format-one-row-per-response" class="nav-link" data-scroll-target="#long-format-one-row-per-response"><span class="header-section-number">9.3.2</span> Long format: one row per response</a></li>
+  <li><a href="#wide-format-one-row-per-person" id="toc-wide-format-one-row-per-person" class="nav-link" data-scroll-target="#wide-format-one-row-per-person"><span class="header-section-number">10.3.1</span> Wide format: one row per person</a></li>
+  <li><a href="#long-format-one-row-per-response" id="toc-long-format-one-row-per-response" class="nav-link" data-scroll-target="#long-format-one-row-per-response"><span class="header-section-number">10.3.2</span> Long format: one row per response</a></li>
   </ul></li>
-  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">9.4</span> 📋 The Play</a>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">10.4</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#example-data" id="toc-example-data" class="nav-link" data-scroll-target="#example-data"><span class="header-section-number">9.4.1</span> Example data</a></li>
-  <li><a href="#step-1-clean-the-password" id="toc-step-1-clean-the-password" class="nav-link" data-scroll-target="#step-1-clean-the-password"><span class="header-section-number">9.4.2</span> Step 1: Clean the password</a></li>
-  <li><a href="#step-2-look-for-duplicates" id="toc-step-2-look-for-duplicates" class="nav-link" data-scroll-target="#step-2-look-for-duplicates"><span class="header-section-number">9.4.3</span> Step 2: Look for duplicates</a></li>
-  <li><a href="#step-3-join-the-two-datasets-by-password" id="toc-step-3-join-the-two-datasets-by-password" class="nav-link" data-scroll-target="#step-3-join-the-two-datasets-by-password"><span class="header-section-number">9.4.4</span> Step 3: Join the two datasets by <code>PASSWORD</code></a></li>
-  <li><a href="#step-4-check-the-join" id="toc-step-4-check-the-join" class="nav-link" data-scroll-target="#step-4-check-the-join"><span class="header-section-number">9.4.5</span> Step 4: Check the join</a></li>
-  <li><a href="#step-5-reshape-to-long-format-for-plots" id="toc-step-5-reshape-to-long-format-for-plots" class="nav-link" data-scroll-target="#step-5-reshape-to-long-format-for-plots"><span class="header-section-number">9.4.6</span> Step 5: Reshape to long format for plots</a></li>
-  <li><a href="#if-your-data-arrive-in-long-format" id="toc-if-your-data-arrive-in-long-format" class="nav-link" data-scroll-target="#if-your-data-arrive-in-long-format"><span class="header-section-number">9.4.7</span> If your data arrive in long format</a></li>
+  <li><a href="#situation-1-one-file-in-long-format" id="toc-situation-1-one-file-in-long-format" class="nav-link" data-scroll-target="#situation-1-one-file-in-long-format"><span class="header-section-number">10.4.1</span> Situation 1: one file in long format</a></li>
+  <li><a href="#situation-2-two-files-in-wide-format" id="toc-situation-2-two-files-in-wide-format" class="nav-link" data-scroll-target="#situation-2-two-files-in-wide-format"><span class="header-section-number">10.4.2</span> Situation 2: two files in wide format</a></li>
+  <li><a href="#step-1-clean-the-password" id="toc-step-1-clean-the-password" class="nav-link" data-scroll-target="#step-1-clean-the-password"><span class="header-section-number">10.4.3</span> Step 1: Clean the password</a></li>
+  <li><a href="#step-2-look-for-duplicates" id="toc-step-2-look-for-duplicates" class="nav-link" data-scroll-target="#step-2-look-for-duplicates"><span class="header-section-number">10.4.4</span> Step 2: Look for duplicates</a></li>
+  <li><a href="#step-3-join-the-two-datasets-by-password" id="toc-step-3-join-the-two-datasets-by-password" class="nav-link" data-scroll-target="#step-3-join-the-two-datasets-by-password"><span class="header-section-number">10.4.5</span> Step 3: Join the two datasets by <code>PASSWORD</code></a></li>
+  <li><a href="#step-4-check-the-join" id="toc-step-4-check-the-join" class="nav-link" data-scroll-target="#step-4-check-the-join"><span class="header-section-number">10.4.6</span> Step 4: Check the join</a></li>
+  <li><a href="#step-5-reshape-to-long-format-for-plots" id="toc-step-5-reshape-to-long-format-for-plots" class="nav-link" data-scroll-target="#step-5-reshape-to-long-format-for-plots"><span class="header-section-number">10.4.7</span> Step 5: Reshape to long format for plots</a></li>
   </ul></li>
-  <li><a href="#sec-prepost-yourturn" id="toc-sec-prepost-yourturn" class="nav-link" data-scroll-target="#sec-prepost-yourturn"><span class="header-section-number">9.5</span> 🏆 Your Turn</a></li>
+  <li><a href="#sec-prepost-lab" id="toc-sec-prepost-lab" class="nav-link" data-scroll-target="#sec-prepost-lab"><span class="header-section-number">10.5</span> 🏈 The Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-play-1-import-and-look-at-the-shape" id="toc-lab-play-1-import-and-look-at-the-shape" class="nav-link" data-scroll-target="#lab-play-1-import-and-look-at-the-shape"><span class="header-section-number">10.5.1</span> Lab Play 1: Import and look at the shape</a></li>
+  <li><a href="#lab-play-2-clean-the-password-and-look-for-duplicates" id="toc-lab-play-2-clean-the-password-and-look-for-duplicates" class="nav-link" data-scroll-target="#lab-play-2-clean-the-password-and-look-for-duplicates"><span class="header-section-number">10.5.2</span> Lab Play 2: Clean the password and look for duplicates</a></li>
+  <li><a href="#lab-play-3-reshape-to-wide" id="toc-lab-play-3-reshape-to-wide" class="nav-link" data-scroll-target="#lab-play-3-reshape-to-wide"><span class="header-section-number">10.5.3</span> Lab Play 3: Reshape to wide</a></li>
+  </ul></li>
+  <li><a href="#sec-prepost-yourturn" id="toc-sec-prepost-yourturn" class="nav-link" data-scroll-target="#sec-prepost-yourturn"><span class="header-section-number">10.6</span> 🏆 Your Turn</a>
+  <ul class="collapse">
+  <li><a href="#template-1-one-file-in-long-format-teams-3-and-5" id="toc-template-1-one-file-in-long-format-teams-3-and-5" class="nav-link" data-scroll-target="#template-1-one-file-in-long-format-teams-3-and-5"><span class="header-section-number">10.6.1</span> Template 1: one file in long format (Teams 3 and 5)</a></li>
+  <li><a href="#template-2-two-files-in-wide-format-only-if-your-pretest-and-posttest-were-separate-surveys" id="toc-template-2-two-files-in-wide-format-only-if-your-pretest-and-posttest-were-separate-surveys" class="nav-link" data-scroll-target="#template-2-two-files-in-wide-format-only-if-your-pretest-and-posttest-were-separate-surveys"><span class="header-section-number">10.6.2</span> Template 2: two files in wide format (only if your pretest and posttest were separate surveys)</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/prepost.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./export.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./prepost.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./prepost.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></h1>
 <p class="subtitle lead">How to link two surveys from the same people and reshape the data</p>
 </div>
 
@@ -535,9 +557,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="who-needs-this-chapter" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="who-needs-this-chapter"><span class="header-section-number">9.1</span> Who needs this chapter?</h2>
-<p>You need this chapter if your team surveyed <strong>the same people twice</strong> and you want to know whether their scores changed. If your team has one survey, skip it.</p>
+<section id="who-needs-this-chapter" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="who-needs-this-chapter"><span class="header-section-number">10.1</span> Who needs this chapter?</h2>
+<p>You need this chapter if your team surveyed <strong>the same people twice</strong> and you want to know whether their scores changed. If your team has one survey, skip it. (Team 4’s survey, in which each person rated four vignettes, is a different design with a similar reshape: see <a href="./vignette.html">Vignette Data</a>.)</p>
 <div class="gray callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -571,23 +593,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-idea-one-code-links-two-responses" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="the-idea-one-code-links-two-responses"><span class="header-section-number">9.2</span> The idea: one code links two responses</h2>
+<section id="the-idea-one-code-links-two-responses" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-idea-one-code-links-two-responses"><span class="header-section-number">10.2</span> The idea: one code links two responses</h2>
 <p>A pre/post study gives you two responses from each person. To compare them, R has to know which pretest belongs with which posttest. Names would work, but they are not anonymous. So each participant makes up a code, <code>PASSWORD</code>, and types the same code in both surveys. The code is what links the two responses.</p>
 <p>Think of a coat check. You hand over your coat and get a ticket. Later, the ticket is the only thing that connects you to your coat. <code>PASSWORD</code> is the ticket.</p>
 </section>
-<section id="two-shapes-of-data" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="two-shapes-of-data"><span class="header-section-number">9.3</span> Two shapes of data</h2>
+<section id="two-shapes-of-data" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="two-shapes-of-data"><span class="header-section-number">10.3</span> Two shapes of data</h2>
 <p>The same pre/post data can be arranged in two ways.</p>
-<section id="wide-format-one-row-per-person" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="wide-format-one-row-per-person"><span class="header-section-number">9.3.1</span> Wide format: one row per person</h3>
+<section id="wide-format-one-row-per-person" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="wide-format-one-row-per-person"><span class="header-section-number">10.3.1</span> Wide format: one row per person</h3>
 <table class="caption-top table">
 <caption><em>Wide format. Each row is a PARTICIPANT. The pretest and the posttest are in separate columns.</em></caption>
 <thead>
 <tr class="header">
 <th><code>PASSWORD</code></th>
-<th><code>WELLBEING_pre</code></th>
-<th><code>WELLBEING_post</code></th>
+<th><code>WELLBEING_PRE</code></th>
+<th><code>WELLBEING_POST</code></th>
 </tr>
 </thead>
 <tbody>
@@ -605,8 +627,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Use wide format to <strong>test</strong> whether scores changed (a paired t-test or a Wilcoxon signed-rank test), because the test needs each person’s two scores side by side.</p>
 </section>
-<section id="long-format-one-row-per-response" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="long-format-one-row-per-response"><span class="header-section-number">9.3.2</span> Long format: one row per response</h3>
+<section id="long-format-one-row-per-response" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="long-format-one-row-per-response"><span class="header-section-number">10.3.2</span> Long format: one row per response</h3>
 <table class="caption-top table">
 <caption><em>Long format. Each row is a SURVEY RESPONSE, so each participant appears twice.</em></caption>
 <thead>
@@ -619,70 +641,179 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>abc123</td>
-<td>pre</td>
+<td>PRE</td>
 <td>3.2</td>
 </tr>
 <tr class="even">
 <td>gobills7</td>
-<td>pre</td>
+<td>PRE</td>
 <td>2.8</td>
 </tr>
 <tr class="odd">
 <td>abc123</td>
-<td>post</td>
+<td>POST</td>
 <td>4.1</td>
 </tr>
 <tr class="even">
 <td>gobills7</td>
-<td>post</td>
+<td>POST</td>
 <td>3.0</td>
 </tr>
 </tbody>
 </table>
 <p>Use long format to <strong>plot</strong> pre/post scores, because <code>ggplot2</code> needs one column for time (the x axis) and one column for the score (the y axis). See <a href="./violin.html">Visualize Pre/Post Data</a>.</p>
-<p>You will usually need both, so this chapter shows you how to build the wide dataset first and then turn it into the long one.</p>
+<p>You will usually need both. How you get them depends on how your data arrive, and there are two situations:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>What you start with</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. One file, long format</strong> (Teams 3 and 5)</td>
+<td>One survey given twice and exported once. Every response is a row, and a column (<code>TIME</code>, 0 = pretest, 1 = posttest) says which time it is.</td>
+<td>Clean <code>PASSWORD</code>, then <code>pivot_wider()</code> to get one row per person.</td>
+</tr>
+<tr class="even">
+<td><strong>2. Two files, wide format</strong> (not this year’s teams)</td>
+<td>Two separate surveys, one for pre and one for post, each with one row per person.</td>
+<td>Clean <code>PASSWORD</code> in both, <code>left_join()</code> them into one wide file, then <code>pivot_longer()</code> for plots.</td>
+</tr>
+</tbody>
+</table>
+<p>Teams 3 and 5 both have situation 1: one survey, taken at pretest and again at posttest, exported once. The Play shows both situations, because a join is worth knowing and because a future team may collect two files; the Lab and your template are situation 1.</p>
 </section>
 </section>
-<section id="the-play" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="the-play"><span class="header-section-number">9.4</span> 📋 The Play</h2>
-<section id="example-data" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="example-data"><span class="header-section-number">9.4.1</span> Example data</h3>
-<p>The example uses two very small made-up datasets, so that you can see every row.</p>
+<section id="the-play" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="the-play"><span class="header-section-number">10.4</span> 📋 The Play</h2>
+<p>The examples use very small made-up datasets, so that you can see every row.</p>
+<section id="situation-1-one-file-in-long-format" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="situation-1-one-file-in-long-format"><span class="header-section-number">10.4.1</span> Situation 1: one file in long format</h3>
+<p>One survey, given twice, exported once. Each person has two rows, and <code>TIME</code> says which is which: 0 = pretest, 1 = posttest, as coded in Qualtrics (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>). Notice the two problems hiding in it: <code>Blue42</code> typed the password with different capitals the second time, and <code>sunny5</code> never took the posttest.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pretest <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">PASSWORD  =</span> <span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"gobills7"</span>, <span class="st">"Blue42"</span>, <span class="st">"pizza9"</span>, <span class="st">"sunny5"</span>),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">AGE       =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">20</span>),</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">WELLBEING =</span> <span class="fu">c</span>(<span class="fl">3.2</span>, <span class="fl">2.8</span>, <span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">2.5</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">STRESS    =</span> <span class="fu">c</span>(<span class="fl">3.9</span>, <span class="fl">4.2</span>, <span class="fl">3.1</span>, <span class="fl">2.8</span>, <span class="fl">4.4</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">PASSWORD  =</span> <span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"gobills7"</span>, <span class="st">"blue42 "</span>, <span class="st">"pizza9"</span>, <span class="st">"pizza9"</span>),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">WELLBEING =</span> <span class="fu">c</span>(<span class="fl">4.1</span>, <span class="fl">3.0</span>, <span class="fl">3.9</span>, <span class="fl">4.2</span>, <span class="fl">4.4</span>),</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">STRESS    =</span> <span class="fu">c</span>(<span class="fl">3.0</span>, <span class="fl">4.0</span>, <span class="fl">2.7</span>, <span class="fl">2.5</span>, <span class="fl">2.4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>long_raw <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">PASSWORD  =</span> <span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"gobills7"</span>, <span class="st">"Blue42"</span>, <span class="st">"pizza9"</span>, <span class="st">"sunny5"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">"abc123"</span>, <span class="st">"gobills7"</span>, <span class="st">"blue42"</span>, <span class="st">"pizza9"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">TIME      =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">WELLBEING =</span> <span class="fu">c</span>(<span class="fl">3.2</span>, <span class="fl">2.8</span>, <span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">2.5</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                <span class="fl">4.1</span>, <span class="fl">3.0</span>, <span class="fl">3.9</span>, <span class="fl">4.2</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">STRESS    =</span> <span class="fu">c</span>(<span class="fl">3.9</span>, <span class="fl">4.2</span>, <span class="fl">3.1</span>, <span class="fl">2.8</span>, <span class="fl">4.4</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                <span class="fl">3.0</span>, <span class="fl">4.0</span>, <span class="fl">2.7</span>, <span class="fl">2.5</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>long_raw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 4
+  PASSWORD  TIME WELLBEING STRESS
+  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+1 abc123       0       3.2    3.9
+2 gobills7     0       2.8    4.2
+3 Blue42       0       3.5    3.1
+4 pizza9       0       4      2.8
+5 sunny5       0       2.5    4.4
+6 abc123       1       4.1    3  
+7 gobills7     1       3      4  
+8 blue42       1       3.9    2.7
+9 pizza9       1       4.2    2.5</code></pre>
 </div>
-<p>Look closely at the posttest. <code>sunny5</code> did not take it. <code>Blue42</code> typed the password differently the second time (<code>blue42</code> with a space at the end). <code>pizza9</code> took it twice. All three happen in real studies.</p>
-</section>
-<section id="step-1-clean-the-password" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="step-1-clean-the-password"><span class="header-section-number">9.4.2</span> Step 1: Clean the password</h3>
-<p>To R, <code>Blue42</code> and <code>blue42</code> followed by a space are two different people. Make every password lowercase and remove the extra spaces, in <strong>both</strong> datasets, before you join them.</p>
+</div>
+<p><strong>Step 1: clean the password and label the time.</strong> To R, <code>Blue42</code> and <code>blue42</code> are two different people. Make every password lowercase and remove stray spaces before you do anything else. In the same step, turn the 0/1 <code>TIME</code> into a <strong>factor</strong> with the labels <code>PRE</code> and <code>POST</code>, so that the reshaped columns and the plots say pre and post instead of 0 and 1. (If you will also put time into a model, keep a numeric copy first: <code>TIME_01 = TIME</code>.)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pretest <span class="ot">&lt;-</span> pretest <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> posttest <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> long_raw <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>)))   <span class="co"># 0 -&gt; PRE, 1 -&gt; POST; pre first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Step 2: check for duplicates.</strong> In long format a duplicate is the same <code>PASSWORD</code> at the same <code>TIME</code>. There should be none; if there are, decide with your team which response to keep and use <code>distinct(PASSWORD, TIME, .keep_all = TRUE)</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PASSWORD, TIME) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 3
+# ℹ 3 variables: PASSWORD &lt;chr&gt;, TIME &lt;fct&gt;, n &lt;int&gt;</code></pre>
+</div>
+</div>
+<p><strong>Step 3: <code>pivot_wider()</code>: one row per person.</strong> <code>names_from</code> is the column that becomes part of the new column names (<code>TIME</code>), <code>values_from</code> lists the scores, and <code>names_glue</code> writes the names as <code>WELLBEING_PRE</code>, <code>WELLBEING_POST</code>, and so on: the same <code>_PRE</code> and <code>_POST</code> endings as the naming rule in <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> long_data <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from  =</span> TIME,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="fu">c</span>(WELLBEING, STRESS),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_glue  =</span> <span class="st">"{.value}_{TIME}"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>wide_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  PASSWORD WELLBEING_PRE WELLBEING_POST STRESS_PRE STRESS_POST
+  &lt;chr&gt;            &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+1 abc123             3.2            4.1        3.9         3  
+2 gobills7           2.8            3          4.2         4  
+3 blue42             3.5            3.9        3.1         2.7
+4 pizza9             4              4.2        2.8         2.5
+5 sunny5             2.5           NA          4.4        NA  </code></pre>
+</div>
+</div>
+<p><strong>Step 4: check the reshape.</strong> The wide file should have one row per person, and anyone who took only one survey shows <code>NA</code> in the other time’s columns.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wide_data)                          <span class="co"># one row per person</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>wide_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(WELLBEING_POST))   <span class="co"># who has no posttest?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  PASSWORD WELLBEING_PRE WELLBEING_POST STRESS_PRE STRESS_POST
+  &lt;chr&gt;            &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
+1 sunny5             2.5             NA        4.4          NA</code></pre>
+</div>
+</div>
+<p><code>sunny5</code> has no posttest, so their <code>_POST</code> columns are <code>NA</code>. Now you have both shapes: <code>long_data</code> for plots and <code>wide_data</code> for the paired test.</p>
+</section>
+<section id="situation-2-two-files-in-wide-format" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="situation-2-two-files-in-wide-format"><span class="header-section-number">10.4.2</span> Situation 2: two files in wide format</h3>
+<p>Two separate surveys, each with one row per person. Here you have to <strong>join</strong> them, and the join is where mistakes hide.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pretest <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">PASSWORD  =</span> <span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"gobills7"</span>, <span class="st">"Blue42"</span>, <span class="st">"pizza9"</span>, <span class="st">"sunny5"</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">AGE       =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">20</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">WELLBEING =</span> <span class="fu">c</span>(<span class="fl">3.2</span>, <span class="fl">2.8</span>, <span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">2.5</span>),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">STRESS    =</span> <span class="fu">c</span>(<span class="fl">3.9</span>, <span class="fl">4.2</span>, <span class="fl">3.1</span>, <span class="fl">2.8</span>, <span class="fl">4.4</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">PASSWORD  =</span> <span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"gobills7"</span>, <span class="st">"blue42 "</span>, <span class="st">"pizza9"</span>, <span class="st">"pizza9"</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">WELLBEING =</span> <span class="fu">c</span>(<span class="fl">4.1</span>, <span class="fl">3.0</span>, <span class="fl">3.9</span>, <span class="fl">4.2</span>, <span class="fl">4.4</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">STRESS    =</span> <span class="fu">c</span>(<span class="fl">3.0</span>, <span class="fl">4.0</span>, <span class="fl">2.7</span>, <span class="fl">2.5</span>, <span class="fl">2.4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Look closely at the posttest. <code>sunny5</code> did not take it. <code>Blue42</code> typed the password differently the second time (<code>blue42</code> with a space at the end). <code>pizza9</code> took it twice. All three happen in real studies. The steps are the same as in situation 1, with a join in the middle.</p>
+</section>
+<section id="step-1-clean-the-password" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="step-1-clean-the-password"><span class="header-section-number">10.4.3</span> Step 1: Clean the password</h3>
+<p>Same as before, but in <strong>both</strong> datasets, before you join them.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pretest <span class="ot">&lt;-</span> pretest <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> posttest <span class="sc">|&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="step-2-look-for-duplicates" class="level3" data-number="9.4.3">
-<h3 data-number="9.4.3" class="anchored" data-anchor-id="step-2-look-for-duplicates"><span class="header-section-number">9.4.3</span> Step 2: Look for duplicates</h3>
+<section id="step-2-look-for-duplicates" class="level3" data-number="10.4.4">
+<h3 data-number="10.4.4" class="anchored" data-anchor-id="step-2-look-for-duplicates"><span class="header-section-number">10.4.4</span> Step 2: Look for duplicates</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>posttest <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PASSWORD) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>posttest <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PASSWORD) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   PASSWORD     n
@@ -692,21 +823,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>pizza9</code> is in the posttest twice. Decide with your team which response to keep, use the same rule for everyone, and report it in your methods. A common rule is to keep the <strong>first</strong> response.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> posttest <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PASSWORD, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)    <span class="co"># keeps the first row for each PASSWORD</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> posttest <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PASSWORD, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)    <span class="co"># keeps the first row for each PASSWORD</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="step-3-join-the-two-datasets-by-password" class="level3" data-number="9.4.4">
-<h3 data-number="9.4.4" class="anchored" data-anchor-id="step-3-join-the-two-datasets-by-password"><span class="header-section-number">9.4.4</span> Step 3: Join the two datasets by <code>PASSWORD</code></h3>
+<section id="step-3-join-the-two-datasets-by-password" class="level3" data-number="10.4.5">
+<h3 data-number="10.4.5" class="anchored" data-anchor-id="step-3-join-the-two-datasets-by-password"><span class="header-section-number">10.4.5</span> Step 3: Join the two datasets by <code>PASSWORD</code></h3>
 <p><code>left_join()</code> keeps every row of the first dataset (the pretest) and adds the matching columns from the second (the posttest). Columns that have the same name in both files get an ending, so you can tell them apart.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> pretest <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_pre"</span>, <span class="st">"_post"</span>))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>wide_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>wide_data2 <span class="ot">&lt;-</span> pretest <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_PRE"</span>, <span class="st">"_POST"</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>wide_data2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 6
-  PASSWORD   AGE WELLBEING_pre STRESS_pre WELLBEING_post STRESS_post
+  PASSWORD   AGE WELLBEING_PRE STRESS_PRE WELLBEING_POST STRESS_POST
   &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;
 1 abc123      19           3.2        3.9            4.1         3  
 2 gobills7    20           2.8        4.2            3           4  
@@ -715,10 +846,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5 sunny5      20           2.5        4.4           NA          NA  </code></pre>
 </div>
 </div>
-<p>This is <strong>wide format</strong>: one row per person. <code>AGE</code> was only in the pretest, so it keeps its name.</p>
+<p>This is <strong>wide format</strong>: one row per person, the same shape that <code>pivot_wider()</code> produced in situation 1. <code>AGE</code> was only in the pretest, so it keeps its name.</p>
 </section>
-<section id="step-4-check-the-join" class="level3" data-number="9.4.5">
-<h3 data-number="9.4.5" class="anchored" data-anchor-id="step-4-check-the-join"><span class="header-section-number">9.4.5</span> Step 4: Check the join</h3>
+<section id="step-4-check-the-join" class="level3" data-number="10.4.6">
+<h3 data-number="10.4.6" class="anchored" data-anchor-id="step-4-check-the-join"><span class="header-section-number">10.4.6</span> Step 4: Check the join</h3>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -733,16 +864,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pretest)      <span class="co"># people who took the pretest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pretest)      <span class="co"># people who took the pretest</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wide_data)    <span class="co"># should be the SAME number</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wide_data2)   <span class="co"># should be the SAME number</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># people who took the pretest and have no matching posttest</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(pretest, posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># people who took the pretest and have no matching posttest</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(pretest, posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   PASSWORD   AGE WELLBEING STRESS
@@ -750,34 +881,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1 sunny5      20       2.5    4.4</code></pre>
 </div>
 </div>
-<p>Both numbers are 5, so no rows were added by mistake. One person, <code>sunny5</code>, has no posttest, and their <code>_post</code> columns are <code>NA</code>. In your methods, report all three numbers: 5 people took the pretest, 4 were matched to a posttest, and 1 could not be matched.</p>
+<p>Both numbers are 5, so no rows were added by mistake. One person, <code>sunny5</code>, has no posttest, and their <code>_POST</code> columns are <code>NA</code>. In your methods, report all three numbers: 5 people took the pretest, 4 were matched to a posttest, and 1 could not be matched.</p>
 </section>
-<section id="step-5-reshape-to-long-format-for-plots" class="level3" data-number="9.4.6">
-<h3 data-number="9.4.6" class="anchored" data-anchor-id="step-5-reshape-to-long-format-for-plots"><span class="header-section-number">9.4.6</span> Step 5: Reshape to long format for plots</h3>
-<p><code>pivot_longer()</code> takes the pre and post columns and stacks them. The part of the column name before the <code>_</code> becomes the score, and the part after it becomes a new column called <code>TIME</code>.</p>
+<section id="step-5-reshape-to-long-format-for-plots" class="level3" data-number="10.4.7">
+<h3 data-number="10.4.7" class="anchored" data-anchor-id="step-5-reshape-to-long-format-for-plots"><span class="header-section-number">10.4.7</span> Step 5: Reshape to long format for plots</h3>
+<p><code>pivot_longer()</code> is the reverse of <code>pivot_wider()</code>: it takes the pre and post columns and stacks them. <code>names_pattern</code> says how to read each column name: everything before the last <code>_</code> is the score (<code>.value</code>), and the <code>PRE</code> or <code>POST</code> after it goes into a new column called <code>TIME</code>. Writing it this way, instead of “split at every <code>_</code>”, matters because your own variable names contain underscores (<code>STIGMA_PUB_PRE</code> must become <code>STIGMA_PUB</code> and <code>PRE</code>, not <code>STIGMA</code> and <code>PUB</code>).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> wide_data <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(WELLBEING_pre, WELLBEING_post, STRESS_pre, STRESS_post),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"TIME"</span>),</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"post"</span>)))   <span class="co"># pre first, then post</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>long_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>long_data2 <span class="ot">&lt;-</span> wide_data2 <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(WELLBEING_PRE, WELLBEING_POST, STRESS_PRE, STRESS_POST),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"TIME"</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_(PRE|POST)$"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>)))   <span class="co"># pre first, then post</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>long_data2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
    PASSWORD   AGE TIME  WELLBEING STRESS
    &lt;chr&gt;    &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
- 1 abc123      19 pre         3.2    3.9
- 2 abc123      19 post        4.1    3  
- 3 gobills7    20 pre         2.8    4.2
- 4 gobills7    20 post        3      4  
- 5 blue42      19 pre         3.5    3.1
- 6 blue42      19 post        3.9    2.7
- 7 pizza9      21 pre         4      2.8
- 8 pizza9      21 post        4.2    2.5
- 9 sunny5      20 pre         2.5    4.4
-10 sunny5      20 post       NA     NA  </code></pre>
+ 1 abc123      19 PRE         3.2    3.9
+ 2 abc123      19 POST        4.1    3  
+ 3 gobills7    20 PRE         2.8    4.2
+ 4 gobills7    20 POST        3      4  
+ 5 blue42      19 PRE         3.5    3.1
+ 6 blue42      19 POST        3.9    2.7
+ 7 pizza9      21 PRE         4      2.8
+ 8 pizza9      21 POST        4.2    2.5
+ 9 sunny5      20 PRE         2.5    4.4
+10 sunny5      20 POST       NA     NA  </code></pre>
 </div>
 </div>
 <p>Each person now has two rows, and the data are ready for <a href="./violin.html">Visualize Pre/Post Data</a>.</p>
@@ -791,30 +922,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Keep <code>wide_data</code> for your pre/post test and <code>long_data</code> for your pre/post plot. They hold the same information in two shapes.</p>
-</div>
-</div>
-</section>
-<section id="if-your-data-arrive-in-long-format" class="level3" data-number="9.4.7">
-<h3 data-number="9.4.7" class="anchored" data-anchor-id="if-your-data-arrive-in-long-format"><span class="header-section-number">9.4.7</span> If your data arrive in long format</h3>
-<p>Some surveys give you one file with two rows per person and a column that says which time it is (for example, <code>DAY</code>). In that case there is nothing to join. Use <code>pivot_wider()</code> to go from long to wide.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>wide_again <span class="ot">&lt;-</span> long_data <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> TIME,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> <span class="fu">c</span>(WELLBEING, STRESS),</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_glue =</span> <span class="st">"{.value}_{TIME}"</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>wide_again</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 6
-  PASSWORD   AGE WELLBEING_pre WELLBEING_post STRESS_pre STRESS_post
-  &lt;chr&gt;    &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;
-1 abc123      19           3.2            4.1        3.9         3  
-2 gobills7    20           2.8            3          4.2         4  
-3 blue42      19           3.5            3.9        3.1         2.7
-4 pizza9      21           4              4.2        2.8         2.5
-5 sunny5      20           2.5           NA          4.4        NA  </code></pre>
+<p>Keep the wide dataset for your pre/post test and the long dataset for your pre/post plot. They hold the same information in two shapes.</p>
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
@@ -823,55 +931,177 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>A longer example: three scales at two times (Erica Sava)
+<span class="screen-reader-only">Resources</span>A longer example: three scales at two times (oral health)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In this example, Erica converts oral health data from wide to long format to compare three kinds of self-efficacy (BSE, CSE, ISE) at Time 1 and Time 2. The same steps work for studies with more than two time points.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create long format with separate columns for each SE type</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(oralhealthdata_prepost,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"BSE_T1"</span>, <span class="st">"BSE_T2"</span>, <span class="st">"CSE_T1"</span>, <span class="st">"CSE_T2"</span>, <span class="st">"ISE_T1"</span>, <span class="st">"ISE_T2"</span>),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"SE_type"</span>, <span class="st">"Time"</span>),</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_pattern =</span> <span class="st">"(.+)_(.+)"</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">"SE"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert T1/T2 to before/after</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(longdata<span class="sc">$</span>Time <span class="sc">==</span> <span class="st">"T1"</span>, <span class="st">"before"</span>, <span class="st">"after"</span>)</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot wider to get separate columns for each SE type</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(longdata,</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from =</span> SE_type,</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from =</span> SE)</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only the desired columns</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> longdata[, <span class="fu">c</span>(<span class="st">"Time"</span>, <span class="st">"BSE"</span>, <span class="st">"CSE"</span>, <span class="st">"ISE"</span>)]</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata<span class="sc">$</span>Time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'before'</span>,<span class="st">'after'</span>))</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>longdata_long <span class="ot">&lt;-</span> longdata <span class="sc">%&gt;%</span></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(BSE, CSE, ISE),</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SelfEfficacy"</span>,</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Score"</span>)</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable combining 'SelfEfficacy' and 'Time'</span></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>SelfEfficacyTime <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(longdata_long<span class="sc">$</span>SelfEfficacy, longdata_long<span class="sc">$</span>Time),</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE before"</span>, <span class="st">"BSE after"</span>, <span class="st">"CSE before"</span>, <span class="st">"CSE after"</span>, <span class="st">"ISE before"</span>, <span class="st">"ISE after"</span>)</span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create long format with separate columns for each SE type</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(oralhealthdata_prepost,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"BSE_T1"</span>, <span class="st">"BSE_T2"</span>, <span class="st">"CSE_T1"</span>, <span class="st">"CSE_T2"</span>, <span class="st">"ISE_T1"</span>, <span class="st">"ISE_T2"</span>),</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"SE_type"</span>, <span class="st">"Time"</span>),</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_pattern =</span> <span class="st">"(.+)_(.+)"</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_to =</span> <span class="st">"SE"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values_drop_na =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert T1/T2 to before/after</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(longdata<span class="sc">$</span>Time <span class="sc">==</span> <span class="st">"T1"</span>, <span class="st">"before"</span>, <span class="st">"after"</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot wider to get separate columns for each SE type</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(longdata,</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>                       <span class="at">names_from =</span> SE_type,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                       <span class="at">values_from =</span> SE)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only the desired columns</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>longdata <span class="ot">&lt;-</span> longdata[, <span class="fu">c</span>(<span class="st">"Time"</span>, <span class="st">"BSE"</span>, <span class="st">"CSE"</span>, <span class="st">"ISE"</span>)]</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>longdata<span class="sc">$</span>Time <span class="ot">&lt;-</span> <span class="fu">factor</span>(longdata<span class="sc">$</span>Time, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'before'</span>,<span class="st">'after'</span>))</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>longdata_long <span class="ot">&lt;-</span> longdata <span class="sc">%&gt;%</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(BSE, CSE, ISE),</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SelfEfficacy"</span>,</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Score"</span>)</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable combining 'SelfEfficacy' and 'Time'</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>longdata_long<span class="sc">$</span>SelfEfficacyTime <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(longdata_long<span class="sc">$</span>SelfEfficacy, longdata_long<span class="sc">$</span>Time),</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"BSE before"</span>, <span class="st">"BSE after"</span>, <span class="st">"CSE before"</span>, <span class="st">"CSE after"</span>, <span class="st">"ISE before"</span>, <span class="st">"ISE after"</span>)</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="sec-prepost-yourturn" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="sec-prepost-yourturn"><span class="header-section-number">9.5</span> 🏆 Your Turn</h2>
+<section id="sec-prepost-lab" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="sec-prepost-lab"><span class="header-section-number">10.5</span> 🏈 The Lab</h2>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s kickoff.</strong> This lab practices <strong>situation 1</strong>: one file in long format. The lab file <code>ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx</code> is the lab survey given twice, six weeks apart, and exported once. Every response is a row, <code>TIME</code> says 0 (pretest) or 1 (posttest), and <code>PASSWORD</code> links a person’s two rows. Try each step before you open my check.</p>
+</div>
+</div>
+<p><strong>Before you start.</strong> Get <code>ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx</code> from your instructor and put it in the <code>data</code> folder of your project. Open your lab <code>.qmd</code>, and run your load-library chunk (you need <code>readxl</code>, <code>dplyr</code>, and <code>tidyr</code>).</p>
+<section id="lab-play-1-import-and-look-at-the-shape" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="lab-play-1-import-and-look-at-the-shape"><span class="header-section-number">10.5.1</span> Lab Play 1: Import and look at the shape</h3>
+<p>Import the file as <code>lab_long</code>, then count the rows at each <code>TIME</code>. Look at the first rows: how many times does a person appear?</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: how many rows?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>324 rows in total: <strong>200 pre</strong> (<code>TIME</code> = 0) and <strong>124 post</strong> (<code>TIME</code> = 1). Not everyone came back, so there are fewer post rows than pre rows. That is normal.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-2-clean-the-password-and-look-for-duplicates" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="lab-play-2-clean-the-password-and-look-for-duplicates"><span class="header-section-number">10.5.2</span> Lab Play 2: Clean the password and look for duplicates</h3>
+<p>Make <code>PASSWORD</code> lowercase with no stray spaces, make <code>TIME</code> a factor with labels <code>PRE</code> and <code>POST</code> (<code>PRE</code> first), then count <code>PASSWORD</code> by <code>TIME</code> and filter to <code>n &gt; 1</code>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: any duplicates?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>One: <code>gl28fo</code> appears twice at PRE. The same person submitted the pretest twice. Keep the first with <code>distinct(PASSWORD, TIME, .keep_all = TRUE)</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-3-reshape-to-wide" class="level3" data-number="10.5.3">
+<h3 data-number="10.5.3" class="anchored" data-anchor-id="lab-play-3-reshape-to-wide"><span class="header-section-number">10.5.3</span> Lab Play 3: Reshape to wide</h3>
+<p>Keep <code>PASSWORD</code>, <code>TIME</code>, and <code>HELPSEEK</code>, then <code>pivot_wider()</code> so that each person has <code>HELPSEEK_PRE</code> and <code>HELPSEEK_POST</code>. Then count three things: people with both scores, people with only a pretest, and people with only a posttest.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you get?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>202 rows, one per <code>PASSWORD</code>.</li>
+<li><strong>114 people</strong> have both a pre and a post score. <strong>81</strong> have only a pretest (they did not come back). <strong>10</strong> have only a posttest.</li>
+<li>Ten people with only a posttest is suspicious: everyone who took the posttest was supposed to have taken the pretest. Look at their passwords. Most are one character away from a pretest password (a typo). Real teams have to decide, and write down, whether to match those by hand. For the lab, leave them unmatched.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>lab_long <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx"</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(lab_long, TIME)                                 <span class="co"># Lab Play 1</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lab_long)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>lab_long <span class="ot">&lt;-</span> lab_long <span class="sc">|&gt;</span>                               <span class="co"># Lab Play 2</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)),</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>)))</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>lab_long <span class="sc">|&gt;</span> <span class="fu">count</span>(PASSWORD, TIME) <span class="sc">|&gt;</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>lab_long <span class="ot">&lt;-</span> lab_long <span class="sc">|&gt;</span> <span class="fu">distinct</span>(PASSWORD, TIME, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>lab_wide <span class="ot">&lt;-</span> lab_long <span class="sc">|&gt;</span>                               <span class="co"># Lab Play 3</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PASSWORD, TIME, HELPSEEK) <span class="sc">|&gt;</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> TIME, <span class="at">values_from =</span> HELPSEEK, <span class="at">names_glue =</span> <span class="st">"HELPSEEK_{TIME}"</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lab_wide)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(lab_wide<span class="sc">$</span>HELPSEEK_PRE) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(lab_wide<span class="sc">$</span>HELPSEEK_POST))   <span class="co"># both</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lab_wide<span class="sc">$</span>HELPSEEK_POST))                                     <span class="co"># pre only</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lab_wide<span class="sc">$</span>HELPSEEK_PRE))                                      <span class="co"># post only</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref-whistle.svg" class="img-fluid" alt="Ref the raccoon blowing his whistle"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s final whistle.</strong> Keep <code>lab_wide</code> and <code>lab_long</code>: <a href="./violin.html">Visualize Pre/Post Data</a> plots the long one, and the paired test (Compare 1 Group, Pre/Post, coming soon) uses the wide one. Save, render, back up to your ELN.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-prepost-yourturn" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="sec-prepost-yourturn"><span class="header-section-number">10.6</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -882,42 +1112,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>There is no lab for this chapter, because only some teams have pre/post data. Copy the play, change every line marked <code># REPLACE</code>, and use the checklist.</p>
+<p>Only some teams have pre/post data. Use the template that matches how your data arrive, change every line marked <code># REPLACE</code>, and use the checklist. Name the object <code>alldata</code> for the file you import, the same as in every other chapter.</p>
 </div>
 </div>
+<section id="template-1-one-file-in-long-format-teams-3-and-5" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="template-1-one-file-in-long-format-teams-3-and-5"><span class="header-section-number">10.6.1</span> Template 1: one file in long format (Teams 3 and 5)</h3>
+<p>One survey given twice and exported once, so there is one <code>.clean</code> file, named as in <a href="./export.html">Export Survey Data</a>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. import both .clean files</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pretest  <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/REPLACE.xlsx"</span>)     <span class="co"># REPLACE with your pretest file (Team 3: Day 1)</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/REPLACE.xlsx"</span>)     <span class="co"># REPLACE with your posttest file (Team 3: Day 14)</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. clean the password in both</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>pretest  <span class="ot">&lt;-</span> pretest  <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> posttest <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. look for duplicates in both (then decide which response to keep)</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>pretest  <span class="sc">|&gt;</span> <span class="fu">count</span>(PASSWORD) <span class="sc">|&gt;</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>posttest <span class="sc">|&gt;</span> <span class="fu">count</span>(PASSWORD) <span class="sc">|&gt;</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. join by PASSWORD</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> pretest <span class="sc">|&gt;</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_pre"</span>, <span class="st">"_post"</span>))</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. check the join</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pretest)</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wide_data)</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(pretest, posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>)</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. long format for plots</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> wide_data <span class="sc">|&gt;</span></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(REPLACE_pre, REPLACE_post),          <span class="co"># REPLACE with your pre and post columns</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"TIME"</span>),</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"pre"</span>, <span class="st">"post"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. import the one .clean file</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/10.09.2026.data.team3.clean.xlsx"</span>)   <span class="co"># REPLACE with your file</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. clean the password and put the times in order</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)),</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">TIME_01 =</span> TIME,                                                    <span class="co"># numeric copy (0/1) for a model later</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>)))  <span class="co"># labels for reshaping and plots</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. duplicates: same person, same time (then decide which response to keep)</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>alldata <span class="sc">|&gt;</span> <span class="fu">count</span>(PASSWORD, TIME) <span class="sc">|&gt;</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span> <span class="fu">distinct</span>(PASSWORD, TIME, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. wide format for the paired test</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> TIME,</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="fu">c</span>(REPLACE1, REPLACE2),           <span class="co"># REPLACE with your pre/post scores</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_glue =</span> <span class="st">"{.value}_{TIME}"</span>)</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. check: one row per person; who is missing a time?</span></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wide_data)</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>wide_data <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(REPLACE1_POST))                     <span class="co"># REPLACE</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. long format for plots is alldata itself (already one row per response)</span></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> alldata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="template-2-two-files-in-wide-format-only-if-your-pretest-and-posttest-were-separate-surveys" class="level3" data-number="10.6.2">
+<h3 data-number="10.6.2" class="anchored" data-anchor-id="template-2-two-files-in-wide-format-only-if-your-pretest-and-posttest-were-separate-surveys"><span class="header-section-number">10.6.2</span> Template 2: two files in wide format (only if your pretest and posttest were separate surveys)</h3>
+<p>No team has this design this year. It is here for a team that receives two files, one per time point.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. import both .clean files</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>pretest  <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/10.09.2026.data.teamX.pre.clean.xlsx"</span>)    <span class="co"># REPLACE with your pretest file</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/10.09.2026.data.teamX.post.clean.xlsx"</span>)   <span class="co"># REPLACE with your posttest file</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. clean the password in both</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>pretest  <span class="ot">&lt;-</span> pretest  <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>posttest <span class="ot">&lt;-</span> posttest <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)))</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. look for duplicates in both (then decide which response to keep)</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>pretest  <span class="sc">|&gt;</span> <span class="fu">count</span>(PASSWORD) <span class="sc">|&gt;</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>posttest <span class="sc">|&gt;</span> <span class="fu">count</span>(PASSWORD) <span class="sc">|&gt;</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. join by PASSWORD</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> pretest <span class="sc">|&gt;</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_PRE"</span>, <span class="st">"_POST"</span>))</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. check the join</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pretest)</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(wide_data)</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(pretest, posttest, <span class="at">by =</span> <span class="st">"PASSWORD"</span>)</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. long format for plots</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> wide_data <span class="sc">|&gt;</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(REPLACE_PRE, REPLACE_POST),          <span class="co"># REPLACE with your pre and post columns</span></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"TIME"</span>),</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(.+)_(PRE|POST)$"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <table class="caption-top table">
 <colgroup>
@@ -957,7 +1225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><strong>Column names</strong></td>
-<td>If a variable name already contains a <code>_</code> (for example, <code>SLEEP_HOURS_pre</code>), did you check that <code>pivot_longer()</code> split it in the right place?</td>
+<td>After <code>pivot_longer()</code>, are the score columns named exactly as before (<code>STIGMA_PUB</code>, not <code>STIGMA</code>) and does <code>TIME</code> hold only <code>PRE</code> and <code>POST</code>?</td>
 </tr>
 <tr class="even">
 <td><strong>Both shapes kept</strong></td>
@@ -967,7 +1235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -976,7 +1244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
 </div>
@@ -984,6 +1252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1390,12 +1659,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./import-once.html" class="pagination-link" aria-label="Import Data Once">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./dplyr.html" class="pagination-link" aria-label="Mutate Variables">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vignette.html" class="pagination-link" aria-label="Vignette Data">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

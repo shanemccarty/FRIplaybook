@@ -145,5 +145,14 @@
   },
   "prepost.qmd": {
     "prepost.html": "fd849ffa"
+  },
+  "qualtrics.qmd": {
+    "qualtrics.html": "eeb3c3c4"
+  },
+  "casestudy.qmd": {
+    "casestudy.html": "e44aba13"
+  },
+  "vignette.qmd": {
+    "vignette.html": "488715a7"
   }
 }

@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Shane McCarty, PhD">
+<meta name="keywords" content="qualtrics, export tags, recode values, codebook, naming rules">
+
+<title>7&nbsp; Name and Recode Variables in Qualtrics – The Quantitative Playbook for R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./export.html" rel="next">
+<link href="./find-the-ref.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./qualtrics.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Quantitative Playbook for R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Get Started (Lab 1)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./citations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#log-in-and-find-recode-values" id="toc-log-in-and-find-recode-values" class="nav-link active" data-scroll-target="#log-in-and-find-recode-values"><span class="header-section-number">7.1</span> Log in and find Recode Values</a></li>
+  <li><a href="#name-your-variables" id="toc-name-your-variables" class="nav-link" data-scroll-target="#name-your-variables"><span class="header-section-number">7.2</span> Name Your Variables</a>
+  <ul class="collapse">
+  <li><a href="#the-rules" id="toc-the-rules" class="nav-link" data-scroll-target="#the-rules"><span class="header-section-number">7.2.1</span> The rules</a></li>
+  <li><a href="#a-measure-with-subscales-the-lab-example" id="toc-a-measure-with-subscales-the-lab-example" class="nav-link" data-scroll-target="#a-measure-with-subscales-the-lab-example"><span class="header-section-number">7.2.2</span> A measure with subscales: the lab example</a></li>
+  <li><a href="#reverse-items-name-them-here-reverse-them-in-r" id="toc-reverse-items-name-them-here-reverse-them-in-r" class="nav-link" data-scroll-target="#reverse-items-name-them-here-reverse-them-in-r"><span class="header-section-number">7.2.3</span> Reverse items: name them here, reverse them in R</a></li>
+  <li><a href="#a-single-scale-with-many-items-the-k10" id="toc-a-single-scale-with-many-items-the-k10" class="nav-link" data-scroll-target="#a-single-scale-with-many-items-the-k10"><span class="header-section-number">7.2.4</span> A single scale with many items: the K10</a></li>
+  <li><a href="#shared-class-variables" id="toc-shared-class-variables" class="nav-link" data-scroll-target="#shared-class-variables"><span class="header-section-number">7.2.5</span> Shared class variables</a></li>
+  </ul></li>
+  <li><a href="#recode-the-values" id="toc-recode-the-values" class="nav-link" data-scroll-target="#recode-the-values"><span class="header-section-number">7.3</span> Recode the Values</a>
+  <ul class="collapse">
+  <li><a href="#what-each-dialog-looks-like" id="toc-what-each-dialog-looks-like" class="nav-link" data-scroll-target="#what-each-dialog-looks-like"><span class="header-section-number">7.3.1</span> What each dialog looks like</a></li>
+  <li><a href="#matrix-questions" id="toc-matrix-questions" class="nav-link" data-scroll-target="#matrix-questions"><span class="header-section-number">7.3.2</span> Matrix questions</a></li>
+  </ul></li>
+  <li><a href="#check-with-a-team-codebook" id="toc-check-with-a-team-codebook" class="nav-link" data-scroll-target="#check-with-a-team-codebook"><span class="header-section-number">7.4</span> Check with a Team Codebook</a></li>
+  <li><a href="#sec-export-word" id="toc-sec-export-word" class="nav-link" data-scroll-target="#sec-export-word"><span class="header-section-number">7.5</span> Export Survey Questions/Items (<code>.docx</code>)</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/qualtrics.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./qualtrics.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name and Recode Variables in Qualtrics</span></h1>
+<p class="subtitle lead">How to name every variable and give every answer choice a number before anyone exports</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shane McCarty, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">09.27.2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This chapter is the team’s checklist for the Qualtrics survey before any data is exported. Researchers learn the naming rules for export tags (ALL CAPS, short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01CAT for binary variables, _QUAL for open-ended questions), work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables, recode every answer choice to a number (with -99 for Prefer not to say and -50 for Don’t know), build a team codebook, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>qualtrics, export tags, recode values, codebook, naming rules</p>
+  </div>
+</div>
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: Qualtrics
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/">Recode Values</a> in the Qualtrics support guide</li>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/recode-values/#VariableNaming">Question export tags</a> (variable naming) in the same guide</li>
+<li><a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/#ExportingASurveyToWord">Export a survey to Word</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: do this before anyone exports the data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When data collection ends, your team will <strong>export</strong> the survey from Qualtrics and then <strong>import</strong> it into R (quantitative track) <strong>or</strong> NVivo (qualitative track). Team members will use this shared team dataset for their individual reports using their own copy of this original team file. If two copies have different variable names or different numbers behind the same answer, the team cannot merge the dataset in R with the dataset in NVivo to analyze results for any mixed-methods research questions. There is no fixing this afterwards.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: Meet as a team to follow these steps
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your team should use your team meeting or team time during lecture to <strong>follow these steps together</strong> before anyone exports or downloads your Qualtrics survey data.</p>
+<p><strong>Name</strong> every variable in your Qualtrics survey → <strong>Recode</strong> every answer choice so there are numerical values assigned to <strong>all</strong> of the response options → <strong>Check</strong> with the team codebook → <strong>Publish</strong> your Qualtrics survey again → <strong>Export</strong> your survey questions to Word with the coded values showing (the last section of this chapter).</p>
+<p><strong>When:</strong> team time in the <strong>October 2 lecture</strong>, the last week before Fall break. By the end of that lecture, your team’s Google Drive should have the two files described at the end of this chapter.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: what is safe to change after data collection has started
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Safe:</strong> renaming a variable (the export tag) and recoding values. Qualtrics applies both to every response already collected, at export time.</p>
+<p><strong>Not safe:</strong> adding, deleting, or rewording answer choices, or moving questions between blocks. Those change what respondents saw, so responses before and after the change are not comparable. If you must, write down the date and tell your instructor.</p>
+</div>
+</div>
+<section id="log-in-and-find-recode-values" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="log-in-and-find-recode-values"><span class="header-section-number">7.1</span> Log in and find Recode Values</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
+</ul></li>
+<li><label><input type="checkbox">Click a question. In the left panel, click <strong>Recode values</strong>. This one dialog is where you will both name the variable (<strong>Question export tags</strong> or <strong>Variable naming</strong>) and recode its values (<strong>Recode values</strong>).</label></li>
+<li><label><input type="checkbox">Work through the survey one question at a time, using the rules in the sections below.</label></li>
+<li><label><input type="checkbox">Click <strong>Publish</strong> in Qualtrics to save your recodes. Until you publish, the live survey still has the old names and values.</label></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-menu.png" class="img-fluid figure-img" alt="The Qualtrics survey editor with a matrix question selected and the Recode values item highlighted in the left panel."></p>
+<figcaption><em>Click a question, then Recode values in the left panel</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="name-your-variables" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="name-your-variables"><span class="header-section-number">7.2</span> Name Your Variables</h2>
+<p>In Qualtrics, the variable name is the <strong>export tag</strong>. Click a question, open <strong>Recode values</strong> in the left panel, and check <strong>Question export tags</strong> (for a single question, <strong>Variable naming</strong>) to see and edit it.</p>
+<section id="the-rules" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="the-rules"><span class="header-section-number">7.2.1</span> The rules</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>Do this</th>
+<th>Not this</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ALL CAPS</td>
+<td><code>EFFICACY</code></td>
+<td><code>selfefficacy</code></td>
+</tr>
+<tr class="even">
+<td>No spaces or symbols (letters, numbers, and <code>_</code> only)</td>
+<td><code>SELFEFFICACY</code></td>
+<td><code>SELF EFFICACY</code>, <code>self-efficacy</code></td>
+</tr>
+<tr class="odd">
+<td>Short: 14 characters or fewer. Qualtrics cuts long tags off, and R code is easier to read</td>
+<td><code>EFFICACY</code></td>
+<td><code>EFFECT_EDUCATI</code> (this is what a cut-off tag looks like)</td>
+</tr>
+<tr class="even">
+<td>One measure, several items: NAME plus the item number, no underscore</td>
+<td><code>WELLBEING1</code> … <code>WELLBEING8</code></td>
+<td><code>WELLBEING_1</code>, <code>WB1</code>, <code>Wellbeing item 1</code></td>
+</tr>
+<tr class="odd">
+<td>One measure with subscales: BIG_SMALL plus the item number</td>
+<td><code>STIGMA_PUB1</code>, <code>STIGMA_SELF1</code></td>
+<td><code>PUBSTIG1</code>, <code>SS1</code></td>
+</tr>
+<tr class="even">
+<td>Reverse item: add <code>_R</code> at the end (see below)</td>
+<td><code>STIGMA_PUB4_R</code></td>
+<td><code>STIGMA_PUB4rev</code>, <code>STIGMA_PUB4 (reversed)</code></td>
+</tr>
+<tr class="odd">
+<td>Same measure at two times: <code>_PRE</code> and <code>_POST</code> (or <code>_T1</code> and <code>_T2</code>)</td>
+<td><code>EFFICACY1_PRE</code>, <code>EFFICACY1_POST</code></td>
+<td><code>EFFICACY1</code>, <code>EFFICACY1b</code></td>
+</tr>
+<tr class="even">
+<td>Binary (yes/no) variable: add <code>_01CAT</code>, code it 0 and 1, and name it for the answer that gets the 1</td>
+<td><code>TREATED_01CAT</code> (1 = has received mental health treatment, 0 = has not); <code>KNOWS_01CAT</code> (1 = knows someone with a mental health problem)</td>
+<td><code>TREATMENT</code>, <code>MHTX</code>, <code>TREATED</code> (yes = 1, no = 2)</td>
+</tr>
+<tr class="odd">
+<td>Categories you will make later in R from a score or by collapsing choices: <code>_#CAT</code>, where # is the number of groups</td>
+<td><code>DISTRESS_4CAT</code>, <code>EDUCATION_3CAT</code>, <code>RACIALIZED_6CAT</code></td>
+<td><code>DISTRESSCATS</code>, <code>EDU3</code></td>
+</tr>
+<tr class="even">
+<td>Open-ended (text) question: add <code>_QUAL</code></td>
+<td><code>BARRIERS_QUAL</code></td>
+<td><code>BARRIERS</code>, <code>Q14</code></td>
+</tr>
+<tr class="odd">
+<td>A block is not a variable: give blocks a <code>BLOCK_</code> name</td>
+<td>block <code>BLOCK_STIGMA</code>, variable <code>STIGMA_PUB1</code></td>
+<td>block and variable both called <code>STIGMA</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-measure-with-subscales-the-lab-example" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="a-measure-with-subscales-the-lab-example"><span class="header-section-number">7.2.2</span> A measure with subscales: the lab example</h3>
+<p>The lab dataset measures <strong>stigma</strong> with two subscales, <strong>public stigma</strong> (what a person thinks most people believe) and <strong>self stigma</strong> (how a person would feel about their own mental health problem). Both are in one Qualtrics matrix. Naming them BIG_SMALL# does two jobs at once: in R, you can score the total (<code>STIGMA</code>, all eight items) and each subscale (<code>STIGMA_PUB</code>, <code>STIGMA_SELF</code>) from the same names, and anyone reading your code can see which items belong together.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Export tag</th>
+<th>Item</th>
+<th>Subscale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>STIGMA_PUB1</code></td>
+<td>Most people would think less of a person who has received treatment for a mental health problem.</td>
+<td>public</td>
+</tr>
+<tr class="even">
+<td><code>STIGMA_PUB2</code></td>
+<td>People with mental health problems are partly to blame for their situation.</td>
+<td>public</td>
+</tr>
+<tr class="odd">
+<td><code>STIGMA_PUB3</code></td>
+<td>Most employers would pass over the application of someone with a history of mental illness.</td>
+<td>public</td>
+</tr>
+<tr class="even">
+<td><code>STIGMA_PUB4_R</code></td>
+<td>Most people would accept a person with a mental illness as a close friend.</td>
+<td>public, <strong>reverse</strong></td>
+</tr>
+<tr class="odd">
+<td><code>STIGMA_SELF1_R</code></td>
+<td>I would be comfortable telling friends that I was seeing a therapist.</td>
+<td>self, <strong>reverse</strong></td>
+</tr>
+<tr class="even">
+<td><code>STIGMA_SELF2</code></td>
+<td>I would feel ashamed if I needed treatment for a mental health problem.</td>
+<td>self</td>
+</tr>
+<tr class="odd">
+<td><code>STIGMA_SELF3</code></td>
+<td>Seeking help for a mental health problem would make me feel like I could not handle my own problems.</td>
+<td>self</td>
+</tr>
+<tr class="even">
+<td><code>STIGMA_SELF4_R</code></td>
+<td>If I had a mental health problem, I would feel fine telling my family about it.</td>
+<td>self, <strong>reverse</strong></td>
+</tr>
+</tbody>
+</table>
+<p>All eight items use the same answer choices: Strongly disagree (1), Disagree (2), Neither (3), Agree (4), Strongly agree (5). Higher = more stigma.</p>
+<!-- SHANE: screenshot to add: the STIGMA matrix in Qualtrics with Question export tags checked, showing STIGMA_PUB1 to STIGMA_SELF4_R and the values 1 to 5. Suggested file: images/qualtrics-matrix-stigma.png -->
+</section>
+<section id="reverse-items-name-them-here-reverse-them-in-r" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="reverse-items-name-them-here-reverse-them-in-r"><span class="header-section-number">7.2.3</span> Reverse items: name them here, reverse them in R</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: do not flip the numbers in Qualtrics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>reverse item</strong> is worded in the opposite direction from the rest of its scale. Agreeing with “Most people would accept a person with a mental illness as a close friend” means <em>less</em> stigma, while agreeing with every other item means <em>more</em>.</p>
+<p><strong>In Qualtrics:</strong> add <code>_R</code> to the export tag, and leave the values exactly as they are for the other items (Strongly disagree = 1 … Strongly agree = 5).</p>
+<p><strong>In R:</strong> reverse the <code>_R</code> items with <code>6 - x</code> (for a 1-to-5 scale) before you average. <a href="./composite.html">Creating Composites</a> shows this with <code>scoreItems()</code>, where a minus sign in front of the item name does the reversing.</p>
+<p><strong>Why not in Qualtrics?</strong> If you flip the numbers in Qualtrics <em>and</em> the code in R reverses <code>_R</code> items, the item gets flipped twice and ends up backwards, and nothing warns you. Keeping the raw export in one direction means the reversal is visible in your code, where a reader (and a grader) can check it.</p>
+</div>
+</div>
+</section>
+<section id="a-single-scale-with-many-items-the-k10" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="a-single-scale-with-many-items-the-k10"><span class="header-section-number">7.2.4</span> A single scale with many items: the K10</h3>
+<p>The <strong>Kessler Psychological Distress Scale (K10)</strong> in the lab dataset has ten items, one construct, and no subscales, so the export tags are simply <code>DISTRESS1</code> to <code>DISTRESS10</code>, and all ten share one set of answer choices: None of the time (1), A little of the time (2), Some of the time (3), Most of the time (4), All of the time (5). That is all the naming a single scale needs.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Export tag</th>
+<th>In the past 4 weeks, about how often did you feel …</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DISTRESS1</code></td>
+<td>tired out for no good reason?</td>
+</tr>
+<tr class="even">
+<td><code>DISTRESS2</code></td>
+<td>nervous?</td>
+</tr>
+<tr class="odd">
+<td><code>DISTRESS3</code></td>
+<td>so nervous that nothing could calm you down?</td>
+</tr>
+<tr class="even">
+<td><code>DISTRESS4</code></td>
+<td>hopeless?</td>
+</tr>
+<tr class="odd">
+<td><code>DISTRESS5</code></td>
+<td>restless or fidgety?</td>
+</tr>
+<tr class="even">
+<td><code>DISTRESS6</code></td>
+<td>so restless you could not sit still?</td>
+</tr>
+<tr class="odd">
+<td><code>DISTRESS7</code></td>
+<td>depressed?</td>
+</tr>
+<tr class="even">
+<td><code>DISTRESS8</code></td>
+<td>that everything is an effort?</td>
+</tr>
+<tr class="odd">
+<td><code>DISTRESS9</code></td>
+<td>so sad that nothing could cheer you up?</td>
+</tr>
+<tr class="even">
+<td><code>DISTRESS10</code></td>
+<td>worthless?</td>
+</tr>
+</tbody>
+</table>
+<p>What happens to the ten items afterwards belongs to later chapters: <a href="./dplyr.html">Transforming Your Data</a> cuts the K10 total into its published bands (<code>DISTRESS_4CAT</code>, <code>DISTRESS_01CAT</code>), and <a href="./composite.html">Creating Composites</a> scores the scale.</p>
+</section>
+<section id="shared-class-variables" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="shared-class-variables"><span class="header-section-number">7.2.5</span> Shared class variables</h3>
+<p>Every team’s survey has these variables, with exactly these names and values, so that the class can be analyzed together. <code>ResponseId</code> is created by Qualtrics and is the only name that is not all caps.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Question</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ResponseId</code></td>
+<td>(automatic)</td>
+<td>Qualtrics’ ID for each response. Never rename or delete it.</td>
+</tr>
+<tr class="even">
+<td><code>PASSWORD</code></td>
+<td>The code the respondent made up (pre/post teams only)</td>
+<td>Text. It links a person’s pretest row to their posttest row, so it must be in the survey exactly once with exactly this name.</td>
+</tr>
+<tr class="odd">
+<td><code>TIME</code></td>
+<td>Is this your first (pretest) or second (posttest) time taking this survey? (pre/post teams only)</td>
+<td>0 = pretest; 1 = posttest. A shared variable, so it keeps this name (like <code>CONSENT</code>) instead of ending in <code>_01CAT</code>; the 0/1 coding makes it ready for a model later (<a href="./prepost.html">Pre/Post Data</a>).</td>
+</tr>
+<tr class="even">
+<td><code>CONSENT</code></td>
+<td>Consent statement</td>
+<td>1 = consents and is eligible; 0 = does not</td>
+</tr>
+<tr class="odd">
+<td><code>AGE</code></td>
+<td>What is your age?</td>
+<td>Whole number. Turn on Qualtrics <strong>content validation</strong> (number, 18 to 99) so nobody can type “twenty”.</td>
+</tr>
+<tr class="even">
+<td><code>GENDER</code></td>
+<td>Which term best describes your current gender identity?</td>
+<td>0 = Girl or woman; 1 = Boy or man; 2 = Nonbinary, genderfluid, or genderqueer; 3 = Not sure or questioning; -50 = Don’t know what this means; -99 = Decline</td>
+</tr>
+<tr class="odd">
+<td><code>RACIALIZED</code> (single choice) <strong>or</strong> <code>RACIALIZED_1</code> … <code>RACIALIZED_8</code>, <code>RACIALIZED_99</code> (select all)</td>
+<td>What is your racial/ethnic identity? Some teams asked it as <strong>single choice</strong>, others as <strong>select all that apply</strong>. Name the question <code>RACIALIZED</code> either way; for select-all, Qualtrics adds <code>_1</code> … <code>_99</code> for the boxes</td>
+<td>1 = American Indian or Alaska Native; 2 = Asian; 3 = Black or African American; 4 = Hispanic or Latine; 5 = Middle Eastern or North African; 6 = Native Hawaiian or Pacific Islander; 7 = White; 8 = Other (write-in, exported as <code>RACIALIZED_8_TEXT</code>); -99 = Prefer not to say</td>
+</tr>
+<tr class="even">
+<td><code>SOCIALSTATUS</code></td>
+<td>The ladder</td>
+<td>1 (bottom) to 10 (top)</td>
+</tr>
+<tr class="odd">
+<td><code>HEALTHSTATUS</code></td>
+<td>Would you say your health in general is …</td>
+<td>1 = Poor; 2 = Fair; 3 = Good; 4 = Very good; 5 = Excellent</td>
+</tr>
+<tr class="even">
+<td><code>IDAS_WELL</code></td>
+<td>I felt hopeful about the future</td>
+<td>1 = Not at all; 2 = A little bit; 3 = Moderately; 4 = Quite a bit; 5 = Extremely</td>
+</tr>
+<tr class="odd">
+<td><code>IDAS_ANX</code></td>
+<td>I found myself worrying all the time</td>
+<td>1 to 5, as above</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: the variable is named RACIALIZED, in both versions of the question
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Why <code>RACIALIZED</code> and not <code>RACE</code>.</strong> The survey question asks people how they identify, and the answer is real. But a variable called <code>RACE</code> quietly claims that race is a trait inside the person, and later, when it becomes a predictor, students read the result as an effect of “being Black.” Three books this course draws on say the same thing from different directions: race is produced by racism, the practice of sorting people and treating them accordingly (Fields &amp; Fields, <em>Racecraft</em>); treating race as a cause in a statistical model hides the racialized conditions that do the causing (Zuberi &amp; Bonilla-Silva, <em>White Logic, White Methods</em>); and categories in a dataset are made by someone, for a purpose, and the data should say so (D’Ignazio &amp; Klein, <em>Data Feminism</em>). So the variable is named for the <strong>process</strong>: <code>RACIALIZED</code>. The question wording stays as respondents see it. See <a href="./data-equity.html">Data Equity</a>.</p>
+<p><strong>Two versions of the question exist in this class.</strong> Do not switch from one to the other now: that would change what respondents see (see the Caution at the top of this chapter). Find out which one your survey has, and recode it accordingly:</p>
+<ul>
+<li><strong>Single choice</strong> (one answer). One variable, <code>RACIALIZED</code>, with the values in the table above and <code>-99</code> for <em>Prefer not to say</em>. The screenshot below shows this dialog.</li>
+<li><strong>Select all that apply</strong> (checkboxes). Qualtrics exports <strong>one column per box</strong> (<code>RACIALIZED_1</code>, <code>RACIALIZED_2</code>, … <code>RACIALIZED_8</code>, <code>RACIALIZED_99</code>, each filled in when that box was checked) when you export with <em>Split multi-value fields into columns</em> checked (<a href="./export.html">Export Survey Data</a>). Give each box the value in the table above, so that <code>RACIALIZED_7</code> holds a 7 when White is checked.</li>
+</ul>
+<p>In R, <a href="./dplyr.html">Transforming Your Data</a> shows how to turn either version into <code>RACIALIZED_6CAT</code> or <code>RACIALIZED_5CAT</code> (White, Asian, Black, Hispanic or Latine, Another identity, and, for select-all only, <strong>Two or more</strong>) and <code>RACIALIZED_01CAT</code> (0 = racialized as white, 1 = racialized as a person of color).</p>
+<p>If the question has an “Other” text box, leave it: it exports as <code>RACIALIZED_8_TEXT</code> in both versions, and you will treat it as a <code>_QUAL</code> variable.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="recode-the-values" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="recode-the-values"><span class="header-section-number">7.3</span> Recode the Values</h2>
+<p>Recoding assigns a number to each answer choice. Click the question, open <strong>Recode values</strong>, and check <strong>Recode values</strong>. Qualtrics exports the numbers; the words are only for the respondent.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kind of question</th>
+<th>Values</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Consent</td>
+<td>1 = yes, 0 = no</td>
+<td><code>CONSENT</code> (a shared class variable, so it keeps its name)</td>
+</tr>
+<tr class="even">
+<td>Pretest or posttest</td>
+<td>0 = pretest, 1 = posttest</td>
+<td><code>TIME</code> (pre/post teams; a shared class variable, so it keeps its name)</td>
+</tr>
+<tr class="odd">
+<td>Yes/no, have/do not have</td>
+<td>1 = yes (the thing the variable is named for), 0 = no</td>
+<td><code>TREATED_01CAT</code>: 1 = has received treatment, 0 = has not</td>
+</tr>
+<tr class="even">
+<td>“None”, “never”, “I do not have one”</td>
+<td>0</td>
+<td><code>MEALPLAN</code>: 0 = no meal plan, then 1, 2, 3 for the plans</td>
+</tr>
+<tr class="odd">
+<td>Agreement, frequency, or other ordered scale</td>
+<td>1 for the lowest step up to the highest step, in order</td>
+<td>Strongly disagree (1) … Strongly agree (5)</td>
+</tr>
+<tr class="even">
+<td>Categories with no order (majors, states, plans)</td>
+<td>1, 2, 3 … in the order shown; the numbers are labels only</td>
+<td><code>STATE</code></td>
+</tr>
+<tr class="odd">
+<td>Prefer not to say / Decline</td>
+<td><strong>-99</strong></td>
+<td>every question that offers it</td>
+</tr>
+<tr class="even">
+<td>Don’t know / Not sure</td>
+<td><strong>-50</strong></td>
+<td>every question that offers it</td>
+</tr>
+</tbody>
+</table>
+<p>In R, <code>-99</code> and <code>-50</code> both become missing (<code>NA</code>) in the first cleaning step (<a href="./import-once.html">Import Data Once</a>), so they never get averaged into a score by mistake.</p>
+<section id="what-each-dialog-looks-like" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="what-each-dialog-looks-like"><span class="header-section-number">7.3.1</span> What each dialog looks like</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-consent.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for the consent question with 1 for consent and 0 for no consent."></p>
+<figcaption><em>Consent: 1 = consents, 0 = does not</em></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-yesno.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for a yes/no question with 0 = No, 1 = Yes, -50 = I do not know, -99 = Prefer not to say."></p>
+<figcaption><em>A yes/no question with Don’t know and Prefer not to say</em></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-none.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for a meal plan question with 0 for I do not currently have a meal plan."></p>
+<figcaption><em>“None” gets 0</em></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-matrix-tags.png" class="img-fluid figure-img" style="width:75.0%" alt="Recode values dialog for a matrix with Question export tags checked, Strongly disagree = 1 to Slightly agree = 4 shown."></p>
+<figcaption><em>An agreement scale, numbered from 1 in order</em></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-race.png" class="img-fluid figure-img" style="width:70.0%" alt="Recode values dialog for a racial/ethnic identity question with codes 1 to 8 and -99 for Prefer not to say."></p>
+<figcaption><em>The single-choice version of the racial/ethnic identity question: codes 1 to 8 and -99 for Prefer not to say. For the select-all version, each box gets the same code in its own column.</em></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-recode-dontknow.png" class="img-fluid figure-img" style="width:70.0%" alt="The right side of a scale with Agree = 5, Strongly agree = 6, Don't know = -50, and Prefer not to say = -99."></p>
+<figcaption><em>The right end of a scale: -50 for Don’t know and -99 for Prefer not to say</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="matrix-questions" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="matrix-questions"><span class="header-section-number">7.3.2</span> Matrix questions</h3>
+<p>For a matrix (one instruction, several items in rows), check <strong>Question export tags</strong> as well as <strong>Recode values</strong>. Then you name every row and recode the columns in one dialog. The two screenshots below are from other surveys; the first is a single construct (<code>WELLBEING1</code> to <code>WELLBEING6</code>), the second has subscales (<code>SLEEP_NAP1</code>, <code>SLEEP_TIME1</code>, <code>SLEEP_TIME2</code>, <code>SLEEP_DRINK1</code>, <code>SLEEP_DRINK2</code>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-matrix-wellbeing.png" class="img-fluid figure-img" alt="Recode values dialog for a matrix with rows WELLBEING1 to WELLBEING6 and columns Not at all = 1 to Extremely = 5."></p>
+<figcaption><em>One construct: WELLBEING1 to WELLBEING6</em></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qualtrics-matrix-sleep.png" class="img-fluid figure-img" alt="Recode values dialog for a matrix with rows SLEEP_NAP1, SLEEP_TIME1, SLEEP_TIME2, SLEEP_DRINK1, SLEEP_DRINK2 and columns 0 days to 4 days."></p>
+<figcaption><em>Subscales: SLEEP_NAP, SLEEP_TIME, SLEEP_DRINK</em></figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: gaps in the numbers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If a team edits the answer choices, Qualtrics often leaves the codes with a gap, such as 1, 2, 4, 5, and “Agree” quietly becomes 4 instead of 3. Open Recode values on <strong>every</strong> question and read the numbers in order before you publish.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="check-with-a-team-codebook" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="check-with-a-team-codebook"><span class="header-section-number">7.4</span> Check with a Team Codebook</h2>
+<p>Before you publish, one teammate fills in a codebook, one row per variable, and a second teammate checks every row against Qualtrics. You will paste this table into your Methods section later, and <a href="./import-once.html">Import Data Once</a> uses it to check that the exported file matches.</p>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: fill in the Team Codebook Template
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Find the <strong>Codebook Template</strong> (<code>Team-Codebook-Template.docx</code>) in the <strong>Template Assignment</strong> folder of the class Google Drive. Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the <strong>owner</strong> of each variable (your initials if the variable belongs to your research question, or <em>Team</em> if it is shared), one for whether the variable is <strong>quant or qual</strong>, and one for whether it is imported into <strong>R, NVivo, or both</strong>. Save it as <code>TeamCodebook.docx</code> and upload it to your “Team Survey Data” folder next to <code>Draft.TeamSurveyQuestions.docx</code>.</p>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>VARIABLE</th>
+<th>QUESTION or item text</th>
+<th>TYPE</th>
+<th>VALUES</th>
+<th>SCALE / subscale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>STIGMA_PUB4_R</code></td>
+<td>Most people would accept a person with a mental illness as a close friend.</td>
+<td>ordered 1–5, reverse</td>
+<td>1 = Strongly disagree … 5 = Strongly agree</td>
+<td>STIGMA, public</td>
+</tr>
+<tr class="even">
+<td><code>DISTRESS7</code></td>
+<td>… about how often did you feel depressed?</td>
+<td>ordered 1–5</td>
+<td>1 = None of the time … 5 = All of the time</td>
+<td>K10 (DISTRESS)</td>
+</tr>
+<tr class="odd">
+<td><code>TREATED_01CAT</code></td>
+<td>Have you ever received treatment for a mental health problem?</td>
+<td>binary</td>
+<td>1 = yes, 0 = no</td>
+<td>single item</td>
+</tr>
+<tr class="even">
+<td><code>BARRIERS_QUAL</code></td>
+<td>What would make it hard for you to get help?</td>
+<td>open-ended text</td>
+<td>(text)</td>
+<td>single item</td>
+</tr>
+</tbody>
+</table>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Team checklist: all boxes before Publish
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul class="task-list">
+<li><label><input type="checkbox">Every export tag is ALL CAPS, has no spaces, and is 14 characters or fewer.</label></li>
+<li><label><input type="checkbox">Every multi-item measure is NAME1, NAME2 … or BIG_SMALL1, BIG_SMALL2 …</label></li>
+<li><label><input type="checkbox">Every reverse item ends in <code>_R</code> and its values were <strong>not</strong> flipped in Qualtrics.</label></li>
+<li><label><input type="checkbox">Every binary variable ends in <code>_01CAT</code>, is coded 0/1, and is named for the 1.</label></li>
+<li><label><input type="checkbox">Prefer not to say = -99 and Don’t know = -50 everywhere they appear.</label></li>
+<li><label><input type="checkbox">No gaps in any question’s codes.</label></li>
+<li><label><input type="checkbox">The shared class variables have the exact names and values in the table above, including <code>RACIALIZED</code> in whichever version (single choice or select all) your survey uses.</label></li>
+<li><label><input type="checkbox">Pre/post teams: the survey has <code>PASSWORD</code> and <code>TIME</code> (0 = pretest, 1 = posttest), with exactly those names.</label></li>
+<li><label><input type="checkbox">The team codebook is complete and a second person has checked it.</label></li>
+<li><label><input type="checkbox">Click <strong>Publish</strong> in your Qualtrics survey. Recodes are not saved until you do.</label></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-export-word" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-export-word"><span class="header-section-number">7.5</span> Export Survey Questions/Items (<code>.docx</code>)</h2>
+<p>The Word export is how you <strong>see</strong> every recode you just made, question by question, on one page. Do it now, while the team is still together.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label>
+<ul class="task-list">
+<li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
+</ul></li>
+<li><label><input type="checkbox">Click on Survey &gt; Import/Export &gt; <strong>Export Survey to Word</strong> to download a copy of the entire survey questions/statements as they would appear in the online Qualtrics survey. As a reminder, you already did this for your IRB submission.</label></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/export-survey.png" class="img-fluid figure-img"></p>
+<figcaption><em>Click on Survey &gt; Import/Export &gt; Export Survey to Word</em></figcaption>
+</figure>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">A dialog box opens with export options. Leave the defaults as they are, and make sure <strong>Show coded values</strong> is checked. That option prints the recode value after every answer choice, for example “Poor (1)”, so the Word document shows the exact number that will appear in your data for each response. Click <strong>Export</strong>.</label></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/export-word-options.png" class="img-fluid figure-img" style="width:55.0%" alt="The Export survey to Word dialog in Qualtrics. Checked: Show question numbers; Show logic, with Use question numbers and Use recode values; Show coded values; Strip HTML tags from all questions and answers; Condense dropdown choices. Unchecked: Show survey flow; Include graphic. Buttons: Cancel and Export."></p>
+<figcaption><em>Check “Show coded values” so that every answer choice shows its number</em></figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: “Use recode values” is not the same box
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Under <em>Show logic</em> there is a box called <strong>Use recode values</strong>. It only changes how the survey’s skip logic is written in the document. The box that puts a number next to each answer choice is <strong>Show coded values</strong>, further down. If your Word file shows “Poor” with no “(1)” after it, that is the box you missed.</p>
+</div>
+</div>
+<ul class="task-list">
+<li><label><input type="checkbox">Open the document in Microsoft Word (not Google Docs) to confirm it works. Read through it as a team: every answer choice should have a number in parentheses, and the numbers should match your codebook.</label></li>
+<li><label><input type="checkbox">Save it as <code>Draft.TeamSurveyQuestions.docx</code>.</label></li>
+<li><label><input type="checkbox">Open your “Team Survey Data” folder on Google Drive and click + New &gt; File Upload and select your document.</label></li>
+</ul>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: two files in your team’s Google Drive, updated twice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After your team completes the steps in this chapter, export the survey to Word with <strong>Show coded values</strong> checked and read it together to confirm that every recoded numerical value is correct. Mistakes here are irreversible once data collection ends, and they can seriously and negatively affect your team’s poster at the end of the semester. So your team keeps two files in the “Team Survey Data” folder of your Google Drive, and updates them twice:</p>
+<ol type="1">
+<li><strong>Draft: <code>Draft.TeamSurveyQuestions.docx</code> and <code>TeamCodebook.docx</code>.</strong> These should be in your team’s Google Drive by the end of the <strong>October 2 lecture</strong>, right after your team works through this chapter together.</li>
+<li><strong>Final: <code>Final.TeamSurveyQuestions.docx</code> and an updated <code>TeamCodebook.docx</code>.</strong> These should be in your team’s Google Drive by the end of the <strong>October 9 lecture</strong>, after your team’s final review, following the steps at the start of <a href="./export.html">Export Survey Data</a>.</li>
+</ol>
+<p>These are not graded assignments. They are the team’s shared record of what every number in the data means, and the instructors use them to help you when something in the data looks wrong.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shanemccarty\.github\.io\/FRIplaybook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./find-the-ref.html" class="pagination-link" aria-label="Find the Ref">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./export.html" class="pagination-link" aria-label="Export Survey Data">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/qualtrics.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

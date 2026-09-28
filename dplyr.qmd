@@ -1,25 +1,30 @@
 ---
 title: "Transforming Your Data"
 subtitle: "How to use dplyr"
-author: "Mara Estreich"
+author:
+  - Mara Estreich
+  - Shane McCarty, PhD
 abstract: |
   This chapter introduces students to dplyr, a core package within the tidyverse designed
   for efficient data manipulation and transformation. Students learn essential data cleaning
-  techniques including filtering observations, recoding variables, and creating new categorical
-  and binary variables. Through practical examples using survey data, the chapter demonstrates
-  how to prepare datasets for analysis by grouping response categories and creating dummy
-  variables for regression modeling. By the end of this chapter, students will understand
-  that clean, well-organized data is foundational for accurate analysis and will be equipped
-  with core dplyr functions to transform raw survey data into analysis-ready datasets.
+  techniques including recoding variables and creating new categorical and binary variables
+  with mutate(), case_when(), if_else(), and factor(). The Play collapses seven education
+  categories into three, cuts the ten-item K10 into its published bands, and combines the
+  select-all RACIALIZED boxes into one variable. The Lab practices the same three moves on the
+  lab dataset (EDUCATION_3CAT, POL_3CAT, HEALTH_3CAT, SES_01CAT), and Your Turn gives a
+  template for the team dataset. By the end of this chapter, students will understand that
+  clean, well-organized data is foundational for accurate analysis and will be equipped with
+  core dplyr functions to transform raw survey data into analysis-ready datasets.
 keywords:
   - data manipulation
   - dplyr
   - recoding variables
   - creating new variables
-  - dummy coding
+  - case_when
 format: html
 editor: visual
 execute:
+  cache: false
   warning: false
   message: false
 ---
@@ -38,24 +43,11 @@ execute:
 :::
 
 ```{r}
-#| label: load library
+#| label: load-library
 library(haven)
 library(naniar)
 library(dplyr)
 library(knitr)
-```
-
-```{r}
-#| label: import-dataset
-alldata <- read_sav("data/10.31.2024.oralhealth.sav", user_na = FALSE)
-```
-
-```{r}
-#| label: replace-missing-data
-
-## replace with NA
-alldata <- alldata %>%
-  replace_with_na_all(condition = ~.x %in% c(-99, -50))
 ```
 
 ## Introduction to dplyr
@@ -66,13 +58,34 @@ dplyr is part of the tidyverse and provides intuitive functions for manipulating
 
 -   Makes data cleaning code readable and logical
 
--   Uses the pipe operator (`%>%`) to chain operations together
+-   Uses the pipe operator (`|>`) to chain operations together, so that each step starts from the result of the one before
 
 -   Essential for preparing data before creating visualizations or running analyses
 
 > **Remember**: You cannot create meaningful visualizations or run valid statistical analyses without clean data!
 
-## Example 1: Recoding Education into Categories
+::: callout-note
+## Resources: what is a `.sav` file, and why `read_sav()`?
+
+Play 1 uses a dataset from an earlier FRI team that was saved in **SPSS** format, `.sav`. It is the same kind of thing as your team's `.xlsx` file, a table with one row per person, in a different file type. The pattern from [Import Data Once](import-once.qmd) holds: the import line has the same three parts, and only the function changes with the file type. `read_excel()` (package `readxl`) reads `.xlsx`, `read.csv()` reads `.csv`, and `read_sav()` (package `haven`) reads `.sav`. `user_na = FALSE` tells `read_sav()` to bring SPSS's "user missing" codes in as ordinary numbers, so that the next chunk can turn `-99` and `-50` into `NA` the same way you do for an Excel file. You will not need `read_sav()` for your own data unless your team receives an SPSS file.
+:::
+
+## 📋 The Play
+
+```{r}
+#| label: import-dataset
+oralhealthdata <- read_sav("data/10.31.2024.oralhealth.sav", user_na = FALSE)
+```
+
+```{r}
+#| label: replace-missing-data
+
+## replace with NA
+oralhealthdata <- oralhealthdata |>
+  replace_with_na_all(condition = ~.x %in% c(-99, -50))
+```
+
+### Play 1: Collapse Seven Education Categories into Three (`EDUCATION_3CAT`)
 
 When working with survey data, we often need to collapse detailed response categories into broader groups. This is useful for:
 
@@ -105,12 +118,12 @@ Our survey asked about education level with 7 response options:
 Let's group these into three meaningful categories:
 
 ```{r}
-#| label: mutate-education-to-education_3cat
+#| label: mutate-education-to-EDUCATION_3CAT
   
 # Create a new 3-category education variable
-alldata <- alldata %>%
+oralhealthdata <- oralhealthdata |>
   mutate(
-    education_3cat = factor(
+    EDUCATION_3CAT = factor(
       case_when(
         Education_Level %in% c(1, 2, 3, 4) ~ "Less than Bachelor's",
         Education_Level == 5 ~ "Bachelor's Degree",
@@ -121,7 +134,443 @@ alldata <- alldata %>%
   )
 
 # Check the recoding with a cross-tabulation
-table(alldata$Education_Level, alldata$education_3cat, useNA = "ifany")
+table(oralhealthdata$Education_Level, oralhealthdata$EDUCATION_3CAT, useNA = "ifany")
 ```
+
+### Play 2: Cut a Score into Categories (the K10)
+
+Sometimes a published scale comes with **cut-off scores**, and a reader wants to know how many people fall in each band, not only the average. The lab dataset's `DISTRESS1` to `DISTRESS10` are the ten items of the Kessler Psychological Distress Scale (K10; Kessler et al., 2002). The K10 is scored by **adding** the ten items, for a total from 10 to 50 (`K10_TOTAL` in `lab_prep.R`). Andrews and Slade (2001) proposed the cut-offs that most surveys use, including the Victorian Population Health Survey (2001):
+
+| K10 total | Likelihood of a mental disorder |
+|---|---|
+| 10 to 19 | likely to be well |
+| 20 to 24 | likely to have a mild disorder |
+| 25 to 29 | likely to have a moderate disorder |
+| 30 to 50 | likely to have a severe disorder |
+
+These are screening bands, not diagnoses: a score says how likely it is that someone would meet criteria in an interview, not that they do.
+
+Plays 2 and 3 use the lab dataset, so this is the first time you run `lab_prep.R`. `source("lab_prep.R")` runs every line of that `.R` file, top to bottom, as if you had typed it: it imports `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` as `mh_raw`, keeps the serious and attentive responses, turns `-99` and `-50` into `NA`, reverses the `_R` items, and averages each multi-item measure into a composite ([Creating Composites](composite.qmd)), all as `mh_clean`. From here on, every Lab starts with this one line instead of repeating those steps. The file must be in your project folder (next to your `.Rproj`, not inside `data`), and your load-library chunk must run first.
+
+```{r}
+#| label: setup-lab-k10
+#| message: false
+source("lab_prep.R")   # creates mh_clean, with K10_TOTAL
+```
+
+::: callout-note
+## `lab_prep.R` already has these lines
+
+Open `lab_prep.R` and you will find `DISTRESS_4CAT`, `DISTRESS_01CAT`, and the `RACIALIZED` variables at the bottom, so that later chapters can use them. Plays 2 and 3 build them again in front of you so that you can see how. Running the code below simply replaces those columns with identical ones.
+:::
+
+### Four categories: `DISTRESS_4CAT`
+
+`case_when()` reads its conditions from the top down and stops at the first one that is true, so each line only has to name its upper limit. `factor()` with `levels =` puts the four groups in order, so that tables and plots list them from Well to Severe instead of alphabetically.
+
+```{r}
+#| label: mutate-k10-to-distress-4cat
+mh_clean <- mh_clean |>
+  mutate(
+    DISTRESS_4CAT = factor(
+      case_when(
+        K10_TOTAL <= 19 ~ "Well",
+        K10_TOTAL <= 24 ~ "Mild",
+        K10_TOTAL <= 29 ~ "Moderate",
+        K10_TOTAL >= 30 ~ "Severe"
+      ),
+      levels = c("Well", "Mild", "Moderate", "Severe")
+    )
+  )
+
+# ALWAYS check a transformation: is every score in the right band?
+mh_clean |>
+  group_by(DISTRESS_4CAT) |>
+  summarise(n = n(), lowest = min(K10_TOTAL), highest = max(K10_TOTAL))
+
+#source: Andrews & Slade (2001) cut-offs; R4DS Ch. 3 (Wickham et al., 2023) https://r4ds.hadley.nz/data-transform.html
+#explanation: K10_TOTAL is cut into the four published bands; the summary table proves that each band's lowest and highest scores fall inside its limits
+```
+
+### Two categories: `DISTRESS_01CAT`
+
+For a comparison of two groups ([Compare Groups](visualize-comparison.qmd)), or as a predictor in a regression ([Relate 3+ Variables](regression.qmd)), a **binary** version is often all you need. The K10 cut-off for "likely to have a disorder" is 20 or more, so the line falls between 19 and 20 (a score of 19.5 is impossible, since the total is a whole number). A binary variable is coded **0 and 1** and named for the 1: here, 1 means likely distressed.
+
+```{r}
+#| label: mutate-k10-to-distress-01cat
+mh_clean <- mh_clean |>
+  mutate(DISTRESS_01CAT = if_else(K10_TOTAL >= 20, 1, 0))
+
+mh_clean |> count(DISTRESS_4CAT, DISTRESS_01CAT)    # Well -> 0; Mild, Moderate, Severe -> 1
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: if_else() gives a 1 to everyone at or above the cut-off and a 0 to everyone below it; the count shows that the binary variable lines up with the four bands
+```
+
+### Play 3: Combine Select-All Boxes into One Variable (RACIALIZED)
+
+Teams asked the racial/ethnic identity question in one of two ways ([Name and Recode Variables in Qualtrics](qualtrics.qmd)). In the lab dataset it was **select all that apply**, so Steps 1 to 3 below combine the boxes; if your team asked it as **single choice**, skip to the shorter version after Step 3. Here, people could check more than one box, and Qualtrics exported **one column per box**: `RACIALIZED_1` (American Indian or Alaska Native), `RACIALIZED_2` (Asian), `RACIALIZED_3` (Black or African American), `RACIALIZED_4` (Hispanic or Latine), `RACIALIZED_5` (Middle Eastern or North African), `RACIALIZED_6` (Native Hawaiian or Pacific Islander), `RACIALIZED_7` (White), `RACIALIZED_8` (Other, with the write-in in `RACIALIZED_8_TEXT`), and `RACIALIZED_99` (Prefer not to say). A cell holds the option's code when the box was checked and is blank (`NA`) otherwise. Look at a few rows first:
+
+```{r}
+#| label: look-racialized-boxes
+mh_clean |>
+  select(RACIALIZED_1:RACIALIZED_99) |>
+  head(8)
+```
+
+Nine columns cannot go into a table or a model as they are. The plan: **count the boxes** each person checked, then use `case_when()` to sort people into groups, putting anyone who checked two or more boxes into their own group instead of forcing them into one.
+
+### Step 1: count the checked boxes
+
+`!is.na()` turns each cell into `TRUE` (checked) or `FALSE` (blank), and `rowSums()` adds up the `TRUE`s across the eight identity columns. `RACIALIZED_99` is left out: declining to answer is not an identity.
+
+```{r}
+#| label: mutate-racialized-n
+mh_clean <- mh_clean |>
+  mutate(RACIALIZED_N = rowSums(!is.na(across(RACIALIZED_1:RACIALIZED_8))))
+
+mh_clean |> count(RACIALIZED_N)
+```
+
+### Step 2: sort people into groups: `RACIALIZED_6CAT`
+
+The **first** condition that is true wins, so "two or more" has to come first; otherwise a person who checked Asian and White would land in whichever single-box line came first. Groups with very few people (codes 1, 5, 6, and 8) are combined into "Another identity", because a group of three cannot support a comparison. `factor()` with `levels =` puts White first, which makes it the comparison group in every model later.
+
+```{r}
+#| label: mutate-racialized-6cat
+mh_clean <- mh_clean |>
+  mutate(
+    RACIALIZED_6CAT = factor(
+      case_when(
+        RACIALIZED_N >= 2     ~ "Two or more",
+        !is.na(RACIALIZED_7)  ~ "White",
+        !is.na(RACIALIZED_2)  ~ "Asian",
+        !is.na(RACIALIZED_3)  ~ "Black",
+        !is.na(RACIALIZED_4)  ~ "Hispanic or Latine",
+        RACIALIZED_N == 1     ~ "Another identity"      # codes 1, 5, 6, 8: too few to stand alone
+      ),
+      levels = c("White", "Asian", "Black", "Hispanic or Latine", "Another identity", "Two or more")
+    )
+  )
+
+# ALWAYS check a transformation
+mh_clean |> count(RACIALIZED_6CAT)
+
+#source: The Quantitative Playbook for R (McCarty, 2026); R4DS Ch. 3 https://r4ds.hadley.nz/data-transform.html
+#explanation: people who checked two or more boxes become one group; single-box people are sorted by which box; the four smallest groups are combined; people who only declined get NA
+```
+
+People who checked only "Prefer not to say" match none of the conditions, so they get `NA`, which is what you want: a decline is missing, not a group.
+
+### Step 3: the binary version: `RACIALIZED_01CAT`
+
+Many research questions compare people racialized as white with everyone else. Build the 0/1 version **from** `RACIALIZED_6CAT`, so the two variables can never disagree.
+
+```{r}
+#| label: mutate-racialized-01cat
+mh_clean <- mh_clean |>
+  mutate(RACIALIZED_01CAT = case_when(RACIALIZED_6CAT == "White" ~ 0,
+                                      !is.na(RACIALIZED_6CAT)    ~ 1))
+
+mh_clean |> count(RACIALIZED_6CAT, RACIALIZED_01CAT)
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: 0 = racialized as white, 1 = racialized as a person of color (every other group, including Two or more); NA stays NA
+```
+
+### The single-choice version: `RACIALIZED_5CAT`
+
+If your survey asked for **one** answer, there are no boxes to count: you have one column, `RACIALIZED`, with the codes 1 to 8 (and `NA` where `-99` was). Sort the codes into groups with `case_when()` in one step. Nobody can be in two groups, so there is no "Two or more"; that leaves **five** groups, and the naming rule says the name must say so: `RACIALIZED_5CAT`, not `_6CAT`.
+
+```{r}
+#| label: mutate-racialized-5cat-single
+#| eval: false
+alldata <- alldata |>
+  mutate(
+    RACIALIZED_5CAT = factor(
+      case_when(
+        RACIALIZED == 7              ~ "White",
+        RACIALIZED == 2              ~ "Asian",
+        RACIALIZED == 3              ~ "Black",
+        RACIALIZED == 4              ~ "Hispanic or Latine",
+        RACIALIZED %in% c(1, 5, 6, 8) ~ "Another identity"     # too few to stand alone
+      ),
+      levels = c("White", "Asian", "Black", "Hispanic or Latine", "Another identity")
+    ),
+    RACIALIZED_01CAT = case_when(RACIALIZED_5CAT == "White" ~ 0,
+                                 !is.na(RACIALIZED_5CAT)    ~ 1)
+  )
+
+alldata |> count(RACIALIZED, RACIALIZED_5CAT, RACIALIZED_01CAT)   # ALWAYS check a transformation
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: one code per person becomes one of five groups; the four smallest groups are combined; NA (declined) stays NA; the binary is built from the 5-group version so they can never disagree
+```
+
+Whichever version you have, look at the counts before you decide which groups to combine: "Another identity" exists because groups of three or five people cannot support a comparison, and your team's numbers may fall differently.
+
+::: callout-warning
+## Caution: the name is RACIALIZED, and the binary is a teaching example
+
+The variable is called `RACIALIZED`, not `RACE`, because the survey recorded how people are classified within a system of racial sorting, not a trait they carry (Fields & Fields, 2012; Zuberi & Bonilla-Silva, 2008; D'Ignazio & Klein, 2020; see [Data Equity](data-equity.qmd)). When you report a result, write "people racialized as Black scored …", not "Black people are …". And `RACIALIZED_01CAT` is a coarse split that hides real differences between the groups it lumps together. It is here so that you can learn how a binary predictor works. A real report should also show `RACIALIZED_6CAT` (or `RACIALIZED_5CAT`).
+:::
+
+::: callout-tip
+## Go: Name a new categorical variable for the number of groups it has
+
+In this playbook, a variable made by cutting a score or collapsing categories ends in `_#CAT`, where # is the number of groups: `DISTRESS_4CAT`, `EDUCATION_3CAT`, `HEALTH_3CAT`, `POL_3CAT`, `RACIALIZED_6CAT` (or `RACIALIZED_5CAT` when the single-choice question gives five groups). A **binary** variable ends in `_01CAT`. It is either coded 0 and 1, or a factor with two levels, and either way the name says what the 1 (the second level) means: `DISTRESS_01CAT` (1 = likely distressed), `RACIALIZED_01CAT` (1 = racialized as a person of color, 0 = racialized as white). The name tells a reader what kind of variable it is before they look at a single value.
+:::
+
+::: callout-note
+## Two lab variables that would be better named: `MH_TREATED` and `MH_KNOWS`
+
+The lab dataset has two yes/no variables, `MH_TREATED` (1 = has received counseling, therapy, or medication for a mental health concern, 0 = has not) and `MH_KNOWS` (1 = knows someone diagnosed with a mental illness, 0 = does not). They work as they are: they are coded 0 and 1, and the 1 means what the name says. But under the rules in [Name and Recode Variables in Qualtrics](qualtrics.qmd) they would be `TREATED_01CAT` and `KNOWS_01CAT`, and that is how you should name yours.
+
+The ending does two jobs. `CAT` says the variable is **categorical**: the numbers are labels for groups, not amounts, so it should never be averaged or put on an x axis as if it were a score. The number in front says **how many response options** the variable has: `01` for two (coded 0 and 1), `3CAT` for three, `4CAT` for four. That number decides the analysis. A two-group variable goes into a two-group comparison or a binary predictor in a regression; a three-or-more-group variable goes into a three-plus-group comparison. [The Analysis Map](analysis-map.qmd) sorts the tests by exactly this count, so a name that carries the count makes the right row on the map easy to find, for you and for anyone reading your code.
+:::
+
+::: {.callout-important .required}
+## Required: cite the cut-offs
+
+If you cut a published scale into categories in your report, cite where the cut-offs come from, the way the K10 references below do. Cut-offs you chose yourself are okay if there is existing theory to inform the decision or for practical purposes, but you must report what you did transparently in your methods section and with your R code.
+:::
+
+## 🏈 The Lab {#sec-dplyr-lab}
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** The Play showed three moves: collapse categories (education), cut a score into bands (K10), and combine boxes (RACIALIZED). The Lab uses the same moves on four other variables in `mh_clean`, and later chapters use what you make here: `POL_3CAT` in [Compare Groups](visualize-comparison.qmd) and `HEALTH_3CAT` in [Compare 3+ Groups](ANOVA.qmd). Try each play before you open my check.
+:::
+::::::
+
+```{r}
+#| label: lab-dplyr-setup
+#| include: false
+lab_edu <- mh_clean |>
+  mutate(EDUCATION_3CAT = factor(case_when(
+    EDUCATION %in% c(1, 2, 3, 4) ~ "Less than Bachelor's",
+    EDUCATION == 5               ~ "Bachelor's Degree",
+    EDUCATION == 6               ~ "Graduate Degree"),
+    levels = c("Less than Bachelor's", "Bachelor's Degree", "Graduate Degree"))) |>
+  count(EDUCATION_3CAT)
+lab_pol <- mh_clean |>
+  mutate(POL_3CAT = factor(case_when(
+    POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+    POLITICALBELIEFS == 3         ~ "Moderate",
+    POLITICALBELIEFS %in% c(4, 5) ~ "Right"),
+    levels = c("Left", "Moderate", "Right"))) |>
+  count(POL_3CAT)
+lab_hlth <- mh_clean |>
+  mutate(HEALTH_3CAT = factor(case_when(
+    HEALTHSTATUS %in% c(1, 2) ~ "Poor or fair",
+    HEALTHSTATUS == 3         ~ "Good",
+    HEALTHSTATUS %in% c(4, 5) ~ "Very good or excellent"),
+    levels = c("Poor or fair", "Good", "Very good or excellent"))) |>
+  count(HEALTH_3CAT)
+lab_ses <- mh_clean |> mutate(SES_01CAT = if_else(SOCIALSTATUS >= 8, 1, 0)) |> count(SES_01CAT)
+n_of <- function(tab, lvl) tab$n[match(lvl, as.character(tab[[1]]))]
+n_na <- function(tab) { x <- tab$n[is.na(tab[[1]])]; if (length(x) == 0) 0 else x }
+```
+
+**Before you start.** Open your lab `.qmd`, run your load-library chunk (`dplyr` must be loaded), and run `source("lab_prep.R")` so that `mh_clean` is in your environment. After every play, **count** the new variable against the old one, the way the Play did: a transformation you have not checked is a foul waiting to happen.
+
+### Lab Play 1: Collapse categories (`EDUCATION_3CAT`)
+
+`EDUCATION` has six levels (1 = Some high school or less … 6 = Graduate or professional degree) and a 7 that means *Prefer not to say*. Make `EDUCATION_3CAT` with the same three groups as the Play (less than a bachelor's, bachelor's, graduate), in that order. Then count `EDUCATION` by `EDUCATION_3CAT`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   **`r n_of(lab_edu, "Less than Bachelor's")`** less than bachelor's, **`r n_of(lab_edu, "Bachelor's Degree")`** bachelor's, **`r n_of(lab_edu, "Graduate Degree")`** graduate, and **`r n_na(lab_edu)`** `NA`.
+-   The `NA`s are the people who answered 7. No line in your `case_when()` mentions 7, so they get `NA`, which is right: *Prefer not to say* is missing, not a fourth group. (This older survey coded it 7. Your survey codes it `-99`, which [Import Data Once](import-once.qmd) already turned into `NA`.)
+-   In the count, every value of `EDUCATION` should sit in exactly one group. If 5 appears in two rows, a condition overlaps.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-dplyr-solution-1
+#| eval: false
+mh_clean <- mh_clean |>
+  mutate(EDUCATION_3CAT = factor(
+    case_when(
+      EDUCATION %in% c(1, 2, 3, 4) ~ "Less than Bachelor's",
+      EDUCATION == 5               ~ "Bachelor's Degree",
+      EDUCATION == 6               ~ "Graduate Degree"),
+    levels = c("Less than Bachelor's", "Bachelor's Degree", "Graduate Degree")))
+
+mh_clean |> count(EDUCATION, EDUCATION_3CAT)    # ALWAYS check a transformation
+
+#source: The Quantitative Playbook for R (McCarty, 2026); R4DS Ch. 3 https://r4ds.hadley.nz/data-transform.html
+#explanation: six education levels become three ordered groups; 7 (prefer not to say) matches no condition and becomes NA
+```
+:::
+
+### Lab Play 2: Collapse and exclude (`POL_3CAT`)
+
+`POLITICALBELIEFS` has six labels: 1 = Leftist, 2 = Liberal, 3 = Moderate, 4 = Conservative, 5 = Far right, 6 = Libertarian, plus `-99` and `-50`. Make `POL_3CAT` with three groups, **Left** (1 and 2), **Moderate** (3), and **Right** (4 and 5), in that order. Libertarians are too few to be a group of their own and do not fit on the left-right line, so leave them out. Then count.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   **`r n_of(lab_pol, "Left")`** Left, **`r n_of(lab_pol, "Moderate")`** Moderate, **`r n_of(lab_pol, "Right")`** Right, and **`r n_na(lab_pol)`** `NA`.
+-   The `NA`s are the Libertarians, the *Prefer not to say* (-99), and the *Don't know* (-50) answers together. You did not have to write a line for any of them: whatever matches no condition becomes `NA`.
+-   Foul to watch for: `POLITICALBELIEFS == 1 | 2` looks right but puts **everyone** in Left. "Is 1 or 2" is `%in% c(1, 2)`.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-dplyr-solution-2
+#| eval: false
+mh_clean <- mh_clean |>
+  mutate(POL_3CAT = factor(
+    case_when(
+      POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+      POLITICALBELIEFS == 3         ~ "Moderate",
+      POLITICALBELIEFS %in% c(4, 5) ~ "Right"),
+    levels = c("Left", "Moderate", "Right")))
+
+mh_clean |> count(POLITICALBELIEFS, POL_3CAT)
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: six political labels become three ordered groups; Libertarian, -99, and -50 match no condition and become NA, so they drop out of any comparison of the three groups
+```
+:::
+
+### Lab Play 3: Collapse an ordered scale (`HEALTH_3CAT`)
+
+`HEALTHSTATUS` runs from 1 = Poor to 5 = Excellent. Make `HEALTH_3CAT` with three groups: **Poor or fair** (1 and 2), **Good** (3), and **Very good or excellent** (4 and 5), in that order. [Compare 3+ Groups](ANOVA.qmd) uses exactly this variable, so spell the labels the same way.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   **`r n_of(lab_hlth, "Poor or fair")`** poor or fair, **`r n_of(lab_hlth, "Good")`** good, **`r n_of(lab_hlth, "Very good or excellent")`** very good or excellent, **`r n_na(lab_hlth)`** `NA`.
+-   `levels(mh_clean$HEALTH_3CAT)` lists the three groups from poor to excellent. If they come out alphabetically (Good first), you forgot `levels =` in `factor()`.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-dplyr-solution-3
+#| eval: false
+mh_clean <- mh_clean |>
+  mutate(HEALTH_3CAT = factor(
+    case_when(
+      HEALTHSTATUS %in% c(1, 2) ~ "Poor or fair",
+      HEALTHSTATUS == 3         ~ "Good",
+      HEALTHSTATUS %in% c(4, 5) ~ "Very good or excellent"),
+    levels = c("Poor or fair", "Good", "Very good or excellent")))
+
+mh_clean |> count(HEALTHSTATUS, HEALTH_3CAT)
+levels(mh_clean$HEALTH_3CAT)
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: the five-point self-rated health item becomes three ordered groups, with the ends combined so that each group has enough people
+```
+:::
+
+### Lab Play 4: Cut a score into a binary variable (`SES_01CAT`)
+
+`SOCIALSTATUS` is the MacArthur ladder, 1 (bottom) to 10 (top). Its codebook row says to dichotomize at the top: 8 to 10 = higher subjective status. Make `SES_01CAT`, coded 0 and 1 and named for the 1, with `if_else()`, the way the Play made `DISTRESS_01CAT`. Then count `SOCIALSTATUS` by `SES_01CAT`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   **`r n_of(lab_ses, "1")`** people get a 1 (rungs 8, 9, 10) and **`r n_of(lab_ses, "0")`** get a 0 (rungs 1 to 7); **`r n_na(lab_ses)`** are `NA` because they skipped the ladder.
+-   In the count, every rung from 1 to 7 sits next to a 0 and every rung from 8 to 10 next to a 1. If rung 8 sits next to a 0, you wrote `> 8` when you meant `>= 8`.
+-   This cut-off comes from the codebook, not from a published paper, so your Methods sentence would say so: "subjective social status was dichotomized at rungs 8 to 10 for comparison with the rest of the ladder."
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-dplyr-solution-4
+#| eval: false
+mh_clean <- mh_clean |>
+  mutate(SES_01CAT = if_else(SOCIALSTATUS >= 8, 1, 0))
+
+mh_clean |> count(SOCIALSTATUS, SES_01CAT)
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: if_else() gives a 1 to rungs 8 to 10 and a 0 to everyone else; NA stays NA
+```
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref-whistle.svg){fig-alt="Ref the raccoon blowing his whistle"}
+:::
+
+::: ref-say
+**Ref's final whistle.** Four new variables, four counts that prove they are right. Paste the four `mutate()` calls into the bottom of your `lab_prep.R`, under the `RACIALIZED` lines, so that `source("lab_prep.R")` makes them every time. Save, render, back up to your ELN.
+:::
+::::::
+
+## 🏆 Your Turn {#sec-dplyr-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Every categorical variable you use in your report is made here, from `alldata`, with a name that ends in `_#CAT` or `_01CAT`. Change every line marked `# REPLACE`, count every transformation, and use the checklist.
+:::
+
+```{r}
+#| label: dplyr-template
+#| eval: false
+library(dplyr)
+
+# 1. collapse categories: several codes -> fewer groups, in a sensible order
+alldata <- alldata |>
+  mutate(MEASURE_3CAT = factor(                              # REPLACE the name (number of groups + CAT)
+    case_when(
+      OLDVARIABLE %in% c(1, 2) ~ "Group A",                   # REPLACE the variable, codes, and labels
+      OLDVARIABLE == 3         ~ "Group B",
+      OLDVARIABLE %in% c(4, 5) ~ "Group C"),
+    levels = c("Group A", "Group B", "Group C")))              # REPLACE: the order you want in tables and plots
+alldata |> count(OLDVARIABLE, MEASURE_3CAT)                    # ALWAYS check
+
+# 2. cut a score at a published cut-off: 0/1, named for the 1
+alldata <- alldata |>
+  mutate(MEASURE_01CAT = if_else(SCORE >= 20, 1, 0))          # REPLACE the score and the cut-off; cite it
+alldata |> count(MEASURE_01CAT)
+
+# 3. RACIALIZED: single choice -> copy the RACIALIZED_5CAT chunk from the Play;
+#    select all   -> copy the three steps (RACIALIZED_N, _6CAT, _01CAT) and change nothing but the group names if your counts differ
+```
+
+| Criteria | Ask yourself |
+|----|----|
+| **Name** | Does the new name end in `_#CAT` (with the number of groups) or `_01CAT`, in ALL CAPS, 14 characters or fewer? |
+| **Every code accounted for** | Does `count(OLD, NEW)` show every old code in exactly one group, and only the codes you meant to drop as `NA`? |
+| **Order** | Did you set `levels =` so that groups appear in a sensible order (not alphabetical)? |
+| **Binary** | Is the 0/1 variable named for the 1, and does the 1 mean what the name says? |
+| **Cut-offs cited** | If you cut a published scale, is the source in your Methods (the Required box above)? If you chose the cut-off, did you say why? |
+| **Group size** | Does every group have enough people to compare (roughly 20 or more)? If not, combine groups and rename with the new number. |
+| **In your report code** | Are these `mutate()` lines in the `.qmd` you will submit, so a reader can rebuild every category? |
+
+## References
+
+D'Ignazio, C., & Klein, L. F. (2020). *Data feminism*. MIT Press. <https://data-feminism.mitpress.mit.edu/>
+
+Fields, K. E., & Fields, B. J. (2012). *Racecraft: The soul of inequality in American life*. Verso.
+
+Zuberi, T., & Bonilla-Silva, E. (Eds.). (2008). *White logic, white methods: Racism and methodology*. Rowman & Littlefield.
+
+Andrews, G., & Slade, T. (2001). Interpreting scores on the Kessler Psychological Distress Scale (K10). *Australian and New Zealand Journal of Public Health, 25*(6), 494–497. <https://doi.org/10.1111/j.1467-842X.2001.tb00310.x>
+
+Kessler, R. C., Andrews, G., Colpe, L. J., Hiripi, E., Mroczek, D. K., Normand, S.-L. T., Walters, E. E., & Zaslavsky, A. M. (2002). Short screening scales to monitor population prevalences and trends in non-specific psychological distress. *Psychological Medicine, 32*(6), 959–976. <https://doi.org/10.1017/S0033291702006074>
+
+Kessler, R. C., Barker, P. R., Colpe, L. J., Epstein, J. F., Gfroerer, J. C., Hiripi, E., Howes, M. J., Normand, S.-L. T., Manderscheid, R. W., Walters, E. E., & Zaslavsky, A. M. (2003). Screening for serious mental illness in the general population. *Archives of General Psychiatry, 60*(2), 184–189. <https://doi.org/10.1001/archpsyc.60.2.184>
+
+Victorian Department of Human Services. (2001). *Victorian Population Health Survey 2001: Selected findings*. Melbourne: Department of Human Services.
 
 {{< include _ref-whistle-box.qmd >}}

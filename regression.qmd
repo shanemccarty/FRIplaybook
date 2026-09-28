@@ -333,24 +333,20 @@ nobs(model_lab_1)
 
 **Research question:** After we account for social support, does well-being differ between People of Color and White respondents?
 
-The survey asked one question about racial/ethnic identity (`RACE`):
+The survey asked one select-all question about racial/ethnic identity. In [Transforming Your Data](dplyr.qmd) you combined its checkbox columns (`RACIALIZED_1` to `RACIALIZED_99`) into two variables, and `lab_prep.R` now carries both:
 
-| Code | Answer                                 |
-|------|----------------------------------------|
-| 1    | American Indian or Alaska Native       |
-| 2    | Asian                                  |
-| 3    | Black or African American              |
-| 4    | Hispanic or Latino                     |
-| 5    | Middle Eastern or North African        |
-| 6    | Native Hawaiian or Pacific Islander    |
-| 7    | White                                  |
-| -99  | Prefer Not To Say (already `NA` in `mh_clean`) |
+| Variable | Groups |
+|----|----|
+| `RACIALIZED_6CAT` | White, Asian, Black, Hispanic or Latine, Another identity, Two or more (a factor) |
+| `RACIALIZED_01CAT` | 0 = racialized as white, 1 = racialized as a person of color (everyone who checked any other box, including "Two or more") |
 
-A **binary** predictor has two groups. **Your task:**
+The name is `RACIALIZED`, not `RACE`, on purpose: the survey did not measure a trait inside the person, it recorded how people are sorted and sort themselves within a system of racial classification ([Data Equity](data-equity.qmd)). Read every coefficient below that way: "people racialized as Black," not "being Black."
 
-1.  Use `mutate()`, `case_when()`, and `factor()` to make a new variable `POC` with two groups: `"White"` (code 7) and `"Person of color"` (codes 1 to 6). List `"White"` first in `levels =` so that it is the comparison group.
-2.  Check your work with `count(RACE, POC)`.
-3.  Run `lm(WELLBEING ~ SUPPORT + POC)`.
+A **binary** predictor has two groups, coded 0 and 1. **Your task:**
+
+1.  Check the variable before you use it: `count(RACIALIZED_6CAT, RACIALIZED_01CAT)`. Every White row should have a 0, every other row a 1, and Prefer not to say should be `NA`.
+2.  Run `lm(WELLBEING ~ SUPPORT + RACIALIZED_01CAT)`.
+3.  Read the `RACIALIZED_01CAT` row. Because the variable is 0/1, its slope is the difference between the group coded 1 and the group coded 0, at the same level of social support.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
@@ -358,18 +354,14 @@ A **binary** predictor has two groups. **Your task:**
 ```{r}
 #| label: lab-check-play2
 #| echo: false
-mh_clean <- mh_clean |>
-  mutate(POC = factor(case_when(RACE == 7      ~ "White",
-                                RACE %in% 1:6  ~ "Person of color"),
-                      levels = c("White", "Person of color")))
-lab_m2 <- lm(WELLBEING ~ SUPPORT + POC, data = mh_clean)
+lab_m2 <- lm(WELLBEING ~ SUPPORT + RACIALIZED_01CAT, data = mh_clean)
 c2 <- summary(lab_m2)$coefficients
-knitr::kable(count(mh_clean, POC), col.names = c("POC", "n"))
+knitr::kable(count(mh_clean, RACIALIZED_01CAT), col.names = c("RACIALIZED_01CAT", "n"))
 knitr::kable(c2, digits = 3)
 ```
 
--   The row is named `POCPerson of color`. R adds the name of the group to the name of the variable. The group you do **not** see (`White`) is the comparison group.
--   **b = `r sprintf("%.2f", c2["POCPerson of color", 1])`, p `r pfmt(c2["POCPerson of color", 4])`**: at the same level of social support, People of Color scored `r sprintf("%.2f", abs(c2["POCPerson of color", 1]))` points `r ifelse(c2["POCPerson of color", 1] < 0, "lower", "higher")` in well-being than White respondents.
+-   The row is named `RACIALIZED_01CAT`, and there is only one row for it, because a 0/1 variable needs only one slope. The group coded 0 (White) is the comparison group.
+-   **b = `r sprintf("%.2f", c2["RACIALIZED_01CAT", 1])`, p `r pfmt(c2["RACIALIZED_01CAT", 4])`**: at the same level of social support, People of Color scored `r sprintf("%.2f", abs(c2["RACIALIZED_01CAT", 1]))` points `r ifelse(c2["RACIALIZED_01CAT", 1] < 0, "lower", "higher")` in well-being than White respondents.
 -   `SUPPORT` is still positive and significant (b = `r sprintf("%.2f", c2["SUPPORT", 1])`, p `r pfmt(c2["SUPPORT", 4])`).
 -   People in the model: **n = `r nobs(lab_m2)`**. That is `r nobs(lab_m1) - nobs(lab_m2)` fewer than in Lab Play 1, because `r nobs(lab_m1) - nobs(lab_m2)` people chose "Prefer Not To Say".
 :::
@@ -379,15 +371,10 @@ knitr::kable(c2, digits = 3)
 
 ```{r}
 #| label: lab-solution-play2
-mh_clean <- mh_clean |>
-  mutate(POC = factor(case_when(RACE == 7      ~ "White",
-                                RACE %in% 1:6  ~ "Person of color"),
-                      levels = c("White", "Person of color")))
-
 mh_clean |>
-  count(RACE, POC)        # ALWAYS check a transformation
+  count(RACIALIZED_6CAT, RACIALIZED_01CAT)   # ALWAYS check a variable before you model it
 
-model_lab_2 <- lm(WELLBEING ~ SUPPORT + POC, data = mh_clean)
+model_lab_2 <- lm(WELLBEING ~ SUPPORT + RACIALIZED_01CAT, data = mh_clean)
 
 summary(model_lab_2)
 nobs(model_lab_2)
@@ -408,9 +395,9 @@ A predictor with three or more groups has to be **dummy coded**: one 0/1 column 
 
 **Your task:**
 
-1.  Count the people in each `RACE` group. Three groups are very small (codes 1, 5, and 6). Combine them into `"Another identity"`.
-2.  Make `RACE_5`, a factor with five levels in this order: `"White"`, `"Asian"`, `"Black"`, `"Hispanic or Latino"`, `"Another identity"`.
-3.  Run `lm(WELLBEING ~ SUPPORT + RACE_5)`, make a histogram of the residuals, and write one sentence that reports the result.
+1.  Count the people in each `RACIALIZED_6CAT` group with `count()`. Notice which groups are small.
+2.  Check that `RACIALIZED_6CAT` is a factor whose first level is `"White"`: `levels(mh_clean$RACIALIZED_6CAT)`. The first level is the comparison group.
+3.  Run `lm(WELLBEING ~ SUPPORT + RACIALIZED_6CAT)`, make a histogram of the residuals, and write one sentence that reports the result.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
@@ -418,23 +405,15 @@ A predictor with three or more groups has to be **dummy coded**: one 0/1 column 
 ```{r}
 #| label: lab-check-play3
 #| echo: false
-mh_clean <- mh_clean |>
-  mutate(RACE_5 = factor(case_when(RACE == 7            ~ "White",
-                                   RACE == 2            ~ "Asian",
-                                   RACE == 3            ~ "Black",
-                                   RACE == 4            ~ "Hispanic or Latino",
-                                   RACE %in% c(1, 5, 6) ~ "Another identity"),
-                         levels = c("White", "Asian", "Black",
-                                    "Hispanic or Latino", "Another identity")))
-lab_m3 <- lm(WELLBEING ~ SUPPORT + RACE_5, data = mh_clean)
+lab_m3 <- lm(WELLBEING ~ SUPPORT + RACIALIZED_6CAT, data = mh_clean)
 c3 <- summary(lab_m3)$coefficients
-knitr::kable(count(mh_clean, RACE_5), col.names = c("RACE_5", "n"))
+knitr::kable(count(mh_clean, RACIALIZED_6CAT), col.names = c("RACIALIZED_6CAT", "n"))
 knitr::kable(c3, digits = 3)
 ```
 
--   You should see **four** `RACE_5` rows. Each one compares that group with White respondents, at the same level of social support.
--   Asian (b = `r sprintf("%.2f", c3["RACE_5Asian", 1])`, p `r pfmt(c3["RACE_5Asian", 4])`) and Black (b = `r sprintf("%.2f", c3["RACE_5Black", 1])`, p `r pfmt(c3["RACE_5Black", 4])`) respondents scored significantly lower than White respondents. Hispanic or Latino respondents did not differ significantly (b = `r sprintf("%.2f", c3["RACE_5Hispanic or Latino", 1])`, p `r pfmt(c3["RACE_5Hispanic or Latino", 4])`). The binary variable in Lab Play 2 hid this.
--   "Another identity" (b = `r sprintf("%.2f", c3["RACE_5Another identity", 1])`, p `r pfmt(c3["RACE_5Another identity", 4])`) has only `r sum(mh_clean$RACE_5 == "Another identity", na.rm = TRUE)` people. With a group this small, a real difference is hard to detect. Report the count, and do not read much into this row.
+-   You should see **five** `RACIALIZED_6CAT` rows, one for every group except White. R adds the group name to the variable name (`RACIALIZED_6CATAsian`). Each row compares that group with White respondents, at the same level of social support. That is dummy coding, and R did it for you because the variable is a factor.
+-   Asian (b = `r sprintf("%.2f", c3["RACIALIZED_6CATAsian", 1])`, p `r pfmt(c3["RACIALIZED_6CATAsian", 4])`) and Black (b = `r sprintf("%.2f", c3["RACIALIZED_6CATBlack", 1])`, p `r pfmt(c3["RACIALIZED_6CATBlack", 4])`) respondents scored significantly lower than White respondents. Hispanic or Latine respondents did not differ significantly (b = `r sprintf("%.2f", c3["RACIALIZED_6CATHispanic or Latine", 1])`, p `r pfmt(c3["RACIALIZED_6CATHispanic or Latine", 4])`). The binary variable in Lab Play 2 hid this.
+-   "Another identity" (b = `r sprintf("%.2f", c3["RACIALIZED_6CATAnother identity", 1])`, p `r pfmt(c3["RACIALIZED_6CATAnother identity", 4])`) has only `r sum(mh_clean$RACIALIZED_6CAT == "Another identity", na.rm = TRUE)` people. With a group this small, a real difference is hard to detect. Report the count, and do not read much into this row.
 -   People in the model: **n = `r nobs(lab_m3)`**. R-squared: **`r sprintf("%.2f", summary(lab_m3)$r.squared)`**.
 -   Your residual histogram should be roughly bell-shaped and centered on zero.
 :::
@@ -449,18 +428,11 @@ knitr::kable(c3, digits = 3)
 #| fig-height: 4
 #| fig-width: 6
 mh_clean |>
-  count(RACE)             # which groups are very small?
+  count(RACIALIZED_6CAT)             # which groups are small?
 
-mh_clean <- mh_clean |>
-  mutate(RACE_5 = factor(case_when(RACE == 7            ~ "White",
-                                   RACE == 2            ~ "Asian",
-                                   RACE == 3            ~ "Black",
-                                   RACE == 4            ~ "Hispanic or Latino",
-                                   RACE %in% c(1, 5, 6) ~ "Another identity"),
-                         levels = c("White", "Asian", "Black",
-                                    "Hispanic or Latino", "Another identity")))
+levels(mh_clean$RACIALIZED_6CAT)     # "White" must be first: it is the comparison group
 
-model_lab_3 <- lm(WELLBEING ~ SUPPORT + RACE_5, data = mh_clean)
+model_lab_3 <- lm(WELLBEING ~ SUPPORT + RACIALIZED_6CAT, data = mh_clean)
 
 summary(model_lab_3)
 nobs(model_lab_3)
@@ -473,14 +445,14 @@ ggplot(data = data.frame(residual = resid(model_lab_3)),
   theme_bw()
 ```
 
-A multiple linear regression (n = `r nobs(lab_m3)`) showed that perceived social support was positively associated with well-being (b = `r sprintf("%.2f", c3["SUPPORT", 1])`, p `r pfmt(c3["SUPPORT", 4])`), after accounting for racial/ethnic identity. Compared with White respondents, Asian (b = `r sprintf("%.2f", c3["RACE_5Asian", 1])`, p `r pfmt(c3["RACE_5Asian", 4])`) and Black (b = `r sprintf("%.2f", c3["RACE_5Black", 1])`, p `r pfmt(c3["RACE_5Black", 4])`) respondents reported lower well-being; Hispanic or Latino respondents (p `r pfmt(c3["RACE_5Hispanic or Latino", 4])`) and respondents with another identity (n = `r sum(mh_clean$RACE_5 == "Another identity", na.rm = TRUE)`; p `r pfmt(c3["RACE_5Another identity", 4])`) did not differ significantly (R² = `r sub("^0", "", sprintf("%.2f", summary(lab_m3)$r.squared))`).
+A multiple linear regression (n = `r nobs(lab_m3)`) showed that perceived social support was positively associated with well-being (b = `r sprintf("%.2f", c3["SUPPORT", 1])`, p `r pfmt(c3["SUPPORT", 4])`), after accounting for racial/ethnic identity. Compared with White respondents, Asian (b = `r sprintf("%.2f", c3["RACIALIZED_6CATAsian", 1])`, p `r pfmt(c3["RACIALIZED_6CATAsian", 4])`) and Black (b = `r sprintf("%.2f", c3["RACIALIZED_6CATBlack", 1])`, p `r pfmt(c3["RACIALIZED_6CATBlack", 4])`) respondents reported lower well-being; Hispanic or Latine respondents (p `r pfmt(c3["RACIALIZED_6CATHispanic or Latine", 4])`) and respondents with another identity (n = `r sum(mh_clean$RACIALIZED_6CAT == "Another identity", na.rm = TRUE)`; p `r pfmt(c3["RACIALIZED_6CATAnother identity", 4])`) did not differ significantly (R² = `r sub("^0", "", sprintf("%.2f", summary(lab_m3)$r.squared))`).
 :::
 
 ::: {.callout-warning collapse="true" icon="false"}
 ## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
 
 -   **Your slope is for the wrong variable** → the outcome goes on the **left** of the `~`. `WELLBEING ~ SUPPORT`, not `SUPPORT ~ WELLBEING`.
--   **One row named `RACE` with a single slope** → you used `RACE` (numbers) when you needed `POC` or `RACE_5` (a factor). R treated the codes 1 to 7 as a score. This gives you a wrong answer without any error message.
+-   **One row named `RACIALIZED_6CAT` with a single slope** → the variable is not a factor. R treated the groups as a score. Rebuild it with `factor()` as in [Transforming Your Data](dplyr.qmd). This gives you a wrong answer without any error message.
 -   **Your comparison group is not White** → R uses the **first** level as the comparison group. If you leave out `levels =`, R sorts the groups by the alphabet.
 -   **A group is missing from `count()`** → look for a typo in `case_when()`. Any answer you do not list becomes `NA`.
 -   **Your n is `r nrow(mh_clean)`** → that is the number of rows in the dataset, not the number of people in the model. Use `nobs()`.
@@ -513,14 +485,14 @@ Once you finish all of the R Labs, come back here with **your team's dataset** a
 #| eval: false
 
 # 1. every categorical predictor must be a factor (skip this if you have none)
-yourdata <- yourdata |>                          # REPLACE with your clean dataset
+alldata <- alldata |>                          # alldata = your team's imported .clean dataset (Import Data Once)
   mutate(GROUPVARIABLE = factor(GROUPVARIABLE,   # REPLACE with your categorical predictor
                                 levels = c(1, 2),               # REPLACE with its codes
                                 labels = c("REPLACE", "REPLACE")))  # REPLACE with its labels; the FIRST one is the comparison group
 
 # 2. run the model: OUTCOME ~ PREDICTOR1 + PREDICTOR2 + ...
 model_REPLACE <- lm(OUTCOME ~ PREDICTOR1 + PREDICTOR2 + GROUPVARIABLE,   # REPLACE every name
-                    data = yourdata)
+                    data = alldata)
 
 summary(model_REPLACE)      # slopes (Estimate), p-values (Pr(>|t|)), and R-squared
 nobs(model_REPLACE)         # the number of people in the model

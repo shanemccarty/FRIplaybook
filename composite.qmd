@@ -45,7 +45,7 @@ execute:
 
 ## Dataset
 
-The health beliefs dataset includes a range of variables, including promotion focus and prevention focus.
+The health beliefs dataset includes a range of variables, including promotion focus and prevention focus, measured with the 11-item Regulatory Focus Questionnaire (RFQ; Higgins et al., 2001). The RFQ has two subscales: six promotion items and five prevention items.
 
 -   Promotion focus: a general regulatory motivational preference toward growth and change, attention to positive things, and success seeking
 
@@ -224,7 +224,213 @@ focus_scores
 ::: {.callout-important .required}
 ## Required: report Cronbach's alpha
 
-In the measures section of your `Lastname_RDreport.qmd` and final report, please include the results of the reliability analysis (aka cronbach's alpha).
+In the Measures section of your *RD Report* and *Final Report*, report the results of the reliability analysis (Cronbach's alpha) from **your** sample for every composite you use, including each subscale. Lab Play 4 below shows the sentence.
 :::
+
+## 🏈 The Lab {#sec-composite-lab}
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** The play used one dataset with two separate scales. Your team's survey will have both kinds of multi-item measure: a **unidimensional** scale (one construct, one score, such as `WELLBEING1` to `WELLBEING8`) and a **multidimensional** scale (one construct with subscales, such as stigma with public and self stigma). The lab practices both on the lab dataset, and ends with the sentence you will write in your Methods section. Try each play before you open my check.
+:::
+::::::
+
+```{r}
+#| label: lab-composite-setup
+#| include: false
+#| cache: false
+library(tidyverse)
+library(psych)
+source("lab_prep.R")   # creates mh_clean
+wb_keys <- list(WELLBEING = paste0("WELLBEING", 1:8))
+lab_wb <- scoreItems(wb_keys, mh_clean, impute = "none")
+stig_keys <- list(
+  STIGMA_PUB  = c("STIGMA_PUB1", "STIGMA_PUB2", "STIGMA_PUB3", "-STIGMA_PUB4_R"),
+  STIGMA_SELF = c("-STIGMA_SELF1_R", "STIGMA_SELF2", "STIGMA_SELF3", "-STIGMA_SELF4_R"),
+  STIGMA      = c("STIGMA_PUB1", "STIGMA_PUB2", "STIGMA_PUB3", "-STIGMA_PUB4_R",
+                  "-STIGMA_SELF1_R", "STIGMA_SELF2", "STIGMA_SELF3", "-STIGMA_SELF4_R"))
+lab_stig <- scoreItems(stig_keys, mh_clean, impute = "none")
+k10_keys <- list(K10 = paste0("DISTRESS", 1:10))
+lab_k10 <- scoreItems(k10_keys, mh_clean, totals = TRUE)
+a <- function(x, k) sub("^0", "", sprintf("%.2f", x$alpha[1, k]))
+r_ps <- sub("^0", "", sprintf("%.2f", cor(lab_stig$scores[, "STIGMA_PUB"], lab_stig$scores[, "STIGMA_SELF"], use = "complete.obs")))
+```
+
+**Before you start.** Open your lab `.qmd`, run your load-library chunk (`psych` must be loaded), and run `source("lab_prep.R")` so that `mh_clean` is in your environment. `mh_clean` already contains `WELLBEING` and `STIGMA` made with `rowMeans()`. In this lab you will make them again with `scoreItems()`, which also gives you the reliability.
+
+### Lab Play 1: A unidimensional scale (WELLBEING)
+
+Positive mental well-being is measured with eight items, `WELLBEING1` to `WELLBEING8`, all worded in the same direction, on a 1-to-5 frequency scale (*none of the time* to *all of the time*). Make a scoring key with one entry, run `scoreItems()` with `impute = "none"`, read the alpha, and add the score to `mh_clean` as `WELLBEING_SI`. Then check that it equals the `WELLBEING` that `lab_prep.R` made.
+
+::: {.callout-note}
+## Missing answers: `impute`
+
+When a participant skipped an item, `scoreItems()` fills in the item's median for that person by default (`impute = "median"`). With `impute = "none"`, it averages the items the person did answer, which is what `rowMeans(na.rm = TRUE)` does. Both are defensible. Pick one for your report, use it for every composite, and say which one you used in your Methods.
+:::
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   Cronbach's alpha for `WELLBEING` is **`r a(lab_wb, "WELLBEING")`**: `r ifelse(lab_wb$alpha[1, "WELLBEING"] >= .80, "good", "acceptable")`, by the table above.
+-   No item is reverse-scored, so the key has no `-` signs.
+-   `all.equal()` returns `TRUE`: with `impute = "none"`, `scoreItems()` and `rowMeans(na.rm = TRUE)` give the same average. The difference is that `scoreItems()` also reports reliability. (Leave out `impute = "none"` and the scores differ slightly for the people who skipped an item.)
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-composite-solution-1
+#| eval: false
+wb_keys <- list(WELLBEING = c("WELLBEING1", "WELLBEING2", "WELLBEING3", "WELLBEING4",
+                              "WELLBEING5", "WELLBEING6", "WELLBEING7", "WELLBEING8"))
+lab_wb <- scoreItems(wb_keys, mh_clean, impute = "none")
+lab_wb                                     # alpha is in the first table
+
+mh_clean$WELLBEING_SI <- lab_wb$scores[, "WELLBEING"]
+all.equal(as.numeric(mh_clean$WELLBEING_SI), mh_clean$WELLBEING)   # same score as rowMeans()
+
+#source: The Quantitative Playbook for R (McCarty, 2026); psych package (Revelle)
+#explanation: one key with eight items, no reverse items; scoreItems() returns the mean of the eight items and Cronbach's alpha
+```
+:::
+
+### Lab Play 2: A multidimensional scale (STIGMA with two subscales)
+
+Stigma has eight items in two subscales: public stigma (`STIGMA_PUB1` to `STIGMA_PUB4_R`) and self stigma (`STIGMA_SELF1_R` to `STIGMA_SELF4_R`). Three items end in `_R`: they are reverse items, stored in the original direction ([Name and Recode Variables in Qualtrics](qualtrics.qmd)), so they need a `-` in the key. Make a key with **three** entries, `STIGMA_PUB`, `STIGMA_SELF`, and `STIGMA` (all eight), run `scoreItems()`, and add all three scores to `mh_clean`. Then look at how the two subscales relate.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   Alphas: **`STIGMA_PUB` = `r a(lab_stig, "STIGMA_PUB")`**, **`STIGMA_SELF` = `r a(lab_stig, "STIGMA_SELF")`**, and the full **`STIGMA` = `r a(lab_stig, "STIGMA")`**. The eight-item total is more reliable than either four-item subscale. That is usual: alpha rises with the number of items, which is one reason to report the total as well as the subscales.
+-   The two subscale scores correlate at **r = `r r_ps`**: related, as parts of one construct should be, but far from identical, which is why the subscales are worth keeping.
+-   If an alpha is much lower than these, or the output warns that some items correlate negatively with the total, you forgot a `-` on a reverse item. Fix the key and run it again.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-composite-solution-2
+#| eval: false
+stig_keys <- list(
+  STIGMA_PUB  = c("STIGMA_PUB1", "STIGMA_PUB2", "STIGMA_PUB3", "-STIGMA_PUB4_R"),
+  STIGMA_SELF = c("-STIGMA_SELF1_R", "STIGMA_SELF2", "STIGMA_SELF3", "-STIGMA_SELF4_R"),
+  STIGMA      = c("STIGMA_PUB1", "STIGMA_PUB2", "STIGMA_PUB3", "-STIGMA_PUB4_R",
+                  "-STIGMA_SELF1_R", "STIGMA_SELF2", "STIGMA_SELF3", "-STIGMA_SELF4_R"))
+lab_stig <- scoreItems(stig_keys, mh_clean, impute = "none")
+lab_stig                                   # three alphas
+
+mh_clean$STIGMA_PUB  <- lab_stig$scores[, "STIGMA_PUB"]
+mh_clean$STIGMA_SELF <- lab_stig$scores[, "STIGMA_SELF"]
+mh_clean$STIGMA      <- lab_stig$scores[, "STIGMA"]
+
+cor(mh_clean$STIGMA_PUB, mh_clean$STIGMA_SELF, use = "complete.obs")
+
+#source: The Quantitative Playbook for R (McCarty, 2026); psych package (Revelle)
+#explanation: one key per subscale plus one for the total; the minus sign reverses the _R items before averaging; the subscale correlation shows they measure related but different parts of stigma
+```
+:::
+
+### Lab Play 3: A scale that is summed, not averaged (the K10)
+
+The ten `DISTRESS` items are the Kessler Psychological Distress Scale (K10; Kessler et al., 2002), and Kessler's scoring **adds** the items (10 to 50) instead of averaging them, because the published cut-offs are for the total ([Transforming Your Data](dplyr.qmd)). `scoreItems()` can do that too: add `totals = TRUE`. (Keep the default `impute` here: a sum of only the answered items would be too low, and `scoreItems()` warns you about that.) Score the K10 and compare with `K10_TOTAL` from `lab_prep.R`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   Alpha for the K10 is **`r a(lab_k10, "K10")`**, `r ifelse(lab_k10$alpha[1, "K10"] >= .80, "good", "acceptable")`. Alpha is the same whether you sum or average: it depends on the items, not on the scoring.
+-   With `totals = TRUE`, the scores run from 10 to 50 and equal `K10_TOTAL` for everyone who answered all ten items. The `r sum(is.na(mh_clean$K10_TOTAL))` people who skipped an item have `NA` in `K10_TOTAL` (`rowSums()` needs every item) but get a score from `scoreItems()`, which filled in the median. Say which rule you used.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-composite-solution-3
+#| eval: false
+k10_keys <- list(K10 = paste0("DISTRESS", 1:10))     # the same as typing the ten names
+lab_k10  <- scoreItems(k10_keys, mh_clean, totals = TRUE)
+lab_k10
+head(cbind(lab_k10$scores, mh_clean$K10_TOTAL))
+
+#source: The Quantitative Playbook for R (McCarty, 2026); Kessler et al. (2002)
+#explanation: totals = TRUE makes scoreItems() sum the items instead of averaging them, which is how the K10 is scored
+```
+:::
+
+### Lab Play 4: Write the sentence for your Methods section
+
+Every composite in your report needs one sentence in the Measures part of your Methods: what the scale measures, how many items, the response scale, how it was scored, any reverse items, and the reliability in **this** sample. Write those sentences for `WELLBEING` and `STIGMA`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: a model sentence for each
+
+> Positive mental well-being was measured with eight items about the past two weeks (1 = *none of the time* to 5 = *all of the time*), averaged so that higher scores mean greater well-being (Cronbach's α = `r a(lab_wb, "WELLBEING")`).
+
+> Mental health stigma was measured with eight items on a 5-point agreement scale, in two subscales: public stigma (4 items, one reverse-scored; α = `r a(lab_stig, "STIGMA_PUB")`) and self stigma (4 items, two reverse-scored; α = `r a(lab_stig, "STIGMA_SELF")`). Reverse items were recoded before averaging, and the eight items were also averaged into a total stigma score (α = `r a(lab_stig, "STIGMA")`), with higher scores meaning more stigma. Scores were the mean of the items a participant answered.
+
+Notice that a reader can rebuild your score from the sentence: number of items, direction, reverse items, averaging or summing, and the alpha you found, not the alpha in the original paper.
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref-whistle.svg){fig-alt="Ref the raccoon blowing his whistle"}
+:::
+
+::: ref-say
+**Ref's final whistle.** Put the sentences from Lab Play 4 in your coding journal: you will reuse their shape for your own measures. Save, render, back up to your ELN.
+:::
+::::::
+
+## 🏆 Your Turn {#sec-composite-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Score every multi-item measure in your team's survey with `scoreItems()`, using your team codebook ([Name and Recode Variables in Qualtrics](qualtrics.qmd)) to tell you which items belong together, which are subscales, and which are reverse items. Then use the checklist.
+:::
+
+```{r}
+#| label: composite-template
+#| eval: false
+library(psych)
+
+my_keys <- list(
+  MEASURE    = c("ITEM1", "ITEM2", "-ITEM3_R", "ITEM4"),        # REPLACE: one entry per composite; - for reverse items
+  SUBSCALE_A = c("ITEM1", "ITEM2"),                              # REPLACE: subscales, if your measure has them
+  SUBSCALE_B = c("-ITEM3_R", "ITEM4")
+)
+my_scores <- scoreItems(my_keys, alldata, impute = "none")   # alldata = your team's imported .clean dataset
+my_scores                                         # alpha for every entry in the key
+
+alldata$MEASURE <- my_scores$scores[, "MEASURE"]  # REPLACE: add each score you will use
+```
+
+| Criteria | Ask yourself |
+|----|----|
+| **Items from the codebook** | Does every entry in the key match the items listed for that measure in your team codebook, spelled exactly? |
+| **Reverse items** | Does every item whose name ends in `_R` have a `-` in front of it, and no other item does? |
+| **Subscales and total** | If the measure has subscales, did you score each subscale *and* the total? |
+| **Sum or mean** | Did you score the way the published scale is scored (`totals = TRUE` for a summed scale such as the K10)? |
+| **Alpha** | Is every alpha at least .70? If not, did you check the reverse items first, and then decide (and record) what to do? |
+| **Methods sentence** | Does each composite have a Methods sentence with the number of items, response scale, direction, reverse items, scoring, and the alpha from your sample? |
+| **Score in the data** | Did you add each score to `alldata` with a name that follows the naming rules (`WELLBEING`, `STIGMA_PUB`, not `score1`)? |
+
+## References
+
+Andrews, G., & Slade, T. (2001). Interpreting scores on the Kessler Psychological Distress Scale (K10). *Australian and New Zealand Journal of Public Health, 25*(6), 494–497. <https://doi.org/10.1111/j.1467-842X.2001.tb00310.x>
+
+Higgins, E. T., Friedman, R. S., Harlow, R. E., Idson, L. C., Ayduk, O. N., & Taylor, A. (2001). Achievement orientations from subjective histories of success: Promotion pride versus prevention pride. *European Journal of Social Psychology, 31*(1), 3–23. <https://doi.org/10.1002/ejsp.27>
+
+Kessler, R. C., Andrews, G., Colpe, L. J., Hiripi, E., Mroczek, D. K., Normand, S.-L. T., Walters, E. E., & Zaslavsky, A. M. (2002). Short screening scales to monitor population prevalences and trends in non-specific psychological distress. *Psychological Medicine, 32*(6), 959–976. <https://doi.org/10.1017/S0033291702006074>
+
+Kessler, R. C., Barker, P. R., Colpe, L. J., Epstein, J. F., Gfroerer, J. C., Hiripi, E., Howes, M. J., Normand, S.-L. T., Manderscheid, R. W., Walters, E. E., & Zaslavsky, A. M. (2003). Screening for serious mental illness in the general population. *Archives of General Psychiatry, 60*(2), 184–189. <https://doi.org/10.1001/archpsyc.60.2.184>
+
+Revelle, W. (2024). *psych: Procedures for psychological, psychometric, and personality research* (R package). Northwestern University. <https://CRAN.R-project.org/package=psych>
 
 {{< include _ref-whistle-box.qmd >}}

@@ -5,6 +5,8 @@
 # ---- added 2026-09-20: do NOT publish data (Shane's decision for this release) ----
 # new datasets made for the 2nd edition (kept on Shane's computer / shared through the course, not GitHub)
 data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx
+data/ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx
+# data/insurance.xlsx is public example data (Kaggle), same as insurance.csv: it IS published
 data/pregnancy_beliefs_SIMULATED.csv
 make_regression_example.R
 # knitr caches store whole datasets as .RData files

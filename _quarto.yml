@@ -7,7 +7,7 @@ book:
   subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
   date: "09/22/2026"
-  version: "Edition 2 (v2.03)"      
+  version: "Edition 2 (v2.17)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -35,12 +35,16 @@ book:
 
     - part: "Clean Data (Lab 2)"
       chapters:
+        - text: "Name & Recode Vars"
+          file: qualtrics.qmd
         - text: "Export Survey Data"
           file: export.qmd
         - text: "Import Data Once"
           file: import-once.qmd
         - text: "Pre/Post Data"               # Teams 3 and 5; combines the old tidyr.qmd + merge.qmd (2026-09-20)
           file: prepost.qmd
+        - text: "Vignette Data"                 # Team 4 only: compare four vignettes (2 x 2 within-person), pivot_longer + factors (2026-09-28)
+          file: vignette.qmd
         - text: "Mutate Variables"
           file: dplyr.qmd
         - text: "Creating Composites"

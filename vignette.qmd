@@ -1,0 +1,365 @@
+---
+title: "Vignette Data"
+subtitle: "How to reshape a survey in which every person rated four vignettes (a 2 × 2 within-person design)"
+author:
+  - Shane McCarty, PhD
+abstract: |
+  This chapter is for Team 4 only. Team 4's survey shows every participant four vignettes that differ in two details changed on purpose, and asks the same rating question after each one, so the analysis compares the four vignettes with each other. Qualtrics exports that design wide, one column per case, but the analysis needs one row per person per case with a factor for each detail that was varied. Researchers learn to write down the design as a table, reshape with pivot_longer(), add the factors with case_when(), and check that every case landed in exactly one cell, using four mental-health vignettes from the lab dataset (racialized as Black or White, current mental ill health high or low, rated for risk of a future serious mental illness diagnosis on a 1-to-12 scale). Your Turn gives Team 4 the template for its four sentencing vignettes.
+keywords:
+  - Team 4
+  - vignettes
+  - case studies
+  - factorial design
+  - within-person
+  - pivot_longer
+  - tidyr
+date: 09.28.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+execute:
+  warning: false
+  message: false
+  cache: false
+---
+
+{{< include _ref-kickoff-box.qmd >}}
+
+::: {.callout-note collapse="true"}
+## Resources: `tidyr` and factorial designs
+
+- [R4DS Book Chapter 5: Data tidying](https://r4ds.hadley.nz/data-tidy.html)
+- [tidyr Cheatsheet](https://rstudio.github.io/cheatsheets/html/tidyr.html)
+- [`pivot_longer()` documentation](https://tidyr.tidyverse.org/reference/pivot_longer.html)
+- [Factorial designs (Research Methods in Psychology, open textbook)](https://opentextbc.ca/researchmethods/chapter/multiple-independent-variables/)
+:::
+
+## Who needs this chapter?
+
+**This chapter is for Team 4 only.** Team 4's survey shows every participant four **vignettes** (short descriptions of a person) that are identical except for two details the team changed on purpose, and asks the same question after each one. The research question is a comparison **between the four vignettes**: does the rating change when the details change? Every other team has one rating per person and can skip this chapter.
+
+::: {.callout-note .gray collapse="true"}
+## 📁 Team 4: four sentencing vignettes
+
+Every participant reads four vignettes about a person convicted of the same crime and recommends a sentence after each: `SENTENCE1` (racialized as Black, rich), `SENTENCE2` (racialized as Black, poor), `SENTENCE3` (racialized as White, rich), `SENTENCE4` (racialized as White, poor). The lab dataset has the same design about mental health, so the Lab is your rehearsal, and Your Turn is your template.
+:::
+
+## The idea: two factors, four vignettes, one row per rating
+
+When the same person rates several vignettes, each vignette is not a different *person*; it is a different *condition*. Two words describe that design:
+
+-   A **factor** is a detail your team varied on purpose. Team 4 has two: racialized identity and class.
+-   A **level** is one setting of a factor. Each of Team 4's factors has two levels (Black / White; rich / poor).
+
+Two factors with two levels each make **2 × 2 = 4** vignettes, one for every combination. Because every participant rates all four, the design is **within-person** (also called repeated measures): differences between the vignettes are measured inside each person, which is what makes the comparison fair, because the same people rate every vignette.
+
+Qualtrics can only export this **wide**: one row per person and one column per vignette (`CASE1` … `CASE4` in the lab data). The column name tells you only the number. The analysis needs the data **long**: one row per person per vignette, with one column that says what the rating was and one column for each factor. This chapter gets you from the first shape to the second.
+
+## The lab vignettes
+
+The lab dataset asked every respondent the same question after four short vignettes (named `CASE1` to `CASE4` in the file): *How likely is it that this person will be diagnosed with a serious mental illness in the next five years?* (1 = very unlikely … 12 = very likely). The four vignettes are word-for-word the same except for two sentences.
+
+::: {.callout-note .gray collapse="true"}
+## 📄 Read the four vignettes
+
+**The shared part of every vignette.** *Jordan is 24 years old, works full time at a grocery store, and lives with two roommates. Jordan grew up in a small city, finished high school, and keeps in touch with family by phone most weeks.*
+
+| | Sentence that changes: racialized identity | Sentence that changes: current mental ill health |
+|----|----|----|
+| **Case 1** (`CASE1`): Black, high | *Jordan is Black.* | *Over the past six months, Jordan has had trouble sleeping most nights, has stopped seeing friends, has missed several shifts at work, and says that on some days it is hard to get out of bed.* |
+| **Case 2** (`CASE2`): Black, low | *Jordan is Black.* | *Over the past six months, Jordan has occasionally felt stressed about money and had a few restless nights, but sleeps well most of the time, sees friends on weekends, and has not missed work.* |
+| **Case 3** (`CASE3`): White, high | *Jordan is white.* | *(same as Case 1)* |
+| **Case 4** (`CASE4`): White, low | *Jordan is white.* | *(same as Case 2)* |
+
+**The question after each vignette.** *How likely is it that Jordan will be diagnosed with a serious mental illness in the next five years?* 1 = very unlikely … 12 = very likely.
+
+**And then an open-ended one.** *Why did you rate Jordan's risk this way?* Its answers are in `CASE1_QUAL` to `CASE4_QUAL`, right after each rating, the way Team 4's `SENTENCE1_QUAL` to `SENTENCE4_QUAL` follow each sentence. They are not used in this chapter; the mixed-methods chapter after Lab 6 brings the rating and the reason back together.
+:::
+
+Notice how the four lab vignettes line up with Team 4's: `CASE1` is to `SENTENCE1` as Black/high is to Black/rich, and so on down the list. That is on purpose, so that the code you write in the Lab is the code you will run in Your Turn.
+
+## 📋 The Play
+
+The Play uses four made-up people so you can see every row.
+
+```{r}
+#| label: load-library-cases
+library(dplyr)
+library(tidyr)
+```
+
+```{r}
+#| label: example-cases-wide
+case_wide <- tibble(
+  ResponseId = c("R_1a", "R_2b", "R_3c", "R_4d"),
+  CASE1 = c(8, 5, 9, 6),     # racialized as Black, high
+  CASE2 = c(9, 6, 10, 7),    # racialized as Black, low
+  CASE3 = c(6, 4, 8, 5),     # racialized as White, high
+  CASE4 = c(7, 5, 8, 6))     # racialized as White, low
+case_wide
+```
+
+### Step 1: Write the design as a table
+
+Before any code, write down which vignette is which combination. Take it from your survey and put it in your team codebook ([Name and Recode Variables in Qualtrics](qualtrics.qmd)). Everything below depends on it.
+
+| Column | `CASE_RACIALIZED` | `CASE_SEVERITY` |
+|--------|-------------------|-----------------|
+| `CASE1` | Black | High |
+| `CASE2` | Black | Low |
+| `CASE3` | White | High |
+| `CASE4` | White | Low |
+
+The factor names start with `CASE_` so that a reader can tell them apart from the respondent's *own* racialized identity (`RACIALIZED_6CAT`) and *own* distress (`DISTRESS_4CAT`), which are different variables about different people.
+
+### Step 2: `pivot_longer()`: one row per person per vignette
+
+The four columns become two: `CASE` (which vignette the rating came from) and `RISK` (the rating). Each person now has four rows.
+
+```{r}
+#| label: cases-to-long
+case_long <- case_wide |>
+  pivot_longer(
+    cols      = c(CASE1, CASE2, CASE3, CASE4),
+    names_to  = "CASE",
+    values_to = "RISK")
+
+case_long
+```
+
+### Step 3: Add a factor for each thing that varied
+
+`CASE` holds four labels, but the design has two factors. Use the table from Step 1 and `case_when()` ([Transforming Your Data](dplyr.qmd)) to add them, and make each one a factor with the **comparison level first**: the level you will read the other one against.
+
+```{r}
+#| label: cases-add-factors
+case_long <- case_long |>
+  mutate(
+    CASE_RACIALIZED = factor(case_when(
+      CASE %in% c("CASE1", "CASE2") ~ "Black",
+      CASE %in% c("CASE3", "CASE4") ~ "White"),
+      levels = c("White", "Black")),
+    CASE_SEVERITY = factor(case_when(
+      CASE %in% c("CASE1", "CASE3") ~ "High",
+      CASE %in% c("CASE2", "CASE4") ~ "Low"),
+      levels = c("Low", "High")))
+
+case_long |> count(CASE, CASE_RACIALIZED, CASE_SEVERITY)   # ALWAYS check: 4 rows, each combination once
+```
+
+### Step 4: Check the reshape
+
+Four vignettes times the number of people is the number of rows, and the count in Step 3 shows every vignette in exactly one combination of the two factors. If a combination appears twice or is missing, Step 1's table and Step 3's code disagree.
+
+```{r}
+#| label: cases-check
+nrow(case_wide) * 4 == nrow(case_long)
+
+case_long |>
+  group_by(CASE_RACIALIZED, CASE_SEVERITY) |>
+  summarise(mean_risk = mean(RISK), .groups = "drop")
+```
+
+The last table is the one your research question is about: the mean rating in each of the four cells. Whether those differences are more than chance is a test with two factors and repeated measures (every person rated all four vignettes), which is why `ResponseId` stays in the long data. That test comes in a later chapter; the data are now in the shape it needs.
+
+::: callout-tip
+## Go: the same play, other designs
+
+The same four steps work for three vignettes, for a 2 × 3 design, or for a repeated question that is not a vignette at all (the same rating of four messages, four policies, four treatments). What changes is the table in Step 1 and the `case_when()` lines that come from it.
+:::
+
+## 🏈 The Lab {#sec-vignette-lab}
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** The lab dataset has the four mental-health vignettes above as `CASE1` to `CASE4`, one row per person. Run the four steps of the Play on `mh_clean`. Try each play before you open my check.
+:::
+::::::
+
+```{r}
+#| label: lab-cases-setup
+#| include: false
+library(tidyverse)
+source("lab_prep.R")
+lab_case_long <- mh_clean |>
+  select(ResponseId, CASE1, CASE2, CASE3, CASE4) |>
+  pivot_longer(cols = c(CASE1, CASE2, CASE3, CASE4), names_to = "CASE", values_to = "RISK") |>
+  mutate(
+    CASE_RACIALIZED = factor(case_when(CASE %in% c("CASE1", "CASE2") ~ "Black",
+                                       CASE %in% c("CASE3", "CASE4") ~ "White"),
+                             levels = c("White", "Black")),
+    CASE_SEVERITY = factor(case_when(CASE %in% c("CASE1", "CASE3") ~ "High",
+                                     CASE %in% c("CASE2", "CASE4") ~ "Low"),
+                           levels = c("Low", "High")))
+lab_cells <- lab_case_long |>
+  group_by(CASE_RACIALIZED, CASE_SEVERITY) |>
+  summarise(n = sum(!is.na(RISK)), mean_risk = mean(RISK, na.rm = TRUE), .groups = "drop")
+cell <- function(r, s) sprintf("%.2f", lab_cells$mean_risk[lab_cells$CASE_RACIALIZED == r & lab_cells$CASE_SEVERITY == s])
+n_skipped <- sum(is.na(lab_case_long$RISK))
+```
+
+**Before you start.** Open your lab `.qmd`, run your load-library chunk (`dplyr` and `tidyr`), and run `source("lab_prep.R")` so that `mh_clean` is in your environment.
+
+### Lab Play 1: Look at the wide data
+
+Select `ResponseId` and the four rating columns `CASE1`, `CASE2`, `CASE3`, `CASE4` from `mh_clean` (name them one by one: the range `CASE1:CASE4` would also pick up the `_QUAL` columns that sit between them) and look at the first rows and at `summary()` of the four columns.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you see?
+
+-   One row per person, `r nrow(mh_clean)` rows, and every rating between 1 and 12.
+-   The means already tell the story: `CASE1` (Black, high) is highest and `CASE4` (White, low) is lowest. A few cells are `NA`: some people skipped a vignette.
+:::
+
+### Lab Play 2: Reshape to long and add the two factors
+
+Do Steps 2 and 3 of the Play on the lab data, naming the result `case_long`, then count `CASE` by the two factors.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
+
+-   **`r nrow(lab_case_long)` rows**: `r nrow(mh_clean)` people × 4 vignettes. `nrow(mh_clean) * 4 == nrow(case_long)` is `TRUE`.
+-   The count has **four rows**, each vignette in exactly one cell, and each cell with `r nrow(mh_clean)` rows (the `NA` ratings are still rows; they just have no `RISK`).
+-   `levels(case_long$CASE_RACIALIZED)` is `White`, `Black`, and `levels(case_long$CASE_SEVERITY)` is `Low`, `High`: the comparison level first.
+:::
+
+### Lab Play 3: The four cell means
+
+Group `case_long` by the two factors and get the mean of `RISK` (with `na.rm = TRUE`) and the number of ratings in each cell.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+| | Low current ill health | High current ill health |
+|----|----|----|
+| **Racialized as White** | `r cell("White", "Low")` | `r cell("White", "High")` |
+| **Racialized as Black** | `r cell("Black", "Low")` | `r cell("Black", "High")` |
+
+-   Current ill health moves the rating a lot (about `r sprintf("%.1f", mean(c(as.numeric(cell("White","High")), as.numeric(cell("Black","High")))) - mean(c(as.numeric(cell("White","Low")), as.numeric(cell("Black","Low")))))` points): people rate the same future risk as much higher when the person is already struggling.
+-   Holding ill health constant, the person described as Black is rated at higher risk than the person described as white, in **both** rows. The vignettes are otherwise word-for-word identical, so that difference is not about Jordan. It is about the raters, which is what makes a design like this useful for studying bias.
+-   `r n_skipped` ratings are `NA`. `na.rm = TRUE` leaves them out of the means; a later test will decide how to handle people with a missing vignette.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-cases-solution
+#| eval: false
+library(dplyr)
+library(tidyr)
+source("lab_prep.R")
+
+mh_clean |> select(ResponseId, CASE1, CASE2, CASE3, CASE4) |> head()          # Lab Play 1
+summary(select(mh_clean, CASE1, CASE2, CASE3, CASE4))
+
+case_long <- mh_clean |>                                        # Lab Play 2
+  select(ResponseId, CASE1, CASE2, CASE3, CASE4) |>
+  pivot_longer(cols = c(CASE1, CASE2, CASE3, CASE4), names_to = "CASE", values_to = "RISK") |>
+  mutate(
+    CASE_RACIALIZED = factor(case_when(
+      CASE %in% c("CASE1", "CASE2") ~ "Black",
+      CASE %in% c("CASE3", "CASE4") ~ "White"),
+      levels = c("White", "Black")),
+    CASE_SEVERITY = factor(case_when(
+      CASE %in% c("CASE1", "CASE3") ~ "High",
+      CASE %in% c("CASE2", "CASE4") ~ "Low"),
+      levels = c("Low", "High")))
+case_long |> count(CASE, CASE_RACIALIZED, CASE_SEVERITY)
+nrow(mh_clean) * 4 == nrow(case_long)
+
+case_long |>                                                    # Lab Play 3
+  group_by(CASE_RACIALIZED, CASE_SEVERITY) |>
+  summarise(n = sum(!is.na(RISK)), mean_risk = mean(RISK, na.rm = TRUE), .groups = "drop")
+
+#source: The Quantitative Playbook for R (McCarty, 2026); R4DS Ch. 5 https://r4ds.hadley.nz/data-tidy.html
+#explanation: four vignette columns become one row per person per vignette; case_when() adds the two factors from the design table; the count proves each vignette is in one cell; the cell means are the descriptive answer to a 2 x 2 question
+```
+:::
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
+
+-   **The count has more than four rows, or a cell is missing** → a `case_when()` line names the wrong vignette. Compare the code with your Step 1 table, line by line.
+-   **`nrow()` is not four times the number of people** → you selected more columns than the four vignettes into `pivot_longer()`, or fewer.
+-   **The means are all `NA`** → you forgot `na.rm = TRUE`.
+-   **Levels come out alphabetically** (`Black` before `White`) → you forgot `levels =` in `factor()`.
+-   **An error about combining `character` and `double`** (or `RISK` comes out as text) → you selected the `_QUAL` text columns along with the ratings, usually by writing a range like `CASE1:CASE4`. Name the four rating columns one by one.
+-   **`object 'CASE1' not found`** → your lab data file is older than this chapter. Get the current `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` from your instructor.
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref-whistle.svg){fig-alt="Ref the raccoon blowing his whistle"}
+:::
+
+::: ref-say
+**Ref's final whistle.** Keep `case_long`: the two-factor test in a later chapter starts from it. Add the `pivot_longer()` and `mutate()` lines to the bottom of your `lab_prep.R` as `case_long <- …`. Save, render, back up to your ELN.
+:::
+::::::
+
+## 🏆 Your Turn {#sec-vignette-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Team 4: write your Step 1 table (which `SENTENCE` column is which vignette) into your codebook first, then change every line marked `# REPLACE` and use the checklist.
+:::
+
+```{r}
+#| label: vignette-template
+#| eval: false
+library(readxl)
+library(dplyr)
+library(tidyr)
+
+# 1. import the .clean file
+alldata <- read_excel("data/10.09.2026.data.team4.clean.xlsx")   # REPLACE with your file
+alldata[alldata == -99] <- NA
+alldata[alldata == -50] <- NA
+
+# 2. one row per person per vignette
+case_long <- alldata |>
+  select(ResponseId, SENTENCE1, SENTENCE2, SENTENCE3, SENTENCE4) |>   # REPLACE: name the rating columns one by one (a range would also grab the _QUAL columns)
+  pivot_longer(
+    cols      = c(SENTENCE1, SENTENCE2, SENTENCE3, SENTENCE4),   # REPLACE
+    names_to  = "CASE",
+    values_to = "SENTENCE")                           # REPLACE with the name of what was rated
+
+# 3. add a factor for each thing the vignettes varied (from the Step 1 table in your codebook)
+case_long <- case_long |>
+  mutate(
+    CASE_RACIALIZED = factor(case_when(
+      CASE %in% c("SENTENCE1", "SENTENCE2") ~ "Black",     # REPLACE: which vignettes had which level
+      CASE %in% c("SENTENCE3", "SENTENCE4") ~ "White"),
+      levels = c("White", "Black")),
+    CASE_CLASS = factor(case_when(
+      CASE %in% c("SENTENCE1", "SENTENCE3") ~ "Rich",
+      CASE %in% c("SENTENCE2", "SENTENCE4") ~ "Poor"),
+      levels = c("Rich", "Poor")))
+
+# 4. check: every vignette in exactly one cell; rows = people x vignettes; the four cell means
+case_long |> count(CASE, CASE_RACIALIZED, CASE_CLASS)
+nrow(alldata) * 4 == nrow(case_long)
+case_long |>
+  group_by(CASE_RACIALIZED, CASE_CLASS) |>
+  summarise(n = sum(!is.na(SENTENCE)), mean_sentence = mean(SENTENCE, na.rm = TRUE), .groups = "drop")
+```
+
+| Criteria | Ask yourself |
+|----|----|
+| **Design table** | Is the vignette-to-factor table in your codebook, and does every `case_when()` line match it? |
+| **One cell each** | Does the count show each vignette in exactly one combination of the factors? |
+| **Row count** | Is the number of rows the number of people times the number of vignettes? |
+| **Comparison level first** | Did you set `levels =` so that the group you compare against comes first? |
+| **Names** | Do the factor names start with `CASE_`, so they cannot be confused with the respondent's own characteristics? |
+| **Person kept** | Is `ResponseId` in the long data, so the test can tell whose ratings belong together? |
+| **Reported in methods** | Does your Methods say every participant rated all four vignettes, in what order, and how many ratings were missing? |
+
+{{< include _ref-whistle-box.qmd >}}

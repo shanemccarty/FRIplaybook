@@ -39,7 +39,7 @@ You need to submit your *RD Report* and your *Final Report* on Brightspace. Each
 2.  your dataset in `.xlsx` format
 3.  a link to your published Quarto report
 
-This chapter shows you how to publish your report and get that link. You can see examples of published Quarto reports in [Reproducible Reports](example.qmd) (Chapter 1).
+This chapter shows you how to publish your report and get that link. You can see examples of published Quarto reports in [Reproducible Reports](example.qmd).
 :::
 
 {{< include _important-fresh-run.qmd >}}

@@ -45,7 +45,7 @@ execute:
 
 ## Who needs this chapter?
 
-You need this chapter if your team surveyed **the same people twice** and you want to know whether their scores changed. If your team has one survey, skip it.
+You need this chapter if your team surveyed **the same people twice** and you want to know whether their scores changed. If your team has one survey, skip it. (Team 4's survey, in which each person rated four vignettes, is a different design with a similar reshape: see [Vignette Data](vignette.qmd).)
 
 ::: {.callout-note .gray collapse="true"}
 ## 📁 Team 3: Day 1 and Day 14
@@ -71,7 +71,7 @@ The same pre/post data can be arranged in two ways.
 
 ### Wide format: one row per person
 
-| `PASSWORD` | `WELLBEING_pre` | `WELLBEING_post` |
+| `PASSWORD` | `WELLBEING_PRE` | `WELLBEING_POST` |
 |------------|-----------------|------------------|
 | abc123     | 3.2             | 4.1              |
 | gobills7   | 2.8             | 3.0              |
@@ -84,28 +84,97 @@ Use wide format to **test** whether scores changed (a paired t-test or a Wilcoxo
 
 | `PASSWORD` | `TIME` | `WELLBEING` |
 |------------|--------|-------------|
-| abc123     | pre    | 3.2         |
-| gobills7   | pre    | 2.8         |
-| abc123     | post   | 4.1         |
-| gobills7   | post   | 3.0         |
+| abc123     | PRE    | 3.2         |
+| gobills7   | PRE    | 2.8         |
+| abc123     | POST   | 4.1         |
+| gobills7   | POST   | 3.0         |
 
 : *Long format. Each row is a SURVEY RESPONSE, so each participant appears twice.*
 
 Use long format to **plot** pre/post scores, because `ggplot2` needs one column for time (the x axis) and one column for the score (the y axis). See [Visualize Pre/Post Data](violin.qmd).
 
-You will usually need both, so this chapter shows you how to build the wide dataset first and then turn it into the long one.
+You will usually need both. How you get them depends on how your data arrive, and there are two situations:
+
+| Situation | What you start with | What you do |
+|----|----|----|
+| **1. One file, long format** (Teams 3 and 5) | One survey given twice and exported once. Every response is a row, and a column (`TIME`, 0 = pretest, 1 = posttest) says which time it is. | Clean `PASSWORD`, then `pivot_wider()` to get one row per person. |
+| **2. Two files, wide format** (not this year's teams) | Two separate surveys, one for pre and one for post, each with one row per person. | Clean `PASSWORD` in both, `left_join()` them into one wide file, then `pivot_longer()` for plots. |
+
+Teams 3 and 5 both have situation 1: one survey, taken at pretest and again at posttest, exported once. The Play shows both situations, because a join is worth knowing and because a future team may collect two files; the Lab and your template are situation 1.
 
 ## 📋 The Play
 
-### Example data
+The examples use very small made-up datasets, so that you can see every row.
 
-The example uses two very small made-up datasets, so that you can see every row.
+### Situation 1: one file in long format
+
+One survey, given twice, exported once. Each person has two rows, and `TIME` says which is which: 0 = pretest, 1 = posttest, as coded in Qualtrics ([Name and Recode Variables in Qualtrics](qualtrics.qmd)). Notice the two problems hiding in it: `Blue42` typed the password with different capitals the second time, and `sunny5` never took the posttest.
 
 ```{r}
 #| label: load-library-prepost
 library(dplyr)
 library(tidyr)
 ```
+
+```{r}
+#| label: example-long
+long_raw <- tibble(
+  PASSWORD  = c("abc123", "gobills7", "Blue42", "pizza9", "sunny5",
+                "abc123", "gobills7", "blue42", "pizza9"),
+  TIME      = c(0, 0, 0, 0, 0,
+                1, 1, 1, 1),
+  WELLBEING = c(3.2, 2.8, 3.5, 4.0, 2.5,
+                4.1, 3.0, 3.9, 4.2),
+  STRESS    = c(3.9, 4.2, 3.1, 2.8, 4.4,
+                3.0, 4.0, 2.7, 2.5))
+long_raw
+```
+
+**Step 1: clean the password and label the time.** To R, `Blue42` and `blue42` are two different people. Make every password lowercase and remove stray spaces before you do anything else. In the same step, turn the 0/1 `TIME` into a **factor** with the labels `PRE` and `POST`, so that the reshaped columns and the plots say pre and post instead of 0 and 1. (If you will also put time into a model, keep a numeric copy first: `TIME_01 = TIME`.)
+
+```{r}
+#| label: long-clean-password
+long_data <- long_raw |>
+  mutate(PASSWORD = tolower(trimws(PASSWORD)),
+         TIME = factor(TIME, levels = c(0, 1), labels = c("PRE", "POST")))   # 0 -> PRE, 1 -> POST; pre first
+```
+
+**Step 2: check for duplicates.** In long format a duplicate is the same `PASSWORD` at the same `TIME`. There should be none; if there are, decide with your team which response to keep and use `distinct(PASSWORD, TIME, .keep_all = TRUE)`.
+
+```{r}
+#| label: long-duplicates
+long_data |>
+  count(PASSWORD, TIME) |>
+  filter(n > 1)
+```
+
+**Step 3: `pivot_wider()`: one row per person.** `names_from` is the column that becomes part of the new column names (`TIME`), `values_from` lists the scores, and `names_glue` writes the names as `WELLBEING_PRE`, `WELLBEING_POST`, and so on: the same `_PRE` and `_POST` endings as the naming rule in [Name and Recode Variables in Qualtrics](qualtrics.qmd).
+
+```{r}
+#| label: long-to-wide
+wide_data <- long_data |>
+  pivot_wider(
+    names_from  = TIME,
+    values_from = c(WELLBEING, STRESS),
+    names_glue  = "{.value}_{TIME}")
+
+wide_data
+```
+
+**Step 4: check the reshape.** The wide file should have one row per person, and anyone who took only one survey shows `NA` in the other time's columns.
+
+```{r}
+#| label: long-to-wide-check
+nrow(wide_data)                          # one row per person
+wide_data |> filter(is.na(WELLBEING_POST))   # who has no posttest?
+```
+
+`sunny5` has no posttest, so their `_POST` columns are `NA`. Now you have both shapes: `long_data` for plots and `wide_data` for the paired test.
+
+### Situation 2: two files in wide format
+
+Two separate surveys, each with one row per person. Here you have to **join** them, and the join is where mistakes hide.
+
 
 ```{r}
 #| label: example-data-prepost
@@ -121,11 +190,11 @@ posttest <- tibble(
   STRESS    = c(3.0, 4.0, 2.7, 2.5, 2.4))
 ```
 
-Look closely at the posttest. `sunny5` did not take it. `Blue42` typed the password differently the second time (`blue42` with a space at the end). `pizza9` took it twice. All three happen in real studies.
+Look closely at the posttest. `sunny5` did not take it. `Blue42` typed the password differently the second time (`blue42` with a space at the end). `pizza9` took it twice. All three happen in real studies. The steps are the same as in situation 1, with a join in the middle.
 
 ### Step 1: Clean the password
 
-To R, `Blue42` and `blue42` followed by a space are two different people. Make every password lowercase and remove the extra spaces, in **both** datasets, before you join them.
+Same as before, but in **both** datasets, before you join them.
 
 ```{r}
 #| label: clean-password
@@ -159,13 +228,13 @@ posttest <- posttest |>
 
 ```{r}
 #| label: join-prepost
-wide_data <- pretest |>
-  left_join(posttest, by = "PASSWORD", suffix = c("_pre", "_post"))
+wide_data2 <- pretest |>
+  left_join(posttest, by = "PASSWORD", suffix = c("_PRE", "_POST"))
 
-wide_data
+wide_data2
 ```
 
-This is **wide format**: one row per person. `AGE` was only in the pretest, so it keeps its name.
+This is **wide format**: one row per person, the same shape that `pivot_wider()` produced in situation 1. `AGE` was only in the pretest, so it keeps its name.
 
 ### Step 4: Check the join
 
@@ -178,7 +247,7 @@ A join never gives you an error when people fail to match. It quietly fills in `
 ```{r}
 #| label: check-join
 nrow(pretest)      # people who took the pretest
-nrow(wide_data)    # should be the SAME number
+nrow(wide_data2)   # should be the SAME number
 
 # people who took the pretest and have no matching posttest
 anti_join(pretest, posttest, by = "PASSWORD")
@@ -187,25 +256,25 @@ anti_join(pretest, posttest, by = "PASSWORD")
 ```{r}
 #| label: check-join-values
 #| echo: false
-n_pre <- nrow(pretest); n_match <- sum(!is.na(wide_data$WELLBEING_post))
+n_pre <- nrow(pretest); n_match <- sum(!is.na(wide_data2$WELLBEING_POST))
 ```
 
-Both numbers are `r n_pre`, so no rows were added by mistake. One person, `sunny5`, has no posttest, and their `_post` columns are `NA`. In your methods, report all three numbers: `r n_pre` people took the pretest, `r n_match` were matched to a posttest, and `r n_pre - n_match` could not be matched.
+Both numbers are `r n_pre`, so no rows were added by mistake. One person, `sunny5`, has no posttest, and their `_POST` columns are `NA`. In your methods, report all three numbers: `r n_pre` people took the pretest, `r n_match` were matched to a posttest, and `r n_pre - n_match` could not be matched.
 
 ### Step 5: Reshape to long format for plots
 
-`pivot_longer()` takes the pre and post columns and stacks them. The part of the column name before the `_` becomes the score, and the part after it becomes a new column called `TIME`.
+`pivot_longer()` is the reverse of `pivot_wider()`: it takes the pre and post columns and stacks them. `names_pattern` says how to read each column name: everything before the last `_` is the score (`.value`), and the `PRE` or `POST` after it goes into a new column called `TIME`. Writing it this way, instead of "split at every `_`", matters because your own variable names contain underscores (`STIGMA_PUB_PRE` must become `STIGMA_PUB` and `PRE`, not `STIGMA` and `PUB`).
 
 ```{r}
 #| label: wide-to-long
-long_data <- wide_data |>
+long_data2 <- wide_data2 |>
   pivot_longer(
-    cols = c(WELLBEING_pre, WELLBEING_post, STRESS_pre, STRESS_post),
+    cols = c(WELLBEING_PRE, WELLBEING_POST, STRESS_PRE, STRESS_POST),
     names_to = c(".value", "TIME"),
-    names_sep = "_") |>
-  mutate(TIME = factor(TIME, levels = c("pre", "post")))   # pre first, then post
+    names_pattern = "(.+)_(PRE|POST)$") |>
+  mutate(TIME = factor(TIME, levels = c("PRE", "POST")))   # pre first, then post
 
-long_data
+long_data2
 ```
 
 Each person now has two rows, and the data are ready for [Visualize Pre/Post Data](violin.qmd).
@@ -213,26 +282,11 @@ Each person now has two rows, and the data are ready for [Visualize Pre/Post Dat
 ::: callout-tip
 ## Go: Keep both datasets
 
-Keep `wide_data` for your pre/post test and `long_data` for your pre/post plot. They hold the same information in two shapes.
+Keep the wide dataset for your pre/post test and the long dataset for your pre/post plot. They hold the same information in two shapes.
 :::
 
-### If your data arrive in long format
-
-Some surveys give you one file with two rows per person and a column that says which time it is (for example, `DAY`). In that case there is nothing to join. Use `pivot_wider()` to go from long to wide.
-
-```{r}
-#| label: long-to-wide
-wide_again <- long_data |>
-  pivot_wider(
-    names_from = TIME,
-    values_from = c(WELLBEING, STRESS),
-    names_glue = "{.value}_{TIME}")
-
-wide_again
-```
-
 ::: {.callout-note .gray collapse="true"}
-## A longer example: three scales at two times (Erica Sava)
+## A longer example: three scales at two times (oral health)
 
 In this example, Erica converts oral health data from wide to long format to compare three kinds of self-efficacy (BSE, CSE, ISE) at Time 1 and Time 2. The same steps work for studies with more than two time points.
 
@@ -273,24 +327,168 @@ longdata_long$SelfEfficacyTime <- factor(
 ```
 :::
 
+## 🏈 The Lab {#sec-prepost-lab}
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref.svg){fig-alt="Ref the raccoon"}
+:::
+
+::: ref-say
+**Ref's kickoff.** This lab practices **situation 1**: one file in long format. The lab file `ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx` is the lab survey given twice, six weeks apart, and exported once. Every response is a row, `TIME` says 0 (pretest) or 1 (posttest), and `PASSWORD` links a person's two rows. Try each step before you open my check.
+:::
+::::::
+
+```{r}
+#| label: lab-prepost-setup
+#| include: false
+library(readxl)
+lab_long_raw <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx")
+lab_long <- lab_long_raw |>
+  mutate(PASSWORD = tolower(trimws(PASSWORD)), TIME = factor(TIME, levels = c(0, 1), labels = c("PRE", "POST")))
+lab_dups <- lab_long |> count(PASSWORD, TIME) |> filter(n > 1)
+lab_long1 <- lab_long |> distinct(PASSWORD, TIME, .keep_all = TRUE)
+lab_wide <- lab_long1 |>
+  select(PASSWORD, TIME, HELPSEEK) |>
+  pivot_wider(names_from = TIME, values_from = HELPSEEK, names_glue = "HELPSEEK_{TIME}")
+lab_both <- sum(!is.na(lab_wide$HELPSEEK_PRE) & !is.na(lab_wide$HELPSEEK_POST))
+lab_pre_only <- sum(is.na(lab_wide$HELPSEEK_POST)); lab_post_only <- sum(is.na(lab_wide$HELPSEEK_PRE))
+```
+
+**Before you start.** Get `ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx` from your instructor and put it in the `data` folder of your project. Open your lab `.qmd`, and run your load-library chunk (you need `readxl`, `dplyr`, and `tidyr`).
+
+### Lab Play 1: Import and look at the shape
+
+Import the file as `lab_long`, then count the rows at each `TIME`. Look at the first rows: how many times does a person appear?
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how many rows?
+
+`r nrow(lab_long_raw)` rows in total: **`r sum(lab_long_raw$TIME == 0)` pre** (`TIME` = 0) and **`r sum(lab_long_raw$TIME == 1)` post** (`TIME` = 1). Not everyone came back, so there are fewer post rows than pre rows. That is normal.
+:::
+
+### Lab Play 2: Clean the password and look for duplicates
+
+Make `PASSWORD` lowercase with no stray spaces, make `TIME` a factor with labels `PRE` and `POST` (`PRE` first), then count `PASSWORD` by `TIME` and filter to `n > 1`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: any duplicates?
+
+One: `r paste0("\x60", lab_dups$PASSWORD, "\x60")` appears twice at `r lab_dups$TIME`. The same person submitted the pretest twice. Keep the first with `distinct(PASSWORD, TIME, .keep_all = TRUE)`.
+:::
+
+### Lab Play 3: Reshape to wide
+
+Keep `PASSWORD`, `TIME`, and `HELPSEEK`, then `pivot_wider()` so that each person has `HELPSEEK_PRE` and `HELPSEEK_POST`. Then count three things: people with both scores, people with only a pretest, and people with only a posttest.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you get?
+
+-   `r nrow(lab_wide)` rows, one per `PASSWORD`.
+-   **`r lab_both` people** have both a pre and a post score. **`r lab_pre_only`** have only a pretest (they did not come back). **`r lab_post_only`** have only a posttest.
+-   Ten people with only a posttest is suspicious: everyone who took the posttest was supposed to have taken the pretest. Look at their passwords. Most are one character away from a pretest password (a typo). Real teams have to decide, and write down, whether to match those by hand. For the lab, leave them unmatched.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-prepost-solution
+#| eval: false
+library(readxl)
+library(dplyr)
+library(tidyr)
+
+lab_long <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx")
+count(lab_long, TIME)                                 # Lab Play 1
+head(lab_long)
+
+lab_long <- lab_long |>                               # Lab Play 2
+  mutate(PASSWORD = tolower(trimws(PASSWORD)),
+         TIME = factor(TIME, levels = c(0, 1), labels = c("PRE", "POST")))
+lab_long |> count(PASSWORD, TIME) |> filter(n > 1)
+lab_long <- lab_long |> distinct(PASSWORD, TIME, .keep_all = TRUE)
+
+lab_wide <- lab_long |>                               # Lab Play 3
+  select(PASSWORD, TIME, HELPSEEK) |>
+  pivot_wider(names_from = TIME, values_from = HELPSEEK, names_glue = "HELPSEEK_{TIME}")
+nrow(lab_wide)
+sum(!is.na(lab_wide$HELPSEEK_PRE) & !is.na(lab_wide$HELPSEEK_POST))   # both
+sum(is.na(lab_wide$HELPSEEK_POST))                                     # pre only
+sum(is.na(lab_wide$HELPSEEK_PRE))                                      # post only
+```
+:::
+
+:::::: {.ref .ref-tip}
+::: ref-face
+![](images/ref-whistle.svg){fig-alt="Ref the raccoon blowing his whistle"}
+:::
+
+::: ref-say
+**Ref's final whistle.** Keep `lab_wide` and `lab_long`: [Visualize Pre/Post Data](violin.qmd) plots the long one, and the paired test (Compare 1 Group, Pre/Post, coming soon) uses the wide one. Save, render, back up to your ELN.
+:::
+::::::
+
 ## 🏆 Your Turn {#sec-prepost-yourturn}
 
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-There is no lab for this chapter, because only some teams have pre/post data. Copy the play, change every line marked `# REPLACE`, and use the checklist.
+Only some teams have pre/post data. Use the template that matches how your data arrive, change every line marked `# REPLACE`, and use the checklist. Name the object `alldata` for the file you import, the same as in every other chapter.
 :::
 
+### Template 1: one file in long format (Teams 3 and 5)
+
+One survey given twice and exported once, so there is one `.clean` file, named as in [Export Survey Data](export.qmd).
+
 ```{r}
-#| label: prepost-REPLACE
+#| label: prepost-long-template
+#| eval: false
+library(readxl)
+library(dplyr)
+library(tidyr)
+
+# 1. import the one .clean file
+alldata <- read_excel("data/10.09.2026.data.team3.clean.xlsx")   # REPLACE with your file
+
+# 2. clean the password and put the times in order
+alldata <- alldata |>
+  mutate(PASSWORD = tolower(trimws(PASSWORD)),
+         TIME_01 = TIME,                                                    # numeric copy (0/1) for a model later
+         TIME = factor(TIME, levels = c(0, 1), labels = c("PRE", "POST")))  # labels for reshaping and plots
+
+# 3. duplicates: same person, same time (then decide which response to keep)
+alldata |> count(PASSWORD, TIME) |> filter(n > 1)
+alldata <- alldata |> distinct(PASSWORD, TIME, .keep_all = TRUE)
+
+# 4. wide format for the paired test
+wide_data <- alldata |>
+  pivot_wider(names_from = TIME,
+              values_from = c(REPLACE1, REPLACE2),           # REPLACE with your pre/post scores
+              names_glue = "{.value}_{TIME}")
+
+# 5. check: one row per person; who is missing a time?
+nrow(wide_data)
+wide_data |> filter(is.na(REPLACE1_POST))                     # REPLACE
+
+# 6. long format for plots is alldata itself (already one row per response)
+long_data <- alldata
+```
+
+### Template 2: two files in wide format (only if your pretest and posttest were separate surveys)
+
+No team has this design this year. It is here for a team that receives two files, one per time point.
+
+```{r}
+#| label: prepost-wide-template
 #| eval: false
 library(readxl)
 library(dplyr)
 library(tidyr)
 
 # 1. import both .clean files
-pretest  <- read_excel("data/REPLACE.xlsx")     # REPLACE with your pretest file (Team 3: Day 1)
-posttest <- read_excel("data/REPLACE.xlsx")     # REPLACE with your posttest file (Team 3: Day 14)
+pretest  <- read_excel("data/10.09.2026.data.teamX.pre.clean.xlsx")    # REPLACE with your pretest file
+posttest <- read_excel("data/10.09.2026.data.teamX.post.clean.xlsx")   # REPLACE with your posttest file
 
 # 2. clean the password in both
 pretest  <- pretest  |> mutate(PASSWORD = tolower(trimws(PASSWORD)))
@@ -302,7 +500,7 @@ posttest |> count(PASSWORD) |> filter(n > 1)
 
 # 4. join by PASSWORD
 wide_data <- pretest |>
-  left_join(posttest, by = "PASSWORD", suffix = c("_pre", "_post"))
+  left_join(posttest, by = "PASSWORD", suffix = c("_PRE", "_POST"))
 
 # 5. check the join
 nrow(pretest)
@@ -312,10 +510,10 @@ anti_join(pretest, posttest, by = "PASSWORD")
 # 6. long format for plots
 long_data <- wide_data |>
   pivot_longer(
-    cols = c(REPLACE_pre, REPLACE_post),          # REPLACE with your pre and post columns
+    cols = c(REPLACE_PRE, REPLACE_POST),          # REPLACE with your pre and post columns
     names_to = c(".value", "TIME"),
-    names_sep = "_") |>
-  mutate(TIME = factor(TIME, levels = c("pre", "post")))
+    names_pattern = "(.+)_(PRE|POST)$") |>
+  mutate(TIME = factor(TIME, levels = c("PRE", "POST")))
 ```
 
 | Criteria | Ask yourself |
@@ -326,7 +524,7 @@ long_data <- wide_data |>
 | **Same number of rows** | Does `nrow(wide_data)` equal `nrow(pretest)`? |
 | **Unmatched people** | Did you look at the `anti_join()` list? Are any of them near matches (a typo) that your team should discuss? |
 | **Reported in methods** | Do you report how many people took the pretest, how many were matched, and how many were not? |
-| **Column names** | If a variable name already contains a `_` (for example, `SLEEP_HOURS_pre`), did you check that `pivot_longer()` split it in the right place? |
+| **Column names** | After `pivot_longer()`, are the score columns named exactly as before (`STIGMA_PUB`, not `STIGMA`) and does `TIME` hold only `PRE` and `POST`? |
 | **Both shapes kept** | Do you have `wide_data` for your test and `long_data` for your plot? |
 
 {{< include _ref-whistle-box.qmd >}}

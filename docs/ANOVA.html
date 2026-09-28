@@ -9,7 +9,7 @@
 <meta name="author" content="Shane McCarty, PhD">
 <meta name="keywords" content="ANOVA, ANCOVA, Tukey, Kruskal-Wallis, covariate, comparison">
 
-<title>17&nbsp; Compare 3+ Groups – The Quantitative Playbook for R</title>
+<title>18&nbsp; Compare 3+ Groups – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -232,32 +232,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name and Recode in Qualtrics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
   </div>
 </li>
       </ul>
@@ -274,19 +280,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,19 +309,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -332,13 +338,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -355,31 +361,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -396,19 +402,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
   </div>
 </li>
       </ul>
@@ -423,24 +429,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-do-you-use-this-chapter" id="toc-when-do-you-use-this-chapter" class="nav-link active" data-scroll-target="#when-do-you-use-this-chapter"><span class="header-section-number">17.1</span> When do you use this chapter?</a></li>
-  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data"><span class="header-section-number">17.2</span> The example data</a></li>
-  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova"><span class="header-section-number">17.3</span> ANOVA</a>
+  <li><a href="#when-do-you-use-this-chapter" id="toc-when-do-you-use-this-chapter" class="nav-link active" data-scroll-target="#when-do-you-use-this-chapter"><span class="header-section-number">18.1</span> When do you use this chapter?</a></li>
+  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data"><span class="header-section-number">18.2</span> The example data</a></li>
+  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova"><span class="header-section-number">18.3</span> ANOVA</a>
   <ul class="collapse">
-  <li><a href="#which-groups-differ-the-tukey-follow-up-test" id="toc-which-groups-differ-the-tukey-follow-up-test" class="nav-link" data-scroll-target="#which-groups-differ-the-tukey-follow-up-test"><span class="header-section-number">17.3.1</span> Which groups differ? The Tukey follow-up test</a></li>
+  <li><a href="#which-groups-differ-the-tukey-follow-up-test" id="toc-which-groups-differ-the-tukey-follow-up-test" class="nav-link" data-scroll-target="#which-groups-differ-the-tukey-follow-up-test"><span class="header-section-number">18.3.1</span> Which groups differ? The Tukey follow-up test</a></li>
   </ul></li>
-  <li><a href="#if-your-outcome-is-not-normal-kruskal-wallis" id="toc-if-your-outcome-is-not-normal-kruskal-wallis" class="nav-link" data-scroll-target="#if-your-outcome-is-not-normal-kruskal-wallis"><span class="header-section-number">17.4</span> If your outcome is not normal: Kruskal-Wallis</a></li>
-  <li><a href="#ancova-add-a-covariate" id="toc-ancova-add-a-covariate" class="nav-link" data-scroll-target="#ancova-add-a-covariate"><span class="header-section-number">17.5</span> ANCOVA: add a covariate</a></li>
-  <li><a href="#report-it" id="toc-report-it" class="nav-link" data-scroll-target="#report-it"><span class="header-section-number">17.6</span> Report it</a></li>
+  <li><a href="#if-your-outcome-is-not-normal-kruskal-wallis" id="toc-if-your-outcome-is-not-normal-kruskal-wallis" class="nav-link" data-scroll-target="#if-your-outcome-is-not-normal-kruskal-wallis"><span class="header-section-number">18.4</span> If your outcome is not normal: Kruskal-Wallis</a></li>
+  <li><a href="#ancova-add-a-covariate" id="toc-ancova-add-a-covariate" class="nav-link" data-scroll-target="#ancova-add-a-covariate"><span class="header-section-number">18.5</span> ANCOVA: add a covariate</a></li>
+  <li><a href="#report-it" id="toc-report-it" class="nav-link" data-scroll-target="#report-it"><span class="header-section-number">18.6</span> Report it</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/ANOVA.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></h1>
 <p class="subtitle lead">ANOVA, Kruskal-Wallis, and ANCOVA</p>
 </div>
 
@@ -499,8 +505,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="when-do-you-use-this-chapter" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="when-do-you-use-this-chapter"><span class="header-section-number">17.1</span> When do you use this chapter?</h2>
+<section id="when-do-you-use-this-chapter" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="when-do-you-use-this-chapter"><span class="header-section-number">18.1</span> When do you use this chapter?</h2>
 <p>Your research question is a <strong>comparison</strong>, and you have <strong>three or more different groups</strong> and <strong>one continuous outcome</strong>.</p>
 <table class="caption-top table">
 <colgroup>
@@ -545,8 +551,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-example-data" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">17.2</span> The example data</h2>
+<section id="the-example-data" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">18.2</span> The example data</h2>
 <p>The example uses the lab dataset and two questions.</p>
 <ul>
 <li><strong>Normal outcome (ANOVA and ANCOVA):</strong> do people in poor or fair, good, and very good or excellent general health differ in well-being (<code>WELLBEING</code>)?</li>
@@ -557,42 +563,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)   <span class="co"># creates mh_clean</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HEALTH_3 =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HEALTH_3CAT =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    HEALTHSTATUS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Poor or fair"</span>,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    HEALTHSTATUS <span class="sc">==</span> <span class="dv">3</span>         <span class="sc">~</span> <span class="st">"Good"</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    HEALTHSTATUS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Very good or excellent"</span>),</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Poor or fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very good or excellent"</span>)))   <span class="co"># the group must be a factor</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="sc">|&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(HEALTH_3)) <span class="sc">|&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(HEALTH_3) <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(HEALTH_3CAT)) <span class="sc">|&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(HEALTH_3CAT) <span class="sc">|&gt;</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(WELLBEING, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(WELLBEING, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
-  HEALTH_3                   n  mean    sd
+  HEALTH_3CAT                n  mean    sd
   &lt;fct&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
 1 Poor or fair              36  3.03 0.673
 2 Good                      81  3.19 0.598
 3 Very good or excellent    61  3.56 0.662</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mh_lmr <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POL_LMR =</span> <span class="fu">case_when</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mh_3cat <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POL_3CAT =</span> <span class="fu">case_when</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    POLITICALBELIEFS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Left"</span>,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    POLITICALBELIEFS <span class="sc">==</span> <span class="dv">3</span>         <span class="sc">~</span> <span class="st">"Moderate"</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    POLITICALBELIEFS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Right"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(POL_LMR)) <span class="sc">|&gt;</span>                 <span class="co"># keep only the three groups</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POL_LMR =</span> <span class="fu">factor</span>(POL_LMR))          <span class="co"># the group must be a factor</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(POL_3CAT)) <span class="sc">|&gt;</span>                 <span class="co"># keep only the three groups</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POL_3CAT =</span> <span class="fu">factor</span>(POL_3CAT))          <span class="co"># the group must be a factor</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mh_lmr <span class="sc">|&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(POL_LMR) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mh_3cat <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(POL_3CAT) <span class="sc">|&gt;</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(SOCIAL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(SOCIAL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
-  POL_LMR      n  mean    sd
+  POL_3CAT     n  mean    sd
   &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
 1 Left        90  4.23 0.625
 2 Moderate    26  4.13 0.674
@@ -627,24 +633,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="anova" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="anova"><span class="header-section-number">17.3</span> ANOVA</h2>
+<section id="anova" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="anova"><span class="header-section-number">18.3</span> ANOVA</h2>
 <p>An ANOVA asks one question: is <strong>at least one</strong> group average different from the others?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> HEALTH_3, <span class="at">data =</span> mh_clean)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> HEALTH_3CAT, <span class="at">data =</span> mh_clean)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_anova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-HEALTH_3      2   7.47   3.735   9.238 0.000153 ***
+HEALTH_3CAT   2   7.47   3.735   9.238 0.000153 ***
 Residuals   175  70.75   0.404                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 10 observations deleted due to missingness</code></pre>
 </div>
 </div>
-<p>Read the <code>HEALTH_3</code> row: <code>F value</code> is the test statistic, and <code>Pr(&gt;F)</code> is the p-value. If p is smaller than .05, the groups are not all the same.</p>
-<section id="which-groups-differ-the-tukey-follow-up-test" class="level3" data-number="17.3.1">
-<h3 data-number="17.3.1" class="anchored" data-anchor-id="which-groups-differ-the-tukey-follow-up-test"><span class="header-section-number">17.3.1</span> Which groups differ? The Tukey follow-up test</h3>
+<p>Read the <code>HEALTH_3CAT</code> row: <code>F value</code> is the test statistic, and <code>Pr(&gt;F)</code> is the p-value. If p is smaller than .05, the groups are not all the same.</p>
+<section id="which-groups-differ-the-tukey-follow-up-test" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="which-groups-differ-the-tukey-follow-up-test"><span class="header-section-number">18.3.1</span> Which groups differ? The Tukey follow-up test</h3>
 <p>A significant ANOVA does not tell you <strong>which</strong> groups differ. Run the follow-up test only when the ANOVA is significant.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(model_anova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -652,9 +658,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
 
-Fit: aov(formula = WELLBEING ~ HEALTH_3, data = mh_clean)
+Fit: aov(formula = WELLBEING ~ HEALTH_3CAT, data = mh_clean)
 
-$HEALTH_3
+$HEALTH_3CAT
                                          diff        lwr       upr     p adj
 Good-Poor or fair                   0.1652337 -0.1358327 0.4663001 0.3985811
 Very good or excellent-Poor or fair 0.5258967  0.2100089 0.8417844 0.0003509
@@ -664,27 +670,27 @@ Very good or excellent-Good         0.3606630  0.1058627 0.6154632 0.0028713</co
 <p>Each row compares two groups. <code>diff</code> is the difference between the two averages, and <code>p adj</code> is the p-value for that pair.</p>
 </section>
 </section>
-<section id="if-your-outcome-is-not-normal-kruskal-wallis" class="level2" data-number="17.4">
-<h2 data-number="17.4" class="anchored" data-anchor-id="if-your-outcome-is-not-normal-kruskal-wallis"><span class="header-section-number">17.4</span> If your outcome is not normal: Kruskal-Wallis</h2>
+<section id="if-your-outcome-is-not-normal-kruskal-wallis" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="if-your-outcome-is-not-normal-kruskal-wallis"><span class="header-section-number">18.4</span> If your outcome is not normal: Kruskal-Wallis</h2>
 <p><code>SOCIAL</code> is skewed and does not pass the checks in <a href="./describe.html">Describe Your Data</a>, so the political groups are compared with the Kruskal-Wallis test.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(SOCIAL <span class="sc">~</span> POL_LMR, <span class="at">data =</span> mh_lmr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(SOCIAL <span class="sc">~</span> POL_3CAT, <span class="at">data =</span> mh_3cat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Kruskal-Wallis rank sum test
 
-data:  SOCIAL by POL_LMR
+data:  SOCIAL by POL_3CAT
 Kruskal-Wallis chi-squared = 18.736, df = 2, p-value = 8.54e-05</code></pre>
 </div>
 </div>
 <p>The follow-up test for a significant Kruskal-Wallis test compares the groups two at a time.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(mh_lmr<span class="sc">$</span>SOCIAL, mh_lmr<span class="sc">$</span>POL_LMR, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(mh_3cat<span class="sc">$</span>SOCIAL, mh_3cat<span class="sc">$</span>POL_3CAT, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 
-data:  mh_lmr$SOCIAL and mh_lmr$POL_LMR 
+data:  mh_3cat$SOCIAL and mh_3cat$POL_3CAT 
 
          Left  Moderate
 Moderate 0.499 -       
@@ -694,23 +700,23 @@ P value adjustment method: holm </code></pre>
 </div>
 </div>
 </section>
-<section id="ancova-add-a-covariate" class="level2" data-number="17.5">
-<h2 data-number="17.5" class="anchored" data-anchor-id="ancova-add-a-covariate"><span class="header-section-number">17.5</span> ANCOVA: add a covariate</h2>
+<section id="ancova-add-a-covariate" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="ancova-add-a-covariate"><span class="header-section-number">18.5</span> ANCOVA: add a covariate</h2>
 <p>An ANCOVA asks the same question as an ANOVA <strong>after accounting for</strong> another continuous variable. Here the covariate is age. Put the covariate <strong>first</strong> in the formula.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> AGE <span class="sc">+</span> HEALTH_3, <span class="at">data =</span> mh_clean)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> AGE <span class="sc">+</span> HEALTH_3CAT, <span class="at">data =</span> mh_clean)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_ancova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 AGE           1   0.40   0.397   0.968 0.326538    
-HEALTH_3      2   7.28   3.638   8.879 0.000214 ***
+HEALTH_3CAT   2   7.28   3.638   8.879 0.000214 ***
 Residuals   172  70.47   0.410                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 12 observations deleted due to missingness</code></pre>
 </div>
 </div>
-<p>Read the <code>HEALTH_3</code> row the same way as before. It now means “do the groups differ, for people of the same age?”</p>
+<p>Read the <code>HEALTH_3CAT</code> row the same way as before. It now means “do the groups differ, for people of the same age?”</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -729,8 +735,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </div>
 </div>
 </section>
-<section id="report-it" class="level2" data-number="17.6">
-<h2 data-number="17.6" class="anchored" data-anchor-id="report-it"><span class="header-section-number">17.6</span> Report it</h2>
+<section id="report-it" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="report-it"><span class="header-section-number">18.6</span> Report it</h2>
 <blockquote class="blockquote">
 <p>A one-way ANOVA showed that ________ (differed / did not differ) across ________ groups, F(__, __) = ___, p = ___. A Tukey follow-up test showed that ________ scored higher than ________ (p = ___).</p>
 </blockquote>
@@ -755,7 +761,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you leave
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you quit RStudio
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1173,12 +1179,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./violin.html" class="pagination-link" aria-label="Visualize Pre/Post Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./visualize-relationship.html" class="pagination-link" aria-label="Visualize a Relationship">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
