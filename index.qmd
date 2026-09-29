@@ -84,7 +84,7 @@ Most chapters that use data are built the same way, and you will go through them
 
 1.  **The Play.** First, you *watch the play*. The chapter walks through the code step by step with an example dataset and shows you the output. Your only job is to read and understand what each line does.
 2.  **The Lab.** Next, you *run the play*. During your R Lab, you try the same play yourself with the lab dataset that everyone in the course shares. Labs are not graded. Because everyone uses the same data, the chapter can show you the answer you should get, so you can check your own work and fix it on the spot.
-3.  **Your Turn.** Finally, you *call your own play*. After you finish all of the R Labs, you come back to the chapter with your team's dataset. You copy the play, change the lines marked `# REPLACE`, and produce the plot or the test for your own research question. There is no answer key for your data, so each chapter gives you the same checklist your instructor uses.
+3.  **Your Turn.** Finally, you *call your own play*. After you finish all of the R Labs, you come back to the chapter with your team's dataset. You copy the play, change the lines marked `# REPLACE`, and produce the plot or the test for your own research question. There is no answer key for your data, so each chapter gives you the same checklist your peer mentor and Dr. Shane use.
 
 By the third pass, you have seen the play, practiced it with support, and run it on your own. That is how a team learns a playbook, and it is how you will learn R.
 

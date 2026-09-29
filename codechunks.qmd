@@ -411,7 +411,7 @@ Chunk options decide what a reader of your report sees. By default, Quarto shows
 ::: callout-warning
 ## Caution: Do not hide your code in the RD Report or Final Report
 
-`#| echo: false` hides the code of a chunk and shows only its output. Published papers often do this, but in this course it also hides your `#source:` and `#explanation:` comments, which are required. Leave `echo` alone unless your instructor tells you otherwise.
+`#| echo: false` hides the code of a chunk and shows only its output. Published papers often do this, but in this course it also hides your `#source:` and `#explanation:` comments, which are required. Leave `echo` alone unless your peer mentor and/or Dr. Shane tells you otherwise.
 :::
 
 ## Render Your Report

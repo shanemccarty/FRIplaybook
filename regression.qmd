@@ -213,7 +213,7 @@ ggplot(data = data.frame(residual = resid(model_multiple)),
   theme_bw()
 ```
 
-If your histogram has one long tail or two humps, talk to your instructor before you report the model.
+If your histogram has one long tail or two humps, talk to your peer mentor and/or Dr. Shane before you report the model.
 
 ### Step 6: Report it
 
@@ -233,7 +233,7 @@ knitr::kable(summary(model_multiple)$coefficients,
 ::: {.callout-warning}
 ## Caution: Don't cut your score into two groups
 
-It is tempting to turn a score into "high" and "low" (or 0 and 1) and then run a regression on the 0s and 1s. Don't. You throw away most of the information in your score, the cut point is arbitrary, and small groups give unstable results. Keep your outcome as a score and use `lm()`. If your outcome really *is* a category (yes or no), `lm()` is the wrong tool: you need a logistic regression, which is not covered in this playbook. Talk to your instructor.
+It is tempting to turn a score into "high" and "low" (or 0 and 1) and then run a regression on the 0s and 1s. Don't. You throw away most of the information in your score, the cut point is arbitrary, and small groups give unstable results. Keep your outcome as a score and use `lm()`. If your outcome really *is* a category (yes or no), `lm()` is the wrong tool: you need a logistic regression, which is not covered in this playbook. Talk to your peer mentor and/or Dr. Shane.
 :::
 
 ```{r}
@@ -475,7 +475,7 @@ A multiple linear regression (n = `r nobs(lab_m3)`) showed that perceived social
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own work. It is the same checklist your instructor uses.
+Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own work. It is the same checklist your peer mentor and Dr. Shane use.
 :::
 
 Once you finish all of the R Labs, come back here with **your team's dataset** and run the regression for your relationship research question.

@@ -492,7 +492,7 @@ print(plot_stigma_efficacy)
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play that matches your research question, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own plot. It is the same checklist your instructor uses.
+Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play that matches your research question, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own plot. It is the same checklist your peer mentor and Dr. Shane use.
 :::
 
 Once you finish all of the R Labs, come back here with **your team's dataset** and make the plot for your relationship research question.

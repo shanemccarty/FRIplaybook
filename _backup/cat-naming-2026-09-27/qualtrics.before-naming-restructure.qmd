@@ -4,7 +4,7 @@ subtitle: "How to name every variable and give every answer choice a number befo
 author:
   - Shane McCarty, PhD
 abstract: |
-  This chapter is the team's checklist for the Qualtrics survey before any data is exported. Researchers learn the naming rules for export tags (ALL CAPS, short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01 for yes/no variables coded 0 and 1, _QUAL for open-ended questions; CAT is reserved for categories created later in R), work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables, recode every answer choice to a number (with -99 for Prefer not to say and -50 for Don't know), build a team codebook, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.
+  This chapter is the team's checklist for the Qualtrics survey before any data is exported. Researchers learn the naming rules for export tags (ALL CAPS, short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01CAT for binary variables, _QUAL for open-ended questions), work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables, recode every answer choice to a number (with -99 for Prefer not to say and -50 for Don't know), build a team codebook, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.
 date: 09.27.2026
 date-format: "MM.DD.YYYY"
 keywords:
@@ -14,7 +14,6 @@ keywords:
   - codebook
   - naming rules
 format: html
-fig-cap-location: top   # captions above the screenshots: read what to look for, then look
 editor: visual
 execute:
   warning: false
@@ -42,7 +41,7 @@ Your team should use your team meeting or team time during lecture to **follow t
 
 **Name** every variable in your Qualtrics survey → **Recode** every answer choice so there are numerical values assigned to **all** of the response options → **Check** with the team codebook → **Publish** your Qualtrics survey again → **Export** your survey questions to Word with the coded values showing (the last section of this chapter).
 
-**When:** team time in the **October 2 lecture**. By the end of that lecture, your team's Google Drive should have the two files described at the end of this chapter.
+**When:** team time in the **October 2 lecture**, the last week before Fall break. By the end of that lecture, your team's Google Drive should have the two files described at the end of this chapter.
 :::
 
 ::: callout-warning
@@ -50,54 +49,24 @@ Your team should use your team meeting or team time during lecture to **follow t
 
 **Safe:** renaming a variable (the export tag) and recoding values. Qualtrics applies both to every response already collected, at export time.
 
-**Not safe:** adding, deleting, or rewording answer choices, or moving questions between blocks. Those change what respondents saw, so responses before and after the change are not comparable. If you must, write down the date and tell your peer mentor and/or Dr. Shane.
+**Not safe:** adding, deleting, or rewording answer choices, or moving questions between blocks. Those change what respondents saw, so responses before and after the change are not comparable. If you must, write down the date and tell your instructor.
 :::
 
-## Why Variable Names Matter
-
-In [Coding a Plot](layers.qmd), the first thing you did with the `insurance` dataset was look at its variable names and its first rows:
-
-```{r}
-#| label: why-names-insurance
-#| message: false
-insurance <- read.csv("data/insurance.csv")
-names(insurance)
-```
-
-```{r}
-#| label: why-names-head
-#| echo: false
-knitr::kable(head(insurance, 4), caption = "The first four rows of `insurance`: one column per variable, one row per person.")
-```
-
-You could read that table without a codebook. `age` is an age, `smoker` says whether the person smokes, `charges` is what their insurance cost. Each name is short enough to type in a line of code and long enough to say what the column holds. That is the goal for your team's survey: when you type `names(alldata)` in October, every name should tell you what the variable is **without** spelling out the whole question.
-
-Here is the same table the way Qualtrics exports a survey when nobody has named the questions:
-
-```{r}
-#| label: why-names-qualtrics-default
-#| echo: false
-unnamed <- head(insurance, 4)
-names(unnamed) <- paste0("Q", 1:ncol(unnamed))
-knitr::kable(unnamed, caption = "The same four rows with Qualtrics' default names. Which column is the smoker question? You would have to open the survey to find out, every time.")
-```
-
-Now `Q5` is the smoker question and `Q7` is the cost, and you will forget which is which by next week. Every line of code you write, every plot label, and every table in your report will carry these names, and so will the NVivo project your qualitative teammates build from the same export. A name typed once in Qualtrics, before the export, saves the whole team from decoding `Q17` for the rest of the semester. The rest of this chapter is how to do it.
-
-## Log in to Qualtrics
+## Log in and find Recode Values
 
 - [ ] Log into Qualtrics: <https://binghamton.co1.qualtrics.com>
-  - [ ] Under Active surveys, click on your survey. You are now in the **Survey** tab (the survey builder), which is where everything in this chapter happens.
-- [ ] Work through the survey one question at a time, in this order: first **name** every variable (see 7.3), then **name the blocks** (see 7.4), then **recode** the values (see 7.5). The rules for each are below.
-- [ ] When you are done with all three, click **Publish**. Until you publish, the live survey still has the old names and values.
+  - [ ] Under Active surveys, click on your survey
+- [ ] Click a question. In the left panel, click **Recode values**. This one dialog is where you will both name the variable (**Question export tags** or **Variable naming**) and recode its values (**Recode values**).
+- [ ] Work through the survey one question at a time, using the rules in the sections below.
+- [ ] Click **Publish** in Qualtrics to save your recodes. Until you publish, the live survey still has the old names and values.
 
-## Name Your Variables in Qualtrics
+![*Click a question, then Recode values in the left panel*](images/qualtrics-recode-menu.png){fig-alt="The Qualtrics survey editor with a matrix question selected and the Recode values item highlighted in the left panel."}
 
-In Qualtrics, the variable name is the **question export tag**: the name that becomes the column header when you export the data, and the name R and NVivo will use. Every question shows its current name in small text at its top left, and Qualtrics starts them all as `Q1`, `Q2`, `Q3`, … Naming a variable means replacing that. The rules for the names come first (7.3.1); where you type them depends on the kind of question (7.3.2 to 7.3.4).
+## Name Your Variables
 
-{{< include _go-variable-length.qmd >}}
+In Qualtrics, the variable name is the **export tag**. Click a question, open **Recode values** in the left panel, and check **Question export tags** (for a single question, **Variable naming**) to see and edit it.
 
-### The rules for names
+### The rules
 
 | Rule | Do this | Not this |
 |----|----|----|
@@ -108,42 +77,16 @@ In Qualtrics, the variable name is the **question export tag**: the name that be
 | One measure with subscales: BIG_SMALL plus the item number | `STIGMA_PUB1`, `STIGMA_SELF1` | `PUBSTIG1`, `SS1` |
 | Reverse item: add `_R` at the end (see below) | `STIGMA_PUB4_R` | `STIGMA_PUB4rev`, `STIGMA_PUB4 (reversed)` |
 | Same measure at two times: `_PRE` and `_POST` (or `_T1` and `_T2`) | `EFFICACY1_PRE`, `EFFICACY1_POST` | `EFFICACY1`, `EFFICACY1b` |
-| Binary (yes/no) variable: add `_01`, code it 0 and 1, and name it for the answer that gets the 1. No `CAT`: `CAT` is only for categories you create later in R | `TREATED_01` (1 = has received mental health treatment, 0 = has not); `KNOWS_01` (1 = knows someone with a mental health problem) | `TREATMENT`, `MHTX`, `TREATED_01CAT`, `TREATED` coded yes = 1, no = 2 |
-| A categorical variable you will **create later in R** by transforming a variable that is already in the survey (cutting a score into bands, or collapsing a question's response options into fewer categories): `_#CAT`, where \# is the number of categories the new variable has, and `_01CAT` when it is a 0/1 split you made. `CAT` is the mark of a variable **you** made in R from an existing one, so nothing in Qualtrics ever gets it ([Transforming Your Data](dplyr.qmd)) | `DISTRESS_4CAT` (the ten K10 items summed, then cut into 4 bands), `EDUCATION_3CAT` (7 education options collapsed into 3), `RACIALIZED_6CAT` (the select-all boxes combined into 6 categories) | `DISTRESSCATS`, `EDU3` |
+| Binary (yes/no) variable: add `_01CAT`, code it 0 and 1, and name it for the answer that gets the 1 | `TREATED_01CAT` (1 = has received mental health treatment, 0 = has not); `KNOWS_01CAT` (1 = knows someone with a mental health problem) | `TREATMENT`, `MHTX`, `TREATED` (yes = 1, no = 2) |
+| A categorical variable you will **create later in R** by transforming a variable that is already in the survey (cutting a score into bands, or collapsing a question's response options into fewer categories): `_#CAT`, where \# is the number of categories the new variable has. Nothing to name in Qualtrics now; this rule is here so the names match when you get there ([Transforming Your Data](dplyr.qmd)) | `DISTRESS_4CAT` (the ten K10 items summed, then cut into 4 bands), `EDUCATION_3CAT` (7 education options collapsed into 3), `RACIALIZED_6CAT` (the select-all boxes combined into 6 categories) | `DISTRESSCATS`, `EDU3` |
 | Open-ended (text) question: add `_QUAL` | `BARRIERS_QUAL` | `BARRIERS`, `Q14` |
-| A block is not a variable: the container of a matrix (and a page-level block) gets the measure's name plus `BLOCK` (see 7.4) | block `STIGMABLOCK`, variables `STIGMA_PUB1` … | block and variable both called `STIGMA` |
+| A block is not a variable: give blocks a `BLOCK_` name | block `BLOCK_STIGMA`, variable `STIGMA_PUB1` | block and variable both called `STIGMA` |
 
-### Single Question
+::: callout-note
+## What `CAT` and the number mean
 
-A single question gives one answer per person: `CONSENT`, `AGE`, `HEALTHSTATUS`, a yes/no question. In the survey builder, click the question's name (the `Q12` at its top left), type the new name, and press Enter. That is the whole job. You do not need the Recode values dialog for this; its **Variable naming** checkbox renames the answer choices, not the question.
-
-![*`CONSENT`: the name goes on the question where people give consent (the two answer choices), not on the consent-form text above it. Here the name is being typed in place of the old `Q#`.*](images/name-var-consent.png){fig-alt="The Qualtrics survey builder with a consent question selected. Its name box at the top left reads CONSENT with the cursor still in it. Below it is the Statement of Consent text and two answer choices: one consenting and confirming eligibility, one declining."}
-
-![*`AGE`: a single open-number question, renamed in place*](images/name-var-age.png){fig-alt="A Qualtrics question named AGE at its top left, asking What is your age? (enter a whole number, such as 45), with a text entry box." width="75%"}
-
-![*`HEALTHSTATUS`: a single-choice question, renamed in place. The answer choices get their numbers later, in 7.5.*](images/name-var-healthstatus.png){fig-alt="A Qualtrics question named HEALTHSTATUS asking Would you say your health in general is excellent, very good, good, fair, or poor, with choices Poor, Fair, Good, Very Good, Excellent, Don't know, and Prefer not to say." width="75%"}
-
-::: callout-warning
-## Caution: name the question, not the text above it
-
-A survey often shows a block of text (the consent form, an instruction, a vignette) as a separate item right before the question people answer. That text item has its own `Q#`, and it exports nothing. Put `CONSENT` on the question with the answer choices, as in the screenshot, and leave the consent-form text item alone. The same goes for any instruction text that sits above a matrix.
+`CAT` says the variable is **categorical**: its numbers are labels for categories, not amounts. The number in front is **how many categories** the variable has, which is the same as how many response options it has after you are done: `01` for two (coded 0 and 1), `3CAT` for three, `4CAT` for four. It is not about groups of participants who answered different questions; everyone answers the same survey. The `_01CAT` rule applies to yes/no questions you name in Qualtrics now. The `_#CAT` rule applies to variables you will make in R after export, by transforming a variable that is already in the data. [Transforming Your Data](dplyr.qmd) shows how, and [The Analysis Map](analysis-map.qmd) uses that number to pick the right test.
 :::
-
-### Matrix Statements
-
-A matrix question has one instruction and several statements in rows, all answered on the same scale: the stigma items, the K10, a well-being scale. Qualtrics exports **one column per row**, so it is the rows that need names, and the question name and the row names are set in two different places.
-
-1.  Click the question's name at its top left and rename it for the measure plus `BLOCK` (`STIGMABLOCK`, `AVOIDBLOCK`; see 7.4). This name is for you; it is not a column in the data.
-2.  Click the question, open **Recode values** in the left panel, and check **Variable naming**. A name box appears next to every statement.
-3.  Type a name for each row, following the multi-item rule: `NAME1`, `NAME2`, … for one construct, or `BIG_SMALL1`, `BIG_SMALL2`, … when the rows belong to subscales. Add `_R` to a reverse item. Those row names are what R sees.
-
-![*Variable naming on a matrix: one name per statement. `AVOID` is shorthand for Health Information **Avoid**ance, the measure's name; this is how to name a variable, with a short abbreviation that a reader can decode. The measure has two subscales, so the rows are `AVOID_SLEEP1` … and `AVOID_MDD1` … (MDD = major depressive disorder), and the last one is being typed.*](images/variable-export-avoid.png){fig-alt="The Variable naming panel of a Qualtrics matrix question. Each statement has a name box above it: AVOID_SLEEP6, AVOID_SLEEP7, AVOID_SLEEP8, AVOID_MDD1, AVOID_MDD2, and AVOID_MDD3, which is selected with the cursor in it." width="60%"}
-
-<!-- SHANE: screenshot to add: the STIGMA matrix with Variable naming checked, showing STIGMA_PUB1 to STIGMA_SELF4_R. Suggested file: images/qualtrics-matrix-stigma.png -->
-
-### Select-All Question
-
-A select-all question (checkboxes, such as the select-all version of `RACIALIZED`) exports one column per box. Rename the question in the builder (`RACIALIZED`) and stop there: Qualtrics adds `_1`, `_2`, … to the question name for each box, so you do not name the boxes yourself. The values that go into those columns are set in 7.5.
 
 ### A measure with subscales: the lab example
 
@@ -162,18 +105,20 @@ The lab dataset measures **stigma** with two subscales, **public stigma** (what 
 
 All eight items use the same answer choices: Strongly disagree (1), Disagree (2), Neither (3), Agree (4), Strongly agree (5). Higher = more stigma.
 
+<!-- SHANE: screenshot to add: the STIGMA matrix in Qualtrics with Question export tags checked, showing STIGMA_PUB1 to STIGMA_SELF4_R and the values 1 to 5. Suggested file: images/qualtrics-matrix-stigma.png -->
+
 ### Reverse items: name them here, reverse them in R
 
 ::: callout-important
-## Important: do not reverse the values in Qualtrics
+## Important: do not flip the numbers in Qualtrics
 
 A **reverse item** is worded in the opposite direction from the rest of its scale. Agreeing with "Most people would accept a person with a mental illness as a close friend" means *less* stigma, while agreeing with every other item means *more*.
 
-**In Qualtrics:** add `_R` to the export tag, and recode the values exactly as for the other items (Strongly disagree = 1 … Strongly agree = 5), in the same direction.
+**In Qualtrics:** add `_R` to the export tag, and leave the values exactly as they are for the other items (Strongly disagree = 1 … Strongly agree = 5).
 
 **In R:** reverse the `_R` items with `6 - x` (for a 1-to-5 scale) before you average. [Creating Composites](composite.qmd) shows this with `scoreItems()`, where a minus sign in front of the item name does the reversing.
 
-**Why not in Qualtrics?** If you reverse the values in Qualtrics *and* the code in R reverses the `_R` items, the item gets reversed twice and ends up backwards, and nothing warns you. Recoding the values (7.5) is fine and expected; reversing them is the part that belongs in R. Keeping the raw export in one direction means the reversal is visible in your code, where a reader (and a grader) can check it.
+**Why not in Qualtrics?** If you flip the numbers in Qualtrics *and* the code in R reverses `_R` items, the item gets flipped twice and ends up backwards, and nothing warns you. Keeping the raw export in one direction means the reversal is visible in your code, where a reader (and a grader) can check it.
 :::
 
 ### A single scale with many items: the K10
@@ -203,7 +148,7 @@ Every team's survey has these variables, with exactly these names and values, so
 |----|----|----|
 | `ResponseId` | (automatic) | Qualtrics' ID for each response. Never rename or delete it. |
 | `PASSWORD` | The code the respondent made up (pre/post teams only) | Text. It links a person's pretest row to their posttest row, so it must be in the survey exactly once with exactly this name. |
-| `TIME` | Is this your first (pretest) or second (posttest) time taking this survey? (pre/post teams only) | 0 = pretest; 1 = posttest. A shared variable, so it keeps this name (like `CONSENT`) instead of ending in `_01`; the 0/1 coding makes it ready for a model later ([Pre/Post Data](prepost.qmd)). |
+| `TIME` | Is this your first (pretest) or second (posttest) time taking this survey? (pre/post teams only) | 0 = pretest; 1 = posttest. A shared variable, so it keeps this name (like `CONSENT`) instead of ending in `_01CAT`; the 0/1 coding makes it ready for a model later ([Pre/Post Data](prepost.qmd)). |
 | `CONSENT` | Consent statement | 1 = consents and is eligible; 0 = does not |
 | `AGE` | What is your age? | Whole number. Turn on Qualtrics **content validation** (number, 18 to 99) so nobody can type "twenty". |
 | `GENDER` | Which term best describes your current gender identity? | 0 = Girl or woman; 1 = Boy or man; 2 = Nonbinary, genderfluid, or genderqueer; 3 = Not sure or questioning; -50 = Don't know what this means; -99 = Decline |
@@ -228,21 +173,15 @@ In R, [Transforming Your Data](dplyr.qmd) shows how to turn either version into 
 If the question has an "Other" text box, leave it: it exports as `RACIALIZED_8_TEXT` in both versions, and you will treat it as a `_QUAL` variable.
 :::
 
-## Name Your Survey Blocks
-
-A matrix question is a container: its own name sits at the top left, and the variables are the rows inside it (7.3.3). That container is what we call the **block**. It is not exported as a column, but its name shows up in the survey builder, the survey flow, and your Word export, and a container called `AVOID` holding rows called `AVOID_SLEEP1` … confuses everyone, including you in three weeks. So give the container a name that says it is a block: click its name at the top left and add `BLOCK` to the measure's name, `AVOIDBLOCK`, `STIGMABLOCK`. The same goes for the page-level blocks that group questions in the survey builder (`CONSENTBLOCK`, `DEMOGRAPHICSBLOCK`).
-
-![*The block: the matrix container is named `AVOIDBLOCK` (`AVOID` = Health Information Avoidance), and the statements inside it are the variables `AVOID_SLEEP1`, `AVOID_SLEEP2`, … (7.3.3)*](images/avoid-block.png){fig-alt="A Qualtrics matrix question whose name at the top left is AVOIDBLOCK. Below the instruction, two statements about not wanting to know one's risk for poor sleep are answered on a seven-column scale from Strongly Disagree to Strongly Agree plus Prefer not to say."}
-
 ## Recode the Values
 
-Recoding assigns a number to each answer choice. Click the question, open **Recode values** in the left panel, and check the **Recode values** box. A number box appears next to every answer choice; type the values below. Qualtrics exports the numbers; the words are only for the respondent.
+Recoding assigns a number to each answer choice. Click the question, open **Recode values**, and check **Recode values**. Qualtrics exports the numbers; the words are only for the respondent.
 
 | Kind of question | Values | Example |
 |----|----|----|
 | Consent | 1 = yes, 0 = no | `CONSENT` (a shared class variable, so it keeps its name) |
 | Pretest or posttest | 0 = pretest, 1 = posttest | `TIME` (pre/post teams; a shared class variable, so it keeps its name) |
-| Yes/no, have/do not have | 1 = yes (the thing the variable is named for), 0 = no | `TREATED_01`: 1 = has received treatment, 0 = has not |
+| Yes/no, have/do not have | 1 = yes (the thing the variable is named for), 0 = no | `TREATED_01CAT`: 1 = has received treatment, 0 = has not |
 | "None", "never", "I do not have one" | 0 | `MEALPLAN`: 0 = no meal plan, then 1, 2, 3 for the plans |
 | Agreement, frequency, or other ordered scale | 1 for the lowest step up to the highest step, in order | Strongly disagree (1) … Strongly agree (5) |
 | Categories with no order (majors, states, plans) | 1, 2, 3 … in the order shown; the numbers are labels only | `STATE` |
@@ -259,7 +198,7 @@ In R, `-99` and `-50` both become missing (`NA`) in the first cleaning step ([Im
 
 ![*"None" gets 0*](images/qualtrics-recode-none.png){fig-alt="Recode values dialog for a meal plan question with 0 for I do not currently have a meal plan." width="60%"}
 
-![*An agreement scale, numbered from 1 in order*](images/qualtrics-recode-matrix-tags.png){fig-alt="Recode values dialog for a matrix with Variable naming checked, Strongly disagree = 1 to Slightly agree = 4 shown." width="75%"}
+![*An agreement scale, numbered from 1 in order*](images/qualtrics-recode-matrix-tags.png){fig-alt="Recode values dialog for a matrix with Question export tags checked, Strongly disagree = 1 to Slightly agree = 4 shown." width="75%"}
 
 ![*The single-choice version of the racial/ethnic identity question: codes 1 to 8 and -99 for Prefer not to say. For the select-all version, each box gets the same code in its own column.*](images/qualtrics-recode-race.png){fig-alt="Recode values dialog for a racial/ethnic identity question with codes 1 to 8 and -99 for Prefer not to say." width="70%"}
 
@@ -267,7 +206,7 @@ In R, `-99` and `-50` both become missing (`NA`) in the first cleaning step ([Im
 
 ### Matrix questions
 
-For a matrix (one instruction, several items in rows), the same dialog does both jobs: **Variable naming** names every row (you did that in Name Your Variables) and **Recode values** numbers the columns. Check both and you can see the row names and the column values together. The two screenshots below are from other surveys; the first is a single construct (`WELLBEING1` to `WELLBEING6`), the second has subscales (`SLEEP_NAP1`, `SLEEP_TIME1`, `SLEEP_TIME2`, `SLEEP_DRINK1`, `SLEEP_DRINK2`).
+For a matrix (one instruction, several items in rows), check **Question export tags** as well as **Recode values**. Then you name every row and recode the columns in one dialog. The two screenshots below are from other surveys; the first is a single construct (`WELLBEING1` to `WELLBEING6`), the second has subscales (`SLEEP_NAP1`, `SLEEP_TIME1`, `SLEEP_TIME2`, `SLEEP_DRINK1`, `SLEEP_DRINK2`).
 
 ![*One construct: WELLBEING1 to WELLBEING6*](images/qualtrics-matrix-wellbeing.png){fig-alt="Recode values dialog for a matrix with rows WELLBEING1 to WELLBEING6 and columns Not at all = 1 to Extremely = 5."}
 
@@ -276,26 +215,24 @@ For a matrix (one instruction, several items in rows), the same dialog does both
 ::: callout-warning
 ## Caution: gaps in the numbers
 
-Qualtrics gives every answer choice a number the moment the choice is created, and it never reuses a number. So if your team once deleted a choice and added a new one, or retyped a choice, the numbers no longer run 1, 2, 3, 4, 5. A five-point agreement scale can export as 1, 2, 4, 5, 6: "Neither" was deleted and re-added, so it became 6, and "Agree" is still 4. Nothing looks wrong on the survey page, because respondents only see the words.
-
-That is why you open **Recode values** on **every** question and read the numbers from top to bottom before you publish. If they skip or jump, type the numbers you want (1, 2, 3, 4, 5, in the order the choices appear), and check the exported Word file (7.7) shows the same.
+If a team edits the answer choices, Qualtrics often leaves the codes with a gap, such as 1, 2, 4, 5, and "Agree" quietly becomes 4 instead of 3. Open Recode values on **every** question and read the numbers in order before you publish.
 :::
 
-## Create a Team Codebook
+## Check with a Team Codebook
 
 Before you publish, one teammate fills in a codebook, one row per variable, and a second teammate checks every row against Qualtrics. You will paste this table into your Methods section later, and [Import Data Once](import-once.qmd) uses it to check that the exported file matches.
 
 ::: {.callout-important .required}
 ## Required: fill in the Team Codebook Template
 
-Find the **Codebook Template** (`Team Codebook Template.docx`) in the **Template Assignment** folder of the class Google Drive. Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the **owner** of each variable (your initials if the variable belongs to your research question, or *Team* if it is shared), one for whether the variable is **quant or qual**, and one for whether it is imported into **R, NVivo, or both**. Save it as `TeamCodebook.docx` and upload it to your "Team Survey Data" folder next to `Draft.TeamSurveyQuestions.docx`.
+Find the **Codebook Template** (`Team-Codebook-Template.docx`) in the **Template Assignment** folder of the class Google Drive. Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the **owner** of each variable (your initials if the variable belongs to your research question, or *Team* if it is shared), one for whether the variable is **quant or qual**, and one for whether it is imported into **R, NVivo, or both**. Save it as `TeamCodebook.docx` and upload it to your "Team Survey Data" folder next to `Draft.TeamSurveyQuestions.docx`.
 :::
 
 | VARIABLE | QUESTION or item text | TYPE | VALUES | SCALE / subscale |
 |----|----|----|----|----|
 | `STIGMA_PUB4_R` | Most people would accept a person with a mental illness as a close friend. | ordered 1–5, reverse | 1 = Strongly disagree … 5 = Strongly agree | STIGMA, public |
 | `DISTRESS7` | … about how often did you feel depressed? | ordered 1–5 | 1 = None of the time … 5 = All of the time | K10 (DISTRESS) |
-| `TREATED_01` | Have you ever received treatment for a mental health problem? | binary | 1 = yes, 0 = no | single item |
+| `TREATED_01CAT` | Have you ever received treatment for a mental health problem? | binary | 1 = yes, 0 = no | single item |
 | `BARRIERS_QUAL` | What would make it hard for you to get help? | open-ended text | (text) | single item |
 
 ::: {.callout-note .gray}
@@ -303,8 +240,8 @@ Find the **Codebook Template** (`Team Codebook Template.docx`) in the **Template
 
 - [ ] Every export tag is ALL CAPS, has no spaces, and is 14 characters or fewer.
 - [ ] Every multi-item measure is NAME1, NAME2 … or BIG_SMALL1, BIG_SMALL2 …
-- [ ] Every reverse item ends in `_R` and its values were **not** reversed in Qualtrics (same direction as the other items).
-- [ ] Every binary variable ends in `_01`, is coded 0/1, and is named for the 1. No variable named in Qualtrics ends in `CAT`.
+- [ ] Every reverse item ends in `_R` and its values were **not** flipped in Qualtrics.
+- [ ] Every binary variable ends in `_01CAT`, is coded 0/1, and is named for the 1.
 - [ ] Prefer not to say = -99 and Don't know = -50 everywhere they appear.
 - [ ] No gaps in any question's codes.
 - [ ] The shared class variables have the exact names and values in the table above, including `RACIALIZED` in whichever version (single choice or select all) your survey uses.
@@ -345,5 +282,5 @@ After your team completes the steps in this chapter, export the survey to Word w
 1.  **Draft: `Draft.TeamSurveyQuestions.docx` and `TeamCodebook.docx`.** These should be in your team's Google Drive by the end of the **October 2 lecture**, right after your team works through this chapter together.
 2.  **Final: `Final.TeamSurveyQuestions.docx` and an updated `TeamCodebook.docx`.** These should be in your team's Google Drive by the end of the **October 9 lecture**, after your team's final review, following the steps at the start of [Export Survey Data](export.qmd).
 
-These are not graded assignments. They are the team's shared record of what every number in the data means, and your peer mentors and Dr. Shane use them to help you when something in the data looks wrong.
+These are not graded assignments. They are the team's shared record of what every number in the data means, and the instructors use them to help you when something in the data looks wrong.
 :::

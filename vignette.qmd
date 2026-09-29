@@ -291,7 +291,7 @@ case_long |>                                                    # Lab Play 3
 -   **The means are all `NA`** → you forgot `na.rm = TRUE`.
 -   **Levels come out alphabetically** (`Black` before `White`) → you forgot `levels =` in `factor()`.
 -   **An error about combining `character` and `double`** (or `RISK` comes out as text) → you selected the `_QUAL` text columns along with the ratings, usually by writing a range like `CASE1:CASE4`. Name the four rating columns one by one.
--   **`object 'CASE1' not found`** → your lab data file is older than this chapter. Get the current `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` from your instructor.
+-   **`object 'CASE1' not found`** → your lab data file is older than this chapter. Download the current `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` from the class Google Drive.
 :::
 
 :::::: {.ref .ref-tip}

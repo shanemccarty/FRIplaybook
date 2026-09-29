@@ -395,6 +395,8 @@ Notice that a reader can rebuild your score from the sentence: number of items, 
 Score every multi-item measure in your team's survey with `scoreItems()`, using your team codebook ([Name and Recode Variables in Qualtrics](qualtrics.qmd)) to tell you which items belong together, which are subscales, and which are reverse items. Then use the checklist.
 :::
 
+{{< include _go-variable-length.qmd >}}
+
 ```{r}
 #| label: composite-template
 #| eval: false

@@ -58,11 +58,23 @@ dplyr is part of the tidyverse and provides intuitive functions for manipulating
 
 -   Makes data cleaning code readable and logical
 
--   Uses the pipe operator (`|>`) to chain operations together, so that each step starts from the result of the one before
+-   Uses the pipe operator (`|>`, introduced in [Coding a Plot](layers.qmd)) to chain operations together, so that each step starts from the result of the one before
 
 -   Essential for preparing data before creating visualizations or running analyses
 
 > **Remember**: You cannot create meaningful visualizations or run valid statistical analyses without clean data!
+
+## Naming the variables you make here: `_#CAT`
+
+Every variable you create in this chapter is **categorical**, and its name says so. In this playbook a variable made by cutting a score into bands or by collapsing a question's response options ends in `_#CAT`. `CAT` says the variable is categorical: its numbers are labels for categories, not amounts, so it is never averaged or plotted as if it were a score. The number in front of `CAT` is how many categories the variable has, which is the same as how many response options it has after you are done: `3CAT` for three (`EDUCATION_3CAT`, `HEALTH_3CAT`, `POL_3CAT`), `4CAT` for four (`DISTRESS_4CAT`), `6CAT` for six (`RACIALIZED_6CAT`, or `RACIALIZED_5CAT` when the single-choice question gives five).
+
+A **binary** variable you make here is the two-category case and ends in `_01CAT`. It is either coded 0 and 1, or a factor with two levels, and either way the name says what the 1 (the second level) means: `DISTRESS_01CAT` (1 = likely distressed), `RACIALIZED_01CAT` (1 = racialized as a person of color, 0 = racialized as white).
+
+`CAT` is reserved for variables you **create** in R. A yes/no question that came straight from the survey is coded 0/1, named for the 1, and ends in `_01` (`TREATED_01`, `KNOWS_01`; shared variables such as `TIME` and `CONSENT` keep their plain names), with no `CAT`, because nothing was transformed ([Name and Recode Variables in Qualtrics](qualtrics.qmd)). When you see `CAT` at the end of a name, it means someone made a new set of categories from an existing variable, and the code that made it should be in the report.
+
+The number is not decoration. How many categories a variable has decides which test it goes into: two categories means a two-group comparison or a binary predictor, three or more means a three-plus-group comparison. [The Analysis Map](analysis-map.qmd) sorts the tests by exactly that count, so a name that carries the count tells you, and anyone reading your code, which row of the map you are on before you look at a single value.
+
+{{< include _go-variable-length.qmd >}}
 
 ::: callout-note
 ## Resources: what is a `.sav` file, and why `read_sav()`?
@@ -149,6 +161,12 @@ Sometimes a published scale comes with **cut-off scores**, and a reader wants to
 | 30 to 50 | likely to have a severe disorder |
 
 These are screening bands, not diagnoses: a score says how likely it is that someone would meet criteria in an interview, not that they do.
+
+::: callout-important
+## Important: where `mh_clean` comes from
+
+You do not have an object called `mh_clean` yet. In [Import Data Once](import-once.qmd) you made `mh_raw`, and that is all. `mh_clean` is **created by `lab_prep.R`**, the script in the class Google Drive (next to the lab data file). Run `source("lab_prep.R")` (the chunk below) and `mh_clean` appears in your environment tab. Every Play and Lab from here to the end of the playbook starts with that one line, so if a chunk says `object 'mh_clean' not found`, that is the line you skipped.
+:::
 
 Plays 2 and 3 use the lab dataset, so this is the first time you run `lab_prep.R`. `source("lab_prep.R")` runs every line of that `.R` file, top to bottom, as if you had typed it: it imports `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` as `mh_raw`, keeps the serious and attentive responses, turns `-99` and `-50` into `NA`, reverses the `_R` items, and averages each multi-item measure into a composite ([Creating Composites](composite.qmd)), all as `mh_clean`. From here on, every Lab starts with this one line instead of repeating those steps. The file must be in your project folder (next to your `.Rproj`, not inside `data`), and your load-library chunk must run first.
 
@@ -315,18 +333,10 @@ Whichever version you have, look at the counts before you decide which groups to
 The variable is called `RACIALIZED`, not `RACE`, because the survey recorded how people are classified within a system of racial sorting, not a trait they carry (Fields & Fields, 2012; Zuberi & Bonilla-Silva, 2008; D'Ignazio & Klein, 2020; see [Data Equity](data-equity.qmd)). When you report a result, write "people racialized as Black scored …", not "Black people are …". And `RACIALIZED_01CAT` is a coarse split that hides real differences between the groups it lumps together. It is here so that you can learn how a binary predictor works. A real report should also show `RACIALIZED_6CAT` (or `RACIALIZED_5CAT`).
 :::
 
-::: callout-tip
-## Go: Name a new categorical variable for the number of groups it has
-
-In this playbook, a variable made by cutting a score or collapsing categories ends in `_#CAT`, where # is the number of groups: `DISTRESS_4CAT`, `EDUCATION_3CAT`, `HEALTH_3CAT`, `POL_3CAT`, `RACIALIZED_6CAT` (or `RACIALIZED_5CAT` when the single-choice question gives five groups). A **binary** variable ends in `_01CAT`. It is either coded 0 and 1, or a factor with two levels, and either way the name says what the 1 (the second level) means: `DISTRESS_01CAT` (1 = likely distressed), `RACIALIZED_01CAT` (1 = racialized as a person of color, 0 = racialized as white). The name tells a reader what kind of variable it is before they look at a single value.
-:::
-
 ::: callout-note
-## Two lab variables that would be better named: `MH_TREATED` and `MH_KNOWS`
+## Two lab variables with no `CAT`, on purpose: `MH_TREATED` and `MH_KNOWS`
 
-The lab dataset has two yes/no variables, `MH_TREATED` (1 = has received counseling, therapy, or medication for a mental health concern, 0 = has not) and `MH_KNOWS` (1 = knows someone diagnosed with a mental illness, 0 = does not). They work as they are: they are coded 0 and 1, and the 1 means what the name says. But under the rules in [Name and Recode Variables in Qualtrics](qualtrics.qmd) they would be `TREATED_01CAT` and `KNOWS_01CAT`, and that is how you should name yours.
-
-The ending does two jobs. `CAT` says the variable is **categorical**: the numbers are labels for groups, not amounts, so it should never be averaged or put on an x axis as if it were a score. The number in front says **how many response options** the variable has: `01` for two (coded 0 and 1), `3CAT` for three, `4CAT` for four. That number decides the analysis. A two-group variable goes into a two-group comparison or a binary predictor in a regression; a three-or-more-group variable goes into a three-plus-group comparison. [The Analysis Map](analysis-map.qmd) sorts the tests by exactly this count, so a name that carries the count makes the right row on the map easy to find, for you and for anyone reading your code.
+The lab dataset has two yes/no variables, `MH_TREATED` (1 = has received counseling, therapy, or medication for a mental health concern, 0 = has not) and `MH_KNOWS` (1 = knows someone diagnosed with a mental illness, 0 = does not). They came straight from the survey, coded 0 and 1 and named for the 1, so they do **not** end in `CAT`: nobody transformed them. If you cut or combine one of them in this chapter, the new variable is the one that gets the ending. Under the naming rules your own survey would call them `TREATED_01` and `KNOWS_01`; the lab file keeps its older names.
 :::
 
 ::: {.callout-important .required}
@@ -376,7 +386,7 @@ n_of <- function(tab, lvl) tab$n[match(lvl, as.character(tab[[1]]))]
 n_na <- function(tab) { x <- tab$n[is.na(tab[[1]])]; if (length(x) == 0) 0 else x }
 ```
 
-**Before you start.** Open your lab `.qmd`, run your load-library chunk (`dplyr` must be loaded), and run `source("lab_prep.R")` so that `mh_clean` is in your environment. After every play, **count** the new variable against the old one, the way the Play did: a transformation you have not checked is a foul waiting to happen.
+**Before you start.** Open your lab `.qmd`, run your load-library chunk (`dplyr` must be loaded), and run `source("lab_prep.R")`. That line is what creates `mh_clean` (you only have `mh_raw` from Import Data Once); check the environment tab shows it before you go on. After every play, **count** the new variable against the old one, the way the Play did: a transformation you have not checked is a foul waiting to happen.
 
 ### Lab Play 1: Collapse categories (`EDUCATION_3CAT`)
 

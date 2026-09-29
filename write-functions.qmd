@@ -1583,10 +1583,10 @@ Writing functions can help researchers output the mean, median, sd, min, max and
 continuous_vars <- c("AGE", "SOCIALSTATUS", "POLITICALBELIEFS", paste0("ZEROSUM_", 1:11)
 )
 
-desc_table_continuous <- select_data %>%
-  select(all_of(continuous_vars)) %>%
-  psych::describe() %>%
-  tibble::rownames_to_column(var = "Variable") %>% 
+desc_table_continuous <- select_data |>
+  select(all_of(continuous_vars)) |>
+  psych::describe() |>
+  tibble::rownames_to_column(var = "Variable") |>
   select(Variable, n, mean, median, sd, min, max)
 
 # Create table

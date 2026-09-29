@@ -48,7 +48,7 @@ Start at the top left with your research question, and follow the arrows. Every 
 ::: {.callout-warning}
 ## Caution: The map is for outcomes that are scores
 
-Every test on the map needs an outcome that is a score (a continuous variable), such as a composite from 1 to 5. If your outcome is a category, such as yes or no, you need a different test (chi-square). Talk to your instructor.
+Every test on the map needs an outcome that is a score (a continuous variable), such as a composite from 1 to 5. If your outcome is a category, such as yes or no, you need a different test (chi-square). Talk to your peer mentor and/or Dr. Shane.
 :::
 
 ## Comparison or Relationship?
@@ -155,7 +155,7 @@ Do this once for **each** of your research questions. Copy the sentences below i
 
 The Analysis Map is short on purpose. In *The Model Thinker*, Scott Page ([2018](https://sites.lsa.umich.edu/scottepage/home/the-model-thinker/)) argues that data does not explain itself. People move from data to information, from information to knowledge, and from knowledge to wisdom by using **models**: simplified, formal ways of describing how something works. Every model leaves things out, so no single model is ever the full story. Page's advice is to become a **many-model thinker**: learn several models, know what each one assumes, and look at the same problem through more than one of them.
 
-The statistical tests on the Analysis Map are models, too. A t-test is a model of two groups. A regression is a model of a straight line. They are the right models for the research questions in this course, and they are the only ones you will choose from for your *RD Report* and *Final Report*. They are not the only ones that exist. Logistic regression, multilevel models, network models, machine learning, and many others answer questions that these tests cannot. If your question does not fit the map, that does not mean it is a bad question. It means it needs a different model, so talk to your instructor. You can find places to keep learning in [Statistics](statistics.qmd).
+The statistical tests on the Analysis Map are models, too. A t-test is a model of two groups. A regression is a model of a straight line. They are the right models for the research questions in this course, and they are the only ones you will choose from for your *RD Report* and *Final Report*. They are not the only ones that exist. Logistic regression, multilevel models, network models, machine learning, and many others answer questions that these tests cannot. If your question does not fit the map, that does not mean it is a bad question. It means it needs a different model, so talk to your peer mentor and/or Dr. Shane. You can find places to keep learning in [Statistics](statistics.qmd).
 
 ![*Many models, one short list. The tests in the blue panel are the plays in this playbook. The models around them are useful, too, and you may meet them in later courses.*](images/many-models.svg){fig-alt="Nine statistical tests from the Analysis Map sit inside a blue panel labeled the plays in this playbook: independent t-test, Mann-Whitney U, paired t-test, Wilcoxon signed-rank, ANOVA, Kruskal-Wallis, Pearson correlation, Spearman correlation, and linear regression. Around the panel, in gray, are twelve other kinds of models, such as chi-square, logistic regression, multilevel models, network models, and machine learning, labeled other models you may meet later."}
 

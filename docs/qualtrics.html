@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -400,22 +435,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#log-in-and-find-recode-values" id="toc-log-in-and-find-recode-values" class="nav-link active" data-scroll-target="#log-in-and-find-recode-values"><span class="header-section-number">7.1</span> Log in and find Recode Values</a></li>
-  <li><a href="#name-your-variables" id="toc-name-your-variables" class="nav-link" data-scroll-target="#name-your-variables"><span class="header-section-number">7.2</span> Name Your Variables</a>
+  <li><a href="#why-variable-names-matter" id="toc-why-variable-names-matter" class="nav-link active" data-scroll-target="#why-variable-names-matter"><span class="header-section-number">7.1</span> Why Variable Names Matter</a></li>
+  <li><a href="#log-in-to-qualtrics" id="toc-log-in-to-qualtrics" class="nav-link" data-scroll-target="#log-in-to-qualtrics"><span class="header-section-number">7.2</span> Log in to Qualtrics</a></li>
+  <li><a href="#name-your-variables-in-qualtrics" id="toc-name-your-variables-in-qualtrics" class="nav-link" data-scroll-target="#name-your-variables-in-qualtrics"><span class="header-section-number">7.3</span> Name Your Variables in Qualtrics</a>
   <ul class="collapse">
-  <li><a href="#the-rules" id="toc-the-rules" class="nav-link" data-scroll-target="#the-rules"><span class="header-section-number">7.2.1</span> The rules</a></li>
-  <li><a href="#a-measure-with-subscales-the-lab-example" id="toc-a-measure-with-subscales-the-lab-example" class="nav-link" data-scroll-target="#a-measure-with-subscales-the-lab-example"><span class="header-section-number">7.2.2</span> A measure with subscales: the lab example</a></li>
-  <li><a href="#reverse-items-name-them-here-reverse-them-in-r" id="toc-reverse-items-name-them-here-reverse-them-in-r" class="nav-link" data-scroll-target="#reverse-items-name-them-here-reverse-them-in-r"><span class="header-section-number">7.2.3</span> Reverse items: name them here, reverse them in R</a></li>
-  <li><a href="#a-single-scale-with-many-items-the-k10" id="toc-a-single-scale-with-many-items-the-k10" class="nav-link" data-scroll-target="#a-single-scale-with-many-items-the-k10"><span class="header-section-number">7.2.4</span> A single scale with many items: the K10</a></li>
-  <li><a href="#shared-class-variables" id="toc-shared-class-variables" class="nav-link" data-scroll-target="#shared-class-variables"><span class="header-section-number">7.2.5</span> Shared class variables</a></li>
+  <li><a href="#the-rules-for-names" id="toc-the-rules-for-names" class="nav-link" data-scroll-target="#the-rules-for-names"><span class="header-section-number">7.3.1</span> The rules for names</a></li>
+  <li><a href="#single-question" id="toc-single-question" class="nav-link" data-scroll-target="#single-question"><span class="header-section-number">7.3.2</span> Single Question</a></li>
+  <li><a href="#matrix-statements" id="toc-matrix-statements" class="nav-link" data-scroll-target="#matrix-statements"><span class="header-section-number">7.3.3</span> Matrix Statements</a></li>
+  <li><a href="#select-all-question" id="toc-select-all-question" class="nav-link" data-scroll-target="#select-all-question"><span class="header-section-number">7.3.4</span> Select-All Question</a></li>
+  <li><a href="#a-measure-with-subscales-the-lab-example" id="toc-a-measure-with-subscales-the-lab-example" class="nav-link" data-scroll-target="#a-measure-with-subscales-the-lab-example"><span class="header-section-number">7.3.5</span> A measure with subscales: the lab example</a></li>
+  <li><a href="#reverse-items-name-them-here-reverse-them-in-r" id="toc-reverse-items-name-them-here-reverse-them-in-r" class="nav-link" data-scroll-target="#reverse-items-name-them-here-reverse-them-in-r"><span class="header-section-number">7.3.6</span> Reverse items: name them here, reverse them in R</a></li>
+  <li><a href="#a-single-scale-with-many-items-the-k10" id="toc-a-single-scale-with-many-items-the-k10" class="nav-link" data-scroll-target="#a-single-scale-with-many-items-the-k10"><span class="header-section-number">7.3.7</span> A single scale with many items: the K10</a></li>
+  <li><a href="#shared-class-variables" id="toc-shared-class-variables" class="nav-link" data-scroll-target="#shared-class-variables"><span class="header-section-number">7.3.8</span> Shared class variables</a></li>
   </ul></li>
-  <li><a href="#recode-the-values" id="toc-recode-the-values" class="nav-link" data-scroll-target="#recode-the-values"><span class="header-section-number">7.3</span> Recode the Values</a>
+  <li><a href="#name-your-survey-blocks" id="toc-name-your-survey-blocks" class="nav-link" data-scroll-target="#name-your-survey-blocks"><span class="header-section-number">7.4</span> Name Your Survey Blocks</a></li>
+  <li><a href="#recode-the-values" id="toc-recode-the-values" class="nav-link" data-scroll-target="#recode-the-values"><span class="header-section-number">7.5</span> Recode the Values</a>
   <ul class="collapse">
-  <li><a href="#what-each-dialog-looks-like" id="toc-what-each-dialog-looks-like" class="nav-link" data-scroll-target="#what-each-dialog-looks-like"><span class="header-section-number">7.3.1</span> What each dialog looks like</a></li>
-  <li><a href="#matrix-questions" id="toc-matrix-questions" class="nav-link" data-scroll-target="#matrix-questions"><span class="header-section-number">7.3.2</span> Matrix questions</a></li>
+  <li><a href="#what-each-dialog-looks-like" id="toc-what-each-dialog-looks-like" class="nav-link" data-scroll-target="#what-each-dialog-looks-like"><span class="header-section-number">7.5.1</span> What each dialog looks like</a></li>
+  <li><a href="#matrix-questions" id="toc-matrix-questions" class="nav-link" data-scroll-target="#matrix-questions"><span class="header-section-number">7.5.2</span> Matrix questions</a></li>
   </ul></li>
-  <li><a href="#check-with-a-team-codebook" id="toc-check-with-a-team-codebook" class="nav-link" data-scroll-target="#check-with-a-team-codebook"><span class="header-section-number">7.4</span> Check with a Team Codebook</a></li>
-  <li><a href="#sec-export-word" id="toc-sec-export-word" class="nav-link" data-scroll-target="#sec-export-word"><span class="header-section-number">7.5</span> Export Survey Questions/Items (<code>.docx</code>)</a></li>
+  <li><a href="#create-a-team-codebook" id="toc-create-a-team-codebook" class="nav-link" data-scroll-target="#create-a-team-codebook"><span class="header-section-number">7.6</span> Create a Team Codebook</a></li>
+  <li><a href="#sec-export-word" id="toc-sec-export-word" class="nav-link" data-scroll-target="#sec-export-word"><span class="header-section-number">7.7</span> Export Survey Questions/Items (<code>.docx</code>)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/qualtrics.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -452,7 +492,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter is the team’s checklist for the Qualtrics survey before any data is exported. Researchers learn the naming rules for export tags (ALL CAPS, short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01CAT for binary variables, _QUAL for open-ended questions), work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables, recode every answer choice to a number (with -99 for Prefer not to say and -50 for Don’t know), build a team codebook, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.</p>
+    <p>This chapter is the team’s checklist for the Qualtrics survey before any data is exported. Researchers learn the naming rules for export tags (ALL CAPS, short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01 for yes/no variables coded 0 and 1, _QUAL for open-ended questions; CAT is reserved for categories created later in R), work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables, recode every answer choice to a number (with -99 for Prefer not to say and -50 for Don’t know), build a team codebook, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.</p>
   </div>
 </div>
 
@@ -496,7 +536,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When data collection ends, your team will <strong>export</strong> the survey from Qualtrics and then <strong>import</strong> it into R (quantitative track) <strong>or</strong> NVivo (qualitative track). Team members will use this shared team dataset for their individual reports using their own copy of this original team file. If two copies have different variable names or different numbers behind the same answer, the team cannot merge the dataset in R with the dataset in NVivo to analyze results for any mixed-methods research questions. There is no fixing this afterwards.</p>
+<p>When data collection ends, your team will <strong>export</strong> the survey from Qualtrics and then <strong>import</strong> it into R (quantitative track) <strong>or</strong> NVivo (qualitative track). Each team member will make a copy of the shared team dataset for their individual reports. Then, your teammates will move forward with coding for your individual questions. If you identify a mistake in your exported team data after you have exported the team dataset, the team cannot merge the dataset in R with the dataset in NVivo to analyze results for any mixed-methods research questions. There is no fixing this afterwards. The best way to avoid this problem is to follow the steps in the green box below that overviews the upcoming chapter.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -511,7 +551,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <p>Your team should use your team meeting or team time during lecture to <strong>follow these steps together</strong> before anyone exports or downloads your Qualtrics survey data.</p>
 <p><strong>Name</strong> every variable in your Qualtrics survey → <strong>Recode</strong> every answer choice so there are numerical values assigned to <strong>all</strong> of the response options → <strong>Check</strong> with the team codebook → <strong>Publish</strong> your Qualtrics survey again → <strong>Export</strong> your survey questions to Word with the coded values showing (the last section of this chapter).</p>
-<p><strong>When:</strong> team time in the <strong>October 2 lecture</strong>, the last week before Fall break. By the end of that lecture, your team’s Google Drive should have the two files described at the end of this chapter.</p>
+<p><strong>When:</strong> team time in the <strong>October 2 lecture</strong>. By the end of that lecture, your team’s Google Drive should have the two files described at the end of this chapter.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -525,38 +565,166 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Safe:</strong> renaming a variable (the export tag) and recoding values. Qualtrics applies both to every response already collected, at export time.</p>
-<p><strong>Not safe:</strong> adding, deleting, or rewording answer choices, or moving questions between blocks. Those change what respondents saw, so responses before and after the change are not comparable. If you must, write down the date and tell your instructor.</p>
+<p><strong>Not safe:</strong> adding, deleting, or rewording answer choices, or moving questions between blocks. Those change what respondents saw, so responses before and after the change are not comparable. If you must, write down the date and tell your peer mentor and/or Dr.&nbsp;Shane.</p>
 </div>
 </div>
-<section id="log-in-and-find-recode-values" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="log-in-and-find-recode-values"><span class="header-section-number">7.1</span> Log in and find Recode Values</h2>
+<section id="why-variable-names-matter" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="why-variable-names-matter"><span class="header-section-number">7.1</span> Why Variable Names Matter</h2>
+<p>In <a href="./layers.html">Coding a Plot</a>, the first thing you did with the <code>insurance</code> dataset was look at its variable names and its first rows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>insurance <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "age"      "sex"      "bmi"      "children" "smoker"   "region"   "charges" </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>The first four rows of <code>insurance</code>: one column per variable, one row per person.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">age</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: right;">bmi</th>
+<th style="text-align: right;">children</th>
+<th style="text-align: left;">smoker</th>
+<th style="text-align: left;">region</th>
+<th style="text-align: right;">charges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">27.900</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">southwest</td>
+<td style="text-align: right;">16884.924</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">33.770</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">southeast</td>
+<td style="text-align: right;">1725.552</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">33.000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">southeast</td>
+<td style="text-align: right;">4449.462</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">33</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">22.705</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">northwest</td>
+<td style="text-align: right;">21984.471</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>You could read that table without a codebook. <code>age</code> is an age, <code>smoker</code> says whether the person smokes, <code>charges</code> is what their insurance cost. Each name is short enough to type in a line of code and long enough to say what the column holds. That is the goal for your team’s survey: when you type <code>names(alldata)</code> in October, every name should tell you what the variable is <strong>without</strong> spelling out the whole question.</p>
+<p>Here is the same table the way Qualtrics exports a survey when nobody has named the questions:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>The same four rows with Qualtrics’ default names. Which column is the smoker question? You would have to open the survey to find out, every time.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Q1</th>
+<th style="text-align: left;">Q2</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">Q4</th>
+<th style="text-align: left;">Q5</th>
+<th style="text-align: left;">Q6</th>
+<th style="text-align: right;">Q7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: right;">27.900</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">southwest</td>
+<td style="text-align: right;">16884.924</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">33.770</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">southeast</td>
+<td style="text-align: right;">1725.552</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">33.000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">southeast</td>
+<td style="text-align: right;">4449.462</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">33</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: right;">22.705</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">northwest</td>
+<td style="text-align: right;">21984.471</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now <code>Q5</code> is the smoker question and <code>Q7</code> is the cost, and you will forget which is which by next week. Every line of code you write, every plot label, and every table in your report will carry these names, and so will the NVivo project your qualitative teammates build from the same export. A name typed once in Qualtrics, before the export, saves the whole team from decoding <code>Q17</code> for the rest of the semester. The rest of this chapter is how to do it.</p>
+</section>
+<section id="log-in-to-qualtrics" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="log-in-to-qualtrics"><span class="header-section-number">7.2</span> Log in to Qualtrics</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label>
 <ul class="task-list">
-<li><label><input type="checkbox">Under Active surveys, click on your survey</label></li>
+<li><label><input type="checkbox">Under Active surveys, click on your survey. You are now in the <strong>Survey</strong> tab (the survey builder), which is where everything in this chapter happens.</label></li>
 </ul></li>
-<li><label><input type="checkbox">Click a question. In the left panel, click <strong>Recode values</strong>. This one dialog is where you will both name the variable (<strong>Question export tags</strong> or <strong>Variable naming</strong>) and recode its values (<strong>Recode values</strong>).</label></li>
-<li><label><input type="checkbox">Work through the survey one question at a time, using the rules in the sections below.</label></li>
-<li><label><input type="checkbox">Click <strong>Publish</strong> in Qualtrics to save your recodes. Until you publish, the live survey still has the old names and values.</label></li>
+<li><label><input type="checkbox">Work through the survey one question at a time, in this order: first <strong>name</strong> every variable (see 7.3), then <strong>name the blocks</strong> (see 7.4), then <strong>recode</strong> the values (see 7.5). The rules for each are below.</label></li>
+<li><label><input type="checkbox">When you are done with all three, click <strong>Publish</strong>. Until you publish, the live survey still has the old names and values.</label></li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/qualtrics-recode-menu.png" class="img-fluid figure-img" alt="The Qualtrics survey editor with a matrix question selected and the Recode values item highlighted in the left panel."></p>
-<figcaption><em>Click a question, then Recode values in the left panel</em></figcaption>
-</figure>
-</div>
 </section>
-<section id="name-your-variables" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="name-your-variables"><span class="header-section-number">7.2</span> Name Your Variables</h2>
-<p>In Qualtrics, the variable name is the <strong>export tag</strong>. Click a question, open <strong>Recode values</strong> in the left panel, and check <strong>Question export tags</strong> (for a single question, <strong>Variable naming</strong>) to see and edit it.</p>
-<section id="the-rules" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="the-rules"><span class="header-section-number">7.2.1</span> The rules</h3>
+<section id="name-your-variables-in-qualtrics" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="name-your-variables-in-qualtrics"><span class="header-section-number">7.3</span> Name Your Variables in Qualtrics</h2>
+<p>In Qualtrics, the variable name is the <strong>question export tag</strong>: the name that becomes the column header when you export the data, and the name R and NVivo will use. Every question shows its current name in small text at its top left, and Qualtrics starts them all as <code>Q1</code>, <code>Q2</code>, <code>Q3</code>, … Naming a variable means replacing that. The rules for the names come first (7.3.1); where you type them depends on the kind of question (7.3.2 to 7.3.4).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: how long should a variable name be?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aim for 6 to 10 characters for the measure’s name, and 14 or fewer for the whole tag</strong> including the subscale and the item number (<code>AVOID_SLEEP1</code> is 12). That is short enough to read in a column header, in a plot legend, and in a line of R code, and long enough to be decoded without the codebook.</p>
+<p>The tools will let you go longer, so the limit is readability, not software: R accepts names up to 10,000 characters, and Qualtrics only truncates an export tag when you export to SPSS, which cuts at 64. A name that needs 30 characters usually needs an abbreviation instead: Health Information Avoidance becomes <code>AVOID</code>, Kessler Psychological Distress becomes <code>DISTRESS</code>. Put the full name in your team codebook, where the variable name abbreviation gets explained once.</p>
+</div>
+</div>
+<section id="the-rules-for-names" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="the-rules-for-names"><span class="header-section-number">7.3.1</span> The rules for names</h3>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Rule</th>
@@ -601,13 +769,13 @@ ul.task-list li input[type="checkbox"] {
 <td><code>EFFICACY1</code>, <code>EFFICACY1b</code></td>
 </tr>
 <tr class="even">
-<td>Binary (yes/no) variable: add <code>_01CAT</code>, code it 0 and 1, and name it for the answer that gets the 1</td>
-<td><code>TREATED_01CAT</code> (1 = has received mental health treatment, 0 = has not); <code>KNOWS_01CAT</code> (1 = knows someone with a mental health problem)</td>
-<td><code>TREATMENT</code>, <code>MHTX</code>, <code>TREATED</code> (yes = 1, no = 2)</td>
+<td>Binary (yes/no) variable: add <code>_01</code>, code it 0 and 1, and name it for the answer that gets the 1. No <code>CAT</code>: <code>CAT</code> is only for categories you create later in R</td>
+<td><code>TREATED_01</code> (1 = has received mental health treatment, 0 = has not); <code>KNOWS_01</code> (1 = knows someone with a mental health problem)</td>
+<td><code>TREATMENT</code>, <code>MHTX</code>, <code>TREATED_01CAT</code>, <code>TREATED</code> coded yes = 1, no = 2</td>
 </tr>
 <tr class="odd">
-<td>Categories you will make later in R from a score or by collapsing choices: <code>_#CAT</code>, where # is the number of groups</td>
-<td><code>DISTRESS_4CAT</code>, <code>EDUCATION_3CAT</code>, <code>RACIALIZED_6CAT</code></td>
+<td>A categorical variable you will <strong>create later in R</strong> by transforming a variable that is already in the survey (cutting a score into bands, or collapsing a question’s response options into fewer categories): <code>_#CAT</code>, where # is the number of categories the new variable has, and <code>_01CAT</code> when it is a 0/1 split you made. <code>CAT</code> is the mark of a variable <strong>you</strong> made in R from an existing one, so nothing in Qualtrics ever gets it (<a href="./dplyr.html">Transforming Your Data</a>)</td>
+<td><code>DISTRESS_4CAT</code> (the ten K10 items summed, then cut into 4 bands), <code>EDUCATION_3CAT</code> (7 education options collapsed into 3), <code>RACIALIZED_6CAT</code> (the select-all boxes combined into 6 categories)</td>
 <td><code>DISTRESSCATS</code>, <code>EDU3</code></td>
 </tr>
 <tr class="even">
@@ -616,15 +784,70 @@ ul.task-list li input[type="checkbox"] {
 <td><code>BARRIERS</code>, <code>Q14</code></td>
 </tr>
 <tr class="odd">
-<td>A block is not a variable: give blocks a <code>BLOCK_</code> name</td>
-<td>block <code>BLOCK_STIGMA</code>, variable <code>STIGMA_PUB1</code></td>
+<td>A block is not a variable: the container of a matrix (and a page-level block) gets the measure’s name plus <code>BLOCK</code> (see 7.4)</td>
+<td>block <code>STIGMABLOCK</code>, variables <code>STIGMA_PUB1</code> …</td>
 <td>block and variable both called <code>STIGMA</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="a-measure-with-subscales-the-lab-example" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="a-measure-with-subscales-the-lab-example"><span class="header-section-number">7.2.2</span> A measure with subscales: the lab example</h3>
+<section id="single-question" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="single-question"><span class="header-section-number">7.3.2</span> Single Question</h3>
+<p>A single question gives one answer per person: <code>CONSENT</code>, <code>AGE</code>, <code>HEALTHSTATUS</code>, a yes/no question. In the survey builder, click the question’s name (the <code>Q12</code> at its top left), type the new name, and press Enter. That is the whole job. You do not need the Recode values dialog for this; its <strong>Variable naming</strong> checkbox renames the answer choices, not the question.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption><em><code>CONSENT</code>: the name goes on the question where people give consent (the two answer choices), not on the consent-form text above it. Here the name is being typed in place of the old <code>Q#</code>.</em></figcaption>
+<p><img src="images/name-var-consent.png" class="img-fluid figure-img" alt="The Qualtrics survey builder with a consent question selected. Its name box at the top left reads CONSENT with the cursor still in it. Below it is the Statement of Consent text and two answer choices: one consenting and confirming eligibility, one declining."></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption><em><code>AGE</code>: a single open-number question, renamed in place</em></figcaption>
+<p><img src="images/name-var-age.png" class="img-fluid figure-img" style="width:75.0%" alt="A Qualtrics question named AGE at its top left, asking What is your age? (enter a whole number, such as 45), with a text entry box."></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption><em><code>HEALTHSTATUS</code>: a single-choice question, renamed in place. The answer choices get their numbers later, in 7.5.</em></figcaption>
+<p><img src="images/name-var-healthstatus.png" class="img-fluid figure-img" style="width:75.0%" alt="A Qualtrics question named HEALTHSTATUS asking Would you say your health in general is excellent, very good, good, fair, or poor, with choices Poor, Fair, Good, Very Good, Excellent, Don't know, and Prefer not to say."></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: name the question, not the text above it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A survey often shows a block of text (the consent form, an instruction, a vignette) as a separate item right before the question people answer. That text item has its own <code>Q#</code>, and it exports nothing. Put <code>CONSENT</code> on the question with the answer choices, as in the screenshot, and leave the consent-form text item alone. The same goes for any instruction text that sits above a matrix.</p>
+</div>
+</div>
+</section>
+<section id="matrix-statements" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="matrix-statements"><span class="header-section-number">7.3.3</span> Matrix Statements</h3>
+<p>A matrix question has one instruction and several statements in rows, all answered on the same scale: the stigma items, the K10, a well-being scale. Qualtrics exports <strong>one column per row</strong>, so it is the rows that need names, and the question name and the row names are set in two different places.</p>
+<ol type="1">
+<li>Click the question’s name at its top left and rename it for the measure plus <code>BLOCK</code> (<code>STIGMABLOCK</code>, <code>AVOIDBLOCK</code>; see 7.4). This name is for you; it is not a column in the data.</li>
+<li>Click the question, open <strong>Recode values</strong> in the left panel, and check <strong>Variable naming</strong>. A name box appears next to every statement.</li>
+<li>Type a name for each row, following the multi-item rule: <code>NAME1</code>, <code>NAME2</code>, … for one construct, or <code>BIG_SMALL1</code>, <code>BIG_SMALL2</code>, … when the rows belong to subscales. Add <code>_R</code> to a reverse item. Those row names are what R sees.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption><em>Variable naming on a matrix: one name per statement. <code>AVOID</code> is shorthand for Health Information <strong>Avoid</strong>ance, the measure’s name; this is how to name a variable, with a short abbreviation that a reader can decode. The measure has two subscales, so the rows are <code>AVOID_SLEEP1</code> … and <code>AVOID_MDD1</code> … (MDD = major depressive disorder), and the last one is being typed.</em></figcaption>
+<p><img src="images/variable-export-avoid.png" class="img-fluid figure-img" style="width:60.0%" alt="The Variable naming panel of a Qualtrics matrix question. Each statement has a name box above it: AVOID_SLEEP6, AVOID_SLEEP7, AVOID_SLEEP8, AVOID_MDD1, AVOID_MDD2, and AVOID_MDD3, which is selected with the cursor in it."></p>
+</figure>
+</div>
+<!-- SHANE: screenshot to add: the STIGMA matrix with Variable naming checked, showing STIGMA_PUB1 to STIGMA_SELF4_R. Suggested file: images/qualtrics-matrix-stigma.png -->
+</section>
+<section id="select-all-question" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="select-all-question"><span class="header-section-number">7.3.4</span> Select-All Question</h3>
+<p>A select-all question (checkboxes, such as the select-all version of <code>RACIALIZED</code>) exports one column per box. Rename the question in the builder (<code>RACIALIZED</code>) and stop there: Qualtrics adds <code>_1</code>, <code>_2</code>, … to the question name for each box, so you do not name the boxes yourself. The values that go into those columns are set in 7.5.</p>
+</section>
+<section id="a-measure-with-subscales-the-lab-example" class="level3" data-number="7.3.5">
+<h3 data-number="7.3.5" class="anchored" data-anchor-id="a-measure-with-subscales-the-lab-example"><span class="header-section-number">7.3.5</span> A measure with subscales: the lab example</h3>
 <p>The lab dataset measures <strong>stigma</strong> with two subscales, <strong>public stigma</strong> (what a person thinks most people believe) and <strong>self stigma</strong> (how a person would feel about their own mental health problem). Both are in one Qualtrics matrix. Naming them BIG_SMALL# does two jobs at once: in R, you can score the total (<code>STIGMA</code>, all eight items) and each subscale (<code>STIGMA_PUB</code>, <code>STIGMA_SELF</code>) from the same names, and anyone reading your code can see which items belong together.</p>
 <table class="caption-top table">
 <colgroup>
@@ -683,29 +906,28 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>All eight items use the same answer choices: Strongly disagree (1), Disagree (2), Neither (3), Agree (4), Strongly agree (5). Higher = more stigma.</p>
-<!-- SHANE: screenshot to add: the STIGMA matrix in Qualtrics with Question export tags checked, showing STIGMA_PUB1 to STIGMA_SELF4_R and the values 1 to 5. Suggested file: images/qualtrics-matrix-stigma.png -->
 </section>
-<section id="reverse-items-name-them-here-reverse-them-in-r" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="reverse-items-name-them-here-reverse-them-in-r"><span class="header-section-number">7.2.3</span> Reverse items: name them here, reverse them in R</h3>
+<section id="reverse-items-name-them-here-reverse-them-in-r" class="level3" data-number="7.3.6">
+<h3 data-number="7.3.6" class="anchored" data-anchor-id="reverse-items-name-them-here-reverse-them-in-r"><span class="header-section-number">7.3.6</span> Reverse items: name them here, reverse them in R</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Important: do not flip the numbers in Qualtrics
+<span class="screen-reader-only">Important</span>Important: do not reverse the values in Qualtrics
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>A <strong>reverse item</strong> is worded in the opposite direction from the rest of its scale. Agreeing with “Most people would accept a person with a mental illness as a close friend” means <em>less</em> stigma, while agreeing with every other item means <em>more</em>.</p>
-<p><strong>In Qualtrics:</strong> add <code>_R</code> to the export tag, and leave the values exactly as they are for the other items (Strongly disagree = 1 … Strongly agree = 5).</p>
+<p><strong>In Qualtrics:</strong> add <code>_R</code> to the export tag, and recode the values exactly as for the other items (Strongly disagree = 1 … Strongly agree = 5), in the same direction.</p>
 <p><strong>In R:</strong> reverse the <code>_R</code> items with <code>6 - x</code> (for a 1-to-5 scale) before you average. <a href="./composite.html">Creating Composites</a> shows this with <code>scoreItems()</code>, where a minus sign in front of the item name does the reversing.</p>
-<p><strong>Why not in Qualtrics?</strong> If you flip the numbers in Qualtrics <em>and</em> the code in R reverses <code>_R</code> items, the item gets flipped twice and ends up backwards, and nothing warns you. Keeping the raw export in one direction means the reversal is visible in your code, where a reader (and a grader) can check it.</p>
+<p><strong>Why not in Qualtrics?</strong> If you reverse the values in Qualtrics <em>and</em> the code in R reverses the <code>_R</code> items, the item gets reversed twice and ends up backwards, and nothing warns you. Recoding the values (7.5) is fine and expected; reversing them is the part that belongs in R. Keeping the raw export in one direction means the reversal is visible in your code, where a reader (and a grader) can check it.</p>
 </div>
 </div>
 </section>
-<section id="a-single-scale-with-many-items-the-k10" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="a-single-scale-with-many-items-the-k10"><span class="header-section-number">7.2.4</span> A single scale with many items: the K10</h3>
+<section id="a-single-scale-with-many-items-the-k10" class="level3" data-number="7.3.7">
+<h3 data-number="7.3.7" class="anchored" data-anchor-id="a-single-scale-with-many-items-the-k10"><span class="header-section-number">7.3.7</span> A single scale with many items: the K10</h3>
 <p>The <strong>Kessler Psychological Distress Scale (K10)</strong> in the lab dataset has ten items, one construct, and no subscales, so the export tags are simply <code>DISTRESS1</code> to <code>DISTRESS10</code>, and all ten share one set of answer choices: None of the time (1), A little of the time (2), Some of the time (3), Most of the time (4), All of the time (5). That is all the naming a single scale needs.</p>
 <table class="caption-top table">
 <thead>
@@ -759,8 +981,8 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>What happens to the ten items afterwards belongs to later chapters: <a href="./dplyr.html">Transforming Your Data</a> cuts the K10 total into its published bands (<code>DISTRESS_4CAT</code>, <code>DISTRESS_01CAT</code>), and <a href="./composite.html">Creating Composites</a> scores the scale.</p>
 </section>
-<section id="shared-class-variables" class="level3" data-number="7.2.5">
-<h3 data-number="7.2.5" class="anchored" data-anchor-id="shared-class-variables"><span class="header-section-number">7.2.5</span> Shared class variables</h3>
+<section id="shared-class-variables" class="level3" data-number="7.3.8">
+<h3 data-number="7.3.8" class="anchored" data-anchor-id="shared-class-variables"><span class="header-section-number">7.3.8</span> Shared class variables</h3>
 <p>Every team’s survey has these variables, with exactly these names and values, so that the class can be analyzed together. <code>ResponseId</code> is created by Qualtrics and is the only name that is not all caps.</p>
 <table class="caption-top table">
 <thead>
@@ -784,7 +1006,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><code>TIME</code></td>
 <td>Is this your first (pretest) or second (posttest) time taking this survey? (pre/post teams only)</td>
-<td>0 = pretest; 1 = posttest. A shared variable, so it keeps this name (like <code>CONSENT</code>) instead of ending in <code>_01CAT</code>; the 0/1 coding makes it ready for a model later (<a href="./prepost.html">Pre/Post Data</a>).</td>
+<td>0 = pretest; 1 = posttest. A shared variable, so it keeps this name (like <code>CONSENT</code>) instead of ending in <code>_01</code>; the 0/1 coding makes it ready for a model later (<a href="./prepost.html">Pre/Post Data</a>).</td>
 </tr>
 <tr class="even">
 <td><code>CONSENT</code></td>
@@ -850,9 +1072,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="recode-the-values" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="recode-the-values"><span class="header-section-number">7.3</span> Recode the Values</h2>
-<p>Recoding assigns a number to each answer choice. Click the question, open <strong>Recode values</strong>, and check <strong>Recode values</strong>. Qualtrics exports the numbers; the words are only for the respondent.</p>
+<section id="name-your-survey-blocks" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="name-your-survey-blocks"><span class="header-section-number">7.4</span> Name Your Survey Blocks</h2>
+<p>A matrix question is a container: its own name sits at the top left, and the variables are the rows inside it (7.3.3). That container is what we call the <strong>block</strong>. It is not exported as a column, but its name shows up in the survey builder, the survey flow, and your Word export, and a container called <code>AVOID</code> holding rows called <code>AVOID_SLEEP1</code> … confuses everyone, including you in three weeks. So give the container a name that says it is a block: click its name at the top left and add <code>BLOCK</code> to the measure’s name, <code>AVOIDBLOCK</code>, <code>STIGMABLOCK</code>. The same goes for the page-level blocks that group questions in the survey builder (<code>CONSENTBLOCK</code>, <code>DEMOGRAPHICSBLOCK</code>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<figcaption><em>The block: the matrix container is named <code>AVOIDBLOCK</code> (<code>AVOID</code> = Health Information Avoidance), and the statements inside it are the variables <code>AVOID_SLEEP1</code>, <code>AVOID_SLEEP2</code>, … (7.3.3)</em></figcaption>
+<p><img src="images/avoid-block.png" class="img-fluid figure-img" alt="A Qualtrics matrix question whose name at the top left is AVOIDBLOCK. Below the instruction, two statements about not wanting to know one's risk for poor sleep are answered on a seven-column scale from Strongly Disagree to Strongly Agree plus Prefer not to say."></p>
+</figure>
+</div>
+</section>
+<section id="recode-the-values" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="recode-the-values"><span class="header-section-number">7.5</span> Recode the Values</h2>
+<p>Recoding assigns a number to each answer choice. Click the question, open <strong>Recode values</strong> in the left panel, and check the <strong>Recode values</strong> box. A number box appears next to every answer choice; type the values below. Qualtrics exports the numbers; the words are only for the respondent.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -880,7 +1112,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>Yes/no, have/do not have</td>
 <td>1 = yes (the thing the variable is named for), 0 = no</td>
-<td><code>TREATED_01CAT</code>: 1 = has received treatment, 0 = has not</td>
+<td><code>TREATED_01</code>: 1 = has received treatment, 0 = has not</td>
 </tr>
 <tr class="even">
 <td>“None”, “never”, “I do not have one”</td>
@@ -910,58 +1142,58 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>In R, <code>-99</code> and <code>-50</code> both become missing (<code>NA</code>) in the first cleaning step (<a href="./import-once.html">Import Data Once</a>), so they never get averaged into a score by mistake.</p>
-<section id="what-each-dialog-looks-like" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="what-each-dialog-looks-like"><span class="header-section-number">7.3.1</span> What each dialog looks like</h3>
+<section id="what-each-dialog-looks-like" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="what-each-dialog-looks-like"><span class="header-section-number">7.5.1</span> What each dialog looks like</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-recode-consent.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for the consent question with 1 for consent and 0 for no consent."></p>
 <figcaption><em>Consent: 1 = consents, 0 = does not</em></figcaption>
+<p><img src="images/qualtrics-recode-consent.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for the consent question with 1 for consent and 0 for no consent."></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-recode-yesno.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for a yes/no question with 0 = No, 1 = Yes, -50 = I do not know, -99 = Prefer not to say."></p>
 <figcaption><em>A yes/no question with Don’t know and Prefer not to say</em></figcaption>
+<p><img src="images/qualtrics-recode-yesno.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for a yes/no question with 0 = No, 1 = Yes, -50 = I do not know, -99 = Prefer not to say."></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-recode-none.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for a meal plan question with 0 for I do not currently have a meal plan."></p>
 <figcaption><em>“None” gets 0</em></figcaption>
+<p><img src="images/qualtrics-recode-none.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for a meal plan question with 0 for I do not currently have a meal plan."></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-recode-matrix-tags.png" class="img-fluid figure-img" style="width:75.0%" alt="Recode values dialog for a matrix with Question export tags checked, Strongly disagree = 1 to Slightly agree = 4 shown."></p>
 <figcaption><em>An agreement scale, numbered from 1 in order</em></figcaption>
+<p><img src="images/qualtrics-recode-matrix-tags.png" class="img-fluid figure-img" style="width:75.0%" alt="Recode values dialog for a matrix with Variable naming checked, Strongly disagree = 1 to Slightly agree = 4 shown."></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-recode-race.png" class="img-fluid figure-img" style="width:70.0%" alt="Recode values dialog for a racial/ethnic identity question with codes 1 to 8 and -99 for Prefer not to say."></p>
 <figcaption><em>The single-choice version of the racial/ethnic identity question: codes 1 to 8 and -99 for Prefer not to say. For the select-all version, each box gets the same code in its own column.</em></figcaption>
+<p><img src="images/qualtrics-recode-race.png" class="img-fluid figure-img" style="width:70.0%" alt="Recode values dialog for a racial/ethnic identity question with codes 1 to 8 and -99 for Prefer not to say."></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-recode-dontknow.png" class="img-fluid figure-img" style="width:70.0%" alt="The right side of a scale with Agree = 5, Strongly agree = 6, Don't know = -50, and Prefer not to say = -99."></p>
 <figcaption><em>The right end of a scale: -50 for Don’t know and -99 for Prefer not to say</em></figcaption>
+<p><img src="images/qualtrics-recode-dontknow.png" class="img-fluid figure-img" style="width:70.0%" alt="The right side of a scale with Agree = 5, Strongly agree = 6, Don't know = -50, and Prefer not to say = -99."></p>
 </figure>
 </div>
 </section>
-<section id="matrix-questions" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="matrix-questions"><span class="header-section-number">7.3.2</span> Matrix questions</h3>
-<p>For a matrix (one instruction, several items in rows), check <strong>Question export tags</strong> as well as <strong>Recode values</strong>. Then you name every row and recode the columns in one dialog. The two screenshots below are from other surveys; the first is a single construct (<code>WELLBEING1</code> to <code>WELLBEING6</code>), the second has subscales (<code>SLEEP_NAP1</code>, <code>SLEEP_TIME1</code>, <code>SLEEP_TIME2</code>, <code>SLEEP_DRINK1</code>, <code>SLEEP_DRINK2</code>).</p>
+<section id="matrix-questions" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="matrix-questions"><span class="header-section-number">7.5.2</span> Matrix questions</h3>
+<p>For a matrix (one instruction, several items in rows), the same dialog does both jobs: <strong>Variable naming</strong> names every row (you did that in Name Your Variables) and <strong>Recode values</strong> numbers the columns. Check both and you can see the row names and the column values together. The two screenshots below are from other surveys; the first is a single construct (<code>WELLBEING1</code> to <code>WELLBEING6</code>), the second has subscales (<code>SLEEP_NAP1</code>, <code>SLEEP_TIME1</code>, <code>SLEEP_TIME2</code>, <code>SLEEP_DRINK1</code>, <code>SLEEP_DRINK2</code>).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-matrix-wellbeing.png" class="img-fluid figure-img" alt="Recode values dialog for a matrix with rows WELLBEING1 to WELLBEING6 and columns Not at all = 1 to Extremely = 5."></p>
 <figcaption><em>One construct: WELLBEING1 to WELLBEING6</em></figcaption>
+<p><img src="images/qualtrics-matrix-wellbeing.png" class="img-fluid figure-img" alt="Recode values dialog for a matrix with rows WELLBEING1 to WELLBEING6 and columns Not at all = 1 to Extremely = 5."></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/qualtrics-matrix-sleep.png" class="img-fluid figure-img" alt="Recode values dialog for a matrix with rows SLEEP_NAP1, SLEEP_TIME1, SLEEP_TIME2, SLEEP_DRINK1, SLEEP_DRINK2 and columns 0 days to 4 days."></p>
 <figcaption><em>Subscales: SLEEP_NAP, SLEEP_TIME, SLEEP_DRINK</em></figcaption>
+<p><img src="images/qualtrics-matrix-sleep.png" class="img-fluid figure-img" alt="Recode values dialog for a matrix with rows SLEEP_NAP1, SLEEP_TIME1, SLEEP_TIME2, SLEEP_DRINK1, SLEEP_DRINK2 and columns 0 days to 4 days."></p>
 </figure>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -974,13 +1206,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If a team edits the answer choices, Qualtrics often leaves the codes with a gap, such as 1, 2, 4, 5, and “Agree” quietly becomes 4 instead of 3. Open Recode values on <strong>every</strong> question and read the numbers in order before you publish.</p>
+<p>Qualtrics gives every answer choice a number the moment the choice is created, and it never reuses a number. So if your team once deleted a choice and added a new one, or retyped a choice, the numbers no longer run 1, 2, 3, 4, 5. A five-point agreement scale can export as 1, 2, 4, 5, 6: “Neither” was deleted and re-added, so it became 6, and “Agree” is still 4. Nothing looks wrong on the survey page, because respondents only see the words.</p>
+<p>That is why you open <strong>Recode values</strong> on <strong>every</strong> question and read the numbers from top to bottom before you publish. If they skip or jump, type the numbers you want (1, 2, 3, 4, 5, in the order the choices appear), and check the exported Word file (7.7) shows the same.</p>
 </div>
 </div>
 </section>
 </section>
-<section id="check-with-a-team-codebook" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="check-with-a-team-codebook"><span class="header-section-number">7.4</span> Check with a Team Codebook</h2>
+<section id="create-a-team-codebook" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="create-a-team-codebook"><span class="header-section-number">7.6</span> Create a Team Codebook</h2>
 <p>Before you publish, one teammate fills in a codebook, one row per variable, and a second teammate checks every row against Qualtrics. You will paste this table into your Methods section later, and <a href="./import-once.html">Import Data Once</a> uses it to check that the exported file matches.</p>
 <div class="required callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -992,7 +1225,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Find the <strong>Codebook Template</strong> (<code>Team-Codebook-Template.docx</code>) in the <strong>Template Assignment</strong> folder of the class Google Drive. Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the <strong>owner</strong> of each variable (your initials if the variable belongs to your research question, or <em>Team</em> if it is shared), one for whether the variable is <strong>quant or qual</strong>, and one for whether it is imported into <strong>R, NVivo, or both</strong>. Save it as <code>TeamCodebook.docx</code> and upload it to your “Team Survey Data” folder next to <code>Draft.TeamSurveyQuestions.docx</code>.</p>
+<p>Find the <strong>Codebook Template</strong> (<code>Team Codebook Template.docx</code>) in the <strong>Template Assignment</strong> folder of the class Google Drive. Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the <strong>owner</strong> of each variable (your initials if the variable belongs to your research question, or <em>Team</em> if it is shared), one for whether the variable is <strong>quant or qual</strong>, and one for whether it is imported into <strong>R, NVivo, or both</strong>. Save it as <code>TeamCodebook.docx</code> and upload it to your “Team Survey Data” folder next to <code>Draft.TeamSurveyQuestions.docx</code>.</p>
 </div>
 </div>
 <table class="caption-top table">
@@ -1028,7 +1261,7 @@ ul.task-list li input[type="checkbox"] {
 <td>K10 (DISTRESS)</td>
 </tr>
 <tr class="odd">
-<td><code>TREATED_01CAT</code></td>
+<td><code>TREATED_01</code></td>
 <td>Have you ever received treatment for a mental health problem?</td>
 <td>binary</td>
 <td>1 = yes, 0 = no</td>
@@ -1056,8 +1289,8 @@ ul.task-list li input[type="checkbox"] {
 <ul class="task-list">
 <li><label><input type="checkbox">Every export tag is ALL CAPS, has no spaces, and is 14 characters or fewer.</label></li>
 <li><label><input type="checkbox">Every multi-item measure is NAME1, NAME2 … or BIG_SMALL1, BIG_SMALL2 …</label></li>
-<li><label><input type="checkbox">Every reverse item ends in <code>_R</code> and its values were <strong>not</strong> flipped in Qualtrics.</label></li>
-<li><label><input type="checkbox">Every binary variable ends in <code>_01CAT</code>, is coded 0/1, and is named for the 1.</label></li>
+<li><label><input type="checkbox">Every reverse item ends in <code>_R</code> and its values were <strong>not</strong> reversed in Qualtrics (same direction as the other items).</label></li>
+<li><label><input type="checkbox">Every binary variable ends in <code>_01</code>, is coded 0/1, and is named for the 1. No variable named in Qualtrics ends in <code>CAT</code>.</label></li>
 <li><label><input type="checkbox">Prefer not to say = -99 and Don’t know = -50 everywhere they appear.</label></li>
 <li><label><input type="checkbox">No gaps in any question’s codes.</label></li>
 <li><label><input type="checkbox">The shared class variables have the exact names and values in the table above, including <code>RACIALIZED</code> in whichever version (single choice or select all) your survey uses.</label></li>
@@ -1068,8 +1301,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="sec-export-word" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="sec-export-word"><span class="header-section-number">7.5</span> Export Survey Questions/Items (<code>.docx</code>)</h2>
+<section id="sec-export-word" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="sec-export-word"><span class="header-section-number">7.7</span> Export Survey Questions/Items (<code>.docx</code>)</h2>
 <p>The Word export is how you <strong>see</strong> every recode you just made, question by question, on one page. Do it now, while the team is still together.</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Log into Qualtrics: <a href="https://binghamton.co1.qualtrics.com" class="uri">https://binghamton.co1.qualtrics.com</a></label>
@@ -1080,8 +1313,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/export-survey.png" class="img-fluid figure-img"></p>
 <figcaption><em>Click on Survey &gt; Import/Export &gt; Export Survey to Word</em></figcaption>
+<p><img src="images/export-survey.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <ul class="task-list">
@@ -1089,8 +1322,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/export-word-options.png" class="img-fluid figure-img" style="width:55.0%" alt="The Export survey to Word dialog in Qualtrics. Checked: Show question numbers; Show logic, with Use question numbers and Use recode values; Show coded values; Strip HTML tags from all questions and answers; Condense dropdown choices. Unchecked: Show survey flow; Include graphic. Buttons: Cancel and Export."></p>
 <figcaption><em>Check “Show coded values” so that every answer choice shows its number</em></figcaption>
+<p><img src="images/export-word-options.png" class="img-fluid figure-img" style="width:55.0%" alt="The Export survey to Word dialog in Qualtrics. Checked: Show question numbers; Show logic, with Use question numbers and Use recode values; Show coded values; Strip HTML tags from all questions and answers; Condense dropdown choices. Unchecked: Show survey flow; Include graphic. Buttons: Cancel and Export."></p>
 </figure>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -1126,7 +1359,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Draft: <code>Draft.TeamSurveyQuestions.docx</code> and <code>TeamCodebook.docx</code>.</strong> These should be in your team’s Google Drive by the end of the <strong>October 2 lecture</strong>, right after your team works through this chapter together.</li>
 <li><strong>Final: <code>Final.TeamSurveyQuestions.docx</code> and an updated <code>TeamCodebook.docx</code>.</strong> These should be in your team’s Google Drive by the end of the <strong>October 9 lecture</strong>, after your team’s final review, following the steps at the start of <a href="./export.html">Export Survey Data</a>.</li>
 </ol>
-<p>These are not graded assignments. They are the team’s shared record of what every number in the data means, and the instructors use them to help you when something in the data looks wrong.</p>
+<p>These are not graded assignments. They are the team’s shared record of what every number in the data means, and your peer mentors and Dr.&nbsp;Shane use them to help you when something in the data looks wrong.</p>
 </div>
 </div>
 

@@ -167,7 +167,7 @@ How to read the p-value. This one feels backwards, so read it slowly.
 ::: {.callout-warning}
 ## Caution: Do not use the Shapiro-Wilk test by itself
 
-With a large sample, the test flags tiny differences that do not matter. With a small sample, it can miss big ones. Use the histogram and the Q-Q plot together with the test. When the three checks disagree, or when you are unsure, choose the non-parametric test and talk to your instructor.
+With a large sample, the test flags tiny differences that do not matter. With a small sample, it can miss big ones. Use the histogram and the Q-Q plot together with the test. When the three checks disagree, or when you are unsure, choose the non-parametric test and talk to your peer mentor and/or Dr. Shane.
 :::
 
 ## Make the decision

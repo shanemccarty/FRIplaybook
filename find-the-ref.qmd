@@ -47,7 +47,7 @@ When you close RStudio, the countertop is wiped clean. The recipe and the grocer
 
 **1. Leftovers ruin the dish.** While you cook, the countertop fills up: a sauce you made before you fixed the recipe, or an ingredient from a step you later crossed out. If you keep cooking with what is on the counter, the dish can taste fine and still not match the recipe. In R, a plot or a statistic can look fine and still not match the code in your file, and R will not warn you. When you start with a clean counter and cook from the top of the recipe, every result comes from the code that is actually written down.
 
-**2. Someone else has to cook it, too.** Your teammate and your instructor do not have your countertop. They only have your recipe and your groceries (your `.qmd` file and your data file). If they follow the recipe in their own kitchen, they should get the same dish: the same plots and the same statistics. That is what *reproducible* means. A recipe that only works with yesterday's leftovers is not a recipe, and next month you will not be able to cook it either.
+**2. Someone else has to cook it, too.** Your teammate, your peer mentor, and Dr. Shane do not have your countertop. They only have your recipe and your groceries (your `.qmd` file and your data file). If they follow the recipe in their own kitchen, they should get the same dish: the same plots and the same statistics. That is what *reproducible* means. A recipe that only works with yesterday's leftovers is not a recipe, and next month you will not be able to cook it either.
 
 ::: callout-important
 ## Important: Clean counter, cook from the top
@@ -144,7 +144,7 @@ Ref does not talk all the time. Look for him in these places:
 -   **Ref's kickoff** opens every coding chapter and The Lab, and **Ref's final whistle** closes them. They are one-line reminders that link to the Quick Checklist above.
 -   **Ref's check** boxes in The Lab show you the answer you should get, so you can check your own work. Try the play first, then open the box.
 -   A **foul** is a mistake that gives you a wrong answer *without* any error message. These are the mistakes you cannot catch on your own, so Ref blows the whistle.
--   In **Your Turn**, there is no Ref. It's game time! You run the play with your own data and check your own work with the same checklist your instructor uses.
+-   In **Your Turn**, there is no Ref. It's game time! You run the play with your own data and check your own work with the same checklist your peer mentor and Dr. Shane use.
 
 ## You're the quarterback
 

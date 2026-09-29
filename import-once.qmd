@@ -61,11 +61,23 @@ insurance <- read.csv("data/insurance.csv")
 | Part | What it is | What it does |
 |----|----|----|
 | `insurance` | the **object** name you choose | the labeled box that will hold the data ([Coding a Plot](layers.qmd)) |
-| `<-` | the **assignment arrow** | "put what is on the right into the box on the left" |
+| `<-` | the **assignment arrow** ([Coding a Plot](layers.qmd)) | "put what is on the right into the box on the left" |
 | `read.csv( )` | the **function** | reads a `.csv` file (comma-separated values, a plain-text spreadsheet) |
 | `"data/insurance.csv"` | the function's **input**: a file path in quotes | the folder `data` inside your project, then the file name, then its extension `.csv` |
 
 Read it from right to left: open the file `insurance.csv` in the folder `data`, read it as a table, and call that table `insurance`. R looks for the `data` folder starting from your project folder, which is why the project matters ([R Software](RStudio.qmd)). Nothing appears on the screen when this line runs. Look at the **environment tab** instead: `insurance` is there, with its number of rows (obs.) and columns (variables).
+
+::: callout-important
+## Important: make a `data` folder in your project, once, and put every data file in it
+
+Every import line in this playbook starts with `"data/…"`. That path only works if there is a folder named **`data`** (lowercase, no space) inside your `Lastname_FRI` project folder, and the file is inside it. Neither exists until you make them:
+
+1.  In RStudio, with your project open, go to the **Files** tab (bottom right) and click **New Folder**. Name it `data` and click OK. You do this **once**; the folder stays in your project.
+2.  Put the data file inside that folder, not next to it. Do this in Finder or File Explorer: open the project folder, open `data`, and drag the file in ([R Software](RStudio.qmd) shows the steps).
+3.  Check the **Files** tab: click `data` and you should see the file. Click the refresh icon at the top right of the tab if it does not appear.
+
+**If the code will not run:** `path does not exist` means R could not find the file where the code says it is. Nine times out of ten the file is still in Downloads, or it is in the project folder but not inside `data`, or the folder is called `Data` or `data files`. Fix the folder, not the code. Keep `lab_prep.R` and your `.qmd` files in the project folder itself, next to `Lastname_FRI.Rproj`; only data goes in `data`.
+:::
 
 ### Play 2: Look at what you imported
 
@@ -83,7 +95,7 @@ nrow(insurance)   # how many people?
 ncol(insurance)   # how many variables?
 ```
 
-`head()` is also how you catch the two most common import problems at once: a first row that is question text instead of a person (two header rows, [Export Survey Data](export.qmd)), and a column of numbers that came in as text (the values are in quotes, or the column shows `<chr>` instead of `<dbl>`).
+`head()` is also how you catch the two most common import problems at once. Every row should be one person (one respondent, with their own `ResponseId`), so a first row that is question text instead of a person means the file still has two header rows ([Export Survey Data](export.qmd)). And every column of numbers should be numbers, so values in quotes, or `<chr>` under a column name instead of `<dbl>`, mean a numeric column came in as text.
 
 **Try it.** Run `head(insurance)`, then change it to `head(insurance, 10)` and to `tail(insurance)`. The second input to `head()` is the number of rows; `tail()` shows the last rows instead of the first.
 
@@ -126,7 +138,7 @@ mh_codebook <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet 
 ::: {.callout-important .required}
 ## Required: import from the `.clean` file, with the file name only
 
-Your report imports your team's `.clean` file (one header row, [Export Survey Data](export.qmd)) from the `data` folder of your project, using the path `"data/…"` and nothing else: no `setwd()`, no `/Users/yourname/…`. That is what makes the same code run on your teammates' computers and your instructor's.
+Your report imports your team's `.clean` file (one header row, [Export Survey Data](export.qmd)) from the `data` folder of your project, using the path `"data/…"` and nothing else: no `setwd()`, no `/Users/yourname/…`. That is what makes the same code run on your teammates' computers and your peer mentor and/or Dr. Shane's.
 :::
 
 ::: callout-note
@@ -160,8 +172,8 @@ You watched the play above with example datasets. Now import the **lab dataset**
 
 **Before you start**
 
-1.  Get the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from your instructor. Put it in a folder called **data** inside your `Lastname_FRI` project folder.
-2.  Your instructor also gives you a short R script, `lab_prep.R`. Put it in your `Lastname_FRI` project folder itself, next to `Lastname_FRI.Rproj` (not inside **data**). You will not use it in this chapter; from [Transforming Your Data](dplyr.qmd) on, every Lab starts by running it.
+1.  Download the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from the class Google Drive. Put it in the **data** folder inside your `Lastname_FRI` project folder (the Important box above shows how to make that folder if you have not yet).
+2.  From the same class Google Drive folder, download the short R script `lab_prep.R`. Put it in your `Lastname_FRI` project folder itself, next to `Lastname_FRI.Rproj` (not inside **data**). You will not use it in this chapter; from [Transforming Your Data](dplyr.qmd) on, every Lab starts by running it.
 3.  Open your RStudio Project and your lab `.qmd` file, and run your `library()` chunk. You need `readxl`.
 
 ### Lab Play 1: Import the data
@@ -171,7 +183,7 @@ The file has more than one sheet. The survey answers are on the first sheet, `Sh
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: how big is the dataset?
 
-`mh_raw` should have **`r nrow(mh_raw_check)` rows** and **`r ncol(mh_raw_check)` columns**. Look in your **environment tab**: it shows the same two numbers next to `mh_raw`.
+`mh_raw` should have **`r nrow(mh_raw_check)` rows** (people) and **`r ncol(mh_raw_check)` columns** (variables). Look in your **environment tab**: it shows the same two numbers next to `mh_raw`, as `r nrow(mh_raw_check)` obs. of `r ncol(mh_raw_check)` variables.
 :::
 
 ::: {.callout-note .gray collapse="true"}
@@ -203,9 +215,21 @@ Look at the column names with `names()`, look at the first rows with `head()`, a
 
 ### Lab Play 3: Do the variable names match the survey?
 
-This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics. If a name is misspelled, or a question was never named, you will see it here first (for example, a column called `Q17` and no column called `STIGMA_PUB3`).
+This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics ([Name and Recode Variables in Qualtrics](qualtrics.qmd)). If a name is misspelled, or a question was never named, you will see it here first, and it is far cheaper to fix now than after you have written code around the wrong name.
 
-For the lab dataset, the survey's variable names are listed on the sheet called `codebook`. Import that sheet, and compare its `Variable` column with `names(mh_raw)`.
+For the lab dataset, the survey's variable names are listed on the sheet called `codebook`, one row per variable. Import that sheet as `mh_codebook`, then compare its `Variable` column with `names(mh_raw)`. Four things to look for:
+
+1.  **Names that are not names.** Anything like `Q17`, `Q23_1`, or `QID9` is a question that was never named in Qualtrics. It has to be named there and exported again, not renamed by hand in Excel.
+2.  **Spelling and capitals.** `STIGMA_PUB3` and `Stigma_Pub3` are two different variables to R. Watch for a stray space, a lowercase letter, or a typo (`STIMGA`).
+3.  **Something missing.** A variable the codebook lists that is not in the data usually means a question was deleted or was not exported (a *Download all fields* problem, [Export Survey Data](export.qmd)).
+4.  **Something extra.** Columns in the data that the codebook does not list. Some are normal: Qualtrics adds housekeeping columns (`StartDate`, `Duration_sec`, `Progress`), and a select-all question exports as one column per box (`RACIALIZED_1`, `RACIALIZED_2`, …) that a codebook often describes in a single row. Anything else extra needs an explanation.
+
+Reading 134 names by eye is how you miss things, so let R do the comparison. `setdiff(A, B)` returns the items that are in `A` but **not** in `B`, so:
+
+-   `setdiff(names(mh_raw), mh_codebook$Variable)` lists columns that are **in the data but not in the codebook** (checks 1, 2, and 4 above).
+-   `setdiff(mh_codebook$Variable, names(mh_raw))` lists variables that are **in the codebook but not in the data** (check 3, and the other half of check 2: a misspelled name shows up in both lists, once under each spelling).
+
+If both lists come back empty, the names match exactly. Run both on the lab data.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: do they match?
@@ -218,9 +242,9 @@ cb_names <- mh_codebook_check$Variable
 missing_from_data <- setdiff(cb_names, names(mh_raw_check))
 ```
 
--   The survey variables in `mh_raw` should appear in the codebook, spelled the same way.
--   `setdiff(names(mh_raw), mh_codebook$Variable)` should return **`r length(setdiff(names(mh_raw_check), cb_names))` names**, and all of them should start with `r paste0("\x60", unique(sub("_[0-9]+$", "", setdiff(names(mh_raw_check), cb_names))), "\x60", collapse = ", ")`. The codebook describes that group of columns in one line, so they do not match one by one. That is fine.
--   If you see any **other** name in that list, the data and the survey do not agree, and you would need to find out why.
+-   `setdiff(names(mh_raw), mh_codebook$Variable)` (in the data, not in the codebook) returns **`r length(setdiff(names(mh_raw_check), cb_names))` names**, and all of them start with `r paste0("\x60", unique(sub("_[0-9]+$", "", setdiff(names(mh_raw_check), cb_names))), "\x60", collapse = ", ")`. That is check 4, the harmless kind: a select-all question that exports one column per box, which the codebook describes in one row. No `Q17`, no misspellings.
+-   `setdiff(mh_codebook$Variable, names(mh_raw))` (in the codebook, not in the data) returns **`r length(setdiff(cb_names, names(mh_raw_check)))` names**: `r paste0("\x60", setdiff(cb_names, names(mh_raw_check)), "\x60", collapse = ", ")`. Those are not variables; they are the codebook's shorthand rows that describe a whole group of columns in one line (the MIAQ items, and the select-all religious identity boxes). The same harmless mismatch, seen from the other side.
+-   So the lab data pass. That is on purpose: the lab file was named correctly so that you can learn the check on clean data. Your team's export is where `Q17` will show up, and this is the play that catches it.
 :::
 
 ::: {.callout-note .gray collapse="true"}
@@ -236,8 +260,11 @@ summary(mh_raw$POLITICALBELIEFS)   # one variable: look at the minimum
 mh_codebook <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx",
                           sheet = "codebook")
 
-# names that are in the data and NOT in the codebook
+# in the data but NOT in the codebook: unnamed questions, typos, extra columns
 setdiff(names(mh_raw), mh_codebook$Variable)
+
+# in the codebook but NOT in the data: missing or misspelled variables
+setdiff(mh_codebook$Variable, names(mh_raw))
 ```
 :::
 

@@ -1,5 +1,5 @@
 # ---- lab_prep.R : cleans the ANTH306 lab dataset (synthetic) ----
-# Your instructor gives you this file with the lab data. Keep it in your project folder
+# This file is in the class Google Drive, next to the lab data file. Keep it in your project folder
 # (next to your .Rproj, NOT inside data/). Every Lab from Transforming Your Data onward
 # starts with:  source("lab_prep.R")   which runs this whole file and creates mh_clean.
 # It imports the data, keeps serious and attentive responses, turns -99/-50 into NA,

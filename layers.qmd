@@ -74,6 +74,40 @@ You will read a little code, run it, and see what it makes. Before the first lin
 
 **`head()` shows the top of a dataset.** The first function in this chapter is `head()`. It shows the first six rows of a dataset, so you can check what is inside without printing all 1,338 rows. `head(insurance)` means "show me the first six rows of `insurance`": the function is `head()`, and the object it works on is `insurance`.
 
+### Two symbols you will see in every chunk: `<-` and `|>`
+
+**`<-` is the assignment arrow.** It puts what is on the right into the object named on the left, and it always points at the name: `insurance <- read.csv("data/insurance.csv")` reads the file and calls the result `insurance`. Read it as "gets": *insurance gets the file*. Nothing prints when a line assigns; the object simply appears in the environment tab. Typing the name on its own (`insurance`) prints it. In RStudio, Option + - (Mac) or Alt + - (Windows) types `<-` for you.
+
+**`|>` is the pipe.** It hands the result of the left side to the function on the right as its first input, so that steps read left to right, or top to bottom, instead of inside out. These two lines do the same thing:
+
+```{r}
+#| label: pipe-example
+#| eval: false
+head(insurance, 3)          # without the pipe: function(data, ...)
+
+insurance |> head(3)        # with the pipe: data |> function(...)
+```
+
+The pipe earns its keep when there are several steps. Without it you nest functions inside functions and read from the inside out; with it you write one step per line and read down the page. From [Pre/Post Data](prepost.qmd) on, most chunks in this playbook are chains like this one, which keeps only the smokers and then shows the first three:
+
+```{r}
+#| label: pipe-chain
+#| eval: false
+insurance |>
+  filter(smoker == "yes") |>
+  head(3)
+```
+
+Read it as "take `insurance`, then keep the smokers, then show three rows." Each `|>` ends a line, and the next line starts with the next step. In RStudio, Cmd + Shift + M (Mac) or Ctrl + Shift + M (Windows) types the pipe. (Tools \> Global Options \> Code \> check *Use native pipe operator* so that the shortcut gives `|>` rather than the older `%>%`.)
+
+One exception you will meet in a moment: `ggplot2` joins the layers of a plot with `+`, not `|>`. The pipe moves data between steps; the plus adds a layer to a plot.
+
+::: callout-note
+## The older pipe: `%>%`
+
+You will see `%>%` in older books, websites, DataCamp courses, StackOverflow answers, and most code written before 2021. It is the pipe from the `magrittr` package, which the tidyverse used before R had a pipe of its own. R added `|>` to the language itself in version 4.1.0 (May 2021), and that is the one this playbook uses. For everything you will do in this course the two behave the same: `x %>% f()` and `x |> f()` both mean `f(x)`. Code that uses `%>%` will run as long as `dplyr` or `tidyverse` is loaded, but write `|>` in your own code so that your report uses one pipe throughout.
+:::
+
 Now look at the two kinds of gray boxes you will see in this chapter.
 
 A box with a small **clipboard icon** in its corner shows code and the result it made when this page was built. The clipboard copies the code so that you can paste it somewhere else, such as your own report. **You will not use the clipboard the first time you read this chapter, for Lab 1.** For now, you are looking at the code to learn what it does. Later, when you write your RD Report and Final Report, you will come back, click the clipboard, and paste the code into your own file. Here is an example:

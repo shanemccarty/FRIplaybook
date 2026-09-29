@@ -50,25 +50,27 @@ You exported a draft of the survey questions right after your team's recoding me
 ::: {.callout-important .required}
 ## Required: the final Word export and codebook, by the end of the October 9 lecture
 
-By the end of the **October 9 lecture**, after your team's final review, your team's Google Drive should hold the final version of the Qualtrics survey questions, `Final.TeamSurveyQuestions.docx`, and an updated `TeamCodebook.docx` that matches it. (The draft versions, `Draft.TeamSurveyQuestions.docx` and the first `TeamCodebook.docx`, should already be there from the October 2 lecture; see [Name and Recode Variables in Qualtrics](qualtrics.qmd).) These are not graded. They are what your team, and your instructors, will rely on when a number in the data needs explaining.
+By the end of the **October 9 lecture**, after your team's final review, your team's Google Drive should hold the final version of the Qualtrics survey questions, `Final.TeamSurveyQuestions.docx`, and an updated `TeamCodebook.docx` that matches it. (The draft versions, `Draft.TeamSurveyQuestions.docx` and the first `TeamCodebook.docx`, should already be there from the October 2 lecture; see [Name and Recode Variables in Qualtrics](qualtrics.qmd).) These are not graded. They are what your team, your peer mentors, and Dr. Shane will rely on when a number in the data needs explaining.
 :::
 
 ## Export Survey Data (`.xlsx`)
 
-- [ ] At the top, go to Data & Analysis tab (top navigation bar) and ensure that "Data" is selected (from the second navigation bar)
+- [ ] At the top, go to the **Data & Analysis** tab (top navigation bar) and make sure **Data** is selected (second navigation bar). You should see the Data Table with the number of recorded responses.
+- [ ] On the upper right, click **Export & Import**, then **Export Data...**
 
-![*Click on Data & Analysis and ensure Data is underlined in the navigation bars.*](images/export-navbar.png)
+![*Data & Analysis > Data, then Export & Import > Export Data... (upper right)*](images/export-data.png){fig-alt="The Qualtrics Data & Analysis tab with Data selected, showing the Data Table with 68 recorded responses. The Export & Import menu at the upper right is open with Export Data... highlighted."}
 
-- [ ] On the upper right side, click Export & Import \^, then select Export Data...
+- [ ] In the **Download a data table** dialog, click the **Excel** tab, keep **Download all fields** checked, and choose **Export values** (not Export labels). Values are the numbers you recoded in [Name and Recode Variables in Qualtrics](qualtrics.qmd); labels would export the words.
+![*The Excel tab: Download all fields checked, Export values selected. Do not click Download yet; open More Options first.*](images/export-data-excel.png){fig-alt="The Download a data table dialog with the Excel tab selected. Download all fields is checked; under Values or labels, Export values is selected and Export labels is not. At the bottom are More Options, Cancel, and Download." width="70%"}
 
-- [ ] Click the Excel tab, check download all fields, check *export values* (and do NOT select *export labels*), and click the download button.
-- [ ] Open **More options** and leave **Split multi-value fields into columns** checked. This is what makes a select-all question, such as the select-all version of `RACIALIZED`, export as one column per box (`RACIALIZED_1` … `RACIALIZED_8`, `RACIALIZED_99`). [Transforming Your Data](dplyr.qmd) combines those columns into one variable in R. (If your team asked `RACIALIZED` as single choice, it exports as one column and this option changes nothing.)
+- [ ] Click **More Options** (bottom left). A list of checkboxes opens under the values/labels choice. Set two of them and leave the rest alone:
+  - [ ] Check **Recode seen but unanswered questions as** and make sure the box next to it says **-99**. A question a person saw and skipped then exports as -99, the same code as *Prefer not to say*, and [Import Data Once](import-once.qmd) turns both into `NA` in one step. Without this, a skipped question exports as an empty cell, which R reads differently from -99 and which can hide how many people skipped.
+  - [ ] Check **Split multi-value fields into columns** if your survey has any select-all question (for example, the select-all version of `RACIALIZED`). It is **off by default**. Checked, a select-all question exports as one column per box (`RACIALIZED_1` … `RACIALIZED_8`, `RACIALIZED_99`), which is what [Transforming Your Data](dplyr.qmd) expects. Leave **Recode seen but unanswered multi-value fields** unchecked: an unchecked box should export blank, not 0.
+- [ ] Click **Download**.
 
-<!-- SHANE: screenshot to add: the Export Data dialog with More options open and "Split multi-value fields into columns" checked. Suggested file: images/export-more-options.png -->
+![*More Options: Recode seen but unanswered questions as -99 is checked. Split multi-value fields into columns (unchecked here) must also be checked if you have a select-all question.*](images/export-data-excel-recode99.png){fig-alt="The More Options list in the Excel export dialog. Checked: Recode seen but unanswered questions as -99. Unchecked: Compress data as .zip file, Use commas for decimals, Remove line breaks, Recode seen but unanswered multi-value fields as 0, Export viewing order data for randomized surveys, Split multi-value fields into columns, Exclude survey response edits, Include download links for user-uploaded files. Buttons: Fewer Options, Cancel, Download." width="70%"}
 
-![*Select the excel option of the multiple file type options (csv, tsv, SPSS) and select key choices before download*](images/export-excel.png)
-
-- [ ] Upload the `.xlsx` file to the "Team Survey Data" folder in your Team ELN, next to `Final.TeamSurveyQuestions.docx`
+- [ ] Upload the `.xlsx` file to the "Team Survey Data" folder in your Team ELN (your team's Google Drive), next to `Final.TeamSurveyQuestions.docx`.
 
 ## Rename Files and Download
 

@@ -6,8 +6,8 @@ book:
   title: "The Quantitative Playbook for R"
   subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
-  date: "09/22/2026"
-  version: "Edition 2 (v2.17)"      
+  date: "09/29/2026"
+  version: "Edition 2 (v2.20)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
