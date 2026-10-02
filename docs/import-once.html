@@ -2405,7 +2405,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tr>
 <tr class="even">
 <td><code>&lt;-</code></td>
-<td>the <strong>assignment arrow</strong></td>
+<td>the <strong>assignment arrow</strong> (<a href="./layers.html">Coding a Plot</a>)</td>
 <td>“put what is on the right into the box on the left”</td>
 </tr>
 <tr class="odd">
@@ -2421,6 +2421,25 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 <p>Read it from right to left: open the file <code>insurance.csv</code> in the folder <code>data</code>, read it as a table, and call that table <code>insurance</code>. R looks for the <code>data</code> folder starting from your project folder, which is why the project matters (<a href="./RStudio.html">R Software</a>). Nothing appears on the screen when this line runs. Look at the <strong>environment tab</strong> instead: <code>insurance</code> is there, with its number of rows (obs.) and columns (variables).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: make a <code>data</code> folder in your project, once, and put every data file in it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every import line in this playbook starts with <code>"data/…"</code>. That path only works if there is a folder named <strong><code>data</code></strong> (lowercase, no space) inside your <code>Lastname_FRI</code> project folder, and the file is inside it. Neither exists until you make them:</p>
+<ol type="1">
+<li>In RStudio, with your project open, go to the <strong>Files</strong> tab (bottom right) and click <strong>New Folder</strong>. Name it <code>data</code> and click OK. You do this <strong>once</strong>; the folder stays in your project.</li>
+<li>Put the data file inside that folder, not next to it. Do this in Finder or File Explorer: open the project folder, open <code>data</code>, and drag the file in (<a href="./RStudio.html">R Software</a> shows the steps).</li>
+<li>Check the <strong>Files</strong> tab: click <code>data</code> and you should see the file. Click the refresh icon at the top right of the tab if it does not appear.</li>
+</ol>
+<p><strong>If the code will not run:</strong> <code>path does not exist</code> means R could not find the file where the code says it is. Nine times out of ten the file is still in Downloads, or it is in the project folder but not inside <code>data</code>, or the folder is called <code>Data</code> or <code>data files</code>. Fix the folder, not the code. Keep <code>lab_prep.R</code> and your <code>.qmd</code> files in the project folder itself, next to <code>Lastname_FRI.Rproj</code>; only data goes in <code>data</code>.</p>
+</div>
+</div>
 </section>
 <section id="play-2-look-at-what-you-imported" class="level3" data-number="9.2.2">
 <h3 data-number="9.2.2" class="anchored" data-anchor-id="play-2-look-at-what-you-imported"><span class="header-section-number">9.2.2</span> Play 2: Look at what you imported</h3>
@@ -2451,7 +2470,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <pre><code>[1] 7</code></pre>
 </div>
 </div>
-<p><code>head()</code> is also how you catch the two most common import problems at once: a first row that is question text instead of a person (two header rows, <a href="./export.html">Export Survey Data</a>), and a column of numbers that came in as text (the values are in quotes, or the column shows <code>&lt;chr&gt;</code> instead of <code>&lt;dbl&gt;</code>).</p>
+<p><code>head()</code> is also how you catch the two most common import problems at once. Every row should be one person (one respondent, with their own <code>ResponseId</code>), so a first row that is question text instead of a person means the file still has two header rows (<a href="./export.html">Export Survey Data</a>). And every column of numbers should be numbers, so values in quotes, or <code>&lt;chr&gt;</code> under a column name instead of <code>&lt;dbl&gt;</code>, mean a numeric column came in as text.</p>
 <p><strong>Try it.</strong> Run <code>head(insurance)</code>, then change it to <code>head(insurance, 10)</code> and to <code>tail(insurance)</code>. The second input to <code>head()</code> is the number of rows; <code>tail()</code> shows the last rows instead of the first.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2492,7 +2511,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Your report imports your team’s <code>.clean</code> file (one header row, <a href="./export.html">Export Survey Data</a>) from the <code>data</code> folder of your project, using the path <code>"data/…"</code> and nothing else: no <code>setwd()</code>, no <code>/Users/yourname/…</code>. That is what makes the same code run on your teammates’ computers and your instructor’s.</p>
+<p>Your report imports your team’s <code>.clean</code> file (one header row, <a href="./export.html">Export Survey Data</a>) from the <code>data</code> folder of your project, using the path <code>"data/…"</code> and nothing else: no <code>setwd()</code>, no <code>/Users/yourname/…</code>. That is what makes the same code run on your teammates’ computers and your peer mentor and/or Dr.&nbsp;Shane’s.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2523,15 +2542,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <p><strong>Before you start</strong></p>
 <ol type="1">
-<li>Get the lab data file, <code>ANTH306_LayConceptionsMH_SYNTHETIC.xlsx</code>, from your instructor. Put it in a folder called <strong>data</strong> inside your <code>Lastname_FRI</code> project folder.</li>
-<li>Your instructor also gives you a short R script, <code>lab_prep.R</code>. Put it in your <code>Lastname_FRI</code> project folder itself, next to <code>Lastname_FRI.Rproj</code> (not inside <strong>data</strong>). You will not use it in this chapter; from <a href="./dplyr.html">Transforming Your Data</a> on, every Lab starts by running it.</li>
+<li>Download the lab data file, <code>ANTH306_LayConceptionsMH_SYNTHETIC.xlsx</code>, from the class Google Drive. Put it in the <strong>data</strong> folder inside your <code>Lastname_FRI</code> project folder (the Important box above shows how to make that folder if you have not yet).</li>
+<li>From the same class Google Drive folder, download the short R script <code>lab_prep.R</code>. Put it in your <code>Lastname_FRI</code> project folder itself, next to <code>Lastname_FRI.Rproj</code> (not inside <strong>data</strong>). You will not use it in this chapter; from <a href="./dplyr.html">Transforming Your Data</a> on, every Lab starts by running it.</li>
 <li>Open your RStudio Project and your lab <code>.qmd</code> file, and run your <code>library()</code> chunk. You need <code>readxl</code>.</li>
 </ol>
 <section id="lab-play-1-import-the-data" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="lab-play-1-import-the-data"><span class="header-section-number">9.3.1</span> Lab Play 1: Import the data</h3>
 <p>The file has more than one sheet. The survey answers are on the first sheet, <code>Sheet1</code>, which is the one <code>read_excel()</code> reads by default. Import it and name the object <code>mh_raw</code>. Then find out how many rows (people) and columns (variables) it has.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2540,14 +2559,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><code>mh_raw</code> should have <strong>200 rows</strong> and <strong>134 columns</strong>. Look in your <strong>environment tab</strong>: it shows the same two numbers next to <code>mh_raw</code>.</p>
+<p><code>mh_raw</code> should have <strong>200 rows</strong> (people) and <strong>134 columns</strong> (variables). Look in your <strong>environment tab</strong>: it shows the same two numbers next to <code>mh_raw</code>, as 200 obs. of 134 variables.</p>
 </div>
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2556,7 +2575,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
@@ -2574,7 +2593,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="9.3.2" class="anchored" data-anchor-id="lab-play-2-view-the-variables"><span class="header-section-number">9.3.2</span> Lab Play 2: View the variables</h3>
 <p>Look at the column names with <code>names()</code>, look at the first rows with <code>head()</code>, and get a summary of one variable, <code>POLITICALBELIEFS</code>, with <code>summary(mh_raw$POLITICALBELIEFS)</code>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2583,7 +2602,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>The first five column names are: <code>ResponseId</code>, <code>StartDate</code>, <code>EndDate</code>, <code>Duration_sec</code>, <code>Progress</code>. The last one is <code>SERIOUS</code>.</li>
@@ -2596,10 +2615,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="lab-play-3-do-the-variable-names-match-the-survey" class="level3" data-number="9.3.3">
 <h3 data-number="9.3.3" class="anchored" data-anchor-id="lab-play-3-do-the-variable-names-match-the-survey"><span class="header-section-number">9.3.3</span> Lab Play 3: Do the variable names match the survey?</h3>
-<p>This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics. If a name is misspelled, or a question was never named, you will see it here first (for example, a column called <code>Q17</code> and no column called <code>STIGMA_PUB3</code>).</p>
-<p>For the lab dataset, the survey’s variable names are listed on the sheet called <code>codebook</code>. Import that sheet, and compare its <code>Variable</code> column with <code>names(mh_raw)</code>.</p>
+<p>This is the check that matters most. The column names in R come straight from the variable names that were typed into Qualtrics (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>). If a name is misspelled, or a question was never named, you will see it here first, and it is far cheaper to fix now than after you have written code around the wrong name.</p>
+<p>For the lab dataset, the survey’s variable names are listed on the sheet called <code>codebook</code>, one row per variable. Import that sheet as <code>mh_codebook</code>, then compare its <code>Variable</code> column with <code>names(mh_raw)</code>. Four things to look for:</p>
+<ol type="1">
+<li><strong>Names that are not names.</strong> Anything like <code>Q17</code>, <code>Q23_1</code>, or <code>QID9</code> is a question that was never named in Qualtrics. It has to be named there and exported again, not renamed by hand in Excel.</li>
+<li><strong>Spelling and capitals.</strong> <code>STIGMA_PUB3</code> and <code>Stigma_Pub3</code> are two different variables to R. Watch for a stray space, a lowercase letter, or a typo (<code>STIMGA</code>).</li>
+<li><strong>Something missing.</strong> A variable the codebook lists that is not in the data usually means a question was deleted or was not exported (a <em>Download all fields</em> problem, <a href="./export.html">Export Survey Data</a>).</li>
+<li><strong>Something extra.</strong> Columns in the data that the codebook does not list. Some are normal: Qualtrics adds housekeeping columns (<code>StartDate</code>, <code>Duration_sec</code>, <code>Progress</code>), and a select-all question exports as one column per box (<code>RACIALIZED_1</code>, <code>RACIALIZED_2</code>, …) that a codebook often describes in a single row. Anything else extra needs an explanation.</li>
+</ol>
+<p>Reading 134 names by eye is how you miss things, so let R do the comparison. <code>setdiff(A, B)</code> returns the items that are in <code>A</code> but <strong>not</strong> in <code>B</code>, so:</p>
+<ul>
+<li><code>setdiff(names(mh_raw), mh_codebook$Variable)</code> lists columns that are <strong>in the data but not in the codebook</strong> (checks 1, 2, and 4 above).</li>
+<li><code>setdiff(mh_codebook$Variable, names(mh_raw))</code> lists variables that are <strong>in the codebook but not in the data</strong> (check 3, and the other half of check 2: a misspelled name shows up in both lists, once under each spelling).</li>
+</ul>
+<p>If both lists come back empty, the names match exactly. Run both on the lab data.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2608,18 +2639,18 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>The survey variables in <code>mh_raw</code> should appear in the codebook, spelled the same way.</li>
-<li><code>setdiff(names(mh_raw), mh_codebook$Variable)</code> should return <strong>9 names</strong>, and all of them should start with <code>RELIGIOUS_IDENTITY</code>. The codebook describes that group of columns in one line, so they do not match one by one. That is fine.</li>
-<li>If you see any <strong>other</strong> name in that list, the data and the survey do not agree, and you would need to find out why.</li>
+<li><code>setdiff(names(mh_raw), mh_codebook$Variable)</code> (in the data, not in the codebook) returns <strong>9 names</strong>, and all of them start with <code>RELIGIOUS_IDENTITY</code>. That is check 4, the harmless kind: a select-all question that exports one column per box, which the codebook describes in one row. No <code>Q17</code>, no misspellings.</li>
+<li><code>setdiff(mh_codebook$Variable, names(mh_raw))</code> (in the codebook, not in the data) returns <strong>2 names</strong>: <code>MIAQ_*</code>, <code>RELIGIOUS_IDENTITY_1 ... _99</code>. Those are not variables; they are the codebook’s shorthand rows that describe a whole group of columns in one line (the MIAQ items, and the select-all religious identity boxes). The same harmless mismatch, seen from the other side.</li>
+<li>So the lab data pass. That is on purpose: the lab file was named correctly so that you can learn the check on clean data. Your team’s export is where <code>Q17</code> will show up, and this is the play that catches it.</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2628,7 +2659,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mh_raw)                  <span class="co"># the VARIABLES in your dataset</span></span>
@@ -2638,8 +2669,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>mh_codebook <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx"</span>,</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"codebook"</span>)</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># names that are in the data and NOT in the codebook</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">names</span>(mh_raw), mh_codebook<span class="sc">$</span>Variable)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># in the data but NOT in the codebook: unnamed questions, typos, extra columns</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(<span class="fu">names</span>(mh_raw), mh_codebook<span class="sc">$</span>Variable)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># in the codebook but NOT in the data: missing or misspelled variables</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(mh_codebook<span class="sc">$</span>Variable, <span class="fu">names</span>(mh_raw))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -2649,7 +2683,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="9.3.4" class="anchored" data-anchor-id="lab-play-4-turn-the-missing-codes-into-na"><span class="header-section-number">9.3.4</span> Lab Play 4: Turn the missing codes into <code>NA</code></h3>
 <p>Lab Play 2 found a minimum of <code>-99</code> in <code>POLITICALBELIEFS</code>. In this survey, <code>-99</code> means “Prefer not to say” and <code>-50</code> means “Don’t know” (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>). If they stay as numbers, R will average them into every score. Replace both codes with <code>NA</code>, R’s word for missing, everywhere in the dataset, then run <code>summary(mh_raw$POLITICALBELIEFS)</code> again.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2658,7 +2692,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><code>summary(mh_raw$POLITICALBELIEFS)</code> now shows a minimum of <strong>1</strong> and a new entry, <code>NA's</code>, with the number of people who did not answer.</li>
@@ -2668,7 +2702,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2677,7 +2711,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mh_raw[mh_raw <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>    <span class="co"># prefer not to say -&gt; missing</span></span>
@@ -2690,7 +2724,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2699,7 +2733,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong><code>path does not exist</code></strong> → the file is not where the code says it is. Check that the file is inside a <strong>data</strong> folder in your project, that the name is spelled exactly the same, and that you opened your <strong>project</strong> (not only a file).</li>
@@ -2801,7 +2835,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </table>
 <!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2810,7 +2844,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
 </div>

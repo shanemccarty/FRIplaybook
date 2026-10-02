@@ -108,10 +108,20 @@ In Qualtrics, the variable name is the **question export tag**: the name that be
 | One measure with subscales: BIG_SMALL plus the item number | `STIGMA_PUB1`, `STIGMA_SELF1` | `PUBSTIG1`, `SS1` |
 | Reverse item: add `_R` at the end (see below) | `STIGMA_PUB4_R` | `STIGMA_PUB4rev`, `STIGMA_PUB4 (reversed)` |
 | Same measure at two times: `_PRE` and `_POST` (or `_T1` and `_T2`) | `EFFICACY1_PRE`, `EFFICACY1_POST` | `EFFICACY1`, `EFFICACY1b` |
-| Binary (yes/no) variable: add `_01`, code it 0 and 1, and name it for the answer that gets the 1. No `CAT`: `CAT` is only for categories you create later in R | `TREATED_01` (1 = has received mental health treatment, 0 = has not); `KNOWS_01` (1 = knows someone with a mental health problem) | `TREATMENT`, `MHTX`, `TREATED_01CAT`, `TREATED` coded yes = 1, no = 2 |
+| Binary (yes/no) variable: add `_01`, code it **No = 0, Yes = 1**, and name it for the answer that gets the 1. No `CAT`: `CAT` is only for categories you create later in R | `TREATED_01` (0 = has not received mental health treatment, 1 = has); `KNOWS_01` (0 = does not know anyone with a mental health problem, 1 = does) | `TREATMENT`, `MHTX`, `TREATED_01CAT`, `TREATED` coded yes = 1, no = 0 |
 | A categorical variable you will **create later in R** by transforming a variable that is already in the survey (cutting a score into bands, or collapsing a question's response options into fewer categories): `_#CAT`, where \# is the number of categories the new variable has, and `_01CAT` when it is a 0/1 split you made. `CAT` is the mark of a variable **you** made in R from an existing one, so nothing in Qualtrics ever gets it ([Transforming Your Data](dplyr.qmd)) | `DISTRESS_4CAT` (the ten K10 items summed, then cut into 4 bands), `EDUCATION_3CAT` (7 education options collapsed into 3), `RACIALIZED_6CAT` (the select-all boxes combined into 6 categories) | `DISTRESSCATS`, `EDU3` |
-| Open-ended (text) question: add `_QUAL` | `BARRIERS_QUAL` | `BARRIERS`, `Q14` |
+| Open-ended (text) question, the answers your qualitative teammates will code in NVivo: add `_QUAL` (see the box below) | `BARRIERS_QUAL`, `SENTENCE1_QUAL` | `BARRIERS`, `BARRIERS_TEXT`, `Q14` |
 | A block is not a variable: the container of a matrix (and a page-level block) gets the measure's name plus `BLOCK` (see 7.4) | block `STIGMABLOCK`, variables `STIGMA_PUB1` … | block and variable both called `STIGMA` |
+
+::: callout-important
+## Important: open-ended questions end in `_QUAL`
+
+Any question where the respondent **types an answer in their own words** is a qualitative variable: it will be exported with everything else, but it is coded in **NVivo** by the qualitative track, not analyzed in R. Name it `VARIABLE_QUAL`: `BARRIERS_QUAL` for "What would make it hard for you to get help?", `SENTENCE1_QUAL` for "Why did you choose this sentence length?" after the first vignette.
+
+The ending does three jobs. In the export, every `_QUAL` column is easy to spot, so the quantitative track knows to leave those columns alone and the qualitative track knows exactly which columns to import as open-ended (NVivo asks you to mark each column as open or closed at import, and getting it wrong means importing again). In the team codebook, `_QUAL` marks the rows whose values are text, not numbers. And when a quantitative question and its open-ended follow-up belong together (`SENTENCE1` and `SENTENCE1_QUAL`), the shared stem keeps them side by side for the mixed-methods work later.
+
+Two things that are **not** `_QUAL`: a number typed into a box (`AGE`) is a number, and the "Other (please specify)" box attached to a closed question exports automatically as `VARIABLE_#_TEXT` (for example `RACIALIZED_8_TEXT`); leave that name alone and treat the column like a `_QUAL` variable.
+:::
 
 ### Single Question
 
@@ -204,7 +214,7 @@ Every team's survey has these variables, with exactly these names and values, so
 | `ResponseId` | (automatic) | Qualtrics' ID for each response. Never rename or delete it. |
 | `PASSWORD` | The code the respondent made up (pre/post teams only) | Text. It links a person's pretest row to their posttest row, so it must be in the survey exactly once with exactly this name. |
 | `TIME` | Is this your first (pretest) or second (posttest) time taking this survey? (pre/post teams only) | 0 = pretest; 1 = posttest. A shared variable, so it keeps this name (like `CONSENT`) instead of ending in `_01`; the 0/1 coding makes it ready for a model later ([Pre/Post Data](prepost.qmd)). |
-| `CONSENT` | Consent statement | 1 = consents and is eligible; 0 = does not |
+| `CONSENT` | Consent statement | 0 = does not consent (or is not eligible); 1 = consents and is eligible |
 | `AGE` | What is your age? | Whole number. Turn on Qualtrics **content validation** (number, 18 to 99) so nobody can type "twenty". |
 | `GENDER` | Which term best describes your current gender identity? | 0 = Girl or woman; 1 = Boy or man; 2 = Nonbinary, genderfluid, or genderqueer; 3 = Not sure or questioning; -50 = Don't know what this means; -99 = Decline |
 | `RACIALIZED` (single choice) **or** `RACIALIZED_1` … `RACIALIZED_8`, `RACIALIZED_99` (select all) | What is your racial/ethnic identity? Some teams asked it as **single choice**, others as **select all that apply**. Name the question `RACIALIZED` either way; for select-all, Qualtrics adds `_1` … `_99` for the boxes | 1 = American Indian or Alaska Native; 2 = Asian; 3 = Black or African American; 4 = Hispanic or Latine; 5 = Middle Eastern or North African; 6 = Native Hawaiian or Pacific Islander; 7 = White; 8 = Other (write-in, exported as `RACIALIZED_8_TEXT`); -99 = Prefer not to say |
@@ -225,7 +235,7 @@ Every team's survey has these variables, with exactly these names and values, so
 
 In R, [Transforming Your Data](dplyr.qmd) shows how to turn either version into `RACIALIZED_6CAT` or `RACIALIZED_5CAT` (White, Asian, Black, Hispanic or Latine, Another identity, and, for select-all only, **Two or more**) and `RACIALIZED_01CAT` (0 = racialized as white, 1 = racialized as a person of color).
 
-If the question has an "Other" text box, leave it: it exports as `RACIALIZED_8_TEXT` in both versions, and you will treat it as a `_QUAL` variable.
+If the question has an "Other" text box, leave it: it exports as `RACIALIZED_8_TEXT` in both versions, and you will treat it as a `_QUAL` variable (see the `_QUAL` box in 7.3).
 :::
 
 ## Name Your Survey Blocks
@@ -240,10 +250,10 @@ Recoding assigns a number to each answer choice. Click the question, open **Reco
 
 | Kind of question | Values | Example |
 |----|----|----|
-| Consent | 1 = yes, 0 = no | `CONSENT` (a shared class variable, so it keeps its name) |
+| Consent | 0 = does not consent, 1 = consents | `CONSENT` (a shared class variable, so it keeps its name) |
 | Pretest or posttest | 0 = pretest, 1 = posttest | `TIME` (pre/post teams; a shared class variable, so it keeps its name) |
-| Yes/no, have/do not have | 1 = yes (the thing the variable is named for), 0 = no | `TREATED_01`: 1 = has received treatment, 0 = has not |
-| "None", "never", "I do not have one" | 0 | `MEALPLAN`: 0 = no meal plan, then 1, 2, 3 for the plans |
+| Yes/no, have/do not have | **0 = No, 1 = Yes** (the Yes is the thing the variable is named for) | `TREATED_01`: 0 = has not received treatment, 1 = has |
+| "None", "never", "I do not have one", "no benefits": a **true zero** | 0, and then 1, 2, 3 … for the real answers (see the example below) | `MEALPLAN`: 0 = no meal plan, then 1, 2, 3 for the plans |
 | Agreement, frequency, or other ordered scale | 1 for the lowest step up to the highest step, in order | Strongly disagree (1) … Strongly agree (5) |
 | Categories with no order (majors, states, plans) | 1, 2, 3 … in the order shown; the numbers are labels only | `STATE` |
 | Prefer not to say / Decline | **-99** | every question that offers it |
@@ -251,9 +261,44 @@ Recoding assigns a number to each answer choice. Click the question, open **Reco
 
 In R, `-99` and `-50` both become missing (`NA`) in the first cleaning step ([Import Data Once](import-once.qmd)), so they never get averaged into a score by mistake.
 
+::: callout-tip
+## Go: when an answer means "none", code it 0
+
+Some answer choices mean the *absence* of the thing the question asks about. Give that choice a **0**, and number the real answers from 1. Here is a select-all question about reducing social media use:
+
+| Answer choice | Code |
+|----|----|
+| Better concentration and focus | 1 |
+| Improved sleep | 2 |
+| More free time | 3 |
+| Increased motivation for hobbies or personal goals | 4 |
+| Increased social interaction | 5 |
+| Increased productivity | 6 |
+| Less stress or anxiety | 7 |
+| Less social comparison | 8 |
+| Other (please specify) | 9, with the write-in exported as `BENEFITS_9_TEXT` |
+| I did not perceive any benefits. | **0** |
+
+Codes 1 to 8 are all different kinds of benefit; "no benefits" is logically zero of them, so 0 is the number that means what the answer means. The payoff comes in R: because every real benefit is 1 or higher and "none" is 0, one line makes a binary variable, `BENEFITS_01CAT` (0 = no benefits, 1 = at least one), and the percent who reported any benefit is its mean ([Transforming Your Data](dplyr.qmd)). If "none" had been coded 9, it would sit among the benefits and you would have to remember to pull it out every time.
+
+Note the difference from the missing codes: "no benefits" is a real answer, so it gets 0. "Prefer not to say" (-99) and "Don't know" (-50) are not answers, and they become `NA` in R.
+:::
+
+::: callout-important
+## Important: every binary variable is No = 0, Yes = 1
+
+Qualtrics numbers a yes/no question the way the choices were typed, usually **Yes = 1, No = 2**. Change it, every time, to **No = 0 and Yes = 1**, with the 1 on the answer the variable is named for (`TREATED_01` = 1 means *has* been treated). Three reasons:
+
+- **The mean is the percent.** When No is 0 and Yes is 1, the average of the column is the proportion who said yes: a mean of 0.38 means 38% yes. With 1/2 coding the mean (1.62) means nothing.
+- **Models read it directly.** In a regression or a two-group comparison, a 0/1 variable needs no recoding: the coefficient is the difference between the Yes group and the No group ([Relate 3+ Variables](regression.qmd)).
+- **One rule for the whole class.** `CONSENT`, `TIME`, and every `_01` variable use the same convention, so the same line of code works on every team's data and nobody has to look up which number means yes.
+
+The shared variables follow the rule too: `CONSENT` is 0 = does not consent, 1 = consents; `TIME` is 0 = pretest, 1 = posttest. The one place 0 and 1 are **not** No and Yes is a scale (1 to 5), where 1 is the lowest step, not "no".
+:::
+
 ### What each dialog looks like
 
-![*Consent: 1 = consents, 0 = does not*](images/qualtrics-recode-consent.png){fig-alt="Recode values dialog for the consent question with 1 for consent and 0 for no consent." width="60%"}
+![*Consent: 0 = does not consent, 1 = consents*](images/qualtrics-recode-consent.png){fig-alt="Recode values dialog for the consent question with 1 for consent and 0 for no consent." width="60%"}
 
 ![*A yes/no question with Don't know and Prefer not to say*](images/qualtrics-recode-yesno.png){fig-alt="Recode values dialog for a yes/no question with 0 = No, 1 = Yes, -50 = I do not know, -99 = Prefer not to say." width="60%"}
 
@@ -295,7 +340,7 @@ Find the **Codebook Template** (`Team Codebook Template.docx`) in the **Template
 |----|----|----|----|----|
 | `STIGMA_PUB4_R` | Most people would accept a person with a mental illness as a close friend. | ordered 1–5, reverse | 1 = Strongly disagree … 5 = Strongly agree | STIGMA, public |
 | `DISTRESS7` | … about how often did you feel depressed? | ordered 1–5 | 1 = None of the time … 5 = All of the time | K10 (DISTRESS) |
-| `TREATED_01` | Have you ever received treatment for a mental health problem? | binary | 1 = yes, 0 = no | single item |
+| `TREATED_01` | Have you ever received treatment for a mental health problem? | binary | 0 = No, 1 = Yes | single item |
 | `BARRIERS_QUAL` | What would make it hard for you to get help? | open-ended text | (text) | single item |
 
 ::: {.callout-note .gray}
@@ -304,7 +349,7 @@ Find the **Codebook Template** (`Team Codebook Template.docx`) in the **Template
 - [ ] Every export tag is ALL CAPS, has no spaces, and is 14 characters or fewer.
 - [ ] Every multi-item measure is NAME1, NAME2 … or BIG_SMALL1, BIG_SMALL2 …
 - [ ] Every reverse item ends in `_R` and its values were **not** reversed in Qualtrics (same direction as the other items).
-- [ ] Every binary variable ends in `_01`, is coded 0/1, and is named for the 1. No variable named in Qualtrics ends in `CAT`.
+- [ ] Every binary variable ends in `_01`, is coded No = 0 and Yes = 1, and is named for the 1. No variable named in Qualtrics ends in `CAT`.
 - [ ] Prefer not to say = -99 and Don't know = -50 everywhere they appear.
 - [ ] No gaps in any question's codes.
 - [ ] The shared class variables have the exact names and values in the table above, including `RACIALIZED` in whichever version (single choice or select all) your survey uses.

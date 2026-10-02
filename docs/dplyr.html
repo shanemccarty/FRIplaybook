@@ -437,29 +437,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction-to-dplyr" id="toc-introduction-to-dplyr" class="nav-link active" data-scroll-target="#introduction-to-dplyr"><span class="header-section-number">12.1</span> Introduction to dplyr</a></li>
-  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">12.2</span> 📋 The Play</a>
+  <li><a href="#naming-the-variables-you-make-here-_cat" id="toc-naming-the-variables-you-make-here-_cat" class="nav-link" data-scroll-target="#naming-the-variables-you-make-here-_cat"><span class="header-section-number">12.2</span> Naming the variables you make here: <code>_#CAT</code></a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">12.3</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#play-1-collapse-seven-education-categories-into-three-education_3cat" id="toc-play-1-collapse-seven-education-categories-into-three-education_3cat" class="nav-link" data-scroll-target="#play-1-collapse-seven-education-categories-into-three-education_3cat"><span class="header-section-number">12.2.1</span> Play 1: Collapse Seven Education Categories into Three (<code>EDUCATION_3CAT</code>)</a></li>
-  <li><a href="#original-education-variable" id="toc-original-education-variable" class="nav-link" data-scroll-target="#original-education-variable"><span class="header-section-number">12.2.2</span> Original Education Variable</a></li>
-  <li><a href="#recoding-into-three-categories" id="toc-recoding-into-three-categories" class="nav-link" data-scroll-target="#recoding-into-three-categories"><span class="header-section-number">12.2.3</span> Recoding into Three Categories</a></li>
-  <li><a href="#play-2-cut-a-score-into-categories-the-k10" id="toc-play-2-cut-a-score-into-categories-the-k10" class="nav-link" data-scroll-target="#play-2-cut-a-score-into-categories-the-k10"><span class="header-section-number">12.2.4</span> Play 2: Cut a Score into Categories (the K10)</a></li>
-  <li><a href="#four-categories-distress_4cat" id="toc-four-categories-distress_4cat" class="nav-link" data-scroll-target="#four-categories-distress_4cat"><span class="header-section-number">12.2.5</span> Four categories: <code>DISTRESS_4CAT</code></a></li>
-  <li><a href="#two-categories-distress_01cat" id="toc-two-categories-distress_01cat" class="nav-link" data-scroll-target="#two-categories-distress_01cat"><span class="header-section-number">12.2.6</span> Two categories: <code>DISTRESS_01CAT</code></a></li>
-  <li><a href="#play-3-combine-select-all-boxes-into-one-variable-racialized" id="toc-play-3-combine-select-all-boxes-into-one-variable-racialized" class="nav-link" data-scroll-target="#play-3-combine-select-all-boxes-into-one-variable-racialized"><span class="header-section-number">12.2.7</span> Play 3: Combine Select-All Boxes into One Variable (RACIALIZED)</a></li>
-  <li><a href="#step-1-count-the-checked-boxes" id="toc-step-1-count-the-checked-boxes" class="nav-link" data-scroll-target="#step-1-count-the-checked-boxes"><span class="header-section-number">12.2.8</span> Step 1: count the checked boxes</a></li>
-  <li><a href="#step-2-sort-people-into-groups-racialized_6cat" id="toc-step-2-sort-people-into-groups-racialized_6cat" class="nav-link" data-scroll-target="#step-2-sort-people-into-groups-racialized_6cat"><span class="header-section-number">12.2.9</span> Step 2: sort people into groups: <code>RACIALIZED_6CAT</code></a></li>
-  <li><a href="#step-3-the-binary-version-racialized_01cat" id="toc-step-3-the-binary-version-racialized_01cat" class="nav-link" data-scroll-target="#step-3-the-binary-version-racialized_01cat"><span class="header-section-number">12.2.10</span> Step 3: the binary version: <code>RACIALIZED_01CAT</code></a></li>
-  <li><a href="#the-single-choice-version-racialized_5cat" id="toc-the-single-choice-version-racialized_5cat" class="nav-link" data-scroll-target="#the-single-choice-version-racialized_5cat"><span class="header-section-number">12.2.11</span> The single-choice version: <code>RACIALIZED_5CAT</code></a></li>
+  <li><a href="#play-1-collapse-seven-education-categories-into-three-education_3cat" id="toc-play-1-collapse-seven-education-categories-into-three-education_3cat" class="nav-link" data-scroll-target="#play-1-collapse-seven-education-categories-into-three-education_3cat"><span class="header-section-number">12.3.1</span> Play 1: Collapse Seven Education Categories into Three (<code>EDUCATION_3CAT</code>)</a></li>
+  <li><a href="#original-education-variable" id="toc-original-education-variable" class="nav-link" data-scroll-target="#original-education-variable"><span class="header-section-number">12.3.2</span> Original Education Variable</a></li>
+  <li><a href="#recoding-into-three-categories" id="toc-recoding-into-three-categories" class="nav-link" data-scroll-target="#recoding-into-three-categories"><span class="header-section-number">12.3.3</span> Recoding into Three Categories</a></li>
+  <li><a href="#play-2-cut-a-score-into-categories-the-k10" id="toc-play-2-cut-a-score-into-categories-the-k10" class="nav-link" data-scroll-target="#play-2-cut-a-score-into-categories-the-k10"><span class="header-section-number">12.3.4</span> Play 2: Cut a Score into Categories (the K10)</a></li>
+  <li><a href="#four-categories-distress_4cat" id="toc-four-categories-distress_4cat" class="nav-link" data-scroll-target="#four-categories-distress_4cat"><span class="header-section-number">12.3.5</span> Four categories: <code>DISTRESS_4CAT</code></a></li>
+  <li><a href="#two-categories-distress_01cat" id="toc-two-categories-distress_01cat" class="nav-link" data-scroll-target="#two-categories-distress_01cat"><span class="header-section-number">12.3.6</span> Two categories: <code>DISTRESS_01CAT</code></a></li>
+  <li><a href="#play-3-combine-select-all-boxes-into-one-variable-racialized" id="toc-play-3-combine-select-all-boxes-into-one-variable-racialized" class="nav-link" data-scroll-target="#play-3-combine-select-all-boxes-into-one-variable-racialized"><span class="header-section-number">12.3.7</span> Play 3: Combine Select-All Boxes into One Variable (RACIALIZED)</a></li>
+  <li><a href="#step-1-count-the-checked-boxes" id="toc-step-1-count-the-checked-boxes" class="nav-link" data-scroll-target="#step-1-count-the-checked-boxes"><span class="header-section-number">12.3.8</span> Step 1: count the checked boxes</a></li>
+  <li><a href="#step-2-sort-people-into-groups-racialized_6cat" id="toc-step-2-sort-people-into-groups-racialized_6cat" class="nav-link" data-scroll-target="#step-2-sort-people-into-groups-racialized_6cat"><span class="header-section-number">12.3.9</span> Step 2: sort people into groups: <code>RACIALIZED_6CAT</code></a></li>
+  <li><a href="#step-3-the-binary-version-racialized_01cat" id="toc-step-3-the-binary-version-racialized_01cat" class="nav-link" data-scroll-target="#step-3-the-binary-version-racialized_01cat"><span class="header-section-number">12.3.10</span> Step 3: the binary version: <code>RACIALIZED_01CAT</code></a></li>
+  <li><a href="#the-single-choice-version-racialized_5cat" id="toc-the-single-choice-version-racialized_5cat" class="nav-link" data-scroll-target="#the-single-choice-version-racialized_5cat"><span class="header-section-number">12.3.11</span> The single-choice version: <code>RACIALIZED_5CAT</code></a></li>
   </ul></li>
-  <li><a href="#sec-dplyr-lab" id="toc-sec-dplyr-lab" class="nav-link" data-scroll-target="#sec-dplyr-lab"><span class="header-section-number">12.3</span> 🏈 The Lab</a>
+  <li><a href="#sec-dplyr-lab" id="toc-sec-dplyr-lab" class="nav-link" data-scroll-target="#sec-dplyr-lab"><span class="header-section-number">12.4</span> 🏈 The Lab</a>
   <ul class="collapse">
-  <li><a href="#lab-play-1-collapse-categories-education_3cat" id="toc-lab-play-1-collapse-categories-education_3cat" class="nav-link" data-scroll-target="#lab-play-1-collapse-categories-education_3cat"><span class="header-section-number">12.3.1</span> Lab Play 1: Collapse categories (<code>EDUCATION_3CAT</code>)</a></li>
-  <li><a href="#lab-play-2-collapse-and-exclude-pol_3cat" id="toc-lab-play-2-collapse-and-exclude-pol_3cat" class="nav-link" data-scroll-target="#lab-play-2-collapse-and-exclude-pol_3cat"><span class="header-section-number">12.3.2</span> Lab Play 2: Collapse and exclude (<code>POL_3CAT</code>)</a></li>
-  <li><a href="#lab-play-3-collapse-an-ordered-scale-health_3cat" id="toc-lab-play-3-collapse-an-ordered-scale-health_3cat" class="nav-link" data-scroll-target="#lab-play-3-collapse-an-ordered-scale-health_3cat"><span class="header-section-number">12.3.3</span> Lab Play 3: Collapse an ordered scale (<code>HEALTH_3CAT</code>)</a></li>
-  <li><a href="#lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat" id="toc-lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat" class="nav-link" data-scroll-target="#lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat"><span class="header-section-number">12.3.4</span> Lab Play 4: Cut a score into a binary variable (<code>SES_01CAT</code>)</a></li>
+  <li><a href="#lab-play-1-collapse-categories-education_3cat" id="toc-lab-play-1-collapse-categories-education_3cat" class="nav-link" data-scroll-target="#lab-play-1-collapse-categories-education_3cat"><span class="header-section-number">12.4.1</span> Lab Play 1: Collapse categories (<code>EDUCATION_3CAT</code>)</a></li>
+  <li><a href="#lab-play-2-collapse-and-exclude-pol_3cat" id="toc-lab-play-2-collapse-and-exclude-pol_3cat" class="nav-link" data-scroll-target="#lab-play-2-collapse-and-exclude-pol_3cat"><span class="header-section-number">12.4.2</span> Lab Play 2: Collapse and exclude (<code>POL_3CAT</code>)</a></li>
+  <li><a href="#lab-play-3-collapse-an-ordered-scale-health_3cat" id="toc-lab-play-3-collapse-an-ordered-scale-health_3cat" class="nav-link" data-scroll-target="#lab-play-3-collapse-an-ordered-scale-health_3cat"><span class="header-section-number">12.4.3</span> Lab Play 3: Collapse an ordered scale (<code>HEALTH_3CAT</code>)</a></li>
+  <li><a href="#lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat" id="toc-lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat" class="nav-link" data-scroll-target="#lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat"><span class="header-section-number">12.4.4</span> Lab Play 4: Cut a score into a binary variable (<code>SES_01CAT</code>)</a></li>
   </ul></li>
-  <li><a href="#sec-dplyr-yourturn" id="toc-sec-dplyr-yourturn" class="nav-link" data-scroll-target="#sec-dplyr-yourturn"><span class="header-section-number">12.4</span> 🏆 Your Turn</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12.5</span> References</a></li>
+  <li><a href="#sec-dplyr-yourturn" id="toc-sec-dplyr-yourturn" class="nav-link" data-scroll-target="#sec-dplyr-yourturn"><span class="header-section-number">12.5</span> 🏆 Your Turn</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12.6</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/dplyr.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -557,12 +558,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Why use dplyr?</strong></p>
 <ul>
 <li><p>Makes data cleaning code readable and logical</p></li>
-<li><p>Uses the pipe operator (<code>|&gt;</code>) to chain operations together, so that each step starts from the result of the one before</p></li>
+<li><p>Uses the pipe operator (<code>|&gt;</code>, introduced in <a href="./layers.html">Coding a Plot</a>) to chain operations together, so that each step starts from the result of the one before</p></li>
 <li><p>Essential for preparing data before creating visualizations or running analyses</p></li>
 </ul>
 <blockquote class="blockquote">
 <p><strong>Remember</strong>: You cannot create meaningful visualizations or run valid statistical analyses without clean data!</p>
 </blockquote>
+</section>
+<section id="naming-the-variables-you-make-here-_cat" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="naming-the-variables-you-make-here-_cat"><span class="header-section-number">12.2</span> Naming the variables you make here: <code>_#CAT</code></h2>
+<p>Every variable you create in this chapter is <strong>categorical</strong>, and its name says so. In this playbook a variable made by cutting a score into bands or by collapsing a question’s response options ends in <code>_#CAT</code>. <code>CAT</code> says the variable is categorical: its numbers are labels for categories, not amounts, so it is never averaged or plotted as if it were a score. The number in front of <code>CAT</code> is how many categories the variable has, which is the same as how many response options it has after you are done: <code>3CAT</code> for three (<code>EDUCATION_3CAT</code>, <code>HEALTH_3CAT</code>, <code>POL_3CAT</code>), <code>4CAT</code> for four (<code>DISTRESS_4CAT</code>), <code>6CAT</code> for six (<code>RACIALIZED_6CAT</code>, or <code>RACIALIZED_5CAT</code> when the single-choice question gives five).</p>
+<p>A <strong>binary</strong> variable you make here is the two-category case and ends in <code>_01CAT</code>. It is either coded 0 and 1, or a factor with two levels, and either way the name says what the 1 (the second level) means: <code>DISTRESS_01CAT</code> (1 = likely distressed), <code>RACIALIZED_01CAT</code> (1 = racialized as a person of color, 0 = racialized as white).</p>
+<p><code>CAT</code> is reserved for variables you <strong>create</strong> in R. A yes/no question that came straight from the survey is coded 0/1, named for the 1, and ends in <code>_01</code> (<code>TREATED_01</code>, <code>KNOWS_01</code>; shared variables such as <code>TIME</code> and <code>CONSENT</code> keep their plain names), with no <code>CAT</code>, because nothing was transformed (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>). When you see <code>CAT</code> at the end of a name, it means someone made a new set of categories from an existing variable, and the code that made it should be in the report.</p>
+<p>The number is not decoration. How many categories a variable has decides which test it goes into: two categories means a two-group comparison or a binary predictor, three or more means a three-plus-group comparison. <a href="./analysis-map.html">The Analysis Map</a> sorts the tests by exactly that count, so a name that carries the count tells you, and anyone reading your code, which row of the map you are on before you look at a single value.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: how long should a variable name be?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Aim for 6 to 10 characters for the measure’s name, and 14 or fewer for the whole tag</strong> including the subscale and the item number (<code>AVOID_SLEEP1</code> is 12). That is short enough to read in a column header, in a plot legend, and in a line of R code, and long enough to be decoded without the codebook.</p>
+<p>The tools will let you go longer, so the limit is readability, not software: R accepts names up to 10,000 characters, and Qualtrics only truncates an export tag when you export to SPSS, which cuts at 64. A name that needs 30 characters usually needs an abbreviation instead: Health Information Avoidance becomes <code>AVOID</code>, Kessler Psychological Distress becomes <code>DISTRESS</code>. Put the full name in your team codebook, where the variable name abbreviation gets explained once.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -577,8 +599,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-play" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">12.2</span> 📋 The Play</h2>
+<section id="the-play" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="the-play"><span class="header-section-number">12.3</span> 📋 The Play</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>oralhealthdata <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"data/10.31.2024.oralhealth.sav"</span>, <span class="at">user_na =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -587,8 +609,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>oralhealthdata <span class="ot">&lt;-</span> oralhealthdata <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_with_na_all</span>(<span class="at">condition =</span> <span class="sc">~</span>.x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">99</span>, <span class="sc">-</span><span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="play-1-collapse-seven-education-categories-into-three-education_3cat" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="play-1-collapse-seven-education-categories-into-three-education_3cat"><span class="header-section-number">12.2.1</span> Play 1: Collapse Seven Education Categories into Three (<code>EDUCATION_3CAT</code>)</h3>
+<section id="play-1-collapse-seven-education-categories-into-three-education_3cat" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="play-1-collapse-seven-education-categories-into-three-education_3cat"><span class="header-section-number">12.3.1</span> Play 1: Collapse Seven Education Categories into Three (<code>EDUCATION_3CAT</code>)</h3>
 <p>When working with survey data, we often need to collapse detailed response categories into broader groups. This is useful for:</p>
 <ul>
 <li><p>Simplifying analysis</p></li>
@@ -596,8 +618,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Making results easier to interpret</p></li>
 </ul>
 </section>
-<section id="original-education-variable" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="original-education-variable"><span class="header-section-number">12.2.2</span> Original Education Variable</h3>
+<section id="original-education-variable" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="original-education-variable"><span class="header-section-number">12.3.2</span> Original Education Variable</h3>
 <p>Our survey asked about education level with 7 response options:</p>
 <ol type="1">
 <li><p>Less than high school</p></li>
@@ -609,8 +631,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Doctoral or professional degree</p></li>
 </ol>
 </section>
-<section id="recoding-into-three-categories" class="level3" data-number="12.2.3">
-<h3 data-number="12.2.3" class="anchored" data-anchor-id="recoding-into-three-categories"><span class="header-section-number">12.2.3</span> Recoding into Three Categories</h3>
+<section id="recoding-into-three-categories" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="recoding-into-three-categories"><span class="header-section-number">12.3.3</span> Recoding into Three Categories</h3>
 <p>Let’s group these into three meaningful categories:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new 3-category education variable</span></span>
@@ -637,8 +659,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="play-2-cut-a-score-into-categories-the-k10" class="level3" data-number="12.2.4">
-<h3 data-number="12.2.4" class="anchored" data-anchor-id="play-2-cut-a-score-into-categories-the-k10"><span class="header-section-number">12.2.4</span> Play 2: Cut a Score into Categories (the K10)</h3>
+<section id="play-2-cut-a-score-into-categories-the-k10" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="play-2-cut-a-score-into-categories-the-k10"><span class="header-section-number">12.3.4</span> Play 2: Cut a Score into Categories (the K10)</h3>
 <p>Sometimes a published scale comes with <strong>cut-off scores</strong>, and a reader wants to know how many people fall in each band, not only the average. The lab dataset’s <code>DISTRESS1</code> to <code>DISTRESS10</code> are the ten items of the Kessler Psychological Distress Scale (K10; Kessler et al., 2002). The K10 is scored by <strong>adding</strong> the ten items, for a total from 10 to 50 (<code>K10_TOTAL</code> in <code>lab_prep.R</code>). Andrews and Slade (2001) proposed the cut-offs that most surveys use, including the Victorian Population Health Survey (2001):</p>
 <table class="caption-top table">
 <thead>
@@ -667,6 +689,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>These are screening bands, not diagnoses: a score says how likely it is that someone would meet criteria in an interview, not that they do.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: where <code>mh_clean</code> comes from
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You do not have an object called <code>mh_clean</code> yet. In <a href="./import-once.html">Import Data Once</a> you made <code>mh_raw</code>, and that is all. <code>mh_clean</code> is <strong>created by <code>lab_prep.R</code></strong>, the script in the class Google Drive (next to the lab data file). Run <code>source("lab_prep.R")</code> (the chunk below) and <code>mh_clean</code> appears in your environment tab. Every Play and Lab from here to the end of the playbook starts with that one line, so if a chunk says <code>object 'mh_clean' not found</code>, that is the line you skipped.</p>
+</div>
+</div>
 <p>Plays 2 and 3 use the lab dataset, so this is the first time you run <code>lab_prep.R</code>. <code>source("lab_prep.R")</code> runs every line of that <code>.R</code> file, top to bottom, as if you had typed it: it imports <code>ANTH306_LayConceptionsMH_SYNTHETIC.xlsx</code> as <code>mh_raw</code>, keeps the serious and attentive responses, turns <code>-99</code> and <code>-50</code> into <code>NA</code>, reverses the <code>_R</code> items, and averages each multi-item measure into a composite (<a href="./composite.html">Creating Composites</a>), all as <code>mh_clean</code>. From here on, every Lab starts with this one line instead of repeating those steps. The file must be in your project folder (next to your <code>.Rproj</code>, not inside <code>data</code>), and your load-library chunk must run first.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)   <span class="co"># creates mh_clean, with K10_TOTAL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -685,8 +720,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="four-categories-distress_4cat" class="level3" data-number="12.2.5">
-<h3 data-number="12.2.5" class="anchored" data-anchor-id="four-categories-distress_4cat"><span class="header-section-number">12.2.5</span> Four categories: <code>DISTRESS_4CAT</code></h3>
+<section id="four-categories-distress_4cat" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="four-categories-distress_4cat"><span class="header-section-number">12.3.5</span> Four categories: <code>DISTRESS_4CAT</code></h3>
 <p><code>case_when()</code> reads its conditions from the top down and stops at the first one that is true, so each line only has to name its upper limit. <code>factor()</code> with <code>levels =</code> puts the four groups in order, so that tables and plots list them from Well to Severe instead of alphabetically.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -720,8 +755,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: K10_TOTAL is cut into the four published bands; the summary table proves that each band's lowest and highest scores fall inside its limits</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="two-categories-distress_01cat" class="level3" data-number="12.2.6">
-<h3 data-number="12.2.6" class="anchored" data-anchor-id="two-categories-distress_01cat"><span class="header-section-number">12.2.6</span> Two categories: <code>DISTRESS_01CAT</code></h3>
+<section id="two-categories-distress_01cat" class="level3" data-number="12.3.6">
+<h3 data-number="12.3.6" class="anchored" data-anchor-id="two-categories-distress_01cat"><span class="header-section-number">12.3.6</span> Two categories: <code>DISTRESS_01CAT</code></h3>
 <p>For a comparison of two groups (<a href="./visualize-comparison.html">Compare Groups</a>), or as a predictor in a regression (<a href="./regression.html">Relate 3+ Variables</a>), a <strong>binary</strong> version is often all you need. The K10 cut-off for “likely to have a disorder” is 20 or more, so the line falls between 19 and 20 (a score of 19.5 is impossible, since the total is a whole number). A binary variable is coded <strong>0 and 1</strong> and named for the 1: here, 1 means likely distressed.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -742,8 +777,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: if_else() gives a 1 to everyone at or above the cut-off and a 0 to everyone below it; the count shows that the binary variable lines up with the four bands</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="play-3-combine-select-all-boxes-into-one-variable-racialized" class="level3" data-number="12.2.7">
-<h3 data-number="12.2.7" class="anchored" data-anchor-id="play-3-combine-select-all-boxes-into-one-variable-racialized"><span class="header-section-number">12.2.7</span> Play 3: Combine Select-All Boxes into One Variable (RACIALIZED)</h3>
+<section id="play-3-combine-select-all-boxes-into-one-variable-racialized" class="level3" data-number="12.3.7">
+<h3 data-number="12.3.7" class="anchored" data-anchor-id="play-3-combine-select-all-boxes-into-one-variable-racialized"><span class="header-section-number">12.3.7</span> Play 3: Combine Select-All Boxes into One Variable (RACIALIZED)</h3>
 <p>Teams asked the racial/ethnic identity question in one of two ways (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>). In the lab dataset it was <strong>select all that apply</strong>, so Steps 1 to 3 below combine the boxes; if your team asked it as <strong>single choice</strong>, skip to the shorter version after Step 3. Here, people could check more than one box, and Qualtrics exported <strong>one column per box</strong>: <code>RACIALIZED_1</code> (American Indian or Alaska Native), <code>RACIALIZED_2</code> (Asian), <code>RACIALIZED_3</code> (Black or African American), <code>RACIALIZED_4</code> (Hispanic or Latine), <code>RACIALIZED_5</code> (Middle Eastern or North African), <code>RACIALIZED_6</code> (Native Hawaiian or Pacific Islander), <code>RACIALIZED_7</code> (White), <code>RACIALIZED_8</code> (Other, with the write-in in <code>RACIALIZED_8_TEXT</code>), and <code>RACIALIZED_99</code> (Prefer not to say). A cell holds the option’s code when the box was checked and is blank (<code>NA</code>) otherwise. Look at a few rows first:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="sc">|&gt;</span></span>
@@ -767,8 +802,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Nine columns cannot go into a table or a model as they are. The plan: <strong>count the boxes</strong> each person checked, then use <code>case_when()</code> to sort people into groups, putting anyone who checked two or more boxes into their own group instead of forcing them into one.</p>
 </section>
-<section id="step-1-count-the-checked-boxes" class="level3" data-number="12.2.8">
-<h3 data-number="12.2.8" class="anchored" data-anchor-id="step-1-count-the-checked-boxes"><span class="header-section-number">12.2.8</span> Step 1: count the checked boxes</h3>
+<section id="step-1-count-the-checked-boxes" class="level3" data-number="12.3.8">
+<h3 data-number="12.3.8" class="anchored" data-anchor-id="step-1-count-the-checked-boxes"><span class="header-section-number">12.3.8</span> Step 1: count the checked boxes</h3>
 <p><code>!is.na()</code> turns each cell into <code>TRUE</code> (checked) or <code>FALSE</code> (blank), and <code>rowSums()</code> adds up the <code>TRUE</code>s across the eight identity columns. <code>RACIALIZED_99</code> is left out: declining to answer is not an identity.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -785,8 +820,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="step-2-sort-people-into-groups-racialized_6cat" class="level3" data-number="12.2.9">
-<h3 data-number="12.2.9" class="anchored" data-anchor-id="step-2-sort-people-into-groups-racialized_6cat"><span class="header-section-number">12.2.9</span> Step 2: sort people into groups: <code>RACIALIZED_6CAT</code></h3>
+<section id="step-2-sort-people-into-groups-racialized_6cat" class="level3" data-number="12.3.9">
+<h3 data-number="12.3.9" class="anchored" data-anchor-id="step-2-sort-people-into-groups-racialized_6cat"><span class="header-section-number">12.3.9</span> Step 2: sort people into groups: <code>RACIALIZED_6CAT</code></h3>
 <p>The <strong>first</strong> condition that is true wins, so “two or more” has to come first; otherwise a person who checked Asian and White would land in whichever single-box line came first. Groups with very few people (codes 1, 5, 6, and 8) are combined into “Another identity”, because a group of three cannot support a comparison. <code>factor()</code> with <code>levels =</code> puts White first, which makes it the comparison group in every model later.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -823,8 +858,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>People who checked only “Prefer not to say” match none of the conditions, so they get <code>NA</code>, which is what you want: a decline is missing, not a group.</p>
 </section>
-<section id="step-3-the-binary-version-racialized_01cat" class="level3" data-number="12.2.10">
-<h3 data-number="12.2.10" class="anchored" data-anchor-id="step-3-the-binary-version-racialized_01cat"><span class="header-section-number">12.2.10</span> Step 3: the binary version: <code>RACIALIZED_01CAT</code></h3>
+<section id="step-3-the-binary-version-racialized_01cat" class="level3" data-number="12.3.10">
+<h3 data-number="12.3.10" class="anchored" data-anchor-id="step-3-the-binary-version-racialized_01cat"><span class="header-section-number">12.3.10</span> Step 3: the binary version: <code>RACIALIZED_01CAT</code></h3>
 <p>Many research questions compare people racialized as white with everyone else. Build the 0/1 version <strong>from</strong> <code>RACIALIZED_6CAT</code>, so the two variables can never disagree.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -848,8 +883,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: 0 = racialized as white, 1 = racialized as a person of color (every other group, including Two or more); NA stays NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="the-single-choice-version-racialized_5cat" class="level3" data-number="12.2.11">
-<h3 data-number="12.2.11" class="anchored" data-anchor-id="the-single-choice-version-racialized_5cat"><span class="header-section-number">12.2.11</span> The single-choice version: <code>RACIALIZED_5CAT</code></h3>
+<section id="the-single-choice-version-racialized_5cat" class="level3" data-number="12.3.11">
+<h3 data-number="12.3.11" class="anchored" data-anchor-id="the-single-choice-version-racialized_5cat"><span class="header-section-number">12.3.11</span> The single-choice version: <code>RACIALIZED_5CAT</code></h3>
 <p>If your survey asked for <strong>one</strong> answer, there are no boxes to count: you have one column, <code>RACIALIZED</code>, with the codes 1 to 8 (and <code>NA</code> where <code>-99</code> was). Sort the codes into groups with <code>case_when()</code> in one step. Nobody can be in two groups, so there is no “Two or more”; that leaves <strong>five</strong> groups, and the naming rule says the name must say so: <code>RACIALIZED_5CAT</code>, not <code>_6CAT</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span></span>
@@ -887,31 +922,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The variable is called <code>RACIALIZED</code>, not <code>RACE</code>, because the survey recorded how people are classified within a system of racial sorting, not a trait they carry (Fields &amp; Fields, 2012; Zuberi &amp; Bonilla-Silva, 2008; D’Ignazio &amp; Klein, 2020; see <a href="./data-equity.html">Data Equity</a>). When you report a result, write “people racialized as Black scored …”, not “Black people are …”. And <code>RACIALIZED_01CAT</code> is a coarse split that hides real differences between the groups it lumps together. It is here so that you can learn how a binary predictor works. A real report should also show <code>RACIALIZED_6CAT</code> (or <code>RACIALIZED_5CAT</code>).</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Go</span>Go: Name a new categorical variable for the number of groups it has
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In this playbook, a variable made by cutting a score or collapsing categories ends in <code>_#CAT</code>, where # is the number of groups: <code>DISTRESS_4CAT</code>, <code>EDUCATION_3CAT</code>, <code>HEALTH_3CAT</code>, <code>POL_3CAT</code>, <code>RACIALIZED_6CAT</code> (or <code>RACIALIZED_5CAT</code> when the single-choice question gives five groups). A <strong>binary</strong> variable ends in <code>_01CAT</code>. It is either coded 0 and 1, or a factor with two levels, and either way the name says what the 1 (the second level) means: <code>DISTRESS_01CAT</code> (1 = likely distressed), <code>RACIALIZED_01CAT</code> (1 = racialized as a person of color, 0 = racialized as white). The name tells a reader what kind of variable it is before they look at a single value.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Resources</span>Two lab variables that would be better named: <code>MH_TREATED</code> and <code>MH_KNOWS</code>
+<span class="screen-reader-only">Resources</span>Two lab variables with no <code>CAT</code>, on purpose: <code>MH_TREATED</code> and <code>MH_KNOWS</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The lab dataset has two yes/no variables, <code>MH_TREATED</code> (1 = has received counseling, therapy, or medication for a mental health concern, 0 = has not) and <code>MH_KNOWS</code> (1 = knows someone diagnosed with a mental illness, 0 = does not). They work as they are: they are coded 0 and 1, and the 1 means what the name says. But under the rules in <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a> they would be <code>TREATED_01CAT</code> and <code>KNOWS_01CAT</code>, and that is how you should name yours.</p>
-<p>The ending does two jobs. <code>CAT</code> says the variable is <strong>categorical</strong>: the numbers are labels for groups, not amounts, so it should never be averaged or put on an x axis as if it were a score. The number in front says <strong>how many response options</strong> the variable has: <code>01</code> for two (coded 0 and 1), <code>3CAT</code> for three, <code>4CAT</code> for four. That number decides the analysis. A two-group variable goes into a two-group comparison or a binary predictor in a regression; a three-or-more-group variable goes into a three-plus-group comparison. <a href="./analysis-map.html">The Analysis Map</a> sorts the tests by exactly this count, so a name that carries the count makes the right row on the map easy to find, for you and for anyone reading your code.</p>
+<p>The lab dataset has two yes/no variables, <code>MH_TREATED</code> (1 = has received counseling, therapy, or medication for a mental health concern, 0 = has not) and <code>MH_KNOWS</code> (1 = knows someone diagnosed with a mental illness, 0 = does not). They came straight from the survey, coded 0 and 1 and named for the 1, so they do <strong>not</strong> end in <code>CAT</code>: nobody transformed them. If you cut or combine one of them in this chapter, the new variable is the one that gets the ending. Under the naming rules your own survey would call them <code>TREATED_01</code> and <code>KNOWS_01</code>; the lab file keeps its older names.</p>
 </div>
 </div>
 <div class="required callout callout-style-default callout-important callout-titled">
@@ -929,8 +950,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="sec-dplyr-lab" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="sec-dplyr-lab"><span class="header-section-number">12.3</span> 🏈 The Lab</h2>
+<section id="sec-dplyr-lab" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="sec-dplyr-lab"><span class="header-section-number">12.4</span> 🏈 The Lab</h2>
 <div class="ref ref-tip">
 <div class="ref-face">
 <p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></p>
@@ -939,12 +960,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Ref’s kickoff.</strong> The Play showed three moves: collapse categories (education), cut a score into bands (K10), and combine boxes (RACIALIZED). The Lab uses the same moves on four other variables in <code>mh_clean</code>, and later chapters use what you make here: <code>POL_3CAT</code> in <a href="./visualize-comparison.html">Compare Groups</a> and <code>HEALTH_3CAT</code> in <a href="./ANOVA.html">Compare 3+ Groups</a>. Try each play before you open my check.</p>
 </div>
 </div>
-<p><strong>Before you start.</strong> Open your lab <code>.qmd</code>, run your load-library chunk (<code>dplyr</code> must be loaded), and run <code>source("lab_prep.R")</code> so that <code>mh_clean</code> is in your environment. After every play, <strong>count</strong> the new variable against the old one, the way the Play did: a transformation you have not checked is a foul waiting to happen.</p>
-<section id="lab-play-1-collapse-categories-education_3cat" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="lab-play-1-collapse-categories-education_3cat"><span class="header-section-number">12.3.1</span> Lab Play 1: Collapse categories (<code>EDUCATION_3CAT</code>)</h3>
+<p><strong>Before you start.</strong> Open your lab <code>.qmd</code>, run your load-library chunk (<code>dplyr</code> must be loaded), and run <code>source("lab_prep.R")</code>. That line is what creates <code>mh_clean</code> (you only have <code>mh_raw</code> from Import Data Once); check the environment tab shows it before you go on. After every play, <strong>count</strong> the new variable against the old one, the way the Play did: a transformation you have not checked is a foul waiting to happen.</p>
+<section id="lab-play-1-collapse-categories-education_3cat" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="lab-play-1-collapse-categories-education_3cat"><span class="header-section-number">12.4.1</span> Lab Play 1: Collapse categories (<code>EDUCATION_3CAT</code>)</h3>
 <p><code>EDUCATION</code> has six levels (1 = Some high school or less … 6 = Graduate or professional degree) and a 7 that means <em>Prefer not to say</em>. Make <code>EDUCATION_3CAT</code> with the same three groups as the Play (less than a bachelor’s, bachelor’s, graduate), in that order. Then count <code>EDUCATION</code> by <code>EDUCATION_3CAT</code>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -953,7 +974,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>90</strong> less than bachelor’s, <strong>63</strong> bachelor’s, <strong>31</strong> graduate, and <strong>4</strong> <code>NA</code>.</li>
@@ -964,7 +985,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -973,7 +994,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -993,11 +1014,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="lab-play-2-collapse-and-exclude-pol_3cat" class="level3" data-number="12.3.2">
-<h3 data-number="12.3.2" class="anchored" data-anchor-id="lab-play-2-collapse-and-exclude-pol_3cat"><span class="header-section-number">12.3.2</span> Lab Play 2: Collapse and exclude (<code>POL_3CAT</code>)</h3>
+<section id="lab-play-2-collapse-and-exclude-pol_3cat" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="lab-play-2-collapse-and-exclude-pol_3cat"><span class="header-section-number">12.4.2</span> Lab Play 2: Collapse and exclude (<code>POL_3CAT</code>)</h3>
 <p><code>POLITICALBELIEFS</code> has six labels: 1 = Leftist, 2 = Liberal, 3 = Moderate, 4 = Conservative, 5 = Far right, 6 = Libertarian, plus <code>-99</code> and <code>-50</code>. Make <code>POL_3CAT</code> with three groups, <strong>Left</strong> (1 and 2), <strong>Moderate</strong> (3), and <strong>Right</strong> (4 and 5), in that order. Libertarians are too few to be a group of their own and do not fit on the left-right line, so leave them out. Then count.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1006,7 +1027,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>90</strong> Left, <strong>26</strong> Moderate, <strong>47</strong> Right, and <strong>25</strong> <code>NA</code>.</li>
@@ -1017,7 +1038,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1026,7 +1047,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -1046,11 +1067,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="lab-play-3-collapse-an-ordered-scale-health_3cat" class="level3" data-number="12.3.3">
-<h3 data-number="12.3.3" class="anchored" data-anchor-id="lab-play-3-collapse-an-ordered-scale-health_3cat"><span class="header-section-number">12.3.3</span> Lab Play 3: Collapse an ordered scale (<code>HEALTH_3CAT</code>)</h3>
+<section id="lab-play-3-collapse-an-ordered-scale-health_3cat" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="lab-play-3-collapse-an-ordered-scale-health_3cat"><span class="header-section-number">12.4.3</span> Lab Play 3: Collapse an ordered scale (<code>HEALTH_3CAT</code>)</h3>
 <p><code>HEALTHSTATUS</code> runs from 1 = Poor to 5 = Excellent. Make <code>HEALTH_3CAT</code> with three groups: <strong>Poor or fair</strong> (1 and 2), <strong>Good</strong> (3), and <strong>Very good or excellent</strong> (4 and 5), in that order. <a href="./ANOVA.html">Compare 3+ Groups</a> uses exactly this variable, so spell the labels the same way.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1059,7 +1080,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>36</strong> poor or fair, <strong>81</strong> good, <strong>61</strong> very good or excellent, <strong>10</strong> <code>NA</code>.</li>
@@ -1069,7 +1090,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1078,7 +1099,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -1099,11 +1120,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat" class="level3" data-number="12.3.4">
-<h3 data-number="12.3.4" class="anchored" data-anchor-id="lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat"><span class="header-section-number">12.3.4</span> Lab Play 4: Cut a score into a binary variable (<code>SES_01CAT</code>)</h3>
+<section id="lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="lab-play-4-cut-a-score-into-a-binary-variable-ses_01cat"><span class="header-section-number">12.4.4</span> Lab Play 4: Cut a score into a binary variable (<code>SES_01CAT</code>)</h3>
 <p><code>SOCIALSTATUS</code> is the MacArthur ladder, 1 (bottom) to 10 (top). Its codebook row says to dichotomize at the top: 8 to 10 = higher subjective status. Make <code>SES_01CAT</code>, coded 0 and 1 and named for the 1, with <code>if_else()</code>, the way the Play made <code>DISTRESS_01CAT</code>. Then count <code>SOCIALSTATUS</code> by <code>SES_01CAT</code>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1112,7 +1133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>41</strong> people get a 1 (rungs 8, 9, 10) and <strong>145</strong> get a 0 (rungs 1 to 7); <strong>2</strong> are <code>NA</code> because they skipped the ladder.</li>
@@ -1123,7 +1144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="gray callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1132,7 +1153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
@@ -1156,8 +1177,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="sec-dplyr-yourturn" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="sec-dplyr-yourturn"><span class="header-section-number">12.4</span> 🏆 Your Turn</h2>
+<section id="sec-dplyr-yourturn" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-dplyr-yourturn"><span class="header-section-number">12.5</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1235,8 +1256,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="references" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="references"><span class="header-section-number">12.5</span> References</h2>
+<section id="references" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="references"><span class="header-section-number">12.6</span> References</h2>
 <p>D’Ignazio, C., &amp; Klein, L. F. (2020). <em>Data feminism</em>. MIT Press. <a href="https://data-feminism.mitpress.mit.edu/" class="uri">https://data-feminism.mitpress.mit.edu/</a></p>
 <p>Fields, K. E., &amp; Fields, B. J. (2012). <em>Racecraft: The soul of inequality in American life</em>. Verso.</p>
 <p>Zuberi, T., &amp; Bonilla-Silva, E. (Eds.). (2008). <em>White logic, white methods: Racism and methodology</em>. Rowman &amp; Littlefield.</p>
@@ -1246,7 +1267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Victorian Department of Human Services. (2001). <em>Victorian Population Health Survey 2001: Selected findings</em>. Melbourne: Department of Human Services.</p>
 <!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1255,7 +1276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
 </div>

@@ -500,35 +500,39 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By the end of the <strong>October 9 lecture</strong>, after your team’s final review, your team’s Google Drive should hold the final version of the Qualtrics survey questions, <code>Final.TeamSurveyQuestions.docx</code>, and an updated <code>TeamCodebook.docx</code> that matches it. (The draft versions, <code>Draft.TeamSurveyQuestions.docx</code> and the first <code>TeamCodebook.docx</code>, should already be there from the October 2 lecture; see <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>.) These are not graded. They are what your team, and your instructors, will rely on when a number in the data needs explaining.</p>
+<p>By the end of the <strong>October 9 lecture</strong>, after your team’s final review, your team’s Google Drive should hold the final version of the Qualtrics survey questions, <code>Final.TeamSurveyQuestions.docx</code>, and an updated <code>TeamCodebook.docx</code> that matches it. (The draft versions, <code>Draft.TeamSurveyQuestions.docx</code> and the first <code>TeamCodebook.docx</code>, should already be there from the October 2 lecture; see <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>.) These are not graded. They are what your team, your peer mentors, and Dr.&nbsp;Shane will rely on when a number in the data needs explaining.</p>
 </div>
 </div>
 </section>
 <section id="export-survey-data-.xlsx" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="export-survey-data-.xlsx"><span class="header-section-number">8.2</span> Export Survey Data (<code>.xlsx</code>)</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">At the top, go to Data &amp; Analysis tab (top navigation bar) and ensure that “Data” is selected (from the second navigation bar)</label></li>
+<li><label><input type="checkbox">At the top, go to the <strong>Data &amp; Analysis</strong> tab (top navigation bar) and make sure <strong>Data</strong> is selected (second navigation bar). You should see the Data Table with the number of recorded responses.</label></li>
+<li><label><input type="checkbox">On the upper right, click <strong>Export &amp; Import</strong>, then <strong>Export Data…</strong></label></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/export-navbar.png" class="img-fluid figure-img"></p>
-<figcaption><em>Click on Data &amp; Analysis and ensure Data is underlined in the navigation bars.</em></figcaption>
+<p><img src="images/export-data.png" class="img-fluid figure-img" alt="The Qualtrics Data &amp; Analysis tab with Data selected, showing the Data Table with 68 recorded responses. The Export &amp; Import menu at the upper right is open with Export Data... highlighted."></p>
+<figcaption><em>Data &amp; Analysis &gt; Data, then Export &amp; Import &gt; Export Data… (upper right)</em></figcaption>
 </figure>
 </div>
 <ul class="task-list">
-<li><p><label><input type="checkbox">On the upper right side, click Export &amp; Import ^, then select Export Data…</label></p></li>
-<li><p><label><input type="checkbox">Click the Excel tab, check download all fields, check <em>export values</em> (and do NOT select <em>export labels</em>), and click the download button.</label></p></li>
-<li><p><label><input type="checkbox">Open <strong>More options</strong> and leave <strong>Split multi-value fields into columns</strong> checked. This is what makes a select-all question, such as the select-all version of <code>RACIALIZED</code>, export as one column per box (<code>RACIALIZED_1</code> … <code>RACIALIZED_8</code>, <code>RACIALIZED_99</code>). <a href="./dplyr.html">Transforming Your Data</a> combines those columns into one variable in R. (If your team asked <code>RACIALIZED</code> as single choice, it exports as one column and this option changes nothing.)</label></p></li>
+<li><p><label><input type="checkbox">In the <strong>Download a data table</strong> dialog, click the <strong>Excel</strong> tab, keep <strong>Download all fields</strong> checked, and choose <strong>Export values</strong> (not Export labels). Values are the numbers you recoded in <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>; labels would export the words. <img src="images/export-data-excel.png" class="img-fluid" style="width:70.0%" alt="The Download a data table dialog with the Excel tab selected. Download all fields is checked; under Values or labels, Export values is selected and Export labels is not. At the bottom are More Options, Cancel, and Download."></label></p></li>
+<li><p><label><input type="checkbox">Click <strong>More Options</strong> (bottom left). A list of checkboxes opens under the values/labels choice. Set two of them and leave the rest alone:</label></p>
+<ul class="task-list">
+<li><label><input type="checkbox">Check <strong>Recode seen but unanswered questions as</strong> and make sure the box next to it says <strong>-99</strong>. A question a person saw and skipped then exports as -99, the same code as <em>Prefer not to say</em>, and <a href="./import-once.html">Import Data Once</a> turns both into <code>NA</code> in one step. Without this, a skipped question exports as an empty cell, which R reads differently from -99 and which can hide how many people skipped.</label></li>
+<li><label><input type="checkbox">Check <strong>Split multi-value fields into columns</strong> if your survey has any select-all question (for example, the select-all version of <code>RACIALIZED</code>). It is <strong>off by default</strong>. Checked, a select-all question exports as one column per box (<code>RACIALIZED_1</code> … <code>RACIALIZED_8</code>, <code>RACIALIZED_99</code>), which is what <a href="./dplyr.html">Transforming Your Data</a> expects. Leave <strong>Recode seen but unanswered multi-value fields</strong> unchecked: an unchecked box should export blank, not 0.</label></li>
+</ul></li>
+<li><p><label><input type="checkbox">Click <strong>Download</strong>.</label></p></li>
 </ul>
-<!-- SHANE: screenshot to add: the Export Data dialog with More options open and "Split multi-value fields into columns" checked. Suggested file: images/export-more-options.png -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/export-excel.png" class="img-fluid figure-img"></p>
-<figcaption><em>Select the excel option of the multiple file type options (csv, tsv, SPSS) and select key choices before download</em></figcaption>
+<p><img src="images/export-data-excel-recode99.png" class="img-fluid figure-img" style="width:70.0%" alt="The More Options list in the Excel export dialog. Checked: Recode seen but unanswered questions as -99. Unchecked: Compress data as .zip file, Use commas for decimals, Remove line breaks, Recode seen but unanswered multi-value fields as 0, Export viewing order data for randomized surveys, Split multi-value fields into columns, Exclude survey response edits, Include download links for user-uploaded files. Buttons: Fewer Options, Cancel, Download."></p>
+<figcaption><em>More Options: Recode seen but unanswered questions as -99 is checked. Split multi-value fields into columns (unchecked here) must also be checked if you have a select-all question.</em></figcaption>
 </figure>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox">Upload the <code>.xlsx</code> file to the “Team Survey Data” folder in your Team ELN, next to <code>Final.TeamSurveyQuestions.docx</code></label></li>
+<li><label><input type="checkbox">Upload the <code>.xlsx</code> file to the “Team Survey Data” folder in your Team ELN (your team’s Google Drive), next to <code>Final.TeamSurveyQuestions.docx</code>.</label></li>
 </ul>
 </section>
 <section id="rename-files-and-download" class="level2" data-number="8.3">

@@ -769,9 +769,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>EFFICACY1</code>, <code>EFFICACY1b</code></td>
 </tr>
 <tr class="even">
-<td>Binary (yes/no) variable: add <code>_01</code>, code it 0 and 1, and name it for the answer that gets the 1. No <code>CAT</code>: <code>CAT</code> is only for categories you create later in R</td>
-<td><code>TREATED_01</code> (1 = has received mental health treatment, 0 = has not); <code>KNOWS_01</code> (1 = knows someone with a mental health problem)</td>
-<td><code>TREATMENT</code>, <code>MHTX</code>, <code>TREATED_01CAT</code>, <code>TREATED</code> coded yes = 1, no = 2</td>
+<td>Binary (yes/no) variable: add <code>_01</code>, code it <strong>No = 0, Yes = 1</strong>, and name it for the answer that gets the 1. No <code>CAT</code>: <code>CAT</code> is only for categories you create later in R</td>
+<td><code>TREATED_01</code> (0 = has not received mental health treatment, 1 = has); <code>KNOWS_01</code> (0 = does not know anyone with a mental health problem, 1 = does)</td>
+<td><code>TREATMENT</code>, <code>MHTX</code>, <code>TREATED_01CAT</code>, <code>TREATED</code> coded yes = 1, no = 0</td>
 </tr>
 <tr class="odd">
 <td>A categorical variable you will <strong>create later in R</strong> by transforming a variable that is already in the survey (cutting a score into bands, or collapsing a question’s response options into fewer categories): <code>_#CAT</code>, where # is the number of categories the new variable has, and <code>_01CAT</code> when it is a 0/1 split you made. <code>CAT</code> is the mark of a variable <strong>you</strong> made in R from an existing one, so nothing in Qualtrics ever gets it (<a href="./dplyr.html">Transforming Your Data</a>)</td>
@@ -779,9 +779,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>DISTRESSCATS</code>, <code>EDU3</code></td>
 </tr>
 <tr class="even">
-<td>Open-ended (text) question: add <code>_QUAL</code></td>
-<td><code>BARRIERS_QUAL</code></td>
-<td><code>BARRIERS</code>, <code>Q14</code></td>
+<td>Open-ended (text) question, the answers your qualitative teammates will code in NVivo: add <code>_QUAL</code> (see the box below)</td>
+<td><code>BARRIERS_QUAL</code>, <code>SENTENCE1_QUAL</code></td>
+<td><code>BARRIERS</code>, <code>BARRIERS_TEXT</code>, <code>Q14</code></td>
 </tr>
 <tr class="odd">
 <td>A block is not a variable: the container of a matrix (and a page-level block) gets the measure’s name plus <code>BLOCK</code> (see 7.4)</td>
@@ -790,6 +790,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: open-ended questions end in <code>_QUAL</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Any question where the respondent <strong>types an answer in their own words</strong> is a qualitative variable: it will be exported with everything else, but it is coded in <strong>NVivo</strong> by the qualitative track, not analyzed in R. Name it <code>VARIABLE_QUAL</code>: <code>BARRIERS_QUAL</code> for “What would make it hard for you to get help?”, <code>SENTENCE1_QUAL</code> for “Why did you choose this sentence length?” after the first vignette.</p>
+<p>The ending does three jobs. In the export, every <code>_QUAL</code> column is easy to spot, so the quantitative track knows to leave those columns alone and the qualitative track knows exactly which columns to import as open-ended (NVivo asks you to mark each column as open or closed at import, and getting it wrong means importing again). In the team codebook, <code>_QUAL</code> marks the rows whose values are text, not numbers. And when a quantitative question and its open-ended follow-up belong together (<code>SENTENCE1</code> and <code>SENTENCE1_QUAL</code>), the shared stem keeps them side by side for the mixed-methods work later.</p>
+<p>Two things that are <strong>not</strong> <code>_QUAL</code>: a number typed into a box (<code>AGE</code>) is a number, and the “Other (please specify)” box attached to a closed question exports automatically as <code>VARIABLE_#_TEXT</code> (for example <code>RACIALIZED_8_TEXT</code>); leave that name alone and treat the column like a <code>_QUAL</code> variable.</p>
+</div>
+</div>
 </section>
 <section id="single-question" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="single-question"><span class="header-section-number">7.3.2</span> Single Question</h3>
@@ -1011,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td><code>CONSENT</code></td>
 <td>Consent statement</td>
-<td>1 = consents and is eligible; 0 = does not</td>
+<td>0 = does not consent (or is not eligible); 1 = consents and is eligible</td>
 </tr>
 <tr class="odd">
 <td><code>AGE</code></td>
@@ -1067,7 +1082,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Select all that apply</strong> (checkboxes). Qualtrics exports <strong>one column per box</strong> (<code>RACIALIZED_1</code>, <code>RACIALIZED_2</code>, … <code>RACIALIZED_8</code>, <code>RACIALIZED_99</code>, each filled in when that box was checked) when you export with <em>Split multi-value fields into columns</em> checked (<a href="./export.html">Export Survey Data</a>). Give each box the value in the table above, so that <code>RACIALIZED_7</code> holds a 7 when White is checked.</li>
 </ul>
 <p>In R, <a href="./dplyr.html">Transforming Your Data</a> shows how to turn either version into <code>RACIALIZED_6CAT</code> or <code>RACIALIZED_5CAT</code> (White, Asian, Black, Hispanic or Latine, Another identity, and, for select-all only, <strong>Two or more</strong>) and <code>RACIALIZED_01CAT</code> (0 = racialized as white, 1 = racialized as a person of color).</p>
-<p>If the question has an “Other” text box, leave it: it exports as <code>RACIALIZED_8_TEXT</code> in both versions, and you will treat it as a <code>_QUAL</code> variable.</p>
+<p>If the question has an “Other” text box, leave it: it exports as <code>RACIALIZED_8_TEXT</code> in both versions, and you will treat it as a <code>_QUAL</code> variable (see the <code>_QUAL</code> box in 7.3).</p>
 </div>
 </div>
 </section>
@@ -1101,7 +1116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>Consent</td>
-<td>1 = yes, 0 = no</td>
+<td>0 = does not consent, 1 = consents</td>
 <td><code>CONSENT</code> (a shared class variable, so it keeps its name)</td>
 </tr>
 <tr class="even">
@@ -1111,12 +1126,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td>Yes/no, have/do not have</td>
-<td>1 = yes (the thing the variable is named for), 0 = no</td>
-<td><code>TREATED_01</code>: 1 = has received treatment, 0 = has not</td>
+<td><strong>0 = No, 1 = Yes</strong> (the Yes is the thing the variable is named for)</td>
+<td><code>TREATED_01</code>: 0 = has not received treatment, 1 = has</td>
 </tr>
 <tr class="even">
-<td>“None”, “never”, “I do not have one”</td>
-<td>0</td>
+<td>“None”, “never”, “I do not have one”, “no benefits”: a <strong>true zero</strong></td>
+<td>0, and then 1, 2, 3 … for the real answers (see the example below)</td>
 <td><code>MEALPLAN</code>: 0 = no meal plan, then 1, 2, 3 for the plans</td>
 </tr>
 <tr class="odd">
@@ -1142,11 +1157,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>In R, <code>-99</code> and <code>-50</code> both become missing (<code>NA</code>) in the first cleaning step (<a href="./import-once.html">Import Data Once</a>), so they never get averaged into a score by mistake.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: when an answer means “none”, code it 0
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some answer choices mean the <em>absence</em> of the thing the question asks about. Give that choice a <strong>0</strong>, and number the real answers from 1. Here is a select-all question about reducing social media use:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Answer choice</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Better concentration and focus</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Improved sleep</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>More free time</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Increased motivation for hobbies or personal goals</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>Increased social interaction</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>Increased productivity</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>Less stress or anxiety</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>Less social comparison</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Other (please specify)</td>
+<td>9, with the write-in exported as <code>BENEFITS_9_TEXT</code></td>
+</tr>
+<tr class="even">
+<td>I did not perceive any benefits.</td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Codes 1 to 8 are all different kinds of benefit; “no benefits” is logically zero of them, so 0 is the number that means what the answer means. The payoff comes in R: because every real benefit is 1 or higher and “none” is 0, one line makes a binary variable, <code>BENEFITS_01CAT</code> (0 = no benefits, 1 = at least one), and the percent who reported any benefit is its mean (<a href="./dplyr.html">Transforming Your Data</a>). If “none” had been coded 9, it would sit among the benefits and you would have to remember to pull it out every time.</p>
+<p>Note the difference from the missing codes: “no benefits” is a real answer, so it gets 0. “Prefer not to say” (-99) and “Don’t know” (-50) are not answers, and they become <code>NA</code> in R.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: every binary variable is No = 0, Yes = 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Qualtrics numbers a yes/no question the way the choices were typed, usually <strong>Yes = 1, No = 2</strong>. Change it, every time, to <strong>No = 0 and Yes = 1</strong>, with the 1 on the answer the variable is named for (<code>TREATED_01</code> = 1 means <em>has</em> been treated). Three reasons:</p>
+<ul>
+<li><strong>The mean is the percent.</strong> When No is 0 and Yes is 1, the average of the column is the proportion who said yes: a mean of 0.38 means 38% yes. With 1/2 coding the mean (1.62) means nothing.</li>
+<li><strong>Models read it directly.</strong> In a regression or a two-group comparison, a 0/1 variable needs no recoding: the coefficient is the difference between the Yes group and the No group (<a href="./regression.html">Relate 3+ Variables</a>).</li>
+<li><strong>One rule for the whole class.</strong> <code>CONSENT</code>, <code>TIME</code>, and every <code>_01</code> variable use the same convention, so the same line of code works on every team’s data and nobody has to look up which number means yes.</li>
+</ul>
+<p>The shared variables follow the rule too: <code>CONSENT</code> is 0 = does not consent, 1 = consents; <code>TIME</code> is 0 = pretest, 1 = posttest. The one place 0 and 1 are <strong>not</strong> No and Yes is a scale (1 to 5), where 1 is the lowest step, not “no”.</p>
+</div>
+</div>
 <section id="what-each-dialog-looks-like" class="level3" data-number="7.5.1">
 <h3 data-number="7.5.1" class="anchored" data-anchor-id="what-each-dialog-looks-like"><span class="header-section-number">7.5.1</span> What each dialog looks like</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<figcaption><em>Consent: 1 = consents, 0 = does not</em></figcaption>
+<figcaption><em>Consent: 0 = does not consent, 1 = consents</em></figcaption>
 <p><img src="images/qualtrics-recode-consent.png" class="img-fluid figure-img" style="width:60.0%" alt="Recode values dialog for the consent question with 1 for consent and 0 for no consent."></p>
 </figure>
 </div>
@@ -1264,7 +1367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>TREATED_01</code></td>
 <td>Have you ever received treatment for a mental health problem?</td>
 <td>binary</td>
-<td>1 = yes, 0 = no</td>
+<td>0 = No, 1 = Yes</td>
 <td>single item</td>
 </tr>
 <tr class="even">
@@ -1290,7 +1393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><label><input type="checkbox">Every export tag is ALL CAPS, has no spaces, and is 14 characters or fewer.</label></li>
 <li><label><input type="checkbox">Every multi-item measure is NAME1, NAME2 … or BIG_SMALL1, BIG_SMALL2 …</label></li>
 <li><label><input type="checkbox">Every reverse item ends in <code>_R</code> and its values were <strong>not</strong> reversed in Qualtrics (same direction as the other items).</label></li>
-<li><label><input type="checkbox">Every binary variable ends in <code>_01</code>, is coded 0/1, and is named for the 1. No variable named in Qualtrics ends in <code>CAT</code>.</label></li>
+<li><label><input type="checkbox">Every binary variable ends in <code>_01</code>, is coded No = 0 and Yes = 1, and is named for the 1. No variable named in Qualtrics ends in <code>CAT</code>.</label></li>
 <li><label><input type="checkbox">Prefer not to say = -99 and Don’t know = -50 everywhere they appear.</label></li>
 <li><label><input type="checkbox">No gaps in any question’s codes.</label></li>
 <li><label><input type="checkbox">The shared class variables have the exact names and values in the table above, including <code>RACIALIZED</code> in whichever version (single choice or select all) your survey uses.</label></li>
