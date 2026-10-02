@@ -7,7 +7,7 @@ book:
   subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
   date: "10/02/2026"
-  version: "Edition 2 (v2.25)"      
+  version: "Edition 2 (v2.26)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]

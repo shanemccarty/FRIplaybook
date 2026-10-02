@@ -318,6 +318,12 @@ For a matrix (one instruction, several items in rows), the same dialog does both
 
 ![*Subscales: SLEEP_NAP, SLEEP_TIME, SLEEP_DRINK*](images/qualtrics-matrix-sleep.png){fig-alt="Recode values dialog for a matrix with rows SLEEP_NAP1, SLEEP_TIME1, SLEEP_TIME2, SLEEP_DRINK1, SLEEP_DRINK2 and columns 0 days to 4 days."}
 
+::: callout-tip
+## Go: a scale starts at 1, even when the first step is "Not at all"
+
+In the first screenshot, *Not at all* is 1, not 0. The items in a matrix are averaged into a composite ([Creating Composites](composite.qmd)), and almost every published multi-item measure scores its lowest step as 1, so we follow that convention rather than treat "Not at all" as a true zero. Starting at 0 would not change the average in any useful way, and it would put your means out of line with the literature and change the reverse-item formula (`6 - x`). If you ever need a yes/no version of an item, make it in R with a cut point you report ([Transforming Your Data](dplyr.qmd)). True zeros (a count of 0 days, "no benefits") still start at 0.
+:::
+
 ::: callout-warning
 ## Caution: gaps in the numbers
 
