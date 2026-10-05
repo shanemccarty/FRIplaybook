@@ -49,3 +49,9 @@
 
 ## 7l. Write Functions chapter dataset (2026-10-05)
 - The 122 x 44 dataframe that was pasted twice as `structure(list(...))` (about 680 lines each) is now `data/healthbeliefs_SELECT.csv` (committable: the same de-identified Prolific subset that was already on the public page). Regular-R setup chunk reads it from `data/`; the webR chunk does `download.file()` from the raw GitHub URL, the same pattern as Ch 2. Chapter went from 1,662 to 304 lines. NOTE: the webR cell only works after the CSV is pushed to GitHub (main branch), so push the data file with the chapter.
+
+## 7m. URGENT: raw safety export was committed (2026-10-05)
+- `data/safety-data.xlsx` (raw Team 1 Cohort 11 Qualtrics export, 210 rows, ResponseIds/dates/ZIPs/free text) was committed in v2.3 and pushed to origin/main. Moved to Labs and Data/4_Instructor_only/_real_exports_DO_NOT_SHARE/safety-data_RAW_team1_cohort11.xlsx; .gitignore updated. Shane must: git add -A; commit; push (removes from HEAD), then purge history with BFG (`bfg --delete-files safety-data.xlsx`) + force push, or make the repo private.
+## 7n. Data access for students (2026-10-05)
+- NEW `_data-files.qmd` collapsed box: lab files (Drive only: two ANTH306 xlsx + lab_prep.R) vs Play files (public, GitHub raw download links for all 8). Included in Ch 9 before "Before you start". Ch 9 Lab Play 5 now links the Veggie file directly and says it is NOT on the Drive. Shane: consider also uploading the Play files to the Quant Drive folder so students have one place to look.
+- Ch 22: Go box with rpsychologist.com/correlation + resources entry.

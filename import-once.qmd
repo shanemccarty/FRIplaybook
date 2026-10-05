@@ -183,6 +183,8 @@ You watched the play above with example datasets. Now import the **lab dataset**
 :::
 ::::::
 
+{{< include _data-files.qmd >}}
+
 **Before you start**
 
 1.  Download the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from the class Google Drive. Put it in the **data** folder inside your `Lastname_FRI` project folder (the Important box above shows how to make that folder if you have not yet).
@@ -309,7 +311,7 @@ summary(mh_raw$POLITICALBELIEFS)
 
 ### Lab Play 5: A number column that came in as text
 
-The lab dataset came in clean, but most team datasets will not. `veggiescore_SYNTHETIC.xlsx` (in the class Google Drive and in `data/`) is a scanner export from an FRI Veggie Meter study in which `VEGGIESCORE` should be a number from about 100 to 800. Import it as `veggie`, run `summary(veggie$VEGGIESCORE)`, and read the first line. Then find the values that are not numbers, convert the column with `as.numeric()` inside `mutate()`, and count how many values became `NA`.
+The lab dataset came in clean, but most team datasets will not. `veggiescore_SYNTHETIC.xlsx` ([download it](https://github.com/shanemccarty/FRIplaybook/raw/main/data/veggiescore_SYNTHETIC.xlsx) into your `data` folder; it is a Play file, so it is not on the Google Drive) is a scanner export from an FRI Veggie Meter study in which `VEGGIESCORE` should be a number from about 100 to 800. Import it as `veggie`, run `summary(veggie$VEGGIESCORE)`, and read the first line. Then find the values that are not numbers, convert the column with `as.numeric()` inside `mutate()`, and count how many values became `NA`.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?

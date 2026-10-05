@@ -17,3 +17,7 @@ make_regression_example.R
 # ---- added 2026-10-04: REAL participant data (Team 4, 2025): never publish ----
 data/11.10.2025.pre.not.data.team4.clean.xlsx
 data/*.team*.clean.xlsx
+
+# raw team exports must never be in the repo (real participant data)
+data/safety-data.xlsx
+data/*safety*RAW*

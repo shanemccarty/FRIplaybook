@@ -1,0 +1,22 @@
+::: {.callout-note collapse="true"}
+## Where the data files are
+
+Two kinds of data files appear in this playbook, and they live in two different places.
+
+**Lab data (class Google Drive only).** The lab dataset and everything that goes with it are *not* on the playbook website or in its GitHub repository. Get them from the **Quant** folder of the class Google Drive and put them where the chapter says: `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` and `ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx` in your project's `data` folder, and `lab_prep.R` in the project folder itself (next to your `.Rproj`).
+
+**Play data (download from the playbook).** Every file used in a Play is public and can be downloaded with the links below. Save each one into your project's `data` folder. If a chapter's Lab uses one of these files (Import Data Once, Lab Play 5, uses the Veggie Meter file), this is where to get it.
+
+| File | Used in | Download |
+|----|----|----|
+| `insurance.csv` | Coding a Plot, Visualize a Comparison, Visualize a Relationship | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/insurance.csv) |
+| `insurance.xlsx` | Import Data Once | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/insurance.xlsx) |
+| `veggiescore_SYNTHETIC.xlsx` | Import Data Once (Lab Play 5), Compare 2 Groups | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/veggiescore_SYNTHETIC.xlsx) |
+| `foodsecurity_SYNTHETIC.xlsx` | Compare 2 Groups, Compare 1 Group Pre/Post | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/foodsecurity_SYNTHETIC.xlsx) |
+| `health_status_data.csv` | Visualize a Comparison, Compare 2 Groups, Compare 3+ Groups, Visualize a Relationship, Shiny Data Viz | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/health_status_data.csv) |
+| `safety_data.csv` | Relate 2 Variables, Relate 3+ Variables | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/safety_data.csv) |
+| `pregnancy_beliefs_SIMULATED.csv` | Relate 3+ Variables | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/pregnancy_beliefs_SIMULATED.csv) |
+| `healthbeliefs_SELECT.csv` | Writing Functions in Methods and Results | [download](https://github.com/shanemccarty/FRIplaybook/raw/main/data/healthbeliefs_SELECT.csv) |
+
+If a download link opens the file in your browser instead of saving it, right-click the link and choose *Save Link As…*. Your own team's data file never comes from either place: it comes from your team's Qualtrics export ([Export Survey Data](export.qmd)) and is shared only inside your team.
+:::

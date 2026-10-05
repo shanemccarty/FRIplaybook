@@ -30,6 +30,7 @@ execute:
 ::: {.callout-note collapse="true"}
 ## Resources: correlation
 
+- [Interactive correlation](https://rpsychologist.com/correlation/) (Kristoffer Magnusson; drag *r* and watch the scatterplot change)
 - [Correlation in R](https://www.datacamp.com/tutorial/correlation-in-r) (DataCamp tutorial; `cor()` and `cor.test()`)
 - [Correlation test between two variables in R](https://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r) (STHDA; Pearson and Spearman side by side)
 - R documentation: `?cor.test`
@@ -54,6 +55,12 @@ As in every box on the map, the shape of the data picks the statistic:
 | [**Spearman correlation** *ρ* (non-parametric)]{.nonnormal} | either variable is skewed, has outliers, or is a single rating with a few levels; or the relationship is consistently up or down but not a straight line | `cor.test(x, y, method = "spearman")` | *ρ* (rho), *p* |
 
 Play 1 is the [parametric]{.normal} case; Play 2 is the [non-parametric]{.nonnormal} case. The coefficient runs from -1 (as one goes up the other goes down, perfectly) through 0 (no relationship) to +1 (perfectly together). Its size is read with the same labels in both versions: about .1 is small, .3 medium, .5 large (Cohen, 1988).
+
+::: callout-tip
+## Go: see what *r* looks like before you compute one
+
+Open Kristoffer Magnusson's [interactive correlation](https://rpsychologist.com/correlation/) and drag the slider. At *r* = .1 the cloud is round and you would not guess the two scores were related; at .3 a tilt appears; at .5 the cloud is clearly an ellipse; at .9 it is nearly a line. Then look at the panel that shows **shared variance** (*r*²): an *r* of .3 means the two scores share only 9% of their variation. Do this before Play 1, and again with each coefficient you report, so that your size label (small, medium, large) is attached to a picture rather than a cutoff.
+:::
 
 ::: callout-tip
 ## Go: the coefficient is the effect size
