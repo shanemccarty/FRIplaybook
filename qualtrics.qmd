@@ -2,10 +2,10 @@
 title: "Name and Recode Variables in Qualtrics"
 subtitle: "How to name every variable and give every answer choice a number before anyone exports"
 author:
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter is the team's checklist for the Qualtrics survey before any data is exported. Researchers learn the naming rules for export tags (ALL CAPS, short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01 for yes/no variables coded 0 and 1, _QUAL for open-ended questions; CAT is reserved for categories created later in R), work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables, recode every answer choice to a number (with -99 for Prefer not to say and -50 for Don't know), build a team codebook, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.
-date: 09.27.2026
+  This chapter is the team's checklist for the Qualtrics survey before any data is exported. Researchers first see why variable names matter (a dataset named Q1 to Q7 is unusable; a dataset named AGE, HEALTHSTATUS, STIGMA_PUB1 reads itself), then learn the naming rules for export tags: ALL CAPS and short, NAME1 for multi-item measures, BIG_SMALL1 for subscales, _R for reverse items, _01 for yes/no variables coded No = 0 and Yes = 1 and named for the 1, _QUAL for open-ended questions, named survey blocks, and CAT reserved for categories created later in R. They work through two examples from the lab dataset (the two-subscale stigma measure and the ten-item K10), set the shared class variables (CONSENT, TIME, GENDER, RACIALIZED), recode every answer choice to a number (scales start at 1, true zeros such as "none" start at 0, -99 for Prefer not to say and -50 for Don't know), fill in the Team Codebook Template, publish the survey, and export the survey questions to Word with the coded values showing. Teams do this together, and they export the Word file twice: a draft right after this meeting, and a final version during the October 9 lecture.
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 keywords:
   - qualtrics

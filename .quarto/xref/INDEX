@@ -154,5 +154,14 @@
   },
   "vignette.qmd": {
     "vignette.html": "488715a7"
+  },
+  "compare2groups.qmd": {
+    "compare2groups.html": "b3cf5825"
+  },
+  "shiny.qmd": {
+    "shiny.html": "0579724d"
+  },
+  "correlation.qmd": {
+    "correlation.html": "61b555ad"
   }
 }

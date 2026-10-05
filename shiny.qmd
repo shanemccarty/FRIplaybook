@@ -1,0 +1,325 @@
+---
+title: "Shiny Data Viz"
+subtitle: "How to create a Shiny application in R"
+author:
+  - Zach Spiegel
+  - Shane McCarty
+abstract: |
+  This chapter turns a plot into an interactive web page. Researchers learn what the shiny package does, how to start a Shiny app in RStudio, and how an app is built from two halves that talk to each other: a user interface that offers choices (dropdowns, sliders) and a server that redraws the plot whenever a choice changes. The worked example is the Cohort 10 health status dataset from Visualize a Relationship: the app lets a viewer pick the grouping variable, set an age range, and see the scatterplot and trend lines update. The chapter then shows the two upgrades most students want (plotly for hover-and-zoom plots, DT for searchable tables), how to publish an app to shinyapps.io so a link can go on a poster, and where to keep learning.
+keywords:
+  - shiny
+  - interactive
+  - plotly
+  - DT
+  - shinyapps.io
+  - reactive
+date: 10.04.2026
+date-format: "MM.DD.YYYY"
+format: html
+editor: visual
+execute:
+  eval: false
+---
+
+{{< include _ref-kickoff-box.qmd >}}
+
+::: {.callout-note collapse="true"}
+## Resources: Shiny
+
+- [Shiny Fundamentals with R](https://app.datacamp.com/learn/skill-tracks/shiny-fundamentals-with-r) (DataCamp skill track; four short courses, the first is the one to do before this chapter)
+- [*Mastering Shiny*](https://mastering-shiny.org), Hadley Wickham's free book (Chapters 1–3 cover everything used here)
+- [Shiny for R](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/) (Posit's lessons) and the [Shiny cheat sheet (PDF)](https://shiny.posit.co/r/articles/start/cheatsheet/)
+- [plotly for R](https://plotly.com/r/) and [`ggplotly()`](https://plotly.com/ggplot2/)
+- [DT: interactive tables](https://rstudio.github.io/DT/)
+- [Shiny in a Quarto document](https://quarto.org/docs/interactive/shiny/) (how the original FRI slides ran the app inside the slides)
+- Zach's apps: [Health Status Explorer](https://zachspiegel.shinyapps.io/HealthStatusExplorer/) (embedded below) and [Plot Comparison](https://zachspiegel.shinyapps.io/PlotComparison/) (the same plots and tables, static and interactive, side by side)
+- [Zach's original slides (Google Slides)](https://docs.google.com/presentation/d/15tpsqHmUb_ZVYqRS8NQtZt3n3kHjF2b98NatTHh2Wjk/edit?usp=sharing)
+:::
+
+## Try one first
+
+This is the Cohort 10 health status dataset from [Visualize a Relationship](visualize-relationship.qmd), as a Shiny app Zach built. Change an input and watch the plot redraw. The rest of the chapter explains how an app like this is put together and how to make your own.
+
+```{=html}
+<iframe src="https://zachspiegel.shinyapps.io/HealthStatusExplorer/" width="100%" height="720" style="border: 1px solid #ccc; border-radius: 6px;" title="Health Status Explorer, a Shiny app by Zach Spiegel" loading="lazy"></iframe>
+```
+
+If the frame is blank, the app is waking up (free shinyapps.io apps sleep when idle); give it 20 seconds or [open it in its own tab](https://zachspiegel.shinyapps.io/HealthStatusExplorer/).
+
+::: callout-important
+## Important: the code in this chapter runs in RStudio, not on this page
+
+A Shiny app needs a live R session behind it. The app above is running on Posit's shinyapps.io server and this page only shows it in a frame; the playbook itself is a static web page, so none of the code chunks below run when the page is built. Copy them into RStudio.
+:::
+
+## What is Shiny?
+
+Every plot you have made so far is a picture: the reader sees what you chose to show. **Shiny** is an R package that turns R code into an interactive web page, so that the reader can choose. A viewer of a Shiny app picks a variable from a dropdown, drags a slider, or clicks a group, and the plot redraws in front of them. The R code is still your ggplot2 code; Shiny wraps it in a page and runs it again every time an input changes.
+
+This is an Advanced Play. Nothing in your *RD Report* or *Final Report* requires an app. It is here because an app on a poster's QR code lets a reader explore the finding you are presenting, and because building one teaches you how your code is organized.
+
+## Install Shiny
+
+Shiny is not part of base R. Install it once, then load it in every session like any package ([R Packages](library.qmd)).
+
+```{r}
+#| label: install-shiny
+install.packages("shiny")     # once per computer
+library(shiny)                # every session
+```
+
+## Start an app in RStudio
+
+In RStudio, go to **File \> New File \> Shiny Web App...**. Give the app a name, choose **Single File (app.R)**, and pick where it lives: a folder inside your `Lastname_FRI` project. A single file is easier to keep track of than separate `ui.R` and `server.R` files, and it is the form this chapter uses.
+
+RStudio opens an `app.R` that already runs: a histogram of waiting times at Old Faithful with a slider for the number of bins. Click **Run App** (top right of the editor) and move the slider. That is the whole idea in one picture. Click the stop sign in the Console when you are done.
+
+## The three parts of every app
+
+An `app.R` file has three parts, always in this order.
+
+```{r}
+#| label: app-anatomy
+library(shiny)
+
+ui <- fluidPage(            # 1. the USER INTERFACE: what the viewer sees and can change
+  # inputs and outputs go here
+)
+
+server <- function(input, output, session) {   # 2. the SERVER: the R code that reacts to the inputs
+  # code that makes the outputs goes here
+}
+
+shinyApp(ui, server)        # 3. put the two together and run
+```
+
+- The **UI** is the page: a title, the controls the viewer can use (**inputs**), and the places where results appear (**outputs**). Each input and each output has a name in quotes (`"xvar"`, `"plot1"`).
+- The **server** is where your R code lives. It reads what the viewer chose through `input$name` and fills the outputs through `output$name`.
+- `shinyApp(ui, server)` starts the app. In a single-file app this line is required; without it nothing runs.
+
+The link between the two halves is the name. If the UI has `selectInput("xvar", …)`, the server reads that choice as `input$xvar`. If the server writes `output$plot1 <- renderPlot({ … })`, the UI shows it with `plotOutput("plot1")`.
+
+::: callout-tip
+## Go: reactive means "run again when an input changes"
+
+Code inside `renderPlot({ … })`, `renderTable({ … })`, or `reactive({ … })` is **reactive**: Shiny runs it when the app starts and runs it again every time an input it uses changes. Code outside those braces, at the top of `app.R`, runs once when the app starts. So load packages and read data at the top; put anything that depends on a viewer's choice inside a `render*()` or `reactive()`.
+:::
+
+## 📋 The Play: the health status scatterplot as an app
+
+[Visualize a Relationship](visualize-relationship.qmd) drew self-rated health against subjective social status for respondents 25 and older, with a trend line per racialized-identity group. The app below lets the viewer choose the grouping variable (minoritized status or sex), set the age range with a slider, and decide whether to show the trend lines. It uses `health_status_data.csv` from that chapter; copy the file into the app's folder.
+
+{{< include _about-healthstatus-data.qmd >}}
+
+### Step 1: Packages and data, once, at the top
+
+```{r}
+#| label: app-top
+library(shiny)
+library(tidyverse)
+
+healthstatus <- read.csv("health_status_data.csv") |>         # the file sits next to app.R
+  rename(HEALTHSTATUS = HEALTH_STATUS) |>
+  mutate(
+    MINORITIZED = factor(if_else(RACIALIZED_IDENTITY == 1, 0, 1),
+                         levels = c(0, 1), labels = c("Not minoritized", "Minoritized")),
+    SEX         = factor(SEX, levels = c(0, 1), labels = c("Male", "Female")))
+
+group_choices <- c("Racialized identity" = "MINORITIZED",     # what the viewer sees = the column name
+                   "Sex" = "SEX")
+```
+
+This is the same cleaning as the chapter, and it runs once. `group_choices` is a named vector: the names are what the dropdown shows, the values are the column names the server will use.
+
+### Step 2: The UI
+
+```{r}
+#| label: app-ui
+ui <- fluidPage(
+  titlePanel("Self-rated health and subjective social status"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("groupvar", "Color the points by:", choices = group_choices),
+      sliderInput("age", "Age range:", min = 18, max = 77, value = c(25, 77)),
+      checkboxInput("lines", "Show trend lines", value = TRUE),
+      textOutput("n_text")                                    # "n = 122 respondents"
+    ),
+    mainPanel(
+      plotOutput("scatter", height = "500px")
+    )
+  )
+)
+```
+
+Three inputs (`groupvar`, `age`, `lines`) and two outputs (`n_text`, `scatter`). `sidebarLayout()` puts the controls on the left and the plot on the right, the layout most apps use.
+
+### Step 3: The server
+
+```{r}
+#| label: app-server
+server <- function(input, output, session) {
+
+  # the data the viewer asked for: recomputed whenever the slider moves
+  filtered <- reactive({
+    healthstatus |>
+      filter(AGE >= input$age[1], AGE <= input$age[2])
+  })
+
+  output$n_text <- renderText({
+    paste0("n = ", nrow(filtered()), " respondents")
+  })
+
+  output$scatter <- renderPlot({
+    p <- ggplot(filtered(), aes(x = SSS, y = HEALTHSTATUS, color = .data[[input$groupvar]])) +
+      geom_jitter(width = 0.15, height = 0.12, size = 2.2, alpha = 0.7) +
+      scale_x_continuous(breaks = 1:10, limits = c(1, 10)) +
+      scale_y_continuous(breaks = 1:5, limits = c(0.8, 5.2),
+                         labels = c("Poor", "Fair", "Good", "Very Good", "Excellent")) +
+      labs(x = "Subjective social status (1 = bottom rung, 10 = top rung)",
+           y = "Health status", color = names(group_choices)[group_choices == input$groupvar]) +
+      theme_bw(base_size = 14)
+
+    if (input$lines) {
+      p <- p +
+        geom_smooth(method = "lm", se = FALSE, linewidth = 1.3) +
+        geom_smooth(aes(group = 1), method = "lm", se = FALSE,
+                    color = "black", linetype = "dashed", linewidth = 1)
+    }
+    p
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Three things to notice:
+
+- `filtered()` is a **reactive expression**. It is defined once, used twice (for the n and for the plot), and both outputs update when the slider moves. Note the parentheses: you *call* a reactive, `filtered()`, like a function.
+- `.data[[input$groupvar]]` is how ggplot2 takes a column name that arrives as text. `aes(color = input$groupvar)` would color every point by the word "SEX"; `.data[[ ]]` looks the column up by name.
+- The trend lines are added only `if (input$lines)`. A plot built in pieces like this (`p <- p + …`) is ordinary ggplot2; Shiny only decides when to run it.
+
+Save the three steps as one `app.R`, click **Run App**, and move the slider to 18. The flat and rising lines from the chapter are the age-25+ picture; with the students back in, both lines flatten, which is the point the chapter's filter was making.
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls when the app will not run
+
+- **A blank page or `object 'input' not found`** → code that uses `input$…` is outside a `render*()` or `reactive()`. Move it inside.
+- **`could not find function "ggplot"`** → `library(tidyverse)` (or `ggplot2`) is missing from the top of `app.R`. The app does not see your `.qmd`'s packages.
+- **`cannot open file 'health_status_data.csv'`** → the data file is not in the app's folder. An app's working directory is its own folder, not your project folder, so put the file next to `app.R` or use the full path.
+- **The plot shows but never changes** → the output does not use the input. Check that `filtered()` (with parentheses) and `input$groupvar` are inside `renderPlot()`.
+- **Nothing happens when you click Run App** → `shinyApp(ui, server)` is missing at the end, or an earlier error stopped the file; read the Console.
+:::
+
+## Two upgrades most people want
+
+### Hover and zoom with `plotly`
+
+`plotly` turns a ggplot into a plot the viewer can hover (to read a point's values), zoom, and pan. Two swaps in the UI and the server and one wrapper around the plot:
+
+```{r}
+#| label: upgrade-plotly
+library(plotly)
+
+# UI:     plotlyOutput("scatter")      instead of  plotOutput("scatter")
+# server: output$scatter <- renderPlotly({ ggplotly(p) })   instead of  renderPlot({ p })
+```
+
+`ggplotly()` takes the finished ggplot object (`p` above) and converts it. Most layers convert as they are; `geom_smooth()` and custom labels sometimes need a tweak, so look at the result. Install with `install.packages("plotly")`.
+
+### Searchable tables with `DT`
+
+A `renderTable()` prints a fixed table. `DT` gives the viewer sorting, searching, and paging:
+
+```{r}
+#| label: upgrade-dt
+library(DT)
+
+# UI:     DT::dataTableOutput("table1")      instead of  tableOutput("table1")
+# server: output$table1 <- DT::renderDataTable({ filtered() })   instead of  renderTable({ filtered() })
+```
+
+[Zach's comparison app](https://zachspiegel.shinyapps.io/PlotComparison/) shows the static and interactive versions of a plot and a table side by side, so you can decide whether the upgrade is worth it for yours.
+
+::: callout-tip
+## Go: start small
+
+Zach's app loads a dozen packages (`bslib`, `shinyWidgets`, `gghalves`, `ggdist`, `shinycssloaders`, `shinytitle`, and more). You do not need any of them to begin. `shiny` and `tidyverse` make a working app; add `plotly` when you want hover; add the rest one at a time when you know what each one is for.
+:::
+
+## Share it: publish to shinyapps.io
+
+An app on your laptop is only yours. To put a link on a poster, publish it to **shinyapps.io** (free tier: five apps, 25 hours of use a month), the way [Publish Your Report](quartopub.qmd) publishes a `.qmd` to Quarto Pub.
+
+1.  Make a free account at [shinyapps.io](https://www.shinyapps.io/) and, in **Account \> Tokens**, click **Show** to see your token and secret.
+2.  In RStudio, with the app open, click the **Publish** icon (next to Run App) \> **Publish Application...** \> **Add new account** \> ShinyApps.io, and paste the `rsconnect::setAccountInfo(...)` line the site shows you. Do this once per computer.
+3.  Choose the files to publish (`app.R` and the data file), name the app, and click **Publish**. The app opens at `https://yourname.shinyapps.io/appname/`.
+
+### Put the app inside a Quarto page
+
+Once the app has a shinyapps.io address, it can sit inside any web page, including a `.qmd` published to Quarto Pub or this playbook. That is how the app at the top of this chapter got there: a raw HTML chunk with an `<iframe>` whose `src` is the app's address.
+
+```` markdown
+```{=html}
+<iframe src="https://yourname.shinyapps.io/appname/" width="100%" height="700" style="border: none;"></iframe>
+```
+````
+
+The page stays static; the app runs on Posit's server and is drawn into the frame. This works for a book or report published to GitHub Pages or Quarto Pub. (Quarto can also run Shiny *inside* a document with `server: shiny` in the YAML, which is what Zach's original slides did, but a document like that has to be hosted on a Shiny server too, so for a class website the iframe is the simpler route.)
+
+::: callout-warning
+## Caution: a published app publishes its data
+
+Everything in the app's folder goes to the server, and anyone with the link can see what the app shows. Publish only data you are allowed to share: the synthetic lab data, the class datasets in this playbook, or your team's data after your peer mentor and/or Dr. Shane has approved it. Never paste your account token into a `.qmd` or a shared file.
+:::
+
+## 🏆 Your Turn
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Take one plot from your *RD Report* and give the viewer one choice: the grouping variable, the age range, or which composite is on the y axis. Change every line marked `# REPLACE`.
+:::
+
+```{r}
+#| label: app-template
+library(shiny)
+library(tidyverse)
+library(readxl)
+
+alldata <- read_excel("10.09.2026.data.team1.clean.xlsx")      # REPLACE: your .clean file, copied next to app.R
+alldata[alldata == -99] <- NA
+alldata[alldata == -50] <- NA
+# REPLACE: the mutate() lines that make your composites and factors (copy them from your report)
+
+ui <- fluidPage(
+  titlePanel("REPLACE: a title a reader understands"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("yvar", "Outcome:", choices = c("Well-being" = "WELLBEING", "Stigma" = "STIGMA")),   # REPLACE
+      selectInput("groupvar", "Compare by:", choices = c("Gender" = "GENDER"))                           # REPLACE
+    ),
+    mainPanel(plotOutput("plot1"))
+  )
+)
+
+server <- function(input, output, session) {
+  output$plot1 <- renderPlot({
+    ggplot(alldata, aes(x = .data[[input$groupvar]], y = .data[[input$yvar]], fill = .data[[input$groupvar]])) +
+      geom_violin(alpha = 0.6) +
+      geom_boxplot(width = 0.12, outlier.shape = NA) +
+      theme_bw(base_size = 14)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+| Criteria | Ask yourself |
+|----|----|
+| **Runs** | Does Run App open the page with no red text in the Console, and does the plot change when you change the input? |
+| **One choice at a time** | Does each input do one clear thing that a reader would want to try? |
+| **Same conventions** | Are the axes on the full scale, the groups labeled with words, and the colors the ones your team chose? |
+| **Data** | Is the data file next to `app.R`, and is it data you are allowed to publish? |
+| **Link** | If published, does the link open on a phone, and is it on the poster next to the static version of the plot? |
+
+{{< include _ref-whistle-box.qmd >}}

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" font-family="Helvetica, Arial, sans-serif">
+  <rect width="960" height="640" fill="#FFFFFF"/>
+  <!-- column headers: the goal -->
+  <text x="570" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">What is the goal?</text>
+  <text x="415" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">INFERENCE</text>
+  <text x="415" y="78" text-anchor="middle" font-size="12" fill="#555">explain a difference or relationship in the population</text>
+  <text x="725" y="60" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">PREDICTION</text>
+  <text x="725" y="78" text-anchor="middle" font-size="12" fill="#555">forecast what a new case will look like</text>
+  <!-- row headers: the view of probability -->
+  <text x="22" y="340" font-size="15" font-weight="bold" fill="#333" transform="rotate(-90 22 340)" text-anchor="middle">How is uncertainty handled?</text>
+  <text x="150" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">FREQUENTIST</text>
+  <text x="150" y="218" text-anchor="middle" font-size="12" fill="#555">probability = long-run</text>
+  <text x="150" y="234" text-anchor="middle" font-size="12" fill="#555">frequency over repeated samples</text>
+  <text x="150" y="460" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">BAYESIAN</text>
+  <text x="150" y="478" text-anchor="middle" font-size="12" fill="#555">probability = degree of belief,</text>
+  <text x="150" y="494" text-anchor="middle" font-size="12" fill="#555">updated by the data</text>
+  <!-- cells -->
+  <rect x="270" y="96" width="290" height="250" fill="#CCE5F3" stroke="#1F6FB2" stroke-width="3" rx="6"/>
+  <rect x="580" y="96" width="290" height="250" fill="#F4F4F4" stroke="#999" stroke-width="1.5" rx="6"/>
+  <rect x="270" y="356" width="290" height="250" fill="#F4F4F4" stroke="#999" stroke-width="1.5" rx="6"/>
+  <rect x="580" y="356" width="290" height="250" fill="#F4F4F4" stroke="#999" stroke-width="1.5" rx="6"/>
+
+  <!-- cell 1: frequentist inference -->
+  <text x="415" y="122" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1F6FB2">Frequentist inference (THIS PLAYBOOK)</text>
+  <text x="282" y="146" font-size="11" font-weight="bold" fill="#555">QUESTION</text>
+  <text x="282" y="163" font-size="12" fill="#222" font-style="italic">"If there were no difference in the population,</text>
+  <text x="282" y="179" font-size="12" fill="#222" font-style="italic">how often would data like these appear?"</text>
+  <text x="282" y="205" font-size="11" font-weight="bold" fill="#555">TESTS / MODELS</text>
+  <text x="282" y="222" font-size="12" fill="#222">t-tests, Mann-Whitney U, ANOVA, Kruskal-</text>
+  <text x="282" y="238" font-size="12" fill="#222">Wallis, correlation, linear regression</text>
+  <text x="282" y="264" font-size="11" font-weight="bold" fill="#555">REPORTS</text>
+  <text x="282" y="281" font-size="12" fill="#222">p-value, confidence interval, effect size</text>
+  <text x="282" y="304" font-size="11" font-weight="bold" fill="#555">R PACKAGES</text>
+  <text x="282" y="321" font-size="12" fill="#1F6FB2">stats (built in), moderndive, infer, effectsize</text>
+
+  <!-- cell 2: frequentist prediction -->
+  <text x="725" y="122" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#444">Frequentist prediction: machine learning</text>
+  <text x="592" y="146" font-size="11" font-weight="bold" fill="#555">QUESTION</text>
+  <text x="592" y="163" font-size="12" fill="#222" font-style="italic">"Given these predictors, what is the best guess for</text>
+  <text x="592" y="179" font-size="12" fill="#222" font-style="italic">a new case, and how well does it do on new data?"</text>
+  <text x="592" y="205" font-size="11" font-weight="bold" fill="#555">TESTS / MODELS</text>
+  <text x="592" y="222" font-size="12" fill="#222">regression used to forecast, decision trees,</text>
+  <text x="592" y="238" font-size="12" fill="#222">random forests, boosting, neural networks</text>
+  <text x="592" y="264" font-size="11" font-weight="bold" fill="#555">REPORTS</text>
+  <text x="592" y="281" font-size="12" fill="#222">accuracy or error on held-out data, not p</text>
+  <text x="592" y="304" font-size="11" font-weight="bold" fill="#555">R PACKAGES</text>
+  <text x="592" y="321" font-size="12" fill="#222">tidymodels, caret, ranger, xgboost</text>
+
+  <!-- cell 3: bayesian inference -->
+  <text x="415" y="382" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#444">Bayesian inference</text>
+  <text x="282" y="406" font-size="11" font-weight="bold" fill="#555">QUESTION</text>
+  <text x="282" y="423" font-size="12" fill="#222" font-style="italic">"Given the data and what was known before,</text>
+  <text x="282" y="439" font-size="12" fill="#222" font-style="italic">how likely is a difference this big?"</text>
+  <text x="282" y="465" font-size="11" font-weight="bold" fill="#555">TESTS / MODELS</text>
+  <text x="282" y="482" font-size="12" fill="#222">Bayesian t-test and ANOVA (Bayes factors),</text>
+  <text x="282" y="498" font-size="12" fill="#222">Bayesian regression (posterior distributions)</text>
+  <text x="282" y="524" font-size="11" font-weight="bold" fill="#555">REPORTS</text>
+  <text x="282" y="541" font-size="12" fill="#222">posterior probability, credible interval, Bayes factor</text>
+  <text x="282" y="564" font-size="11" font-weight="bold" fill="#555">R PACKAGES</text>
+  <text x="282" y="581" font-size="12" fill="#222">brms, rstanarm, BayesFactor, bayesrules</text>
+
+  <!-- cell 4: bayesian prediction -->
+  <text x="725" y="382" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#444">Bayesian prediction</text>
+  <text x="592" y="406" font-size="11" font-weight="bold" fill="#555">QUESTION</text>
+  <text x="592" y="423" font-size="12" fill="#222" font-style="italic">"Given the data and what was known before, what</text>
+  <text x="592" y="439" font-size="12" fill="#222" font-style="italic">range of outcomes is likely for a new case?"</text>
+  <text x="592" y="465" font-size="11" font-weight="bold" fill="#555">TESTS / MODELS</text>
+  <text x="592" y="482" font-size="12" fill="#222">Bayesian regression forecasts, hierarchical and</text>
+  <text x="592" y="498" font-size="12" fill="#222">time-series models (epidemic, election forecasts)</text>
+  <text x="592" y="524" font-size="11" font-weight="bold" fill="#555">REPORTS</text>
+  <text x="592" y="541" font-size="12" fill="#222">a predictive distribution (forecast plus uncertainty)</text>
+  <text x="592" y="564" font-size="11" font-weight="bold" fill="#555">R PACKAGES</text>
+  <text x="592" y="581" font-size="12" fill="#222">brms, rstan / cmdstanr, tidybayes, prophet</text>
+</svg>

@@ -1,30 +1,16 @@
 ---
 title: "Creating Composite Scores from Multi-Item Measures"
 subtitle: "How to create a composite and check reliability of the measure"
-author: Shane McCarty, PhD
+author: Shane McCarty
 abstract: |
-  This chapter teaches researchers how to create composite scores from multi-item 
-  scales and assess their reliability. Using the Regulatory Focus Questionnaire 
-  (Higgins, 2001) as an example, researchers learn to measure promotion focus 
-  (preference for growth) and prevention focus (preference for maintaining status quo) 
-  through a systematic four-step process: (1) define which survey items belong to 
-  each construct, (2) identify and reverse-code negatively worded items, (3) calculate 
-  composite scores by averaging items using the psych package's scoreItems() function, 
-  and (4) assess scale reliability using Cronbach's alpha. The chapter explains why 
-  single items are insufficient for measuring psychological constructs and demonstrates 
-  how multiple items averaged together create more reliable continuous measures. 
-  Researchers learn to interpret Cronbach's alpha values (with acceptable reliability 
-  typically above .70) and understand when reverse coding is necessary for items that 
-  capture the absence rather than presence of a construct. Through practical examples 
-  with health beliefs data, researchers master creating composite scores that accurately 
-  reflect theoretical constructs while handling missing data and ensuring all 
-  participants' scores have equivalent meaning. This skill is essential when working 
-  with validated multi-item scales in public health and behavioral research.
+  This chapter teaches researchers to create composite scores from multi-item measures and to check their reliability with Cronbach's alpha. The Play uses the Regulatory Focus Questionnaire (Higgins et al., 2001) to show the four steps: define which items belong to each construct, identify and reverse the negatively worded items, average the items with the psych package's scoreItems(), and read alpha (acceptable reliability is usually .70 or above). The Lab repeats the steps on the lab dataset: a unidimensional scale (the eight WELLBEING items), a multidimensional scale (STIGMA with its public and self subscales and reverse items), and the K10, with impute = "none" so that scoreItems() matches rowMeans() and a skipped item stays missing. Your Turn gives the template for the team's own measures, and the Required box says how to report alpha in the Measures section.
 keywords:
   - composite scores
   - Cronbach's alpha
   - reliability
   - survey scales
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
 format: html
 editor: visual
 execute:

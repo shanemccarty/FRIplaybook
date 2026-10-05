@@ -1,0 +1,294 @@
+---
+title: "How to Shiny"
+author: "Zach Spiegel"
+format:
+  revealjs:
+    transition: fade
+    transition-speed: slow
+    chalkboard: true
+    theme: BingTheme.scss
+    
+editor: visual
+server: shiny
+---
+
+## What is Shiny? (Recap)
+
+-   An R package that allows for more functionality within the software
+
+-   Allows users to create interactive web pages for data science
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Shiny_hex_logo.svg/1200px-Shiny_hex_logo.svg.png){fig-align="center" width="5%"}
+
+## How to Install Shiny
+
+Since Shiny is not in base R, you will need to install it...
+
+-   Install package:
+
+``` r
+install.packages("shiny")
+```
+
+-   Load package:
+
+``` r
+library(shiny)
+```
+
+::: footer
+The installing packages step only needs to be done once!
+:::
+
+## Getting Started
+
+File \> New File \> Shiny Web App
+
+Application type: Single File is best (easier to keep track of code)
+
+![](https://www.gastonsanchez.com/intro2cwd/images/coding/shiny-menu-tab.png){fig-align="center"}
+
+## Example of a Shiny App
+
+### Iris k-means clustering
+
+```{r}
+#| panel: sidebar
+vars <- setdiff(names(iris), "Species")
+selectInput('xcol', 'X Variable', vars)
+selectInput('ycol', 'Y Variable', vars, selected = vars[[2]])
+numericInput('clusters', 'Cluster count', 3, min = 1, max = 9)
+```
+
+```{r}
+#| panel: fill
+plotOutput('plot1')
+```
+
+```{r}
+#| context: server
+selectedData <- reactive({
+    iris[, c(input$xcol, input$ycol)]
+  })
+
+clusters <- reactive({
+  kmeans(selectedData(), input$clusters)
+})
+
+output$plot1 <- renderPlot({
+  palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+    "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
+
+  par(mar = c(5.1, 4.1, 0, 1))
+  plot(selectedData(),
+       col = clusters()$cluster,
+       pch = 20, cex = 3)
+  points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
+})
+```
+
+::: footer
+[How to Implement Shiny code within a Quarto Document](https://quarto.org/docs/interactive/shiny/)
+:::
+
+## Sidebar and Plot (UI)
+
+``` r
+ui <- pageWithSidebar(
+  headerPanel('Iris k-means clustering'), ## Title
+  sidebarPanel( ## Creates a panel on the left side of screen
+    selectInput('xcol', 'X Variable', vars), 
+    ## Dropdown for picking X variable
+    selectInput('ycol', 'Y Variable', vars, selected = vars[[2]]), 
+    ## Dropdown for picking Y variable
+    numericInput('clusters', 'Cluster count', 3, min = 1, max = 9) 
+    ## Option to pick number of clusters
+  ),
+  mainPanel(
+    plotOutput('plot1') ## Names your output variable
+  )
+)
+```
+
+Remember, we need to do our server-side code or this will not work!
+
+::: footer
+Actual Shiny app may differ when viewed outside of Quarto
+:::
+
+## Back-end Code (Server)
+
+``` r
+server <- function(input, output, session) {
+
+  ## Combine the selected variables into a new data frame
+  selectedData <- reactive({
+    iris[, c(input$xcol, input$ycol)]
+  ## selectedData is reactive!
+  ## Contains only selected X and Y variables
+  })
+
+  clusters <- reactive({
+    kmeans(selectedData(), input$clusters)
+  })
+  ## Performs clustering based on number of user selected clusters
+```
+
+## Back-end Code (Server)
+
+``` r
+  output$plot1 <- renderPlot({
+    palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+      "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
+      ## Renders the plot using custom colors
+
+    par(mar = c(5.1, 4.1, 0, 1))
+    plot(selectedData(),
+         col = clusters()$cluster,
+         pch = 20, cex = 3)
+    points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
+  })
+  
+  ## Plots points 
+  ## You will use ggplot instead of this syntax!
+}
+```
+
+## Run the App!
+
+``` r
+shinyApp(ui, server)
+```
+
+```{r}
+#| panel: sidebar
+vars <- setdiff(names(iris), "Species")
+selectInput('xcol', 'X Variable', vars)
+selectInput('ycol', 'Y Variable', vars, selected = vars[[2]])
+numericInput('clusters', 'Cluster count', 3, min = 1, max = 9)
+```
+
+```{r}
+#| panel: fill
+plotOutput('plot2')
+```
+
+```{r}
+#| context: server
+selectedData <- reactive({
+    iris[, c(input$xcol, input$ycol)]
+  })
+
+clusters <- reactive({
+  kmeans(selectedData(), input$clusters)
+})
+
+output$plot2 <- renderPlot({
+  palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
+    "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
+
+  par(mar = c(5.1, 4.1, 0, 1))
+  plot(selectedData(),
+       col = clusters()$cluster,
+       pch = 20, cex = 3)
+  points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
+})
+```
+
+Since you will be using a combined file, you **must** run this command to run the app.
+
+## Creating your App
+
+1.  Load your Packages (I used a lot - don't need all to begin!)
+
+``` r
+## Important packages
+library(ggplot2)
+library(shiny)
+library(dplyr)
+library(tidyr)
+library(ggplotlyExtra) ## Convert ggplot2 plots to plotly
+library(plotly)
+
+library(bslib) ## Extra functionality within Shiny
+library(shinyWidgets) ## Extra functionality within Shiny
+library(gghalves)
+library(ggforce)
+library(ggdist)
+library(shinycssloaders) ## Adds loading wheel to outputs
+library(shinytitle) ## Gives your page a name on browser
+```
+
+## Creating your App cont.
+
+2.  Load and Clean Data
+
+``` r
+data <- read.csv("health_status_data.csv")
+## Load csv as "data" variable
+
+data <- data %>% select(-SAMPLE1, -SAMPLE2, -SAMPLE3, -SAMPLE4, -SAMPLE5,-RI_1, -RI_2, -RI_3, -RI_4, -RI_5, -RI_6, -RI_7, -RI_8)
+## Selecting all columns EXCEPT the ones above
+
+data <- data %>% mutate(  ## this is a pipe (%>%)
+  
+  SEX = case_when(SEX == 0 ~ "Male",
+                  SEX == 1 ~ "Female",
+                  SEX == 2 ~ "Intersex",
+                  SEX == 3 ~ "Other")
+                      )
+                      
+## data <- data means making our changes PERMANENT
+```
+
+Keep variable names concise and easily recognizable!
+
+## Creating your App cont.
+
+3.  Create UI and Server Code
+
+Using Plotly for graphs is often better because of its extra functionality.
+
+``` r
+## UI:
+## Use plotlyOutput() instead of plotOutput()
+
+## Server:
+## Wrap your ggplot code within ggplotly(),
+## ***put actual ggplot2 code in placeholder***
+
+ggplotly(***ggplot2 code***)
+
+
+## Use renderPlotly({}) instead of renderPlot({})
+```
+
+::: footer
+[Compare plots and tables here](https://zachspiegel.shinyapps.io/PlotComparison/)
+:::
+
+## Creating your App cont.
+
+3.  Create UI and Server Code
+
+Same with DT for datatables.
+
+``` r
+## UI:
+## Use DT::dataTableOutput() instead of tableOutput()
+
+## Server:
+## Use DT::renderDataTable({}) instead of renderTable({})
+```
+
+::: footer
+[Compare plots and tables here](https://zachspiegel.shinyapps.io/PlotComparison/)
+:::
+
+## Links to Other Resources
+
+[Previous Shiny Presentation](https://docs.google.com/presentation/d/15tpsqHmUb_ZVYqRS8NQtZt3n3kHjF2b98NatTHh2Wjk/edit?usp=sharing)
+
+[Shiny Cheatsheet](https://shiny.posit.co/r/articles/start/cheatsheet/)
+
+[Mastering Shiny](https://mastering-shiny.org/index.html)

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Shane McCarty, PhD">
-<meta name="keywords" content="ANOVA, ANCOVA, Tukey, Kruskal-Wallis, covariate, comparison">
+<meta name="author" content="Shane McCarty">
+<meta name="keywords" content="ANOVA, Tukey, eta squared, Kruskal-Wallis, ANCOVA, covariate, comparison">
 
-<title>19&nbsp; Compare 3+ Groups – The Quantitative Playbook for R</title>
+<title>20&nbsp; Compare 3+ Groups – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -123,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -298,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
   </div>
 </li>
       </ul>
@@ -320,14 +320,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./compare2groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -344,13 +350,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -367,31 +379,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
   </div>
 </li>
       </ul>
@@ -408,19 +420,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
   </div>
 </li>
       </ul>
@@ -435,25 +453,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-do-you-use-this-chapter" id="toc-when-do-you-use-this-chapter" class="nav-link active" data-scroll-target="#when-do-you-use-this-chapter"><span class="header-section-number">19.1</span> When do you use this chapter?</a></li>
-  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data"><span class="header-section-number">19.2</span> The example data</a></li>
-  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova"><span class="header-section-number">19.3</span> ANOVA</a>
+  <li><a href="#when-is-this-the-right-test" id="toc-when-is-this-the-right-test" class="nav-link active" data-scroll-target="#when-is-this-the-right-test"><span class="header-section-number">20.1</span> When is this the right test?</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">20.2</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#which-groups-differ-the-tukey-follow-up-test" id="toc-which-groups-differ-the-tukey-follow-up-test" class="nav-link" data-scroll-target="#which-groups-differ-the-tukey-follow-up-test"><span class="header-section-number">19.3.1</span> Which groups differ? The Tukey follow-up test</a></li>
+  <li><a href="#play-1-subjective-social-status-by-perceived-income-one-way-anova" id="toc-play-1-subjective-social-status-by-perceived-income-one-way-anova" class="nav-link" data-scroll-target="#play-1-subjective-social-status-by-perceived-income-one-way-anova"><span class="header-section-number">20.2.1</span> Play 1: subjective social status by perceived income (<span class="normal">one-way ANOVA</span>)</a></li>
+  <li><a href="#play-2-self-rated-health-by-perceived-income-kruskal-wallis" id="toc-play-2-self-rated-health-by-perceived-income-kruskal-wallis" class="nav-link" data-scroll-target="#play-2-self-rated-health-by-perceived-income-kruskal-wallis"><span class="header-section-number">20.2.2</span> Play 2: self-rated health by perceived income (<span class="nonnormal">Kruskal-Wallis</span>)</a></li>
+  <li><a href="#play-3-ancova-the-same-comparison-after-accounting-for-age" id="toc-play-3-ancova-the-same-comparison-after-accounting-for-age" class="nav-link" data-scroll-target="#play-3-ancova-the-same-comparison-after-accounting-for-age"><span class="header-section-number">20.2.3</span> Play 3: ANCOVA, the same comparison after accounting for age</a></li>
   </ul></li>
-  <li><a href="#if-your-outcome-is-not-normal-kruskal-wallis" id="toc-if-your-outcome-is-not-normal-kruskal-wallis" class="nav-link" data-scroll-target="#if-your-outcome-is-not-normal-kruskal-wallis"><span class="header-section-number">19.4</span> If your outcome is not normal: Kruskal-Wallis</a></li>
-  <li><a href="#ancova-add-a-covariate" id="toc-ancova-add-a-covariate" class="nav-link" data-scroll-target="#ancova-add-a-covariate"><span class="header-section-number">19.5</span> ANCOVA: add a covariate</a></li>
-  <li><a href="#report-it" id="toc-report-it" class="nav-link" data-scroll-target="#report-it"><span class="header-section-number">19.6</span> Report it</a></li>
+  <li><a href="#sec-anova-lab" id="toc-sec-anova-lab" class="nav-link" data-scroll-target="#sec-anova-lab"><span class="header-section-number">20.3</span> 🏈 The Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-play-1-well-being-by-general-health-anova-and-tukey" id="toc-lab-play-1-well-being-by-general-health-anova-and-tukey" class="nav-link" data-scroll-target="#lab-play-1-well-being-by-general-health-anova-and-tukey"><span class="header-section-number">20.3.1</span> Lab Play 1: Well-being by general health (<span class="normal">ANOVA and Tukey</span>)</a></li>
+  <li><a href="#lab-play-2-social-causes-by-political-beliefs-kruskal-wallis" id="toc-lab-play-2-social-causes-by-political-beliefs-kruskal-wallis" class="nav-link" data-scroll-target="#lab-play-2-social-causes-by-political-beliefs-kruskal-wallis"><span class="header-section-number">20.3.2</span> Lab Play 2: Social causes by political beliefs (<span class="nonnormal">Kruskal-Wallis</span>)</a></li>
+  <li><a href="#lab-play-3-well-being-by-general-health-accounting-for-age-ancova" id="toc-lab-play-3-well-being-by-general-health-accounting-for-age-ancova" class="nav-link" data-scroll-target="#lab-play-3-well-being-by-general-health-accounting-for-age-ancova"><span class="header-section-number">20.3.3</span> Lab Play 3: Well-being by general health, accounting for age (ANCOVA)</a></li>
+  </ul></li>
+  <li><a href="#sec-anova-yourturn" id="toc-sec-anova-yourturn" class="nav-link" data-scroll-target="#sec-anova-yourturn"><span class="header-section-number">20.4</span> 🏆 Your Turn</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/ANOVA.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./ANOVA.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></h1>
-<p class="subtitle lead">ANOVA, Kruskal-Wallis, and ANCOVA</p>
+<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></h1>
+<p class="subtitle lead">The one-way ANOVA for normal data and the Kruskal-Wallis test for data that are not, plus ANCOVA for a covariate</p>
 </div>
 
 
@@ -463,14 +486,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Shane McCarty, PhD </p>
+             <p>Shane McCarty </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">09.20.2026</p>
+      <p class="date">10.04.2026</p>
     </div>
   </div>
   
@@ -480,14 +503,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This chapter shows researchers how to compare the average score of three or more groups with a one-way ANOVA, how to find out which groups differ with a Tukey follow-up test, how to use the Kruskal-Wallis test when the outcome is not normal, and how to add a covariate with an ANCOVA.</p>
+    <p>This chapter is the Analysis Map’s “compare 3+ groups” row: three or more groups of different people and one continuous outcome. Researchers learn when the one-way ANOVA is the right test and when the Kruskal-Wallis test is, how to run each with its follow-up test (Tukey; pairwise Wilcoxon) and effect size, how to add a covariate with an ANCOVA, and how to report each result. The Play uses the Cohort 10 health status data to compare subjective social status and self-rated health across three perceived-income groups. The Lab runs the same tests on the lab dataset with Ref’s checks, and Your Turn gives the template for the team dataset.</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>ANOVA, ANCOVA, Tukey, Kruskal-Wallis, covariate, comparison</p>
+    <p>ANOVA, Tukey, eta squared, Kruskal-Wallis, ANCOVA, covariate, comparison</p>
   </div>
 </div>
 
@@ -511,32 +534,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="when-do-you-use-this-chapter" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="when-do-you-use-this-chapter"><span class="header-section-number">19.1</span> When do you use this chapter?</h2>
-<p>Your research question is a <strong>comparison</strong>, and you have <strong>three or more different groups</strong> and <strong>one continuous outcome</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: ANOVA, Kruskal-Wallis, and ANCOVA
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://www.datacamp.com/tutorial/anova-in-r">One-way ANOVA in R</a> (DataCamp tutorial)</li>
+<li><a href="https://www.sthda.com/english/wiki/kruskal-wallis-test-in-r">Kruskal-Wallis test in R</a> (STHDA)</li>
+<li>R documentation: <code>?aov</code>, <code>?TukeyHSD</code>, <code>?kruskal.test</code>, <code>?pairwise.wilcox.test</code></li>
+<li><a href="./compare2groups.html">Compare 2 Groups</a>: the two-group version of every idea here, including why a rating is not a normal outcome</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="when-is-this-the-right-test" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="when-is-this-the-right-test"><span class="header-section-number">20.1</span> When is this the right test?</h2>
+<p>Your research question is a <strong>comparison</strong>, you have <strong>three or more groups of different people</strong>, and <strong>one continuous outcome</strong>. On <a href="./analysis-map.html">The Analysis Map</a> that is the <em>compare 3+ groups</em> row. Exactly two groups is the row above, <a href="./compare2groups.html">Compare 2 Groups</a>; the same people measured three times is a repeated-measures design, which this playbook does not cover, so talk to your peer mentor and/or Dr.&nbsp;Shane.</p>
+<p>As in every box on the map, the shape of the outcome picks the test:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Test</th>
 <th>Use it when</th>
+<th>R function</th>
+<th>Follow-up</th>
+<th>Report</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>ANOVA</strong></td>
-<td>three or more groups, outcome is normal</td>
+<td><span class="normal"><strong>One-way ANOVA</strong> (parametric)</span></td>
+<td>the outcome is roughly normal within each group, or every group has 30 or more people</td>
+<td><code>aov()</code></td>
+<td><code>TukeyHSD()</code></td>
+<td><em>M</em>, <em>SD</em>, <em>F</em>(df1, df2), <em>p</em>, η²</td>
 </tr>
 <tr class="even">
-<td><strong>Kruskal-Wallis</strong></td>
-<td>three or more groups, outcome is <strong>not</strong> normal</td>
+<td><span class="nonnormal"><strong>Kruskal-Wallis</strong> (non-parametric)</span></td>
+<td>the outcome is skewed, a group is small, or the outcome is a single rating with a few levels</td>
+<td><code>kruskal.test()</code></td>
+<td><code>pairwise.wilcox.test()</code></td>
+<td><em>Mdn</em>, <em>H</em>(df), <em>p</em>, pairwise <em>p</em></td>
 </tr>
 <tr class="odd">
 <td><strong>ANCOVA</strong></td>
-<td>an ANOVA, plus one continuous variable you want to account for (a <strong>covariate</strong>), such as age</td>
+<td>an ANOVA plus one continuous variable to account for (a <strong>covariate</strong>), such as age</td>
+<td><code>aov(OUTCOME ~ COVARIATE + GROUP)</code></td>
+<td><code>TukeyHSD()</code> is not valid; see the regression chapter</td>
+<td><em>F</em>, <em>p</em> for the group row, “after accounting for…”</td>
 </tr>
 </tbody>
 </table>
@@ -546,70 +606,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Go</span>Go: Do these two things first
+<span class="screen-reader-only">Go</span>Go: do these two things first
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Check whether your outcome is normal in <a href="./describe.html">Describe Your Data</a>.</li>
-<li>Make the barplot or violin plot in <a href="./visualize-comparison.html">Visualize a Comparison</a>.</li>
+<li>Check the outcome’s shape within each group: <a href="./describe.html">Describe Your Data</a>, and the Shapiro-Wilk check in <a href="./compare2groups.html">Compare 2 Groups</a>.</li>
+<li>Draw the plot: the bar chart or violin from <a href="./visualize-comparison.html">Visualize a Comparison</a>. A test without its plot is a number without a picture.</li>
 </ol>
 </div>
 </div>
 </section>
-<section id="the-example-data" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">19.2</span> The example data</h2>
-<p>The example uses the lab dataset and two questions.</p>
-<ul>
-<li><strong>Normal outcome (ANOVA and ANCOVA):</strong> do people in poor or fair, good, and very good or excellent general health differ in well-being (<code>WELLBEING</code>)?</li>
-<li><strong>Outcome that is not normal (Kruskal-Wallis):</strong> do people on the political left, in the middle, and on the right differ in how much they believe mental health problems have social causes (<code>SOCIAL</code>)?</li>
-</ul>
+<section id="the-play" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">20.2</span> 📋 The Play</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>About the dataset: <code>health_status_data.csv</code> (the Cohort 10 class dataset)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Every FRI Public Health team in <strong>Cohort 10</strong> asked the same self-rated health question, <em>Would you say your health in general is excellent, very good, good, fair, or poor?</em>, along with the class variables of that year (age, sex, racialized identity, perceived income, and the MacArthur ladder of subjective social status). The five team datasets were merged into one file of 343 respondents so that health status could be examined across the whole class. <code>SAMPLE_ID</code> says which team’s study a person came from.</p>
+<p>This is <strong>real data</strong>, already cleaned and de-identified: no response IDs, passwords, dates, or open-ended answers, and the five team samples differ in whom they recruited (students, families, farmers-market visitors), which is why the chapters filter by age. The variable names predate the class naming rules, so the Play renames them: <code>HEALTH_STATUS</code> becomes <code>HEALTHSTATUS</code> (1 = Poor … 5 = Excellent); <code>SSS</code> is subjective social status (1 to 10); <code>SEX</code> is biological sex (0 = male, 1 = female); and <code>RACIALIZED_IDENTITY</code> (1 = identified as white only, 0 = any other identity) becomes <code>MINORITIZED_01</code> (1 = minoritized, 0 = not), named for the 1 the way a <code>_01</code> variable should be. The other columns (<code>RG_…</code>, <code>RI_…</code>, <code>PoorFairHealth</code>, <code>ExcellentHealth</code>) are earlier recodes of the same questions and are not used here.</p>
+</div>
+</div>
+</div>
+<p>The Cohort 10 survey asked everyone to rate their household income as much below average, below average, average, above average, or much above average (<code>PERCEIVED_INCOME</code>), and the class collapsed that into three groups, <code>INCOME3</code>: below average, average, above average. Two questions, one for each line of the box: do the three income groups differ in <strong>subjective social status</strong> (<code>SSS</code>, the MacArthur ladder, 1 to 10), a continuous score; and do they differ in <strong>self-rated health</strong> (<code>HEALTHSTATUS</code>, 1 = Poor to 5 = Excellent), a single rating?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)   <span class="co"># creates mh_clean</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HEALTH_3CAT =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    HEALTHSTATUS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Poor or fair"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    HEALTHSTATUS <span class="sc">==</span> <span class="dv">3</span>         <span class="sc">~</span> <span class="st">"Good"</span>,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    HEALTHSTATUS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Very good or excellent"</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Poor or fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very good or excellent"</span>)))   <span class="co"># the group must be a factor</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>mh_clean <span class="sc">|&gt;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(HEALTH_3CAT)) <span class="sc">|&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(HEALTH_3CAT) <span class="sc">|&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(WELLBEING, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(WELLBEING, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 4
-  HEALTH_3CAT                n  mean    sd
-  &lt;fct&gt;                  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 Poor or fair              36  3.03 0.673
-2 Good                      81  3.19 0.598
-3 Very good or excellent    61  3.56 0.662</code></pre>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mh_3cat <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POL_3CAT =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    POLITICALBELIEFS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Left"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    POLITICALBELIEFS <span class="sc">==</span> <span class="dv">3</span>         <span class="sc">~</span> <span class="st">"Moderate"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    POLITICALBELIEFS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Right"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(POL_3CAT)) <span class="sc">|&gt;</span>                 <span class="co"># keep only the three groups</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">POL_3CAT =</span> <span class="fu">factor</span>(POL_3CAT))          <span class="co"># the group must be a factor</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mh_3cat <span class="sc">|&gt;</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(POL_3CAT) <span class="sc">|&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(SOCIAL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(SOCIAL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="play-1-subjective-social-status-by-perceived-income-one-way-anova" class="level3" data-number="20.2.1">
+<h3 data-number="20.2.1" class="anchored" data-anchor-id="play-1-subjective-social-status-by-perceived-income-one-way-anova"><span class="header-section-number">20.2.1</span> Play 1: subjective social status by perceived income (<span class="normal">one-way ANOVA</span>)</h3>
+<section id="step-1-import-recode-and-count-the-groups" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-import-recode-and-count-the-groups">Step 1: Import, recode, and count the groups</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/health_status_data.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">HEALTHSTATUS =</span> HEALTH_STATUS) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">INCOME3 =</span> <span class="fu">factor</span>(INCOME3, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Below average"</span>, <span class="st">"Average"</span>, <span class="st">"Above average"</span>))) <span class="sc">|&gt;</span>   <span class="co"># the group must be a factor</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(INCOME3), <span class="sc">!</span><span class="fu">is.na</span>(SSS), <span class="sc">!</span><span class="fu">is.na</span>(HEALTHSTATUS))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="sc">|&gt;</span> <span class="fu">count</span>(INCOME3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 4
-  POL_3CAT     n  mean    sd
-  &lt;fct&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 Left        90  4.23 0.625
-2 Moderate    26  4.13 0.674
-3 Right       47  3.63 0.794</code></pre>
+<pre><code>        INCOME3   n
+1 Below average  65
+2       Average 149
+3 Above average 129</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Visualize a Comparison (Play 2)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: factor() with levels in a sensible order; filter() drops people missing the group or either outcome, so every test below uses the same people</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -617,152 +668,511 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Caution: Don’t leave your group as a number
+<span class="screen-reader-only">Caution</span>Caution: don’t leave your group as a number
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If the group is stored as 1, 2, 3, R treats it as a score and gives you a wrong answer with no error message. Make it a <code>factor()</code> first.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Go</span>Go: Check the shape of your data
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>aov()</code> needs <strong>one row per person</strong>, with <strong>one column for the outcome</strong> and <strong>one column for the group</strong>. Most survey data already look like this, so there is nothing to change.</p>
-<p>You only need to reshape when the scores you want to compare sit in <strong>separate columns</strong> (for example, <code>score_time1</code>, <code>score_time2</code>, <code>score_time3</code>). Then use <code>pivot_longer()</code> from <a href="./prepost.html">Pre/Post Data</a> to stack them into one outcome column and one group column. Note that the same people measured three times is a repeated-measures design, which this chapter does not cover. Talk to your peer mentor and/or Dr.&nbsp;Shane.</p>
+<p>If the group is stored as 1, 2, 3, <code>aov()</code> treats it as a score and fits a straight line through the group numbers: a wrong answer with no error message. Make it a <code>factor()</code> first, every time.</p>
 </div>
 </div>
 </section>
-<section id="anova" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="anova"><span class="header-section-number">19.3</span> ANOVA</h2>
-<p>An ANOVA asks one question: is <strong>at least one</strong> group average different from the others?</p>
+<section id="step-2-look-at-the-three-groups" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-look-at-the-three-groups">Step 2: Look at the three groups</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> HEALTH_3CAT, <span class="at">data =</span> mh_clean)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_anova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(INCOME3) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(SSS), <span class="at">sd =</span> <span class="fu">sd</span>(SSS), <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(SSS)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-HEALTH_3CAT   2   7.47   3.735   9.238 0.000153 ***
-Residuals   175  70.75   0.404                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-10 observations deleted due to missingness</code></pre>
+<pre><code># A tibble: 3 × 5
+  INCOME3           n  mean    sd    shapiro_p
+  &lt;fct&gt;         &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;
+1 Below average    65  4.74 1.57  0.000408    
+2 Average         149  6.23 1.33  0.00000100  
+3 Above average   129  7.41 0.989 0.0000000268</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_sss_income <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(healthstatus, <span class="fu">aes</span>(<span class="at">x =</span> INCOME3, <span class="at">y =</span> SSS, <span class="at">fill =</span> INCOME3)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">height =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#8d14c1"</span>, <span class="st">"#f4b400"</span>, <span class="st">"#009e73"</span>)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Perceived household income"</span>, <span class="at">y =</span> <span class="st">"Subjective social status (1 = bottom rung, 10 = top rung)"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Subjective social status by perceived income"</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plot_sss_income</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ANOVA_files/figure-html/play1-look-1.png" class="img-fluid figure-img" alt="Three violin plots, one per income group, rising from left to right. The below-average group is centered near 5 on the ladder, the average group near 6, and the above-average group near 7.5." width="672"></p>
+<figcaption>Figure 1. Subjective social status by perceived income (Cohort 10 data, n = 343). Violins show the distribution, boxes the median and quartiles, points the individual ratings.</figcaption>
+</figure>
 </div>
 </div>
-<p>Read the <code>HEALTH_3CAT</code> row: <code>F value</code> is the test statistic, and <code>Pr(&gt;F)</code> is the p-value. If p is smaller than .05, the groups are not all the same.</p>
-<section id="which-groups-differ-the-tukey-follow-up-test" class="level3" data-number="19.3.1">
-<h3 data-number="19.3.1" class="anchored" data-anchor-id="which-groups-differ-the-tukey-follow-up-test"><span class="header-section-number">19.3.1</span> Which groups differ? The Tukey follow-up test</h3>
-<p>A significant ANOVA does not tell you <strong>which</strong> groups differ. Run the follow-up test only when the ANOVA is significant.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/sss_by_income_violin.png"</span>, <span class="at">plot =</span> plot_sss_income, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Compare 2 Groups (Play 2)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the same three layers as the two-group violin, with three groups on the x axis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The Shapiro-Wilk p-values are below .05 (a 1-to-10 ladder with most people on the middle rungs is not quite normal), but every group has 60 or more people, which is the second condition in the table above: with groups this size the ANOVA is robust to this much non-normality. The picture is the point: three distributions that step up from left to right.</p>
+</section>
+<section id="step-3-the-one-way-anova" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-the-one-way-anova">Step 3: The one-way ANOVA</h4>
+<p>An ANOVA asks one question: is <strong>at least one</strong> group mean different from the others?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(model_anova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model_sss <span class="ot">&lt;-</span> <span class="fu">aov</span>(SSS <span class="sc">~</span> INCOME3, <span class="at">data =</span> healthstatus)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_sss)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+INCOME3       2  315.6  157.81   98.27 &lt;2e-16 ***
+Residuals   340  546.0    1.61                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: https://www.datacamp.com/tutorial/anova-in-r</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: outcome ~ group; the INCOME3 row gives the F statistic and p-value; the Residuals row gives the second df</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Read the <code>INCOME3</code> row: <code>F value</code> is the test statistic, <code>Df</code> on that row is the first degrees of freedom (groups minus 1), <code>Df</code> on the <code>Residuals</code> row is the second (people minus groups), and <code>Pr(&gt;F)</code> is the p-value.</p>
+</section>
+<section id="step-4-which-groups-differ-tukeys-follow-up-test-and-the-effect-size" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-which-groups-differ-tukeys-follow-up-test-and-the-effect-size">Step 4: Which groups differ? Tukey’s follow-up test, and the effect size</h4>
+<p>A significant ANOVA says the groups are not all the same; it does not say which pairs differ. Tukey’s test compares every pair and adjusts the p-values for the number of comparisons. Run it only when the ANOVA is significant.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(model_sss)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
 
-Fit: aov(formula = WELLBEING ~ HEALTH_3CAT, data = mh_clean)
+Fit: aov(formula = SSS ~ INCOME3, data = healthstatus)
 
-$HEALTH_3CAT
-                                         diff        lwr       upr     p adj
-Good-Poor or fair                   0.1652337 -0.1358327 0.4663001 0.3985811
-Very good or excellent-Poor or fair 0.5258967  0.2100089 0.8417844 0.0003509
-Very good or excellent-Good         0.3606630  0.1058627 0.6154632 0.0028713</code></pre>
+$INCOME3
+                                diff       lwr      upr p adj
+Average-Below average       1.489726 1.0462884 1.933164     0
+Above average-Below average 2.672391 2.2186323 3.126150     0
+Above average-Average       1.182665 0.8238997 1.541430     0</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># effect size: eta squared = sum of squares for the group / total sum of squares</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_sss)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>eta2_sss <span class="ot">&lt;-</span> ss[<span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(ss)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>eta2_sss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3663086</code></pre>
 </div>
-<p>Each row compares two groups. <code>diff</code> is the difference between the two averages, and <code>p adj</code> is the p-value for that pair.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: R documentation ?TukeyHSD; Cohen (1988) for eta squared</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: each Tukey row is one pair, diff is the mean difference, p adj is the adjusted p; eta squared is the share of variance explained by the group: .01 small, .06 medium, .14 large</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>All three pairs differ, and η² is large: perceived income and the ladder rating are two views of the same thing, which is why the effect is so big. In your own data an η² of .06 is a respectable medium effect.</p>
+</section>
+<section id="step-5-report-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-report-it">Step 5: Report it</h4>
+<blockquote class="blockquote">
+<p>Subjective social status differed across the three perceived-income groups, <em>F</em>(2, 340) = 98.27, <em>p</em> &lt; .001, η² = 0.37, a large effect. Tukey follow-up tests showed that every pair differed (all <em>p</em> &lt; .001): people reporting above-average income placed themselves higher on the ladder (<em>M</em> = 7.41, <em>SD</em> = 0.99, <em>n</em> = 129) than people reporting average income (<em>M</em> = 6.23, <em>SD</em> = 1.33, <em>n</em> = 149), who placed themselves higher than people reporting below-average income (<em>M</em> = 4.74, <em>SD</em> = 1.57, <em>n</em> = 65) (Figure 1).</p>
+</blockquote>
 </section>
 </section>
-<section id="if-your-outcome-is-not-normal-kruskal-wallis" class="level2" data-number="19.4">
-<h2 data-number="19.4" class="anchored" data-anchor-id="if-your-outcome-is-not-normal-kruskal-wallis"><span class="header-section-number">19.4</span> If your outcome is not normal: Kruskal-Wallis</h2>
-<p><code>SOCIAL</code> is skewed and does not pass the checks in <a href="./describe.html">Describe Your Data</a>, so the political groups are compared with the Kruskal-Wallis test.</p>
+<section id="play-2-self-rated-health-by-perceived-income-kruskal-wallis" class="level3" data-number="20.2.2">
+<h3 data-number="20.2.2" class="anchored" data-anchor-id="play-2-self-rated-health-by-perceived-income-kruskal-wallis"><span class="header-section-number">20.2.2</span> Play 2: self-rated health by perceived income (<span class="nonnormal">Kruskal-Wallis</span>)</h3>
+<p>Self-rated health is one question with five answers. As <a href="./compare2groups.html">Compare 2 Groups</a> Play 3 explains, a rating like that is not normal and its mean describes nobody, so this is the non-parametric line of the box. The Kruskal-Wallis test is the Mann-Whitney U for three or more groups: it ranks everyone’s rating and asks whether the groups’ ranks differ.</p>
+<section id="step-1-look" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-look">Step 1: Look</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(SOCIAL <span class="sc">~</span> POL_3CAT, <span class="at">data =</span> mh_3cat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(INCOME3) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">median =</span> <span class="fu">median</span>(HEALTHSTATUS), <span class="at">mean =</span> <span class="fu">mean</span>(HEALTHSTATUS))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  INCOME3           n median  mean
+  &lt;fct&gt;         &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 Below average    65      3  3.32
+2 Average         149      3  3.40
+3 Above average   129      4  3.69</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>health_props <span class="ot">&lt;-</span> healthstatus <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(INCOME3, HEALTHSTATUS) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(INCOME3) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plot_health_income <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(health_props, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(HEALTHSTATUS), <span class="at">y =</span> prop, <span class="at">fill =</span> INCOME3)) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">width =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Poor"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Fair"</span>, <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Good"</span>, <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Very good"</span>, <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"Excellent"</span>)) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#8d14c1"</span>, <span class="st">"#f4b400"</span>, <span class="st">"#009e73"</span>)) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Self-rated health"</span>, <span class="at">y =</span> <span class="st">"Share of group"</span>, <span class="at">fill =</span> <span class="st">"Perceived income"</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Self-rated health by perceived income"</span>) <span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>plot_health_income</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ANOVA_files/figure-html/play2-look-1.png" class="img-fluid figure-img" alt="Three sets of five bars, one per income group, for Poor through Excellent. The above-average group has the largest share at Very good and Excellent; the below-average group has the largest share at Fair." width="672"></p>
+<figcaption>Figure 2. Self-rated health by perceived income (Cohort 10 data, n = 343). Bars are the share of each group choosing each answer.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/health_by_income_bars.png"</span>, <span class="at">plot =</span> plot_health_income, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="fl">4.5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Compare 2 Groups (Play 3)</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: proportions within each group, so a bigger group does not look healthier</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-the-kruskal-wallis-test-and-its-follow-up" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-the-kruskal-wallis-test-and-its-follow-up">Step 2: The Kruskal-Wallis test and its follow-up</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>kw_health <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(HEALTHSTATUS <span class="sc">~</span> INCOME3, <span class="at">data =</span> healthstatus)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>kw_health</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Kruskal-Wallis rank sum test
 
-data:  SOCIAL by POL_3CAT
-Kruskal-Wallis chi-squared = 18.736, df = 2, p-value = 8.54e-05</code></pre>
+data:  HEALTHSTATUS by INCOME3
+Kruskal-Wallis chi-squared = 10.171, df = 2, p-value = 0.006185</code></pre>
 </div>
-</div>
-<p>The follow-up test for a significant Kruskal-Wallis test compares the groups two at a time.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(mh_3cat<span class="sc">$</span>SOCIAL, mh_3cat<span class="sc">$</span>POL_3CAT, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(healthstatus<span class="sc">$</span>HEALTHSTATUS, healthstatus<span class="sc">$</span>INCOME3, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 
-data:  mh_3cat$SOCIAL and mh_3cat$POL_3CAT 
+data:  healthstatus$HEALTHSTATUS and healthstatus$INCOME3 
 
-         Left  Moderate
-Moderate 0.499 -       
-Right    5e-05 0.026   
+              Below average Average
+Average       0.58          -      
+Above average 0.02          0.02   
 
 P value adjustment method: holm </code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: R documentation ?kruskal.test, ?pairwise.wilcox.test</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the Kruskal-Wallis statistic is reported as H with df = groups minus 1; the follow-up runs a Mann-Whitney U for each pair and adjusts the p-values (Holm)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>The follow-up table reads like a mileage chart: each cell is the adjusted p-value for one pair. Here the above-average group differs from each of the other two, and the below-average and average groups do not differ from each other.</p>
 </section>
-<section id="ancova-add-a-covariate" class="level2" data-number="19.5">
-<h2 data-number="19.5" class="anchored" data-anchor-id="ancova-add-a-covariate"><span class="header-section-number">19.5</span> ANCOVA: add a covariate</h2>
-<p>An ANCOVA asks the same question as an ANOVA <strong>after accounting for</strong> another continuous variable. Here the covariate is age. Put the covariate <strong>first</strong> in the formula.</p>
+<section id="step-3-report-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-report-it">Step 3: Report it</h4>
+<blockquote class="blockquote">
+<p>Self-rated health differed across the three perceived-income groups, Kruskal-Wallis <em>H</em>(2) = 10.17, <em>p</em> = .006. Pairwise Mann-Whitney U tests with a Holm correction showed that people reporting above-average income rated their health higher (<em>Mdn</em> = 4, Very good; <em>n</em> = 129) than people reporting average (<em>Mdn</em> = 3, Good; <em>n</em> = 149) or below-average income (<em>Mdn</em> = 3, Good; <em>n</em> = 65), both <em>p</em> = .02; the latter two groups did not differ (<em>p</em> = .58) (Figure 2).</p>
+</blockquote>
+</section>
+</section>
+<section id="play-3-ancova-the-same-comparison-after-accounting-for-age" class="level3" data-number="20.2.3">
+<h3 data-number="20.2.3" class="anchored" data-anchor-id="play-3-ancova-the-same-comparison-after-accounting-for-age"><span class="header-section-number">20.2.3</span> Play 3: ANCOVA, the same comparison after accounting for age</h3>
+<p>The five team samples differ in age (students in some, families and farmers-market visitors in others), and older people tend to have higher incomes. An ANCOVA asks Play 1’s question again <strong>for people of the same age</strong>: the covariate goes <strong>first</strong> in the formula, the group last.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model_ancova <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> AGE <span class="sc">+</span> HEALTH_3CAT, <span class="at">data =</span> mh_clean)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_ancova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model_sss_age <span class="ot">&lt;-</span> <span class="fu">aov</span>(SSS <span class="sc">~</span> AGE <span class="sc">+</span> INCOME3, <span class="at">data =</span> healthstatus)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_sss_age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-AGE           1   0.40   0.397   0.968 0.326538    
-HEALTH_3CAT   2   7.28   3.638   8.879 0.000214 ***
-Residuals   172  70.47   0.410                     
+AGE           1   34.9   34.88   22.85 2.62e-06 ***
+INCOME3       2  309.2  154.62  101.28  &lt; 2e-16 ***
+Residuals   339  517.5    1.53                     
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-12 observations deleted due to missingness</code></pre>
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nobs</span>(model_sss_age)   <span class="co"># people missing AGE are dropped: check the n</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 343</code></pre>
 </div>
-<p>Read the <code>HEALTH_3CAT</code> row the same way as before. It now means “do the groups differ, for people of the same age?”</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: R documentation ?aov</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: covariate first, group last; read the INCOME3 row as "do the groups differ, at the same age?"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The <code>INCOME3</code> row still has a very small p-value: the income groups differ in subjective social status even after accounting for age. Report it as the Play 1 sentence plus “after accounting for age”, with the <em>F</em> and <em>p</em> from this table.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Caution: Three things to know about ANCOVA
+<span class="screen-reader-only">Caution</span>Caution: three things to know about ANCOVA
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>The order in the formula matters in <code>aov()</code>. The covariate goes first, and the group goes last.</li>
-<li>People who are missing the covariate are dropped, so your n can get smaller. Check it with <code>nobs(model_ancova)</code>.</li>
-<li>An ANCOVA is a linear regression with a categorical predictor. See <a href="./regression.html">Relate 3+ Variables</a> for how to read slopes and check residuals.</li>
+<li>The order in the formula matters in <code>aov()</code>: covariate first, group last. Reversed, the group row answers a different question.</li>
+<li>People missing the covariate are dropped, so the n can shrink. Check it with <code>nobs()</code>.</li>
+<li><code>TukeyHSD()</code> is not valid after an ANCOVA. An ANCOVA is a linear regression with a categorical predictor, and <a href="./regression.html">Relate 3+ Variables</a> shows how to read which groups differ from the comparison group.</li>
 </ul>
 </div>
 </div>
-</section>
-<section id="report-it" class="level2" data-number="19.6">
-<h2 data-number="19.6" class="anchored" data-anchor-id="report-it"><span class="header-section-number">19.6</span> Report it</h2>
-<blockquote class="blockquote">
-<p>A one-way ANOVA showed that ________ (differed / did not differ) across ________ groups, F(__, __) = ___, p = ___. A Tukey follow-up test showed that ________ scored higher than ________ (p = ___).</p>
-</blockquote>
-<p>For an ANCOVA, add: “after accounting for ________”.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Caution: Different does not mean caused
+<span class="screen-reader-only">Caution</span>Caution: different does not mean caused
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>A survey comparison tells you that groups differ. It does not tell you why. Write “differed” or “scored higher”, not “caused” or “led to”.</p>
 </div>
 </div>
+</section>
+</section>
+<section id="sec-anova-lab" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="sec-anova-lab"><span class="header-section-number">20.3</span> 🏈 The Lab</h2>
+<div class="ref ref-tip">
+<div class="ref-row">
+<p><img src="images/ref.svg" class="ref-img img-fluid" alt="Ref the raccoon"></p>
+<p><strong>Ref’s kickoff.</strong> The lab dataset has three-group questions of both kinds. Two of them: do people in poor or fair, good, and very good or excellent general health differ in <strong>well-being</strong> (<code>WELLBEING</code>, an 8-item composite)? And do people on the political left, in the middle, and on the right differ in how much they believe mental health problems have <strong>social causes</strong> (<code>SOCIAL</code>, a 3-item composite that is skewed)? Run each the way the Play did, then open my check.</p>
+</div>
+</div>
+<p><strong>Before you start.</strong> <code>source("lab_prep.R")</code> to create <code>mh_clean</code>. Both group variables are made from a 1-to-5 question with <code>case_when()</code>, exactly as <code>DISTRESS_4CAT</code> was in <a href="./dplyr.html">Transforming Your Data</a>: <code>HEALTH_3CAT</code> from <code>HEALTHSTATUS</code> (1–2 = Poor or fair, 3 = Good, 4–5 = Very good or excellent) and <code>POL_3CAT</code> from <code>POLITICALBELIEFS</code> (1–2 = Left, 3 = Moderate, 4–5 = Right). Make both factors with the levels in that order.</p>
+<section id="lab-play-1-well-being-by-general-health-anova-and-tukey" class="level3" data-number="20.3.1">
+<h3 data-number="20.3.1" class="anchored" data-anchor-id="lab-play-1-well-being-by-general-health-anova-and-tukey"><span class="header-section-number">20.3.1</span> Lab Play 1: Well-being by general health (<span class="normal">ANOVA and Tukey</span>)</h3>
+<p>Make <code>HEALTH_3CAT</code>, keep people with a value on it, draw the violin plot, check normality within each group, run the ANOVA, then Tukey, then η².</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Groups: Poor or fair 36, Good 81, Very good or excellent 61 (n = 178 with a well-being score).</li>
+<li>Means: 3.03, 3.19, 3.56. Shapiro-Wilk p = 0.374, 0.478, 0.436.</li>
+<li>ANOVA: <em>F</em>(2, 175) = 9.24, <em>p</em> &lt; .001; η² = 0.10.</li>
+<li>Tukey: Good vs Poor or fair <em>p</em> = .399; Very good or excellent vs Poor or fair <em>p</em> &lt; .001; Very good or excellent vs Good <em>p</em> = .003.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-2-social-causes-by-political-beliefs-kruskal-wallis" class="level3" data-number="20.3.2">
+<h3 data-number="20.3.2" class="anchored" data-anchor-id="lab-play-2-social-causes-by-political-beliefs-kruskal-wallis"><span class="header-section-number">20.3.2</span> Lab Play 2: Social causes by political beliefs (<span class="nonnormal">Kruskal-Wallis</span>)</h3>
+<p>Make <code>POL_3CAT</code>, keep people with a value on it, check the shape of <code>SOCIAL</code> within each group (it is skewed), run the Kruskal-Wallis test and the pairwise follow-up with a Holm correction.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Groups: Left 90, Moderate 26, Right 47. Medians: 4.33, 4.00, 3.67. Shapiro-Wilk p = 0.000, 0.044, 0.173.</li>
+<li>Kruskal-Wallis <em>H</em>(2) = 18.74, <em>p</em> &lt; .001.</li>
+<li>Pairwise (Holm): Moderate vs Left <em>p</em> = .499; Right vs Left <em>p</em> &lt; .001; Right vs Moderate <em>p</em> = .026.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-3-well-being-by-general-health-accounting-for-age-ancova" class="level3" data-number="20.3.3">
+<h3 data-number="20.3.3" class="anchored" data-anchor-id="lab-play-3-well-being-by-general-health-accounting-for-age-ancova"><span class="header-section-number">20.3.3</span> Lab Play 3: Well-being by general health, accounting for age (ANCOVA)</h3>
+<p>Run Lab Play 1’s ANOVA again with <code>AGE</code> first in the formula, and check <code>nobs()</code>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>HEALTH_3CAT</code> row: <em>F</em>(2, 172) = 8.88, <em>p</em> &lt; .001; n = 176 (2 people dropped for a missing age).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>lab3 <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HEALTH_3CAT =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(HEALTHSTATUS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Poor or fair"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                                        HEALTHSTATUS <span class="sc">==</span> <span class="dv">3</span>         <span class="sc">~</span> <span class="st">"Good"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                                        HEALTHSTATUS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Very good or excellent"</span>),</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Poor or fair"</span>, <span class="st">"Good"</span>, <span class="st">"Very good or excellent"</span>)),</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">POL_3CAT =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(POLITICALBELIEFS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Left"</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                                     POLITICALBELIEFS <span class="sc">==</span> <span class="dv">3</span>         <span class="sc">~</span> <span class="st">"Moderate"</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                                     POLITICALBELIEFS <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Right"</span>),</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                           <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Left"</span>, <span class="st">"Moderate"</span>, <span class="st">"Right"</span>)))</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 1</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>lab_h <span class="ot">&lt;-</span> lab3 <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(HEALTH_3CAT), <span class="sc">!</span><span class="fu">is.na</span>(WELLBEING))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>lab_h <span class="sc">|&gt;</span> <span class="fu">group_by</span>(HEALTH_3CAT) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(WELLBEING), <span class="at">sd =</span> <span class="fu">sd</span>(WELLBEING),</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(WELLBEING)<span class="sc">$</span>p.value)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lab_h, <span class="fu">aes</span>(<span class="at">x =</span> HEALTH_3CAT, <span class="at">y =</span> WELLBEING, <span class="at">fill =</span> HEALTH_3CAT)) <span class="sc">+</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>lab_a <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> HEALTH_3CAT, <span class="at">data =</span> lab_h)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lab_a)</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(lab_a)</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">summary</span>(lab_a)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>; ss[<span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(ss)</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 2</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>lab_p <span class="ot">&lt;-</span> lab3 <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(POL_3CAT), <span class="sc">!</span><span class="fu">is.na</span>(SOCIAL))</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>lab_p <span class="sc">|&gt;</span> <span class="fu">group_by</span>(POL_3CAT) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">median =</span> <span class="fu">median</span>(SOCIAL), <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(SOCIAL)<span class="sc">$</span>p.value)</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(SOCIAL <span class="sc">~</span> POL_3CAT, <span class="at">data =</span> lab_p)</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(lab_p<span class="sc">$</span>SOCIAL, lab_p<span class="sc">$</span>POL_3CAT, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 3</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>lab_anc <span class="ot">&lt;-</span> <span class="fu">aov</span>(WELLBEING <span class="sc">~</span> AGE <span class="sc">+</span> HEALTH_3CAT, <span class="at">data =</span> lab_h)</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lab_anc)</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a><span class="fu">nobs</span>(lab_anc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s call: fouls to check if your numbers do not match
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>The ANOVA table has one row with <code>Df</code> = 1 for the group</strong> → the group is still a number. <code>factor()</code> it.</li>
+<li><strong>Your n is different from Ref’s</strong> → you did not drop people missing the outcome, or you ran <code>source("lab_prep.R")</code> from a different folder. The counts in Ref’s check are after <code>filter(!is.na(...))</code>.</li>
+<li><strong>Tukey rows are in a different order or the <code>diff</code> has the opposite sign</strong> → your factor levels are in a different order. Set <code>levels = c(...)</code> as in the solution.</li>
+<li><strong><code>pairwise.wilcox.test()</code> p-values differ slightly</strong> → check <code>p.adjust.method = "holm"</code>; the default is also Holm, but <code>"bonferroni"</code> or <code>"none"</code> give different numbers.</li>
+<li><strong>The ANCOVA <code>HEALTH_3CAT</code> row is identical to the ANOVA’s</strong> → <code>AGE</code> is after the group in the formula. Covariate first.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: a three-group comparison in your report
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For every three-or-more-group comparison in your <em>RD Report</em> and <em>Final Report</em>: the plot (bar chart with error bars, or violin), saved with <code>ggsave()</code> and captioned with the n of each group; the shape check you ran and what it showed; the test that matches the outcome, the ANOVA with Tukey and η² for a normal composite or continuous score (Play 1, Step 5) or the Kruskal-Wallis test with pairwise follow-ups for a skewed outcome or a single rating (Play 2, Step 3); and one sentence in Results in that Play’s form. Say in Methods how you defined the groups and whom you excluded. Add the ANCOVA only if a covariate is part of your research question.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-anova-yourturn" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="sec-anova-yourturn"><span class="header-section-number">20.4</span> 🏆 Your Turn</h2>
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>There is no Ref. It’s game time, your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nobody has compared your team’s groups before, so there is no answer to check against. Change every line marked <code># REPLACE</code>, pick the line of the box that matches your outcome, and use the checklist.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. three or more groups, as a labeled factor</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GROUP_3CAT =</span> <span class="fu">factor</span>(GROUP_3CAT, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),                     <span class="co"># REPLACE GROUP_3CAT (a _#CAT variable)</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Group A"</span>, <span class="st">"Group B"</span>, <span class="st">"Group C"</span>))) <span class="sc">|&gt;</span>    <span class="co"># REPLACE labels, comparison group first</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(GROUP_3CAT), <span class="sc">!</span><span class="fu">is.na</span>(OUTCOME))                                    <span class="co"># REPLACE OUTCOME (a score)</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">count</span>(GROUP_3CAT)                                                      <span class="co"># every group big enough?</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. look</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">group_by</span>(GROUP_3CAT) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(OUTCOME), <span class="at">sd =</span> <span class="fu">sd</span>(OUTCOME), <span class="at">median =</span> <span class="fu">median</span>(OUTCOME),</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(OUTCOME)<span class="sc">$</span>p.value)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydata, <span class="fu">aes</span>(<span class="at">x =</span> GROUP_3CAT, <span class="at">y =</span> OUTCOME, <span class="at">fill =</span> GROUP_3CAT)) <span class="sc">+</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3a. normal outcome (parametric): ANOVA, Tukey, eta squared</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">aov</span>(OUTCOME <span class="sc">~</span> GROUP_3CAT, <span class="at">data =</span> mydata)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(model)</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>; ss[<span class="dv">1</span>] <span class="sc">/</span> <span class="fu">sum</span>(ss)                               <span class="co"># eta squared: .01 small, .06 medium, .14 large</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 3b. outcome not normal, or a single rating (non-parametric): Kruskal-Wallis and pairwise follow-up</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(OUTCOME <span class="sc">~</span> GROUP_3CAT, <span class="at">data =</span> mydata)</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(mydata<span class="sc">$</span>OUTCOME, mydata<span class="sc">$</span>GROUP_3CAT, <span class="at">p.adjust.method =</span> <span class="st">"holm"</span>)</span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. optional: ANCOVA with a covariate (covariate first)</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="co"># model_cov &lt;- aov(OUTCOME ~ COVARIATE + GROUP_3CAT, data = mydata); summary(model_cov); nobs(model_cov)   # REPLACE COVARIATE</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. save the plot for the poster</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("plots/outcome_by_group3.png", width = 8, height = 5, dpi = 300)        # REPLACE the name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Ask yourself</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Design</strong></td>
+<td>Are the groups different people? (The same people measured three times is a different design: ask your peer mentor and/or Dr.&nbsp;Shane.)</td>
+</tr>
+<tr class="even">
+<td><strong>Groups</strong></td>
+<td>Is the group a factor, with every level named in words and at least 20 people in each?</td>
+</tr>
+<tr class="odd">
+<td><strong>Which test</strong></td>
+<td>Did you check the shape within each group and say which line of the Analysis Map box you are on: ANOVA (normal composite or continuous score) or Kruskal-Wallis (skewed, small group, or a single rating)?</td>
+</tr>
+<tr class="even">
+<td><strong>Follow-up</strong></td>
+<td>Did you run the follow-up test only after a significant overall test, and report which pairs differed?</td>
+</tr>
+<tr class="odd">
+<td><strong>Effect size</strong></td>
+<td>Did you report η² for an ANOVA, and say whether it is small, medium, or large?</td>
+</tr>
+<tr class="even">
+<td><strong>Plot</strong></td>
+<td>Does the caption give the n of each group, and is the plot saved with <code>ggsave()</code>?</td>
+</tr>
+<tr class="odd">
+<td><strong>Sentence</strong></td>
+<td>Does your Results sentence have <em>F</em>(df1, df2), <em>p</em>, η², and the pairs that differed (ANOVA), or <em>H</em>(df), <em>p</em>, medians, and the pairwise results (Kruskal-Wallis), and name the direction?</td>
+</tr>
+<tr class="even">
+<td><strong>Exclusions</strong></td>
+<td>Does Methods say how the groups were defined and who was left out?</td>
+</tr>
+</tbody>
+</table>
 <!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -771,7 +1181,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
 </div>
@@ -1184,13 +1594,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./violin.html" class="pagination-link" aria-label="Visualize Pre/Post Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Visualize Pre/Post Data</span></span>
+      <a href="./violin.html" class="pagination-link" aria-label="1 Group, Pre/Post">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./visualize-relationship.html" class="pagination-link" aria-label="Visualize a Relationship">
-        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

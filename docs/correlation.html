@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Vivian Raposo">
+<meta name="author" content="Serena Suchdeve">
+<meta name="keywords" content="correlation, Pearson, Spearman, scatterplot, effect size, relationship">
+
+<title>22&nbsp; Relate 2 Variables – The Quantitative Playbook for R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./regression.html" rel="next">
+<link href="./visualize-relationship.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships (Lab 5)</a></li><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Quantitative Playbook for R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Get Started (Lab 1)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./compare2groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./citations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#when-is-this-the-right-test" id="toc-when-is-this-the-right-test" class="nav-link active" data-scroll-target="#when-is-this-the-right-test"><span class="header-section-number">22.1</span> When is this the right test?</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">22.2</span> 📋 The Play</a>
+  <ul class="collapse">
+  <li><a href="#play-1-pearson-correlation-relate-growth-mindset-to-feeling-connected-to-the-neighborhood" id="toc-play-1-pearson-correlation-relate-growth-mindset-to-feeling-connected-to-the-neighborhood" class="nav-link" data-scroll-target="#play-1-pearson-correlation-relate-growth-mindset-to-feeling-connected-to-the-neighborhood"><span class="header-section-number">22.2.1</span> Play 1 (<span class="normal">Pearson correlation</span>): relate growth mindset to feeling connected to the neighborhood</a></li>
+  <li><a href="#play-2-spearman-correlation-relate-growth-mindset-to-support-for-community-based-interventions" id="toc-play-2-spearman-correlation-relate-growth-mindset-to-support-for-community-based-interventions" class="nav-link" data-scroll-target="#play-2-spearman-correlation-relate-growth-mindset-to-support-for-community-based-interventions"><span class="header-section-number">22.2.2</span> Play 2 (<span class="nonnormal">Spearman correlation</span>): relate growth mindset to support for community-based interventions</a></li>
+  </ul></li>
+  <li><a href="#sec-correlation-lab" id="toc-sec-correlation-lab" class="nav-link" data-scroll-target="#sec-correlation-lab"><span class="header-section-number">22.3</span> 🏈 The Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-play-1-pearson-relate-social-support-to-well-being" id="toc-lab-play-1-pearson-relate-social-support-to-well-being" class="nav-link" data-scroll-target="#lab-play-1-pearson-relate-social-support-to-well-being"><span class="header-section-number">22.3.1</span> Lab Play 1 (<span class="normal">Pearson</span>): relate social support to well-being</a></li>
+  <li><a href="#lab-play-2-spearman-relate-stigma-to-willingness-to-seek-help" id="toc-lab-play-2-spearman-relate-stigma-to-willingness-to-seek-help" class="nav-link" data-scroll-target="#lab-play-2-spearman-relate-stigma-to-willingness-to-seek-help"><span class="header-section-number">22.3.2</span> Lab Play 2 (<span class="nonnormal">Spearman</span>): relate stigma to willingness to seek help</a></li>
+  </ul></li>
+  <li><a href="#sec-correlation-yourturn" id="toc-sec-correlation-yourturn" class="nav-link" data-scroll-target="#sec-correlation-yourturn"><span class="header-section-number">22.4</span> 🏆 Your Turn</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/correlation.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-relationship.html">Examine Relationships (Lab 5)</a></li><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></h1>
+<p class="subtitle lead">The Pearson correlation for normal data and the Spearman correlation for data that are not</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Vivian Raposo </p>
+             <p>Serena Suchdeve </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10.05.2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This chapter is the Analysis Map’s “relate 2 variables” row: two scores from the same people, and the question of whether they go together. Researchers learn what a correlation coefficient measures (the direction and strength of a straight-line relationship, on a scale from -1 to +1), how to look at the pair in a scatterplot before testing, how to check the shape of both variables and then choose the Pearson correlation (normal data) or the Spearman rank correlation (data that are not normal, or a single rating), and how to report either one, where the coefficient is its own effect size. The Play uses a Cohort 11 FRI team’s community safety data for both cases: growth mindset related to feeling connected to the neighborhood (two composites, Pearson) and to support for community-based violence prevention (a single item, Spearman), the team’s published finding; the Lab runs both on the lab dataset with Ref’s checks; Your Turn gives the template for the team dataset.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>correlation, Pearson, Spearman, scatterplot, effect size, relationship</p>
+  </div>
+</div>
+
+</header>
+
+
+<!-- Single source for the collapsed kickoff reminder at the START of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s kickoff: find the Ref before you code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Open Project → Open <code>.qmd</code> → Run load-library chunk → Run All Chunks Above → code.</strong> If anything looks wrong, use <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: correlation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://www.datacamp.com/tutorial/correlation-in-r">Correlation in R</a> (DataCamp tutorial; <code>cor()</code> and <code>cor.test()</code>)</li>
+<li><a href="https://www.sthda.com/english/wiki/correlation-test-between-two-variables-in-r">Correlation test between two variables in R</a> (STHDA; Pearson and Spearman side by side)</li>
+<li>R documentation: <code>?cor.test</code></li>
+<li><a href="./visualize-relationship.html">Visualize a Relationship</a>: the scatterplot every correlation should be looked at with</li>
+<li><a href="./regression.html">Relate 3+ Variables</a>: where a correlation goes when a second predictor enters</li>
+</ul>
+</div>
+</div>
+</div>
+<section id="when-is-this-the-right-test" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="when-is-this-the-right-test"><span class="header-section-number">22.1</span> When is this the right test?</h2>
+<p>You have <strong>two scores from the same people</strong> and you want to know whether they go together: do people who report more social support also report higher well-being? Do people who place themselves higher on the social ladder rate their health better? On <a href="./analysis-map.html">The Analysis Map</a> that is the <em>relate 2 variables</em> row, and the statistic is a <strong>correlation coefficient</strong>.</p>
+<p>Two things decide whether you are on this row:</p>
+<ul>
+<li><strong>Both variables are scores, not groups.</strong> If one of them is a category (women and men, treated and not treated), you are on the comparison side of the map. A yes/no variable coded 0/1 can technically be correlated with a score, but the result is just the two-group comparison in disguise; use <a href="./compare2groups.html">Compare 2 Groups</a> and get an effect size that is built for it.</li>
+<li><strong>There are exactly two.</strong> The moment a third variable enters the question (does support predict well-being <em>after accounting for</em> stress?), you are in <a href="./regression.html">Relate 3+ Variables</a>. A correlation is the simplest possible model: one straight line through one cloud of points.</li>
+</ul>
+<p>As in every box on the map, the shape of the data picks the statistic:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Use it when</th>
+<th>R function</th>
+<th>Report</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="normal"><strong>Pearson correlation</strong> <em>r</em> (parametric)</span></td>
+<td>both variables are roughly normal (or close to it with 30 or more people) and the scatterplot looks like a straight-line cloud</td>
+<td><code>cor.test(x, y)</code></td>
+<td><em>r</em>, 95% CI, <em>t</em>(df), <em>p</em></td>
+</tr>
+<tr class="even">
+<td><span class="nonnormal"><strong>Spearman correlation</strong> <em>ρ</em> (non-parametric)</span></td>
+<td>either variable is skewed, has outliers, or is a single rating with a few levels; or the relationship is consistently up or down but not a straight line</td>
+<td><code>cor.test(x, y, method = "spearman")</code></td>
+<td><em>ρ</em> (rho), <em>p</em></td>
+</tr>
+</tbody>
+</table>
+<p>Play 1 is the <span class="normal">parametric</span> case; Play 2 is the <span class="nonnormal">non-parametric</span> case. The coefficient runs from -1 (as one goes up the other goes down, perfectly) through 0 (no relationship) to +1 (perfectly together). Its size is read with the same labels in both versions: about .1 is small, .3 medium, .5 large (Cohen, 1988).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: the coefficient is the effect size
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the comparison chapters you ran a test and then computed a separate effect size (<em>d</em>, η², <em>r</em>). A correlation does both jobs at once: <em>r</em> (or <em>ρ</em>) <strong>is</strong> the effect size, and the p-value only says whether a coefficient that large would be surprising if the true correlation were zero. That is why the Results sentence leads with the coefficient and its confidence interval, not with the p-value, and why a “significant” <em>r</em> of .08 in a sample of 1,300 is not a finding worth a sentence of its own.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   <span class="co"># dplyr, ggplot2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="the-play" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">22.2</span> 📋 The Play</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>About the dataset: <code>safety_data.csv</code> (an FRI Public Health team’s data, Cohort 11)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In fall 2025 an FRI Public Health team (Serena Suchdeve, Vivian Raposo, Caitlin Ngo, Kayla Vo, and Rowen Smith) surveyed Binghamton University students and Broome County residents about community safety: how safe and connected they feel in their neighborhood, how effective they believe different violence-prevention approaches are (care-based approaches such as community programs, education, and mental-health resources; fear-based approaches such as policing and deportation), and whether they hold a growth or a fixed mindset about whether people can change (Dweck’s Kind of Person Implicit Theory scale). Their report, <a href="https://vraposo.quarto.pub/mixed-methods-analysis-of-preferences-for-community-based-violence-prevention-and-intervention-approaches/"><em>Mixed-Methods Analysis of Preferences for Community-Based Violence Prevention and Intervention Approaches</em></a>, found that a growth mindset predicted support for care-based community interventions (<em>b</em> = .57, <em>p</em> = .001, <em>R</em>² = .23) but not for fear-based policing. This chapter re-runs part of that analysis so you can see a published FRI result come out of the same code you are learning.</p>
+<p>This is <strong>real data</strong>, de-identified for the playbook: the 75 consenting respondents who completed at least half of the survey, with response IDs, dates, ZIP codes, free-text answers, and the open-ended questions removed. The coded values are exactly as exported, so <code>-99</code> (prefer not to say) and <code>-50</code> (don’t know) are still there for you to recode. Variables used in the chapters:</p>
+<ul>
+<li><code>FIXEDPERSON1_BASIC</code> … <code>FIXEDPERSON_ALL_R</code>: the eight mindset items, on a 1 = Strongly agree to 6 = Strongly disagree scale (note the direction). Items without <code>_R</code> state a <strong>fixed</strong> mindset (“Everyone is a certain kind of person, and there is not much that can be done to really change that”), so a higher number means more growth mindset; items with <code>_R</code> state a <strong>growth</strong> mindset and are reversed. The mean of all eight is the composite <code>GROWTH</code> (higher = more growth mindset).</li>
+<li><code>COMM_FEEL</code>, <code>COMM_HELP</code>, <code>COMM_NEIGHBORS</code>, <code>NOTCOMM_UNSAFE</code>, <code>NOTCOMM_RELY</code>, <code>NOTCOMM_DISTRUST</code>: six neighborhood items (1 = Strongly disagree to 6 = Strongly agree); the three <code>NOTCOMM</code> items are reversed for the composite <code>COMMUNITY</code>.</li>
+<li><code>EFFECT_CARE_COMM</code>: “Community-based interventions are the most effective way to achieve community safety” (1 to 6), a single item; <code>EFFECT_FEAR_POLICE</code>: the same for policing.</li>
+<li><code>GENDER</code>: the class coding, 0 = Girl or woman, 1 = Boy or man, 2 = Nonbinary, genderfluid, or genderqueer; <code>AGE</code>; <code>SOCIALSTATUS</code> (1 to 10).</li>
+</ul>
+<p>Cite the team’s report when you use this dataset: Suchdeve, S., Raposo, V., Ngo, C., Vo, K., &amp; Smith, R. (2025). <em>Mixed-methods analysis of preferences for community-based violence prevention and intervention approaches</em>. FRI Public Health, Binghamton University. <a href="https://vraposo.quarto.pub/mixed-methods-analysis-of-preferences-for-community-based-violence-prevention-and-intervention-approaches/" class="uri">https://vraposo.quarto.pub/mixed-methods-analysis-of-preferences-for-community-based-violence-prevention-and-intervention-approaches/</a></p>
+</div>
+</div>
+</div>
+<p>The team’s research question was whether people who believe that people can change (a <strong>growth mindset</strong>) are more supportive of <strong>care-based</strong> approaches to community safety. Both Plays use that dataset and that question. Play 1 relates growth mindset to a second composite, feeling connected to one’s neighborhood, which is the <span class="normal">Pearson</span> case: two composites, both roughly normal. Play 2 relates growth mindset to the team’s headline outcome, agreement that community-based interventions are the most effective way to achieve safety, which is one 1-to-6 item and therefore the <span class="nonnormal">Spearman</span> case. <a href="./regression.html">Relate 3+ Variables</a> takes the same question one step further, as the team’s report did, with a regression and gender as a third variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>safety <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/safety_data.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">replace</span>(.x, .x <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">99</span>, <span class="sc">-</span><span class="dv">50</span>), <span class="cn">NA</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">GROWTH    =</span> <span class="fu">rowMeans</span>(<span class="fu">cbind</span>(FIXEDPERSON1_BASIC, FIXEDPERSON2_DIFF, FIXEDPERSON4_OLD, FIXEDPERSON_CERTAIN,   <span class="co"># fixed-mindset items: higher = more growth</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                               <span class="dv">7</span> <span class="sc">-</span> FIXEDPERSON3_CHANGE_R, <span class="dv">7</span> <span class="sc">-</span> FIXEDPERSON_ALL_R,                                <span class="co"># growth-mindset items, reversed</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                               <span class="dv">7</span> <span class="sc">-</span> FIXEDPERSON_ALWAYS_R, <span class="dv">7</span> <span class="sc">-</span> FIXEDPERSON_MATTER_R), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">COMMUNITY =</span> <span class="fu">rowMeans</span>(<span class="fu">cbind</span>(COMM_FEEL, COMM_HELP, COMM_NEIGHBORS,                                           <span class="co"># feeling connected to the neighborhood</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                               <span class="dv">7</span> <span class="sc">-</span> NOTCOMM_UNSAFE, <span class="dv">7</span> <span class="sc">-</span> NOTCOMM_RELY, <span class="dv">7</span> <span class="sc">-</span> NOTCOMM_DISTRUST), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))      <span class="co"># the three negative items, reversed</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(safety)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 75</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Suchdeve et al. (2025); Create Composite Variables</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: 7 - x reverses a 1-to-6 item; each composite is the mean of its items with the reversed ones flipped, so a high score means more growth mindset and more community connection</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="play-1-pearson-correlation-relate-growth-mindset-to-feeling-connected-to-the-neighborhood" class="level3" data-number="22.2.1">
+<h3 data-number="22.2.1" class="anchored" data-anchor-id="play-1-pearson-correlation-relate-growth-mindset-to-feeling-connected-to-the-neighborhood"><span class="header-section-number">22.2.1</span> Play 1 (<span class="normal">Pearson correlation</span>): relate growth mindset to feeling connected to the neighborhood</h3>
+<p>The team used feeling connected to one’s neighborhood (<code>COMMUNITY</code>: it feels like a community, neighbors help, I trust them) as a second predictor in their regression. On its own it raises a simpler question: <strong>do people with more of a growth mindset feel more connected to their community?</strong></p>
+<section id="step-1-keep-the-people-with-both-scores-and-look-at-the-pair" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-keep-the-people-with-both-scores-and-look-at-the-pair">Step 1: Keep the people with both scores, and look at the pair</h4>
+<p>A correlation should never be reported without its scatterplot. The plot is the one from <a href="./visualize-relationship.html">Visualize a Relationship</a>: points, a line of best fit, and axes that cover the full scale.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>safety1 <span class="ot">&lt;-</span> safety <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(GROWTH), <span class="sc">!</span><span class="fu">is.na</span>(COMMUNITY))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(safety1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 74</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_growth_community <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(safety1, <span class="fu">aes</span>(<span class="at">x =</span> GROWTH, <span class="at">y =</span> COMMUNITY)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"#1F4E9C"</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Growth mindset (1 = fixed, 6 = growth)"</span>, <span class="at">y =</span> <span class="st">"Feeling connected to the neighborhood (1 to 6)"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Growth mindset and community connection"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plot_growth_community</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="correlation_files/figure-html/play1-plot-1.png" class="img-fluid figure-img" alt="A scatterplot with growth mindset from 1 to 6 on the x axis and community connection from 1 to 6 on the y axis. The points form a loose cloud rising from lower left to upper right with a straight line of best fit through it." width="672"></p>
+<figcaption>Figure 1. Feeling connected to the neighborhood against growth mindset (Cohort 11 community safety data, n = 74). Each point is one person, jittered slightly; the line is the line of best fit with its 95% confidence band.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/growth_community_scatter.png"</span>, <span class="at">plot =</span> plot_growth_community, <span class="at">width =</span> <span class="fl">6.5</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Visualize a Relationship (Play 1)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: geom_smooth(method = "lm") draws the straight line a Pearson correlation measures; the gray band is its 95% confidence band</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The cloud rises from lower left to upper right, loosely: a positive, roughly straight-line relationship that is not very tight. That is what a medium correlation looks like.</p>
+</section>
+<section id="step-2-check-the-shape-of-both-variables" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-check-the-shape-of-both-variables">Step 2: Check the shape of both variables</h4>
+<p>The Pearson correlation assumes both variables are roughly normal and the relationship is a straight line. Check each variable the way <a href="./describe.html">Describe Your Data</a> did.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>safety1 <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_growth    =</span> <span class="fu">shapiro.test</span>(GROWTH)<span class="sc">$</span>p.value,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_community =</span> <span class="fu">shapiro.test</span>(COMMUNITY)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   n shapiro_growth shapiro_community
+1 74       0.339316         0.1352347</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: one Shapiro-Wilk p-value per variable; both above .05 here, and the scatterplot showed a straight-line cloud</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Both p-values are above .05 and the scatterplot is a straight-line cloud with no outlier pulling the line, so Pearson is the right line of the box.</p>
+</section>
+<section id="step-3-the-pearson-correlation" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-the-pearson-correlation">Step 3: The Pearson correlation</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cor_growth_community <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(safety1<span class="sc">$</span>GROWTH, safety1<span class="sc">$</span>COMMUNITY)   <span class="co"># method = "pearson" is the default</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cor_growth_community</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  safety1$GROWTH and safety1$COMMUNITY
+t = 3.0781, df = 72, p-value = 0.002947
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.1220174 0.5283391
+sample estimates:
+      cor 
+0.3410085 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: https://www.datacamp.com/tutorial/correlation-in-r</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: cor gives r; the 95 percent confidence interval is the range of plausible population values; t and df are the test behind the p-value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Read three things from the output: <code>cor</code> is <em>r</em>, the correlation; the <code>95 percent confidence interval</code> is the range the population correlation could plausibly be in; and <code>t</code>, <code>df</code>, and <code>p-value</code> are the test of whether <em>r</em> differs from zero. The df is <em>n</em> − 2.</p>
+</section>
+<section id="step-4-report-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-report-it">Step 4: Report it</h4>
+<p>A correlation sentence names both variables, the direction, <em>r</em> with its confidence interval, the df and <em>p</em>, and the size label:</p>
+<blockquote class="blockquote">
+<p>Growth mindset and feeling connected to the neighborhood were positively correlated, <em>r</em>(72) = .34, 95% CI [.12, .53], <em>p</em> = .003, a medium effect: people who believed that people can change also tended to feel more connected to their neighbors (Figure 1).</p>
+</blockquote>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: related does not mean caused
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A correlation says the two scores move together. It does not say which one moves the other, or whether a third thing moves both (here, a generally optimistic outlook could raise both scores). Write “were correlated” or “went together”, never “a growth mindset builds community”. The same rule, with the same reasons, applies to the regression in <a href="./regression.html">Relate 3+ Variables</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="play-2-spearman-correlation-relate-growth-mindset-to-support-for-community-based-interventions" class="level3" data-number="22.2.2">
+<h3 data-number="22.2.2" class="anchored" data-anchor-id="play-2-spearman-correlation-relate-growth-mindset-to-support-for-community-based-interventions"><span class="header-section-number">22.2.2</span> Play 2 (<span class="nonnormal">Spearman correlation</span>): relate growth mindset to support for community-based interventions</h3>
+<p>This is the team’s headline question: <strong>are people with more of a growth mindset more supportive of community-based violence prevention?</strong> The outcome is <strong>one item</strong>, “Community-based interventions are the most effective way to achieve community safety” (<code>EFFECT_CARE_COMM</code>, 1 to 6). A single rating with most answers at 5 and 6 cannot be normal, and the steps between its answers are not known to be equal, so this pair takes the Spearman line. The Spearman correlation <strong>ranks</strong> both variables first and correlates the ranks, so it measures whether higher on one goes with higher on the other without assuming equal steps or a straight line.</p>
+<section id="step-1-look-and-check-the-shape" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-look-and-check-the-shape">Step 1: Look, and check the shape</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>safety2 <span class="ot">&lt;-</span> safety <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(GROWTH), <span class="sc">!</span><span class="fu">is.na</span>(EFFECT_CARE_COMM))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(safety2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>safety2 <span class="sc">|&gt;</span> <span class="fu">count</span>(EFFECT_CARE_COMM)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  EFFECT_CARE_COMM  n
+1                1  1
+2                2  3
+3                3  3
+4                4 15
+5                5 31
+6                6 17</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_growth_care <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(safety2, <span class="fu">aes</span>(<span class="at">x =</span> GROWTH, <span class="at">y =</span> EFFECT_CARE_COMM)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#C45A00"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">6.3</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Strongly</span><span class="sc">\n</span><span class="st">disagree"</span>, <span class="st">"Disagree"</span>, <span class="st">"Slightly</span><span class="sc">\n</span><span class="st">disagree"</span>, <span class="st">"Slightly</span><span class="sc">\n</span><span class="st">agree"</span>, <span class="st">"Agree"</span>, <span class="st">"Strongly</span><span class="sc">\n</span><span class="st">agree"</span>)) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Growth mindset (1 = fixed, 6 = growth)"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Community-based interventions are</span><span class="sc">\n</span><span class="st">the most effective way to achieve safety"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Growth mindset and care-based support"</span>) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plot_growth_care</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="correlation_files/figure-html/play2-plot-1.png" class="img-fluid figure-img" alt="A scatterplot with growth mindset from 1 to 6 on the x axis and agreement that community-based interventions are the most effective way to achieve safety, from Strongly disagree to Strongly agree, on the y axis. Points sit in horizontal bands at each answer; most are in the upper right; a dashed line rises from left to right." width="672"></p>
+<figcaption>Figure 2. Support for community-based interventions against growth mindset (Cohort 11 community safety data, n = 70). Points are jittered because the outcome takes whole-number values; the dashed line is the line of best fit, for reference only.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/growth_care_scatter.png"</span>, <span class="at">plot =</span> plot_growth_care, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>safety2 <span class="sc">|&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_growth =</span> <span class="fu">shapiro.test</span>(GROWTH)<span class="sc">$</span>p.value,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_care   =</span> <span class="fu">shapiro.test</span>(EFFECT_CARE_COMM)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   n shapiro_growth shapiro_care
+1 70       0.342019  2.72569e-07</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Visualize a Relationship (Play 2)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: jitter spreads the stacked points so you can see how many there are; GROWTH passes the check, the single item fails it, and one failure is enough for Spearman</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The points sit in horizontal bands because there are only six possible answers, and most people are in the top two. <code>GROWTH</code> passes the Shapiro-Wilk check; <code>EFFECT_CARE_COMM</code> does not, and one failing variable is enough: this is the <span class="nonnormal">non-parametric</span> line of the box.</p>
+</section>
+<section id="step-2-the-spearman-correlation" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-the-spearman-correlation">Step 2: The Spearman correlation</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>cor_growth_care <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(safety2<span class="sc">$</span>GROWTH, safety2<span class="sc">$</span>EFFECT_CARE_COMM, <span class="at">method =</span> <span class="st">"spearman"</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>cor_growth_care</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Spearman's rank correlation rho
+
+data:  safety2$GROWTH and safety2$EFFECT_CARE_COMM
+S = 33363, p-value = 0.000338
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.4162769 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: R documentation ?cor.test</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: method = "spearman" ranks both variables first; exact = FALSE is needed when many people share a value (ties), which a rating always has</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The coefficient is now called <code>rho</code> (<em>ρ</em>). There is no confidence interval and no df in the output; report <em>ρ</em>, <em>n</em>, and <em>p</em>. (If you leave out <code>exact = FALSE</code>, R warns that it “cannot compute exact p-value with ties” and uses the approximation anyway; the argument just makes that explicit.)</p>
+</section>
+<section id="step-3-report-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-report-it">Step 3: Report it</h4>
+<blockquote class="blockquote">
+<p>Growth mindset was positively correlated with the belief that community-based interventions are the most effective way to achieve community safety, Spearman’s <em>ρ</em> = .42, <em>n</em> = 70, <em>p</em> &lt; .001, a medium effect: people who believed that people can change were more supportive of community-based violence prevention (Figure 2). Suchdeve et al.&nbsp;(2025) reported this relationship as a regression slope (<em>b</em> = .57); a correlation and a one-predictor regression are two views of the same line, and <a href="./regression.html">Relate 3+ Variables</a> shows the regression view and then adds gender.</p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: which line of the box am I on?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ask about <strong>both</strong> variables. Are both composites or continuous measurements with roughly normal histograms and a straight-line cloud? Then <span class="normal">Pearson</span>. Is either one a single rating, a count with a long tail, skewed, or carrying an outlier that would swing a straight line? Then <span class="nonnormal">Spearman</span>. When you cannot decide, run both: they will usually be close (in Play 2, Pearson gives <em>r</em> = .47 against Spearman’s <em>ρ</em> = .42), and when they differ by a lot, that difference is itself telling you the relationship is not a straight line or an outlier is doing the work. Report the one that matches the data, and say so.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: two ways a correlation can lie
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Outliers.</strong> One person with an extreme score on both variables can create a Pearson correlation on their own, and one person extreme on only one variable can erase it. The scatterplot shows them; Spearman is less affected by them. <strong>Restricted range.</strong> If everyone in your sample has nearly the same score on one variable (all students aged 18 to 22, say), there is little variation for the other variable to go together with, and the correlation will be small whatever the true relationship. Say in Discussion when your sample is narrow on a variable.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-correlation-lab" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="sec-correlation-lab"><span class="header-section-number">22.3</span> 🏈 The Lab</h2>
+<div class="ref ref-tip">
+<div class="ref-row">
+<p><img src="images/ref.svg" class="ref-img img-fluid" alt="Ref the raccoon"></p>
+<p><strong>Ref’s kickoff.</strong> Two relationship questions from the lab dataset, one for each line of the box. Is <strong>social support</strong> (<code>SUPPORT</code>, an 8-item composite) related to <strong>well-being</strong> (<code>WELLBEING</code>, an 8-item composite)? Is <strong>stigma</strong> (<code>STIGMA</code>, the 8-item composite) related to <strong>willingness to seek help</strong> (<code>HELPSEEK</code>, a single 1-to-5 question)? Draw each scatterplot, check both shapes, pick the statistic, run it, then open my check.</p>
+</div>
+</div>
+<p><strong>Before you start.</strong> <code>source("lab_prep.R")</code> to create <code>mh_clean</code>. Both composites are already scored in it; <code>HELPSEEK</code> is a single item.</p>
+<section id="lab-play-1-pearson-relate-social-support-to-well-being" class="level3" data-number="22.3.1">
+<h3 data-number="22.3.1" class="anchored" data-anchor-id="lab-play-1-pearson-relate-social-support-to-well-being"><span class="header-section-number">22.3.1</span> Lab Play 1 (<span class="normal">Pearson</span>): relate social support to well-being</h3>
+<p>Keep the people with both scores, draw the scatterplot with a line of best fit, run Shapiro-Wilk on both variables, and run the Pearson correlation.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><em>n</em> = <strong>188</strong>. Shapiro-Wilk p = 0.270 (<code>SUPPORT</code>) and 0.323 (<code>WELLBEING</code>): both normal, so Pearson.</li>
+<li><em>r</em>(186) = <strong>.40</strong>, 95% CI [.28, .52], <em>p</em> &lt; .001: a medium-to-large positive correlation. People with more support report higher well-being.</li>
+<li><a href="./regression.html">Relate 3+ Variables</a> Lab Play 1 fits a regression line to exactly this pair; its <em>R</em>² will be <em>r</em>² = .16.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-2-spearman-relate-stigma-to-willingness-to-seek-help" class="level3" data-number="22.3.2">
+<h3 data-number="22.3.2" class="anchored" data-anchor-id="lab-play-2-spearman-relate-stigma-to-willingness-to-seek-help"><span class="header-section-number">22.3.2</span> Lab Play 2 (<span class="nonnormal">Spearman</span>): relate stigma to willingness to seek help</h3>
+<p>Keep the people with both scores, draw the scatterplot with jitter (<code>HELPSEEK</code> has five values), check both shapes, and run the Spearman correlation with <code>exact = FALSE</code>.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><em>n</em> = <strong>181</strong> (fewer than Lab Play 1: some people skipped <code>HELPSEEK</code>). Shapiro-Wilk p = 0.400 (<code>STIGMA</code>, normal) and &lt; .001 (<code>HELPSEEK</code>, a single item, not normal): one of the two fails, so Spearman.</li>
+<li><em>ρ</em> = <strong>-.43</strong>, <em>p</em> &lt; .001: a medium-to-large <strong>negative</strong> correlation. The more stigma a person reports, the less willing they are to seek help.</li>
+<li>For comparison, Pearson gives <em>r</em> = -.45. Close, as expected; report the Spearman because the data say so.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 1</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>lab_sw <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(SUPPORT), <span class="sc">!</span><span class="fu">is.na</span>(WELLBEING))</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lab_sw, <span class="fu">aes</span>(<span class="at">x =</span> SUPPORT, <span class="at">y =</span> WELLBEING)) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>lab_sw <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">shapiro_support =</span> <span class="fu">shapiro.test</span>(SUPPORT)<span class="sc">$</span>p.value, <span class="at">shapiro_wb =</span> <span class="fu">shapiro.test</span>(WELLBEING)<span class="sc">$</span>p.value)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lab_sw<span class="sc">$</span>SUPPORT, lab_sw<span class="sc">$</span>WELLBEING)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 2</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>lab_sh <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(STIGMA), <span class="sc">!</span><span class="fu">is.na</span>(HELPSEEK))</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lab_sh, <span class="fu">aes</span>(<span class="at">x =</span> STIGMA, <span class="at">y =</span> HELPSEEK)) <span class="sc">+</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.15</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">5.3</span>)) <span class="sc">+</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>lab_sh <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">shapiro_stigma =</span> <span class="fu">shapiro.test</span>(STIGMA)<span class="sc">$</span>p.value, <span class="at">shapiro_help =</span> <span class="fu">shapiro.test</span>(HELPSEEK)<span class="sc">$</span>p.value)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(lab_sh<span class="sc">$</span>STIGMA, lab_sh<span class="sc">$</span>HELPSEEK, <span class="at">method =</span> <span class="st">"spearman"</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(lab_sh<span class="sc">$</span>STIGMA, lab_sh<span class="sc">$</span>HELPSEEK)                                   <span class="co"># Pearson, for comparison</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s call: fouls to check if your numbers do not match
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>cor()</code> returns <code>NA</code></strong> → someone is missing one of the two scores. <code>cor.test()</code> drops them for you; <code>cor()</code> does not, so add <code>use = "complete.obs"</code> or filter first.</li>
+<li><strong>Your <em>n</em> is 188</strong> → that is the number of rows in <code>mh_clean</code>, not the number of people with both scores. Report the df + 2 from <code>cor.test()</code>, or <code>nrow()</code> after your <code>filter()</code>.</li>
+<li><strong>Your <em>r</em> is the same as Ref’s <em>ρ</em>, or vice versa</strong> → check <code>method =</code>. The default is Pearson.</li>
+<li><strong>The sign is opposite</strong> → you are reading a different pair, or one variable was reversed. A higher stigma score with a lower help-seeking score is a negative correlation, which is the expected direction.</li>
+<li><strong><code>cannot compute exact p-value with ties</code></strong> → not a foul; add <code>exact = FALSE</code> to make the approximation explicit.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: a two-variable relationship in your report
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For every two-score relationship in your <em>RD Report</em> and <em>Final Report</em>: the scatterplot with a line of best fit, saved with <code>ggsave()</code> and captioned with <em>n</em> and whether points were jittered; the shape check on <strong>both</strong> variables and what it showed; the coefficient that matches the data, <span class="normal">Pearson’s <em>r</em> with its 95% CI</span> (Play 1, Step 4) or <span class="nonnormal">Spearman’s <em>ρ</em></span> (Play 2, Step 3), with the size label; and one sentence in Results in that Play’s form, written as “were correlated” or “went together”, never as cause.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-correlation-yourturn" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="sec-correlation-yourturn"><span class="header-section-number">22.4</span> 🏆 Your Turn</h2>
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>There is no Ref. It’s game time, your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nobody has correlated your team’s two scores before, so there is no answer to check against. Change every line marked <code># REPLACE</code>, pick the line of the box that matches your data, and use the checklist.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. two scores from the same people</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(SCORE_X), <span class="sc">!</span><span class="fu">is.na</span>(SCORE_Y))                       <span class="co"># REPLACE SCORE_X and SCORE_Y (composites or measurements)</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mydata)                                                     <span class="co"># the n to report</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. look</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydata, <span class="fu">aes</span>(<span class="at">x =</span> SCORE_X, <span class="at">y =</span> SCORE_Y)) <span class="sc">+</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>, <span class="at">height =</span> <span class="fl">0.05</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span>        <span class="co"># jitter a little if scores stack; say so in the caption</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)) <span class="sc">+</span>   <span class="co"># REPLACE with the full scale of each variable</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"REPLACE (scale)"</span>, <span class="at">y =</span> <span class="st">"REPLACE (scale)"</span>, <span class="at">title =</span> <span class="st">"REPLACE"</span>) <span class="sc">+</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("plots/x_y_scatter.png", width = 6.5, height = 5, dpi = 300)             # REPLACE the name</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. shape of BOTH variables</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">shapiro_x =</span> <span class="fu">shapiro.test</span>(SCORE_X)<span class="sc">$</span>p.value, <span class="at">shapiro_y =</span> <span class="fu">shapiro.test</span>(SCORE_Y)<span class="sc">$</span>p.value)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 4a. both roughly normal, straight-line cloud (parametric): Pearson</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(mydata<span class="sc">$</span>SCORE_X, mydata<span class="sc">$</span>SCORE_Y)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 4b. either skewed, a single rating, or an outlier (non-parametric): Spearman</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(mydata<span class="sc">$</span>SCORE_X, mydata<span class="sc">$</span>SCORE_Y, <span class="at">method =</span> <span class="st">"spearman"</span>, <span class="at">exact =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Ask yourself</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Design</strong></td>
+<td>Are both variables scores from the same people? (A score by a group is a comparison; three or more variables is a regression.)</td>
+</tr>
+<tr class="even">
+<td><strong>Plot</strong></td>
+<td>Does the scatterplot show the full scale on both axes, a line of best fit, the <em>n</em> in the caption, and a note if you jittered?</td>
+</tr>
+<tr class="odd">
+<td><strong>Which statistic</strong></td>
+<td>Did you check the shape of <strong>both</strong> variables and say which line of the Analysis Map box you are on: <span class="normal">Pearson</span> (both normal, straight-line cloud) or <span class="nonnormal">Spearman</span> (either skewed, a single rating, or an outlier)?</td>
+</tr>
+<tr class="even">
+<td><strong>Sentence</strong></td>
+<td>Does your Results sentence name both variables, the direction, <em>r</em> with its 95% CI and df (or <em>ρ</em> with <em>n</em>), <em>p</em>, and the size label?</td>
+</tr>
+<tr class="odd">
+<td><strong>Claim</strong></td>
+<td>Does it say “were correlated” or “went together”, and does Discussion say why that is not the same as cause?</td>
+</tr>
+<tr class="even">
+<td><strong>Range</strong></td>
+<td>Does Discussion note if your sample is narrow on either variable?</td>
+</tr>
+</tbody>
+</table>
+<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you quit RStudio
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shanemccarty\.github\.io\/FRIplaybook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./visualize-relationship.html" class="pagination-link" aria-label="Visualize a Relationship">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./regression.html" class="pagination-link" aria-label="Relate 3+ Variables">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/correlation.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -2,7 +2,7 @@
 title: "Data Equity"
 subtitle: "Who is counted, who decides, and who benefits"
 author:
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
   This short chapter explains why data equity matters in public health research and lists resources for researchers who want to learn more.
 keywords:

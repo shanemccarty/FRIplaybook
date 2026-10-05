@@ -1,18 +1,19 @@
 ---
 title: "Compare 3+ Groups"
-subtitle: "ANOVA, Kruskal-Wallis, and ANCOVA"
+subtitle: "ANOVA for normal data, Kruskal-Wallis for data that are not, and ANCOVA for a covariate"
 author:
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter shows researchers how to compare the average score of three or more groups with a one-way ANOVA, how to find out which groups differ with a Tukey follow-up test, how to use the Kruskal-Wallis test when the outcome is not normal, and how to add a covariate with an ANCOVA.
+  This chapter is the Analysis Map's "compare 3+ groups" row: three or more groups of different people and one continuous outcome. Researchers learn when the one-way ANOVA is the right test and when the Kruskal-Wallis test is, how to run each with its follow-up test (Tukey; pairwise Wilcoxon) and effect size, how to add a covariate with an ANCOVA, and how to report each result. The Play uses the Cohort 10 health status data to compare subjective social status and self-rated health across three perceived-income groups. The Lab runs the same tests on the lab dataset with Ref's checks, and Your Turn gives the template for the team dataset.
 keywords:
   - ANOVA
-  - ANCOVA
   - Tukey
+  - eta squared
   - Kruskal-Wallis
+  - ANCOVA
   - covariate
   - comparison
-date: 09.20.2026
+date: 10.04.2026
 date-format: "MM.DD.YYYY"
 format:
   html:
@@ -26,147 +27,424 @@ execute:
 
 {{< include _ref-kickoff-box.qmd >}}
 
-## When do you use this chapter?
+::: {.callout-note collapse="true"}
+## Resources: ANOVA, Kruskal-Wallis, and ANCOVA
 
-Your research question is a **comparison**, and you have **three or more different groups** and **one continuous outcome**.
-
-| Test | Use it when |
-|--------------------|----------------------------------------------------|
-| **ANOVA** | three or more groups, outcome is normal |
-| **Kruskal-Wallis** | three or more groups, outcome is **not** normal |
-| **ANCOVA** | an ANOVA, plus one continuous variable you want to account for (a **covariate**), such as age |
-
-::: {.callout-tip}
-## Go: Do these two things first
-
-1.  Check whether your outcome is normal in [Describe Your Data](describe.qmd).
-2.  Make the barplot or violin plot in [Visualize a Comparison](visualize-comparison.qmd).
+-   [One-way ANOVA in R](https://www.datacamp.com/tutorial/anova-in-r) (DataCamp tutorial)
+-   [Kruskal-Wallis test in R](https://www.sthda.com/english/wiki/kruskal-wallis-test-in-r) (STHDA)
+-   R documentation: `?aov`, `?TukeyHSD`, `?kruskal.test`, `?pairwise.wilcox.test`
+-   [Compare 2 Groups](compare2groups.qmd): the two-group version of every idea here, including why a rating is not a normal outcome
 :::
 
-## The example data
+## When is this the right test?
 
-The example uses the lab dataset and two questions.
+Your research question is a **comparison**, you have **three or more groups of different people**, and **one continuous outcome**. On [The Analysis Map](analysis-map.qmd) that is the *compare 3+ groups* row. Exactly two groups is the row above, [Compare 2 Groups](compare2groups.qmd); the same people measured three times is a repeated-measures design, which this playbook does not cover, so talk to your peer mentor and/or Dr. Shane.
 
--   **Normal outcome (ANOVA and ANCOVA):** do people in poor or fair, good, and very good or excellent general health differ in well-being (`WELLBEING`)?
--   **Outcome that is not normal (Kruskal-Wallis):** do people on the political left, in the middle, and on the right differ in how much they believe mental health problems have social causes (`SOCIAL`)?
+As in every box on the map, the shape of the outcome picks the test:
+
+| Test | Use it when | R function | Follow-up | Report |
+|----|----|----|----|----|
+| [**One-way ANOVA** (parametric)]{.normal} | the outcome is roughly normal within each group, or every group has 30 or more people | `aov()` | `TukeyHSD()` | *M*, *SD*, *F*(df1, df2), *p*, η² |
+| [**Kruskal-Wallis** (non-parametric)]{.nonnormal} | the outcome is skewed, a group is small, or the outcome is a single rating with a few levels | `kruskal.test()` | `pairwise.wilcox.test()` | *Mdn*, *H*(df), *p*, pairwise *p* |
+| **ANCOVA** | an ANOVA plus one continuous variable to account for (a **covariate**), such as age | `aov(OUTCOME ~ COVARIATE + GROUP)` | `TukeyHSD()` is not valid; see the regression chapter | *F*, *p* for the group row, "after accounting for…" |
+
+::: callout-tip
+## Go: do these two things first
+
+1.  Check the outcome's shape within each group: [Describe Your Data](describe.qmd), and the Shapiro-Wilk check in [Compare 2 Groups](compare2groups.qmd).
+2.  Draw the plot: the bar chart or violin from [Visualize a Comparison](visualize-comparison.qmd). A test without its plot is a number without a picture.
+:::
+
+## 📋 The Play
+
+{{< include _about-healthstatus-data.qmd >}}
+
+The Cohort 10 survey asked everyone to rate their household income as much below average, below average, average, above average, or much above average (`PERCEIVED_INCOME`), and the class collapsed that into three groups, `INCOME3`: below average, average, above average. Two questions, one for each line of the box: do the three income groups differ in **subjective social status** (`SSS`, the MacArthur ladder, 1 to 10), a continuous score; and do they differ in **self-rated health** (`HEALTHSTATUS`, 1 = Poor to 5 = Excellent), a single rating?
 
 ```{r}
-#| label: load-anova
+#| label: load-library
 library(tidyverse)
-source("lab_prep.R")   # creates mh_clean
-
-mh_clean <- mh_clean |>
-  mutate(HEALTH_3CAT = factor(case_when(
-    HEALTHSTATUS %in% c(1, 2) ~ "Poor or fair",
-    HEALTHSTATUS == 3         ~ "Good",
-    HEALTHSTATUS %in% c(4, 5) ~ "Very good or excellent"),
-    levels = c("Poor or fair", "Good", "Very good or excellent")))   # the group must be a factor
-
-mh_clean |>
-  filter(!is.na(HEALTH_3CAT)) |>
-  group_by(HEALTH_3CAT) |>
-  summarise(n = n(),
-            mean = mean(WELLBEING, na.rm = TRUE),
-            sd = sd(WELLBEING, na.rm = TRUE))
-
-mh_3cat <- mh_clean |>
-  mutate(POL_3CAT = case_when(
-    POLITICALBELIEFS %in% c(1, 2) ~ "Left",
-    POLITICALBELIEFS == 3         ~ "Moderate",
-    POLITICALBELIEFS %in% c(4, 5) ~ "Right")) |>
-  filter(!is.na(POL_3CAT)) |>                 # keep only the three groups
-  mutate(POL_3CAT = factor(POL_3CAT))          # the group must be a factor
-
-mh_3cat |>
-  group_by(POL_3CAT) |>
-  summarise(n = n(),
-            mean = mean(SOCIAL, na.rm = TRUE),
-            sd = sd(SOCIAL, na.rm = TRUE))
+library(knitr)
 ```
 
-::: {.callout-warning}
-## Caution: Don't leave your group as a number
+### Play 1 ([one-way ANOVA]{.normal}): compare three perceived-income groups on subjective social status
 
-If the group is stored as 1, 2, 3, R treats it as a score and gives you a wrong answer with no error message. Make it a `factor()` first.
+#### Step 1: Import, recode, and count the groups
+
+```{r}
+#| label: play1-import
+healthstatus <- read.csv("data/health_status_data.csv") |>
+  rename(HEALTHSTATUS = HEALTH_STATUS) |>
+  mutate(INCOME3 = factor(INCOME3, levels = c(1, 2, 3),
+                          labels = c("Below average", "Average", "Above average"))) |>   # the group must be a factor
+  filter(!is.na(INCOME3), !is.na(SSS), !is.na(HEALTHSTATUS))
+
+healthstatus |> count(INCOME3)
+
+#source: Visualize a Comparison (Play 2)
+#explanation: factor() with levels in a sensible order; filter() drops people missing the group or either outcome, so every test below uses the same people
+```
+
+::: callout-warning
+## Caution: don't leave your group as a number
+
+If the group is stored as 1, 2, 3, `aov()` treats it as a score and fits a straight line through the group numbers: a wrong answer with no error message. Make it a `factor()` first, every time.
 :::
 
-::: {.callout-tip}
-## Go: Check the shape of your data
+#### Step 2: Look at the three groups
 
-`aov()` needs **one row per person**, with **one column for the outcome** and **one column for the group**. Most survey data already look like this, so there is nothing to change.
+```{r}
+#| label: play1-look
+#| fig-cap: "Figure 1. Subjective social status by perceived income (Cohort 10 data, n = 343). Violins show the distribution, boxes the median and quartiles, points the individual ratings."
+#| fig-alt: "Three violin plots, one per income group, rising from left to right. The below-average group is centered near 5 on the ladder, the average group near 6, and the above-average group near 7.5."
+healthstatus |>
+  group_by(INCOME3) |>
+  summarise(n = n(), mean = mean(SSS), sd = sd(SSS), shapiro_p = shapiro.test(SSS)$p.value)
 
-You only need to reshape when the scores you want to compare sit in **separate columns** (for example, `score_time1`, `score_time2`, `score_time3`). Then use `pivot_longer()` from [Pre/Post Data](prepost.qmd) to stack them into one outcome column and one group column. Note that the same people measured three times is a repeated-measures design, which this chapter does not cover. Talk to your peer mentor and/or Dr. Shane.
+plot_sss_income <- ggplot(healthstatus, aes(x = INCOME3, y = SSS, fill = INCOME3)) +
+  geom_violin(alpha = 0.6, show.legend = FALSE) +
+  geom_boxplot(width = 0.12, outlier.shape = NA, show.legend = FALSE) +
+  geom_jitter(width = 0.12, height = 0.15, alpha = 0.3, size = 1.2, show.legend = FALSE) +
+  scale_y_continuous(breaks = 1:10, limits = c(1, 10)) +
+  scale_fill_manual(values = c("#8d14c1", "#f4b400", "#009e73")) +
+  labs(x = "Perceived household income", y = "Subjective social status (1 = bottom rung, 10 = top rung)",
+       title = "Subjective social status by perceived income") +
+  theme_bw(base_size = 13)
+
+plot_sss_income
+ggsave("plots/sss_by_income_violin.png", plot = plot_sss_income, width = 8, height = 5, dpi = 300)
+
+#source: Compare 2 Groups (Play 2)
+#explanation: the same three layers as the two-group violin, with three groups on the x axis
+```
+
+The Shapiro-Wilk p-values are below .05 (a 1-to-10 ladder with most people on the middle rungs is not quite normal), but every group has 60 or more people, which is the second condition in the table above: with groups this size the ANOVA is robust to this much non-normality. The picture is the point: three distributions that step up from left to right.
+
+#### Step 3: The one-way ANOVA
+
+An ANOVA asks one question: is **at least one** group mean different from the others?
+
+```{r}
+#| label: play1-anova
+model_sss <- aov(SSS ~ INCOME3, data = healthstatus)
+summary(model_sss)
+
+#source: https://www.datacamp.com/tutorial/anova-in-r
+#explanation: outcome ~ group; the INCOME3 row gives the F statistic and p-value; the Residuals row gives the second df
+```
+
+Read the `INCOME3` row: `F value` is the test statistic, `Df` on that row is the first degrees of freedom (groups minus 1), `Df` on the `Residuals` row is the second (people minus groups), and `Pr(>F)` is the p-value.
+
+#### Step 4: Which groups differ? Tukey's follow-up test, and the effect size
+
+A significant ANOVA says the groups are not all the same; it does not say which pairs differ. Tukey's test compares every pair and adjusts the p-values for the number of comparisons. Run it only when the ANOVA is significant.
+
+```{r}
+#| label: play1-tukey
+TukeyHSD(model_sss)
+
+# effect size: eta squared = sum of squares for the group / total sum of squares
+ss <- summary(model_sss)[[1]]$`Sum Sq`
+eta2_sss <- ss[1] / sum(ss)
+eta2_sss
+
+#source: R documentation ?TukeyHSD; Cohen (1988) for eta squared
+#explanation: each Tukey row is one pair, diff is the mean difference, p adj is the adjusted p; eta squared is the share of variance explained by the group: .01 small, .06 medium, .14 large
+```
+
+All three pairs differ, and η² is large: perceived income and the ladder rating are two views of the same thing, which is why the effect is so big. In your own data an η² of .06 is a respectable medium effect.
+
+#### Step 5: Report it
+
+```{r}
+#| label: play1-report-values
+#| include: false
+fmt  <- function(x, k = 2) formatC(x, format = "f", digits = k)
+pfmt <- function(p) if (p < .001) "< .001" else paste0("= ", sub("^0", "", fmt(p, 3)))
+a1 <- summary(model_sss)[[1]]
+a1_F <- a1[["F value"]][1]; a1_p <- a1[["Pr(>F)"]][1]
+g1 <- healthstatus |> group_by(INCOME3) |> summarise(n = n(), m = mean(SSS), s = sd(SSS))
+```
+
+> Subjective social status differed across the three perceived-income groups, *F*(`r a1$Df[1]`, `r a1$Df[2]`) = `r fmt(a1_F)`, *p* `r pfmt(a1_p)`, η² = `r fmt(eta2_sss)`, a large effect. Tukey follow-up tests showed that every pair differed (all *p* < .001): people reporting above-average income placed themselves higher on the ladder (*M* = `r fmt(g1$m[3])`, *SD* = `r fmt(g1$s[3])`, *n* = `r g1$n[3]`) than people reporting average income (*M* = `r fmt(g1$m[2])`, *SD* = `r fmt(g1$s[2])`, *n* = `r g1$n[2]`), who placed themselves higher than people reporting below-average income (*M* = `r fmt(g1$m[1])`, *SD* = `r fmt(g1$s[1])`, *n* = `r g1$n[1]`) (Figure 1).
+
+### Play 2 ([Kruskal-Wallis]{.nonnormal}): compare three perceived-income groups on self-rated health
+
+Self-rated health is one question with five answers. As [Compare 2 Groups](compare2groups.qmd) Play 3 explains, a rating like that is not normal and its mean describes nobody, so this is the non-parametric line of the box. The Kruskal-Wallis test is the Mann-Whitney U for three or more groups: it ranks everyone's rating and asks whether the groups' ranks differ.
+
+#### Step 1: Look
+
+```{r}
+#| label: play2-look
+#| fig-cap: "Figure 2. Self-rated health by perceived income (Cohort 10 data, n = 343). Bars are the share of each group choosing each answer."
+#| fig-alt: "Three sets of five bars, one per income group, for Poor through Excellent. The above-average group has the largest share at Very good and Excellent; the below-average group has the largest share at Fair."
+healthstatus |>
+  group_by(INCOME3) |>
+  summarise(n = n(), median = median(HEALTHSTATUS), mean = mean(HEALTHSTATUS))
+
+health_props <- healthstatus |>
+  count(INCOME3, HEALTHSTATUS) |>
+  group_by(INCOME3) |>
+  mutate(prop = n / sum(n)) |>
+  ungroup()
+
+plot_health_income <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = prop, fill = INCOME3)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.75) +
+  scale_x_discrete(labels = c("1" = "Poor", "2" = "Fair", "3" = "Good", "4" = "Very good", "5" = "Excellent")) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_fill_manual(values = c("#8d14c1", "#f4b400", "#009e73")) +
+  labs(x = "Self-rated health", y = "Share of group", fill = "Perceived income",
+       title = "Self-rated health by perceived income") +
+  theme_bw(base_size = 13) +
+  theme(legend.position = "top")
+
+plot_health_income
+ggsave("plots/health_by_income_bars.png", plot = plot_health_income, width = 8, height = 4.5, dpi = 300)
+
+#source: Compare 2 Groups (Play 3)
+#explanation: proportions within each group, so a bigger group does not look healthier
+```
+
+#### Step 2: The Kruskal-Wallis test and its follow-up
+
+```{r}
+#| label: play2-kruskal
+kw_health <- kruskal.test(HEALTHSTATUS ~ INCOME3, data = healthstatus)
+kw_health
+
+pairwise.wilcox.test(healthstatus$HEALTHSTATUS, healthstatus$INCOME3, p.adjust.method = "holm")
+
+#source: R documentation ?kruskal.test, ?pairwise.wilcox.test
+#explanation: the Kruskal-Wallis statistic is reported as H with df = groups minus 1; the follow-up runs a Mann-Whitney U for each pair and adjusts the p-values (Holm)
+```
+
+The follow-up table reads like a mileage chart: each cell is the adjusted p-value for one pair. Here the above-average group differs from each of the other two, and the below-average and average groups do not differ from each other.
+
+#### Step 3: Report it
+
+```{r}
+#| label: play2-report-values
+#| include: false
+md2 <- healthstatus |> group_by(INCOME3) |> summarise(n = n(), md = median(HEALTHSTATUS))
+```
+
+> Self-rated health differed across the three perceived-income groups, Kruskal-Wallis *H*(`r kw_health$parameter`) = `r fmt(kw_health$statistic)`, *p* `r pfmt(kw_health$p.value)`. Pairwise Mann-Whitney U tests with a Holm correction showed that people reporting above-average income rated their health higher (*Mdn* = `r md2$md[3]`, Very good; *n* = `r md2$n[3]`) than people reporting average (*Mdn* = `r md2$md[2]`, Good; *n* = `r md2$n[2]`) or below-average income (*Mdn* = `r md2$md[1]`, Good; *n* = `r md2$n[1]`), both *p* = .02; the latter two groups did not differ (*p* = .58) (Figure 2).
+
+### Play 3 (ANCOVA): compare the same three groups on subjective social status, after accounting for age
+
+The five team samples differ in age (students in some, families and farmers-market visitors in others), and older people tend to have higher incomes. An ANCOVA asks Play 1's question again **for people of the same age**: the covariate goes **first** in the formula, the group last.
+
+```{r}
+#| label: play3-ancova
+model_sss_age <- aov(SSS ~ AGE + INCOME3, data = healthstatus)
+summary(model_sss_age)
+nobs(model_sss_age)   # people missing AGE are dropped: check the n
+
+#source: R documentation ?aov
+#explanation: covariate first, group last; read the INCOME3 row as "do the groups differ, at the same age?"
+```
+
+The `INCOME3` row still has a very small p-value: the income groups differ in subjective social status even after accounting for age. Report it as the Play 1 sentence plus "after accounting for age", with the *F* and *p* from this table.
+
+::: callout-warning
+## Caution: three things to know about ANCOVA
+
+-   The order in the formula matters in `aov()`: covariate first, group last. Reversed, the group row answers a different question.
+-   People missing the covariate are dropped, so the n can shrink. Check it with `nobs()`.
+-   `TukeyHSD()` is not valid after an ANCOVA. An ANCOVA is a linear regression with a categorical predictor, and [Relate 3+ Variables](regression.qmd) shows how to read which groups differ from the comparison group.
 :::
 
-## ANOVA
-
-An ANOVA asks one question: is **at least one** group average different from the others?
-
-```{r}
-#| label: anova-model
-model_anova <- aov(WELLBEING ~ HEALTH_3CAT, data = mh_clean)
-summary(model_anova)
-```
-
-Read the `HEALTH_3CAT` row: `F value` is the test statistic, and `Pr(>F)` is the p-value. If p is smaller than .05, the groups are not all the same.
-
-### Which groups differ? The Tukey follow-up test
-
-A significant ANOVA does not tell you **which** groups differ. Run the follow-up test only when the ANOVA is significant.
-
-```{r}
-#| label: anova-tukey
-TukeyHSD(model_anova)
-```
-
-Each row compares two groups. `diff` is the difference between the two averages, and `p adj` is the p-value for that pair.
-
-## If your outcome is not normal: Kruskal-Wallis
-
-`SOCIAL` is skewed and does not pass the checks in [Describe Your Data](describe.qmd), so the political groups are compared with the Kruskal-Wallis test.
-
-```{r}
-#| label: kruskal
-kruskal.test(SOCIAL ~ POL_3CAT, data = mh_3cat)
-```
-
-The follow-up test for a significant Kruskal-Wallis test compares the groups two at a time.
-
-```{r}
-#| label: kruskal-followup
-pairwise.wilcox.test(mh_3cat$SOCIAL, mh_3cat$POL_3CAT, p.adjust.method = "holm")
-```
-
-## ANCOVA: add a covariate
-
-An ANCOVA asks the same question as an ANOVA **after accounting for** another continuous variable. Here the covariate is age. Put the covariate **first** in the formula.
-
-```{r}
-#| label: ancova-model
-model_ancova <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = mh_clean)
-summary(model_ancova)
-```
-
-Read the `HEALTH_3CAT` row the same way as before. It now means "do the groups differ, for people of the same age?"
-
-::: {.callout-warning}
-## Caution: Three things to know about ANCOVA
-
--   The order in the formula matters in `aov()`. The covariate goes first, and the group goes last.
--   People who are missing the covariate are dropped, so your n can get smaller. Check it with `nobs(model_ancova)`.
--   An ANCOVA is a linear regression with a categorical predictor. See [Relate 3+ Variables](regression.qmd) for how to read slopes and check residuals.
-:::
-
-## Report it
-
-> A one-way ANOVA showed that \_\_\_\_\_\_\_\_ (differed / did not differ) across \_\_\_\_\_\_\_\_ groups, F(\_\_, \_\_) = \_\_\_, p = \_\_\_. A Tukey follow-up test showed that \_\_\_\_\_\_\_\_ scored higher than \_\_\_\_\_\_\_\_ (p = \_\_\_).
-
-For an ANCOVA, add: "after accounting for \_\_\_\_\_\_\_\_".
-
-::: {.callout-warning}
-## Caution: Different does not mean caused
+::: callout-warning
+## Caution: different does not mean caused
 
 A survey comparison tells you that groups differ. It does not tell you why. Write "differed" or "scored higher", not "caused" or "led to".
 :::
+
+## 🏈 The Lab {#sec-anova-lab}
+
+:::::: {.ref .ref-tip}
+::: ref-row
+![](images/ref.svg){.ref-img fig-alt="Ref the raccoon"}
+
+**Ref's kickoff.** The lab dataset has three-group questions of both kinds. Two of them: do people in poor or fair, good, and very good or excellent general health differ in **well-being** (`WELLBEING`, an 8-item composite)? And do people on the political left, in the middle, and on the right differ in how much they believe mental health problems have **social causes** (`SOCIAL`, a 3-item composite that is skewed)? Run each the way the Play did, then open my check.
+:::
+::::::
+
+```{r}
+#| label: lab-anova-setup
+#| include: false
+source("lab_prep.R")   # creates mh_clean
+lab3 <- mh_clean |>
+  mutate(HEALTH_3CAT = factor(case_when(HEALTHSTATUS %in% c(1, 2) ~ "Poor or fair",
+                                        HEALTHSTATUS == 3         ~ "Good",
+                                        HEALTHSTATUS %in% c(4, 5) ~ "Very good or excellent"),
+                              levels = c("Poor or fair", "Good", "Very good or excellent")),
+         POL_3CAT = factor(case_when(POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+                                     POLITICALBELIEFS == 3         ~ "Moderate",
+                                     POLITICALBELIEFS %in% c(4, 5) ~ "Right"),
+                           levels = c("Left", "Moderate", "Right")))
+lab_h <- lab3 |> filter(!is.na(HEALTH_3CAT), !is.na(WELLBEING))
+gh <- lab_h |> group_by(HEALTH_3CAT) |> summarise(n = n(), m = mean(WELLBEING), s = sd(WELLBEING), sh = shapiro.test(WELLBEING)$p.value)
+lab_a <- aov(WELLBEING ~ HEALTH_3CAT, data = lab_h); la <- summary(lab_a)[[1]]
+lab_tk <- TukeyHSD(lab_a)$HEALTH_3CAT
+lab_eta <- la[["Sum Sq"]][1] / sum(la[["Sum Sq"]]); la_F <- la[["F value"]][1]; la_p <- la[["Pr(>F)"]][1]
+lab_p <- lab3 |> filter(!is.na(POL_3CAT), !is.na(SOCIAL))
+gp <- lab_p |> group_by(POL_3CAT) |> summarise(n = n(), md = median(SOCIAL), sh = shapiro.test(SOCIAL)$p.value)
+lab_kw <- kruskal.test(SOCIAL ~ POL_3CAT, data = lab_p)
+lab_pw <- pairwise.wilcox.test(lab_p$SOCIAL, lab_p$POL_3CAT, p.adjust.method = "holm")$p.value
+lab_anc <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = lab_h); lanc <- summary(lab_anc)[[1]]
+lanc_F <- lanc[["F value"]][2]; lanc_p <- lanc[["Pr(>F)"]][2]
+```
+
+**Before you start.** `source("lab_prep.R")` to create `mh_clean`. Both group variables are made from a 1-to-5 question with `case_when()`, exactly as `DISTRESS_4CAT` was in [Transforming Your Data](dplyr.qmd): `HEALTH_3CAT` from `HEALTHSTATUS` (1–2 = Poor or fair, 3 = Good, 4–5 = Very good or excellent) and `POL_3CAT` from `POLITICALBELIEFS` (1–2 = Left, 3 = Moderate, 4–5 = Right). Make both factors with the levels in that order.
+
+### Lab Play 1 ([ANOVA and Tukey]{.normal}): compare three general-health groups on well-being
+
+Make `HEALTH_3CAT`, keep people with a value on it, draw the violin plot, check normality within each group, run the ANOVA, then Tukey, then η².
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   Groups: Poor or fair `r gh$n[1]`, Good `r gh$n[2]`, Very good or excellent `r gh$n[3]` (n = `r nrow(lab_h)` with a well-being score).
+-   Means: `r fmt(gh$m[1])`, `r fmt(gh$m[2])`, `r fmt(gh$m[3])`. Shapiro-Wilk p = `r fmt(gh$sh[1], 3)`, `r fmt(gh$sh[2], 3)`, `r fmt(gh$sh[3], 3)`.
+-   ANOVA: *F*(`r la$Df[1]`, `r la$Df[2]`) = `r fmt(la_F)`, *p* `r pfmt(la_p)`; η² = `r fmt(lab_eta)`.
+-   Tukey: Good vs Poor or fair *p* `r pfmt(lab_tk["Good-Poor or fair", "p adj"])`; Very good or excellent vs Poor or fair *p* `r pfmt(lab_tk["Very good or excellent-Poor or fair", "p adj"])`; Very good or excellent vs Good *p* `r pfmt(lab_tk["Very good or excellent-Good", "p adj"])`.
+:::
+
+### Lab Play 2 ([Kruskal-Wallis]{.nonnormal}): compare three political groups on belief in social causes
+
+Make `POL_3CAT`, keep people with a value on it, check the shape of `SOCIAL` within each group (it is skewed), run the Kruskal-Wallis test and the pairwise follow-up with a Holm correction.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   Groups: Left `r gp$n[1]`, Moderate `r gp$n[2]`, Right `r gp$n[3]`. Medians: `r fmt(gp$md[1])`, `r fmt(gp$md[2])`, `r fmt(gp$md[3])`. Shapiro-Wilk p = `r fmt(gp$sh[1], 3)`, `r fmt(gp$sh[2], 3)`, `r fmt(gp$sh[3], 3)`.
+-   Kruskal-Wallis *H*(`r lab_kw$parameter`) = `r fmt(lab_kw$statistic)`, *p* `r pfmt(lab_kw$p.value)`.
+-   Pairwise (Holm): Moderate vs Left *p* `r pfmt(lab_pw["Moderate", "Left"])`; Right vs Left *p* `r pfmt(lab_pw["Right", "Left"])`; Right vs Moderate *p* `r pfmt(lab_pw["Right", "Moderate"])`.
+:::
+
+### Lab Play 3 (ANCOVA): compare the three general-health groups on well-being, after accounting for age
+
+Run Lab Play 1's ANOVA again with `AGE` first in the formula, and check `nobs()`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   `HEALTH_3CAT` row: *F*(`r lanc$Df[2]`, `r lanc$Df[3]`) = `r fmt(lanc_F)`, *p* `r pfmt(lanc_p)`; n = `r nobs(lab_anc)` (`r nrow(lab_h) - nobs(lab_anc)` people dropped for a missing age).
+:::
+
+::: {.callout-note collapse="true" icon="false"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-anova-solution
+#| eval: false
+source("lab_prep.R")
+
+lab3 <- mh_clean |>
+  mutate(HEALTH_3CAT = factor(case_when(HEALTHSTATUS %in% c(1, 2) ~ "Poor or fair",
+                                        HEALTHSTATUS == 3         ~ "Good",
+                                        HEALTHSTATUS %in% c(4, 5) ~ "Very good or excellent"),
+                              levels = c("Poor or fair", "Good", "Very good or excellent")),
+         POL_3CAT = factor(case_when(POLITICALBELIEFS %in% c(1, 2) ~ "Left",
+                                     POLITICALBELIEFS == 3         ~ "Moderate",
+                                     POLITICALBELIEFS %in% c(4, 5) ~ "Right"),
+                           levels = c("Left", "Moderate", "Right")))
+
+# Lab Play 1
+lab_h <- lab3 |> filter(!is.na(HEALTH_3CAT), !is.na(WELLBEING))
+lab_h |> group_by(HEALTH_3CAT) |> summarise(n = n(), mean = mean(WELLBEING), sd = sd(WELLBEING),
+                                            shapiro_p = shapiro.test(WELLBEING)$p.value)
+ggplot(lab_h, aes(x = HEALTH_3CAT, y = WELLBEING, fill = HEALTH_3CAT)) +
+  geom_violin(alpha = 0.6, show.legend = FALSE) + geom_boxplot(width = 0.12, outlier.shape = NA, show.legend = FALSE) +
+  geom_jitter(width = 0.12, alpha = 0.3, show.legend = FALSE) + theme_bw()
+lab_a <- aov(WELLBEING ~ HEALTH_3CAT, data = lab_h)
+summary(lab_a)
+TukeyHSD(lab_a)
+ss <- summary(lab_a)[[1]]$`Sum Sq`; ss[1] / sum(ss)
+
+# Lab Play 2
+lab_p <- lab3 |> filter(!is.na(POL_3CAT), !is.na(SOCIAL))
+lab_p |> group_by(POL_3CAT) |> summarise(n = n(), median = median(SOCIAL), shapiro_p = shapiro.test(SOCIAL)$p.value)
+kruskal.test(SOCIAL ~ POL_3CAT, data = lab_p)
+pairwise.wilcox.test(lab_p$SOCIAL, lab_p$POL_3CAT, p.adjust.method = "holm")
+
+# Lab Play 3
+lab_anc <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = lab_h)
+summary(lab_anc)
+nobs(lab_anc)
+```
+:::
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
+
+-   **The ANOVA table has one row with `Df` = 1 for the group** → the group is still a number. `factor()` it.
+-   **Your n is different from Ref's** → you did not drop people missing the outcome, or you ran `source("lab_prep.R")` from a different folder. The counts in Ref's check are after `filter(!is.na(...))`.
+-   **Tukey rows are in a different order or the `diff` has the opposite sign** → your factor levels are in a different order. Set `levels = c(...)` as in the solution.
+-   **`pairwise.wilcox.test()` p-values differ slightly** → check `p.adjust.method = "holm"`; the default is also Holm, but `"bonferroni"` or `"none"` give different numbers.
+-   **The ANCOVA `HEALTH_3CAT` row is identical to the ANOVA's** → `AGE` is after the group in the formula. Covariate first.
+:::
+
+::: {.callout-important .required}
+## Required: a three-group comparison in your report
+
+For every three-or-more-group comparison in your *RD Report* and *Final Report*: the plot (bar chart with error bars, or violin), saved with `ggsave()` and captioned with the n of each group; the shape check you ran and what it showed; the test that matches the outcome, the ANOVA with Tukey and η² for a normal composite or continuous score (Play 1, Step 5) or the Kruskal-Wallis test with pairwise follow-ups for a skewed outcome or a single rating (Play 2, Step 3); and one sentence in Results in that Play's form. Say in Methods how you defined the groups and whom you excluded. Add the ANCOVA only if a covariate is part of your research question.
+:::
+
+## 🏆 Your Turn {#sec-anova-yourturn}
+
+::: {.callout-note .gray icon="false"}
+## There is no Ref. It's game time, your turn!
+
+Nobody has compared your team's groups before, so there is no answer to check against. Change every line marked `# REPLACE`, pick the line of the box that matches your outcome, and use the checklist.
+:::
+
+```{r}
+#| label: anova-template
+#| eval: false
+library(tidyverse)
+
+# 1. three or more groups, as a labeled factor
+mydata <- alldata |>
+  mutate(GROUP_3CAT = factor(GROUP_3CAT, levels = c(1, 2, 3),                     # REPLACE GROUP_3CAT (a _#CAT variable)
+                             labels = c("Group A", "Group B", "Group C"))) |>    # REPLACE labels, comparison group first
+  filter(!is.na(GROUP_3CAT), !is.na(OUTCOME))                                    # REPLACE OUTCOME (a score)
+mydata |> count(GROUP_3CAT)                                                      # every group big enough?
+
+# 2. look
+mydata |> group_by(GROUP_3CAT) |> summarise(n = n(), mean = mean(OUTCOME), sd = sd(OUTCOME), median = median(OUTCOME),
+                                            shapiro_p = shapiro.test(OUTCOME)$p.value)
+ggplot(mydata, aes(x = GROUP_3CAT, y = OUTCOME, fill = GROUP_3CAT)) +
+  geom_violin(alpha = 0.6) + geom_boxplot(width = 0.12, outlier.shape = NA) + geom_jitter(width = 0.1, alpha = 0.4) +
+  theme_bw()
+
+# 3a. normal outcome (parametric): ANOVA, Tukey, eta squared
+model <- aov(OUTCOME ~ GROUP_3CAT, data = mydata)
+summary(model)
+TukeyHSD(model)
+ss <- summary(model)[[1]]$`Sum Sq`; ss[1] / sum(ss)                               # eta squared: .01 small, .06 medium, .14 large
+
+# 3b. outcome not normal, or a single rating (non-parametric): Kruskal-Wallis and pairwise follow-up
+kruskal.test(OUTCOME ~ GROUP_3CAT, data = mydata)
+pairwise.wilcox.test(mydata$OUTCOME, mydata$GROUP_3CAT, p.adjust.method = "holm")
+
+# 4. optional: ANCOVA with a covariate (covariate first)
+# model_cov <- aov(OUTCOME ~ COVARIATE + GROUP_3CAT, data = mydata); summary(model_cov); nobs(model_cov)   # REPLACE COVARIATE
+
+# 5. save the plot for the poster
+# ggsave("plots/outcome_by_group3.png", width = 8, height = 5, dpi = 300)        # REPLACE the name
+```
+
+| Criteria | Ask yourself |
+|----|----|
+| **Design** | Are the groups different people? (The same people measured three times is a different design: ask your peer mentor and/or Dr. Shane.) |
+| **Groups** | Is the group a factor, with every level named in words and at least 20 people in each? |
+| **Which test** | Did you check the shape within each group and say which line of the Analysis Map box you are on: ANOVA (normal composite or continuous score) or Kruskal-Wallis (skewed, small group, or a single rating)? |
+| **Follow-up** | Did you run the follow-up test only after a significant overall test, and report which pairs differed? |
+| **Effect size** | Did you report η² for an ANOVA, and say whether it is small, medium, or large? |
+| **Plot** | Does the caption give the n of each group, and is the plot saved with `ggsave()`? |
+| **Sentence** | Does your Results sentence have *F*(df1, df2), *p*, η², and the pairs that differed (ANOVA), or *H*(df), *p*, medians, and the pairwise results (Kruskal-Wallis), and name the direction? |
+| **Exclusions** | Does Methods say how the groups were defined and who was left out? |
 
 {{< include _ref-whistle-box.qmd >}}

@@ -2,9 +2,9 @@
 title: "The Analysis Map"
 subtitle: "How to get from your research question to your plot and your statistical test"
 author:
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter gives researchers a map for planning their data analysis. Starting from a research question, researchers follow four steps: describe the data and check whether the outcome is normally distributed, decide whether the question is a comparison or a relationship, visualize the data, and choose the statistical test. The chapter explains the difference between comparative and relationship research, reviews the types of data (nominal, ordinal, discrete, continuous) needed to read the map, and ends with a fill-in-the-blank data analysis plan. Every name in blue is a chapter in this playbook.
+  This chapter gives researchers a map for planning their data analysis. Starting from a research question, researchers follow four steps: describe the data and check whether the outcome is normally distributed, decide whether the question is a comparison or a relationship, visualize the data, and choose the statistical test, where every box on the map has two lines, a parametric test for normal data and a non-parametric test for data that are not. The chapter explains the difference between comparative and relationship research, reviews the types of data (nominal, ordinal, discrete, continuous) and where a 1-to-6 Likert item or composite lands, quizzes researchers on five questions from the lab dataset, and ends with the past-tense Data Analysis Plan paragraph for the Methods section of the RD Report and Final Report. Every name in blue is a chapter in this playbook.
 keywords:
   - data analysis plan
   - decision tree
@@ -12,7 +12,7 @@ keywords:
   - relationship research
   - data types
   - normality
-date: 09.20.2026
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   html: 
@@ -43,7 +43,7 @@ Start at the top left with your research question, and follow the arrows. Every 
 1.  **Describe Your Data.** Make a descriptives table and a histogram of the outcome (the score) in your research question. Decide whether the histogram is roughly bell-shaped (normal) or not. Remember your answer. You will need it at step 4.
 2.  **What kind of question is it?** Decide whether you are comparing groups or examining a relationship (see below).
 3.  **Visualize.** Make the plot that fits your question: [Visualize a Comparison](visualize-comparison.qmd) or [Visualize a Relationship](visualize-relationship.qmd). Always look at your data before you test it.
-4.  **Choose your test.** Find the box that matches your question. Each box lists two tests. If your data is normal, use the first one (the parametric test). If your data is not normal, use the second one (the non-parametric test).
+4.  **Choose your test.** Find the box that matches your question. Each box lists two tests, in two colors. If your outcome is normal, use the first one, in [navy: the parametric test]{.normal}. If your outcome is not normal, use the second one, in [orange: the non-parametric test]{.nonnormal}. The same two colors mark the two tests in every chapter from here on.
 
 ::: {.callout-warning}
 ## Caution: The map is for outcomes that are scores
@@ -87,15 +87,27 @@ To read the map, you need to know what type of data each of your variables is:
 
 **Qualitative Data:**
 
-- 🏷️ **Nominal Data**: Categories without any order (e.g., Red, Green, Blue)
+-   🏷️ **Nominal Data**: Categories without any order (e.g., `RACIALIZED`, `GENDER`, Red / Green / Blue)
 
-- 📶 **Ordinal Data**: Categories with some order (e.g., Small, Medium, Large)
+-   📶 **Ordinal Data**: Categories with an order but no fixed distance between them (e.g., Small / Medium / Large; a single Likert item such as *How confident are you in your cooking?* from 1 = Not at all to 6 = Extremely)
 
 **Quantitative Data:**
 
-- 🔢 **Discrete**: Countable data (e.g., number of people in a room)
+-   🔢 **Discrete**: Countable data (e.g., number of people in a room, number of cooking skills a person knows out of 5)
 
-- 📏 **Continuous**: Measurable data (e.g., height, weight)
+-   📏 **Continuous**: Measurable data (e.g., height, weight, age, a Veggie Meter score)
+
+::: callout-tip
+## Go: where does a 1-to-6 Likert scale land?
+
+Most of your survey data are Likert items on a 1-to-6 scale (1 = Strongly disagree … 6 = Strongly agree, or 1 = Not at all … 6 = Extremely). Where they land depends on how many you have:
+
+-   **One item on its own is ordinal.** The numbers are ordered, but the distance from 1 to 2 is not necessarily the same as from 5 to 6, and a mean of 3.4 is not an answer anyone gave. Treat a single item as a category when it is a predictor or a group (recode it with `case_when()` in [Transforming Your Data](dplyr.qmd)), and use the [non-parametric]{.nonnormal} line of the map's box when it is the outcome ([Mann-Whitney U, Wilcoxon signed-rank, Kruskal-Wallis, Spearman]{.nonnormal}).
+
+-   **A composite of several items is treated as continuous.** When you average four or more related items ([Create Composite Variables](composite.qmd)), the score can take many values between 1 and 6 and usually looks roughly normal, so a composite outcome follows the [parametric]{.normal} line of the box ([t-test, ANOVA, Pearson, regression]{.normal}), after you check its shape in [Describe Your Data](describe.qmd).
+
+So the question to ask of every outcome on your map is not "is it Likert?" but "is it one item or a composite, and what does its distribution look like?"
+:::
 
 ## 🏈 The Lab {#sec-map-lab}
 
@@ -105,7 +117,7 @@ To read the map, you need to know what type of data each of your variables is:
 :::
 
 ::: ref-say
-**Ref's kickoff.** There is no code in this lab. Read each research question about the lab dataset and decide: is it a **comparison** or a **relationship**, and which box on the map does it land in? Decide **before** you open my check.
+**Ref's kickoff.** There is no code in this lab. Consider this a quiz on what you just learned. Read each of the five research questions about the lab dataset and write down **comparison** or **relationship** for each one, along with the box on the map it lands in. Then click **Ref's check** to view the answers.
 :::
 ::::::
 
@@ -118,10 +130,10 @@ To read the map, you need to know what type of data each of your variables is:
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: where does each question land on the map?
 
-1.  **Relationship**, Relate 2 Variables. Both variables are scores.
-2.  **Relationship**, Relate 2 Variables. Both variables are scores.
+1.  **Relationship**, Relate 2 Variables. Both variables are scores; `AGE` is skewed in a student sample, so expect the [Spearman]{.nonnormal} line.
+2.  **Relationship**, Relate 2 Variables. Both variables are composites, so expect the [Pearson]{.normal} line if their histograms are bells.
 3.  **Comparison**, Compare 3+ Groups. The groups are left, moderate, and right. The outcome is a score.
-4.  **Comparison**, Compare 2 Groups. Women and men are different people. `HELPSEEK` is a single 1-to-5 item, so it counts as not normal: use the second test in the box, Mann-Whitney U.
+4.  **Comparison**, Compare 2 Groups. Women and men are different people. `HELPSEEK` is a single 1-to-5 item, so it counts as not normal: use the second test in the box, [Mann-Whitney U]{.nonnormal}.
 5.  **Comparison**, Compare 1 Group, Pre/Post. The same people answered before and after.
 :::
 
@@ -140,16 +152,28 @@ To read the map, you need to know what type of data each of your variables is:
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has analyzed your team's data before, so there is no answer to check against. Use the map to write your own data analysis plan.
+Nobody has analyzed your team's data before, so there is no answer to check against. Use the map to update your data analysis plan.
 :::
 
-Do this once for **each** of your research questions. Copy the sentences below into the *Data Analysis Plan* heading of your methods section and fill in the blanks.
+You already submitted a Methods section in your *AIM Report*. The next drafts you submit are the *RD Report* and then the *Final Report*, and in both the **Data Analysis Plan** is the last subheading and the last text in your Methods section. Update it now using the map, and keep updating it as you run the analyses: by the *Final Report* it needs to be a detailed account of what you did, so write it in the **past tense**, as a description of the analysis you ran, not the one you intend to run. (In the *RD Report* you may not have run every test yet. Write the ones you have run in the past tense and mark the rest with a bracketed note to yourself, such as *[to run after Lab 5]*, and remove the brackets in the *Final Report*.)
 
-> My research question is: \_\_\_\_\_\_\_\_.
+Do this once for **each** of your research questions. Copy the sentences below into your Data Analysis Plan and fill in the blanks.
+
+> Research question 1 asked: \_\_\_\_\_\_\_\_.
 >
-> This is a \_\_\_\_\_\_\_\_ (comparison / relationship) question. My outcome is \_\_\_\_\_\_\_\_, which is a continuous variable. My \_\_\_\_\_\_\_\_ (grouping variable / second variable) is \_\_\_\_\_\_\_\_, which is a \_\_\_\_\_\_\_\_ (nominal / ordinal / continuous) variable.
+> This was a \_\_\_\_\_\_\_\_ (comparison / relationship) question. The outcome was \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ (composite score of \_\_ items / single item / count / measurement) treated as a \_\_\_\_\_\_\_\_ (continuous / ordinal) variable. The \_\_\_\_\_\_\_\_ (grouping variable / second variable) was \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ (nominal / ordinal / continuous) variable with \_\_\_\_\_\_\_\_ (levels / range).
 >
-> On the Analysis Map, my question lands in the box \_\_\_\_\_\_\_\_. I will visualize my data with a \_\_\_\_\_\_\_\_ (barplot / violin plot / scatterplot). The histogram of my outcome is \_\_\_\_\_\_\_\_ (normal / not normal), so I will use the \_\_\_\_\_\_\_\_ test.
+> On the Analysis Map, this question landed in the box \_\_\_\_\_\_\_\_. The data were visualized with a \_\_\_\_\_\_\_\_ (bar chart / violin plot / raincloud plot / scatterplot). The distribution of the outcome was \_\_\_\_\_\_\_\_ (approximately normal / not normal) (Shapiro-Wilk *p* = \_\_\_\_), so the \_\_\_\_\_\_\_\_ test was used, with \_\_\_\_\_\_\_\_ (Cohen's *d* / *r* / η² / *R*²) as the effect size. Analyses were run in RStudio (version \_\_\_\_) using the \_\_\_\_\_\_\_\_ packages.
+
+::: callout-tip
+## Go: how to look up your version numbers
+
+In RStudio, click **Help \> About RStudio** (Mac: **RStudio \> About RStudio**); the version is on the first line, such as *2025.09.1*. For the version of R itself, run `R.version.string` in the Console, which prints something like `R version 4.4.1`. Both change when you update, so look them up when you write the *Final Report*, not from memory.
+:::
+
+A worked example of the finished paragraph, using question 4 from the Lab above (willingness to seek help by gender in the lab dataset):
+
+> Research question 4 asked whether willingness to seek help differed between women and men. This was a comparison question. The outcome was willingness to seek help (`HELPSEEK`), a single item treated as an ordinal variable. The grouping variable was gender (`GENDER`), a nominal variable with two levels (women, men). On the Analysis Map, this question landed in the box Compare 2 Groups. The data were visualized with a violin plot. The distribution of the outcome was not normal (Shapiro-Wilk *p* < .001), so the Mann-Whitney U test was used, with *r* as the effect size. Analyses were run in RStudio (version 2025.09.1) using the tidyverse and ggpubr packages.
 
 ## Many Models, One Short List {#many-models}
 

@@ -3,16 +3,16 @@ title: "Import Data Once"
 subtitle: "How to use readr, readxl, and haven"
 authors: 
   - Zihan Hei
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter supports researchers in importing data from various sources and file formats commonly used in public health research. Researchers re-read the import line they first ran in Coding a Plot, learn its three parts (object, function, file path), import the same data as a .csv and as an Excel file, and inspect the result with head(), names(), nrow(), and ncol(). The chapter demonstrates essential data inspection techniques including viewing data structure, examining headers, and understanding data summaries. Researchers also learn to handle missing data by recoding special values (-99, -50) as NA during import. By the end of this chapter, researchers will be equipped to import data from multiple sources and prepare it for analysis in their public health research projects.
+  This chapter imports the team's data into R once, the right way. Researchers re-read the import line they first ran in Coding a Plot, learn its three parts (object, function, file path), make a data folder inside the RStudio Project and import from it with the file name only, and inspect the result with head(), names(), nrow(), and ncol(). The Play imports the same data as a .csv and as an Excel file; the Lab imports the lab dataset, checks its variable names against the codebook in both directions with setdiff(), and recodes the special values (-99, -50) to NA, with Ref's checks at every step. Your Turn gives the template for the team's .clean file.
 keywords:
   - data import
   - csv
   - excel
   - SPSS
   - missing data
-date: 10.20.2025
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   live-html:
@@ -96,6 +96,19 @@ ncol(insurance)   # how many variables?
 ```
 
 `head()` is also how you catch the two most common import problems at once. Every row should be one person (one respondent, with their own `ResponseId`), so a first row that is question text instead of a person means the file still has two header rows ([Export Survey Data](export.qmd)). And every column of numbers should be numbers, so values in quotes, or `<chr>` under a column name instead of `<dbl>`, mean a numeric column came in as text.
+
+::: callout-tip
+## Go: when a number column comes in as text, use `as.numeric()`
+
+R decides a column's type from *every* value in it. If one person typed "twenty" in an age box, or a research assistant wrote a note in a cell of a scanner sheet, the whole column arrives as text (`<chr>`), and `mean()`, `summary()`, and every test will refuse it or give nonsense. The fix is `as.numeric()`, which turns every value that looks like a number into a number and every value that does not into `NA`, with a warning that says so:
+
+```{r}
+#| label: as-numeric-demo
+as.numeric(c("322", "three hundred", "298", ""))
+```
+
+Two rules when you use it. First, **look before you convert**: print the values that will become `NA` so you know what you are losing (`filter(is.na(as.numeric(COLUMN)))`). Second, **count after**: compare the number of `NA` values before and after, and report in Methods how many answers could not be used and why. In your own data, do this once, right after import, inside a `mutate()`: `mutate(AGE = as.numeric(AGE))`. The Lab practices it on a real scanner export, and [Compare 2 Groups](compare2groups.qmd) uses the same file.
+:::
 
 **Try it.** Run `head(insurance)`, then change it to `head(insurance, 10)` and to `tail(insurance)`. The second input to `head()` is the number of rows; `tail()` shows the last rows instead of the first.
 
@@ -294,9 +307,46 @@ summary(mh_raw$POLITICALBELIEFS)
 `mh_raw == -99` finds every cell equal to -99, and `<- NA` writes `NA` into those cells. [Transforming Your Data](dplyr.qmd) shows the tidyverse way to do the same thing, `replace_with_na_all()`.
 :::
 
+### Lab Play 5: A number column that came in as text
+
+The lab dataset came in clean, but most team datasets will not. `veggiescore_SYNTHETIC.xlsx` (in the class Google Drive and in `data/`) is a scanner export from an FRI Veggie Meter study in which `VEGGIESCORE` should be a number from about 100 to 800. Import it as `veggie`, run `summary(veggie$VEGGIESCORE)`, and read the first line. Then find the values that are not numbers, convert the column with `as.numeric()` inside `mutate()`, and count how many values became `NA`.
+
+::: {.callout-tip collapse="true" icon="false"}
+## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
+
+-   `summary()` prints **`Length: 300`** and **`Class: character`** instead of a minimum and a maximum: the column is text.
+-   **2** values are words that cannot be numbers (`bhp`, `xyzzy`: a scanner read-out pasted into the wrong cell and a typo), and **22** cells were already blank.
+-   After `as.numeric()`, `summary()` shows a minimum, a maximum, and **24 `NA`'s** (22 blank + 2 words). The number of rows is still **300**.
+-   The minimum and maximum are impossible Veggie Meter scores (1 and 6,465,258,541). Converting the type does not clean the values; that is a separate decision, and [Compare 2 Groups](compare2groups.qmd) makes it.
+:::
+
+::: {.callout-note .gray collapse="true"}
+## 👀 See the solution
+
+```{r}
+#| label: lab-import-solution-asnumeric
+#| eval: false
+veggie <- read_excel("data/veggiescore_SYNTHETIC.xlsx")
+summary(veggie$VEGGIESCORE)                                   # Class: character
+
+veggie |>                                                     # look before you convert
+  filter(is.na(suppressWarnings(as.numeric(VEGGIESCORE))), !is.na(VEGGIESCORE)) |>
+  count(VEGGIESCORE)
+
+veggie <- veggie |>
+  mutate(VEGGIESCORE = as.numeric(VEGGIESCORE))               # words become NA (R warns you)
+
+summary(veggie$VEGGIESCORE)                                   # 24 NA's; min and max are impossible values
+nrow(veggie)                                                  # still 300
+```
+
+`suppressWarnings()` in the look-first line only hides the "NAs introduced by coercion" warning while you are inspecting; leave the warning visible when you do the real conversion so that you notice it.
+:::
+
 ::: {.callout-warning collapse="true" icon="false"}
 ## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: fouls to check if your numbers do not match
 
+-   **`NAs introduced by coercion`** → not a foul: that is `as.numeric()` telling you how it handled the text values. Look at which values became `NA` (Lab Play 5) before you move on.
 -   **`path does not exist`** → the file is not where the code says it is. Check that the file is inside a **data** folder in your project, that the name is spelled exactly the same, and that you opened your **project** (not only a file).
 -   **You have 1 column, or the wrong columns** → you imported the wrong sheet. `read_excel()` reads the first sheet unless you add `sheet =`; check that your data are on the first sheet, or name the sheet you want.
 -   **`could not find function "read_excel"`** → run `library(readxl)`.

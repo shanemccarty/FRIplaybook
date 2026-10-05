@@ -2,11 +2,11 @@
 title: "Export Survey Data"
 subtitle: "How to export the final survey questions and the survey data from Qualtrics"
 author:
-  - Shane McCarty, PhD
+  - Shane McCarty
   - James Giallella
 abstract: |
-  This chapter guides researchers through the complete process of exporting survey data from Qualtrics for analysis in R (for quanitative track) or NVivo (for qualitative track). Naming variables and recoding values come first, in the previous chapter; this chapter covers three exports: the survey instrument as a Word document for documentation, the raw dataset as an Excel file with numerical values, and a cleaned version with duplicate header rows removed. Researchers practice proper file naming conventions using date-stamped formats (MONTH.DAY.YEAR.data.team#.filetype) to track multiple data exports throughout their research project. By the end of this chapter, researchers will have properly formatted, team-specific datasets ready for import into data analysis software, following reproducible research standards for data management and version control.
-date: 10.20.2025
+  This chapter guides researchers through exporting survey data from Qualtrics for analysis in R (quantitative track) or NVivo (qualitative track). Naming variables and recoding values come first, in the previous chapter; this chapter covers the three exports: the final survey instrument as a Word document, the dataset as an Excel file of numeric values with the export options this course uses (recode seen-but-unanswered questions as -99; split multi-value fields into columns for select-all questions), and a .clean copy with the extra header rows removed. Researchers practice the file naming convention (MONTH.DAY.YEAR.data.team#.clean.xlsx), and pre/post teams learn that one survey taken twice exports as one file with a TIME column. By the end of this chapter, every team has a properly named dataset in its Google Drive, ready to import.
+date: 10.05.2026
 date-modified: 09.20.2026
 date-format: "MM.DD.YYYY"
 keywords:

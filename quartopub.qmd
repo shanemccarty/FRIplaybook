@@ -2,7 +2,7 @@
 title: "Publish Your Report to Quarto Pub"
 author: "Zihan Hei"
 abstract: |
-  This guide guides researchers through the process of creating a Quarto Pub website using your Binghmamton University Google account. Follow each step carefully to ensure your report is published correctly.
+  This guide guides researchers through the process of creating a Quarto Pub website using your Binghamton University Google account. Follow each step carefully to ensure your report is published correctly.
 keywords:
   - quarto pub
   - personal website

@@ -1,0 +1,7 @@
+::: {.callout-note collapse="true"}
+## About the dataset: `health_status_data.csv` (the Cohort 10 class dataset)
+
+Every FRI Public Health team in **Cohort 10** asked the same self-rated health question, *Would you say your health in general is excellent, very good, good, fair, or poor?*, along with the class variables of that year (age, sex, racialized identity, perceived income, and the MacArthur ladder of subjective social status). The five team datasets were merged into one file of 343 respondents so that health status could be examined across the whole class. `SAMPLE_ID` says which team's study a person came from.
+
+This is **real data**, already cleaned and de-identified: no response IDs, passwords, dates, or open-ended answers, and the five team samples differ in whom they recruited (students, families, farmers-market visitors), which is why the chapters filter by age. The variable names predate the class naming rules, so the Play renames them: `HEALTH_STATUS` becomes `HEALTHSTATUS` (1 = Poor … 5 = Excellent); `SSS` is subjective social status (1 to 10); `SEX` is biological sex (0 = male, 1 = female); and `RACIALIZED_IDENTITY` (1 = identified as white only, 0 = any other identity) becomes `MINORITIZED_01` (1 = minoritized, 0 = not), named for the 1 the way a `_01` variable should be. The other columns (`RG_…`, `RI_…`, `PoorFairHealth`, `ExcellentHealth`) are earlier recodes of the same questions and are not used here.
+:::

@@ -3,16 +3,16 @@ title: "Visualize a Relationship"
 subtitle: "How to build scatterplots to show how two scores go together"
 author:
   - Andrew Silhavy
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter teaches researchers to visualize relationship research questions, which examine how two continuous scores go together. Using real insurance data, researchers build a scatterplot one layer at a time: data, mapping, points, a line of best fit, grouping with color or facets, labels, a theme, and axis scales. In The Lab, researchers make a scatterplot with the lab dataset and then learn what to do when survey scores stack on top of each other: jitter the points and say so in the figure caption. In Your Turn, researchers use a copy-ready template and a checklist to build the relationship plot for their own research question.
+  This chapter teaches researchers to visualize relationship research questions, which examine how two continuous scores go together. In Play 1, using real insurance data, researchers build a scatterplot one layer at a time: data, mapping, points, a line of best fit, grouping with color or facets, labels, a theme, and axis scales. In Play 2, using the Cohort 10 health status data, they put a third variable into the plot with color and shape (self-rated health against subjective social status, by minoritized status and sex) and see when a rating can be treated as a score. In The Lab, researchers make a scatterplot with the lab dataset and then learn what to do when survey scores stack on top of each other: jitter the points and say so in the figure caption. In Your Turn, researchers use a copy-ready template and a checklist to build the relationship plot for their own research question.
 keywords:
   - ggplot2
   - scatterplot
   - line of best fit
   - jitter
   - relationship
-date: 09.20.2026
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   html: 
@@ -291,6 +291,84 @@ ggsave("plots/plot1_clear_name.png",
 ```
 
 The full explanation is in [Coding a Plot](layers.qmd#save).
+:::
+
+### Play 2: Health status and subjective social status (class dataset)
+
+The insurance data showed the layers. This second play uses a dataset collected by FRI students, and it adds the two things your own relationship plots will need: a **third variable** that splits the trend line into groups, and a **rating scale on the y axis** treated as a continuous score.
+
+{{< include _about-healthstatus-data.qmd >}}
+
+**The question.** Is subjective social status (where people place themselves on a 10-rung ladder) related to self-rated health, and does the relationship look the same for people who are minoritized and people who are not? Health status is a 1-to-5 rating. It is ordered and we treat it as a continuous score, the same way the composites in your own data are scores, so that it can be the y axis of a scatterplot, one variable in a correlation ([Relate 2 Variables](correlation.qmd)), and the outcome of a regression ([Relate 3+ Variables](regression.qmd)).
+
+```{r}
+#| label: play2-health-import
+#| message: false
+library(dplyr)
+healthstatus <- read.csv("data/health_status_data.csv")
+
+healthstatus <- healthstatus |>
+  rename(HEALTHSTATUS = HEALTH_STATUS) |>
+  mutate(
+    MINORITIZED_01 = if_else(RACIALIZED_IDENTITY == 1, 0, 1),          # 1 = minoritized (any identity other than white only)
+    MINORITIZED    = factor(MINORITIZED_01, levels = c(0, 1), labels = c("Not minoritized", "Minoritized")),
+    SEX            = factor(SEX, levels = c(0, 1), labels = c("Male", "Female")))
+
+healthstatus_25 <- healthstatus |> filter(AGE >= 25)      # adults 25 and older: the teams' student samples skew 18 to 22
+
+nrow(healthstatus); nrow(healthstatus_25)
+healthstatus_25 |> count(SEX, MINORITIZED)
+
+#source: Cohort 10 class dataset (five FRI Public Health teams, merged)
+#explanation: rename to the class conventions, make the two grouping factors, and keep respondents 25 and older
+```
+
+The filter is a choice, and it is reported: with everyone included, the 18-to-22-year-old students dominate the picture and their health ratings barely vary. From 25 up, the ladder and health status have room to move. Say in Methods when you restrict a plot this way, and why.
+
+```{r}
+#| label: play2-health-scatter
+#| fig-cap: "Self-rated health by subjective social status among respondents aged 25 and older (Cohort 10 class dataset, n = 122). Points are jittered; lines are linear trends for each group and for everyone (dashed)."
+#| fig-alt: "A scatterplot with subjective social status from 1 to 10 on the x axis and health status from Poor to Excellent on the y axis. Points are colored teal for not-minoritized and purple for minoritized respondents. The teal trend line rises from Good toward Very Good as status increases; the purple line is nearly flat; a dashed black line for everyone rises gently between them."
+#| fig-height: 5.5
+#| fig-width: 9
+library(ggplot2)
+
+plot_sss_health <- ggplot(healthstatus_25,
+                          aes(x = SSS, y = HEALTHSTATUS)) +
+  geom_jitter(aes(color = MINORITIZED, shape = SEX),
+              width = 0.15, height = 0.12, size = 2, alpha = 0.7) +   # jitter a little: both variables are whole numbers
+  geom_smooth(aes(color = MINORITIZED), method = "lm", se = FALSE, linewidth = 1.3) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed", linewidth = 1) +
+  scale_color_manual(values = c("Not minoritized" = "#2a9d8f", "Minoritized" = "#9b5de5")) +
+  scale_x_continuous(breaks = 1:10, limits = c(1, 10)) +
+  scale_y_continuous(breaks = 1:5, limits = c(0.8, 5.2),
+                     labels = c("Poor", "Fair", "Good", "Very Good", "Excellent")) +
+  labs(title = "Self-rated health by subjective social status (age 25+)",
+       x = "Subjective social status (1 = bottom rung, 10 = top rung)",
+       y = "Health status", color = "Racialized identity", shape = "Sex") +
+  theme_bw()
+
+plot_sss_health
+
+ggsave("plots/plot_sss_health_minoritized.png", plot = plot_sss_health,
+       width = 9, height = 5.5, dpi = 300)
+
+#source: ggplot2 documentation https://ggplot2.tidyverse.org/reference/geom_smooth.html
+#explanation: color is the third variable, so geom_smooth() draws one line per group; a second geom_smooth() without a color mapping draws the overall line; the y axis shows the rating labels but the values stay numeric
+```
+
+Read the lines before the points. For respondents who are not minoritized, health rises with social status; for minoritized respondents the line is nearly flat, so a higher rung on the ladder is not matched by better self-rated health. The dashed overall line averages the two and hides that difference, which is the reason to map a third variable at all. [Relate 3+ Variables](regression.qmd) tests whether the two slopes differ (an interaction); here the plot is the question.
+
+::: callout-tip
+## Go: two ways to put the third variable in
+
+`color = MINORITIZED` inside `aes()` gives one line per group **on the same panel**, which is best for comparing slopes. `facet_wrap(~ MINORITIZED)` gives one panel per group, which is best when the points would otherwise pile on top of each other. Try both; keep the one where the pattern is easiest to see, and say which groups are being compared in the caption.
+:::
+
+::: callout-warning
+## Caution: a rating is a score only if you say so
+
+Treating a 1-to-5 health rating as continuous is a standard choice, and a choice: it assumes the steps are roughly equal. Say it in your Methods ("self-rated health was treated as a continuous score from 1 to 5"), keep the y axis on the full 1-to-5 scale ([Required](#required-x-and-y-axes-cover-the-full-scale)), and never average a variable whose numbers are only labels (a `_#CAT` variable, [Transforming Your Data](dplyr.qmd)).
 :::
 
 ```{r}

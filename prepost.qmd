@@ -4,9 +4,9 @@ subtitle: "How to link two surveys from the same people and reshape the data"
 author:
   - Erica Sava
   - Gavin Rualo
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter is for research teams who survey the same people twice, such as before and after a workshop or on the first and last day of a study. Researchers learn to link each person's two responses with a participant code (PASSWORD), to check the link for duplicates and for codes that do not match, and to reshape the combined data between wide format (one row per person, used for pre/post tests) and long format (one row per response, used for pre/post plots) with tidyr.
+  This chapter is for research teams who survey the same people twice, such as before and after a workshop or on the first and last day of a study (Teams 3 and 5). Researchers learn to link each person's two responses with a participant code (PASSWORD), to check the link for duplicates and for codes that do not match, and to reshape the data between long format (one row per response, with TIME coded 0 = pretest and 1 = posttest, used for pre/post plots) and wide format (one row per person, used for pre/post tests) with tidyr. Situation 1 is one survey taken twice and exported as one long file, which is how the class surveys are built; Situation 2 is two separate surveys that must be joined. The Lab cleans and reshapes the long-format lab dataset with Ref's checks, and the result is the starting point for Compare 1 Group, Pre/Post.
 keywords:
   - Team 3
   - Team 5
@@ -18,7 +18,7 @@ keywords:
   - tidyr
   - wide format
   - long format
-date: 09.20.2026
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   html:
@@ -91,7 +91,7 @@ Use wide format to **test** whether scores changed (a paired t-test or a Wilcoxo
 
 : *Long format. Each row is a SURVEY RESPONSE, so each participant appears twice.*
 
-Use long format to **plot** pre/post scores, because `ggplot2` needs one column for time (the x axis) and one column for the score (the y axis). See [Visualize Pre/Post Data](violin.qmd).
+Use long format to **plot** pre/post scores, because `ggplot2` needs one column for time (the x axis) and one column for the score (the y axis). See [Compare 1 Group, Pre/Post](violin.qmd).
 
 You will usually need both. How you get them depends on how your data arrive, and there are two situations:
 
@@ -181,7 +181,7 @@ wide_data |> filter(is.na(WELLBEING_POST))   # who has no posttest?
 
 #### Step 5: Long format for plots
 
-There is nothing to reshape for the plot: the file arrived long, so `long_data` from Step 1 (one row per response, with `TIME` labeled `PRE` and `POST`) is already the shape that [Visualize Pre/Post Data](violin.qmd) needs. Keep both objects: `long_data` for the plot and `wide_data` for the paired test. (When data arrive wide instead, Step 5 of Situation 2 shows the reverse reshape, `pivot_longer()`.)
+There is nothing to reshape for the plot: the file arrived long, so `long_data` from Step 1 (one row per response, with `TIME` labeled `PRE` and `POST`) is already the shape that [Compare 1 Group, Pre/Post](violin.qmd) needs. Keep both objects: `long_data` for the plot and `wide_data` for the paired test. (When data arrive wide instead, Step 5 of Situation 2 shows the reverse reshape, `pivot_longer()`.)
 
 ### Situation 2: two files in wide format
 
@@ -289,7 +289,7 @@ long_data2 <- wide_data2 |>
 long_data2
 ```
 
-Each person now has two rows, and the data are ready for [Visualize Pre/Post Data](violin.qmd).
+Each person now has two rows, and the data are ready for [Compare 1 Group, Pre/Post](violin.qmd).
 
 ::: callout-tip
 ## Go: Keep both datasets
@@ -437,7 +437,7 @@ sum(is.na(lab_wide$HELPSEEK_PRE))                                      # post on
 :::
 
 ::: ref-say
-**Ref's final whistle.** Keep `lab_wide` and `lab_long`: [Visualize Pre/Post Data](violin.qmd) plots the long one, and the paired test (Compare 1 Group, Pre/Post, coming soon) uses the wide one. Save, render, back up to your ELN.
+**Ref's final whistle.** Keep `lab_wide` and `lab_long`: [Compare 1 Group, Pre/Post](violin.qmd) plots the long one, and the paired test (Compare 1 Group, Pre/Post, coming soon) uses the wide one. Save, render, back up to your ELN.
 :::
 ::::::
 

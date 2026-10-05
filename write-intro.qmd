@@ -1,7 +1,7 @@
 ---
 title: "Write an Introduction"
 subtitle: "How to write with markdown"
-author: "Shane McCarty, PhD"
+author: "Shane McCarty"
 abstract: |
   This chapter teaches researchers to use markdown syntax for headings (to structure the report), lists and inline math, and highlight variables using backticks. Also, researchers will watch a youtube video on how to get started with quarto. By the end of this chapter, researchers will be able to structure their report using markdown. 
 keywords:

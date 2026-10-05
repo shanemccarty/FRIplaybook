@@ -1,8 +1,19 @@
 ---
 title: "Reproducible Reports"
-authors:
-  - Shane McCarty, PhD
+subtitle: "Why this playbook uses code, and what you will have made by the end"
+author:
+  - Shane McCarty
   - Zihan Hei
+abstract: |
+  This is the first chapter on purpose. Before researchers install anything or write any code, they see where they are headed: a finished report in which every plot and every number was made by code. The chapter explains why reproducibility matters (the replication crisis and the four problems behind it), compares pointing and clicking in SPSS with writing code in R, surveys the software researchers use (R, Python, SPSS, SAS, Stata) and why this playbook uses R and Quarto, and shows example reports from earlier FRI Public Health cohorts, including the RD Report and Final Report that researchers in this course will produce.
+keywords:
+  - reproducibility
+  - replication crisis
+  - R
+  - Quarto
+  - example reports
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
 format: html
 ---
 

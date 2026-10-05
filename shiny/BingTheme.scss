@@ -1,0 +1,25 @@
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: "Open Sans", sans-serif !default;
+
+// colors
+$body-bg: #fff !default;
+$body-color: #005A43 !default;
+$link-color: #6CC24A !default;
+$selection-bg: #26351c !default;
+
+// headings
+$presentation-heading-font: "Corbel", sans-serif !default;
+$presentation-heading-color: #005A43 !default;  // Green color for headings
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.3em;
+}
+
+.reveal .footer {
+  color: #5e5c5c !important; // Light gray
+}
+

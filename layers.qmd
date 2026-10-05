@@ -3,9 +3,9 @@ title: "Coding a Plot"
 subtitle: "Build a plot one layer at a time in your web browser"
 author:
   - Andrew Silhavy
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter shows researchers what code does before they install any software. Using real insurance data and code cells that run in the web browser (WebR), researchers watch one plot being built one layer at a time with ggplot2's "grammar of graphics" (data, mapping, geometries, statistics, facets, coordinates, and theme), and they try small changes to see how the output changes. The chapter ends with how most chapters in this playbook work (The Play, The Lab, Your Turn) and, for later, how to choose one theme for all of your plots and how to save a plot with ggsave().
+  This chapter shows researchers what code does before they install any software. Using real insurance data and code cells that run in the web browser (WebR), researchers watch one plot being built one layer at a time with ggplot2's "grammar of graphics" (data, mapping, geometries, statistics, facets, coordinates, and theme), and they try small changes to see how the output changes. Along the way they meet the two symbols that appear in every chunk of this playbook, the assignment arrow (<-) and the pipe (|>). The chapter ends with how most chapters in this playbook work (The Play, The Lab, Your Turn) and, for later, how to choose one theme for all of your plots and how to save a plot with ggsave().
 keywords:
   - ggplot2
   - grammar of graphics
@@ -13,7 +13,7 @@ keywords:
   - theme
   - ggsave
   - WebR
-date: 09.20.2026
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   html: 

@@ -3,7 +3,7 @@ title: "Install and Load Packages"
 subtitle: "How to set up your install.R file and load libraries"
 authors:
   - Yoomin (Ashley) Kim
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
   This chapter introduces R packages and libraries, why they matter for reproducible public health research, and how to install, load, and organize them in your own projects. Students will learn the difference between installing a package (once per computer) and loading a package (every session), how to keep all installations in one `install.R` file organized by the steps of the data science workflow, how to load libraries at the top of a Quarto report, and how to clearly comment their code so students and readers can understand what each package is doing in the context of a public health research project.
 keywords:
@@ -75,12 +75,12 @@ You do not need a long list of packages. The packages below are the ones that th
 | Step | Package | What you use it for | Chapters that use it |
 |----|----|----|----|
 | Import | readxl | `read_excel()` to import your `.xlsx` survey data | Import Data Once, Start a Report, Combine Datasets, Creating Composites |
-| Import | haven | `read_sav()` to import SPSS `.sav` files | Import Data Once, Mutate Variables, Visualize Pre/Post Data |
-| Tidy | tidyr\* | `pivot_longer()` and `pivot_wider()` to reshape long ↔ wide data | Format Data in tidyr, Visualize Pre/Post Data |
-| Tidy | naniar | `replace_with_na_all()` to turn codes like -99 into missing values | Mutate Variables, Visualize Pre/Post Data |
+| Import | haven | `read_sav()` to import SPSS `.sav` files | Import Data Once, Mutate Variables, Compare 1 Group, Pre/Post |
+| Tidy | tidyr\* | `pivot_longer()` and `pivot_wider()` to reshape long ↔ wide data | Format Data in tidyr, Compare 1 Group, Pre/Post |
+| Tidy | naniar | `replace_with_na_all()` to turn codes like -99 into missing values | Mutate Variables, Compare 1 Group, Pre/Post |
 | Transform | dplyr\* | `select()`, `filter()`, `mutate()`, and joins | almost every chapter |
 | Transform | psych | `scoreItems()` and `alpha()` for composites and reliability; `describe()` for descriptive statistics | Creating Composites, Methods & Results |
-| Visualize | ggplot2\* | all plots | Build a Plot in Layers, Visualize a Comparison, Visualize a Relationship, Visualize Pre/Post Data |
+| Visualize | ggplot2\* | all plots | Build a Plot in Layers, Visualize a Comparison, Visualize a Relationship, Compare 1 Group, Pre/Post |
 | Model | stats (base) | `t.test()`, `kruskal.test()`, `cor.test()`, `lm()` | comes with R: nothing to install or load |
 | Communicate | knitr | `kable()` for tables in your report | Mutate Variables, Creating Composites, Methods & Results |
 | Communicate | rmarkdown | lets RStudio render a `.qmd` report that contains R code | every report |
@@ -91,7 +91,7 @@ You do not need a long list of packages. The packages below are the ones that th
 
 | Package | What you use it for | Chapter that uses it |
 |----|----|----|
-| see, gghalves, ggdist | half-violin and raincloud plots | Visualize Pre/Post Data |
+| see, gghalves, ggdist | half-violin and raincloud plots | Compare 1 Group, Pre/Post |
 | english | write numbers as words (e.g., "twelve") | Methods & Results (advanced) |
 
 The advanced chapters Import Data Live (`httr`, `jsonlite`, `readr`) and Methods & Results (`scales`, `stringr`, `tibble`) use a few more packages, but these are all installed automatically with the `tidyverse`, so there is nothing extra to install.
@@ -162,9 +162,9 @@ install.packages("rmarkdown") ## needed for RStudio to render Quarto reports wit
 
 
 ## EXTRAS: remove the # only if you use that chapter
-# install.packages("see")      ## half-violin plots (Visualize Pre/Post Data)
-# install.packages("gghalves") ## half-violin plots (Visualize Pre/Post Data)
-# install.packages("ggdist")   ## raincloud plots (Visualize Pre/Post Data)
+# install.packages("see")      ## half-violin plots (Compare 1 Group, Pre/Post)
+# install.packages("gghalves") ## half-violin plots (Compare 1 Group, Pre/Post)
+# install.packages("ggdist")   ## raincloud plots (Compare 1 Group, Pre/Post)
 # install.packages("english")  ## write numbers as words (Methods & Results)
 ```
 

@@ -10,7 +10,9 @@ packages <- c(
   "naniar",     # TIDY: replace codes like -99 with missing values (NA)
   "psych",      # TRANSFORM: composite scores, cronbach's alpha, descriptive stats
   "knitr",      # COMMUNICATE: tables with kable()
-  "rmarkdown"   # COMMUNICATE: lets RStudio render Quarto reports with R code
+  "rmarkdown",  # COMMUNICATE: lets RStudio render Quarto reports with R code
+  "ggpubr",     # VISUALIZE: one-line publication plots, ggdensity() and ggviolin() (Compare 2 Groups)
+  "see"         # VISUALIZE: half-violin (raincloud) plots with geom_violinhalf() (Compare 2 Groups; Compare 1 Group, Pre/Post)
 )
 
 ## EXTRAS: only needed for a few chapters. Change FALSE to TRUE if you use them.
@@ -18,8 +20,10 @@ packages <- c(
 install_extras <- FALSE
 
 extras <- c(
-  "see",        # half-violin plots (Visualize Pre/Post Data)
-  "english"     # write numbers as words (Methods & Results)
+  "english",    # write numbers as words (Methods & Results)
+  "shiny",      # interactive apps (Shiny Data Viz, Advanced Plays)
+  "plotly",     # hover-and-zoom plots in a Shiny app
+  "DT"          # searchable tables in a Shiny app
 )
 
 if (install_extras) packages <- c(packages, extras)

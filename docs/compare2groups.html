@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anna Vishnevetsky">
+<meta name="author" content="Yoomin (Ashley) Kim">
+<meta name="author" content="Erica Sava">
+<meta name="keywords" content="t-test, independent samples, Welch, Mann-Whitney U, Wilcoxon rank-sum, Cohen’s d, ggpubr, violin plot, raincloud plot">
+
+<title>18&nbsp; Compare 2 Groups – The Quantitative Playbook for R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./violin.html" rel="next">
+<link href="./visualize-comparison.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./compare2groups.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Quantitative Playbook for R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Get Started (Lab 1)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./compare2groups.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./citations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#when-is-this-the-right-test" id="toc-when-is-this-the-right-test" class="nav-link active" data-scroll-target="#when-is-this-the-right-test"><span class="header-section-number">18.1</span> When is this the right test?</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">18.2</span> 📋 The Play</a>
+  <ul class="collapse">
+  <li><a href="#play-1-veggie-meter-scores-by-biological-sex-independent-samples-t-test-ggpubr" id="toc-play-1-veggie-meter-scores-by-biological-sex-independent-samples-t-test-ggpubr" class="nav-link" data-scroll-target="#play-1-veggie-meter-scores-by-biological-sex-independent-samples-t-test-ggpubr"><span class="header-section-number">18.2.1</span> Play 1: Veggie Meter scores by biological sex (<span class="normal">independent-samples t-test</span>, <code>ggpubr</code>)</a></li>
+  <li><a href="#play-2-cooking-self-efficacy-by-gender-independent-samples-t-tests-ggplot2-violin-and-raincloud-plots" id="toc-play-2-cooking-self-efficacy-by-gender-independent-samples-t-tests-ggplot2-violin-and-raincloud-plots" class="nav-link" data-scroll-target="#play-2-cooking-self-efficacy-by-gender-independent-samples-t-tests-ggplot2-violin-and-raincloud-plots"><span class="header-section-number">18.2.2</span> Play 2: cooking self-efficacy by gender (<span class="normal">independent-samples t-tests</span>, <code>ggplot2</code> violin and raincloud plots)</a></li>
+  <li><a href="#play-3-self-rated-health-by-minoritized-status-mann-whitney-u-test" id="toc-play-3-self-rated-health-by-minoritized-status-mann-whitney-u-test" class="nav-link" data-scroll-target="#play-3-self-rated-health-by-minoritized-status-mann-whitney-u-test"><span class="header-section-number">18.2.3</span> Play 3: self-rated health by minoritized status (<span class="nonnormal">Mann-Whitney U test</span>)</a></li>
+  </ul></li>
+  <li><a href="#sec-compare2-lab" id="toc-sec-compare2-lab" class="nav-link" data-scroll-target="#sec-compare2-lab"><span class="header-section-number">18.3</span> 🏈 The Lab</a>
+  <ul class="collapse">
+  <li><a href="#lab-play-1-well-being-by-treatment-history-t-test-ggdensity" id="toc-lab-play-1-well-being-by-treatment-history-t-test-ggdensity" class="nav-link" data-scroll-target="#lab-play-1-well-being-by-treatment-history-t-test-ggdensity"><span class="header-section-number">18.3.1</span> Lab Play 1: Well-being by treatment history (<span class="normal">t-test</span>, <code>ggdensity()</code>)</a></li>
+  <li><a href="#lab-play-2-stigma-by-racialized-identity-t-test-and-mann-whitney-u-violin-plot" id="toc-lab-play-2-stigma-by-racialized-identity-t-test-and-mann-whitney-u-violin-plot" class="nav-link" data-scroll-target="#lab-play-2-stigma-by-racialized-identity-t-test-and-mann-whitney-u-violin-plot"><span class="header-section-number">18.3.2</span> Lab Play 2: Stigma by racialized identity (<span class="normal">t-test</span> and <span class="nonnormal">Mann-Whitney U</span>, violin plot)</a></li>
+  </ul></li>
+  <li><a href="#sec-compare2-yourturn" id="toc-sec-compare2-yourturn" class="nav-link" data-scroll-target="#sec-compare2-yourturn"><span class="header-section-number">18.4</span> 🏆 Your Turn</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/compare2groups.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./compare2groups.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></h1>
+<p class="subtitle lead">The independent-samples t-test for normal data and the Mann-Whitney U test for data that are not, with density, violin, and raincloud plots</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anna Vishnevetsky </p>
+             <p>Yoomin (Ashley) Kim </p>
+             <p>Erica Sava </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10.04.2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This chapter is the Analysis Map’s “compare 2 groups” row: two groups of different people and one continuous outcome. Researchers learn when the independent-samples t-test is the right test and when it is not (the paired design is a different chapter), how to look at the two groups before testing (a density plot made in one line with ggpubr, or a violin and raincloud plot built layer by layer in ggplot2), how to check the assumptions and choose between the Welch t-test (normal data) and the Mann-Whitney U test (data that are not normal, or a single rating), how to report the result with an effect size, and how to catch the data problems that show up before any test can run. Two Plays use synthetic versions of real FRI team datasets (Veggie Meter skin-carotenoid scores by biological sex, and cooking self-efficacy composites by gender before a cooking workshop) and a third uses the Cohort 10 health status data to compare self-rated health by minoritized status with the Mann-Whitney U test. The Lab runs the same comparisons on the lab dataset with Ref’s checks, and Your Turn gives the template for the team dataset.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>t-test, independent samples, Welch, Mann-Whitney U, Wilcoxon rank-sum, Cohen’s d, ggpubr, violin plot, raincloud plot</p>
+  </div>
+</div>
+
+</header>
+
+
+<!-- Single source for the collapsed kickoff reminder at the START of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s kickoff: find the Ref before you code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Open Project → Open <code>.qmd</code> → Run load-library chunk → Run All Chunks Above → code.</strong> If anything looks wrong, use <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: <code>ggpubr</code> (new in this chapter), <code>ggplot2</code>, and <code>see</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><code>ggpubr</code> is ggplot2 with the layers already assembled: one function call gives a finished, publication-style plot. Use it when you want the standard picture fast. Drop back to ggplot2 when you want to control every layer.</p>
+<ul>
+<li><a href="https://rpkgs.datanovia.com/ggpubr/"><code>ggpubr</code> home page</a> and the <a href="https://rpkgs.datanovia.com/ggpubr/ggpubr-cheatsheet.pdf"><code>ggpubr</code> cheat sheet (PDF)</a></li>
+<li><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggdensity.html"><code>ggdensity()</code></a>: the density plot used in Play 1</li>
+<li><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggviolin.html"><code>ggviolin()</code></a> and <a href="https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html"><code>ggboxplot()</code></a>: one-line violin and box plots</li>
+<li><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html"><code>geom_violin()</code> in ggplot2</a>, used in Play 2</li>
+<li><a href="https://easystats.github.io/see/reference/geom_violinhalf.html"><code>geom_violinhalf()</code> in the <code>see</code> package</a>, the half violin of a raincloud plot</li>
+<li><a href="https://z3tt.github.io/Rainclouds/">Raincloud plots with ggplot2 (Cédric Scherer)</a> and <a href="https://doi.org/10.12688/wellcomeopenres.15191.2">Allen et al.&nbsp;(2019), the raincloud paper</a></li>
+<li><a href="https://r4ds.hadley.nz/eda.html">R for Data Science, Ch. 10: Exploratory data analysis</a> (distributions by group)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: two packages to install once
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>ggpubr</code> and <code>see</code> are on the <code>install.R</code> list (<a href="./library.html">R Packages</a>). If <code>library(ggpubr)</code> says <code>there is no package called 'ggpubr'</code>, source <code>install.R</code> again.</p>
+</div>
+</div>
+<section id="when-is-this-the-right-test" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="when-is-this-the-right-test"><span class="header-section-number">18.1</span> When is this the right test?</h2>
+<p>You have <strong>two groups of different people</strong> and <strong>one continuous outcome</strong>, and you want to know whether the two groups differ on average. Three examples: 1) male and female participants on their Veggie Meter score, 2) people who have had mental health treatment and people who have not on their well-being, and 3) People of Color and White participants on their experiences of harm in health care. On <a href="./analysis-map.html">The Analysis Map</a> that is the <em>compare 2 groups</em> row, and the test is the <strong>independent-samples t-test</strong>.</p>
+<p>Two things decide whether you are on this row:</p>
+<ul>
+<li><strong>The group variable has exactly two levels.</strong> Usually it is a <code>_01</code> variable from the survey (<code>TREATED_01</code>, <code>KNOWS_01</code>) or a <code>_01CAT</code> you made in <a href="./dplyr.html">Transforming Your Data</a> (<code>RACIALIZED_01CAT</code>, <code>DISTRESS_01CAT</code>). Three or more groups is the next row, <a href="./ANOVA.html">Compare 3+ Groups</a>.</li>
+<li><strong>The two groups are different people.</strong> If the same people were measured twice, before and after something, that is a <strong>paired</strong> design: the differences live <em>within</em> each person, and the test is the paired t-test (<a href="./violin.html">Compare 1 Group, Pre/Post</a>, for Teams 3 and 5). Running an independent-samples test on pre/post data is the most common wrong turn on the map, so decide this first.</li>
+</ul>
+<p>The outcome should be a score, not a category: a composite from 1 to 5, a Veggie Meter number, an age. If the outcome is yes/no, you need a different test (a chi-square), and your peer mentor and/or Dr.&nbsp;Shane can point you to it.</p>
+<p>Once you are on this row, the shape of the outcome picks the test, exactly as the two lines in each Analysis Map box say:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test</th>
+<th>Use it when</th>
+<th>R function</th>
+<th>Report</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="normal"><strong>Independent-samples t-test</strong> (parametric)</span></td>
+<td>the outcome is roughly normal in each group, or each group has 30 or more people</td>
+<td><code>t.test()</code></td>
+<td><em>M</em>, <em>SD</em>, <em>t</em>(df), <em>p</em>, Cohen’s <em>d</em></td>
+</tr>
+<tr class="even">
+<td><span class="nonnormal"><strong>Mann-Whitney U test</strong> (non-parametric)</span></td>
+<td>the outcome is skewed, a group is small, or the outcome is a single rating with a few levels (1 to 5)</td>
+<td><code>wilcox.test()</code></td>
+<td><em>Mdn</em>, <em>U</em>, <em>p</em>, <em>r</em></td>
+</tr>
+</tbody>
+</table>
+<p>Play 1 and Play 2 are the <span class="normal">parametric</span> case; Play 3 is the <span class="nonnormal">non-parametric</span> case. <a href="./violin.html">Compare 1 Group, Pre/Post</a> and <a href="./ANOVA.html">Compare 3+ Groups</a> follow the same two-line structure.</p>
+</section>
+<section id="the-play" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">18.2</span> 📋 The Play</h2>
+<p>Two plays, two teams, two ways to draw the same picture. Play 1 uses <code>ggpubr</code>, which makes the standard plot in one call. Play 2 builds a violin and raincloud plot in <code>ggplot2</code>, layer by layer. The test is the same in both.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   <span class="co"># dplyr, tidyr, ggplot2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)       <span class="co"># scoreItems() for the composites in Play 2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)      <span class="co"># ggdensity() in Play 1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see)         <span class="co"># geom_violinhalf() in Play 2</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="play-1-veggie-meter-scores-by-biological-sex-independent-samples-t-test-ggpubr" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="play-1-veggie-meter-scores-by-biological-sex-independent-samples-t-test-ggpubr"><span class="header-section-number">18.2.1</span> Play 1: Veggie Meter scores by biological sex (<span class="normal">independent-samples t-test</span>, <code>ggpubr</code>)</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>About the dataset: <code>veggiescore_SYNTHETIC.xlsx</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In fall 2025 a team in the FRI Public Health stream measured fruit and vegetable intake with the <strong>Veggie Meter®</strong>, a device that estimates skin carotenoids from a finger scan and returns a score of roughly 100 to 800. The convenience sample was Binghamton University students on campus and Broome County residents at a farmers market, scanned in September and October 2025.</p>
+<p>The file in this chapter is <strong>synthetic</strong>: every row was generated by a seeded script (<code>make_play_datasets.py</code>) and no row describes a real person, which is why it can be published with the playbook. It keeps what makes the real export a good teaching case: the same variables, the same approximate group means and spreads (male participants scoring higher on average, with a small to medium difference), the same share of declines and blanks on <code>SEX</code>, and the same kinds of junk in <code>VEGGIESCORE</code> that the real scanner sheet had (two typed words, a scanner read-out pasted twice, a handful of impossible numbers). What differs: the real file had 309 rows with the team’s actual participant passwords, timestamps, and Qualtrics metadata, which are not here, and the real <code>CONSUMPTION</code> and <code>LOCATION</code> answers were replaced by seeded ones with the same distribution. The t-test result is of the same size and direction as the team’s, not the team’s number.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: biological sex is not gender identity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Biological sex and gender identity are not the same thing, and the standardized class variables used in this playbook measure gender identity (<code>GENDER</code>, <a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a>), not biological sex. This study used <strong>biological sex</strong> because the Veggie Meter’s reference distributions are reported by biological sex, so the team needed the same variable to compare their sample with the norms. The variable is therefore named <code>SEX</code>, coded 0 = male and 1 = female, and the groups are called male and female participants below, not men and women, which are gender terms. When you compare groups in your own data, say which construct you measured and why.</p>
+</div>
+</div>
+<section id="step-1-import-and-look-before-you-clean" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-import-and-look-before-you-clean">Step 1: Import and look before you clean</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>veggie <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/veggiescore_SYNTHETIC.xlsx"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(veggie)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 300</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(veggie<span class="sc">$</span>VEGGIESCORE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Length     Class      Mode 
+      300 character character </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>veggie <span class="sc">|&gt;</span> <span class="fu">count</span>(SEX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+    SEX     n
+  &lt;dbl&gt; &lt;int&gt;
+1   -99     6
+2     0   116
+3     1   154
+4    NA    24</code></pre>
+</div>
+</div>
+<p>Two problems are visible already. <code>summary()</code> of <code>VEGGIESCORE</code> prints <code>Length</code> and <code>Class :character</code> instead of a minimum and a maximum: the column came in as <strong>text</strong>, because a few cells contain words (<a href="./import-once.html">Import Data Once</a>, Lab Play 5). And <code>SEX</code> has values other than 0 and 1: <code>-99</code> (prefer not to say) and <code>NA</code> (skipped).</p>
+<p>These problems are not invented for the exercise. The real export from the Veggie Meter team had exactly these flaws: the scanner’s results were typed into a spreadsheet by hand, so a few cells held a word instead of a number, a scanner read-out was pasted into the score column, and a handful of failed scans produced impossible numbers. The synthetic file reproduces each kind of flaw (with made-up values) so that you practice the cleaning decisions on the kind of mess a real team dataset has.</p>
+</section>
+<section id="step-2-clean-and-decide-the-rules-out-loud" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-clean-and-decide-the-rules-out-loud">Step 2: Clean, and decide the rules out loud</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>veggie <span class="ot">&lt;-</span> veggie <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">VEGGIESCORE =</span> <span class="fu">as.numeric</span>(VEGGIESCORE))      <span class="co"># words become NA; numbers stay numbers</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(veggie<span class="sc">$</span>VEGGIESCORE)                           <span class="co"># now you can see the range</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.      NA's 
+1.000e+00 2.430e+02 3.120e+02 2.343e+07 3.740e+02 6.465e+09        24 </code></pre>
+</div>
+</div>
+<p>Now <code>summary()</code> shows the range, and it is wrong at both ends: a minimum of 1 and a maximum in the billions. No skin-carotenoid scan produces those numbers; they are the pasted read-out and the failed scans described above. The cleaning rule has to come from what the instrument can measure, not from the data: the Veggie Meter’s plausible range is about 100 to 800, so keep scores in that range. And a two-group test needs two groups, so keep only the people with <code>SEX</code> coded 0 or 1. Write both rules in your Methods, with the number of people each one removed.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>veggie_clean <span class="ot">&lt;-</span> veggie <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(VEGGIESCORE <span class="sc">&gt;=</span> <span class="dv">100</span>, VEGGIESCORE <span class="sc">&lt;=</span> <span class="dv">800</span>,      <span class="co"># plausible scores only</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         SEX <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span>                          <span class="co"># the two groups (drops -99 and NA)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SEX =</span> <span class="fu">factor</span>(SEX, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>)))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(veggie_clean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 238</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>veggie_clean <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(SEX) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(VEGGIESCORE), <span class="at">sd =</span> <span class="fu">sd</span>(VEGGIESCORE))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  SEX        n  mean    sd
+  &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Male     105  323.  91.3
+2 Female   133  298.  80.6</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: R4DS Ch. 3 https://r4ds.hadley.nz/data-transform.html</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: text scores become numbers; impossible scores and people without a group are removed; the group variable becomes a labeled factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Write the rule in your Methods: “Scores outside the instrument’s range (100 to 800) were excluded (n = 9), as were participants who did not report biological sex (n = 30).” The numbers you excluded are part of the result.</p>
+</section>
+<section id="step-3-look-at-the-two-groups-ggdensity" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-look-at-the-two-groups-ggdensity">Step 3: Look at the two groups: <code>ggdensity()</code></h4>
+<p>A <strong>density plot</strong> is a smoothed histogram. With two groups it shows, in one picture, whether the groups overlap and where their centers sit. In <code>ggpubr</code> it is one call, with the group mean drawn as a dashed line and every person as a tick on the axis (<code>rug = TRUE</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_veggie_sex <span class="ot">&lt;-</span> <span class="fu">ggdensity</span>(veggie_clean, <span class="at">x =</span> <span class="st">"VEGGIESCORE"</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">color =</span> <span class="st">"SEX"</span>, <span class="at">fill =</span> <span class="st">"SEX"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#ff8c6b"</span>, <span class="st">"#e8a7d0"</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">add =</span> <span class="st">"mean"</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">xlab =</span> <span class="st">"Veggie Meter score"</span>, <span class="at">ylab =</span> <span class="st">"Density"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">title =</span> <span class="st">"Veggie Meter scores by biological sex"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">800</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plot_veggie_sex</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="compare2groups_files/figure-html/play1-density-1.png" class="img-fluid figure-img" alt="Two overlapping density curves of Veggie Meter scores, orange for male and pink for female participants. Both are roughly bell shaped. The male curve and its dashed mean line sit slightly to the right of the female curve." width="768"></p>
+<figcaption>Figure 1. Veggie Meter scores for male and female participants (synthetic data, n = 238). Dashed lines are group means; ticks along the x axis are individual scores.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/veggie_sex_density.png"</span>, <span class="at">plot =</span> plot_veggie_sex,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#source: ggpubr documentation https://rpkgs.datanovia.com/ggpubr/reference/ggdensity.html</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: one density curve per group, with the mean of each group as a dashed line and each person's score as a rug tick</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The curves overlap a lot, and the male participants’ mean is a little to the right. That is what a small difference looks like. The test tells you whether a difference this size is more than chance would produce.</p>
+</section>
+<section id="step-4-check-the-assumptions" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-check-the-assumptions">Step 4: Check the assumptions</h4>
+<p>The t-test assumes the outcome is roughly normal <strong>within each group</strong> (less important when each group has 30 or more people) and does not assume equal variances if you use the Welch version, which is R’s default. Check normality the way <a href="./describe.html">Describe Your Variables</a> showed: a histogram or Q-Q plot per group and the Shapiro-Wilk test.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>veggie_clean <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(SEX) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(VEGGIESCORE)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  SEX    shapiro_p
+  &lt;fct&gt;      &lt;dbl&gt;
+1 Male       0.379
+2 Female     0.200</code></pre>
+</div>
+</div>
+<p>Both p-values are above .05, so there is no evidence against normality in either group. If one had been below .05 with a small group, you would run the non-parametric test in Step 6 as well and report both.</p>
+</section>
+<section id="step-5-the-independent-samples-t-test" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-the-independent-samples-t-test">Step 5: The independent-samples t-test</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>t_veggie <span class="ot">&lt;-</span> <span class="fu">t.test</span>(VEGGIESCORE <span class="sc">~</span> SEX, <span class="at">data =</span> veggie_clean)   <span class="co"># Welch t-test (var.equal = FALSE is the default)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>t_veggie</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  VEGGIESCORE by SEX
+t = 2.1961, df = 209.01, p-value = 0.02919
+alternative hypothesis: true difference in means between group Male and group Female is not equal to 0
+95 percent confidence interval:
+  2.543265 47.169016
+sample estimates:
+  mean in group Male mean in group Female 
+            322.9238             298.0677 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: https://www.datacamp.com/tutorial/t-tests-r-tutorial</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the formula means "VEGGIESCORE split by SEX"; Welch's version does not assume the two groups have equal spread</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Read four things from the output: the two group means at the bottom; <strong>t</strong>, the difference in means divided by its standard error; <strong>df</strong>, the degrees of freedom (Welch’s are not a whole number); and the <strong>p-value</strong>. Here p is below .05, so the difference is unlikely to be chance alone.</p>
+</section>
+<section id="step-6-effect-size-and-a-check-with-the-mann-whitney-u" class="level4">
+<h4 class="anchored" data-anchor-id="step-6-effect-size-and-a-check-with-the-mann-whitney-u">Step 6: Effect size, and a check with the Mann-Whitney U</h4>
+<p>A p-value says whether the difference is detectable, not whether it is big. <strong>Cohen’s d</strong> is the difference in means in standard-deviation units: about 0.2 is small, 0.5 medium, 0.8 large.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cohens_d <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) (<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">mean</span>(y)) <span class="sc">/</span> <span class="fu">sqrt</span>((<span class="fu">var</span>(x) <span class="sc">+</span> <span class="fu">var</span>(y)) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>male   <span class="ot">&lt;-</span> veggie_clean<span class="sc">$</span>VEGGIESCORE[veggie_clean<span class="sc">$</span>SEX <span class="sc">==</span> <span class="st">"Male"</span>]</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>female <span class="ot">&lt;-</span> veggie_clean<span class="sc">$</span>VEGGIESCORE[veggie_clean<span class="sc">$</span>SEX <span class="sc">==</span> <span class="st">"Female"</span>]</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(male, female)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2887757</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(VEGGIESCORE <span class="sc">~</span> SEX, <span class="at">data =</span> veggie_clean)   <span class="co"># Mann-Whitney U (R calls it the Wilcoxon rank sum test); Play 3 explains it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  VEGGIESCORE by SEX
+W = 7938, p-value = 0.07016
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Cohen (1988); R documentation ?wilcox.test</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: d is the mean difference divided by the pooled standard deviation; the Mann-Whitney U test compares the groups by rank, without assuming normality</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The two tests disagree: the Welch t-test is significant (<em>p</em> = .029) and the Mann-Whitney U test is not (<em>p</em> = .070). That is not a mistake. The t-test compares means and the Mann-Whitney U test compares the whole distributions by rank, and when the data are close to normal the t-test has more power to detect a difference. With a small effect (<em>d</em> = 0.29, about a quarter of a standard deviation) and about 240 people, the evidence sits near the .05 threshold, so a slightly less powerful test lands on the other side of it. Report the test your assumption checks point to (here the Shapiro-Wilk results support the t-test), name the effect size, and do not describe a <em>p</em> of .029 as strong evidence of a large difference.</p>
+</section>
+<section id="step-7-report-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-7-report-it">Step 7: Report it</h4>
+<p>One sentence with the means, the test, and the effect size, plus the figure. In APA style:</p>
+<blockquote class="blockquote">
+<p>Male participants (<em>M</em> = 322.9, <em>SD</em> = 91.3, <em>n</em> = 105) had higher Veggie Meter scores than female participants (<em>M</em> = 298.1, <em>SD</em> = 80.6, <em>n</em> = 133), Welch <em>t</em>(209.0) = 2.20, <em>p</em> = .029, <em>d</em> = 0.29, a small effect (Figure 1).</p>
+</blockquote>
+<p>Every number in that sentence comes from Steps 2, 5, and 6, and the sentence says which groups, how many, which direction, and how big.</p>
+</section>
+</section>
+<section id="play-2-cooking-self-efficacy-by-gender-independent-samples-t-tests-ggplot2-violin-and-raincloud-plots" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="play-2-cooking-self-efficacy-by-gender-independent-samples-t-tests-ggplot2-violin-and-raincloud-plots"><span class="header-section-number">18.2.2</span> Play 2: cooking self-efficacy by gender (<span class="normal">independent-samples t-tests</span>, <code>ggplot2</code> violin and raincloud plots)</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>About the dataset: <code>foodsecurity_SYNTHETIC.xlsx</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In fall 2025 another FRI Public Health team studied cooking skills and food security among Binghamton students: a pretest survey, a hands-on cooking workshop, and the same survey again two weeks later. The survey measured cooking self-efficacy with three short scales (confidence, food safety, nutrition; 1 = strongly disagree to 6 = strongly agree), plus cooking knowledge, barriers to cooking, food insecurity, and open-ended questions about culture and gender.</p>
+<p>The file here is <strong>synthetic</strong>, generated by the same seeded script as Play 1’s, so it can be public. It keeps the real survey’s variables and response scales, the pretest item means, the share of -99 and -50 codes, the gender mix (mostly women), and the long pre/post layout linked by <code>PASSWORD</code>. Two things are different on purpose. The real export had only 45 responses and almost no one could be linked from pretest to posttest, so a paired analysis was impossible; the synthetic file has 72 pretest and 60 posttest rows with 59 people matched, a few dropouts, one duplicate, and two mistyped passwords, so that <a href="./violin.html">Compare 1 Group, Pre/Post</a> can use the same file. And the variables were renamed to the class conventions (<code>GENDER</code> 0 to 3, <code>RACIALIZED</code> as select-all columns, <code>_01</code> for yes/no, <code>_QUAL</code> for open text) where the real survey predated them. Every open-ended answer is a short invented phrase.</p>
+</div>
+</div>
+</div>
+<p>This play uses only the <strong>pretest</strong> rows, because the question is a two-group one: before the workshop, did women and men differ in cooking self-efficacy? The file is in long format with both time points, so the first step is to keep one row per person.</p>
+<section id="step-1-import-clean-and-keep-the-pretest" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-import-clean-and-keep-the-pretest">Step 1: Import, clean, and keep the pretest</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>foodsec <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/foodsecurity_SYNTHETIC.xlsx"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>foodsec[foodsec <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>      <span class="co"># prefer not to say -&gt; missing</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>foodsec[foodsec <span class="sc">==</span> <span class="sc">-</span><span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span>      <span class="co"># don't know -&gt; missing</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>pre <span class="ot">&lt;-</span> foodsec <span class="sc">|&gt;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD))) <span class="sc">|&gt;</span>    <span class="co"># clean the linking code (Pre/Post Data)</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TIME <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">|&gt;</span>                                <span class="co"># pretest only</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PASSWORD, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)                <span class="co"># one row per person (drops the duplicate submission)</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pre)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 72</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pre <span class="sc">|&gt;</span> <span class="fu">count</span>(GENDER)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  GENDER     n
+   &lt;dbl&gt; &lt;int&gt;
+1      0    46
+2      1    18
+3      2     5
+4      3     1
+5     NA     2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Import Data Once; Pre/Post Data</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: missing codes become NA; the pretest rows are kept, one per person</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>GENDER</code> has four levels, but two of them have a handful of people. A two-group test needs two groups, so this play compares women (0) and men (1) and sets the others aside, and says so.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pre2 <span class="ot">&lt;-</span> pre <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GENDER <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GENDER =</span> <span class="fu">factor</span>(GENDER, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Women"</span>, <span class="st">"Men"</span>)))</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>pre2 <span class="sc">|&gt;</span> <span class="fu">count</span>(GENDER)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  GENDER     n
+  &lt;fct&gt;  &lt;int&gt;
+1 Women     46
+2 Men       18</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the two groups to compare, as a labeled factor with the comparison group (women) first</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-make-the-three-composites" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-make-the-three-composites">Step 2: Make the three composites</h4>
+<p>The outcome is not one column but three scales. <a href="./composite.html">Creating Composites</a> showed <code>scoreItems()</code>; here it is again, with the alphas for the Methods section.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>eff_keys <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">EFF_CONF  =</span> <span class="fu">c</span>(<span class="st">"EFFCONF1"</span>, <span class="st">"EFFCONF2"</span>, <span class="st">"EFFCONF3"</span>, <span class="st">"EFFCONF4"</span>),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">EFF_SAFE  =</span> <span class="fu">c</span>(<span class="st">"EFFSAFE1"</span>, <span class="st">"EFFSAFE2"</span>, <span class="st">"EFFSAFE3"</span>, <span class="st">"EFFSAFE4"</span>),</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">EFF_NUTRI =</span> <span class="fu">c</span>(<span class="st">"EFFNUTRI1"</span>, <span class="st">"EFFNUTRI2"</span>, <span class="st">"EFFNUTRI3"</span>))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>eff_scores <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(eff_keys, pre2, <span class="at">impute =</span> <span class="st">"none"</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(eff_scores<span class="sc">$</span>alpha, <span class="dv">2</span>)                                   <span class="co"># reliability of each scale</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      EFF_CONF EFF_SAFE EFF_NUTRI
+alpha     0.59      0.7      0.79</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pre2 <span class="ot">&lt;-</span> pre2 <span class="sc">|&gt;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EFF_CONF  =</span> eff_scores<span class="sc">$</span>scores[, <span class="st">"EFF_CONF"</span>],</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">EFF_SAFE  =</span> eff_scores<span class="sc">$</span>scores[, <span class="st">"EFF_SAFE"</span>],</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">EFF_NUTRI =</span> eff_scores<span class="sc">$</span>scores[, <span class="st">"EFF_NUTRI"</span>])</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Creating Composites; psych package (Revelle)</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: three keys, three averaged scores added to the data, and Cronbach's alpha for each</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-3-one-long-table-for-the-plot" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-one-long-table-for-the-plot">Step 3: One long table for the plot</h4>
+<p>A plot that shows all three scales side by side needs them in <strong>one</strong> column, with a second column saying which scale each score belongs to. That is <code>pivot_longer()</code> from <a href="./prepost.html">Pre/Post Data</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pre_long <span class="ot">&lt;-</span> pre2 <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PASSWORD, GENDER, EFF_CONF, EFF_SAFE, EFF_NUTRI) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(EFF_CONF, EFF_SAFE, EFF_NUTRI),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"SCALE"</span>, <span class="at">values_to =</span> <span class="st">"SCORE"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SCALE =</span> <span class="fu">factor</span>(SCALE, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"EFF_CONF"</span>, <span class="st">"EFF_SAFE"</span>, <span class="st">"EFF_NUTRI"</span>),</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Confidence"</span>, <span class="st">"Safety"</span>, <span class="st">"Nutrition"</span>)))</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pre_long)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  PASSWORD  GENDER SCALE      SCORE
+  &lt;chr&gt;     &lt;fct&gt;  &lt;fct&gt;      &lt;dbl&gt;
+1 river3248 Women  Confidence  4   
+2 river3248 Women  Safety      4.5 
+3 river3248 Women  Nutrition   4.33
+4 sunny8796 Men    Confidence  4.5 
+5 sunny8796 Men    Safety      5   
+6 sunny8796 Men    Nutrition   3.33</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-violin-plot-built-in-layers" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-violin-plot-built-in-layers">Step 4: Violin plot, built in layers</h4>
+<p>A <strong>violin plot</strong> is a box plot with the distribution drawn around it: the width at each height is how many people scored there (a smoothed histogram turned on its side). Add the box plot inside it for the median and quartiles, and the raw points so that the reader can see how many people are behind each shape.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plot_eff_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pre_long, <span class="fu">aes</span>(<span class="at">x =</span> SCALE, <span class="at">y =</span> SCORE, <span class="at">fill =</span> GENDER)) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">position =</span> <span class="fu">position_jitterdodge</span>(<span class="at">jitter.width =</span> <span class="fl">0.12</span>, <span class="at">dodge.width =</span> <span class="fl">0.8</span>),</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Women"</span> <span class="ot">=</span> <span class="st">"#8d14c1"</span>, <span class="st">"Men"</span> <span class="ot">=</span> <span class="st">"#f4b400"</span>)) <span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cooking self-efficacy scale"</span>, <span class="at">y =</span> <span class="st">"Score (1 = strongly disagree, 6 = strongly agree)"</span>,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Gender"</span>, <span class="at">title =</span> <span class="st">"Cooking self-efficacy before the workshop, by gender"</span>) <span class="sc">+</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>plot_eff_gender</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="compare2groups_files/figure-html/play2-violin-1.png" class="img-fluid figure-img" alt="Three pairs of violin plots, one pair for each self-efficacy scale, with women in purple and men in yellow. Each violin has a narrow box plot inside and jittered points. The men's violins sit slightly higher on confidence." width="864"></p>
+<figcaption>Figure 2. Cooking self-efficacy before the workshop, by gender (synthetic data). Violins show the distribution, boxes the median and quartiles, points the individual scores.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/eff_gender_violin.png"</span>, <span class="at">plot =</span> plot_eff_gender, <span class="at">width =</span> <span class="dv">9</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: ggplot2 documentation https://ggplot2.tidyverse.org/reference/geom_violin.html</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: three layers on one plot: the violin (distribution), the box (median and quartiles), the jittered points (every person); position_dodge puts the two genders side by side within each scale</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: reading a violin
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wide at the top means many people scored high. Two bulges mean two kinds of people. A long thin tail means a few people far from the rest. A violin tells you whether the groups differ in <strong>shape</strong>, not only in their average, which is something a bar chart of means cannot show.</p>
+</div>
+</div>
+</section>
+<section id="step-5-raincloud-plot" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-raincloud-plot">Step 5: Raincloud plot</h4>
+<p>A <strong>raincloud plot</strong> is the same information with the layers pulled apart so that none hides another: a half violin (the cloud), the box plot beside it, and the raw points below (the rain). <code>geom_violinhalf()</code> comes from the <code>see</code> package.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plot_eff_rain <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pre_long, <span class="fu">aes</span>(<span class="at">x =</span> SCALE, <span class="at">y =</span> SCORE, <span class="at">fill =</span> GENDER)) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violinhalf</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">trim =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>)) <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> GENDER),</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">position =</span> <span class="fu">position_jitterdodge</span>(<span class="at">jitter.width =</span> <span class="fl">0.08</span>, <span class="at">dodge.width =</span> <span class="fl">0.8</span>, <span class="at">seed =</span> <span class="dv">1</span>),</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Women"</span> <span class="ot">=</span> <span class="st">"#8d14c1"</span>, <span class="st">"Men"</span> <span class="ot">=</span> <span class="st">"#f4b400"</span>)) <span class="sc">+</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Women"</span> <span class="ot">=</span> <span class="st">"#8d14c1"</span>, <span class="st">"Men"</span> <span class="ot">=</span> <span class="st">"#f4b400"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cooking self-efficacy scale"</span>, <span class="at">y =</span> <span class="st">"Score (1 to 6)"</span>, <span class="at">fill =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Cooking self-efficacy before the workshop, by gender (raincloud)"</span>) <span class="sc">+</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>plot_eff_rain</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="compare2groups_files/figure-html/play2-raincloud-1.png" class="img-fluid figure-img" alt="For each of the three scales, half-violin shapes for women and men are nudged to the right, narrow box plots sit in the middle, and jittered points are nudged to the left." width="864"></p>
+<figcaption>Figure 3. The same data as Figure 2 as a raincloud plot: half violins (the cloud), box plots, and individual scores (the rain).</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: see package https://easystats.github.io/see/reference/geom_violinhalf.html; Allen et al. (2019)</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: a half violin instead of a full one, so the box and the points have room beside it</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-6-one-t-test-per-scale-then-report" class="level4">
+<h4 class="anchored" data-anchor-id="step-6-one-t-test-per-scale-then-report">Step 6: One t-test per scale, then report</h4>
+<p>Three outcomes means three tests. Run them the same way as Play 1, and report each with its means and effect size.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>t_conf  <span class="ot">&lt;-</span> <span class="fu">t.test</span>(EFF_CONF  <span class="sc">~</span> GENDER, <span class="at">data =</span> pre2)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>t_safe  <span class="ot">&lt;-</span> <span class="fu">t.test</span>(EFF_SAFE  <span class="sc">~</span> GENDER, <span class="at">data =</span> pre2)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>t_nutri <span class="ot">&lt;-</span> <span class="fu">t.test</span>(EFF_NUTRI <span class="sc">~</span> GENDER, <span class="at">data =</span> pre2)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>t_conf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  EFF_CONF by GENDER
+t = -1.0545, df = 31.535, p-value = 0.2996
+alternative hypothesis: true difference in means between group Women and group Men is not equal to 0
+95 percent confidence interval:
+ -0.6824042  0.2170257
+sample estimates:
+mean in group Women   mean in group Men 
+           4.179348            4.412037 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: Welch t-test for each composite; print the other two the same way</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Table 1. Cooking self-efficacy by gender before the workshop: Welch t-tests (synthetic data).</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Scale</th>
+<th style="text-align: left;">Women M (SD)</th>
+<th style="text-align: left;">Men M (SD)</th>
+<th style="text-align: left;">t</th>
+<th style="text-align: left;">df</th>
+<th style="text-align: left;">p</th>
+<th style="text-align: left;">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">EFF_CONF</td>
+<td style="text-align: left;">4.18 (0.80)</td>
+<td style="text-align: left;">4.41 (0.79)</td>
+<td style="text-align: left;">-1.05</td>
+<td style="text-align: left;">31.5</td>
+<td style="text-align: left;">.300</td>
+<td style="text-align: left;">-0.29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">EFF_SAFE</td>
+<td style="text-align: left;">4.60 (0.81)</td>
+<td style="text-align: left;">4.47 (0.83)</td>
+<td style="text-align: left;">0.54</td>
+<td style="text-align: left;">30.3</td>
+<td style="text-align: left;">.593</td>
+<td style="text-align: left;">0.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EFF_NUTRI</td>
+<td style="text-align: left;">4.44 (0.99)</td>
+<td style="text-align: left;">4.45 (0.95)</td>
+<td style="text-align: left;">-0.04</td>
+<td style="text-align: left;">32.2</td>
+<td style="text-align: left;">.965</td>
+<td style="text-align: left;">-0.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>When you have several tests like this, a table is clearer than three sentences, and one sentence then summarizes the table: which scales differed, in which direction, and how large the differences were. Here the answer is that none did: all three p-values are well above .05 and the effect sizes are small, so before the workshop women and men reported similar cooking self-efficacy. A null result is a result; report it with the same numbers. With three tests you have three chances for a false positive; say so, or use a stricter alpha (.05 ÷ 3 ≈ .017), and your peer mentor and/or Dr.&nbsp;Shane can help you decide.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: the n behind the plot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Play 2 has 18 men. A violin drawn from a group that small is a smoothed curve through a few points, and it can look like a shape that is not there. Always print <code>count()</code> by group before you trust the picture, and report the n of each group in the caption.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="play-3-self-rated-health-by-minoritized-status-mann-whitney-u-test" class="level3" data-number="18.2.3">
+<h3 data-number="18.2.3" class="anchored" data-anchor-id="play-3-self-rated-health-by-minoritized-status-mann-whitney-u-test"><span class="header-section-number">18.2.3</span> Play 3: self-rated health by minoritized status (<span class="nonnormal">Mann-Whitney U test</span>)</h3>
+<p>Plays 1 and 2 had outcomes that were roughly normal, so the t-test was the right line of the Analysis Map box. This play is the other line. The outcome is <strong>one question</strong>, not a composite: “In general, would you say your health is…” with five answers from Poor (1) to Excellent (5). A 1-to-5 rating with most people on 3 and 4 cannot be normal, and its mean (3.4, say) is not a value anyone chose. The <strong>Mann-Whitney U test</strong> compares two groups without assuming normality: it ranks every person’s score from lowest to highest, pools the ranks, and asks whether one group’s ranks tend to be higher than the other’s. The question here is whether people who are minoritized rate their health differently from people who are not.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>About the dataset: <code>health_status_data.csv</code> (the Cohort 10 class dataset)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Every FRI Public Health team in <strong>Cohort 10</strong> asked the same self-rated health question, <em>Would you say your health in general is excellent, very good, good, fair, or poor?</em>, along with the class variables of that year (age, sex, racialized identity, perceived income, and the MacArthur ladder of subjective social status). The five team datasets were merged into one file of 343 respondents so that health status could be examined across the whole class. <code>SAMPLE_ID</code> says which team’s study a person came from.</p>
+<p>This is <strong>real data</strong>, already cleaned and de-identified: no response IDs, passwords, dates, or open-ended answers, and the five team samples differ in whom they recruited (students, families, farmers-market visitors), which is why the chapters filter by age. The variable names predate the class naming rules, so the Play renames them: <code>HEALTH_STATUS</code> becomes <code>HEALTHSTATUS</code> (1 = Poor … 5 = Excellent); <code>SSS</code> is subjective social status (1 to 10); <code>SEX</code> is biological sex (0 = male, 1 = female); and <code>RACIALIZED_IDENTITY</code> (1 = identified as white only, 0 = any other identity) becomes <code>MINORITIZED_01</code> (1 = minoritized, 0 = not), named for the 1 the way a <code>_01</code> variable should be. The other columns (<code>RG_…</code>, <code>RI_…</code>, <code>PoorFairHealth</code>, <code>ExcellentHealth</code>) are earlier recodes of the same questions and are not used here.</p>
+</div>
+</div>
+</div>
+<section id="step-1-import-and-recode-as-in-visualize-a-comparison" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-import-and-recode-as-in-visualize-a-comparison">Step 1: Import and recode, as in Visualize a Comparison</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/health_status_data.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">HEALTHSTATUS =</span> HEALTH_STATUS) <span class="sc">|&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">MINORITIZED =</span> <span class="fu">factor</span>(<span class="fu">if_else</span>(RACIALIZED_IDENTITY <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not minoritized"</span>, <span class="st">"Minoritized"</span>)),</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEX         =</span> <span class="fu">factor</span>(SEX, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(HEALTHSTATUS), <span class="sc">!</span><span class="fu">is.na</span>(MINORITIZED))</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="sc">|&gt;</span> <span class="fu">count</span>(MINORITIZED)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      MINORITIZED   n
+1 Not minoritized 223
+2     Minoritized 120</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Visualize a Comparison (Play 2)</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the same two recodes as the earlier chapters; this play keeps every age because the question is about the whole sample</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="step-2-look-at-the-two-distributions" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-look-at-the-two-distributions">Step 2: Look at the two distributions</h4>
+<p>A density curve is the wrong picture for five possible values. Count how many people in each group chose each answer and plot the <strong>proportions</strong>, so a bigger group does not look like a healthier one.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>health_props <span class="ot">&lt;-</span> healthstatus <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(MINORITIZED, HEALTHSTATUS) <span class="sc">|&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(MINORITIZED) <span class="sc">|&gt;</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>plot_health_mw <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(health_props, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(HEALTHSTATUS), <span class="at">y =</span> prop, <span class="at">fill =</span> MINORITIZED)) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">width =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Poor"</span>, <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Fair"</span>, <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Good"</span>, <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Very good"</span>, <span class="st">"5"</span> <span class="ot">=</span> <span class="st">"Excellent"</span>)) <span class="sc">+</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Not minoritized"</span> <span class="ot">=</span> <span class="st">"#8d14c1"</span>, <span class="st">"Minoritized"</span> <span class="ot">=</span> <span class="st">"#f4b400"</span>)) <span class="sc">+</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Self-rated health"</span>, <span class="at">y =</span> <span class="st">"Share of group"</span>, <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Self-rated health by minoritized status"</span>) <span class="sc">+</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>plot_health_mw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="compare2groups_files/figure-html/play3-plot-1.png" class="img-fluid figure-img" alt="Two sets of five bars, one per group, for Poor through Excellent. Both groups peak at Good and Very good; the Minoritized bars are much taller at Fair and shorter at Excellent." width="672"></p>
+<figcaption>Figure 3. Self-rated health by minoritized status (Cohort 10 data, n = 343). Bars are the share of each group choosing each answer.</figcaption>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/health_minoritized_mannwhitney.png"</span>, <span class="at">plot =</span> plot_health_mw, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="fl">4.5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: https://ggplot2.tidyverse.org/reference/geom_bar.html</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: count() then a proportion within each group; position_dodge puts the two groups side by side at each answer</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The minoritized group’s bars sit a step to the left: four times the share at Fair, and smaller shares at Good, Very good, and Excellent. That is the pattern the test will check.</p>
+</section>
+<section id="step-3-why-not-a-t-test" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-why-not-a-t-test">Step 3: Why not a t-test?</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>healthstatus <span class="sc">|&gt;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(MINORITIZED) <span class="sc">|&gt;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">median =</span> <span class="fu">median</span>(HEALTHSTATUS), <span class="at">mean =</span> <span class="fu">mean</span>(HEALTHSTATUS),</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(HEALTHSTATUS)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  MINORITIZED         n median  mean shapiro_p
+  &lt;fct&gt;           &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+1 Not minoritized   223      4  3.62  1.05e-12
+2 Minoritized       120      3  3.26  1.01e- 7</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: Shapiro-Wilk p far below .05 in both groups, as it must be for a five-point rating; the median is the summary to report</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Both Shapiro-Wilk p-values are far below .05. With groups this large a t-test would give a similar p-value (the t-test is robust to non-normality when n is big), but it would make you report means of a five-point rating, and a mean of 3.6 does not describe anyone. The Mann-Whitney U test matches the data: it uses ranks and reports medians.</p>
+</section>
+<section id="step-4-the-mann-whitney-u-test-and-its-effect-size" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-the-mann-whitney-u-test-and-its-effect-size">Step 4: The Mann-Whitney U test and its effect size</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>mw_health <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(HEALTHSTATUS <span class="sc">~</span> MINORITIZED, <span class="at">data =</span> healthstatus)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>mw_health</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum test with continuity correction
+
+data:  HEALTHSTATUS by MINORITIZED
+W = 16134, p-value = 0.0009154
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># effect size r, from the test's normal approximation</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>n_health <span class="ot">&lt;-</span> <span class="fu">nrow</span>(healthstatus)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>z_health <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(mw_health<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>r_health <span class="ot">&lt;-</span> <span class="fu">abs</span>(z_health) <span class="sc">/</span> <span class="fu">sqrt</span>(n_health)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>r_health</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1790102</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#source: R documentation ?wilcox.test; Fritz, Morris, &amp; Richler (2012) for r</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: R names this test the Wilcoxon rank sum test and reports the statistic as W; W is the Mann-Whitney U. r = |Z| / sqrt(N); .1 small, .3 medium, .5 large</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Three things to know about the output. R calls the test the <strong>Wilcoxon rank sum test</strong>, which is the same test as the Mann-Whitney U under another name; report it as Mann-Whitney U, as the Analysis Map does. The statistic <code>W</code> is <em>U</em>. And the warning “cannot compute exact p-value with ties” is expected when many people share the same score; R switches to a normal approximation, which is what you want here. The effect size for a rank test is <em>r</em>, computed from the Z behind the p-value: .1 is small, .3 medium, .5 large.</p>
+</section>
+<section id="step-5-report-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-report-it">Step 5: Report it</h4>
+<p>A Mann-Whitney sentence reports <strong>medians</strong> (and the n of each group), <em>U</em>, <em>p</em>, and <em>r</em>, and names the direction:</p>
+<blockquote class="blockquote">
+<p>Minoritized participants rated their health lower (<em>Mdn</em> = 3, Good; <em>n</em> = 120) than participants who were not minoritized (<em>Mdn</em> = 4, Very good; <em>n</em> = 223), Mann-Whitney <em>U</em> = 16,133.5, <em>p</em> &lt; .001, <em>r</em> = 0.18, a small effect (Figure 3).</p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: which line of the box am I on?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ask two questions about the outcome. Is it a <strong>composite or a continuous measurement</strong> (a mean of several items, a Veggie Meter score, minutes, dollars)? Then start with the t-test, check normality within each group, and switch to Mann-Whitney U only if a group is small and clearly skewed. Is it a <strong>single rating with a handful of levels</strong>, or a count with a long tail (days per week, number of visits)? Then go straight to Mann-Whitney U and report medians. When you cannot decide, run both, as Play 1 did; if they agree, report the one that matches the data, and if they disagree, say so.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="sec-compare2-lab" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="sec-compare2-lab"><span class="header-section-number">18.3</span> 🏈 The Lab</h2>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref.svg" class="img-fluid" alt="Ref the raccoon"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s kickoff.</strong> Two comparisons on the lab data: well-being by whether a person has had mental health treatment (<code>MH_TREATED</code>, 0/1), drawn with <code>ggdensity()</code>, then stigma by racialized identity (<code>RACIALIZED_01CAT</code>), drawn as a violin. Run <code>source("lab_prep.R")</code> first. Try each play before you open my check.</p>
+</div>
+</div>
+<p><strong>Before you start.</strong> Open your lab <code>.qmd</code>, run your load-library chunk (<code>ggpubr</code> and <code>see</code> must be loaded), and run <code>source("lab_prep.R")</code> so that <code>mh_clean</code> is in your environment. <code>WELLBEING</code> and <code>STIGMA</code> are already composites (made in <code>lab_prep.R</code>); <code>RACIALIZED_01CAT</code> is from <a href="./dplyr.html">Transforming Your Data</a>.</p>
+<section id="lab-play-1-well-being-by-treatment-history-t-test-ggdensity" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="lab-play-1-well-being-by-treatment-history-t-test-ggdensity"><span class="header-section-number">18.3.1</span> Lab Play 1: Well-being by treatment history (<span class="normal">t-test</span>, <code>ggdensity()</code>)</h3>
+<p>Keep people with <code>MH_TREATED</code> of 0 or 1, make it a factor (<code>No treatment</code> first), count the groups, draw the density plot with group means, check normality per group, run the Welch t-test and Cohen’s d, and write the sentence.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>110</strong> people with no treatment history and <strong>75</strong> with treatment.</li>
+<li>Means: no treatment 3.26 (SD 0.68), treatment 3.23 (SD 0.65). Shapiro-Wilk p = 0.747 and 0.064.</li>
+<li>Welch <em>t</em>(163.8) = 0.30, <em>p</em> = .761, <em>d</em> = 0.05. The groups do not differ by more than chance would produce.</li>
+<li>In the density plot, the dashed mean lines should sit where the two means above say they do. If your lines are in different places, you plotted <code>mh_clean</code> instead of your filtered object, or the factor labels are swapped.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-play-2-stigma-by-racialized-identity-t-test-and-mann-whitney-u-violin-plot" class="level3" data-number="18.3.2">
+<h3 data-number="18.3.2" class="anchored" data-anchor-id="lab-play-2-stigma-by-racialized-identity-t-test-and-mann-whitney-u-violin-plot"><span class="header-section-number">18.3.2</span> Lab Play 2: Stigma by racialized identity (<span class="normal">t-test</span> and <span class="nonnormal">Mann-Whitney U</span>, violin plot)</h3>
+<p>Keep people with a value on <code>RACIALIZED_01CAT</code>, make it a factor (<code>White</code> first), draw a violin with a box plot and jittered points, check normality, run the Welch t-test <strong>and</strong> the Mann-Whitney U test, and compare their conclusions.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s check: what should you find?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>94</strong> people racialized as white and <strong>91</strong> as people of color.</li>
+<li>Means: white 2.32 (SD 0.61), people of color 2.55 (SD 0.63). Shapiro-Wilk p = 0.277 and 0.342.</li>
+<li>Welch <em>t</em>(182.3) = -2.50, <em>p</em> = .013, <em>d</em> = -0.37; Mann-Whitney U <em>p</em> = .022. The two tests agree, which is what you want to see.</li>
+<li>Write the result as “people racialized as …”, never “white people are …” (<a href="./dplyr.html">Transforming Your Data</a>).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="gray callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>👀 See the solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(ggpubr); <span class="fu">library</span>(see)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"lab_prep.R"</span>)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 1</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>lab1 <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(MH_TREATED <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">MH_TREATED =</span> <span class="fu">factor</span>(MH_TREATED, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No treatment"</span>, <span class="st">"Treatment"</span>)))</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>lab1 <span class="sc">|&gt;</span> <span class="fu">count</span>(MH_TREATED)</span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdensity</span>(lab1, <span class="at">x =</span> <span class="st">"WELLBEING"</span>, <span class="at">color =</span> <span class="st">"MH_TREATED"</span>, <span class="at">fill =</span> <span class="st">"MH_TREATED"</span>,</span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"mean"</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Well-being (1 to 5)"</span>)</span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>lab1 <span class="sc">|&gt;</span> <span class="fu">group_by</span>(MH_TREATED) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(WELLBEING), <span class="at">sd =</span> <span class="fu">sd</span>(WELLBEING),</span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(WELLBEING)<span class="sc">$</span>p.value)</span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(WELLBEING <span class="sc">~</span> MH_TREATED, <span class="at">data =</span> lab1)</span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(lab1<span class="sc">$</span>WELLBEING[lab1<span class="sc">$</span>MH_TREATED <span class="sc">==</span> <span class="st">"No treatment"</span>], lab1<span class="sc">$</span>WELLBEING[lab1<span class="sc">$</span>MH_TREATED <span class="sc">==</span> <span class="st">"Treatment"</span>])</span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 2</span></span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>lab2 <span class="ot">&lt;-</span> mh_clean <span class="sc">|&gt;</span></span>
+<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(RACIALIZED_01CAT)) <span class="sc">|&gt;</span></span>
+<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">RACIALIZED_01CAT =</span> <span class="fu">factor</span>(RACIALIZED_01CAT, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"White"</span>, <span class="st">"Person of color"</span>)))</span>
+<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lab2, <span class="fu">aes</span>(<span class="at">x =</span> RACIALIZED_01CAT, <span class="at">y =</span> STIGMA, <span class="at">fill =</span> RACIALIZED_01CAT)) <span class="sc">+</span></span>
+<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
+<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(STIGMA <span class="sc">~</span> RACIALIZED_01CAT, <span class="at">data =</span> lab2)</span>
+<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(STIGMA <span class="sc">~</span> RACIALIZED_01CAT, <span class="at">data =</span> lab2)</span>
+<span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a><span class="co">#source: The Quantitative Playbook for R (McCarty, 2026)</span></span>
+<span id="cb60-27"><a href="#cb60-27" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the same seven steps as the Play, on two lab comparisons</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s call: fouls to check if your numbers do not match
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>grouping factor must have exactly 2 levels</code></strong> → your group variable still has 3 or more values (or <code>NA</code> counted as one). Filter to the two groups first.</li>
+<li><strong>The means are the same as Ref’s but t has the opposite sign</strong> → your factor levels are in the other order. <code>t.test()</code> reports group 1 minus group 2; put the comparison group first in <code>levels =</code>.</li>
+<li><strong><code>could not find function "ggdensity"</code></strong> (or <code>geom_violinhalf</code>) → run <code>library(ggpubr)</code> (or <code>library(see)</code>); if that fails, source <code>install.R</code>.</li>
+<li><strong><code>object 'WELLBEING' not found</code></strong> → run <code>source("lab_prep.R")</code>.</li>
+<li><strong>A third violin labeled <code>NA</code></strong> → you forgot the <code>filter()</code> on the group variable.</li>
+<li><strong>The plot shows but <code>ggsave()</code> errors</strong> → there is no <code>plots</code> folder in your project. Make it once in the Files tab.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ref ref-tip">
+<div class="ref-face">
+<p><img src="images/ref-whistle.svg" class="img-fluid" alt="Ref the raccoon blowing his whistle"></p>
+</div>
+<div class="ref-say">
+<p><strong>Ref’s final whistle.</strong> Two plots, two tests, two sentences in your coding journal. Save, render, back up to your ELN.</p>
+</div>
+</div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: a two-group comparison in your report
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For every two-group comparison in your <em>RD Report</em> and <em>Final Report</em>: the plot (density, violin, or raincloud), saved with <code>ggsave()</code> and captioned with the n of each group; the assumption check you ran and what it showed; the test that matches the outcome, the Welch t-test with Cohen’s <em>d</em> for a normal composite or continuous score (Play 1, Step 7) or the Mann-Whitney U test with <em>r</em> for a skewed outcome or a single rating (Play 3, Step 5); and one sentence in Results in that Play’s form. Say in Methods how you defined the two groups and whom you excluded.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-compare2-yourturn" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="sec-compare2-yourturn"><span class="header-section-number">18.4</span> 🏆 Your Turn</h2>
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>There is no Ref. It’s game time, your turn!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nobody has compared your team’s groups before, so there is no answer to check against. Pick the plot style you will use throughout your report, change every line marked <code># REPLACE</code>, and use the checklist.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(ggpubr); <span class="fu">library</span>(see)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. two groups, as a labeled factor, comparison group first</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> alldata <span class="sc">|&gt;</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(GROUP_01 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span>                                        <span class="co"># REPLACE GROUP_01 (a _01 or _01CAT variable)</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GROUP_01 =</span> <span class="fu">factor</span>(GROUP_01, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Group A"</span>, <span class="st">"Group B"</span>)))   <span class="co"># REPLACE labels</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">count</span>(GROUP_01)                                                 <span class="co"># both groups big enough?</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. look</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdensity</span>(mydata, <span class="at">x =</span> <span class="st">"OUTCOME"</span>, <span class="at">color =</span> <span class="st">"GROUP_01"</span>, <span class="at">fill =</span> <span class="st">"GROUP_01"</span>,   <span class="co"># REPLACE OUTCOME (a score)</span></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"mean"</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co"># or:</span></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(mydata, aes(x = GROUP_01, y = OUTCOME, fill = GROUP_01)) +</span></span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_violin(alpha = 0.6) + geom_boxplot(width = 0.12, outlier.shape = NA) + geom_jitter(width = 0.1, alpha = 0.4)</span></span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. assumptions</span></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">group_by</span>(GROUP_01) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean =</span> <span class="fu">mean</span>(OUTCOME, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd =</span> <span class="fu">sd</span>(OUTCOME, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(OUTCOME)<span class="sc">$</span>p.value)</span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 4a. normal outcome (parametric): t-test and Cohen's d</span></span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OUTCOME <span class="sc">~</span> GROUP_01, <span class="at">data =</span> mydata)</span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a>cohens_d <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) (<span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="fu">mean</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="fu">sqrt</span>((<span class="fu">var</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">var</span>(y, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a><span class="fu">cohens_d</span>(mydata<span class="sc">$</span>OUTCOME[mydata<span class="sc">$</span>GROUP_01 <span class="sc">==</span> <span class="st">"Group A"</span>], mydata<span class="sc">$</span>OUTCOME[mydata<span class="sc">$</span>GROUP_01 <span class="sc">==</span> <span class="st">"Group B"</span>])</span>
+<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 4b. outcome not normal, or a single rating (non-parametric): Mann-Whitney U and r</span></span>
+<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">group_by</span>(GROUP_01) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">median =</span> <span class="fu">median</span>(OUTCOME, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a>mw <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(OUTCOME <span class="sc">~</span> GROUP_01, <span class="at">data =</span> mydata)</span>
+<span id="cb61-28"><a href="#cb61-28" aria-hidden="true" tabindex="-1"></a>mw</span>
+<span id="cb61-29"><a href="#cb61-29" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="fu">qnorm</span>(mw<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(mydata<span class="sc">$</span>OUTCOME)))          <span class="co"># r: .1 small, .3 medium, .5 large</span></span>
+<span id="cb61-30"><a href="#cb61-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-31"><a href="#cb61-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. save the plot for the poster</span></span>
+<span id="cb61-32"><a href="#cb61-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("plots/outcome_by_group.png", width = 8, height = 4, dpi = 300)               # REPLACE the name</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Ask yourself</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Design</strong></td>
+<td>Are the two groups different people? (Same people twice is <a href="./violin.html">Compare 1 Group, Pre/Post</a>.)</td>
+</tr>
+<tr class="even">
+<td><strong>Two levels</strong></td>
+<td>Does <code>count()</code> show exactly two groups, no <code>NA</code> row, and at least 20 people in each?</td>
+</tr>
+<tr class="odd">
+<td><strong>Outcome</strong></td>
+<td>Is the outcome a score (composite or continuous), not a category?</td>
+</tr>
+<tr class="even">
+<td><strong>Which test</strong></td>
+<td>Did you check normality per group and say which line of the Analysis Map box you are on: t-test (normal composite or continuous score) or Mann-Whitney U (skewed, small group, or a single rating)?</td>
+</tr>
+<tr class="odd">
+<td><strong>Effect size</strong></td>
+<td>Did you report Cohen’s <em>d</em> (t-test) or <em>r</em> (Mann-Whitney U), and say whether it is small, medium, or large?</td>
+</tr>
+<tr class="even">
+<td><strong>Plot</strong></td>
+<td>Does the caption give the n of each group, and is the plot saved with <code>ggsave()</code>?</td>
+</tr>
+<tr class="odd">
+<td><strong>Sentence</strong></td>
+<td>Does your Results sentence have <em>M</em>, <em>SD</em>, <em>n</em>, <em>t</em>(df), <em>p</em>, <em>d</em> (t-test) or <em>Mdn</em>, <em>n</em>, <em>U</em>, <em>p</em>, <em>r</em> (Mann-Whitney U) for both groups, and name the direction?</td>
+</tr>
+<tr class="even">
+<td><strong>Exclusions</strong></td>
+<td>Does Methods say who was left out of the comparison and why?</td>
+</tr>
+</tbody>
+</table>
+<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you quit RStudio
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shanemccarty\.github\.io\/FRIplaybook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./visualize-comparison.html" class="pagination-link" aria-label="Visualize a Comparison">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./violin.html" class="pagination-link" aria-label="1 Group, Pre/Post">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/compare2groups.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

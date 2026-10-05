@@ -50,7 +50,7 @@ Silhavy, A. & McCarty, S. (2025). Visualizing data in ggplot2: How to produce pu
 
 ### Editor and Chapter Authors
 
--   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)
+-   Editor: [McCarty, Shane](https://shane.quarto.pub)
 
 -   Chapter Authors
 

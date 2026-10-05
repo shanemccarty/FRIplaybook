@@ -2,7 +2,7 @@
 title: "Vignette Data"
 subtitle: "How to reshape a survey in which every person rated four vignettes (a 2 × 2 within-person design)"
 author:
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
   This chapter is for Team 4 only. Team 4's survey shows every participant four vignettes that differ in two details changed on purpose, and asks the same rating question after each one, so the analysis compares the four vignettes with each other. Qualtrics exports that design wide, one column per case, but the analysis needs one row per person per case with a factor for each detail that was varied. Researchers learn to write down the design as a table, reshape with pivot_longer(), add the factors with case_when(), and check that every case landed in exactly one cell, using four mental-health vignettes from the lab dataset (racialized as Black or White, current mental ill health high or low, rated for risk of a future serious mental illness diagnosis on a 1-to-12 scale). Your Turn gives Team 4 the template for its four sentencing vignettes.
 keywords:

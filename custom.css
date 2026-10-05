@@ -116,3 +116,8 @@ div.callout.gray .callout-icon::before { filter: grayscale(1); }
 .key-green  { background: #e6f4ee; border-color: #198754; }
 .key-blue   { background: #e7f0fe; border-color: #0d6efd; }
 .key-gray   { background: #eef0f2; border-color: #8a8f98; }
+
+/* ---- Analysis Map colors: the two lines in every box (never color alone: the words stay) ---- */
+.normal    { color: #1F4E9C; font-weight: 600; }   /* NORMAL outcome: parametric test */
+.nonnormal { color: #C45A00; font-weight: 600; }   /* NOT NORMAL outcome: non-parametric test */
+h3 .normal, h3 .nonnormal, h4 .normal, h4 .nonnormal { font-weight: inherit; }

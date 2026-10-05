@@ -1,7 +1,7 @@
 ---
 title: "Find the Ref"
 subtitle: "How to start and end every coding session"
-author: "Shane McCarty, PhD"
+author: "Shane McCarty"
 abstract: |
   This chapter introduces Ref the Raccoon, the referee of this playbook, and the routine he runs at the start and the end of every coding session. Researchers learn the six steps to reopen their RStudio Project and get their data, packages, and variables back, the four steps to finish a work session and back up their files to their ELN, how to fix the problems that most often appear at the start of a session, and where Ref shows up in the rest of the playbook (The Play, The Lab, and Your Turn). Use this chapter at the start of every lab and every time you sit down to work on your report.
 keywords:

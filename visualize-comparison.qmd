@@ -3,9 +3,9 @@ title: "Visualize a Comparison"
 subtitle: "How to build barplots and violin plots to compare groups"
 author:
   - Andrew Silhavy
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
-  This chapter teaches researchers to visualize comparative research questions, which examine differences in a continuous score between groups. Using real insurance data, researchers build a barplot of group means one layer at a time and see a violin plot of the same kind of data. In The Lab, researchers make a barplot with the original survey groups, then transform the groups (combine small groups, exclude answers that are not groups) to make a clearer barplot, and report what they did in the figure caption. In Your Turn, researchers use copy-ready templates and a checklist to build the comparison plot for their own research question.
+  This chapter teaches researchers to visualize comparative research questions, which examine differences in a continuous score between groups. In Play 1, using real insurance data, researchers build a barplot of group means one layer at a time and see a violin plot of the same kind of data. In Play 2, using the Cohort 10 health status data, they add a second grouping variable (a grouped barplot of self-rated health by minoritized status and sex, with error bars) and learn what a bar hides. In The Lab, researchers make a barplot with the original survey groups, then transform the groups (combine small groups, exclude answers that are not groups) to make a clearer barplot, and report what they did in the figure caption. In Your Turn, researchers use copy-ready templates and a checklist to build the comparison plot for their own research question.
 keywords:
   - ggplot2
   - barplot
@@ -13,7 +13,7 @@ keywords:
   - comparison
   - case_when
   - factor
-date: 09.20.2026
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   html: 
@@ -246,6 +246,74 @@ ggsave("plots/plot1_clear_name.png",
 ```
 
 The full explanation is in [Coding a Plot](layers.qmd#save).
+:::
+
+### Play 2: Health status by racialized identity and sex (class dataset)
+
+The insurance data showed the layers. This second play uses a dataset collected by FRI students, with the two things your own comparison plots will need: a rating scale as the outcome, and **two** grouping variables at once.
+
+{{< include _about-healthstatus-data.qmd >}}
+
+**The question.** Does self-rated health differ between people who are minoritized and people who are not, and is that difference the same for male and female participants? Health status is a 1-to-5 rating treated as a continuous score, so the bar height is a mean.
+
+```{r}
+#| label: play2-health-import
+#| message: false
+library(dplyr)
+healthstatus <- read.csv("data/health_status_data.csv")
+
+healthstatus <- healthstatus |>
+  rename(HEALTHSTATUS = HEALTH_STATUS) |>
+  mutate(
+    MINORITIZED_01 = if_else(RACIALIZED_IDENTITY == 1, 0, 1),          # 1 = minoritized (any identity other than white only)
+    MINORITIZED    = factor(MINORITIZED_01, levels = c(0, 1), labels = c("Not minoritized", "Minoritized")),
+    SEX            = factor(SEX, levels = c(0, 1), labels = c("Male", "Female")))
+
+healthstatus_25 <- healthstatus |> filter(AGE >= 25)      # adults 25 and older: the teams' student samples skew 18 to 22
+
+healthstatus_25 |>
+  group_by(MINORITIZED, SEX) |>
+  summarise(n = n(), mean_health = mean(HEALTHSTATUS), .groups = "drop")
+
+#source: Cohort 10 class dataset (five FRI Public Health teams, merged)
+#explanation: rename to the class conventions, make the two grouping factors, keep respondents 25 and older, and print the n behind every bar before drawing it
+```
+
+```{r}
+#| label: play2-health-bars
+#| fig-cap: "Mean self-rated health (1 = Poor to 5 = Excellent) by racialized identity and sex, respondents aged 25 and older (Cohort 10 class dataset). Error bars are ±1 standard error."
+#| fig-alt: "A grouped bar chart with two clusters, Not minoritized and Minoritized, each with a Male and a Female bar. Bars sit between Good and Very Good; the not-minoritized bars are slightly taller. Thin error bars top each bar."
+#| fig-height: 5.5
+#| fig-width: 8
+library(ggplot2)
+
+plot_health_groups <- ggplot(healthstatus_25,
+                             aes(x = MINORITIZED, y = HEALTHSTATUS, fill = SEX)) +
+  geom_bar(stat = "summary", fun = "mean", position = position_dodge(width = 0.8), width = 0.7) +
+  stat_summary(fun.data = mean_se, geom = "errorbar",
+               position = position_dodge(width = 0.8), width = 0.2) +
+  scale_fill_manual(values = c("Male" = "#5b8db8", "Female" = "#e76f51")) +
+  scale_y_continuous(breaks = 1:5, limits = c(0, 5),
+                     labels = c("Poor", "Fair", "Good", "Very Good", "Excellent")) +
+  labs(title = "Self-rated health by racialized identity and sex (age 25+)",
+       x = "Racialized identity", y = "Mean health status", fill = "Sex") +
+  theme_bw()
+
+plot_health_groups
+
+ggsave("plots/plot_health_minoritized_sex.png", plot = plot_health_groups,
+       width = 8, height = 5.5, dpi = 300)
+
+#source: ggplot2 documentation https://ggplot2.tidyverse.org/reference/stat_summary.html
+#explanation: x is the first group, fill is the second, position_dodge puts the bars side by side; stat_summary() adds a standard-error bar so the reader can see how sure each mean is
+```
+
+Two groups on the x axis and two in the fill is as many as a bar chart can carry. Read it in two passes: first across (is one racialized group higher than the other?), then within each pair (do male and female participants differ in the same way in both?). A difference that appears in one pair and not the other is an **interaction**, and [Compare 3+ Groups](ANOVA.qmd) is where it gets tested. Note the small cells: print the `count()` first, as above, and report every n in the caption or the text.
+
+::: callout-warning
+## Caution: a bar hides the spread
+
+A bar chart of means shows four numbers and nothing else. Before you report one, look at the same comparison as a violin or a raincloud plot ([Compare 2 Groups](compare2groups.qmd)) so that you have seen the distributions behind the means, and give the error bars or the standard deviations in the text.
 :::
 
 ```{r}

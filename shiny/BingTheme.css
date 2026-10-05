@@ -1,0 +1,39 @@
+/*-- scss:defaults --*/
+$backgroundColor: #005a43;
+$textColor: #005a43;
+
+/*-- scss:rules --*/
+.reveal {
+  background-image: url('BingTheme.png');
+  background-size: cover;
+  background-position: center;
+  color: $textColor;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4, 
+.reveal h5, 
+.reveal h6 {
+  color: $textColor;
+  margin-top: 20px;
+}
+
+body {
+  font-size: 24px;
+  color: $textColor;
+  margin: 0;
+  padding: 0;
+}
+
+.reveal .slide-logo {
+  height: 54px !important;
+  width: 303px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+}

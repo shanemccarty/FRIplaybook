@@ -4,9 +4,11 @@ subtitle: "Linear regression: how to run it and report it"
 author:
   - Allison Anemone
   - Andrew Silhavy
-  - Shane McCarty, PhD
+  - Vivian Raposo
+  - Serena Suchdeve
+  - Shane McCarty
 abstract: |
-  This chapter teaches researchers to examine a relationship question with a linear regression in R. Researchers start with a simple regression (one predictor and one outcome), learn to read the intercept, the slope, the p-value, and R-squared, and then add more predictors to build a multiple linear regression, including a categorical predictor such as gender. The chapter shows how to check the residuals, how to report a regression in a sentence and in a table, and which common shortcuts to avoid (leaving a category as a number, and cutting a score into two groups). In The Lab, researchers run three models with the lab dataset (one predictor, a binary predictor, and a dummy-coded predictor) and check their own answers. In Your Turn, researchers use a copy-ready template and a checklist for their own research question.
+  This chapter teaches researchers to examine a relationship question with a linear regression in R. Researchers start with a simple regression (one predictor and one outcome), learn to read the intercept, the slope, the p-value, and R-squared, and then add more predictors to build a multiple linear regression, including a categorical predictor such as gender. The chapter shows how to check the residuals (the outcome itself need not be normal), how to report a regression in a sentence and in a table, and which common shortcuts to avoid (leaving a category as a number, and cutting a score into two groups). A second Play re-runs a published FRI result, growth mindset predicting support for care-based violence prevention, with gender added as a third variable. In The Lab, researchers run three models with the lab dataset (one predictor, a binary predictor, and a dummy-coded predictor) and check their own answers. In Your Turn, researchers use a copy-ready template and a checklist for their own research question.
 keywords:
   - linear regression
   - multiple regression
@@ -14,7 +16,7 @@ keywords:
   - predictors
   - residuals
   - relationship
-date: 09.20.2026
+date: 10.05.2026
 date-format: "MM.DD.YYYY"
 format:
   html:
@@ -54,7 +56,9 @@ This chapter is the last step on [The Analysis Map](analysis-map.qmd) for a **re
 
 ## 📋 The Play {#the-play}
 
-### Example Data: `pregnancy`
+### Play 1 (simple and multiple linear regression): relate three predictors to perceived barriers
+
+#### Example Data: `pregnancy`
 
 The example comes from an FRI Public Health team that surveyed people about health beliefs during pregnancy. One of their questions was: **do people with lower social status perceive more barriers to following health advice during pregnancy, after we account for their age and gender?**
 
@@ -71,7 +75,7 @@ To protect the people who took the team's survey, the file used in this chapter 
 | `AGE` | age in years | 18 and up |
 | `GENDER` | gender | 1 = Woman, 2 = Man |
 
-### Load and Import
+#### Load and Import
 
 ```{r}
 #| label: load-library-regression
@@ -87,7 +91,7 @@ summary(pregnancy)
 
 Look at the minimum of `SSS` and `GENDER`. A value of -99 is not a real answer. It is the code for "Prefer not to answer", and it has to become missing (`NA`) before you analyze anything.
 
-### Step 1: Get the data ready
+#### Step 1: Get the data ready
 
 ```{r}
 #| label: clean-pregnancy
@@ -108,7 +112,7 @@ summary(pregnancy)
 In the data file, `GENDER` is stored as the numbers 1 and 2. If you leave it that way, R treats gender as a *score*, as if a man were "one unit more" than a woman. `factor()` tells R that the numbers are labels for groups. Do this for **every** categorical predictor before you run a regression.
 :::
 
-### Step 2: Look before you test
+#### Step 2: Look before you test
 
 Always make the plot first (see [Visualize a Relationship](visualize-relationship.qmd)). `BARRIERS` is a mean of survey items, so points can stack. Jitter them.
 
@@ -138,7 +142,7 @@ plot_sss_barriers
 
 The line slopes downward: people who place themselves higher on the ladder report fewer barriers. A regression puts a number on that line and tests it.
 
-### Step 3: One predictor (simple regression)
+#### Step 3: One predictor (simple regression)
 
 The function is `lm()`, which stands for *linear model*. Read the formula `BARRIERS ~ SSS` as "**`BARRIERS` is predicted by `SSS`**". The outcome always goes on the left of the `~`.
 
@@ -163,7 +167,7 @@ How to read the output:
 -   **`Multiple R-squared` = `r sprintf("%.2f", summary(model_simple)$r.squared)`.** `SSS` explains about `r round(summary(model_simple)$r.squared * 100)`% of the differences between people in `BARRIERS`. In survey research, small values like this are common.
 -   At the bottom, R tells you how many people were left out because of missing answers. Report the number of people who were *in* the model: `nobs(model_simple)` = `r nobs(model_simple)`.
 
-### Step 4: Three predictors (multiple regression)
+#### Step 4: Three predictors (multiple regression)
 
 To add predictors, add them to the formula with `+`. This answers the team's real question: is social status still related to barriers **after we account for** age and gender?
 
@@ -194,7 +198,7 @@ Each slope now means "the change in `BARRIERS` for one more unit of this predict
 A regression on survey data tells you that two things go together. It does not tell you that one *causes* the other. Write "is related to", "is associated with", or "predicts". Do not write "leads to", "affects", or "causes".
 :::
 
-### Step 5: Check the residuals
+#### Step 5: Check the residuals
 
 A **residual** is how far each person is from the line. A linear regression works best when the residuals are roughly bell-shaped (normal). This is the "is it normal?" question from the Analysis Map, asked about the residuals and not about the raw scores.
 
@@ -215,7 +219,7 @@ ggplot(data = data.frame(residual = resid(model_multiple)),
 
 If your histogram has one long tail or two humps, talk to your peer mentor and/or Dr. Shane before you report the model.
 
-### Step 6: Report it
+#### Step 6: Report it
 
 Report the slope (b), the p-value, and the number of people for each predictor, and R-squared for the whole model.
 
@@ -229,6 +233,113 @@ knitr::kable(summary(model_multiple)$coefficients,
              digits = 3,
              caption = "Table 1. Multiple linear regression predicting perceived barriers.")
 ```
+
+### Play 2 (multiple linear regression): relate growth mindset to care-based support, with gender as a third variable
+
+{{< include _about-safety-data.qmd >}}
+
+[Relate 2 Variables](correlation.qmd) Play 3 showed that growth mindset and support for care-based community interventions go together (*ρ* = .42). The team's report went one step further with a regression, and this play goes one step further still by adding **gender** as a third variable, the way their Figure 3 did: one line for women and one for men. The question becomes: does growth mindset predict support for care-based interventions, and is that relationship the same for women and men?
+
+#### Step 1: Import, score, and make gender a factor
+
+```{r}
+#| label: play2-import
+safety <- read.csv("data/safety_data.csv") |>
+  mutate(across(where(is.numeric), ~ replace(.x, .x %in% c(-99, -50), NA))) |>
+  mutate(GROWTH = rowMeans(cbind(FIXEDPERSON1_BASIC, FIXEDPERSON2_DIFF, FIXEDPERSON4_OLD, FIXEDPERSON_CERTAIN,
+                                 7 - FIXEDPERSON3_CHANGE_R, 7 - FIXEDPERSON_ALL_R,
+                                 7 - FIXEDPERSON_ALWAYS_R, 7 - FIXEDPERSON_MATTER_R), na.rm = TRUE)) |>
+  filter(GENDER %in% c(0, 1)) |>                                             # two gender groups for the third variable
+  mutate(GENDER = factor(GENDER, levels = c(0, 1), labels = c("Women", "Men"))) |>
+  filter(!is.na(GROWTH), !is.na(EFFECT_CARE_COMM))
+
+nrow(safety)
+safety |> count(GENDER)
+
+#source: Suchdeve et al. (2025); Relate 2 Variables (Play 3)
+#explanation: the same composite as the correlation chapter; GENDER becomes a labeled factor with women first, so the regression's gender slope reads "men compared with women"
+```
+
+#### Step 2: Look: one line per gender
+
+```{r}
+#| label: play2-plot
+#| fig-cap: "Figure 3. Support for care-based community interventions against growth mindset, by gender (Cohort 11 community safety data, n = 68). Points are jittered; each line is the line of best fit for that gender, with its 95% confidence band."
+#| fig-alt: "A scatterplot with growth mindset on the x axis and agreement that community-based interventions are the most effective way to achieve safety on the y axis. Points and two rising lines of best fit, purple for women and gold for men, with overlapping confidence bands; both lines slope upward at a similar angle."
+plot_growth_care_gender <- ggplot(safety, aes(x = GROWTH, y = EFFECT_CARE_COMM, color = GENDER, fill = GENDER)) +
+  geom_jitter(width = 0.05, height = 0.15, alpha = 0.6, size = 2) +
+  geom_smooth(method = "lm", alpha = 0.15) +
+  scale_x_continuous(breaks = 1:6, limits = c(1, 6)) +
+  scale_y_continuous(breaks = 1:6, limits = c(0.7, 6.3),
+                     labels = c("Strongly\ndisagree", "Disagree", "Slightly\ndisagree", "Slightly\nagree", "Agree", "Strongly\nagree")) +
+  scale_color_manual(values = c("Women" = "#8d14c1", "Men" = "#f4b400")) +
+  scale_fill_manual(values = c("Women" = "#8d14c1", "Men" = "#f4b400")) +
+  labs(x = "Growth mindset (1 = fixed, 6 = growth)",
+       y = "Community-based interventions are\nthe most effective way to achieve safety",
+       color = "Gender", fill = "Gender",
+       title = "Growth mindset and care-based support, by gender") +
+  theme_bw(base_size = 13) +
+  theme(legend.position = "top")
+
+plot_growth_care_gender
+ggsave("plots/growth_care_gender_scatter.png", plot = plot_growth_care_gender, width = 7.5, height = 5.5, dpi = 300)
+
+#source: Visualize a Relationship (Play 2)
+#explanation: color = GENDER inside aes() gives each gender its own points and its own geom_smooth() line; the two lines rising together is what "the relationship is the same for women and men" looks like
+```
+
+The two lines rise at almost the same angle and their bands overlap along their whole length. That picture predicts what the regression will say: a growth-mindset slope that matters, and a gender difference that does not.
+
+#### Step 3: The regression with two predictors
+
+```{r}
+#| label: play2-model
+model_care <- lm(EFFECT_CARE_COMM ~ GROWTH + GENDER, data = safety)
+summary(model_care)
+
+#source: https://www.datacamp.com/tutorial/multiple-linear-regression-r-tutorial
+#explanation: one continuous predictor and one factor; the GENDERMen row is the difference between men and women at the same level of growth mindset
+```
+
+Read the two predictor rows. `GROWTH` is the slope: for each one-point increase in growth mindset, support for care-based interventions rises by about half a point on the 1-to-6 scale, holding gender constant. `GENDERMen` is the gender difference *at the same growth mindset*: positive means men a little higher, but its p-value says the difference could easily be zero. `Multiple R-squared` is the share of the variation in support that the two predictors explain together.
+
+#### Step 4: Check the residuals, not the outcome
+
+```{r}
+#| label: play2-residuals
+#| fig-cap: "Figure 4. Histogram of the residuals from the two-predictor model. Roughly bell-shaped, with a slightly longer left tail."
+#| fig-alt: "A histogram of regression residuals centered on zero, roughly symmetric, with a few more values on the negative side."
+#| fig-height: 4
+#| fig-width: 6
+ggplot(data.frame(residual = resid(model_care)), aes(x = residual)) +
+  geom_histogram(bins = 15, fill = "#005a43", color = "white") +
+  labs(x = "Residual (actual score minus predicted score)", y = "Number of people") +
+  theme_bw()
+
+shapiro.test(resid(model_care))
+
+#explanation: the outcome is a single 1-to-6 item and is not normal; the regression does not need it to be. What it needs is roughly normal residuals, and these pass
+```
+
+This is the point the Analysis Map's regression box makes: `EFFECT_CARE_COMM` is one Likert item, and its own histogram is nothing like a bell, yet the residuals are acceptable, so the model stands. Had the residual histogram shown a long tail or two humps, the fix would be a different model, not a different outcome.
+
+#### Step 5: Report it, and compare with the published result
+
+```{r}
+#| label: play2-report-values
+#| include: false
+cc <- summary(model_care)$coefficients
+```
+
+> A multiple linear regression (n = `r nobs(model_care)`) showed that growth mindset was positively associated with the belief that community-based interventions are the most effective way to achieve community safety (*b* = `r sprintf("%.2f", cc["GROWTH", 1])`, *p* `r pfmt(cc["GROWTH", 4])`), after accounting for gender. Men and women did not differ at the same level of growth mindset (*b* = `r sprintf("%.2f", cc["GENDERMen", 1])`, *p* `r pfmt(cc["GENDERMen", 4])`). The model explained `r sprintf("%.0f", 100 * summary(model_care)$r.squared)`% of the variation in support (*R*² = `r sub("^0", "", sprintf("%.2f", summary(model_care)$r.squared))`) (Figure 3).
+
+Suchdeve et al. (2025) reported *b* = .57 for growth mindset with perceived community safety as the second predictor, in a sample of 54; here the slope is `r sprintf("%.2f", cc["GROWTH", 1])` with gender as the second predictor, in a sample of `r nobs(model_care)`. Same data, same direction, same size of effect, with a different second predictor and slightly different exclusion rules: that is what a result that holds up looks like, and the small difference is a reminder to say in Methods exactly whom you excluded and why.
+
+::: callout-tip
+## Go: a slope for each group is an interaction, and that is a different model
+
+Figure 3 draws a separate line for women and men, but the model in Step 3 fits **one** slope for growth mindset and shifts the line up or down by gender. That is the right model when the lines are parallel, as they are here. If the lines had crossed or fanned apart, the question would be whether the *slope* differs by gender, which is an **interaction** (`GROWTH * GENDER` in the formula). Interactions are beyond this playbook; if your plot shows clearly non-parallel lines, bring it to your peer mentor and/or Dr. Shane.
+:::
 
 ::: {.callout-warning}
 ## Caution: Don't cut your score into two groups
@@ -282,7 +393,7 @@ nrow(mh_clean)         # how many people are in the clean dataset?
 `nrow(mh_clean)` should be **`r nrow(mh_clean)`**.
 :::
 
-### Lab Play 1: Draw Left (one predictor)
+### Lab Play 1 (simple regression): Draw Left, relate social support to well-being
 
 **Research question:** Do people with more social support (`SUPPORT`) report higher well-being (`WELLBEING`)?
 
@@ -329,7 +440,7 @@ nobs(model_lab_1)
 ```
 :::
 
-### Lab Play 2: Draw Right (add a binary predictor)
+### Lab Play 2 (multiple regression): Draw Right, add racialized identity as a binary predictor
 
 **Research question:** After we account for social support, does well-being differ between People of Color and White respondents?
 
@@ -387,7 +498,7 @@ nobs(model_lab_2)
 This model tells you that two groups differ. It does not tell you why. In public health, differences between racial and ethnic groups point to differences in people's conditions and experiences (for example, discrimination or access to care). They are not caused by the identity itself. Write "scored lower than", and use your literature review to discuss why.
 :::
 
-### Lab Play 3: Draw Middle (add a dummy-coded predictor)
+### Lab Play 3 (multiple regression): Draw Middle, add racialized identity as a six-group predictor
 
 **Research question:** Two groups hide a lot. Does the difference in well-being look the same for every racial/ethnic group?
 

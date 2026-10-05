@@ -2,7 +2,7 @@
 # These two labels change ONLY the Preface page (the book's title page). Chapters still say "Author(s)" and "Published".
 language:
   title-block-author-single: "Editor"
-  title-block-published: "Edition 2 (v2.01)"
+  title-block-published: "Edition 2"
 ---
 
 # Preface {.unnumbered}
@@ -28,11 +28,11 @@ The playbook and labs are self-paced. Some weeks you will have more time than ot
 ::: callout-warning
 ## Caution: Don't fall two weeks behind
 
-If you get two or more weeks behind on the chapters and labs, it will be very difficult to catch up in time for your *RD Report*.
+If you fall 2+ weeks behind on reading these chapters and completing the labs, it will be very difficult to catch up in time for your *RD Report*. I strongly recommend using a full day (or two) of your Fall break to get back on track.
 :::
 
 ## The Data Science Workflow {.unnumbered}
-This playbook applies the data science workflow in *R for Data Science (2e)* ([Wickham et al., 2023](https://r4ds.hadley.nz/whole-game.html)) to help researchers examine community health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
+This playbook was inspired by the data science workflow in *R for Data Science (2e)* ([Wickham et al., 2023](https://r4ds.hadley.nz/whole-game.html)) and adapted to help researchers examine community health problems from a biopsychosocial perspective. Specifically, researchers may use these plays to examine the prevalence of disease and wellbeing indicators, describe health patterns, identify associations between (risk/protective/promotive) determinants and (positive/negative) health outcomes, and create a reproducible scientific report with R and Quarto.
 
 By the end of this guide, you will be able to:
 
@@ -114,6 +114,8 @@ Every colored box means the same thing in every chapter.
 
 Here is what the boxes look like in a chapter. The two red boxes are easy to confuse, so look for the paper and pencil: a [dark red]{.key .key-darkred} box with a 📝 is something graders check for; a [red]{.key .key-red} box with a ! is something to know or do so that your work does not break.
 
+Two more colors appear from [The Analysis Map](analysis-map.qmd) on, and they are about statistical tests rather than boxes: [navy]{.normal} marks the test for a **normal** outcome (the parametric test, the top line of every box on the map) and [orange]{.nonnormal} marks the test for an outcome that is **not normal** (the non-parametric test, the bottom line). The words always appear with the color, so nothing depends on the color alone.
+
 ::: {.callout-important .required}
 ## Required: a figure caption
 
@@ -162,36 +164,35 @@ McCarty, S. (Ed.). (2026). *The Quantitative Playbook for R: Plays for Public He
 Silhavy, A. & McCarty, S. (2026). Visualize a relationship: How to build scatterplots to show how two scores go together. In S. McCarty (Ed.), *The Quantitative Playbook for R: Plays for Public Health & Community Health Research* (2nd ed.). <https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html>
 
 ### Editor, Chapter Authors, and Chapter Reviewers {.unnumbered}
--   Editor: [Shane McCarty, PhD](https://shane.quarto.pub)
+-   Editor: [McCarty, Shane](https://shane.quarto.pub)
 
 -   Chapter Authors
 
-    -   [Zihan Hei](https://zihanhei.quarto.pub)
+    -   Anemone, Allison
 
-    -   Gavin Rualo
+    -   Estreich, Mara
 
-    -   Andrew Silhavy
+    -   [Hei, Zihan](https://zihanhei.quarto.pub)
 
-    -   Allison Anemone
+    -   John, Jeff
 
-    -   Mara Estreich
+    -   Kim, Yoomin (Ashley)
 
-    -   Jeff John
+    -   Rualo, Gavin
 
-    -   Erica Sava
+    -   Sava, Erica
 
-    -   Zach Spiegel
+    -   Silhavy, Andrew
 
-    -   Yoomin (Ashley) Kim
+    -   Spiegel, Zach
+
+    -   Vishnevetsky, Anna
 
 -   Chapter Reviewers
 
-    -   Danica Lyktey
+    -   Lyktey, Danica
 
-    -   Vivian Raposo
+    -   Raposo, Vivian
 
-    -   Anna Vishnevetsky
-
-    -   Yoomin (Ashley) Kim
 
 After generating original content or sourcing from vetted R resources (e.g., Posit, datacamp, R for Data Science), claude.ai was used to create chapter summaries based on the chapter content and code. For some chapters, claude.ai was used to simplify, refine, or improve existing code chunks.

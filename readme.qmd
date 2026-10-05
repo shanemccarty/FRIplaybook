@@ -3,7 +3,7 @@ title: "Read Me"
 subtitle: "How to write a read me file"
 author: 
   - Zihan Hei
-  - Shane McCarty, PhD
+  - Shane McCarty
 abstract: |
   This chapter introduces researchers to the basics of a read me file. 
 keywords:

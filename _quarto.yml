@@ -6,8 +6,8 @@ book:
   title: "The Quantitative Playbook for R"
   subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
-  date: "10/02/2026"
-  version: "Edition 2 (v2.26)"      
+  date: "10/04/2026"
+  version: "Edition 2 (v2.3)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -56,16 +56,16 @@ book:
           file: analysis-map.qmd
         - text: "Describe Your Data"          # short version: normality checks; descriptives table to be added
           file: describe.qmd
-        - text: "Statistics"                  # resources page
+        - text: "Frequentist Inference"   # where the plays sit (2x2: inference/prediction x frequentist/Bayesian), the four numbers, resources (2026-10-04)
           file: statistics.qmd
 
     - part: "Compare Groups (Lab 4)"
       chapters:
         - text: "Visualize a Comparison"
           file: visualize-comparison.qmd
-        # - text: "Compare 2 Groups"      # independent t-test / Mann-Whitney U
-        #   file: two-groups.qmd
-        - text: "Visualize Pre/Post Data"     # becomes "Compare 1 Group, Pre/Post" (paired t-test / Wilcoxon)
+        - text: "Compare 2 Groups"            # independent-samples t-test / Wilcoxon; ggpubr density, ggplot2 violin + raincloud (2026-10-04)
+          file: compare2groups.qmd
+        - text: "1 Group, Pre/Post"           # Compare 1 Group, Pre/Post: paired t-test / Wilcoxon signed-rank; violin + raincloud (renamed 2026-10-04)
           file: violin.qmd
         - text: "Compare 3+ Groups"             # short version: three or more groups (ANOVA / Kruskal-Wallis / ANCOVA); replaces planned three-groups.qmd
           file: ANOVA.qmd
@@ -74,8 +74,8 @@ book:
       chapters:
         - text: "Visualize a Relationship"
           file: visualize-relationship.qmd
-        # - text: "Relate 2 Variables"             # Pearson / Spearman
-        #   file: two-variables.qmd
+        - text: "Relate 2 Variables"             # Pearson / Spearman correlation (2026-10-05)
+          file: correlation.qmd
         - text: "Relate 3+ Variables"     # multiple linear regression
           file: regression.qmd
 
@@ -102,6 +102,8 @@ book:
           file: import-live.qmd
         - text: "Write Functions"
           file: write-functions.qmd
+        - text: "Shiny Data Viz"
+          file: shiny.qmd
 
 # Filters - WebR only for now
 filters:
