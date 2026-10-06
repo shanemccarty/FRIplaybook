@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 420" role="img" aria-label="A cross-section of a lasagna drawn as five stacked layers, each labeled with the ggplot2 layer it stands for: pasta is the data, sauce is the mapping, cheese is the geometry, a second sauce layer is the statistics, and the browned top is the theme.">
+  <title>Build a plot the way you build a lasagna: one layer at a time</title>
+  <style>
+    .lab { font-family: "Fira Sans Condensed", "Helvetica Neue", Arial, sans-serif; font-size: 19px; fill: #222; }
+    .lab b, .strong { font-weight: 700; }
+    .code { font-family: Menlo, Consolas, monospace; font-size: 16px; fill: #333; }
+    .dish { fill: none; stroke: #7a7a7a; stroke-width: 4; }
+  </style>
+  <!-- baking dish -->
+  <path class="dish" d="M90 70 L90 370 Q90 395 115 395 L455 395 Q480 395 480 370 L480 70" />
+  <line x1="70" y1="70" x2="110" y2="70" class="dish"/>
+  <line x1="460" y1="70" x2="500" y2="70" class="dish"/>
+  <!-- layers, bottom to top -->
+  <rect x="100" y="330" width="370" height="55" fill="#F2DDA4"/>
+  <path d="M100 330 q18 -10 36 0 t36 0 t36 0 t36 0 t36 0 t36 0 t36 0 t36 0 t36 0 t34 0" fill="#F2DDA4" stroke="#E0C27A" stroke-width="2"/>
+  <rect x="100" y="275" width="370" height="55" fill="#B8432B"/>
+  <rect x="100" y="220" width="370" height="55" fill="#FBF3D0"/>
+  <circle cx="150" cy="247" r="10" fill="#FFFFFF"/><circle cx="235" cy="240" r="8" fill="#FFFFFF"/><circle cx="320" cy="252" r="11" fill="#FFFFFF"/><circle cx="405" cy="243" r="9" fill="#FFFFFF"/>
+  <rect x="100" y="165" width="370" height="55" fill="#B8432B"/>
+  <rect x="100" y="110" width="370" height="55" fill="#D99A3A"/>
+  <path d="M100 110 q20 -16 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t10 0" fill="#C9822A"/>
+  <!-- labels -->
+  <g class="lab">
+    <text x="520" y="362"><tspan class="strong">Pasta</tspan> = the data</text>
+    <text x="520" y="307"><tspan class="strong">Sauce</tspan> = the mapping (x and y)</text>
+    <text x="520" y="252"><tspan class="strong">Cheese</tspan> = the geometry (bars)</text>
+    <text x="520" y="197"><tspan class="strong">More sauce</tspan> = the statistics (means)</text>
+    <text x="520" y="142"><tspan class="strong">Browned top</tspan> = the labels and theme</text>
+  </g>
+  <g class="code">
+    <text x="520" y="384">ggplot(data = ...)</text>
+    <text x="520" y="329">aes(x = ..., y = ...)</text>
+    <text x="520" y="274">+ geom_bar()</text>
+    <text x="520" y="219">+ stat_summary()</text>
+    <text x="520" y="164">+ labs() + theme_bw()</text>
+  </g>
+  <!-- the plus signs between layers, left of the dish -->
+  <g class="lab" font-weight="700" fill="#555">
+    <text x="48" y="336">+</text><text x="48" y="281">+</text><text x="48" y="226">+</text><text x="48" y="171">+</text>
+  </g>
+</svg>

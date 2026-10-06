@@ -39,7 +39,7 @@ mh_clean <- mh_raw |>
                                      K10_TOTAL <= 29 ~ "Moderate",
                                      K10_TOTAL >= 30 ~ "Severe"),
                            levels = c("Well", "Mild", "Moderate", "Severe")),
-    DISTRESS_01CAT = if_else(K10_TOTAL >= 20, 1, 0),                        # 1 = likely distressed (20+)
+    DISTRESS_01 = if_else(K10_TOTAL >= 20, 1, 0),                        # 1 = likely distressed (20+)
     RACIALIZED_N   = rowSums(!is.na(across(RACIALIZED_1:RACIALIZED_8))),    # how many boxes were checked (99 = declined, not counted)
     RACIALIZED_6CAT = factor(case_when(RACIALIZED_N >= 2       ~ "Two or more",
                                        !is.na(RACIALIZED_7)    ~ "White",
@@ -48,6 +48,6 @@ mh_clean <- mh_raw |>
                                        !is.na(RACIALIZED_4)    ~ "Hispanic or Latine",
                                        RACIALIZED_N == 1       ~ "Another identity"),  # codes 1, 5, 6, 8: too few to stand alone
                              levels = c("White", "Asian", "Black", "Hispanic or Latine", "Another identity", "Two or more")),
-    RACIALIZED_01CAT = case_when(RACIALIZED_6CAT == "White" ~ 0,          # 0 = racialized as white
+    RACIALIZED_01 = case_when(RACIALIZED_6CAT == "White" ~ 0,          # 0 = racialized as white
                                  !is.na(RACIALIZED_6CAT)    ~ 1)           # 1 = racialized as a person of color
   )

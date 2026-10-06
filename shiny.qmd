@@ -118,7 +118,7 @@ Code inside `renderPlot({ … })`, `renderTable({ … })`, or `reactive({ … })
 library(shiny)
 library(tidyverse)
 
-healthstatus <- read.csv("health_status_data.csv") |>         # the file sits next to app.R
+healthstatusdata <- read.csv("health_status_data.csv") |>         # the file sits next to app.R
   rename(HEALTHSTATUS = HEALTH_STATUS) |>
   mutate(
     MINORITIZED = factor(if_else(RACIALIZED_IDENTITY == 1, 0, 1),
@@ -161,7 +161,7 @@ server <- function(input, output, session) {
 
   # the data the viewer asked for: recomputed whenever the slider moves
   filtered <- reactive({
-    healthstatus |>
+    healthstatusdata |>
       filter(AGE >= input$age[1], AGE <= input$age[2])
   })
 
@@ -252,7 +252,7 @@ An app on your laptop is only yours. To put a link on a poster, publish it to **
 
 1.  Make a free account at [shinyapps.io](https://www.shinyapps.io/) and, in **Account \> Tokens**, click **Show** to see your token and secret.
 2.  In RStudio, with the app open, click the **Publish** icon (next to Run App) \> **Publish Application...** \> **Add new account** \> ShinyApps.io, and paste the `rsconnect::setAccountInfo(...)` line the site shows you. Do this once per computer.
-3.  Choose the files to publish (`app.R` and the data file), name the app, and click **Publish**. The app opens at `https://yourname.shinyapps.io/appname/`.
+3.  Choose the files to publish (`app.R` and the data file), name the app, and click **Publish**. The app opens at `https://SWAPUSERNAME.shinyapps.io/SWAPAPPNAME/`.
 
 ### Put the app inside a Quarto page
 
@@ -260,7 +260,7 @@ Once the app has a shinyapps.io address, it can sit inside any web page, includi
 
 ```` markdown
 ```{=html}
-<iframe src="https://yourname.shinyapps.io/appname/" width="100%" height="700" style="border: none;"></iframe>
+<iframe src="https://SWAPUSERNAME.shinyapps.io/SWAPAPPNAME/" width="100%" height="700" style="border: none;"></iframe>
 ```
 ````
 
@@ -277,7 +277,7 @@ Everything in the app's folder goes to the server, and anyone with the link can 
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Take one plot from your *RD Report* and give the viewer one choice: the grouping variable, the age range, or which composite is on the y axis. Change every line marked `# REPLACE`.
+Take one plot from your *RD Report* and give the viewer one choice: the grouping variable, the age range, or which composite is on the y axis. Change every word that starts with `SWAP`.
 :::
 
 ```{r}
@@ -286,17 +286,18 @@ library(shiny)
 library(tidyverse)
 library(readxl)
 
-alldata <- read_excel("10.09.2026.data.team1.clean.xlsx")      # REPLACE: your .clean file, copied next to app.R
-alldata[alldata == -99] <- NA
-alldata[alldata == -50] <- NA
-# REPLACE: the mutate() lines that make your composites and factors (copy them from your report)
+alldata <- read_excel("SWAPFILE.xlsx")      # SWAP: your .cleandata file, copied next to app.R
+cleandata <- alldata
+cleandata[cleandata == -99] <- NA
+cleandata[cleandata == -50] <- NA
+# SWAP: the mutate() lines that make your composites and factors (copy them from your report)
 
 ui <- fluidPage(
-  titlePanel("REPLACE: a title a reader understands"),
+  titlePanel("SWAP: a title a reader understands"),
   sidebarLayout(
     sidebarPanel(
-      selectInput("yvar", "Outcome:", choices = c("Well-being" = "WELLBEING", "Stigma" = "STIGMA")),   # REPLACE
-      selectInput("groupvar", "Compare by:", choices = c("Gender" = "GENDER"))                           # REPLACE
+      selectInput("yvar", "Outcome:", choices = c("Well-being" = "WELLBEING", "Stigma" = "STIGMA")),   # SWAP: your outcomes
+      selectInput("groupvar", "Compare by:", choices = c("Gender" = "GENDER"))                           # SWAP: your grouping variables
     ),
     mainPanel(plotOutput("plot1"))
   )
@@ -304,7 +305,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   output$plot1 <- renderPlot({
-    ggplot(alldata, aes(x = .data[[input$groupvar]], y = .data[[input$yvar]], fill = .data[[input$groupvar]])) +
+    ggplot(cleandata, aes(x = .data[[input$groupvar]], y = .data[[input$yvar]], fill = .data[[input$groupvar]])) +
       geom_violin(alpha = 0.6) +
       geom_boxplot(width = 0.12, outlier.shape = NA) +
       theme_bw(base_size = 14)

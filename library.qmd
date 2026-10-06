@@ -1,9 +1,8 @@
 ---
 title: "Install and Load Packages"
 subtitle: "How to set up your install.R file and load libraries"
-authors:
+author:
   - Yoomin (Ashley) Kim
-  - Shane McCarty
 abstract: |
   This chapter introduces R packages and libraries, why they matter for reproducible public health research, and how to install, load, and organize them in your own projects. Students will learn the difference between installing a package (once per computer) and loading a package (every session), how to keep all installations in one `install.R` file organized by the steps of the data science workflow, how to load libraries at the top of a Quarto report, and how to clearly comment their code so students and readers can understand what each package is doing in the context of a public health research project.
 keywords:

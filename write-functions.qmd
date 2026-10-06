@@ -46,7 +46,7 @@ library(scales)
 library(english)
 library(stringr)
 
-select_data <- read.csv("data/healthbeliefs_SELECT.csv")   # the same 122-row subset, as a file
+healthbeliefsdata <- read.csv("data/healthbeliefs_SELECT.csv")   # the same 122-row subset, as a file
 
 ```
 
@@ -80,11 +80,11 @@ The example dataset, `healthbeliefs_SELECT.csv` (122 people, 44 variables), is a
 # The browser session cannot see your project folder, so it downloads the file from the playbook's GitHub repo
 download.file("https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/healthbeliefs_SELECT.csv",
               "healthbeliefs_SELECT.csv")
-select_data <- read.csv("healthbeliefs_SELECT.csv")
+healthbeliefsdata <- read.csv("healthbeliefs_SELECT.csv")
 
 # Check that it loaded: rows, columns, and the first variables
-nrow(select_data); ncol(select_data)
-str(select_data[, 1:8])
+nrow(healthbeliefsdata); ncol(healthbeliefsdata)
+str(healthbeliefsdata[, 1:8])
 ```
 
 ## Inline R Code
@@ -110,7 +110,7 @@ The traditional process of writing a results section of a research paper usually
 #| completion: true
 
 # Example: find out total survey responses (# of rows of data)
-total_responses <- nrow(select_data)
+total_responses <- nrow(healthbeliefsdata)
 
 # print out total responses
 total_responses
@@ -141,10 +141,10 @@ You can combine counts and percentages easily.
 #| completion: true
 
 # find out each total racial groups responses
-asian_responses <- sum(select_data$RACIALIDENTITY.4 == "Asian")
-black_responses <- sum(select_data$RACIALIDENTITY.4 == "Black")
-white_responses <- sum(select_data$RACIALIDENTITY.4 == "White")
-mixed_other_responses <- sum(select_data$RACIALIDENTITY.4 == "Mixed/Other")
+asian_responses <- sum(healthbeliefsdata$RACIALIDENTITY.4 == "Asian")
+black_responses <- sum(healthbeliefsdata$RACIALIDENTITY.4 == "Black")
+white_responses <- sum(healthbeliefsdata$RACIALIDENTITY.4 == "White")
+mixed_other_responses <- sum(healthbeliefsdata$RACIALIDENTITY.4 == "Mixed/Other")
 
 # get the percentage of each racial groups
 asian <- asian_responses / total_responses
@@ -225,7 +225,7 @@ Writing functions can help researchers output the mean, median, sd, min, max and
 continuous_vars <- c("AGE", "SOCIALSTATUS", "POLITICALBELIEFS", paste0("ZEROSUM_", 1:11)
 )
 
-desc_table_continuous <- select_data |>
+desc_table_continuous <- healthbeliefsdata |>
   select(all_of(continuous_vars)) |>
   psych::describe() |>
   tibble::rownames_to_column(var = "Variable") |>
@@ -241,7 +241,7 @@ In your report, write like this:
 
 ```{markdown}
 Descriptive statistics for all study variables are presented in Continuous Descriptive Statistics Table. 
-The sample consisted of `r nrow(select_data)` participants, 
+The sample consisted of `r nrow(healthbeliefsdata)` participants, 
 with a mean age of `r round(desc_table_continuous$mean[desc_table_continuous$Variable == "AGE"], 2)` 
 years (SD = `r round(desc_table_continuous$sd[desc_table_continuous$Variable == "AGE"], 2)`, 
 range = `r desc_table_continuous$min[desc_table_continuous$Variable == "AGE"]`
@@ -269,7 +269,7 @@ Inline R code is used to report the parameter and p-value of a Kruskal-Wallis Te
 ```{webr}
 #| label: Kruskal-Wallis zerosum1
 
-kw.ZEROSUM_1.party <- kruskal.test(ZEROSUM_1 ~ POLITICALPARTY, data = select_data)
+kw.ZEROSUM_1.party <- kruskal.test(ZEROSUM_1 ~ POLITICALPARTY, data = healthbeliefsdata)
 kw.ZEROSUM_1.party
 
 ```

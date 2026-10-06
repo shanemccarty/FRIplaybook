@@ -11,7 +11,6 @@ keywords:
   - grammar of graphics
   - layers
   - theme
-  - ggsave
   - WebR
 date: 10.05.2026
 date-format: "MM.DD.YYYY"
@@ -56,36 +55,36 @@ Each step below shows the code and the plot it makes. Under it is a **Try it** b
 ```{webr-r}
 #| context: setup
 download.file("https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv", "insurance.csv")
-insurance <- read.csv("insurance.csv")
+insurancedata <- read.csv("insurance.csv")
 library(ggplot2)
 ```
 
-## Example Data: `insurance` {#example-data-insurance}
+## Example Data: `insurancedata` {#example-data-insurance}
 
-The example dataset is from the "Medical Cost Personal Costs" database on Kaggle. For this chapter, we refer to it as `insurance`.
+The example dataset is the *Medical Cost Personal Datasets* file shared on Kaggle by Miri Choi under the Open Database License (<https://www.kaggle.com/datasets/mirichoi0218/insurance>), which reproduces the simulated insurance data from Lantz (2013), *Machine Learning with R*. It holds no real people. For this chapter, we refer to it as `insurancedata`.
 
 ### What do I do in this chapter?
 
 You will read a little code, run it, and see what it makes. Before the first line of code, you need two words: **object** and **function**. Almost every line of R code uses both.
 
-**An object is a thing with a name.** In R, anything you give a name to is called an **object**. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. In this chapter the box is named `insurance`, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a **dataset**. Every time you see the word `insurance` in the code below, it means "use that dataset".
+**An object is a thing with a name.** In R, anything you give a name to is called an **object**. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. In this chapter the box is named `insurancedata`, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a **dataset**. Every time you see the word `insurancedata` in the code below, it means "use that dataset".
 
 **A function is an action.** A **function** is a command that does one job. You can spot a function because its name is followed by parentheses, like `head()`. Whatever you put inside the parentheses is what the function works on, called the function's **input**. If objects are the nouns of R, functions are the verbs. To see how many verbs R has, skim the [R Cheat Sheet: 200 Essential Functions](https://r-statistics.co/R-Cheat-Sheet.html). Each function comes with a one-line description and a short example you can run in your browser. You do not need to learn them now.
 
-**`head()` shows the top of a dataset.** The first function in this chapter is `head()`. It shows the first six rows of a dataset, so you can check what is inside without printing all 1,338 rows. `head(insurance)` means "show me the first six rows of `insurance`": the function is `head()`, and the object it works on is `insurance`.
+**`head()` shows the top of a dataset.** The first function in this chapter is `head()`. It shows the first six rows of a dataset, so you can check what is inside without printing all 1,338 rows. `head(insurancedata)` means "show me the first six rows of `insurancedata`": the function is `head()`, and the object it works on is `insurancedata`.
 
 ### Two symbols you will see in every chunk: `<-` and `|>`
 
-**`<-` is the assignment arrow.** It puts what is on the right into the object named on the left, and it always points at the name: `insurance <- read.csv("data/insurance.csv")` reads the file and calls the result `insurance`. Read it as "gets": *insurance gets the file*. Nothing prints when a line assigns; the object simply appears in the environment tab. Typing the name on its own (`insurance`) prints it. In RStudio, Option + - (Mac) or Alt + - (Windows) types `<-` for you.
+**`<-` is the assignment arrow.** It puts what is on the right into the object named on the left, and it always points at the name: `insurancedata <- read.csv("data/insurance.csv")` reads the file and calls the result `insurancedata`. Read it as "gets": *insurancedata gets the file*. Nothing prints when a line assigns; the object simply appears in the environment tab. Typing the name on its own (`insurancedata`) prints it. In RStudio, Option + - (Mac) or Alt + - (Windows) types `<-` for you.
 
 **`|>` is the pipe.** It hands the result of the left side to the function on the right as its first input, so that steps read left to right, or top to bottom, instead of inside out. These two lines do the same thing:
 
 ```{r}
 #| label: pipe-example
 #| eval: false
-head(insurance, 3)          # without the pipe: function(data, ...)
+head(insurancedata, 3)          # without the pipe: function(data, ...)
 
-insurance |> head(3)        # with the pipe: data |> function(...)
+insurancedata |> head(3)        # with the pipe: data |> function(...)
 ```
 
 The pipe earns its keep when there are several steps. Without it you nest functions inside functions and read from the inside out; with it you write one step per line and read down the page. From [Pre/Post Data](prepost.qmd) on, most chunks in this playbook are chains like this one, which keeps only the smokers and then shows the first three:
@@ -93,12 +92,12 @@ The pipe earns its keep when there are several steps. Without it you nest functi
 ```{r}
 #| label: pipe-chain
 #| eval: false
-insurance |>
+insurancedata |>
   filter(smoker == "yes") |>
   head(3)
 ```
 
-Read it as "take `insurance`, then keep the smokers, then show three rows." Each `|>` ends a line, and the next line starts with the next step. In RStudio, Cmd + Shift + M (Mac) or Ctrl + Shift + M (Windows) types the pipe. (Tools \> Global Options \> Code \> check *Use native pipe operator* so that the shortcut gives `|>` rather than the older `%>%`.)
+Read it as "take `insurancedata`, then keep the smokers, then show three rows." Each `|>` ends a line, and the next line starts with the next step. In RStudio, Cmd + Shift + M (Mac) or Ctrl + Shift + M (Windows) types the pipe. (Tools \> Global Options \> Code \> check *Use native pipe operator* so that the shortcut gives `|>` rather than the older `%>%`.)
 
 One exception you will meet in a moment: `ggplot2` joins the layers of a plot with `+`, not `|>`. The pipe moves data between steps; the plus adds a layer to a plot.
 
@@ -115,18 +114,18 @@ A box with a small **clipboard icon** in its corner shows code and the result it
 ```{r}
 #| label: example-static-setup
 #| include: false
-insurance <- read.csv("data/insurance.csv")   # hidden: lets the example below show the same code as the live box
+insurancedata <- read.csv("data/insurance.csv")   # hidden: lets the example below show the same code as the live box
 ```
 
 ```{r}
 #| label: example-static-head
-head(insurance)
+head(insurancedata)
 ```
 
 A box with a **Run Code** button is live. When you click the button, R runs that code inside your browser and shows you the result underneath. Try it now. Wait until the status at the top of the page says **Ready**, then click **Run Code**. You should see the same first six people in the dataset.
 
 ```{webr-r}
-head(insurance)
+head(insurancedata)
 ```
 
 That is all you do in this chapter: read the code, click **Run Code**, and watch what the code makes.
@@ -136,8 +135,8 @@ That is all you do in this chapter: read the code, click **Run Code**, and watch
 These two lines *import* the data and *load* the `ggplot2` package. Think of **R** as a new **phone** and a ***package*** as an ***app***. A new **phone** can do a few things by itself, and ***apps*** add everything else. In the same way, **R** can do basic math and statistics, and `ggplot2` is the ***app*** that adds ***plots***. You install an ***app*** once, and you open it every time you want to use it. `library(ggplot2)` is how you open the ***app***.
 
 ```{r}
-#| label: import-data-insurance
-insurance <- read.csv("data/insurance.csv")
+#| label: import-data-insurancedata
+insurancedata <- read.csv("data/insurance.csv")
 ```
 
 ```{r}
@@ -151,7 +150,7 @@ Each row is one participant. Each column is one variable, such as `age`, `smoker
 
 ```{r}
 #| label: review-header
-head(insurance, 10)
+head(insurancedata, 10)
 ```
 
 ## How do I visualize data in R?
@@ -172,7 +171,7 @@ The `ggplot2` packages uses seven layers to produce plots/figures for your paper
 
 7.  **Theme**: Visual styling and appearance
 
-[![source: \[ggplot2.tidyverse.org\](https://ggplot2.tidyverse.org/articles/ggplot2.html)](images/ggplot2-layers.png){fig-alt="the image includes 7 colors for each of the 7 layers"}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
+[![*The seven components of a ggplot2 plot, from the data at the bottom to the theme on top. Figure from Wickham, H., Navarro, D., Pedersen, T. L., & the ggplot2 authors, "Introduction to ggplot2," the ggplot2 package vignette (ggplot2 3.5, 2024), <https://ggplot2.tidyverse.org/articles/ggplot2.html>. Reproduced under the package's MIT License.*](images/ggplot2-layers.png){fig-alt="Seven translucent colored squares stacked like floors, labeled from the bottom: Data, Mapping, Layers, Scales, Facets, Coordinates, Theme."}](https://ggplot2.tidyverse.org/articles/ggplot2.html)
 
 ## Color-Coded Learning Guide
 
@@ -226,7 +225,7 @@ Watch for these colors as you build plots step-by-step! 🎨
 
 In summary, researchers construct a plot using `ggplot2` components in the same way a chef constructs lasagna in layers, one steps at a time.
 
-![*In ggplot2, add layers as you would in making lasagna*](images/ggplot2-lasagna.png)
+![*In ggplot2, add layers as you would in making lasagna: each `+` adds one layer on top of the last. Drawing made for this playbook.*](images/lasagna-layers.svg){fig-alt="A cross-section of a lasagna drawn as five stacked layers, labeled from the bottom: pasta is the data, sauce is the mapping, cheese is the geometry, more sauce is the statistics, and the browned top is the labels and theme, with the matching ggplot2 code beside each layer."}
 
 ## Build One Plot, One Layer at a Time
 
@@ -247,7 +246,8 @@ You will use histograms again to describe your own data and to check whether a v
 #### [Step 1: Set up data]{.data-layer}
 
 ```{r}
-ggplot(data = insurance)
+#| label: plot1-step1-data
+ggplot(data = insurancedata)
 ```
 
 You get an empty gray box. R knows which data to use, but not what to draw.
@@ -255,7 +255,7 @@ You get an empty gray box. R knows which data to use, but not what to draw.
 **Try it.** Click Run Code. You should see the same empty box.
 
 ```{webr-r}
-ggplot(data = insurance)
+ggplot(data = insurancedata)
 ```
 
 #### [Step 2: Set up mapping]{.mapping-layer}
@@ -263,7 +263,8 @@ ggplot(data = insurance)
 A histogram needs only one variable, on the x axis.
 
 ```{r}
-ggplot(data = insurance,
+#| label: plot1-step2-mapping
+ggplot(data = insurancedata,
        mapping = aes(x = charges))
 ```
 
@@ -272,7 +273,7 @@ Now the x axis has numbers, because R knows that `charges` goes there. There is 
 **Try it.** Run the code. Then change `charges` to `age` and run it again. What changed on the x axis? `aes(x = ...)` tells R which variable goes on the x axis, so the numbers along the bottom change from dollar amounts (charges run from about 1,000 to 64,000) to years (age runs from 18 to 64). The label under the axis changes too. Everything else stays the same, because you have not changed the data or added anything to draw.
 
 ```{webr-r}
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(x = charges))
 ```
 
@@ -285,7 +286,8 @@ Every opening parenthesis `(` needs a closing `)`. Look at the code above: `ggpl
 #### [Step 3: Add geometry (bars)]{.layers-layer}
 
 ```{r}
-ggplot(data = insurance,
+#| label: plot1-step3-bars
+ggplot(data = insurancedata,
        mapping = aes(x = charges)) +
   geom_histogram(bins = 30)
 ```
@@ -297,7 +299,7 @@ One more line, and the bars appear. The `+` at the end of a line means "and then
 **Try it.** Run the code. Then change `30` to `5`, and then to `100`. Same data, same plot type, a very different picture. `bins` is the number of bars: R splits the x axis into that many equal-width slices and counts how many people fall in each one. With `bins = 5`, each bar covers a wide range of charges, so the plot is smooth but hides detail. With `bins = 100`, each bar covers a narrow range, so you see every bump and gap, including some that are only noise. There is no single right number. Try a few and pick one that shows the shape without the noise.
 
 ```{webr-r}
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(x = charges)) +
   geom_histogram(bins = 30)
 ```
@@ -313,13 +315,13 @@ Layers are joined with a `+` at the **end** of a line. If a line **starts** with
 The plot works, but its axes still show the raw names `charges` and `count`. Now add a title and axis labels that a reader of your report will understand. The y axis label describes the frequency that R counted, so it always says what was counted, such as "Number of Participants". You do not need `y =` anywhere in the code; a histogram's y axis is always the frequency.
 
 ```{r}
-#| label: plot-charges-histogram
-#| fig-cap: "Figure 1. A histogram of insurance charges. Most people have low charges and a few people have very high charges."
-#| fig-alt: "A histogram of insurance charges with a tall peak on the left and a long tail to the right."
+#| label: plot1-charges-histogram
+#| fig-cap: "Figure 1. A histogram of insurancedata charges. Most people have low charges and a few people have very high charges."
+#| fig-alt: "A histogram of insurancedata charges with a tall peak on the left and a long tail to the right."
 #| fig-height: 5
 #| fig-width: 7
 
-plot_charges <- ggplot(data = insurance,
+plot1_charges_histogram <- ggplot(data = insurancedata,
        mapping = aes(x = charges)) +
   geom_histogram(bins = 30, fill = "#005a43", color = "white") +
   ggtitle("Distribution of Insurance Charges") +
@@ -327,13 +329,13 @@ plot_charges <- ggplot(data = insurance,
   ylab("Number of People") +
   theme_bw()
 
-plot_charges
+plot1_charges_histogram
 ```
 
 **Try it.** Run the code. Then change `"#005a43"` to `"purple"`. `fill` is the color inside each bar, and `color` is the color of the bar's outline, which is why the bars have thin white edges. `"#005a43"` is a hex code for Binghamton green; `"purple"` is one of the color names R already knows. Next, change the text inside `xlab("...")` and run again: `xlab()` and `ylab()` set the axis labels, and `ggtitle()` sets the title above the plot. Finally, change `theme_bw()` to `theme_minimal()`: a theme controls everything that is not data, such as the background color and gridlines. Then delete the `+` at the end of one line and run it. You will get an error. That is normal: put the `+` back and run it again.
 
 ```{webr-r}
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(x = charges)) +
   geom_histogram(bins = 30, fill = "#005a43", color = "white") +
   ggtitle("Distribution of Insurance Charges") +
@@ -345,7 +347,7 @@ ggplot(data = insurance,
 ::: callout-warning
 ## Caution: Saving a plot does not show it
 
-`plot_charges <- ggplot(...)` saves the plot as an object in your environment. To see it, type the object's name on its own line (or use `print()`), like the last line of the code above.
+`plot1_charges_histogram <- ggplot(...)` saves the plot as an object in your environment. To see it, type the object's name on its own line (or use `print()`), like the last line of the code above.
 :::
 
 #### Step 5: Find the foul
@@ -366,7 +368,7 @@ When code does not work, most people's first move is to change everything: rewri
 **Try it.** The code below is the plot from Step 4 with two small mistakes in it. Run it and read the error. Then find and fix both mistakes without rewriting anything else. You are done when the green histogram appears. (If the Run Code box never loads, you can still find both mistakes by reading.)
 
 ```{webr-r}
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(x = charges) +
   geom_histogram(bins = 30, fill = "#005a43", color = "white") +
   ggtitle("Distribution of Insurance Charges") +
@@ -385,7 +387,7 @@ ggplot(data = insurance,
 The fixed code:
 
 ```r
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(x = charges)) +
   geom_histogram(bins = 30, fill = "#005a43", color = "white") +
   ggtitle("Distribution of Insurance Charges") +
@@ -412,11 +414,11 @@ You just watched a play and tried it in your browser. From here on, most chapter
 
 1.  **The Play.** You watch: the chapter walks through the code with an example dataset, as this chapter did.
 2.  **The Lab.** You practice in RStudio with the lab dataset that everyone shares. Labs are not graded. Ref the Raccoon, the referee of this playbook, shows you the answer you should get, so you can check your own work.
-3.  **Your Turn.** You run the play with your own team's data. There is no Ref, but there is a checklist.
+3.  **Your Turn.** You run the play with your own team's data. There is no Ref, but there is a checklist. Your Turn gives you template code in which every word that starts with `SWAP` is a placeholder for one of your own variables or files; everything else is real code you keep.
 
 To do The Lab and Your Turn, you need R and RStudio on your own computer. That is the next chapter: [R Software](RStudio.qmd).
 
-## Come Back Later: Themes, Colors, and Saving a Plot
+## Come Back Later: Themes and Colors
 
 Skip the rest of this chapter on your first read. Come back when you are making plots for your *RD Report*.
 
@@ -427,7 +429,7 @@ Skip the rest of this chapter on your first read. Come back when you are making 
 ::: {.callout-important .required}
 ## Required for Team Poster: pick one theme for your team
 
-Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in your individual reports and the team poster!
+Team members should pick **one theme** (from the [complete themes](https://ggplot2.tidyverse.org/reference/ggtheme.html)) to use with all plots in your individual reports and the team poster! This playbook uses `theme_bw()` in every Play, but that is the playbook's choice, not a rule for your team: pick the theme your team likes, write it down in your team codebook, and use it in every plot. The complete themes change the background, grid lines, and borders only; they all use the same font, so your choice of theme does not change the font on your poster.
 :::
 
 ::: {.callout-note collapse="true"}
@@ -437,38 +439,4 @@ Team members should pick **one theme** (from the [complete themes](https://ggplo
 - [Dealing with colors in ggplot2](https://r-graph-gallery.com/ggplot2-color.html)
 - [Customizing ggplot2 color and fill scales](https://sjspielman.github.io/introverse/articles/color_fill_scales.html)
 - [How to use better colors in ggplot (youtube)](https://www.youtube.com/watch?v=ZVSbY4z7tMY)
-:::
-
-### Save Your Plot with `ggsave()` {#save}
-
-[ggsave( )](https://ggplot2.tidyverse.org/reference/ggsave.html) is a specific function to save a plot as an image in .jpg or .png image. The plot is saved as a file inside your RStudio Project folder, so you can add it to your team poster.
-
-```{r}
-# Print and save to the plots folder
-print(plot_charges)
-ggsave("plots/plot1_charges_histogram.png", 
-       plot = plot_charges,
-       width = 10, height = 8, dpi = 300)
-```
-
-::: {.callout-important .required}
-## Required: `ggsave( )`
-
-Your *RD Report* and *Final Report* must include `ggsave( )` for plots, because you will want to easily export these plots and then add them onto your team poster. **You do not need to do this now.** You will do it later, with the plots you make from your team's real dataset. Here is how it will work:
-
-The use of `plots/` in the `ggsave()` code chunk saves the image into a folder called **plots** inside your project. If you do not have a **plots** folder yet, the console will ask you whether to create it: type "1" and click return/enter.
-
-In your **files tab**, click the **plots** folder to see your saved images.
-
-Then, upload the plot (and your other plots) to your team's google drive \> Team Survey Data \> Quant Data \> Plots. The image file is in the **plots** folder inside your `Lastname_FRI` project folder on your computer.
-
-![](images/ggplot2-ggsave.png){fig-alt="a screenshot of the console output after running the ggsave code"}
-
-![](images/ggplot2-ggsave-plotsfolder.png){fig-alt="a screenshot of the files tab showing the saved image files inside the plots folder"}
-:::
-
-::: callout-warning
-## Caution: Don't use spaces, colons, or slashes in file names
-
-Use letters, numbers, underscores (`_`), and hyphens (`-`) only: `plot1_charges_histogram.png` or `plot1-charges-histogram.png`. Do not use spaces, colons, or slashes in a file name. Some computers cannot save or open those files.
 :::

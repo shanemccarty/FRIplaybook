@@ -1,6 +1,6 @@
 ---
 title: "Compare 3+ Groups"
-subtitle: "ANOVA for normal data, Kruskal-Wallis for data that are not, and ANCOVA for a covariate"
+subtitle: "ANOVA (normal), Kruskal-Wallis (non-normal), and ANCOVA"
 author:
   - Shane McCarty
 abstract: |
@@ -73,13 +73,13 @@ library(knitr)
 
 ```{r}
 #| label: play1-import
-healthstatus <- read.csv("data/health_status_data.csv") |>
+healthstatusdata <- read.csv("data/health_status_data.csv") |>
   rename(HEALTHSTATUS = HEALTH_STATUS) |>
   mutate(INCOME3 = factor(INCOME3, levels = c(1, 2, 3),
                           labels = c("Below average", "Average", "Above average"))) |>   # the group must be a factor
   filter(!is.na(INCOME3), !is.na(SSS), !is.na(HEALTHSTATUS))
 
-healthstatus |> count(INCOME3)
+healthstatusdata |> count(INCOME3)
 
 #source: Visualize a Comparison (Play 2)
 #explanation: factor() with levels in a sensible order; filter() drops people missing the group or either outcome, so every test below uses the same people
@@ -94,14 +94,14 @@ If the group is stored as 1, 2, 3, `aov()` treats it as a score and fits a strai
 #### Step 2: Look at the three groups
 
 ```{r}
-#| label: play1-look
+#| label: plot1-sss-income-violin
 #| fig-cap: "Figure 1. Subjective social status by perceived income (Cohort 10 data, n = 343). Violins show the distribution, boxes the median and quartiles, points the individual ratings."
 #| fig-alt: "Three violin plots, one per income group, rising from left to right. The below-average group is centered near 5 on the ladder, the average group near 6, and the above-average group near 7.5."
-healthstatus |>
+healthstatusdata |>
   group_by(INCOME3) |>
   summarise(n = n(), mean = mean(SSS), sd = sd(SSS), shapiro_p = shapiro.test(SSS)$p.value)
 
-plot_sss_income <- ggplot(healthstatus, aes(x = INCOME3, y = SSS, fill = INCOME3)) +
+plot1_sss_income_violin <- ggplot(healthstatusdata, aes(x = INCOME3, y = SSS, fill = INCOME3)) +
   geom_violin(alpha = 0.6, show.legend = FALSE) +
   geom_boxplot(width = 0.12, outlier.shape = NA, show.legend = FALSE) +
   geom_jitter(width = 0.12, height = 0.15, alpha = 0.3, size = 1.2, show.legend = FALSE) +
@@ -111,8 +111,8 @@ plot_sss_income <- ggplot(healthstatus, aes(x = INCOME3, y = SSS, fill = INCOME3
        title = "Subjective social status by perceived income") +
   theme_bw(base_size = 13)
 
-plot_sss_income
-ggsave("plots/sss_by_income_violin.png", plot = plot_sss_income, width = 8, height = 5, dpi = 300)
+plot1_sss_income_violin
+ggsave("plots/plot1_sss_income_violin.png", plot = plot1_sss_income_violin, width = 8, height = 5, dpi = 300)
 
 #source: Compare 2 Groups (Play 2)
 #explanation: the same three layers as the two-group violin, with three groups on the x axis
@@ -126,8 +126,9 @@ An ANOVA asks one question: is **at least one** group mean different from the ot
 
 ```{r}
 #| label: play1-anova
-model_sss <- aov(SSS ~ INCOME3, data = healthstatus)
-summary(model_sss)
+# anovamodel1: SSS by INCOME3 (one-way ANOVA)
+anovamodel1 <- aov(SSS ~ INCOME3, data = healthstatusdata)
+summary(anovamodel1)
 
 #source: https://www.datacamp.com/tutorial/anova-in-r
 #explanation: outcome ~ group; the INCOME3 row gives the F statistic and p-value; the Residuals row gives the second df
@@ -141,10 +142,10 @@ A significant ANOVA says the groups are not all the same; it does not say which 
 
 ```{r}
 #| label: play1-tukey
-TukeyHSD(model_sss)
+TukeyHSD(anovamodel1)
 
 # effect size: eta squared = sum of squares for the group / total sum of squares
-ss <- summary(model_sss)[[1]]$`Sum Sq`
+ss <- summary(anovamodel1)[[1]]$`Sum Sq`
 eta2_sss <- ss[1] / sum(ss)
 eta2_sss
 
@@ -161,9 +162,9 @@ All three pairs differ, and η² is large: perceived income and the ladder ratin
 #| include: false
 fmt  <- function(x, k = 2) formatC(x, format = "f", digits = k)
 pfmt <- function(p) if (p < .001) "< .001" else paste0("= ", sub("^0", "", fmt(p, 3)))
-a1 <- summary(model_sss)[[1]]
+a1 <- summary(anovamodel1)[[1]]
 a1_F <- a1[["F value"]][1]; a1_p <- a1[["Pr(>F)"]][1]
-g1 <- healthstatus |> group_by(INCOME3) |> summarise(n = n(), m = mean(SSS), s = sd(SSS))
+g1 <- healthstatusdata |> group_by(INCOME3) |> summarise(n = n(), m = mean(SSS), s = sd(SSS))
 ```
 
 > Subjective social status differed across the three perceived-income groups, *F*(`r a1$Df[1]`, `r a1$Df[2]`) = `r fmt(a1_F)`, *p* `r pfmt(a1_p)`, η² = `r fmt(eta2_sss)`, a large effect. Tukey follow-up tests showed that every pair differed (all *p* < .001): people reporting above-average income placed themselves higher on the ladder (*M* = `r fmt(g1$m[3])`, *SD* = `r fmt(g1$s[3])`, *n* = `r g1$n[3]`) than people reporting average income (*M* = `r fmt(g1$m[2])`, *SD* = `r fmt(g1$s[2])`, *n* = `r g1$n[2]`), who placed themselves higher than people reporting below-average income (*M* = `r fmt(g1$m[1])`, *SD* = `r fmt(g1$s[1])`, *n* = `r g1$n[1]`) (Figure 1).
@@ -175,20 +176,20 @@ Self-rated health is one question with five answers. As [Compare 2 Groups](compa
 #### Step 1: Look
 
 ```{r}
-#| label: play2-look
+#| label: plot2-health-income-barplot
 #| fig-cap: "Figure 2. Self-rated health by perceived income (Cohort 10 data, n = 343). Bars are the share of each group choosing each answer."
 #| fig-alt: "Three sets of five bars, one per income group, for Poor through Excellent. The above-average group has the largest share at Very good and Excellent; the below-average group has the largest share at Fair."
-healthstatus |>
+healthstatusdata |>
   group_by(INCOME3) |>
   summarise(n = n(), median = median(HEALTHSTATUS), mean = mean(HEALTHSTATUS))
 
-health_props <- healthstatus |>
+health_props <- healthstatusdata |>
   count(INCOME3, HEALTHSTATUS) |>
   group_by(INCOME3) |>
   mutate(prop = n / sum(n)) |>
   ungroup()
 
-plot_health_income <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = prop, fill = INCOME3)) +
+plot2_health_income_barplot <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = prop, fill = INCOME3)) +
   geom_col(position = position_dodge(width = 0.8), width = 0.75) +
   scale_x_discrete(labels = c("1" = "Poor", "2" = "Fair", "3" = "Good", "4" = "Very good", "5" = "Excellent")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -198,8 +199,8 @@ plot_health_income <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = pro
   theme_bw(base_size = 13) +
   theme(legend.position = "top")
 
-plot_health_income
-ggsave("plots/health_by_income_bars.png", plot = plot_health_income, width = 8, height = 4.5, dpi = 300)
+plot2_health_income_barplot
+ggsave("plots/plot2_health_income_barplot.png", plot = plot2_health_income_barplot, width = 8, height = 5, dpi = 300)
 
 #source: Compare 2 Groups (Play 3)
 #explanation: proportions within each group, so a bigger group does not look healthier
@@ -209,10 +210,11 @@ ggsave("plots/health_by_income_bars.png", plot = plot_health_income, width = 8, 
 
 ```{r}
 #| label: play2-kruskal
-kw_health <- kruskal.test(HEALTHSTATUS ~ INCOME3, data = healthstatus)
-kw_health
+# kruskalmodel1: HEALTHSTATUS by INCOME3 (Kruskal-Wallis)
+kruskalmodel1 <- kruskal.test(HEALTHSTATUS ~ INCOME3, data = healthstatusdata)
+kruskalmodel1
 
-pairwise.wilcox.test(healthstatus$HEALTHSTATUS, healthstatus$INCOME3, p.adjust.method = "holm")
+pairwise.wilcox.test(healthstatusdata$HEALTHSTATUS, healthstatusdata$INCOME3, p.adjust.method = "holm")
 
 #source: R documentation ?kruskal.test, ?pairwise.wilcox.test
 #explanation: the Kruskal-Wallis statistic is reported as H with df = groups minus 1; the follow-up runs a Mann-Whitney U for each pair and adjusts the p-values (Holm)
@@ -225,10 +227,10 @@ The follow-up table reads like a mileage chart: each cell is the adjusted p-valu
 ```{r}
 #| label: play2-report-values
 #| include: false
-md2 <- healthstatus |> group_by(INCOME3) |> summarise(n = n(), md = median(HEALTHSTATUS))
+md2 <- healthstatusdata |> group_by(INCOME3) |> summarise(n = n(), md = median(HEALTHSTATUS))
 ```
 
-> Self-rated health differed across the three perceived-income groups, Kruskal-Wallis *H*(`r kw_health$parameter`) = `r fmt(kw_health$statistic)`, *p* `r pfmt(kw_health$p.value)`. Pairwise Mann-Whitney U tests with a Holm correction showed that people reporting above-average income rated their health higher (*Mdn* = `r md2$md[3]`, Very good; *n* = `r md2$n[3]`) than people reporting average (*Mdn* = `r md2$md[2]`, Good; *n* = `r md2$n[2]`) or below-average income (*Mdn* = `r md2$md[1]`, Good; *n* = `r md2$n[1]`), both *p* = .02; the latter two groups did not differ (*p* = .58) (Figure 2).
+> Self-rated health differed across the three perceived-income groups, Kruskal-Wallis *H*(`r kruskalmodel1$parameter`) = `r fmt(kruskalmodel1$statistic)`, *p* `r pfmt(kruskalmodel1$p.value)`. Pairwise Mann-Whitney U tests with a Holm correction showed that people reporting above-average income rated their health higher (*Mdn* = `r md2$md[3]`, Very good; *n* = `r md2$n[3]`) than people reporting average (*Mdn* = `r md2$md[2]`, Good; *n* = `r md2$n[2]`) or below-average income (*Mdn* = `r md2$md[1]`, Good; *n* = `r md2$n[1]`), both *p* = .02; the latter two groups did not differ (*p* = .58) (Figure 2).
 
 ### Play 3 (ANCOVA): compare the same three groups on subjective social status, after accounting for age
 
@@ -236,9 +238,10 @@ The five team samples differ in age (students in some, families and farmers-mark
 
 ```{r}
 #| label: play3-ancova
-model_sss_age <- aov(SSS ~ AGE + INCOME3, data = healthstatus)
-summary(model_sss_age)
-nobs(model_sss_age)   # people missing AGE are dropped: check the n
+# ancovamodel1: SSS by INCOME3, adjusting for AGE (ANCOVA)
+ancovamodel1 <- aov(SSS ~ AGE + INCOME3, data = healthstatusdata)
+summary(ancovamodel1)
+nobs(ancovamodel1)   # people missing AGE are dropped: check the n
 
 #source: R documentation ?aov
 #explanation: covariate first, group last; read the INCOME3 row as "do the groups differ, at the same age?"
@@ -285,14 +288,14 @@ lab3 <- mh_clean |>
                            levels = c("Left", "Moderate", "Right")))
 lab_h <- lab3 |> filter(!is.na(HEALTH_3CAT), !is.na(WELLBEING))
 gh <- lab_h |> group_by(HEALTH_3CAT) |> summarise(n = n(), m = mean(WELLBEING), s = sd(WELLBEING), sh = shapiro.test(WELLBEING)$p.value)
-lab_a <- aov(WELLBEING ~ HEALTH_3CAT, data = lab_h); la <- summary(lab_a)[[1]]
-lab_tk <- TukeyHSD(lab_a)$HEALTH_3CAT
+anovamodel2 <- aov(WELLBEING ~ HEALTH_3CAT, data = lab_h); la <- summary(anovamodel2)[[1]]
+lab_tk <- TukeyHSD(anovamodel2)$HEALTH_3CAT
 lab_eta <- la[["Sum Sq"]][1] / sum(la[["Sum Sq"]]); la_F <- la[["F value"]][1]; la_p <- la[["Pr(>F)"]][1]
 lab_p <- lab3 |> filter(!is.na(POL_3CAT), !is.na(SOCIAL))
 gp <- lab_p |> group_by(POL_3CAT) |> summarise(n = n(), md = median(SOCIAL), sh = shapiro.test(SOCIAL)$p.value)
-lab_kw <- kruskal.test(SOCIAL ~ POL_3CAT, data = lab_p)
+kruskalmodel2 <- kruskal.test(SOCIAL ~ POL_3CAT, data = lab_p)
 lab_pw <- pairwise.wilcox.test(lab_p$SOCIAL, lab_p$POL_3CAT, p.adjust.method = "holm")$p.value
-lab_anc <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = lab_h); lanc <- summary(lab_anc)[[1]]
+ancovamodel2 <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = lab_h); lanc <- summary(ancovamodel2)[[1]]
 lanc_F <- lanc[["F value"]][2]; lanc_p <- lanc[["Pr(>F)"]][2]
 ```
 
@@ -319,7 +322,7 @@ Make `POL_3CAT`, keep people with a value on it, check the shape of `SOCIAL` wit
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
 
 -   Groups: Left `r gp$n[1]`, Moderate `r gp$n[2]`, Right `r gp$n[3]`. Medians: `r fmt(gp$md[1])`, `r fmt(gp$md[2])`, `r fmt(gp$md[3])`. Shapiro-Wilk p = `r fmt(gp$sh[1], 3)`, `r fmt(gp$sh[2], 3)`, `r fmt(gp$sh[3], 3)`.
--   Kruskal-Wallis *H*(`r lab_kw$parameter`) = `r fmt(lab_kw$statistic)`, *p* `r pfmt(lab_kw$p.value)`.
+-   Kruskal-Wallis *H*(`r kruskalmodel2$parameter`) = `r fmt(kruskalmodel2$statistic)`, *p* `r pfmt(kruskalmodel2$p.value)`.
 -   Pairwise (Holm): Moderate vs Left *p* `r pfmt(lab_pw["Moderate", "Left"])`; Right vs Left *p* `r pfmt(lab_pw["Right", "Left"])`; Right vs Moderate *p* `r pfmt(lab_pw["Right", "Moderate"])`.
 :::
 
@@ -330,7 +333,7 @@ Run Lab Play 1's ANOVA again with `AGE` first in the formula, and check `nobs()`
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
 
--   `HEALTH_3CAT` row: *F*(`r lanc$Df[2]`, `r lanc$Df[3]`) = `r fmt(lanc_F)`, *p* `r pfmt(lanc_p)`; n = `r nobs(lab_anc)` (`r nrow(lab_h) - nobs(lab_anc)` people dropped for a missing age).
+-   `HEALTH_3CAT` row: *F*(`r lanc$Df[2]`, `r lanc$Df[3]`) = `r fmt(lanc_F)`, *p* `r pfmt(lanc_p)`; n = `r nobs(ancovamodel2)` (`r nrow(lab_h) - nobs(ancovamodel2)` people dropped for a missing age).
 :::
 
 ::: {.callout-note collapse="true" icon="false"}
@@ -358,10 +361,10 @@ lab_h |> group_by(HEALTH_3CAT) |> summarise(n = n(), mean = mean(WELLBEING), sd 
 ggplot(lab_h, aes(x = HEALTH_3CAT, y = WELLBEING, fill = HEALTH_3CAT)) +
   geom_violin(alpha = 0.6, show.legend = FALSE) + geom_boxplot(width = 0.12, outlier.shape = NA, show.legend = FALSE) +
   geom_jitter(width = 0.12, alpha = 0.3, show.legend = FALSE) + theme_bw()
-lab_a <- aov(WELLBEING ~ HEALTH_3CAT, data = lab_h)
-summary(lab_a)
-TukeyHSD(lab_a)
-ss <- summary(lab_a)[[1]]$`Sum Sq`; ss[1] / sum(ss)
+anovamodel2 <- aov(WELLBEING ~ HEALTH_3CAT, data = lab_h)
+summary(anovamodel2)
+TukeyHSD(anovamodel2)
+ss <- summary(anovamodel2)[[1]]$`Sum Sq`; ss[1] / sum(ss)
 
 # Lab Play 2
 lab_p <- lab3 |> filter(!is.na(POL_3CAT), !is.na(SOCIAL))
@@ -370,9 +373,9 @@ kruskal.test(SOCIAL ~ POL_3CAT, data = lab_p)
 pairwise.wilcox.test(lab_p$SOCIAL, lab_p$POL_3CAT, p.adjust.method = "holm")
 
 # Lab Play 3
-lab_anc <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = lab_h)
-summary(lab_anc)
-nobs(lab_anc)
+ancovamodel2 <- aov(WELLBEING ~ AGE + HEALTH_3CAT, data = lab_h)
+summary(ancovamodel2)
+nobs(ancovamodel2)
 ```
 :::
 
@@ -397,7 +400,7 @@ For every three-or-more-group comparison in your *RD Report* and *Final Report*:
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has compared your team's groups before, so there is no answer to check against. Change every line marked `# REPLACE`, pick the line of the box that matches your outcome, and use the checklist.
+Nobody has compared your team's groups before, so there is no answer to check against. Change every word that starts with `SWAP`, pick the line of the box that matches your outcome, and use the checklist.
 :::
 
 ```{r}
@@ -406,34 +409,37 @@ Nobody has compared your team's groups before, so there is no answer to check ag
 library(tidyverse)
 
 # 1. three or more groups, as a labeled factor
-mydata <- alldata |>
-  mutate(GROUP_3CAT = factor(GROUP_3CAT, levels = c(1, 2, 3),                     # REPLACE GROUP_3CAT (a _#CAT variable)
-                             labels = c("Group A", "Group B", "Group C"))) |>    # REPLACE labels, comparison group first
-  filter(!is.na(GROUP_3CAT), !is.na(OUTCOME))                                    # REPLACE OUTCOME (a score)
-mydata |> count(GROUP_3CAT)                                                      # every group big enough?
+mydata <- cleandata |>
+  mutate(SWAPGROUP_3CAT = factor(SWAPGROUP_3CAT, levels = c(1, 2, 3),                     # SWAP: your group variable (a _#CAT variable)
+                             labels = c("SWAPLABEL1", "SWAPLABEL2", "SWAPLABEL3"))) |>    # SWAP: the labels, comparison group first
+  filter(!is.na(SWAPGROUP_3CAT), !is.na(SWAPOUTCOME))                                    # SWAP: your outcome (a score)
+mydata |> count(SWAPGROUP_3CAT)                                                      # every group big enough?
 
 # 2. look
-mydata |> group_by(GROUP_3CAT) |> summarise(n = n(), mean = mean(OUTCOME), sd = sd(OUTCOME), median = median(OUTCOME),
-                                            shapiro_p = shapiro.test(OUTCOME)$p.value)
-ggplot(mydata, aes(x = GROUP_3CAT, y = OUTCOME, fill = GROUP_3CAT)) +
+mydata |> group_by(SWAPGROUP_3CAT) |> summarise(n = n(), mean = mean(SWAPOUTCOME), sd = sd(SWAPOUTCOME), median = median(SWAPOUTCOME),
+                                            shapiro_p = shapiro.test(SWAPOUTCOME)$p.value)
+ggplot(mydata, aes(x = SWAPGROUP_3CAT, y = SWAPOUTCOME, fill = SWAPGROUP_3CAT)) +
   geom_violin(alpha = 0.6) + geom_boxplot(width = 0.12, outlier.shape = NA) + geom_jitter(width = 0.1, alpha = 0.4) +
   theme_bw()
 
 # 3a. normal outcome (parametric): ANOVA, Tukey, eta squared
-model <- aov(OUTCOME ~ GROUP_3CAT, data = mydata)
-summary(model)
-TukeyHSD(model)
-ss <- summary(model)[[1]]$`Sum Sq`; ss[1] / sum(ss)                               # eta squared: .01 small, .06 medium, .14 large
+# anovamodel1: SWAP: one line that says what this model compares
+anovamodel1 <- aov(SWAPOUTCOME ~ SWAPGROUP_3CAT, data = mydata)
+summary(anovamodel1)
+TukeyHSD(anovamodel1)
+ss <- summary(anovamodel1)[[1]]$`Sum Sq`; ss[1] / sum(ss)                               # eta squared: .01 small, .06 medium, .14 large
 
 # 3b. outcome not normal, or a single rating (non-parametric): Kruskal-Wallis and pairwise follow-up
-kruskal.test(OUTCOME ~ GROUP_3CAT, data = mydata)
-pairwise.wilcox.test(mydata$OUTCOME, mydata$GROUP_3CAT, p.adjust.method = "holm")
+# kruskalmodel1: SWAP: one line that says what this test compares
+kruskalmodel1 <- kruskal.test(SWAPOUTCOME ~ SWAPGROUP_3CAT, data = mydata)
+kruskalmodel1
+pairwise.wilcox.test(mydata$SWAPOUTCOME, mydata$SWAPGROUP_3CAT, p.adjust.method = "holm")
 
 # 4. optional: ANCOVA with a covariate (covariate first)
-# model_cov <- aov(OUTCOME ~ COVARIATE + GROUP_3CAT, data = mydata); summary(model_cov); nobs(model_cov)   # REPLACE COVARIATE
+# ancovamodel1 <- aov(SWAPOUTCOME ~ SWAPCOVARIATE + SWAPGROUP_3CAT, data = mydata); summary(ancovamodel1); nobs(ancovamodel1)   # SWAP: the covariate
 
 # 5. save the plot for the poster
-# ggsave("plots/outcome_by_group3.png", width = 8, height = 5, dpi = 300)        # REPLACE the name
+# ggsave("plots/plot1_SWAPNAME.png", width = 8, height = 5, dpi = 300)                # SWAP: the variables and plot type, e.g. plot1_wellbeing_treated_barplot
 ```
 
 | Criteria | Ask yourself |

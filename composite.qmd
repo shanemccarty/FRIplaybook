@@ -389,14 +389,14 @@ Score every multi-item measure in your team's survey with `scoreItems()`, using 
 library(psych)
 
 my_keys <- list(
-  MEASURE    = c("ITEM1", "ITEM2", "-ITEM3_R", "ITEM4"),        # REPLACE: one entry per composite; - for reverse items
-  SUBSCALE_A = c("ITEM1", "ITEM2"),                              # REPLACE: subscales, if your measure has them
-  SUBSCALE_B = c("-ITEM3_R", "ITEM4")
+  SWAPMEASURE    = c("SWAPITEM1", "SWAPITEM2", "-SWAPITEM3_R", "SWAPITEM4"),   # SWAP: one entry per composite; - for reverse items
+  SWAPSUBSCALE_A = c("SWAPITEM1", "SWAPITEM2"),                                 # SWAP: subscales, if your measure has them
+  SWAPSUBSCALE_B = c("-SWAPITEM3_R", "SWAPITEM4")
 )
-my_scores <- scoreItems(my_keys, alldata, impute = "none")   # alldata = your team's imported .clean dataset
+my_scores <- scoreItems(my_keys, cleandata, impute = "none")   # cleandata = your cleaned copy of alldata (Import Data Once)
 my_scores                                         # alpha for every entry in the key
 
-alldata$MEASURE <- my_scores$scores[, "MEASURE"]  # REPLACE: add each score you will use
+cleandata$SWAPMEASURE <- my_scores$scores[, "SWAPMEASURE"]  # SWAP: add each score you will use
 ```
 
 | Criteria | Ask yourself |
@@ -407,7 +407,7 @@ alldata$MEASURE <- my_scores$scores[, "MEASURE"]  # REPLACE: add each score you 
 | **Sum or mean** | Did you score the way the published scale is scored (`totals = TRUE` for a summed scale such as the K10)? |
 | **Alpha** | Is every alpha at least .70? If not, did you check the reverse items first, and then decide (and record) what to do? |
 | **Methods sentence** | Does each composite have a Methods sentence with the number of items, response scale, direction, reverse items, scoring, and the alpha from your sample? |
-| **Score in the data** | Did you add each score to `alldata` with a name that follows the naming rules (`WELLBEING`, `STIGMA_PUB`, not `score1`)? |
+| **Score in the data** | Did you add each score to `cleandata` with a name that follows the naming rules (`WELLBEING`, `STIGMA_PUB`, not `score1`)? |
 
 ## References
 

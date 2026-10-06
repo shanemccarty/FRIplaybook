@@ -1,0 +1,12 @@
+<!-- Shared box explaining the SWAP convention. Included in Start My Report (start-rdreport.qmd) and in the first Your Turn (import-once.qmd). Edit here. -->
+::: callout-important
+## Important: `SWAP` means swap it for your own
+
+Every **Your Turn** section gives you template code. Most of it is real code that you keep exactly as it is. The parts you must change are marked with one code word: **`SWAP`**.
+
+-   A word that **starts with `SWAP`** is a placeholder: `SWAPOUTCOME`, `SWAPGROUP_3CAT`, `SWAPFILE.xlsx`, `"SWAP: your title"`. Swap the whole word for your own variable, file, or words. What follows `SWAP` tells you what goes there, and any ending such as `_3CAT` or `_PRE` is part of the name you should keep.
+-   A comment that **starts with `# SWAP:`** tells you what to put in that line.
+-   **Everything else stays**, even if it looks generic. `alldata`, `cleandata`, `mydata`, `my_keys`, `ttestmodel1`, and `plots/` are real names the playbook uses on purpose.
+
+When you are done, search your file for `SWAP`. If the word is still there, so is a placeholder.
+:::

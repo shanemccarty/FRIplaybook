@@ -5,7 +5,7 @@ authors:
   - Zihan Hei
   - Shane McCarty
 abstract: |
-  This chapter imports the team's data into R once, the right way. Researchers re-read the import line they first ran in Coding a Plot, learn its three parts (object, function, file path), make a data folder inside the RStudio Project and import from it with the file name only, and inspect the result with head(), names(), nrow(), and ncol(). The Play imports the same data as a .csv and as an Excel file; the Lab imports the lab dataset, checks its variable names against the codebook in both directions with setdiff(), and recodes the special values (-99, -50) to NA, with Ref's checks at every step. Your Turn gives the template for the team's .clean file.
+  This chapter imports the team's data into R once, the right way. Researchers re-read the import line they first ran in Coding a Plot, learn its three parts (object, function, file path), make a data folder inside the RStudio Project and import from it with the file name only, and inspect the result with head(), names(), nrow(), and ncol(). The Play imports the same data as a .csv and as an Excel file; the Lab imports the lab dataset, checks its variable names against the codebook in both directions with setdiff(), and recodes the special values (-99, -50) to NA, with Ref's checks at every step. Your Turn gives the template for the team's .cleandata file.
 keywords:
   - data import
   - csv
@@ -44,7 +44,7 @@ The first step of the data science workflow is to **import your data**: to bring
 You have already imported data once. In [Coding a Plot](layers.qmd), the first line of code was:
 
 ```r
-insurance <- read.csv("data/insurance.csv")
+insurancedata <- read.csv("data/insurance.csv")
 ```
 
 You watched it run without an explanation. Now you will read it, because every import you ever write has the same three parts.
@@ -55,17 +55,17 @@ You watched it run without an explanation. Now you will read it, because every i
 
 ```{r}
 #| label: play-import-csv
-insurance <- read.csv("data/insurance.csv")
+insurancedata <- read.csv("data/insurance.csv")
 ```
 
 | Part | What it is | What it does |
 |----|----|----|
-| `insurance` | the **object** name you choose | the labeled box that will hold the data ([Coding a Plot](layers.qmd)) |
+| `insurancedata` | the **object** name you choose | the labeled box that will hold the data ([Coding a Plot](layers.qmd)) |
 | `<-` | the **assignment arrow** ([Coding a Plot](layers.qmd)) | "put what is on the right into the box on the left" |
 | `read.csv( )` | the **function** | reads a `.csv` file (comma-separated values, a plain-text spreadsheet) |
 | `"data/insurance.csv"` | the function's **input**: a file path in quotes | the folder `data` inside your project, then the file name, then its extension `.csv` |
 
-Read it from right to left: open the file `insurance.csv` in the folder `data`, read it as a table, and call that table `insurance`. R looks for the `data` folder starting from your project folder, which is why the project matters ([R Software](RStudio.qmd)). Nothing appears on the screen when this line runs. Look at the **environment tab** instead: `insurance` is there, with its number of rows (obs.) and columns (variables).
+Read it from right to left: open the file `insurance.csv` in the folder `data`, read it as a table, and call that table `insurancedata`. R looks for the `data` folder starting from your project folder, which is why the project matters ([R Software](RStudio.qmd)). Nothing appears on the screen when this line runs. Look at the **environment tab** instead: `insurancedata` is there, with its number of rows (obs.) and columns (variables).
 
 ::: callout-important
 ## Important: make a `data` folder in your project, once, and put every data file in it
@@ -85,14 +85,14 @@ These are the same checks you ran in [Coding a Plot](layers.qmd), and you will r
 
 ```{r}
 #| label: play-head-csv
-head(insurance)
+head(insurancedata)
 ```
 
 ```{r}
 #| label: play-names-csv
-names(insurance)
-nrow(insurance)   # how many people?
-ncol(insurance)   # how many variables?
+names(insurancedata)
+nrow(insurancedata)   # how many people?
+ncol(insurancedata)   # how many variables?
 ```
 
 `head()` is also how you catch the two most common import problems at once. Every row should be one person (one respondent, with their own `ResponseId`), so a first row that is question text instead of a person means the file still has two header rows ([Export Survey Data](export.qmd)). And every column of numbers should be numbers, so values in quotes, or `<chr>` under a column name instead of `<dbl>`, mean a numeric column came in as text.
@@ -110,16 +110,16 @@ as.numeric(c("322", "three hundred", "298", ""))
 Two rules when you use it. First, **look before you convert**: print the values that will become `NA` so you know what you are losing (`filter(is.na(as.numeric(COLUMN)))`). Second, **count after**: compare the number of `NA` values before and after, and report in Methods how many answers could not be used and why. In your own data, do this once, right after import, inside a `mutate()`: `mutate(AGE = as.numeric(AGE))`. The Lab practices it on a real scanner export, and [Compare 2 Groups](compare2groups.qmd) uses the same file.
 :::
 
-**Try it.** Run `head(insurance)`, then change it to `head(insurance, 10)` and to `tail(insurance)`. The second input to `head()` is the number of rows; `tail()` shows the last rows instead of the first.
+**Try it.** Run `head(insurancedata)`, then change it to `head(insurancedata, 10)` and to `tail(insurancedata)`. The second input to `head()` is the number of rows; `tail()` shows the last rows instead of the first.
 
 ```{webr-r}
 #| context: setup
 download.file("https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv", "insurance.csv")
-insurance <- read.csv("insurance.csv")
+insurancedata <- read.csv("insurance.csv")
 ```
 
 ```{webr-r}
-head(insurance)
+head(insurancedata)
 ```
 
 ### Play 3: Same play, Excel file
@@ -130,8 +130,8 @@ Your team's data is an Excel file (`.xlsx`), not a `.csv`. The import line has t
 #| label: play-import-xlsx
 #| message: false
 library(readxl)
-insurance_xl <- read_excel("data/insurance.xlsx")
-head(insurance_xl)
+insurancedata_xl <- read_excel("data/insurance.xlsx")
+head(insurancedata_xl)
 ```
 
 Compare the two `head()` outputs. Same people, same variables, same numbers. The file type does not change the data; it only changes which function reads it. (`read_excel()` prints the output as a *tibble*, which shows the number of rows and the type of each column, such as `<dbl>` for numbers and `<chr>` for text, under the column names. That extra line is useful, not a problem.)
@@ -139,19 +139,19 @@ Compare the two `head()` outputs. Same people, same variables, same numbers. The
 For your team's data, the line looks like this (Team 1, exported on the October 9 lecture; the object is named `alldata` because it holds every response, and later chapters filter it down):
 
 ```r
-alldata <- read_excel("data/10.09.2026.data.team1.clean.xlsx")
+alldata <- read_excel("data/10.09.2026.team1.cleandata.xlsx")
 ```
 
-An Excel file can hold several sheets. `read_excel()` reads the **first** sheet unless you say otherwise, and Excel names that sheet `Sheet1` by default. Your `.clean` file has one sheet, and the lab file keeps its data on the first sheet, so in both cases the file name is enough. If you ever need a different sheet (the lab file also has a `codebook` sheet), add a second input, `sheet =`:
+An Excel file can hold several sheets. `read_excel()` reads the **first** sheet unless you say otherwise, and Excel names that sheet `Sheet1` by default. Your `.cleandata` file has one sheet, and the lab file keeps its data on the first sheet, so in both cases the file name is enough. If you ever need a different sheet (the lab file also has a `codebook` sheet), add a second input, `sheet =`:
 
 ```r
 mh_codebook <- read_excel("data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx", sheet = "codebook")
 ```
 
 ::: {.callout-important .required}
-## Required: import from the `.clean` file, with the file name only
+## Required: import from the `.cleandata` file, with the file name only
 
-Your report imports your team's `.clean` file (one header row, [Export Survey Data](export.qmd)) from the `data` folder of your project, using the path `"data/…"` and nothing else: no `setwd()`, no `/Users/yourname/…`. That is what makes the same code run on your teammates' computers and your peer mentor and/or Dr. Shane's.
+Your report imports your team's `.cleandata` file (one header row, [Export Survey Data](export.qmd)) from the `data` folder of your project, using the path `"data/…"` and nothing else: no `setwd()`, no `/Users/yourname/…`. That is what makes the same code run on your teammates' computers and your peer mentor and/or Dr. Shane's.
 :::
 
 ::: callout-note
@@ -187,9 +187,9 @@ You watched the play above with example datasets. Now import the **lab dataset**
 
 **Before you start**
 
-1.  Download the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from the class Google Drive. Put it in the **data** folder inside your `Lastname_FRI` project folder (the Important box above shows how to make that folder if you have not yet).
-2.  From the same class Google Drive folder, download the short R script `lab_prep.R`. Put it in your `Lastname_FRI` project folder itself, next to `Lastname_FRI.Rproj` (not inside **data**). You will not use it in this chapter; from [Transforming Your Data](dplyr.qmd) on, every Lab starts by running it.
-3.  Open your RStudio Project and your lab `.qmd` file, and run your `library()` chunk. You need `readxl`.
+1.  Download the lab data file, `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx`, from the [CLASS DRIVE: Quant Track folder](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link). Put it in the **data** folder inside your `Lastname_FRI` project folder (the Important box above shows how to make that folder if you have not yet).
+2.  From the same folder, download the short R script `lab_prep.R`. Put it in your `Lastname_FRI` project folder itself, next to `Lastname_FRI.Rproj` (not inside **data**). You will not use it in this chapter; from [Transforming Your Data](dplyr.qmd) on, every Lab starts by running it.
+3.  Open your RStudio Project and create `Lastname_lab2.qmd`, your first lab file, with the load-library chunk at the top ([Start a Report](codechunks.qmd)). Run that chunk. You need `readxl`.
 
 ### Lab Play 1: Import the data
 
@@ -311,7 +311,7 @@ summary(mh_raw$POLITICALBELIEFS)
 
 ### Lab Play 5: A number column that came in as text
 
-The lab dataset came in clean, but most team datasets will not. `veggiescore_SYNTHETIC.xlsx` ([download it](https://github.com/shanemccarty/FRIplaybook/raw/main/data/veggiescore_SYNTHETIC.xlsx) into your `data` folder; it is a Play file, so it is not on the Google Drive) is a scanner export from an FRI Veggie Meter study in which `VEGGIESCORE` should be a number from about 100 to 800. Import it as `veggie`, run `summary(veggie$VEGGIESCORE)`, and read the first line. Then find the values that are not numbers, convert the column with `as.numeric()` inside `mutate()`, and count how many values became `NA`.
+The lab dataset came in clean, but most team datasets will not. `veggiescore_SYNTHETIC.xlsx` ([download it](https://github.com/shanemccarty/FRIplaybook/raw/main/data/veggiescore_SYNTHETIC.xlsx) into your `data` folder; it is a Play file, so it is not on the Google Drive) is a scanner export from an FRI Veggie Meter study in which `VEGGIESCORE` should be a number from about 100 to 800. Import it as `veggiedata`, run `summary(veggiedata$VEGGIESCORE)`, and read the first line. Then find the values that are not numbers, convert the column with `as.numeric()` inside `mutate()`, and count how many values became `NA`.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
@@ -328,18 +328,18 @@ The lab dataset came in clean, but most team datasets will not. `veggiescore_SYN
 ```{r}
 #| label: lab-import-solution-asnumeric
 #| eval: false
-veggie <- read_excel("data/veggiescore_SYNTHETIC.xlsx")
-summary(veggie$VEGGIESCORE)                                   # Class: character
+veggiedata <- read_excel("data/veggiescore_SYNTHETIC.xlsx")
+summary(veggiedata$VEGGIESCORE)                                   # Class: character
 
-veggie |>                                                     # look before you convert
+veggiedata |>                                                     # look before you convert
   filter(is.na(suppressWarnings(as.numeric(VEGGIESCORE))), !is.na(VEGGIESCORE)) |>
   count(VEGGIESCORE)
 
-veggie <- veggie |>
+veggiedata <- veggiedata |>
   mutate(VEGGIESCORE = as.numeric(VEGGIESCORE))               # words become NA (R warns you)
 
-summary(veggie$VEGGIESCORE)                                   # 24 NA's; min and max are impossible values
-nrow(veggie)                                                  # still 300
+summary(veggiedata$VEGGIESCORE)                                   # 24 NA's; min and max are impossible values
+nrow(veggiedata)                                                  # still 300
 ```
 
 `suppressWarnings()` in the look-first line only hides the "NAs introduced by coercion" warning while you are inspecting; leave the warning visible when you do the real conversion so that you notice it.
@@ -352,7 +352,7 @@ nrow(veggie)                                                  # still 300
 -   **`path does not exist`** → the file is not where the code says it is. Check that the file is inside a **data** folder in your project, that the name is spelled exactly the same, and that you opened your **project** (not only a file).
 -   **You have 1 column, or the wrong columns** → you imported the wrong sheet. `read_excel()` reads the first sheet unless you add `sheet =`; check that your data are on the first sheet, or name the sheet you want.
 -   **`could not find function "read_excel"`** → run `library(readxl)`.
--   **Your first row of data is question text** → the file still has two header rows. See [Export Survey Data](export.qmd) and delete row 2 in the `.clean` file. (The lab dataset has one header row, so you should not see this in the lab.)
+-   **Your first row of data is question text** → the file still has two header rows. See [Export Survey Data](export.qmd) and delete row 2 in the `.cleandata` file. (The lab dataset has one header row, so you should not see this in the lab.)
 :::
 
 :::::: {.ref .ref-tip}
@@ -373,27 +373,40 @@ nrow(veggie)                                                  # still 300
 Nobody has imported your team's data before, so there is no answer to check against. Use the checklist below.
 :::
 
+{{< include _important-swap.qmd >}}
+
 ::: callout-warning
 ## Caution: meet with a Quant Peer Mentor before you analyze your team data
 
-After data collection ends and you have downloaded your team dataset, meet with a Quant Peer Mentor during lab before you go further. The quant PM lab schedule is in Column E of the "Student Lab Hours (ANTH306-f2026)" Google Sheet.
+After data collection ends and you have downloaded your team dataset, meet with a Quant Peer Mentor during lab before you go further. The quant PM lab schedule is in Column E of the [CLASS DRIVE: Student Lab Hours sheet](URL_STUDENT_LAB_HOURS).
 :::
 
-Once you finish all of the R Labs, come back here with **your team's `.clean` data file**. Name the object `alldata`: it holds every response, and later chapters filter it down (for example, to serious responses only) into smaller objects with their own names. The example below is for Team 1 exporting on the October 9 lecture; change the team number and the date to match your file.
+Once you finish all of the R Labs, come back here with **your team's `.cleandata` file**. Your report uses exactly three names for your data, and this is where the first two are made:
+
+| Name | What it is | Where it is made |
+|----|----|----|
+| `alldata` | The file exactly as you imported it. It is never changed, so you can always go back to it. | Here |
+| `cleandata` | A copy of `alldata` that you clean and build on: `-99` and `-50` become `NA` here; [Mutate Variables](dplyr.qmd) adds the `_01` and `_#CAT` variables; [Creating Composites](composite.qmd) adds the composite scores. Every analysis starts from it. | Here, then every Lab 2 chapter |
+| `mydata` | The subset for one analysis: the matched pairs, the complete cases, the two groups being compared. Made fresh in each test chapter from `cleandata`. | Labs 4 and 5 |
+
+No other data names, so that anyone reading your report (including you in three weeks) knows which stage a line of code is at. The file name is a placeholder: swap it for your team's `.cleandata` file name (for example, Team 1 exporting on the October 9 lecture would use `10.09.2026.team1.cleandata.xlsx`).
 
 ```{r}
 #| label: import-data-team
 #| eval: false
 library(readxl)
 
-alldata <- read_excel("data/10.09.2026.data.team1.clean.xlsx")   # Team 1 example: use your team number and export date
-
-alldata[alldata == -99] <- NA    # prefer not to say -> missing
-alldata[alldata == -50] <- NA    # don't know -> missing
+# 1. alldata: the file exactly as exported. Never change it.
+alldata <- read_excel("data/SWAPFILE.xlsx")   # SWAP: your team's .cleandata file, e.g. 10.09.2026.team1.cleandata.xlsx
 
 names(alldata)      # the VARIABLES
 head(alldata, 10)   # the first 10 people
 summary(alldata)    # minimum and maximum of every variable
+
+# 2. cleandata: the copy you clean and build on. Every later chapter adds to it.
+cleandata <- alldata
+cleandata[cleandata == -99] <- NA    # prefer not to say -> missing
+cleandata[cleandata == -50] <- NA    # don't know -> missing
 ```
 
 | Criteria | Ask yourself |

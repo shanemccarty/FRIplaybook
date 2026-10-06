@@ -1,6 +1,6 @@
 ---
 title: "Write an Introduction"
-subtitle: "How to write with markdown"
+subtitle: "How to write with markdown in a quarto markdown (.qmd) document"
 author: "Shane McCarty"
 abstract: |
   This chapter teaches researchers to use markdown syntax for headings (to structure the report), lists and inline math, and highlight variables using backticks. Also, researchers will watch a youtube video on how to get started with quarto. By the end of this chapter, researchers will be able to structure their report using markdown. 
@@ -14,13 +14,9 @@ engine: knitr
 editor: visual
 ---
 
+{{< include _resources-quarto.qmd >}}
+
 {{< include _ref-kickoff-box.qmd >}}
-
-::: {.callout-important .required}
-## Required: headings and backticks
-
-Your *RD Report* and *Final Report* will include headings based on the checklist and backticks for variables, such as `EFFICACY`.
-:::
 
 ## Markdown
 
@@ -46,16 +42,27 @@ Use markdown syntax to create headings based on the checklist for your report.
 ## Research Aims
 
 # Methods
-## IRB Approval
-## TBD ... 
+## Participants
+## Procedure
+## Measures
+## Data Cleaning
+## Data Analysis Plan
 
 # Results
+## Research Question 1
+## Research Question 2
 
 # Discussion
 
 # References
 
 ```
+
+::: {.callout-important .required}
+## Required: the report headings
+
+Your *RD Report* and *Final Report* use these headings, in this order, as the structure of the report: `#` for the five sections and `##` for the parts inside them. The Lab 6 chapters give the contents of each: [Write an Introduction](write-intro.qmd) (this chapter), [Write the Methods](methods.qmd), [Write the Results](results.qmd), [Write the Discussion](discussion.qmd), and [Citations & Refs](citations.qmd).
+:::
 
 ## Using Lists
 
@@ -91,7 +98,7 @@ You can use a backtick to denote code or the name of a variable by placing a wor
 ::: {.callout-important .required}
 ## Required: backticks for variable names
 
-Use \` \` between CAPITALIZED variable names in your report if you are referring to the measured variable. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.
+Use \` \` between CAPITALIZED variable names in your report if you are referring to the measured variable, such as `EFFICACY`. The use of backticks is NOT appropriate in your introduction and discussion sections, but backticks should be used in your methods and results sections.
 :::
 
 ## Source vs. Visual

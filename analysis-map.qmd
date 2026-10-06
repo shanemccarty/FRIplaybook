@@ -109,6 +109,12 @@ Most of your survey data are Likert items on a 1-to-6 scale (1 = Strongly disagr
 So the question to ask of every outcome on your map is not "is it Likert?" but "is it one item or a composite, and what does its distribution look like?"
 :::
 
+::: {.callout-important .required}
+## Required: update the SHARED Research Questions sheet
+
+Update the data types (the #1a, 1b, 2a, 2b Var columns) and the analysis (e.g., Ind T-test, Paired T-test) for both questions in the [CLASS DRIVE: SHARED Research Questions sheet](https://docs.google.com/spreadsheets/d/1ShYRW8tts7TaEMfd-vRvrerDpKj90XP3TlANFBVronI/edit?usp=sharing).
+:::
+
 ## 🏈 The Lab {#sec-map-lab}
 
 :::::: {.ref .ref-tip}
@@ -155,25 +161,13 @@ So the question to ask of every outcome on your map is not "is it Likert?" but "
 Nobody has analyzed your team's data before, so there is no answer to check against. Use the map to update your data analysis plan.
 :::
 
-You already submitted a Methods section in your *AIM Report*. The next drafts you submit are the *RD Report* and then the *Final Report*, and in both the **Data Analysis Plan** is the last subheading and the last text in your Methods section. Update it now using the map, and keep updating it as you run the analyses: by the *Final Report* it needs to be a detailed account of what you did, so write it in the **past tense**, as a description of the analysis you ran, not the one you intend to run. (In the *RD Report* you may not have run every test yet. Write the ones you have run in the past tense and mark the rest with a bracketed note to yourself, such as *[to run after Lab 5]*, and remove the brackets in the *Final Report*.)
+For **each** of your research questions, use the map to decide three things and write them down: is it a comparison or a relationship, which box does it land in, and which line of the box (is the outcome a composite or a single item, and does it look normal). Those three decisions are the Data Analysis Plan, the last paragraph of your Methods section. The fill-in-the-blanks template for that paragraph, a worked example, and the rest of the Methods section are in [Write the Methods](methods.qmd), the Lab 6 chapter you will use when you write the report; the decisions you make here are what you will fill it in with.
 
-Do this once for **each** of your research questions. Copy the sentences below into your Data Analysis Plan and fill in the blanks.
+::: callout-important
+## Important: decide before you test
 
-> Research question 1 asked: \_\_\_\_\_\_\_\_.
->
-> This was a \_\_\_\_\_\_\_\_ (comparison / relationship) question. The outcome was \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ (composite score of \_\_ items / single item / count / measurement) treated as a \_\_\_\_\_\_\_\_ (continuous / ordinal) variable. The \_\_\_\_\_\_\_\_ (grouping variable / second variable) was \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ (nominal / ordinal / continuous) variable with \_\_\_\_\_\_\_\_ (levels / range).
->
-> On the Analysis Map, this question landed in the box \_\_\_\_\_\_\_\_. The data were visualized with a \_\_\_\_\_\_\_\_ (bar chart / violin plot / raincloud plot / scatterplot). The distribution of the outcome was \_\_\_\_\_\_\_\_ (approximately normal / not normal) (Shapiro-Wilk *p* = \_\_\_\_), so the \_\_\_\_\_\_\_\_ test was used, with \_\_\_\_\_\_\_\_ (Cohen's *d* / *r* / η² / *R*²) as the effect size. Analyses were run in RStudio (version \_\_\_\_) using the \_\_\_\_\_\_\_\_ packages.
-
-::: callout-tip
-## Go: how to look up your version numbers
-
-In RStudio, click **Help \> About RStudio** (Mac: **RStudio \> About RStudio**); the version is on the first line, such as *2025.09.1*. For the version of R itself, run `R.version.string` in the Console, which prints something like `R version 4.4.1`. Both change when you update, so look them up when you write the *Final Report*, not from memory.
+Make these decisions now, from the research question and the kind of outcome, not after you have seen which test gives you a significant result ([Describe Your Data](describe.qmd)). If the data later tell you the outcome is not normal, you change the line of the box and say so in Methods; you do not go shopping for a test.
 :::
-
-A worked example of the finished paragraph, using question 4 from the Lab above (willingness to seek help by gender in the lab dataset):
-
-> Research question 4 asked whether willingness to seek help differed between women and men. This was a comparison question. The outcome was willingness to seek help (`HELPSEEK`), a single item treated as an ordinal variable. The grouping variable was gender (`GENDER`), a nominal variable with two levels (women, men). On the Analysis Map, this question landed in the box Compare 2 Groups. The data were visualized with a violin plot. The distribution of the outcome was not normal (Shapiro-Wilk *p* < .001), so the Mann-Whitney U test was used, with *r* as the effect size. Analyses were run in RStudio (version 2025.09.1) using the tidyverse and ggpubr packages.
 
 ## Many Models, One Short List {#many-models}
 

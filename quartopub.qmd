@@ -2,7 +2,7 @@
 title: "Publish Your Report to Quarto Pub"
 author: "Zihan Hei"
 abstract: |
-  This guide guides researchers through the process of creating a Quarto Pub website using your Binghamton University Google account. Follow each step carefully to ensure your report is published correctly.
+  This guide guides researchers through the process of creating a Quarto Pub website using your Binghamton University Google account. Follow each step carefully to ensure your report is published correctly. Quarto Pub closes in December 2026, so from 2027 on researchers publish to GitHub Pages instead (see the end of this chapter).
 keywords:
   - quarto pub
   - personal website
@@ -56,7 +56,7 @@ Make sure you have:
 
 -   Your `_quarto.yml` and `_publish.yml` files are in your `Lastname_FRI` project folder on your computer
 
-    -   You can download these files from [306 Quant Track drive](https://drive.google.com/drive/folders/10AG6VkIKUBODfI4_p84Ozohu0dx3xLa3?usp=share_link)
+    -   You can download these files from [CLASS DRIVE: Quant Track](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link)
 
 ## Prepare the `_publish.yml` File
 
@@ -162,5 +162,17 @@ Once publishing completes successfully, you’ll see a message in the terminal w
 -   Your `_publish.yml` should **never contain tokens or IDs** you did not generate yourself.
 
 -   To delete a published site, go to your [Quarto Pub dashboard](https://quartopub.com/) and remove it manually.
+
+## Publishing from 2027: GitHub Pages
+
+::: callout-important
+## Important: Quarto Pub shuts down in December 2026
+
+Posit has announced that the Quarto Pub service ends in December 2026 ([Quarto Pub publishing guide](https://quarto.org/docs/publishing/quarto-pub.html)). **If you are reading this on or after January 1, 2027, do not follow the steps in this chapter.** Publish to GitHub Pages instead, following Quarto's guide: <https://quarto.org/docs/publishing/github-pages.html>. The report you write does not change; only the last command does (`quarto publish gh-pages` instead of `quarto publish quarto-pub`), and the link you submit will be a `github.io` address.
+:::
+
+GitHub Pages hosts a website for free from a GitHub repository. Before the first publish you create a free GitHub account and a repository for your report and put your project in it. The first run of `quarto publish gh-pages` in the RStudio Terminal asks for your GitHub login and sets up the site; the same command updates it afterward. Your link will be `https://yourusername.github.io/yourrepository/`. Your `.qmd` and everything in it stay exactly the same.
+
+When you publish your *Final Report* to your academic website ([Academic Website](website.qmd)), publish it as a **Quarto manuscript** rather than a plain report, so that it reads as an article with a title page, authors, and an abstract. Quarto's step-by-step guide for RStudio is here: <https://quarto.org/docs/manuscripts/authoring/rstudio.html>.
 
 {{< include _ref-whistle-box.qmd >}}

@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yoomin (Ashley) Kim">
 <meta name="author" content="Erica Sava">
-<meta name="author" content="Shane McCarty">
 <meta name="keywords" content="paired t-test, Wilcoxon signed-rank, pre/post, violin plot, raincloud plot, within-person">
 
-<title>19&nbsp; Compare 1 Group, Pre/Post – The Quantitative Playbook for R</title>
+<title>22&nbsp; Compare 1 Group, Pre/Post – The Quantitative Playbook for R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -220,6 +220,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 1 Checklist</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -234,43 +240,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pre/Post Data (#1,3)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vignette.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vignette Data (#4)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab2-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,19 +299,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab3-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Lab 3 Checklist</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,25 +334,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./compare2groups.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -351,19 +369,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -379,32 +397,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./start-rdreport.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
       </ul>
@@ -421,25 +445,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Peer Review</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Academic Website</span></span></a>
   </div>
 </li>
       </ul>
@@ -454,28 +490,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-is-this-the-right-test" id="toc-when-is-this-the-right-test" class="nav-link active" data-scroll-target="#when-is-this-the-right-test"><span class="header-section-number">19.1</span> When is this the right test?</a></li>
-  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">19.2</span> 📋 The Play</a>
+  <li><a href="#when-is-this-the-right-test" id="toc-when-is-this-the-right-test" class="nav-link active" data-scroll-target="#when-is-this-the-right-test"><span class="header-section-number">22.1</span> When is this the right test?</a></li>
+  <li><a href="#the-play" id="toc-the-play" class="nav-link" data-scroll-target="#the-play"><span class="header-section-number">22.2</span> 📋 The Play</a>
   <ul class="collapse">
-  <li><a href="#play-1-food-safety-self-efficacy-before-and-after-paired-samples-t-test" id="toc-play-1-food-safety-self-efficacy-before-and-after-paired-samples-t-test" class="nav-link" data-scroll-target="#play-1-food-safety-self-efficacy-before-and-after-paired-samples-t-test"><span class="header-section-number">19.2.1</span> Play 1: food-safety self-efficacy, before and after (<span class="normal">paired-samples t-test</span>)</a></li>
-  <li><a href="#play-2-cooking-skills-known-before-and-after-wilcoxon-signed-rank-test" id="toc-play-2-cooking-skills-known-before-and-after-wilcoxon-signed-rank-test" class="nav-link" data-scroll-target="#play-2-cooking-skills-known-before-and-after-wilcoxon-signed-rank-test"><span class="header-section-number">19.2.2</span> Play 2: cooking skills known, before and after (<span class="nonnormal">Wilcoxon signed-rank test</span>)</a></li>
+  <li><a href="#play-1-paired-samples-t-test-compare-pretest-and-posttest-on-food-safety-self-efficacy" id="toc-play-1-paired-samples-t-test-compare-pretest-and-posttest-on-food-safety-self-efficacy" class="nav-link" data-scroll-target="#play-1-paired-samples-t-test-compare-pretest-and-posttest-on-food-safety-self-efficacy"><span class="header-section-number">22.2.1</span> Play 1 (<span class="normal">paired-samples t-test</span>): compare pretest and posttest on food-safety self-efficacy</a></li>
+  <li><a href="#play-2-wilcoxon-signed-rank-test-compare-pretest-and-posttest-on-the-number-of-cooking-skills-known" id="toc-play-2-wilcoxon-signed-rank-test-compare-pretest-and-posttest-on-the-number-of-cooking-skills-known" class="nav-link" data-scroll-target="#play-2-wilcoxon-signed-rank-test-compare-pretest-and-posttest-on-the-number-of-cooking-skills-known"><span class="header-section-number">22.2.2</span> Play 2 (<span class="nonnormal">Wilcoxon signed-rank test</span>): compare pretest and posttest on the number of cooking skills known</a></li>
   </ul></li>
-  <li><a href="#sec-prepost-lab" id="toc-sec-prepost-lab" class="nav-link" data-scroll-target="#sec-prepost-lab"><span class="header-section-number">19.3</span> 🏈 The Lab</a>
+  <li><a href="#sec-prepost-lab" id="toc-sec-prepost-lab" class="nav-link" data-scroll-target="#sec-prepost-lab"><span class="header-section-number">22.3</span> 🏈 The Lab</a>
   <ul class="collapse">
-  <li><a href="#lab-play-1-stigma-before-and-after-paired-t-test" id="toc-lab-play-1-stigma-before-and-after-paired-t-test" class="nav-link" data-scroll-target="#lab-play-1-stigma-before-and-after-paired-t-test"><span class="header-section-number">19.3.1</span> Lab Play 1: Stigma before and after (<span class="normal">paired t-test</span>)</a></li>
-  <li><a href="#lab-play-2-help-seeking-before-and-after-wilcoxon-signed-rank" id="toc-lab-play-2-help-seeking-before-and-after-wilcoxon-signed-rank" class="nav-link" data-scroll-target="#lab-play-2-help-seeking-before-and-after-wilcoxon-signed-rank"><span class="header-section-number">19.3.2</span> Lab Play 2: Help-seeking before and after (<span class="nonnormal">Wilcoxon signed-rank</span>)</a></li>
+  <li><a href="#lab-play-1-paired-t-test-compare-pretest-and-posttest-on-stigma" id="toc-lab-play-1-paired-t-test-compare-pretest-and-posttest-on-stigma" class="nav-link" data-scroll-target="#lab-play-1-paired-t-test-compare-pretest-and-posttest-on-stigma"><span class="header-section-number">22.3.1</span> Lab Play 1 (<span class="normal">paired t-test</span>): compare pretest and posttest on stigma</a></li>
+  <li><a href="#lab-play-2-wilcoxon-signed-rank-compare-pretest-and-posttest-on-willingness-to-seek-help" id="toc-lab-play-2-wilcoxon-signed-rank-compare-pretest-and-posttest-on-willingness-to-seek-help" class="nav-link" data-scroll-target="#lab-play-2-wilcoxon-signed-rank-compare-pretest-and-posttest-on-willingness-to-seek-help"><span class="header-section-number">22.3.2</span> Lab Play 2 (<span class="nonnormal">Wilcoxon signed-rank</span>): compare pretest and posttest on willingness to seek help</a></li>
   </ul></li>
-  <li><a href="#sec-prepost-yourturn" id="toc-sec-prepost-yourturn" class="nav-link" data-scroll-target="#sec-prepost-yourturn"><span class="header-section-number">19.4</span> 🏆 Your Turn</a></li>
+  <li><a href="#sec-prepost-yourturn" id="toc-sec-prepost-yourturn" class="nav-link" data-scroll-target="#sec-prepost-yourturn"><span class="header-section-number">22.4</span> 🏆 Your Turn</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/violin.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./visualize-comparison.html">Compare Groups (Lab 4)</a></li><li class="breadcrumb-item"><a href="./violin.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Compare 1 Group, Pre/Post</span></h1>
-<p class="subtitle lead">The paired-samples t-test for normal data and the Wilcoxon signed-rank test for data that are not, with paired violin and raincloud plots</p>
+<h1 class="title"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Compare 1 Group, Pre/Post</span></h1>
+<p class="subtitle lead">Paired-samples t-test (normal) and Wilcoxon signed-rank (non-normal)</p>
 </div>
 
 
@@ -485,8 +521,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
+             <p>Yoomin (Ashley) Kim </p>
              <p>Erica Sava </p>
-             <p>Shane McCarty </p>
           </div>
   </div>
     
@@ -556,8 +592,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="when-is-this-the-right-test" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="when-is-this-the-right-test"><span class="header-section-number">19.1</span> When is this the right test?</h2>
+<section id="when-is-this-the-right-test" class="level2" data-number="22.1">
+<h2 data-number="22.1" class="anchored" data-anchor-id="when-is-this-the-right-test"><span class="header-section-number">22.1</span> When is this the right test?</h2>
 <p>The <strong>same people</strong> answered the same questions <strong>twice</strong>: before and after a workshop, a video, a semester. On <a href="./analysis-map.html">The Analysis Map</a> that is the <em>compare 1 group, pre/post</em> row, and the test is the <strong>paired-samples t-test</strong>. The word <em>paired</em> is the whole idea: each person’s posttest score is paired with their own pretest score, so the thing being tested is the <strong>difference within each person</strong>, and the question is whether those differences average to something other than zero.</p>
 <p>This is why it is a <em>one-group</em> comparison, not two. The pretest and posttest rows are not two groups of people; they are one group of people seen twice. Running an independent-samples test (<a href="./compare2groups.html">Compare 2 Groups</a>) on pre/post data is the most common wrong turn on the map: it throws away the pairing, and with it most of the power of the design. If you cannot link a person’s two rows, you cannot be on this row.</p>
 <p>As in every box on the map, the shape of the outcome picks the test, but here the shape that matters is the shape of the <strong>differences</strong>:</p>
@@ -602,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="./prepost.html">Pre/Post Data</a> gets the data into shape: <code>PASSWORD</code> cleaned, duplicates removed, <code>TIME</code> as a factor, and one <strong>wide</strong> table (one row per person, <code>SCORE_PRE</code> and <code>SCORE_POST</code>) plus one <strong>long</strong> table (two rows per person). This chapter tests the wide table and plots the long one.</p>
+<p><a href="./prepost.html">Pre/Post Data</a> gets the data into shape: <code>PASSWORD</code> cleaned, duplicates removed, <code>TIME</code> as a factor, and one <strong>wide</strong> table (one row per person, <code>SWAPSCORE_PRE</code> and <code>SWAPSCORE_POST</code>) plus one <strong>long</strong> table (two rows per person). This chapter tests the wide table and plots the long one.</p>
 </div>
 </div>
 <div class="cell">
@@ -625,8 +661,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-play" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">19.2</span> 📋 The Play</h2>
+<section id="the-play" class="level2" data-number="22.2">
+<h2 data-number="22.2" class="anchored" data-anchor-id="the-play"><span class="header-section-number">22.2</span> 📋 The Play</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -644,12 +680,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The research question is the team’s: <strong>did cooking self-efficacy change from before the workshop to after it?</strong> Two outcomes, one for each line of the box: food-safety self-efficacy (<code>EFF_SAFE</code>, the mean of four 1-to-6 items), a composite; and the number of five basic cooking skills a person says they know (<code>COOKKNOW</code>, 0 to 5), a count.</p>
-<section id="play-1-food-safety-self-efficacy-before-and-after-paired-samples-t-test" class="level3" data-number="19.2.1">
-<h3 data-number="19.2.1" class="anchored" data-anchor-id="play-1-food-safety-self-efficacy-before-and-after-paired-samples-t-test"><span class="header-section-number">19.2.1</span> Play 1: food-safety self-efficacy, before and after (<span class="normal">paired-samples t-test</span>)</h3>
+<section id="play-1-paired-samples-t-test-compare-pretest-and-posttest-on-food-safety-self-efficacy" class="level3" data-number="22.2.1">
+<h3 data-number="22.2.1" class="anchored" data-anchor-id="play-1-paired-samples-t-test-compare-pretest-and-posttest-on-food-safety-self-efficacy"><span class="header-section-number">22.2.1</span> Play 1 (<span class="normal">paired-samples t-test</span>): compare pretest and posttest on food-safety self-efficacy</h3>
 <section id="step-1-import-clean-the-link-and-score" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-import-clean-the-link-and-score">Step 1: Import, clean the link, and score</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>food_long <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/foodsecurity_SYNTHETIC.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_long <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/foodsecurity_SYNTHETIC.xlsx"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PASSWORD =</span> <span class="fu">tolower</span>(<span class="fu">trimws</span>(PASSWORD)),                              <span class="co"># the link must match exactly</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>))) <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PASSWORD, TIME, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>                             <span class="co"># one row per person per time</span></span>
@@ -657,7 +693,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EFF_SAFE =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(EFFSAFE1<span class="sc">:</span>EFFSAFE4), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">COOKKNOW =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>(COOKKNOW1<span class="sc">:</span>COOKKNOW5)))                   <span class="co"># count of skills known (0 to 5)</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>food_long <span class="sc">|&gt;</span> <span class="fu">count</span>(TIME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_long <span class="sc">|&gt;</span> <span class="fu">count</span>(TIME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   TIME      n
@@ -672,16 +708,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-2-wide-for-the-test-and-keep-the-matched-people" class="level4">
 <h4 class="anchored" data-anchor-id="step-2-wide-for-the-test-and-keep-the-matched-people">Step 2: Wide for the test, and keep the matched people</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>food_wide <span class="ot">&lt;-</span> food_long <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_wide <span class="ot">&lt;-</span> foodsecuritydata_long <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PASSWORD, TIME, EFF_SAFE, COOKKNOW) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> TIME, <span class="at">values_from =</span> <span class="fu">c</span>(EFF_SAFE, COOKKNOW), <span class="at">names_glue =</span> <span class="st">"{.value}_{TIME}"</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_wide)                                                   <span class="co"># people who appear at least once</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(foodsecuritydata_wide)                                                   <span class="co"># people who appear at least once</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 73</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>food_matched <span class="ot">&lt;-</span> food_wide <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(EFF_SAFE_PRE), <span class="sc">!</span><span class="fu">is.na</span>(EFF_SAFE_POST))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(food_matched)                                                <span class="co"># people with both scores: the n for the test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched <span class="ot">&lt;-</span> foodsecuritydata_wide <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(EFF_SAFE_PRE), <span class="sc">!</span><span class="fu">is.na</span>(EFF_SAFE_POST))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(foodsecuritydata_matched)                                                <span class="co"># people with both scores: the n for the test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 59</code></pre>
 </div>
@@ -706,12 +742,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-3-look-at-the-change-person-by-person">Step 3: Look at the change, person by person</h4>
 <p>A paired plot should show the pairing. The long table of the matched people, with a line from each person’s pretest to their posttest, does that: the violins show the two distributions, and the lines show that most people moved up.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>food_matched_long <span class="ot">&lt;-</span> food_matched <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched_long <span class="ot">&lt;-</span> foodsecuritydata_matched <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PASSWORD, EFF_SAFE_PRE, EFF_SAFE_POST) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>PASSWORD, <span class="at">names_to =</span> <span class="st">"TIME"</span>, <span class="at">values_to =</span> <span class="st">"EFF_SAFE"</span>, <span class="at">names_prefix =</span> <span class="st">"EFF_SAFE_"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>)))</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plot_effsafe_paired <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(food_matched_long, <span class="fu">aes</span>(<span class="at">x =</span> TIME, <span class="at">y =</span> EFF_SAFE)) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plot1_effsafe_prepost_paired <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(foodsecuritydata_matched_long, <span class="fu">aes</span>(<span class="at">x =</span> TIME, <span class="at">y =</span> EFF_SAFE)) <span class="sc">+</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> PASSWORD), <span class="at">color =</span> <span class="st">"gray60"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span>            <span class="co"># one line per person</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill =</span> TIME), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
@@ -722,16 +758,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Food-safety self-efficacy before and after the workshop"</span>) <span class="sc">+</span></span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>plot_effsafe_paired</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>plot1_effsafe_prepost_paired</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="violin_files/figure-html/play1-plot-1.png" class="img-fluid figure-img" alt="Two violins, PRE in purple and POST in yellow, with thin gray lines connecting each person's two points. Most lines slope upward; the POST violin sits higher and is narrower at the top of the scale." width="672"></p>
+<p><img src="violin_files/figure-html/plot1-effsafe-prepost-paired-1.png" class="img-fluid figure-img" alt="Two violins, PRE in purple and POST in yellow, with thin gray lines connecting each person's two points. Most lines slope upward; the POST violin sits higher and is narrower at the top of the scale." width="672"></p>
 <figcaption>Figure 1. Food-safety self-efficacy before and after the cooking workshop (synthetic data, n = 59 matched). Each gray line is one person; violins show the distribution at each time, boxes the median and quartiles.</figcaption>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/effsafe_prepost_paired.png"</span>, <span class="at">plot =</span> plot_effsafe_paired, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1_effsafe_prepost_paired.png"</span>, <span class="at">plot =</span> plot1_effsafe_prepost_paired, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: https://ggplot2.tidyverse.org/reference/geom_path.html</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: geom_line(aes(group = PASSWORD)) draws one segment per person, which is the layer that makes the plot paired; the other layers are the violin from Compare 2 Groups</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -754,7 +790,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-4-the-raincloud-version">Step 4: The raincloud version</h4>
 <p>A raincloud puts the half-violin (the cloud), the box, and the raw points (the rain) side by side so that none hides another. The paired lines still connect each person.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot_effsafe_rain <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(food_matched_long, <span class="fu">aes</span>(<span class="at">x =</span> TIME, <span class="at">y =</span> EFF_SAFE, <span class="at">fill =</span> TIME)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot2_effsafe_prepost_raincloud <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(foodsecuritydata_matched_long, <span class="fu">aes</span>(<span class="at">x =</span> TIME, <span class="at">y =</span> EFF_SAFE, <span class="at">fill =</span> TIME)) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> PASSWORD), <span class="at">color =</span> <span class="st">"gray60"</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="sc">-</span><span class="fl">0.15</span>)) <span class="sc">+</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violinhalf</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">position =</span> <span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.15</span>), <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
@@ -765,16 +801,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Before and after the workshop (raincloud)"</span>) <span class="sc">+</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plot_effsafe_rain</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plot2_effsafe_prepost_raincloud</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="violin_files/figure-html/play1-raincloud-1.png" class="img-fluid figure-img" alt="For PRE and POST, a half-violin is nudged to the right, a narrow box plot sits at the center, and jittered points are nudged to the left, with gray lines joining each person's PRE and POST points." width="672"></p>
+<p><img src="violin_files/figure-html/plot2-effsafe-prepost-raincloud-1.png" class="img-fluid figure-img" alt="For PRE and POST, a half-violin is nudged to the right, a narrow box plot sits at the center, and jittered points are nudged to the left, with gray lines joining each person's PRE and POST points." width="672"></p>
 <figcaption>Figure 2. The same data as Figure 1 as a paired raincloud plot: half-violins to the right, boxes in the middle, individual points to the left, one gray line per person.</figcaption>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/effsafe_prepost_raincloud.png"</span>, <span class="at">plot =</span> plot_effsafe_rain, <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot2_effsafe_prepost_raincloud.png"</span>, <span class="at">plot =</span> plot2_effsafe_prepost_raincloud, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#source: https://easystats.github.io/see/reference/geom_violinhalf.html</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: position_nudge() moves each layer sideways so the cloud, the box, and the rain do not overlap</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -784,9 +820,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-5-check-the-assumption-are-the-differences-normal">Step 5: Check the assumption: are the differences normal?</h4>
 <p>The paired t-test does not care whether the pretest or the posttest scores are normal. It cares whether the <strong>differences</strong> are. Compute them and check.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>food_matched <span class="ot">&lt;-</span> food_matched <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">EFF_SAFE_DIFF =</span> EFF_SAFE_POST <span class="sc">-</span> EFF_SAFE_PRE)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched <span class="ot">&lt;-</span> foodsecuritydata_matched <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">EFF_SAFE_DIFF =</span> EFF_SAFE_POST <span class="sc">-</span> EFF_SAFE_PRE)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>food_matched <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched <span class="sc">|&gt;</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_diff =</span> <span class="fu">mean</span>(EFF_SAFE_DIFF), <span class="at">sd_diff =</span> <span class="fu">sd</span>(EFF_SAFE_DIFF),</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(EFF_SAFE_DIFF)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -802,13 +838,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-6-the-paired-samples-t-test-and-its-effect-size" class="level4">
 <h4 class="anchored" data-anchor-id="step-6-the-paired-samples-t-test-and-its-effect-size">Step 6: The paired-samples t-test and its effect size</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>t_effsafe <span class="ot">&lt;-</span> <span class="fu">t.test</span>(food_matched<span class="sc">$</span>EFF_SAFE_POST, food_matched<span class="sc">$</span>EFF_SAFE_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>t_effsafe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ptestmodel1: EFF_SAFE, posttest vs pretest, matched people</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ptestmodel1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(foodsecuritydata_matched<span class="sc">$</span>EFF_SAFE_POST, foodsecuritydata_matched<span class="sc">$</span>EFF_SAFE_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>ptestmodel1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
 
-data:  food_matched$EFF_SAFE_POST and food_matched$EFF_SAFE_PRE
+data:  foodsecuritydata_matched$EFF_SAFE_POST and foodsecuritydata_matched$EFF_SAFE_PRE
 t = 4.4518, df = 58, p-value = 3.929e-05
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
@@ -818,7 +855,7 @@ mean difference
        0.430791 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># effect size for a paired design: Cohen's d_z = mean difference / SD of the differences</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dz_effsafe <span class="ot">&lt;-</span> <span class="fu">mean</span>(food_matched<span class="sc">$</span>EFF_SAFE_DIFF) <span class="sc">/</span> <span class="fu">sd</span>(food_matched<span class="sc">$</span>EFF_SAFE_DIFF)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dz_effsafe <span class="ot">&lt;-</span> <span class="fu">mean</span>(foodsecuritydata_matched<span class="sc">$</span>EFF_SAFE_DIFF) <span class="sc">/</span> <span class="fu">sd</span>(foodsecuritydata_matched<span class="sc">$</span>EFF_SAFE_DIFF)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>dz_effsafe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5795737</code></pre>
@@ -848,15 +885,15 @@ mean difference
 </blockquote>
 </section>
 </section>
-<section id="play-2-cooking-skills-known-before-and-after-wilcoxon-signed-rank-test" class="level3" data-number="19.2.2">
-<h3 data-number="19.2.2" class="anchored" data-anchor-id="play-2-cooking-skills-known-before-and-after-wilcoxon-signed-rank-test"><span class="header-section-number">19.2.2</span> Play 2: cooking skills known, before and after (<span class="nonnormal">Wilcoxon signed-rank test</span>)</h3>
+<section id="play-2-wilcoxon-signed-rank-test-compare-pretest-and-posttest-on-the-number-of-cooking-skills-known" class="level3" data-number="22.2.2">
+<h3 data-number="22.2.2" class="anchored" data-anchor-id="play-2-wilcoxon-signed-rank-test-compare-pretest-and-posttest-on-the-number-of-cooking-skills-known"><span class="header-section-number">22.2.2</span> Play 2 (<span class="nonnormal">Wilcoxon signed-rank test</span>): compare pretest and posttest on the number of cooking skills known</h3>
 <p><code>COOKKNOW</code> is a count from 0 to 5, so the differences can only be whole numbers, most of them 0 or 1. That is not a normal distribution and never will be, so this is the non-parametric line of the box. The Wilcoxon signed-rank test ranks the sizes of the differences, keeps their signs, and asks whether the positive differences outweigh the negative ones. It is the Mann-Whitney U’s paired cousin.</p>
 <section id="step-1-look-at-the-differences" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-look-at-the-differences">Step 1: Look at the differences</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>food_matched <span class="ot">&lt;-</span> food_matched <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">COOKKNOW_DIFF =</span> COOKKNOW_POST <span class="sc">-</span> COOKKNOW_PRE)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched <span class="ot">&lt;-</span> foodsecuritydata_matched <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">COOKKNOW_DIFF =</span> COOKKNOW_POST <span class="sc">-</span> COOKKNOW_PRE)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>food_matched <span class="sc">|&gt;</span> <span class="fu">count</span>(COOKKNOW_DIFF)                                            <span class="co"># how many people changed by how much</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched <span class="sc">|&gt;</span> <span class="fu">count</span>(COOKKNOW_DIFF)                                            <span class="co"># how many people changed by how much</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   COOKKNOW_DIFF     n
@@ -868,7 +905,7 @@ mean difference
 5             2     8
 6             3     3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>food_matched <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>foodsecuritydata_matched <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">median_pre =</span> <span class="fu">median</span>(COOKKNOW_PRE), <span class="at">median_post =</span> <span class="fu">median</span>(COOKKNOW_POST),</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(COOKKNOW_DIFF)<span class="sc">$</span>p.value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -884,19 +921,20 @@ mean difference
 <section id="step-2-the-wilcoxon-signed-rank-test-and-its-effect-size" class="level4">
 <h4 class="anchored" data-anchor-id="step-2-the-wilcoxon-signed-rank-test-and-its-effect-size">Step 2: The Wilcoxon signed-rank test and its effect size</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>w_cook <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(food_matched<span class="sc">$</span>COOKKNOW_POST, food_matched<span class="sc">$</span>COOKKNOW_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>w_cook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wilcomodel1: COOKKNOW, posttest vs pretest (Wilcoxon signed-rank)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>wilcomodel1 <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(foodsecuritydata_matched<span class="sc">$</span>COOKKNOW_POST, foodsecuritydata_matched<span class="sc">$</span>COOKKNOW_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>wilcomodel1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank test with continuity correction
 
-data:  food_matched$COOKKNOW_POST and food_matched$COOKKNOW_PRE
+data:  foodsecuritydata_matched$COOKKNOW_POST and foodsecuritydata_matched$COOKKNOW_PRE
 V = 642.5, p-value = 4.037e-05
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># effect size r from the normal approximation, as in Compare 2 Groups</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>n_changed <span class="ot">&lt;-</span> <span class="fu">sum</span>(food_matched<span class="sc">$</span>COOKKNOW_DIFF <span class="sc">!=</span> <span class="dv">0</span>)                 <span class="co"># people with a zero difference are dropped by the test</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>z_cook <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(w_cook<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>n_changed <span class="ot">&lt;-</span> <span class="fu">sum</span>(foodsecuritydata_matched<span class="sc">$</span>COOKKNOW_DIFF <span class="sc">!=</span> <span class="dv">0</span>)                 <span class="co"># people with a zero difference are dropped by the test</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>z_cook <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(wilcomodel1<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>r_cook <span class="ot">&lt;-</span> <span class="fu">abs</span>(z_cook) <span class="sc">/</span> <span class="fu">sqrt</span>(n_changed)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>r_cook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -928,8 +966,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </section>
 </section>
 </section>
-<section id="sec-prepost-lab" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="sec-prepost-lab"><span class="header-section-number">19.3</span> 🏈 The Lab</h2>
+<section id="sec-prepost-lab" class="level2" data-number="22.3">
+<h2 data-number="22.3" class="anchored" data-anchor-id="sec-prepost-lab"><span class="header-section-number">22.3</span> 🏈 The Lab</h2>
 <div class="ref ref-tip">
 <div class="ref-row">
 <p><img src="images/ref.svg" class="ref-img img-fluid" alt="Ref the raccoon"></p>
@@ -937,8 +975,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
 <p><strong>Before you start.</strong> The file is in the class Google Drive, next to the lab data; put it in your <code>data</code> folder. Clean it as in <a href="./prepost.html">Pre/Post Data</a> (lowercase and trim <code>PASSWORD</code>, <code>TIME</code> as a factor, <code>distinct()</code>, -99/-50 to <code>NA</code>), then score <code>STIGMA</code> in long format exactly as <code>lab_prep.R</code> does (reverse the four <code>_R</code> items with <code>6 - x</code>, then the mean of all eight). Pivot <code>STIGMA</code> and <code>HELPSEEK</code> wide together.</p>
-<section id="lab-play-1-stigma-before-and-after-paired-t-test" class="level3" data-number="19.3.1">
-<h3 data-number="19.3.1" class="anchored" data-anchor-id="lab-play-1-stigma-before-and-after-paired-t-test"><span class="header-section-number">19.3.1</span> Lab Play 1: Stigma before and after (<span class="normal">paired t-test</span>)</h3>
+<section id="lab-play-1-paired-t-test-compare-pretest-and-posttest-on-stigma" class="level3" data-number="22.3.1">
+<h3 data-number="22.3.1" class="anchored" data-anchor-id="lab-play-1-paired-t-test-compare-pretest-and-posttest-on-stigma"><span class="header-section-number">22.3.1</span> Lab Play 1 (<span class="normal">paired t-test</span>): compare pretest and posttest on stigma</h3>
 <p>Keep the people with both stigma scores, draw the paired violin, compute the differences, check their shape, run the paired t-test and <em>d<sub>z</sub></em>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -961,8 +999,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
 </section>
-<section id="lab-play-2-help-seeking-before-and-after-wilcoxon-signed-rank" class="level3" data-number="19.3.2">
-<h3 data-number="19.3.2" class="anchored" data-anchor-id="lab-play-2-help-seeking-before-and-after-wilcoxon-signed-rank"><span class="header-section-number">19.3.2</span> Lab Play 2: Help-seeking before and after (<span class="nonnormal">Wilcoxon signed-rank</span>)</h3>
+<section id="lab-play-2-wilcoxon-signed-rank-compare-pretest-and-posttest-on-willingness-to-seek-help" class="level3" data-number="22.3.2">
+<h3 data-number="22.3.2" class="anchored" data-anchor-id="lab-play-2-wilcoxon-signed-rank-compare-pretest-and-posttest-on-willingness-to-seek-help"><span class="header-section-number">22.3.2</span> Lab Play 2 (<span class="nonnormal">Wilcoxon signed-rank</span>): compare pretest and posttest on willingness to seek help</h3>
 <p><code>HELPSEEK</code> is one 1-to-5 question. Keep the people with both answers, <code>count()</code> the differences, run the Wilcoxon signed-rank test and <em>r</em>.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -1029,9 +1067,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Lab Play 2</span></span>
 <span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>lab_hs <span class="ot">&lt;-</span> lab_wide <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(HELPSEEK_PRE), <span class="sc">!</span><span class="fu">is.na</span>(HELPSEEK_POST)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">DIFF =</span> HELPSEEK_POST <span class="sc">-</span> HELPSEEK_PRE)</span>
 <span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>lab_hs <span class="sc">|&gt;</span> <span class="fu">count</span>(DIFF)</span>
-<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(lab_hs<span class="sc">$</span>HELPSEEK_POST, lab_hs<span class="sc">$</span>HELPSEEK_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>w</span>
-<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="fu">qnorm</span>(w<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(lab_hs<span class="sc">$</span>DIFF <span class="sc">!=</span> <span class="dv">0</span>))              <span class="co"># r</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="co"># wilcomodel2: HELPSEEK, posttest vs pretest, matched people</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>wilcomodel2 <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(lab_hs<span class="sc">$</span>HELPSEEK_POST, lab_hs<span class="sc">$</span>HELPSEEK_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>wilcomodel2</span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="fu">qnorm</span>(wilcomodel2<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(lab_hs<span class="sc">$</span>DIFF <span class="sc">!=</span> <span class="dv">0</span>))              <span class="co"># r</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1074,8 +1113,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </section>
 </section>
-<section id="sec-prepost-yourturn" class="level2" data-number="19.4">
-<h2 data-number="19.4" class="anchored" data-anchor-id="sec-prepost-yourturn"><span class="header-section-number">19.4</span> 🏆 Your Turn</h2>
+<section id="sec-prepost-yourturn" class="level2" data-number="22.4">
+<h2 data-number="22.4" class="anchored" data-anchor-id="sec-prepost-yourturn"><span class="header-section-number">22.4</span> 🏆 Your Turn</h2>
 <div class="gray callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1086,41 +1125,44 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Start from the <code>wide_data</code> and <code>long_data</code> you built in <a href="./prepost.html">Pre/Post Data</a>. Change every line marked <code># REPLACE</code>, pick the line of the box that matches your outcome, and use the checklist.</p>
+<p>Start from the <code>wide_data</code> and <code>long_data</code> you built in <a href="./prepost.html">Pre/Post Data</a>. Change every word that starts with <code>SWAP</code>, pick the line of the box that matches your outcome, and use the checklist.</p>
 </div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(see)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. matched people only (wide_data from Pre/Post Data has SCORE_PRE and SCORE_POST)</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>matched <span class="ot">&lt;-</span> wide_data <span class="sc">|&gt;</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(SCORE_PRE), <span class="sc">!</span><span class="fu">is.na</span>(SCORE_POST)) <span class="sc">|&gt;</span>                  <span class="co"># REPLACE SCORE with your composite or outcome</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DIFF =</span> SCORE_POST <span class="sc">-</span> SCORE_PRE)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(matched)                                                        <span class="co"># the n for the test; report started / finished / matched</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. mydata people only (wide_data from Pre/Post Data has SWAPSCORE_PRE and SWAPSCORE_POST)</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> wide_data <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(SWAPSCORE_PRE), <span class="sc">!</span><span class="fu">is.na</span>(SWAPSCORE_POST)) <span class="sc">|&gt;</span>          <span class="co"># SWAP: your composite or outcome</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">DIFF =</span> SWAPSCORE_POST <span class="sc">-</span> SWAPSCORE_PRE)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mydata)                                                        <span class="co"># the n for the test; report started / finished / mydata</span></span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. look: paired violin with one line per person</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>matched <span class="sc">|&gt;</span> <span class="fu">select</span>(PASSWORD, SCORE_PRE, SCORE_POST) <span class="sc">|&gt;</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">select</span>(PASSWORD, SWAPSCORE_PRE, SWAPSCORE_POST) <span class="sc">|&gt;</span></span>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>PASSWORD, <span class="at">names_to =</span> <span class="st">"TIME"</span>, <span class="at">values_to =</span> <span class="st">"SCORE"</span>, <span class="at">names_prefix =</span> <span class="st">"SCORE_"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TIME =</span> <span class="fu">factor</span>(TIME, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"PRE"</span>, <span class="st">"POST"</span>))) <span class="sc">|&gt;</span></span>
 <span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TIME, <span class="at">y =</span> SCORE)) <span class="sc">+</span></span>
 <span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> PASSWORD), <span class="at">color =</span> <span class="st">"gray60"</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
 <span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill =</span> TIME), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.12</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"REPLACE: outcome (scale)"</span>, <span class="at">title =</span> <span class="st">"REPLACE"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("plots/score_prepost.png", width = 7, height = 5, dpi = 300)                 # REPLACE the name</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"SWAP: outcome (scale)"</span>, <span class="at">title =</span> <span class="st">"SWAP: title"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("plots/plot1_SWAPNAME.png", width = 8, height = 5, dpi = 300)                      # SWAP: the variables and plot type, e.g. plot1_wellbeing_treated_barplot</span></span>
 <span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. the differences</span></span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>matched <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_diff =</span> <span class="fu">mean</span>(DIFF), <span class="at">sd_diff =</span> <span class="fu">sd</span>(DIFF), <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(DIFF)<span class="sc">$</span>p.value)</span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>matched <span class="sc">|&gt;</span> <span class="fu">count</span>(DIFF)                                               <span class="co"># for a count or a single rating</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_diff =</span> <span class="fu">mean</span>(DIFF), <span class="at">sd_diff =</span> <span class="fu">sd</span>(DIFF), <span class="at">shapiro_p =</span> <span class="fu">shapiro.test</span>(DIFF)<span class="sc">$</span>p.value)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">|&gt;</span> <span class="fu">count</span>(DIFF)                                               <span class="co"># for a count or a single rating</span></span>
 <span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="co"># 4a. differences roughly normal (parametric): paired t-test and d_z</span></span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(matched<span class="sc">$</span>SCORE_POST, matched<span class="sc">$</span>SCORE_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(matched<span class="sc">$</span>DIFF) <span class="sc">/</span> <span class="fu">sd</span>(matched<span class="sc">$</span>DIFF)                                <span class="co"># d_z: .2 small, .5 medium, .8 large</span></span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 4b. differences not normal, a count, or a single rating (non-parametric): Wilcoxon signed-rank and r</span></span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(matched<span class="sc">$</span>SCORE_POST, matched<span class="sc">$</span>SCORE_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>w</span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="fu">qnorm</span>(w<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(matched<span class="sc">$</span>DIFF <span class="sc">!=</span> <span class="dv">0</span>))              <span class="co"># r: .1 small, .3 medium, .5 large</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a><span class="co"># ptestmodel1: SWAP: one line that says what this test compares</span></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>ptestmodel1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(mydata<span class="sc">$</span>SWAPSCORE_POST, mydata<span class="sc">$</span>SWAPSCORE_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>ptestmodel1</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mydata<span class="sc">$</span>DIFF) <span class="sc">/</span> <span class="fu">sd</span>(mydata<span class="sc">$</span>DIFF)                                <span class="co"># d_z: .2 small, .5 medium, .8 large</span></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="co"># 4b. differences not normal, a count, or a single rating (non-parametric): Wilcoxon signed-rank and r</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a><span class="co"># wilcomodel1: SWAP: one line that says what this test compares</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>wilcomodel1 <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(mydata<span class="sc">$</span>SWAPSCORE_POST, mydata<span class="sc">$</span>SWAPSCORE_PRE, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>wilcomodel1</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(<span class="fu">qnorm</span>(wilcomodel1<span class="sc">$</span>p.value <span class="sc">/</span> <span class="dv">2</span>)) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(mydata<span class="sc">$</span>DIFF <span class="sc">!=</span> <span class="dv">0</span>))              <span class="co"># r: .1 small, .3 medium, .5 large</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <table class="caption-top table">
 <thead>
@@ -1589,12 +1631,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./compare2groups.html" class="pagination-link" aria-label="Compare 2 Groups">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./ANOVA.html" class="pagination-link" aria-label="Compare 3+ Groups">
-        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

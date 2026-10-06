@@ -8,7 +8,7 @@
 
 <meta name="author" content="Andrew Silhavy">
 <meta name="author" content="Shane McCarty">
-<meta name="keywords" content="ggplot2, grammar of graphics, layers, theme, ggsave, WebR">
+<meta name="keywords" content="ggplot2, grammar of graphics, layers, theme, WebR">
 
 <title>2&nbsp; Coding a Plot – The Quantitative Playbook for R</title>
 <style>
@@ -410,7 +410,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"download.file(\"https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv\", \"insurance.csv\")\ninsurance <- read.csv(\"insurance.csv\")\nlibrary(ggplot2)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(insurance)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges\") +\n  ylab(\"Number of People\") +\n  theme_bw()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurance,\n       mapping = aes(x = charges) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges) +\n  ylab(\"Number of People\") +\n  theme_bw()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"download.file(\"https://raw.githubusercontent.com/shanemccarty/FRIplaybook/main/data/insurance.csv\", \"insurance.csv\")\ninsurancedata <- read.csv(\"insurance.csv\")\nlibrary(ggplot2)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(insurancedata)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurancedata)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurancedata,\n       mapping = aes(x = charges))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurancedata,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurancedata,\n       mapping = aes(x = charges)) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges\") +\n  ylab(\"Number of People\") +\n  theme_bw()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = insurancedata,\n       mapping = aes(x = charges) +\n  geom_histogram(bins = 30, fill = \"#005a43\", color = \"white\") +\n  ggtitle(\"Distribution of Insurance Charges\") +\n  xlab(\"Insurance Charges) +\n  ylab(\"Number of People\") +\n  theme_bw()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1773,6 +1773,12 @@ globalThis.qwebrExecuteCode = async function (
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 1 Checklist</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1787,43 +1793,49 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./export.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-once.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prepost.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Pre/Post Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pre/Post Data (#1,3)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vignette.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Vignette Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vignette Data (#4)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./composite.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab2-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></span></a>
   </div>
 </li>
       </ul>
@@ -1840,19 +1852,25 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./describe.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab3-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Lab 3 Checklist</span></span></a>
   </div>
 </li>
       </ul>
@@ -1869,25 +1887,25 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./compare2groups.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./violin.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
   </div>
 </li>
       </ul>
@@ -1904,19 +1922,19 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./correlation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
   </div>
 </li>
       </ul>
@@ -1932,32 +1950,38 @@ globalThis.qwebrExecuteCode = async function (
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./start-rdreport.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./readme.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Results</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./citations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Review in Hypothes.is</span></span></a>
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
   </div>
 </li>
       </ul>
@@ -1974,25 +1998,37 @@ globalThis.qwebrExecuteCode = async function (
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./import-live.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Peer Review</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Academic Website</span></span></a>
   </div>
 </li>
       </ul>
@@ -2008,7 +2044,7 @@ globalThis.qwebrExecuteCode = async function (
    
   <ul>
   <li><a href="#start-here-what-does-code-do" id="toc-start-here-what-does-code-do" class="nav-link active" data-scroll-target="#start-here-what-does-code-do"><span class="header-section-number">2.1</span> Start Here: What Does Code Do?</a></li>
-  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link" data-scroll-target="#example-data-insurance"><span class="header-section-number">2.2</span> Example Data: <code>insurance</code></a>
+  <li><a href="#example-data-insurance" id="toc-example-data-insurance" class="nav-link" data-scroll-target="#example-data-insurance"><span class="header-section-number">2.2</span> Example Data: <code>insurancedata</code></a>
   <ul class="collapse">
   <li><a href="#what-do-i-do-in-this-chapter" id="toc-what-do-i-do-in-this-chapter" class="nav-link" data-scroll-target="#what-do-i-do-in-this-chapter"><span class="header-section-number">2.2.1</span> What do I do in this chapter?</a></li>
   <li><a href="#two-symbols-you-will-see-in-every-chunk---and" id="toc-two-symbols-you-will-see-in-every-chunk---and" class="nav-link" data-scroll-target="#two-symbols-you-will-see-in-every-chunk---and"><span class="header-section-number">2.2.2</span> Two symbols you will see in every chunk: <code>&lt;-</code> and <code>|&gt;</code></a></li>
@@ -2020,10 +2056,9 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#build-one-plot-one-layer-at-a-time" id="toc-build-one-plot-one-layer-at-a-time" class="nav-link" data-scroll-target="#build-one-plot-one-layer-at-a-time"><span class="header-section-number">2.5</span> Build One Plot, One Layer at a Time</a></li>
   <li><a href="#what-you-just-learned-about-code" id="toc-what-you-just-learned-about-code" class="nav-link" data-scroll-target="#what-you-just-learned-about-code"><span class="header-section-number">2.6</span> What You Just Learned About Code</a></li>
   <li><a href="#how-most-chapters-work" id="toc-how-most-chapters-work" class="nav-link" data-scroll-target="#how-most-chapters-work"><span class="header-section-number">2.7</span> How Most Chapters Work</a></li>
-  <li><a href="#come-back-later-themes-colors-and-saving-a-plot" id="toc-come-back-later-themes-colors-and-saving-a-plot" class="nav-link" data-scroll-target="#come-back-later-themes-colors-and-saving-a-plot"><span class="header-section-number">2.8</span> Come Back Later: Themes, Colors, and Saving a Plot</a>
+  <li><a href="#come-back-later-themes-and-colors" id="toc-come-back-later-themes-and-colors" class="nav-link" data-scroll-target="#come-back-later-themes-and-colors"><span class="header-section-number">2.8</span> Come Back Later: Themes and Colors</a>
   <ul class="collapse">
   <li><a href="#pick-one-theme" id="toc-pick-one-theme" class="nav-link" data-scroll-target="#pick-one-theme"><span class="header-section-number">2.8.1</span> Pick One Theme</a></li>
-  <li><a href="#save" id="toc-save" class="nav-link" data-scroll-target="#save"><span class="header-section-number">2.8.2</span> Save Your Plot with <code>ggsave()</code></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/layers.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -2353,7 +2388,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>ggplot2, grammar of graphics, layers, theme, ggsave, WebR</p>
+    <p>ggplot2, grammar of graphics, layers, theme, WebR</p>
   </div>
 </div>
 
@@ -2423,31 +2458,31 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="example-data-insurance" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">2.2</span> Example Data: <code>insurance</code></h2>
-<p>The example dataset is from the “Medical Cost Personal Costs” database on Kaggle. For this chapter, we refer to it as <code>insurance</code>.</p>
+<h2 data-number="2.2" class="anchored" data-anchor-id="example-data-insurance"><span class="header-section-number">2.2</span> Example Data: <code>insurancedata</code></h2>
+<p>The example dataset is from the “Medical Cost Personal Costs” database on Kaggle. For this chapter, we refer to it as <code>insurancedata</code>.</p>
 <section id="what-do-i-do-in-this-chapter" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="what-do-i-do-in-this-chapter"><span class="header-section-number">2.2.1</span> What do I do in this chapter?</h3>
 <p>You will read a little code, run it, and see what it makes. Before the first line of code, you need two words: <strong>object</strong> and <strong>function</strong>. Almost every line of R code uses both.</p>
-<p><strong>An object is a thing with a name.</strong> In R, anything you give a name to is called an <strong>object</strong>. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. In this chapter the box is named <code>insurance</code>, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a <strong>dataset</strong>. Every time you see the word <code>insurance</code> in the code below, it means “use that dataset”.</p>
+<p><strong>An object is a thing with a name.</strong> In R, anything you give a name to is called an <strong>object</strong>. Think of an object as a labeled box: R puts something inside the box, and from then on you use the name on the label to get it back. In this chapter the box is named <code>insurancedata</code>, and inside it is all of our data: a table with one row for each person and one column for each thing we know about them. A table of data like this is called a <strong>dataset</strong>. Every time you see the word <code>insurancedata</code> in the code below, it means “use that dataset”.</p>
 <p><strong>A function is an action.</strong> A <strong>function</strong> is a command that does one job. You can spot a function because its name is followed by parentheses, like <code>head()</code>. Whatever you put inside the parentheses is what the function works on, called the function’s <strong>input</strong>. If objects are the nouns of R, functions are the verbs. To see how many verbs R has, skim the <a href="https://r-statistics.co/R-Cheat-Sheet.html">R Cheat Sheet: 200 Essential Functions</a>. Each function comes with a one-line description and a short example you can run in your browser. You do not need to learn them now.</p>
-<p><strong><code>head()</code> shows the top of a dataset.</strong> The first function in this chapter is <code>head()</code>. It shows the first six rows of a dataset, so you can check what is inside without printing all 1,338 rows. <code>head(insurance)</code> means “show me the first six rows of <code>insurance</code>”: the function is <code>head()</code>, and the object it works on is <code>insurance</code>.</p>
+<p><strong><code>head()</code> shows the top of a dataset.</strong> The first function in this chapter is <code>head()</code>. It shows the first six rows of a dataset, so you can check what is inside without printing all 1,338 rows. <code>head(insurancedata)</code> means “show me the first six rows of <code>insurancedata</code>”: the function is <code>head()</code>, and the object it works on is <code>insurancedata</code>.</p>
 </section>
 <section id="two-symbols-you-will-see-in-every-chunk---and" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="two-symbols-you-will-see-in-every-chunk---and"><span class="header-section-number">2.2.2</span> Two symbols you will see in every chunk: <code>&lt;-</code> and <code>|&gt;</code></h3>
-<p><strong><code>&lt;-</code> is the assignment arrow.</strong> It puts what is on the right into the object named on the left, and it always points at the name: <code>insurance &lt;- read.csv("data/insurance.csv")</code> reads the file and calls the result <code>insurance</code>. Read it as “gets”: <em>insurance gets the file</em>. Nothing prints when a line assigns; the object simply appears in the environment tab. Typing the name on its own (<code>insurance</code>) prints it. In RStudio, Option + - (Mac) or Alt + - (Windows) types <code>&lt;-</code> for you.</p>
+<p><strong><code>&lt;-</code> is the assignment arrow.</strong> It puts what is on the right into the object named on the left, and it always points at the name: <code>insurancedata &lt;- read.csv("data/insurance.csv")</code> reads the file and calls the result <code>insurancedata</code>. Read it as “gets”: <em>insurancedata gets the file</em>. Nothing prints when a line assigns; the object simply appears in the environment tab. Typing the name on its own (<code>insurancedata</code>) prints it. In RStudio, Option + - (Mac) or Alt + - (Windows) types <code>&lt;-</code> for you.</p>
 <p><strong><code>|&gt;</code> is the pipe.</strong> It hands the result of the left side to the function on the right as its first input, so that steps read left to right, or top to bottom, instead of inside out. These two lines do the same thing:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance, <span class="dv">3</span>)          <span class="co"># without the pipe: function(data, ...)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurancedata, <span class="dv">3</span>)          <span class="co"># without the pipe: function(data, ...)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>insurance <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>)        <span class="co"># with the pipe: data |&gt; function(...)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>insurancedata <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>)        <span class="co"># with the pipe: data |&gt; function(...)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The pipe earns its keep when there are several steps. Without it you nest functions inside functions and read from the inside out; with it you write one step per line and read down the page. From <a href="./prepost.html">Pre/Post Data</a> on, most chunks in this playbook are chains like this one, which keeps only the smokers and then shows the first three:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>insurance <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>insurancedata <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(smoker <span class="sc">==</span> <span class="st">"yes"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Read it as “take <code>insurance</code>, then keep the smokers, then show three rows.” Each <code>|&gt;</code> ends a line, and the next line starts with the next step. In RStudio, Cmd + Shift + M (Mac) or Ctrl + Shift + M (Windows) types the pipe. (Tools &gt; Global Options &gt; Code &gt; check <em>Use native pipe operator</em> so that the shortcut gives <code>|&gt;</code> rather than the older <code>%&gt;%</code>.)</p>
+<p>Read it as “take <code>insurancedata</code>, then keep the smokers, then show three rows.” Each <code>|&gt;</code> ends a line, and the next line starts with the next step. In RStudio, Cmd + Shift + M (Mac) or Ctrl + Shift + M (Windows) types the pipe. (Tools &gt; Global Options &gt; Code &gt; check <em>Use native pipe operator</em> so that the shortcut gives <code>|&gt;</code> rather than the older <code>%&gt;%</code>.)</p>
 <p>One exception you will meet in a moment: <code>ggplot2</code> joins the layers of a plot with <code>+</code>, not <code>|&gt;</code>. The pipe moves data between steps; the plus adds a layer to a plot.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2465,7 +2500,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Now look at the two kinds of gray boxes you will see in this chapter.</p>
 <p>A box with a small <strong>clipboard icon</strong> in its corner shows code and the result it made when this page was built. The clipboard copies the code so that you can paste it somewhere else, such as your own report. <strong>You will not use the clipboard the first time you read this chapter, for Lab 1.</strong> For now, you are looking at the code to learn what it does. Later, when you write your RD Report and Final Report, you will come back, click the clipboard, and paste the code into your own file. Here is an example:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurancedata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  age    sex    bmi children smoker    region   charges
 1  19 female 27.900        0    yes southwest 16884.924
@@ -2485,7 +2520,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="load-and-import"><span class="header-section-number">2.2.3</span> Load and Import</h3>
 <p>These two lines <em>import</em> the data and <em>load</em> the <code>ggplot2</code> package. Think of <strong>R</strong> as a new <strong>phone</strong> and a <strong><em>package</em></strong> as an <strong><em>app</em></strong>. A new <strong>phone</strong> can do a few things by itself, and <strong><em>apps</em></strong> add everything else. In the same way, <strong>R</strong> can do basic math and statistics, and <code>ggplot2</code> is the <strong><em>app</em></strong> that adds <strong><em>plots</em></strong>. You install an <strong><em>app</em></strong> once, and you open it every time you want to use it. <code>library(ggplot2)</code> is how you open the <strong><em>app</em></strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>insurance <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>insurancedata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2495,7 +2530,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="look-at-the-data"><span class="header-section-number">2.2.4</span> Look at the data</h3>
 <p>Each row is one participant. Each column is one variable, such as <code>age</code>, <code>smoker</code>, and <code>charges</code> (the participant’s medical costs). This time <code>head()</code> has two inputs, separated by a comma: the dataset, and the number <code>10</code>, which tells <code>head()</code> to show ten rows instead of six.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurance, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurancedata, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   age    sex    bmi children smoker    region   charges
 1   19 female 27.900        0    yes southwest 16884.924
@@ -2581,11 +2616,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="step-1-set-up-data" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-set-up-data"><span class="data-layer">Step 1: Set up data</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurancedata)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="layers_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="layers_files/figure-html/plot1-step1-data-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2599,12 +2634,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h4 class="anchored" data-anchor-id="step-2-set-up-mapping"><span class="mapping-layer">Step 2: Set up mapping</span></h4>
 <p>A histogram needs only one variable, on the x axis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurancedata,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> charges))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="layers_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="layers_files/figure-html/plot1-step2-mapping-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2630,13 +2665,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="step-3-add-geometry-bars" class="level4">
 <h4 class="anchored" data-anchor-id="step-3-add-geometry-bars"><span class="layers-layer">Step 3: Add geometry (bars)</span></h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurancedata,</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> charges)) <span class="sc">+</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="layers_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="layers_files/figure-html/plot1-step3-bars-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2664,7 +2699,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h4 class="anchored" data-anchor-id="step-4-add-labels-and-a-theme"><span class="theme-layer">Step 4: Add labels and a theme</span></h4>
 <p>The plot works, but its axes still show the raw names <code>charges</code> and <code>count</code>. Now add a title and axis labels that a reader of your report will understand. The y axis label describes the frequency that R counted, so it always says what was counted, such as “Number of Participants”. You do not need <code>y =</code> anywhere in the code; a histogram’s y axis is always the frequency.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_charges <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot1_charges_histogram <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> insurancedata,</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> charges)) <span class="sc">+</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges"</span>) <span class="sc">+</span></span>
@@ -2672,12 +2707,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of People"</span>) <span class="sc">+</span></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plot_charges</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plot1_charges_histogram</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="layers_files/figure-html/plot-charges-histogram-1.png" class="img-fluid figure-img" alt="A histogram of insurance charges with a tall peak on the left and a long tail to the right." width="672"></p>
-<figcaption>Figure 1. A histogram of insurance charges. Most people have low charges and a few people have very high charges.</figcaption>
+<p><img src="layers_files/figure-html/plot1-charges-histogram-1.png" class="img-fluid figure-img" alt="A histogram of insurancedata charges with a tall peak on the left and a long tail to the right." width="672"></p>
+<figcaption>Figure 1. A histogram of insurancedata charges. Most people have low charges and a few people have very high charges.</figcaption>
 </figure>
 </div>
 </div>
@@ -2695,7 +2730,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>plot_charges &lt;- ggplot(...)</code> saves the plot as an object in your environment. To see it, type the object’s name on its own line (or use <code>print()</code>), like the last line of the code above.</p>
+<p><code>plot1_charges_histogram &lt;- ggplot(...)</code> saves the plot as an object in your environment. To see it, type the object’s name on its own line (or use <code>print()</code>), like the last line of the code above.</p>
 </div>
 </div>
 </section>
@@ -2740,7 +2775,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p><strong>Foul 1: a missing <code>"</code> on line 5.</strong> <code>xlab("Insurance Charges) +</code> opens the text with <code>"</code> but never closes it, so R reads everything up to the next <code>"</code> as one long label. The error points at line 6 (something like <em>unexpected symbol</em>), but the mistake is on line 5. The fix: <code>xlab("Insurance Charges") +</code>.</p>
 <p><strong>Foul 2: a missing <code>)</code> on line 2.</strong> <code>aes(x = charges)</code> closes <code>aes(</code>, but nothing closes <code>ggplot(</code>. After you fix Foul 1, R reaches the end of the code still waiting for that <code>)</code> and says something like <em>unexpected end of input</em>. The fix: <code>mapping = aes(x = charges)) +</code>, with two <code>)</code>, just like Step 4.</p>
 <p>The fixed code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurance,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurancedata,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> charges)) <span class="sc">+</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"#005a43"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Insurance Charges"</span>) <span class="sc">+</span></span>
@@ -2769,12 +2804,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol type="1">
 <li><strong>The Play.</strong> You watch: the chapter walks through the code with an example dataset, as this chapter did.</li>
 <li><strong>The Lab.</strong> You practice in RStudio with the lab dataset that everyone shares. Labs are not graded. Ref the Raccoon, the referee of this playbook, shows you the answer you should get, so you can check your own work.</li>
-<li><strong>Your Turn.</strong> You run the play with your own team’s data. There is no Ref, but there is a checklist.</li>
+<li><strong>Your Turn.</strong> You run the play with your own team’s data. There is no Ref, but there is a checklist. Your Turn gives you template code in which every word that starts with <code>SWAP</code> is a placeholder for one of your own variables or files; everything else is real code you keep.</li>
 </ol>
 <p>To do The Lab and Your Turn, you need R and RStudio on your own computer. That is the next chapter: <a href="./RStudio.html">R Software</a>.</p>
 </section>
-<section id="come-back-later-themes-colors-and-saving-a-plot" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="come-back-later-themes-colors-and-saving-a-plot"><span class="header-section-number">2.8</span> Come Back Later: Themes, Colors, and Saving a Plot</h2>
+<section id="come-back-later-themes-and-colors" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="come-back-later-themes-and-colors"><span class="header-section-number">2.8</span> Come Back Later: Themes and Colors</h2>
 <p>Skip the rest of this chapter on your first read. Come back when you are making plots for your <em>RD Report</em>.</p>
 <section id="pick-one-theme" class="level3" data-number="2.8.1">
 <h3 data-number="2.8.1" class="anchored" data-anchor-id="pick-one-theme"><span class="header-section-number">2.8.1</span> Pick One Theme</h3>
@@ -2789,7 +2824,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Team members should pick <strong>one theme</strong> (from the <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">complete themes</a>) to use with all plots in your individual reports and the team poster!</p>
+<p>Team members should pick <strong>one theme</strong> (from the <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">complete themes</a>) to use with all plots in your individual reports and the team poster! This playbook uses <code>theme_bw()</code> in every Play, but that is the playbook’s choice, not a rule for your team: pick the theme your team likes, write it down in your team codebook, and use it in every plot. The complete themes change the background, grid lines, and borders only; they all use the same font, so your choice of theme does not change the font on your poster.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2811,55 +2846,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><a href="https://www.youtube.com/watch?v=ZVSbY4z7tMY">How to use better colors in ggplot (youtube)</a></li>
 </ul>
 </div>
-</div>
-</div>
-</section>
-<section id="save" class="level3" data-number="2.8.2">
-<h3 data-number="2.8.2" class="anchored" data-anchor-id="save"><span class="header-section-number">2.8.2</span> Save Your Plot with <code>ggsave()</code></h3>
-<p><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave( )</a> is a specific function to save a plot as an image in .jpg or .png image. The plot is saved as a file inside your RStudio Project folder, so you can add it to your team poster.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print and save to the plots folder</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot_charges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="layers_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"plots/plot1_charges_histogram.png"</span>, </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">plot =</span> plot_charges,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="required callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Required: <code>ggsave( )</code>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Your <em>RD Report</em> and <em>Final Report</em> must include <code>ggsave( )</code> for plots, because you will want to easily export these plots and then add them onto your team poster. <strong>You do not need to do this now.</strong> You will do it later, with the plots you make from your team’s real dataset. Here is how it will work:</p>
-<p>The use of <code>plots/</code> in the <code>ggsave()</code> code chunk saves the image into a folder called <strong>plots</strong> inside your project. If you do not have a <strong>plots</strong> folder yet, the console will ask you whether to create it: type “1” and click return/enter.</p>
-<p>In your <strong>files tab</strong>, click the <strong>plots</strong> folder to see your saved images.</p>
-<p>Then, upload the plot (and your other plots) to your team’s google drive &gt; Team Survey Data &gt; Quant Data &gt; Plots. The image file is in the <strong>plots</strong> folder inside your <code>Lastname_FRI</code> project folder on your computer.</p>
-<p><img src="images/ggplot2-ggsave.png" class="img-fluid" alt="a screenshot of the console output after running the ggsave code"></p>
-<p><img src="images/ggplot2-ggsave-plotsfolder.png" class="img-fluid" alt="a screenshot of the files tab showing the saved image files inside the plots folder"></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Caution: Don’t use spaces, colons, or slashes in file names
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use letters, numbers, underscores (<code>_</code>), and hyphens (<code>-</code>) only: <code>plot1_charges_histogram.png</code> or <code>plot1-charges-histogram.png</code>. Do not use spaces, colons, or slashes in a file name. Some computers cannot save or open those files.</p>
 </div>
 </div>
 

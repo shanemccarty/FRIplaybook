@@ -55,19 +55,19 @@ Your team should use your team meeting or team time during lecture to **follow t
 
 ## Why Variable Names Matter
 
-In [Coding a Plot](layers.qmd), the first thing you did with the `insurance` dataset was look at its variable names and its first rows:
+In [Coding a Plot](layers.qmd), the first thing you did with the `insurancedata` dataset was look at its variable names and its first rows:
 
 ```{r}
-#| label: why-names-insurance
+#| label: why-names-insurancedata
 #| message: false
-insurance <- read.csv("data/insurance.csv")
-names(insurance)
+insurancedata <- read.csv("data/insurance.csv")
+names(insurancedata)
 ```
 
 ```{r}
 #| label: why-names-head
 #| echo: false
-knitr::kable(head(insurance, 4), caption = "The first four rows of `insurance`: one column per variable, one row per person.")
+knitr::kable(head(insurancedata, 4), caption = "The first four rows of `insurancedata`: one column per variable, one row per person.")
 ```
 
 You could read that table without a codebook. `age` is an age, `smoker` says whether the person smokes, `charges` is what their insurance cost. Each name is short enough to type in a line of code and long enough to say what the column holds. That is the goal for your team's survey: when you type `names(alldata)` in October, every name should tell you what the variable is **without** spelling out the whole question.
@@ -77,7 +77,7 @@ Here is the same table the way Qualtrics exports a survey when nobody has named 
 ```{r}
 #| label: why-names-qualtrics-default
 #| echo: false
-unnamed <- head(insurance, 4)
+unnamed <- head(insurancedata, 4)
 names(unnamed) <- paste0("Q", 1:ncol(unnamed))
 knitr::kable(unnamed, caption = "The same four rows with Qualtrics' default names. Which column is the smoker question? You would have to open the survey to find out, every time.")
 ```
@@ -108,7 +108,7 @@ In Qualtrics, the variable name is the **question export tag**: the name that be
 | One measure with subscales: BIG_SMALL plus the item number | `STIGMA_PUB1`, `STIGMA_SELF1` | `PUBSTIG1`, `SS1` |
 | Reverse item: add `_R` at the end (see below) | `STIGMA_PUB4_R` | `STIGMA_PUB4rev`, `STIGMA_PUB4 (reversed)` |
 | Same measure at two times: `_PRE` and `_POST` (or `_T1` and `_T2`) | `EFFICACY1_PRE`, `EFFICACY1_POST` | `EFFICACY1`, `EFFICACY1b` |
-| Binary (yes/no) variable: add `_01`, code it **No = 0, Yes = 1**, and name it for the answer that gets the 1. No `CAT`: `CAT` is only for categories you create later in R | `TREATED_01` (0 = has not received mental health treatment, 1 = has); `KNOWS_01` (0 = does not know anyone with a mental health problem, 1 = does) | `TREATMENT`, `MHTX`, `TREATED_01CAT`, `TREATED` coded yes = 1, no = 0 |
+| Binary (yes/no) variable: add `_01`, code it **No = 0, Yes = 1**, and name it for the answer that gets the 1. No `CAT`: `CAT` is only for categories you create later in R | `TREATED_01` (0 = has not received mental health treatment, 1 = has); `KNOWS_01` (0 = does not know anyone with a mental health problem, 1 = does) | `TREATMENT`, `MHTX`, `TREATED_01`, `TREATED` coded yes = 1, no = 0 |
 | A categorical variable you will **create later in R** by transforming a variable that is already in the survey (cutting a score into bands, or collapsing a question's response options into fewer categories): `_#CAT`, where \# is the number of categories the new variable has, and `_01CAT` when it is a 0/1 split you made. `CAT` is the mark of a variable **you** made in R from an existing one, so nothing in Qualtrics ever gets it ([Transforming Your Data](dplyr.qmd)) | `DISTRESS_4CAT` (the ten K10 items summed, then cut into 4 bands), `EDUCATION_3CAT` (7 education options collapsed into 3), `RACIALIZED_6CAT` (the select-all boxes combined into 6 categories) | `DISTRESSCATS`, `EDU3` |
 | Open-ended (text) question, the answers your qualitative teammates will code in NVivo: add `_QUAL` (see the box below) | `BARRIERS_QUAL`, `SENTENCE1_QUAL` | `BARRIERS`, `BARRIERS_TEXT`, `Q14` |
 | A block is not a variable: the container of a matrix (and a page-level block) gets the measure's name plus `BLOCK` (see 7.4) | block `STIGMABLOCK`, variables `STIGMA_PUB1` … | block and variable both called `STIGMA` |
@@ -203,7 +203,7 @@ The **Kessler Psychological Distress Scale (K10)** in the lab dataset has ten it
 | `DISTRESS9`  | so sad that nothing could cheer you up?             |
 | `DISTRESS10` | worthless?                                          |
 
-What happens to the ten items afterwards belongs to later chapters: [Transforming Your Data](dplyr.qmd) cuts the K10 total into its published bands (`DISTRESS_4CAT`, `DISTRESS_01CAT`), and [Creating Composites](composite.qmd) scores the scale.
+What happens to the ten items afterwards belongs to later chapters: [Transforming Your Data](dplyr.qmd) cuts the K10 total into its published bands (`DISTRESS_4CAT`, `DISTRESS_01`), and [Creating Composites](composite.qmd) scores the scale.
 
 ### Shared class variables
 
@@ -233,7 +233,7 @@ Every team's survey has these variables, with exactly these names and values, so
 - **Single choice** (one answer). One variable, `RACIALIZED`, with the values in the table above and `-99` for *Prefer not to say*. The screenshot below shows this dialog.
 - **Select all that apply** (checkboxes). Qualtrics exports **one column per box** (`RACIALIZED_1`, `RACIALIZED_2`, … `RACIALIZED_8`, `RACIALIZED_99`, each filled in when that box was checked) when you export with *Split multi-value fields into columns* checked ([Export Survey Data](export.qmd)). Give each box the value in the table above, so that `RACIALIZED_7` holds a 7 when White is checked.
 
-In R, [Transforming Your Data](dplyr.qmd) shows how to turn either version into `RACIALIZED_6CAT` or `RACIALIZED_5CAT` (White, Asian, Black, Hispanic or Latine, Another identity, and, for select-all only, **Two or more**) and `RACIALIZED_01CAT` (0 = racialized as white, 1 = racialized as a person of color).
+In R, [Transforming Your Data](dplyr.qmd) shows how to turn either version into `RACIALIZED_6CAT` or `RACIALIZED_5CAT` (White, Asian, Black, Hispanic or Latine, Another identity, and, for select-all only, **Two or more**) and `RACIALIZED_01` (0 = racialized as white, 1 = racialized as a person of color).
 
 If the question has an "Other" text box, leave it: it exports as `RACIALIZED_8_TEXT` in both versions, and you will treat it as a `_QUAL` variable (see the `_QUAL` box in 7.3).
 :::
@@ -279,7 +279,7 @@ Some answer choices mean the *absence* of the thing the question asks about. Giv
 | Other (please specify) | 9, with the write-in exported as `BENEFITS_9_TEXT` |
 | I did not perceive any benefits. | **0** |
 
-Codes 1 to 8 are all different kinds of benefit; "no benefits" is logically zero of them, so 0 is the number that means what the answer means. The payoff comes in R: because every real benefit is 1 or higher and "none" is 0, one line makes a binary variable, `BENEFITS_01CAT` (0 = no benefits, 1 = at least one), and the percent who reported any benefit is its mean ([Transforming Your Data](dplyr.qmd)). If "none" had been coded 9, it would sit among the benefits and you would have to remember to pull it out every time.
+Codes 1 to 8 are all different kinds of benefit; "no benefits" is logically zero of them, so 0 is the number that means what the answer means. The payoff comes in R: because every real benefit is 1 or higher and "none" is 0, one line makes a binary variable, `BENEFITS_01` (0 = no benefits, 1 = at least one), and the percent who reported any benefit is its mean ([Transforming Your Data](dplyr.qmd)). If "none" had been coded 9, it would sit among the benefits and you would have to remember to pull it out every time.
 
 Note the difference from the missing codes: "no benefits" is a real answer, so it gets 0. "Prefer not to say" (-99) and "Don't know" (-50) are not answers, and they become `NA` in R.
 :::
@@ -339,7 +339,7 @@ Before you publish, one teammate fills in a codebook, one row per variable, and 
 ::: {.callout-important .required}
 ## Required: fill in the Team Codebook Template
 
-Find the **Codebook Template** (`Team Codebook Template.docx`) in the **Template Assignment** folder of the class Google Drive. Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the **owner** of each variable (your initials if the variable belongs to your research question, or *Team* if it is shared), one for whether the variable is **quant or qual**, and one for whether it is imported into **R, NVivo, or both**. Save it as `TeamCodebook.docx` and upload it to your "Team Survey Data" folder next to `Draft.TeamSurveyQuestions.docx`.
+Find the [CLASS DRIVE: Team Codebook Template doc](URL_TEAM_CODEBOOK_TEMPLATE) in the [CLASS DRIVE: Template Assignment folder](URL_TEMPLATE_ASSIGNMENT). Make a copy for your team, fill in one row for every variable in your survey, and have a second teammate check it before you click Publish. The template has a column for the **owner** of each variable (your initials if the variable belongs to your research question, or *Team* if it is shared), one for whether the variable is **quant or qual**, and one for whether it is imported into **R, NVivo, or both**. Save it as `TeamCodebook.docx` and upload it to your "Team Survey Data" folder next to `Draft.TeamSurveyQuestions.docx`.
 :::
 
 | VARIABLE | QUESTION or item text | TYPE | VALUES | SCALE / subscale |
@@ -386,7 +386,7 @@ Under *Show logic* there is a box called **Use recode values**. It only changes 
 
 - [ ] Open the document in Microsoft Word (not Google Docs) to confirm it works. Read through it as a team: every answer choice should have a number in parentheses, and the numbers should match your codebook.
 - [ ] Save it as `Draft.TeamSurveyQuestions.docx`.
-- [ ] Open your "Team Survey Data" folder on Google Drive and click + New \> File Upload and select your document.
+- [ ] Open your **TEAM DRIVE: Team Survey Data folder** and click + New \> File Upload and select your document.
 
 ::: {.callout-important .required}
 ## Required: two files in your team's Google Drive, updated twice

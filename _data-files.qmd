@@ -3,7 +3,7 @@
 
 Two kinds of data files appear in this playbook, and they live in two different places.
 
-**Lab data (class Google Drive only).** The lab dataset and everything that goes with it are *not* on the playbook website or in its GitHub repository. Get them from the **Quant** folder of the class Google Drive and put them where the chapter says: `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` and `ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx` in your project's `data` folder, and `lab_prep.R` in the project folder itself (next to your `.Rproj`).
+**Lab data ([CLASS DRIVE: Quant Track folder](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link) only).** The lab dataset and everything that goes with it are *not* on the playbook website or in its GitHub repository. Get them from the **Quant** folder of the class Google Drive and put them where the chapter says: `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` and `ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx` in your project's `data` folder, and `lab_prep.R` in the project folder itself (next to your `.Rproj`).
 
 **Play data (download from the playbook).** Every file used in a Play is public and can be downloaded with the links below. Save each one into your project's `data` folder. If a chapter's Lab uses one of these files (Import Data Once, Lab Play 5, uses the Veggie Meter file), this is where to get it.
 

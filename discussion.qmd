@@ -1,0 +1,25 @@
+---
+title: "Write the Discussion"
+subtitle: "What the findings mean, in words, not code"
+author:
+  - Shane McCarty
+abstract: |
+  A one-paragraph chapter: the Discussion is the part of the report with no code in it. It says what the Results mean for the research aims, how they fit the literature from the Introduction, what the study could not show, and what should come next.
+keywords:
+  - discussion
+  - report
+date: 10.06.2026
+date-format: "MM.DD.YYYY"
+format: html
+editor: visual
+---
+
+The Discussion is the one section of your report with no code chunks, no plots, and no new numbers. Everything you need from R is already in Results. In the Discussion, you interpret those results. Start by returning to the research aims from your Introduction and answering each one in plain words. Was the hypothesis supported? What do the direction and the size of the effect say about the question you asked? Then connect each answer to prior research studies. Where your findings agree with earlier studies, say so, because your study adds evidence for a specific theory, model, or finding. Where your findings differ from the existing literature, say that too, and explain the potential reasons. Cite the literature that offers an explanation, and add your own: your sample, your measures, or the setting may differ from the earlier studies in ways that matter.
+
+After the findings, name the limitations honestly. Put them in the order of importance you would want a reader to weigh them, such as a small or convenience sample, single-item measures, a cross-sectional design that cannot show cause, or self-report. End with what should happen next, for research and for practice. Two rules of style apply to the whole section. Write in the past tense about what you found and in the present tense about what it means. Do not use backticks: in the Discussion you write about well-being and stigma as ideas, not `WELLBEING` and `STIGMA` as variables ([Write an Introduction](write-intro.qmd)).
+
+::: callout-warning
+## Caution: no new results, no new numbers
+
+If you find yourself typing a statistic in the Discussion that is not already in Results, it belongs in Results. In the Discussion you point back to a result and say what it means, in words: "Treated participants reported lower well-being, a medium-sized difference (Figure 2), which suggests that…" You do not restate the test: *t*(186) = −2.50, *p* = .013, *d* = 0.37 stays in Results, where the reader already saw it.
+:::

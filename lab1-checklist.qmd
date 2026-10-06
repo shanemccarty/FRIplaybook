@@ -1,0 +1,88 @@
+---
+title: "Lab 1 Checklist"
+subtitle: "What you should have when Get Started is done"
+author:
+  - Shane McCarty
+abstract: |
+  This short chapter closes Lab 1. It first sums up each Get Started chapter in three columns: what you learned, what you did (and whether you did it in your web browser or in RStudio), and what you will do when you come back with your own research data. It then lists what should exist on your computer and in your ELN, with a one-line way to check each item and a link back to the section that made it. Lab 1 is setup: you install R and RStudio, make your project, install the packages once, start a Quarto file, and learn the routine for opening and closing a session. You do not analyze data in RStudio until Lab 2.
+keywords:
+  - checklist
+  - Lab 1
+  - setup
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+---
+
+## Two kinds of checklist
+
+This playbook has two kinds of checklist, and they answer two different questions.
+
+-   A **Lab checklist**, like this one, closes each lab and answers *"am I done with this lab?"* It lists what should exist on your computer and in your ELN after the lab's chapters, each with a quick way to check it. There is one at the end of Lab 1, Lab 2, and Lab 3. Labs 4 and 5 depend on your research question, so their chapters carry their own Ref's checks instead.
+-   A **Your Turn checklist** sits at the end of each analysis chapter and answers *"is this part of my report done?"* It is about your team's data and your *RD Report* and *Final Report*, not about the lab.
+
+Labs are not graded and are not submitted. Check anyway, because every chapter from Lab 2 on assumes that each item on this list is done. If one is not, your code in Lab 2 will fail with an error message about something else, such as `there is no package called 'readxl'` or `path does not exist`, and nothing in that message will point back to the missing step. Ref's call at the bottom of this page lists the three most common cases.
+
+## What each chapter asked of you {#sec-lab1-summary}
+
+From Lab 2 on, most chapters have three parts with the same three names:
+
+-   **The Play**: you read. The chapter walks through the code with an example dataset. You do not retype it.
+-   **The Lab**: you practice, in RStudio on your own computer, with the lab dataset everyone shares. Ref shows the answer you should get.
+-   **Your Turn**: you run the same play on your team's data, for your *RD Report* and *Final Report*. There is no Ref, only a checklist.
+
+The Get Started chapters are setup chapters, so they do not have those three headings yet. The same three questions still apply, and the table below answers them for each chapter. The **Where** column answers the question students ask most: *was I supposed to be coding in RStudio?*
+
+-   **Read**: there was nothing to run.
+-   **Browser**: you ran R code in the webpage of the playbook itself. You did not use RStudio and nothing was saved.
+-   **RStudio, setup**: you used RStudio on your own computer, but to set things up, not to analyze data.
+
+| Chapter | What you learned | What you did | Where | Your Turn: with your data |
+|------------------|----------------|----------------|--------|----------------|
+| [Reproducible Reports](example.qmd) | Why the code and the writing live in one file, and what a finished Quarto report looks like | Opened and skimmed example reports | **Read** | Your *RD Report* and *Final Report* will be reports like these |
+| [Coding a Plot](layers.qmd) | What an object and a function are, what `<-` and `|>` do, and that a plot is built with layers | Ran the code in the **Try it** boxes, changed one thing at a time, and found the two fouls | **Browser** | Return to *Come Back Later* to pick your team's theme and colors when you make the plots for your report |
+| [R Software](RStudio.qmd) | What R and RStudio are, the four panes, and why a project sets the working directory | Installed R and RStudio, created the `Lastname_FRI` project, and made the `data` folder | **RStudio, setup** | Your team's `.cleandata` data file goes in that `data` folder, and you always open RStudio through the project |
+| [R Packages](library.qmd) | The two rules: `install.packages()` once per computer, `library()` every session | Created `install.R` and ran it one time | **RStudio, setup** | The load-library chunk is the first chunk of every report; `install.packages()` never appears in one |
+| [Start a Report](codechunks.qmd) | What a `.qmd` is, the short YAML header, what a code chunk is and why it gets a label, and Render | Made a practice `.qmd`, added the load-library chunk, and clicked Render | **RStudio, setup** (a practice file, no data) | In Lab 6, [Start My Report](start-rdreport.qmd) adds the report's file name, the full YAML header, and the five required parts of every chunk |
+| [Find the Ref](find-the-ref.qmd) | Ref's kickoff and final whistle: the routine for opening and closing every session | Walked through the routine once and made the R Labs folder in your ELN | **RStudio, setup** | The same routine, every session, for your labs and your reports |
+
+::: callout-important
+## Important: you have not analyzed data in RStudio yet, and you were not supposed to
+
+Nothing in Lab 1 asks you to analyze data in RStudio. [Coding a Plot](layers.qmd) runs its code in your web browser. The four chapters after it put the software on your computer and set up your project, your packages, a practice Quarto file, and your routine. There is no `Lastname_lab1.qmd`; your first lab file is `Lastname_lab2.qmd`, made at the start of Lab 2.
+
+**The first time you write and run code on data in your own RStudio is [The Lab in Import Data Once](import-once.qmd#sec-import-lab), in Lab 2.** That chapter's Play is still for reading; the coding starts at its heading *The Lab*, in a new file named `Lastname_lab2.qmd`. If you reach that Lab and the list below is not all checked, do this list first.
+:::
+
+## What you should have
+
+Go down the list in RStudio. Every row has a check you can do in under a minute.
+
+| ☐ | What | How to check | Where it came from |
+|----|----|----|----|
+| ☐ | **R and RStudio installed** | RStudio opens; the Console shows a line beginning `R version 4.` | [RStudio Software](RStudio.qmd), Downloading R and RStudio |
+| ☐ | **A project called `Lastname_FRI`** (your last name, no spaces) | Double-clicking `Lastname_FRI.Rproj` opens RStudio with `Lastname_FRI` in the top-right corner | [RStudio Software](RStudio.qmd), RStudio Projects and the Working Directory |
+| ☐ | **A `data` folder inside the project** | `list.files()` in the Console shows `data`; it is empty for now | [RStudio Software](RStudio.qmd), Go: how to move a data file into your project folder |
+| ☐ | **`install.R` in the project folder, run once** | The Files tab shows `install.R` next to `Lastname_FRI.Rproj`; `library(tidyverse)` in the Console runs with no `there is no package` error | [Install and Load Packages](library.qmd), Creating install.R file |
+| ☐ | **You can tell a package from a library** | You can say in one sentence why `install.packages()` never goes in a report and `library()` always does | [Install and Load Packages](library.qmd), The two rules |
+| ☐ | **You have made and rendered a Quarto file** | You created a `.qmd` with a YAML header and a code chunk, clicked Render, and an `.html` appeared next to it. (There is no required file for Lab 1; the first lab file is `Lastname_lab2.qmd`, which you will make at the start of Lab 2.) | [Start a Report](codechunks.qmd), Create a Quarto Markdown Document and Render Your Report |
+| ☐ | **You know the file names for the labs** | `Lastname_lab2.qmd` … `Lastname_lab5.qmd`, one per lab, no file for Lab 1 (the report's name comes in Lab 6) | [Start a Report](codechunks.qmd), Name the file |
+| ☐ | **Every chunk you write has a label** | `#| label:` on the first line, lowercase with hyphens, saying what the chunk does (`load-library`, `import-alldata`) | [Start a Report](codechunks.qmd), Code Chunks |
+| ☐ | **You can run Ref's routine from memory** | Kickoff: Open Project → Open `.qmd` → Run load-library chunk → Run All Chunks Above → code. Final whistle: Save → Render → Back up to ELN → Quit, Don't Save workspace | [Find the Ref](find-the-ref.qmd), Ref's Quick Checklist |
+| ☐ | **An R Labs folder in your ELN** | Your Google Drive has a folder where your lab `.qmd` files will be backed up after every session | [Find the Ref](find-the-ref.qmd), Important: Your ELN is your backup |
+| ☐ | **The DataCamp course is done** | *Introduction to the Tidyverse* shows as complete in your DataCamp account, so the pipe, `filter()`, `mutate()`, and `ggplot()` are not new when they appear in Lab 2 | Syllabus, pre-lab preparation |
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: the three gaps that break Lab 2
+
+-   **`there is no package called 'readxl'`** (or `tidyverse`, `psych`) in Lab 2 → `install.R` was never sourced, or was sourced before the package was added. Open `install.R` and click Source.
+-   **`path does not exist`** when importing in Lab 2 → either there is no `data` folder in the project, or RStudio is not open *in the project*. Check the top-right corner for `Lastname_FRI`.
+-   **Your `.qmd` is saved on the Desktop or in Downloads** → it is outside the project, so relative paths like `data/…` will not work. Move it into the `Lastname_FRI` folder ([Important: Save your Quarto documents in the project folder](RStudio.qmd)).
+:::
+
+## What Lab 2 will add
+
+In Lab 2 you create `Lastname_lab2.qmd`, put the lab dataset and `lab_prep.R` from the [CLASS DRIVE: Quant Track folder](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link) into place, and import, clean, and transform data in RStudio for the first time. [Lab 2 Checklist](lab2-checklist.qmd) is the matching list for that lab.

@@ -1,4 +1,4 @@
-<!-- Single source for the plot checklist. Included in Visualize a Comparison and Visualize a Relationship ("Your Turn"), and later in the Final Report Checklist page. Edit it here once; every place updates. -->
+<!-- Single source for the plot checklist. Included in Write the Results (results.qmd). Edit it here once. -->
 
 
 | Criteria | Ask yourself |
@@ -14,6 +14,6 @@
 | **Code formatting** | Can you read the code without scrolling to the right? Does the plot print without errors or extra output? |
 | **Figure caption** | Does the chunk have `fig-cap`, starting with "Figure 1.", "Figure 2.", and enough detail to stand alone? |
 | **Alt text** | Does the chunk have `fig-alt` that describes what the plot shows? |
-| **ggsave( )** | Is the plot saved with `ggsave()` into the `plots` folder of your RStudio Project, with a clear file name? |
+| **ggsave( )** | Is the plot saved with `ggsave()` into the `plots` folder of your RStudio Project, named `plot#_variables_type.png` (for example `plot1_wellbeing_treated_barplot.png`), with the object named the same? |
 | **Stands alone** | Could a reader understand the figure without reading your text? |
 | **Referenced in text** | Does your results paragraph point to it (e.g., "Figure 1 shows the association between ...")? |

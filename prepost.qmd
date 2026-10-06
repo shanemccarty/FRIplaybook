@@ -446,12 +446,12 @@ sum(is.na(lab_wide$HELPSEEK_PRE))                                      # post on
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Only some teams have pre/post data. Use the template that matches how your data arrive, change every line marked `# REPLACE`, and use the checklist. Name the object `alldata` for the file you import, the same as in every other chapter.
+Only some teams have pre/post data. Use the template that matches how your data arrive, change every word that starts with `SWAP`, and use the checklist. Name the object `alldata` for the file you import, the same as in every other chapter.
 :::
 
 ### Template 1: one file in long format (Teams 3 and 5)
 
-One survey given twice and exported once, so there is one `.clean` file, named as in [Export Survey Data](export.qmd).
+One survey given twice and exported once, so there is one `.cleandata` file, named as in [Export Survey Data](export.qmd).
 
 ```{r}
 #| label: prepost-long-template
@@ -460,31 +460,31 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 
-# 1. import the one .clean file
-alldata <- read_excel("data/10.09.2026.data.team3.clean.xlsx")   # REPLACE with your file
+# 1. import the one .cleandata file
+alldata <- read_excel("data/SWAPFILE.xlsx")   # SWAP: your team's .cleandata file, e.g. 10.09.2026.team3.cleandata.xlsx
 
 # 2. clean the password and put the times in order
-alldata <- alldata |>
+cleandata <- alldata |>
   mutate(PASSWORD = tolower(trimws(PASSWORD)),
          TIME_01 = TIME,                                                    # numeric copy (0/1) for a model later
          TIME = factor(TIME, levels = c(0, 1), labels = c("PRE", "POST")))  # labels for reshaping and plots
 
 # 3. duplicates: same person, same time (then decide which response to keep)
-alldata |> count(PASSWORD, TIME) |> filter(n > 1)
-alldata <- alldata |> distinct(PASSWORD, TIME, .keep_all = TRUE)
+cleandata |> count(PASSWORD, TIME) |> filter(n > 1)
+cleandata <- cleandata |> distinct(PASSWORD, TIME, .keep_all = TRUE)
 
 # 4. wide format for the paired test
-wide_data <- alldata |>
+wide_data <- cleandata |>
   pivot_wider(names_from = TIME,
-              values_from = c(REPLACE1, REPLACE2),           # REPLACE with your pre/post scores
+              values_from = c(SWAPSCORE1, SWAPSCORE2),       # SWAP: your pre/post scores
               names_glue = "{.value}_{TIME}")
 
 # 5. check: one row per person; who is missing a time?
 nrow(wide_data)
-wide_data |> filter(is.na(REPLACE1_POST))                     # REPLACE
+wide_data |> filter(is.na(SWAPSCORE1_POST))                   # SWAP: one of the scores above
 
-# 6. long format for plots is alldata itself (already one row per response)
-long_data <- alldata
+# 6. long format for plots is cleandata itself (already one row per response)
+long_data <- cleandata
 ```
 
 ### Template 2: two files in wide format (only if your pretest and posttest were separate surveys)
@@ -498,9 +498,9 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 
-# 1. import both .clean files
-pretest  <- read_excel("data/10.09.2026.data.teamX.pre.clean.xlsx")    # REPLACE with your pretest file
-posttest <- read_excel("data/10.09.2026.data.teamX.post.clean.xlsx")   # REPLACE with your posttest file
+# 1. import both .cleandata files
+pretest  <- read_excel("data/SWAPFILE.pre.cleandata.xlsx")    # SWAP: your pretest file
+posttest <- read_excel("data/SWAPFILE.post.cleandata.xlsx")   # SWAP: your posttest file
 
 # 2. clean the password in both
 pretest  <- pretest  |> mutate(PASSWORD = tolower(trimws(PASSWORD)))
@@ -522,7 +522,7 @@ anti_join(pretest, posttest, by = "PASSWORD")
 # 6. long format for plots
 long_data <- wide_data |>
   pivot_longer(
-    cols = c(REPLACE_PRE, REPLACE_POST),          # REPLACE with your pre and post columns
+    cols = c(SWAPSCORE_PRE, SWAPSCORE_POST),      # SWAP: your pre and post columns
     names_to = c(".value", "TIME"),
     names_pattern = "(.+)_(PRE|POST)$") |>
   mutate(TIME = factor(TIME, levels = c("PRE", "POST")))

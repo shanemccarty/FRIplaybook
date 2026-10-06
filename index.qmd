@@ -43,7 +43,7 @@ By the end of this guide, you will be able to:
 5.  **Model** - Apply statistical methods (e.g., regression, paired t-test) to answer questions
 6.  **Communicate** - Generate reproducible reports with Quarto to advance transparent scientific practices and multiple products (e.g., report, manuscript, presentation)
 
-[![Source: The Data Science Workflow (Wickham et al., 2023)](images/intro-workflow.png)](https://r4ds.hadley.nz/whole-game.html#fig-ds-whole-game)
+[![*The data science workflow. Figure 1 from Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science (2nd ed.). O'Reilly. <https://r4ds.hadley.nz>. Reproduced unchanged under the book's CC BY-NC-ND 3.0 US license.*](images/intro-workflow.png){fig-alt="A flow diagram: Import, then Tidy, then a loop of Transform, Visualize, and Model labeled Understand, then Communicate, with Program underneath the whole flow."}](https://r4ds.hadley.nz/whole-game.html#fig-ds-whole-game)
 
 Each section builds on previous concepts, taking you from raw data files to a publication-ready, reproducible scientific report.
 
@@ -57,7 +57,7 @@ This playbook combines the two. You follow the workflow to **import, tidy, and t
 
 ## What Makes This Guide Different? {.unnumbered}
 -   **Interactive Learning**: Some code examples can be copy and pasted into your .R script, .qmd markdown report file, or run in the console. Some chapters include code examples that run directly in your browser using [WebR](https://docs.r-wasm.org/webr/latest/)—no software installation required
--   **Community Health Data**: Examples use public health and community health datasets, such as [insurance claims from kaggle](https://www.kaggle.com/code/pralabhpoudel/does-smoking-makes-your-insurance-high), a lab dataset about what people believe about mental health (synthetic data made for this course), and simulated survey data modeled on past team projects
+-   **Community Health Data**: Examples use public health and community health datasets, such as [simulated insurance charges from Kaggle](https://www.kaggle.com/datasets/mirichoi0218/insurances-your-insurance-high), a lab dataset about what people believe about mental health (synthetic data made for this course), and simulated survey data modeled on past team projects
 -   **Complete Workflow**: Covers the whole workflow, from raw data to a publication-ready report, so you can look up the step you need
 -   **Practical Focus**: Emphasizes "plays" (R code chunks) you'll actually use in community health research and practice
 
@@ -153,6 +153,23 @@ A gray box holds information for one team, such as the file names that team shou
 :::
 
 Click the blue banner (or the **\>** at its right edge) to open the resources, and click it again to close them. You will find a Resources box like this at the top of most chapters, and sometimes inside a chapter. It is never required. Open it when you want to learn more.
+
+## Copyright and Use {.unnumbered}
+
+© 2026 Shane McCarty (Editor) and the individual chapter authors, who hold the copyright to their chapters. *The Quantitative Playbook for R* is freely available for **non-commercial, educational use only**: you may read it, link to it, and use its code and templates in your own coursework and research with attribution ([How to Cite This Guide](#how-to-cite-this-guide)). Commercial use, and republishing the text or figures outside this site, require the editor's written permission. Material from other sources is listed below with its own license.
+
+## Figure, Image, and Data Credits {.unnumbered}
+
+Everything in this playbook that was not made for it is listed here with its source and license. Screenshots of RStudio, Qualtrics, Quarto Pub, Zotero, and Hypothes.is were taken by the authors; the software and its trademarks belong to their owners.
+
+-   **Ref the raccoon** (every Lab), the **Analysis Map**, the **statistics 2 × 2** figure, the **many models** figure, the **lasagna layers** drawing, and the **.qmd anatomy** figure were made for this playbook by Shane McCarty with Claude (Anthropic) and are © 2026 Shane McCarty.
+-   **The data science workflow** (Preface): Figure 1 from Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science* (2nd ed.). O'Reilly. <https://r4ds.hadley.nz>. CC BY-NC-ND 3.0 US; reproduced unchanged.
+-   **The seven components of ggplot2** (Coding a Plot): from the "Introduction to ggplot2" vignette of the ggplot2 package, Wickham, H., Navarro, D., Pedersen, T. L., & the ggplot2 authors, <https://ggplot2.tidyverse.org/articles/ggplot2.html>. MIT License.
+-   **`insurance.csv`** (Coding a Plot, Visualize a Comparison, Visualize a Relationship, Import Data Once): *Medical Cost Personal Datasets*, Miri Choi, Kaggle, <https://www.kaggle.com/datasets/mirichoi0218/insurance>, Open Database License (ODbL); simulated data after Lantz, B. (2013). *Machine Learning with R*. Packt.
+-   **`health_status_data.csv`** and **`safety_data.csv`**: de-identified data from FRI Public Health student research teams (Cohorts 10 and 11), used with the teams' permission; **`healthbeliefs_SELECT.csv`**: de-identified subset of a Prolific survey by the FRI Public Health Lab.
+-   **`veggiescore_SYNTHETIC.xlsx`**, **`foodsecurity_SYNTHETIC.xlsx`**, **`pregnancy_beliefs_SIMULATED.csv`**, and the **ANTH306 lab datasets**: synthetic data generated for this playbook; no real respondents.
+-   **Health Status Explorer** (Shiny Data Viz): a Shiny app by Zach Spiegel, embedded with permission.
+-   **Interactive simulations** linked in Frequentist Inference and Relate 2 Variables are by Kristoffer Magnusson, <https://rpsychologist.com>, linked, not reproduced.
 
 ## How to Cite This Guide {.unnumbered}
 [You can cite this guide as:]{.underline}

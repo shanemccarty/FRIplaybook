@@ -1,0 +1,41 @@
+---
+title: "Academic Website"
+subtitle: "How to create a Quarto website for your research"
+author:
+  - Shane McCarty
+abstract: |
+  This short chapter points researchers to the two resources they need to build a personal academic website with Quarto: the Quarto websites guide and a video that builds a site from scratch in RStudio. A Quarto website uses the same .qmd files, YAML, and Render button as the reports in this playbook, so a researcher who has published a report to Quarto Pub already knows most of what a website needs.
+keywords:
+  - quarto
+  - website
+  - academic website
+  - publish
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
+format: html
+editor: visual
+---
+
+::: {.callout-note collapse="true"}
+## Resources: Quarto websites
+
+-   [Creating a Website](https://quarto.org/docs/websites/) (the Quarto guide this chapter follows)
+-   [Video: Build a Quarto website in RStudio](https://www.youtube.com/watch?v=l7r24gTEkEY) (the video embedded below)
+-   [Publish Your Report to Quarto Pub](quartopub.qmd) (the same `quarto publish` steps work for a website)
+:::
+
+An academic website is a place to put your name, your research interests, your CV, and links to your reports and posters, so that a professor, a graduate program, or an employer can find your work in one place. You already have the skills to build one. A Quarto website is a folder of `.qmd` files, exactly like the reports you wrote in this playbook, plus one `_quarto.yml` file that lists the pages and gives the site its navigation bar. You write in markdown ([Write an Introduction](write-intro.qmd)), you click Render, and you publish with the same `quarto publish quarto-pub` command you used in [Publish Your Report to Quarto Pub](quartopub.qmd). Your published reports can then be linked from, or copied into, the site.
+
+The two resources below are the whole chapter. The Quarto guide explains what a website project is, what goes in `_quarto.yml`, and how to add pages, a navigation bar, and an About page. The video shows one being built in RStudio from File \> New Project onward, so watch it with RStudio open and build your site alongside it.
+
+::: callout-tip
+## Go: read the guide, then build along with the video
+
+1.  Open [Creating a Website](https://quarto.org/docs/websites/) and read the page from the top through the *RStudio* tab under *Quick Start*. That tab is the one for you: it creates the website project the same way you created `Lastname_FRI`.
+2.  Watch the video below with RStudio open, and build your own site as it goes. Keep the site in its own project folder, not inside `Lastname_FRI`.
+3.  When your site renders, publish it the way you published your report: run `quarto publish quarto-pub` in the RStudio Terminal from the site's folder.
+:::
+
+```{=html}
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/l7r24gTEkEY" title="Build a Quarto website in RStudio" style="border: 1px solid #ccc; border-radius: 6px;" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+```

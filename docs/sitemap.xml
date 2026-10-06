@@ -2,134 +2,166 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/index.html</loc>
-    <lastmod>2026-10-05T04:33:37.273Z</lastmod>
+    <lastmod>2026-10-06T04:22:54.509Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/example.html</loc>
-    <lastmod>2026-10-05T04:02:34.427Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.275Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/layers.html</loc>
-    <lastmod>2026-10-05T04:02:13.189Z</lastmod>
+    <lastmod>2026-10-06T03:16:01.491Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/RStudio.html</loc>
-    <lastmod>2026-09-29T04:09:28.731Z</lastmod>
+    <lastmod>2026-10-06T02:09:31.074Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/library.html</loc>
-    <lastmod>2026-10-05T02:43:15.525Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.282Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/find-the-ref.html</loc>
-    <lastmod>2026-10-05T02:34:02.467Z</lastmod>
+    <lastmod>2026-10-06T03:17:42.323Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/codechunks.html</loc>
-    <lastmod>2026-10-05T02:34:02.395Z</lastmod>
+    <lastmod>2026-10-06T03:17:42.316Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/export.html</loc>
-    <lastmod>2026-10-05T04:02:13.192Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.276Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/import-once.html</loc>
-    <lastmod>2026-10-05T04:09:37.149Z</lastmod>
+    <lastmod>2026-10-06T03:17:42.343Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/prepost.html</loc>
-    <lastmod>2026-10-05T04:02:13.196Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.517Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/dplyr.html</loc>
-    <lastmod>2026-10-05T04:02:24.335Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.524Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/composite.html</loc>
-    <lastmod>2026-10-05T04:02:24.346Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.524Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/analysis-map.html</loc>
-    <lastmod>2026-10-05T04:38:31.268Z</lastmod>
+    <lastmod>2026-10-06T03:37:20.771Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/describe.html</loc>
-    <lastmod>2026-10-05T04:31:48.543Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.274Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/statistics.html</loc>
-    <lastmod>2026-10-05T05:10:33.424Z</lastmod>
+    <lastmod>2026-10-06T03:44:15.762Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/visualize-comparison.html</loc>
-    <lastmod>2026-10-05T04:38:31.267Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.534Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/violin.html</loc>
-    <lastmod>2026-10-05T05:06:18.286Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.641Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/ANOVA.html</loc>
-    <lastmod>2026-10-05T05:06:33.509Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.656Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/visualize-relationship.html</loc>
-    <lastmod>2026-10-05T04:40:28.343Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.535Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/regression.html</loc>
-    <lastmod>2026-10-05T05:10:08.424Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.612Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/readme.html</loc>
-    <lastmod>2026-10-05T02:34:02.550Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.286Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/write-intro.html</loc>
-    <lastmod>2026-10-05T02:34:02.628Z</lastmod>
+    <lastmod>2026-10-06T04:05:41.467Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/citations.html</loc>
-    <lastmod>2026-09-23T01:17:48.210Z</lastmod>
+    <lastmod>2026-10-06T04:04:50.954Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/quartopub.html</loc>
-    <lastmod>2026-10-05T04:02:13.205Z</lastmod>
+    <lastmod>2026-10-06T04:43:07.370Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/review.html</loc>
-    <lastmod>2026-09-20T15:26:00.053Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.287Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/data-equity.html</loc>
-    <lastmod>2026-10-05T02:34:02.415Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.274Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/import-live.html</loc>
-    <lastmod>2026-09-23T01:17:48.215Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.277Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/write-functions.html</loc>
-    <lastmod>2026-10-05T04:02:13.209Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.293Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/qualtrics.html</loc>
-    <lastmod>2026-10-05T04:02:13.191Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.393Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/vignette.html</loc>
-    <lastmod>2026-09-29T04:18:32.652Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.517Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/compare2groups.html</loc>
-    <lastmod>2026-10-05T04:31:48.545Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.633Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/shiny.html</loc>
-    <lastmod>2026-10-05T02:34:02.571Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.542Z</lastmod>
   </url>
   <url>
     <loc>https://shanemccarty.github.io/FRIplaybook/correlation.html</loc>
-    <lastmod>2026-10-05T05:16:41.589Z</lastmod>
+    <lastmod>2026-10-06T01:45:16.664Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/lab2-checklist.html</loc>
+    <lastmod>2026-10-06T03:41:52.064Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/lab1-checklist.html</loc>
+    <lastmod>2026-10-06T03:17:42.344Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/lab3-checklist.html</loc>
+    <lastmod>2026-10-06T03:16:21.971Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/website.html</loc>
+    <lastmod>2026-10-06T01:45:16.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/results.html</loc>
+    <lastmod>2026-10-06T03:56:32.733Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/start-rdreport.html</loc>
+    <lastmod>2026-10-06T01:45:16.665Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/methods.html</loc>
+    <lastmod>2026-10-06T04:15:25.713Z</lastmod>
+  </url>
+  <url>
+    <loc>https://shanemccarty.github.io/FRIplaybook/discussion.html</loc>
+    <lastmod>2026-10-06T04:02:07.104Z</lastmod>
   </url>
 </urlset>

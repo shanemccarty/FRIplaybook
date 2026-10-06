@@ -53,6 +53,7 @@ Next, you're going to need your survey ID. When you click on the survey that con
 Getting into the actual code, we have the following steps: \## Import necessary packages:
 
 ```{r}
+#| label: load-library-api
 #| autorun: false
 #| completion: true
 #| echo: true
@@ -68,6 +69,7 @@ library(readr)
 ## Save important info to variables:
 
 ```{r}
+#| label: set-api-token
 api_token <- "1V0X29BHlwPfSYPsUMQ5d8tQfeydhsVBcGQ2v9Bw"
 data_center <- "yul1"
 survey_id <- "SV_6mOC1SaJbecAuP0"
@@ -84,6 +86,7 @@ In this chunk, after saving our API key and survey ID info, we construct the URL
 ## Start the export job
 
 ```{r}
+#| label: define-start-export
 start_response_export <- function(survey_id) {
   url <- paste0(base_url, "/surveys/", survey_id, "/export-responses")
   body <- list(format = "csv")  # Use CSV format here
@@ -98,6 +101,7 @@ This chunk creates the API endpoint and allows us to begin exporting. It also gi
 ## Poll for export completion
 
 ```{r}
+#| label: define-check-progress
 check_export_progress <- function(progress_id) {
   url <- paste0(base_url, "/surveys/", survey_id, "/export-responses/", progress_id)
   repeat {
@@ -119,6 +123,7 @@ Once the export is ready, this chunk returns the ID for the file that we can now
 ## Download and read CSV file
 
 ```{r}
+#| label: define-download-csv
 daily_download_responses_csv <- function(file_id) {
   url <- paste0(base_url, "/surveys/", survey_id, "/export-responses/", file_id, "/file")
   res <- GET(url, headers)
@@ -137,6 +142,7 @@ This chunk unpacks the output into a .csv file which makes it ready for analysis
 ## Main execution
 
 ```{r}
+#| label: run-export
 export_response <- start_response_export(survey_id)
 progress_id <- export_response$result$progressId
 file_id <- check_export_progress(progress_id)

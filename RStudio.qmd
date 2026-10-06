@@ -211,6 +211,38 @@ getwd()
 Change this setting once, and it protects every session after that. Go to Tools \> Global Options \> General. Under *Workspace*, uncheck "Restore .RData into workspace at startup" and set "Save workspace to .RData on exit" to **Never**. This way, your results always come from the code in your script or Quarto document rather than from leftover objects.
 :::
 
+#### How folders are nested, on your computer and in RStudio
+
+A folder can hold files and other folders, and those folders can hold more. Your computer shows this as a path: the list of folders you open, one inside the next, to reach a file. On a Mac the path to a data file might be `/Users/shane/Documents/McCarty_FRI/data/10.09.2026.team1.cleandata.xlsx`; on Windows, `C:\Users\shane\Documents\McCarty_FRI\data\10.09.2026.team1.cleandata.xlsx`. Read it from left to right: the `Users` folder holds `shane`, which holds `Documents`, which holds `McCarty_FRI`, which holds `data`, which holds the file.
+
+An RStudio Project turns that long path into a short one. When the project is open, RStudio stands *inside* `McCarty_FRI`, so every path you type starts there. `"data/10.09.2026.team1.cleandata.xlsx"` means "the `data` folder inside the project, and the file inside it". That is why every import line in this playbook starts with `data/` and no line ever starts with `/Users/` or `C:\`. The same project folder works on any computer, including your peer mentor's and your instructor's, because the path is relative to the project, not to the computer.
+
+This is the whole layout of a project for this course. Nothing else goes in the root (the project folder itself), and nothing goes anywhere but the two subfolders:
+
+```
+McCarty_FRI/                          <- the project folder: open it by double-clicking the .Rproj
+├── McCarty_FRI.Rproj                 <- the project file RStudio made
+├── install.R                         <- run once per computer (R Packages)
+├── lab_prep.R                        <- the lab cleaning script, next to the .Rproj, NOT in data/
+├── McCarty_lab2.qmd                  <- one .qmd per lab (Start a Report)
+├── McCarty_lab3.qmd
+├── McCarty_lab4.qmd
+├── McCarty_lab5.qmd
+├── McCarty_RDreport.qmd              <- the report (Start My Report)
+├── McCarty_finalreport.qmd           <- a copy of the RD report, later
+├── readme.qmd                        <- for publishing (Read Me)
+├── references.bib                    <- Zotero export (Citations & Refs)
+├── apa.csl                           <- APA style file (Citations & Refs)
+├── data/                             <- EVERY data file: the lab files and your team's .cleandata file
+│   ├── ANTH306_LayConceptionsMH_SYNTHETIC.xlsx
+│   └── 10.09.2026.team1.cleandata.xlsx
+└── plots/                            <- EVERY plot you save with ggsave() (Write the Results)
+    ├── plot1_wellbeing_treated_barplot.png
+    └── plot2_stigma_helpseek_scatter.png
+```
+
+RStudio's **Files** tab (bottom right) shows this same tree, one level at a time: click a folder to go into it, and click the project name in the path at the top of the tab to come back out. Rendering a `.qmd` adds an `.html` file next to it; that is expected and you do not need to move it.
+
 #### Important guidelines: where your files go
 
 Every data file you use must be **inside** your project folder, in a subfolder named `data`. A file that is still in your Downloads folder, on your Desktop, or in Google Drive is not in your project, and R will not find it. "Move the file into your project folder" means exactly that. Your project folder is an ordinary folder on your computer (the one you created in Finder or File Explorer, which contains `Lastname_FRI.Rproj`). You move files into it the way you move any file on your computer: in Finder or File Explorer, not inside RStudio. RStudio's **Files** tab is only a window that shows what is in that folder, so once the file is there, it appears in the tab on its own.
@@ -235,7 +267,7 @@ Save your R scripts and Quarto documents in the same folder (File \> Save As wil
 Because the working directory is the project folder, you can import data using just the file name:
 
 ``` r
-read.csv("alldata_vaccinations.csv")
+alldata <- read_excel("data/10.09.2026.team1.cleandata.xlsx")
 ```
 
 ::: callout-important

@@ -1,6 +1,6 @@
 ---
 title: "Relate 2 Variables"
-subtitle: "The Pearson correlation for normal data and the Spearman correlation for data that are not"
+subtitle: "Pearson correlation (normal) and Spearman correlation (non-normal)"
 author:
   - Vivian Raposo
   - Serena Suchdeve
@@ -83,7 +83,7 @@ The team's research question was whether people who believe that people can chan
 
 ```{r}
 #| label: play-import
-safety <- read.csv("data/safety_data.csv") |>
+safetydata <- read.csv("data/safety_data.csv") |>
   mutate(across(where(is.numeric), ~ replace(.x, .x %in% c(-99, -50), NA))) |>
   mutate(
     GROWTH    = rowMeans(cbind(FIXEDPERSON1_BASIC, FIXEDPERSON2_DIFF, FIXEDPERSON4_OLD, FIXEDPERSON_CERTAIN,   # fixed-mindset items: higher = more growth
@@ -92,7 +92,7 @@ safety <- read.csv("data/safety_data.csv") |>
     COMMUNITY = rowMeans(cbind(COMM_FEEL, COMM_HELP, COMM_NEIGHBORS,                                           # feeling connected to the neighborhood
                                7 - NOTCOMM_UNSAFE, 7 - NOTCOMM_RELY, 7 - NOTCOMM_DISTRUST), na.rm = TRUE))      # the three negative items, reversed
 
-nrow(safety)
+nrow(safetydata)
 
 #source: Suchdeve et al. (2025); Create Composite Variables
 #explanation: 7 - x reverses a 1-to-6 item; each composite is the mean of its items with the reversed ones flipped, so a high score means more growth mindset and more community connection
@@ -107,13 +107,13 @@ The team used feeling connected to one's neighborhood (`COMMUNITY`: it feels lik
 A correlation should never be reported without its scatterplot. The plot is the one from [Visualize a Relationship](visualize-relationship.qmd): points, a line of best fit, and axes that cover the full scale.
 
 ```{r}
-#| label: play1-plot
-#| fig-cap: "Figure 1. Feeling connected to the neighborhood against growth mindset (Cohort 11 community safety data, n = 74). Each point is one person, jittered slightly; the line is the line of best fit with its 95% confidence band."
+#| label: plot1-community-growth-scatter
+#| fig-cap: "Figure 1. Feeling connected to the neighborhood against growth mindset (Cohort 11 community safetydata data, n = 74). Each point is one person, jittered slightly; the line is the line of best fit with its 95% confidence band."
 #| fig-alt: "A scatterplot with growth mindset from 1 to 6 on the x axis and community connection from 1 to 6 on the y axis. The points form a loose cloud rising from lower left to upper right with a straight line of best fit through it."
-safety1 <- safety |> filter(!is.na(GROWTH), !is.na(COMMUNITY))
-nrow(safety1)
+safetydata_play1 <- safetydata |> filter(!is.na(GROWTH), !is.na(COMMUNITY))
+nrow(safetydata_play1)
 
-plot_growth_community <- ggplot(safety1, aes(x = GROWTH, y = COMMUNITY)) +
+plot1_community_growth_scatter <- ggplot(safetydata_play1, aes(x = GROWTH, y = COMMUNITY)) +
   geom_jitter(width = 0.05, height = 0.05, alpha = 0.6, size = 2) +
   geom_smooth(method = "lm", se = TRUE, color = "#1F4E9C") +
   scale_x_continuous(breaks = 1:6, limits = c(1, 6)) +
@@ -122,8 +122,8 @@ plot_growth_community <- ggplot(safety1, aes(x = GROWTH, y = COMMUNITY)) +
        title = "Growth mindset and community connection") +
   theme_bw(base_size = 13)
 
-plot_growth_community
-ggsave("plots/growth_community_scatter.png", plot = plot_growth_community, width = 6.5, height = 5, dpi = 300)
+plot1_community_growth_scatter
+ggsave("plots/plot1_community_growth_scatter.png", plot = plot1_community_growth_scatter, width = 8, height = 5, dpi = 300)
 
 #source: Visualize a Relationship (Play 1)
 #explanation: geom_smooth(method = "lm") draws the straight line a Pearson correlation measures; the gray band is its 95% confidence band
@@ -137,7 +137,7 @@ The Pearson correlation assumes both variables are roughly normal and the relati
 
 ```{r}
 #| label: play1-check
-safety1 |>
+safetydata_play1 |>
   summarise(n = n(),
             shapiro_growth    = shapiro.test(GROWTH)$p.value,
             shapiro_community = shapiro.test(COMMUNITY)$p.value)
@@ -151,8 +151,9 @@ Both p-values are above .05 and the scatterplot is a straight-line cloud with no
 
 ```{r}
 #| label: play1-test
-cor_growth_community <- cor.test(safety1$GROWTH, safety1$COMMUNITY)   # method = "pearson" is the default
-cor_growth_community
+# pearsonmodel1: GROWTH with COMMUNITY (Pearson)
+pearsonmodel1 <- cor.test(safetydata_play1$GROWTH, safetydata_play1$COMMUNITY)   # method = "pearson" is the default
+pearsonmodel1
 
 #source: https://www.datacamp.com/tutorial/correlation-in-r
 #explanation: cor gives r; the 95 percent confidence interval is the range of plausible population values; t and df are the test behind the p-value
@@ -172,7 +173,7 @@ pfmt <- function(p) if (p < .001) "< .001" else paste0("= ", rfmt(p, 3))
 
 A correlation sentence names both variables, the direction, *r* with its confidence interval, the df and *p*, and the size label:
 
-> Growth mindset and feeling connected to the neighborhood were positively correlated, *r*(`r cor_growth_community$parameter`) = `r rfmt(cor_growth_community$estimate)`, 95% CI \[`r rfmt(cor_growth_community$conf.int[1])`, `r rfmt(cor_growth_community$conf.int[2])`\], *p* `r pfmt(cor_growth_community$p.value)`, a medium effect: people who believed that people can change also tended to feel more connected to their neighbors (Figure 1).
+> Growth mindset and feeling connected to the neighborhood were positively correlated, *r*(`r pearsonmodel1$parameter`) = `r rfmt(pearsonmodel1$estimate)`, 95% CI \[`r rfmt(pearsonmodel1$conf.int[1])`, `r rfmt(pearsonmodel1$conf.int[2])`\], *p* `r pfmt(pearsonmodel1$p.value)`, a medium effect: people who believed that people can change also tended to feel more connected to their neighbors (Figure 1).
 
 ::: callout-warning
 ## Caution: related does not mean caused
@@ -187,28 +188,28 @@ This is the team's headline question: **are people with more of a growth mindset
 #### Step 1: Look, and check the shape
 
 ```{r}
-#| label: play2-plot
-#| fig-cap: "Figure 2. Support for community-based interventions against growth mindset (Cohort 11 community safety data, n = 70). Points are jittered because the outcome takes whole-number values; the dashed line is the line of best fit, for reference only."
-#| fig-alt: "A scatterplot with growth mindset from 1 to 6 on the x axis and agreement that community-based interventions are the most effective way to achieve safety, from Strongly disagree to Strongly agree, on the y axis. Points sit in horizontal bands at each answer; most are in the upper right; a dashed line rises from left to right."
-safety2 <- safety |> filter(!is.na(GROWTH), !is.na(EFFECT_CARE_COMM))
-nrow(safety2)
-safety2 |> count(EFFECT_CARE_COMM)
+#| label: plot2-care-growth-scatter
+#| fig-cap: "Figure 2. Support for community-based interventions against growth mindset (Cohort 11 community safetydata data, n = 70). Points are jittered because the outcome takes whole-number values; the dashed line is the line of best fit, for reference only."
+#| fig-alt: "A scatterplot with growth mindset from 1 to 6 on the x axis and agreement that community-based interventions are the most effective way to achieve safetydata, from Strongly disagree to Strongly agree, on the y axis. Points sit in horizontal bands at each answer; most are in the upper right; a dashed line rises from left to right."
+safetydata_play2 <- safetydata |> filter(!is.na(GROWTH), !is.na(EFFECT_CARE_COMM))
+nrow(safetydata_play2)
+safetydata_play2 |> count(EFFECT_CARE_COMM)
 
-plot_growth_care <- ggplot(safety2, aes(x = GROWTH, y = EFFECT_CARE_COMM)) +
+plot2_care_growth_scatter <- ggplot(safetydata_play2, aes(x = GROWTH, y = EFFECT_CARE_COMM)) +
   geom_jitter(width = 0.05, height = 0.15, alpha = 0.6, size = 2) +
   geom_smooth(method = "lm", se = FALSE, color = "#C45A00", linetype = "dashed") +
   scale_x_continuous(breaks = 1:6, limits = c(1, 6)) +
   scale_y_continuous(breaks = 1:6, limits = c(0.7, 6.3),
                      labels = c("Strongly\ndisagree", "Disagree", "Slightly\ndisagree", "Slightly\nagree", "Agree", "Strongly\nagree")) +
   labs(x = "Growth mindset (1 = fixed, 6 = growth)",
-       y = "Community-based interventions are\nthe most effective way to achieve safety",
+       y = "Community-based interventions are\nthe most effective way to achieve safetydata",
        title = "Growth mindset and care-based support") +
   theme_bw(base_size = 13)
 
-plot_growth_care
-ggsave("plots/growth_care_scatter.png", plot = plot_growth_care, width = 7, height = 5, dpi = 300)
+plot2_care_growth_scatter
+ggsave("plots/plot2_care_growth_scatter.png", plot = plot2_care_growth_scatter, width = 8, height = 5, dpi = 300)
 
-safety2 |>
+safetydata_play2 |>
   summarise(n = n(),
             shapiro_growth = shapiro.test(GROWTH)$p.value,
             shapiro_care   = shapiro.test(EFFECT_CARE_COMM)$p.value)
@@ -223,8 +224,9 @@ The points sit in horizontal bands because there are only six possible answers, 
 
 ```{r}
 #| label: play2-test
-cor_growth_care <- cor.test(safety2$GROWTH, safety2$EFFECT_CARE_COMM, method = "spearman", exact = FALSE)
-cor_growth_care
+# spearmanmodel1: GROWTH with EFFECT_CARE_COMM (Spearman)
+spearmanmodel1 <- cor.test(safetydata_play2$GROWTH, safetydata_play2$EFFECT_CARE_COMM, method = "spearman", exact = FALSE)
+spearmanmodel1
 
 #source: R documentation ?cor.test
 #explanation: method = "spearman" ranks both variables first; exact = FALSE is needed when many people share a value (ties), which a rating always has
@@ -234,12 +236,12 @@ The coefficient is now called `rho` (*ρ*). There is no confidence interval and 
 
 #### Step 3: Report it
 
-> Growth mindset was positively correlated with the belief that community-based interventions are the most effective way to achieve community safety, Spearman's *ρ* = `r rfmt(cor_growth_care$estimate)`, *n* = `r nrow(safety2)`, *p* `r pfmt(cor_growth_care$p.value)`, a medium effect: people who believed that people can change were more supportive of community-based violence prevention (Figure 2). Suchdeve et al. (2025) reported this relationship as a regression slope (*b* = .57); a correlation and a one-predictor regression are two views of the same line, and [Relate 3+ Variables](regression.qmd) shows the regression view and then adds gender.
+> Growth mindset was positively correlated with the belief that community-based interventions are the most effective way to achieve community safety, Spearman's *ρ* = `r rfmt(spearmanmodel1$estimate)`, *n* = `r nrow(safetydata_play2)`, *p* `r pfmt(spearmanmodel1$p.value)`, a medium effect: people who believed that people can change were more supportive of community-based violence prevention (Figure 2). Suchdeve et al. (2025) reported this relationship as a regression slope (*b* = .57); a correlation and a one-predictor regression are two views of the same line, and [Relate 3+ Variables](regression.qmd) shows the regression view and then adds gender.
 
 ::: callout-tip
 ## Go: which line of the box am I on?
 
-Ask about **both** variables. Are both composites or continuous measurements with roughly normal histograms and a straight-line cloud? Then [Pearson]{.normal}. Is either one a single rating, a count with a long tail, skewed, or carrying an outlier that would swing a straight line? Then [Spearman]{.nonnormal}. When you cannot decide, run both: they will usually be close (in Play 2, Pearson gives *r* = `r rfmt(cor(safety2$GROWTH, safety2$EFFECT_CARE_COMM))` against Spearman's *ρ* = `r rfmt(cor_growth_care$estimate)`), and when they differ by a lot, that difference is itself telling you the relationship is not a straight line or an outlier is doing the work. Report the one that matches the data, and say so.
+Ask about **both** variables. Are both composites or continuous measurements with roughly normal histograms and a straight-line cloud? Then [Pearson]{.normal}. Is either one a single rating, a count with a long tail, skewed, or carrying an outlier that would swing a straight line? Then [Spearman]{.nonnormal}. When you cannot decide, run both: they will usually be close (in Play 2, Pearson gives *r* = `r rfmt(cor(safetydata_play2$GROWTH, safetydata_play2$EFFECT_CARE_COMM))` against Spearman's *ρ* = `r rfmt(spearmanmodel1$estimate)`), and when they differ by a lot, that difference is itself telling you the relationship is not a straight line or an outlier is doing the work. Report the one that matches the data, and say so.
 :::
 
 ::: callout-warning
@@ -263,9 +265,9 @@ Ask about **both** variables. Are both composites or continuous measurements wit
 #| include: false
 source("lab_prep.R")   # creates mh_clean
 lab_sw <- mh_clean |> filter(!is.na(SUPPORT), !is.na(WELLBEING))
-lab_c1 <- cor.test(lab_sw$SUPPORT, lab_sw$WELLBEING)
+pearsonmodel2 <- cor.test(lab_sw$SUPPORT, lab_sw$WELLBEING)
 lab_sh <- mh_clean |> filter(!is.na(STIGMA), !is.na(HELPSEEK))
-lab_c2 <- cor.test(lab_sh$STIGMA, lab_sh$HELPSEEK, method = "spearman", exact = FALSE)
+spearmanmodel2 <- cor.test(lab_sh$STIGMA, lab_sh$HELPSEEK, method = "spearman", exact = FALSE)
 lab_c2p <- cor(lab_sh$STIGMA, lab_sh$HELPSEEK)
 ```
 
@@ -279,8 +281,8 @@ Keep the people with both scores, draw the scatterplot with a line of best fit, 
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
 
 - *n* = **`r nrow(lab_sw)`**. Shapiro-Wilk p = `r fmt(shapiro.test(lab_sw$SUPPORT)$p.value, 3)` (`SUPPORT`) and `r fmt(shapiro.test(lab_sw$WELLBEING)$p.value, 3)` (`WELLBEING`): both normal, so Pearson.
-- *r*(`r lab_c1$parameter`) = **`r rfmt(lab_c1$estimate)`**, 95% CI \[`r rfmt(lab_c1$conf.int[1])`, `r rfmt(lab_c1$conf.int[2])`\], *p* `r pfmt(lab_c1$p.value)`: a medium-to-large positive correlation. People with more support report higher well-being.
-- [Relate 3+ Variables](regression.qmd) Lab Play 1 fits a regression line to exactly this pair; its *R*² will be *r*² = `r rfmt(lab_c1$estimate^2)`.
+- *r*(`r pearsonmodel2$parameter`) = **`r rfmt(pearsonmodel2$estimate)`**, 95% CI \[`r rfmt(pearsonmodel2$conf.int[1])`, `r rfmt(pearsonmodel2$conf.int[2])`\], *p* `r pfmt(pearsonmodel2$p.value)`: a medium-to-large positive correlation. People with more support report higher well-being.
+- [Relate 3+ Variables](regression.qmd) Lab Play 1 fits a regression line to exactly this pair; its *R*² will be *r*² = `r rfmt(pearsonmodel2$estimate^2)`.
 :::
 
 ### Lab Play 2 ([Spearman]{.nonnormal}): relate stigma to willingness to seek help
@@ -291,7 +293,7 @@ Keep the people with both scores, draw the scatterplot with jitter (`HELPSEEK` h
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
 
 - *n* = **`r nrow(lab_sh)`** (fewer than Lab Play 1: some people skipped `HELPSEEK`). Shapiro-Wilk p = `r fmt(shapiro.test(lab_sh$STIGMA)$p.value, 3)` (`STIGMA`, normal) and `r pfmt(shapiro.test(lab_sh$HELPSEEK)$p.value)` (`HELPSEEK`, a single item, not normal): one of the two fails, so Spearman.
-- *ρ* = **`r rfmt(lab_c2$estimate)`**, *p* `r pfmt(lab_c2$p.value)`: a medium-to-large **negative** correlation. The more stigma a person reports, the less willing they are to seek help.
+- *ρ* = **`r rfmt(spearmanmodel2$estimate)`**, *p* `r pfmt(spearmanmodel2$p.value)`: a medium-to-large **negative** correlation. The more stigma a person reports, the less willing they are to seek help.
 - For comparison, Pearson gives *r* = `r rfmt(lab_c2p)`. Close, as expected; report the Spearman because the data say so.
 :::
 
@@ -347,7 +349,7 @@ For every two-score relationship in your *RD Report* and *Final Report*: the sca
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has correlated your team's two scores before, so there is no answer to check against. Change every line marked `# REPLACE`, pick the line of the box that matches your data, and use the checklist.
+Nobody has correlated your team's two scores before, so there is no answer to check against. Change every word that starts with `SWAP`, pick the line of the box that matches your data, and use the checklist.
 :::
 
 ```{r}
@@ -356,27 +358,31 @@ Nobody has correlated your team's two scores before, so there is no answer to ch
 library(tidyverse)
 
 # 1. two scores from the same people
-mydata <- alldata |>
-  filter(!is.na(SCORE_X), !is.na(SCORE_Y))                       # REPLACE SCORE_X and SCORE_Y (composites or measurements)
+mydata <- cleandata |>
+  filter(!is.na(SWAPSCORE_X), !is.na(SWAPSCORE_Y))                       # SWAP: your two scores (composites or measurements)
 nrow(mydata)                                                     # the n to report
 
 # 2. look
-ggplot(mydata, aes(x = SCORE_X, y = SCORE_Y)) +
+ggplot(mydata, aes(x = SWAPSCORE_X, y = SWAPSCORE_Y)) +
   geom_jitter(width = 0.05, height = 0.05, alpha = 0.5) +        # jitter a little if scores stack; say so in the caption
   geom_smooth(method = "lm") +
-  scale_x_continuous(limits = c(1, 5)) + scale_y_continuous(limits = c(1, 5)) +   # REPLACE with the full scale of each variable
-  labs(x = "REPLACE (scale)", y = "REPLACE (scale)", title = "REPLACE") +
+  scale_x_continuous(limits = c(1, 5)) + scale_y_continuous(limits = c(1, 5)) +   # SWAP: the full scale of each variable
+  labs(x = "SWAP: x label (scale)", y = "SWAP: y label (scale)", title = "SWAP: title") +
   theme_bw()
-# ggsave("plots/x_y_scatter.png", width = 6.5, height = 5, dpi = 300)             # REPLACE the name
+# ggsave("plots/plot1_SWAPNAME.png", width = 8, height = 5, dpi = 300)                 # SWAP: the variables and plot type, e.g. plot1_wellbeing_treated_barplot
 
 # 3. shape of BOTH variables
-mydata |> summarise(n = n(), shapiro_x = shapiro.test(SCORE_X)$p.value, shapiro_y = shapiro.test(SCORE_Y)$p.value)
+mydata |> summarise(n = n(), shapiro_x = shapiro.test(SWAPSCORE_X)$p.value, shapiro_y = shapiro.test(SWAPSCORE_Y)$p.value)
 
 # 4a. both roughly normal, straight-line cloud (parametric): Pearson
-cor.test(mydata$SCORE_X, mydata$SCORE_Y)
+# pearsonmodel1: SWAP: one line that says what this test relates
+pearsonmodel1 <- cor.test(mydata$SWAPSCORE_X, mydata$SWAPSCORE_Y)
+pearsonmodel1
 
 # 4b. either skewed, a single rating, or an outlier (non-parametric): Spearman
-cor.test(mydata$SCORE_X, mydata$SCORE_Y, method = "spearman", exact = FALSE)
+# spearmanmodel1: SWAP: one line that says what this test relates
+spearmanmodel1 <- cor.test(mydata$SWAPSCORE_X, mydata$SWAPSCORE_Y, method = "spearman", exact = FALSE)
+spearmanmodel1
 ```
 
 | Criteria | Ask yourself |

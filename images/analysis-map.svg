@@ -29,7 +29,7 @@ text{font-family:"FSC","Fira Sans Condensed","Roboto Condensed","Arial Narrow",A
 <text x="418.0" y="264" font-size="19" class="sm" >barplot · boxplot · violin plot</text>
 <path class="a" d="M 355 282 C 267 300, 166 310, 166 348"/>
 <text x="166.0" y="384" font-size="26" class="ch" >Compare 2 Groups</text>
-<text x="166.0" y="410" font-size="18" class="sm" >e.g., women and men</text>
+<text x="166.0" y="410" font-size="18" class="sm" >e.g., People of Color and White</text>
 <rect x="50" y="440" width="232" height="250" rx="8" fill="#FFFFFF"/>
 <text x="166.0" y="474" font-size="15" class="norm" >NORMAL</text>
 <text x="166.0" y="508" font-size="24" class="normt" >independent t-test</text>
@@ -75,6 +75,5 @@ text{font-family:"FSC","Fira Sans Condensed","Roboto Condensed","Arial Narrow",A
 <text x="1225.0" y="508" font-size="24" class="normt" >linear regression</text>
 <line x1="1135" y1="548" x2="1315" y2="548" stroke="#CCE5F3" stroke-width="3"/>
 <text x="1225.0" y="590" font-size="15" class="nonnorm" >RESIDUALS NOT NORMAL</text>
-<text x="1225.0" y="624" font-size="24" class="nonnormt" >ask your peer mentor</text>
-<text x="1225.0" y="652" font-size="17" class="sm" >(the outcome itself need not be normal)</text>
+<text x="1225.0" y="624" font-size="24" class="nonnormt" >ask instructor</text>
 </svg>

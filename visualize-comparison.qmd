@@ -39,7 +39,7 @@ You will go through this chapter three times, with three different datasets.
 
 | Pass | Section | Dataset | What you do |
 |------|-----------|-------------|--------------------------------------------|
-| 1 | [The Play](#the-play) | `insurance` (example) | **Watch the play.** Read the code and the output, step by step. |
+| 1 | [The Play](#the-play) | `insurancedata` (example) | **Watch the play.** Read the code and the output, step by step. |
 | 2 | [The Lab](#sec-comparison-lab) | lab dataset | **Run the play.** Make two barplots yourself during the R Lab, then check your own work. Labs are not graded. |
 | 3 | [Your Turn](#sec-comparison-yourturn) | your team's dataset | **Call your own play.** After you finish all of the R Labs, come back and make the plot for your own research question. |
 
@@ -51,13 +51,13 @@ This chapter is the Visualize step on [The Analysis Map](analysis-map.qmd) for a
 
 ## 📋 The Play {#the-play}
 
-### Example Data: `insurance`
+### Example Data: `insurancedata`
 
-The example dataset is from the "Medical Cost Personal Costs" database on Kaggle. For this chapter, we refer to it as `insurance`.
+The example dataset is the *Medical Cost Personal Datasets* file shared on Kaggle by Miri Choi under the Open Database License (<https://www.kaggle.com/datasets/mirichoi0218/insurance>), which reproduces the simulated insurance data from Lantz (2013), *Machine Learning with R*. It holds no real people. For this chapter, we refer to it as `insurancedata`.
 
 ```{r}
-#| label: import-data-insurance
-insurance <- read.csv("data/insurance.csv")
+#| label: import-data-insurancedata
+insurancedata <- read.csv("data/insurance.csv")
 ```
 
 ```{r}
@@ -89,19 +89,20 @@ Bar plots are useful for comparing mean scores across groups.
 #### [Step 1: Set up data]{.data-layer}
 
 ```{r}
-ggplot(data = insurance)
+#| label: plot1-step1-data
+ggplot(data = insurancedata)
 ```
 
 #### [Step 2: Set up mapping]{.mapping-layer}
 
 ```{r}
 #| label: plot-region-charges-data-mapping 
-#| fig-cap: "a barplot depicting differences in charges by region"
-#| fig-alt: a barplot of insurance charges by region  
+#| fig-cap: "Figure 1. Mean insurance charges by region (one step of the build)."
+#| fig-alt: a barplot of insurancedata charges by region  
 #| fig-height: 6
 #| fig-width: 8
 
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(
          x = region,
          y = charges))
@@ -111,27 +112,27 @@ ggplot(data = insurance,
 ::: callout-note
 ## 📊 Layers: Data + Mapping
 
-- [**Data**]{style="color: #E69F00; font-weight: bold;"}: `insurance` dataset
+- [**Data**]{style="color: #E69F00; font-weight: bold;"}: `insurancedata` dataset
 - [**Mapping**]{style="color: #56B4E9; font-weight: bold;"}: `aes(x = region, y = charges)`
 :::
 
 #### [Step 3: Add geometry (bars)]{.layers-layer}
 
 ```{r}
-#| label: plot-region-charges-bar 
-#| fig-cap: "a barplot depicting differences in charges by region"
-#| fig-alt: a barplot of insurance charges by region  
+#| label: plot1-step3-bars
+#| fig-cap: "Figure 1. Mean insurance charges by region (one step of the build)."
+#| fig-alt: a barplot of insurancedata charges by region  
 #| fig-height: 6
 #| fig-width: 8
 
-plot_region_charges <- ggplot(
-  data = insurance,
+plot1_charges_region_barplot <- ggplot(
+  data = insurancedata,
   mapping = aes(
     x = region,
     y = charges)) +
   geom_bar(stat = 'summary', fun = 'mean')
 
-plot_region_charges
+plot1_charges_region_barplot
 ```
 
 ::: callout-note
@@ -145,20 +146,20 @@ plot_region_charges
 ::: {.callout-warning}
 ## Caution: Saving a plot does not show it
 
-`plot_region_charges <- ggplot(...)` saves the plot as an object in your environment. To see it, type the object's name on its own line (or use `print()`), like the last line of the code above.
+`plot1_charges_region_barplot <- ggplot(...)` saves the plot as an object in your environment. To see it, type the object's name on its own line (or use `print()`), like the last line of the code above.
 :::
 
 #### [Step 4: Customize bars]{.theme-layer}
 
 ```{r}
-#| label: plot-region-charges-bar-custom
-#| fig-cap: "a barplot depicting differences in charges by region"
-#| fig-alt: a barplot of insurance charges by region  
+#| label: plot1-step4-customize
+#| fig-cap: "Figure 1. Mean insurance charges by region (one step of the build)."
+#| fig-alt: a barplot of insurancedata charges by region  
 #| fig-height: 6
 #| fig-width: 8
 
-plot_region_charges <- ggplot(
-  data = insurance,
+plot1_charges_region_barplot <- ggplot(
+  data = insurancedata,
   mapping = aes(
     x = region,
     y = charges)) +
@@ -167,7 +168,7 @@ plot_region_charges <- ggplot(
     fun = 'mean',
     fill = "#005a43")
 
-plot_region_charges
+plot1_charges_region_barplot
 ```
 
 ::: callout-note
@@ -179,14 +180,14 @@ plot_region_charges
 #### [Step 5: Add labels and themes]{.theme-layer}
 
 ```{r}
-#| label: plot-region-charges-bar-custom-labelsthemes
-#| fig-cap: "a barplot depicting differences in charges by region"
-#| fig-alt: a barplot of insurance charges by region  
+#| label: plot1-charges-region-barplot
+#| fig-cap: "Figure 1. Mean insurance charges by region (one step of the build)."
+#| fig-alt: a barplot of insurancedata charges by region  
 #| fig-height: 6
 #| fig-width: 8
 
-plot_region_charges <- ggplot(
-  data = insurance,
+plot1_charges_region_barplot <- ggplot(
+  data = insurancedata,
   mapping = aes(
     x = region,
     y = charges)) + 
@@ -197,7 +198,7 @@ plot_region_charges <- ggplot(
   ylab("Insurance Charges") +
   theme_bw()
 
-plot_region_charges
+plot1_charges_region_barplot
 ```
 
 ::: callout-note
@@ -211,13 +212,13 @@ plot_region_charges
 Violin plots provide a different way to visualize information to capture the distribution of data for each category.
 
 ```{r}
-#| label: plot-smoker-charges 
-#| fig-cap: "a violin plot depicting differences in insurance charges based on smoker status"
+#| label: plot2-charges-smoker-violin
+#| fig-cap: "Figure 2. Distribution of insurance charges by smoking status."
 #| fig-alt: the figure 
 #| fig-height: 6
 #| fig-width: 8
 
-ggplot(data = insurance,
+ggplot(data = insurancedata,
        mapping = aes(
          x = smoker,
          y = charges,
@@ -229,8 +230,8 @@ ggplot(data = insurance,
   theme_bw()
 
 #plot above plot without using plot = argument
-ggsave("plots/plot2_smoker.png",
-       width = 10, height = 8, dpi = 300)
+ggsave("plots/plot2_charges_smoker_violin.png",
+       width = 8, height = 5, dpi = 300)
 ```
 
 To learn more about how to use violin plots for pre/post data, see the chapter on visualizing pre/post scores.
@@ -241,11 +242,11 @@ To learn more about how to use violin plots for pre/post data, see the chapter o
 Every plot in your *RD Report* and *Final Report* must be saved with `ggsave()`, so you can add it to your team poster. Save the plot to an object, then add two lines:
 
 ``` r
-ggsave("plots/plot1_clear_name.png",
-       plot = plot_name, width = 10, height = 8, dpi = 300)
+ggsave("plots/plot1_wellbeing_treated_barplot.png",
+       plot = plot1_wellbeing_treated_barplot, width = 8, height = 5, dpi = 300)
 ```
 
-The full explanation is in [Coding a Plot](layers.qmd#save).
+The file name is the figure number, the variables, and the plot type. The full explanation is in [Write the Results](results.qmd).
 :::
 
 ### Play 2: Health status by racialized identity and sex (class dataset)
@@ -260,18 +261,18 @@ The insurance data showed the layers. This second play uses a dataset collected 
 #| label: play2-health-import
 #| message: false
 library(dplyr)
-healthstatus <- read.csv("data/health_status_data.csv")
+healthstatusdata <- read.csv("data/health_status_data.csv")
 
-healthstatus <- healthstatus |>
+healthstatusdata <- healthstatusdata |>
   rename(HEALTHSTATUS = HEALTH_STATUS) |>
   mutate(
     MINORITIZED_01 = if_else(RACIALIZED_IDENTITY == 1, 0, 1),          # 1 = minoritized (any identity other than white only)
     MINORITIZED    = factor(MINORITIZED_01, levels = c(0, 1), labels = c("Not minoritized", "Minoritized")),
     SEX            = factor(SEX, levels = c(0, 1), labels = c("Male", "Female")))
 
-healthstatus_25 <- healthstatus |> filter(AGE >= 25)      # adults 25 and older: the teams' student samples skew 18 to 22
+healthstatusdata_25 <- healthstatusdata |> filter(AGE >= 25)      # adults 25 and older: the teams' student samples skew 18 to 22
 
-healthstatus_25 |>
+healthstatusdata_25 |>
   group_by(MINORITIZED, SEX) |>
   summarise(n = n(), mean_health = mean(HEALTHSTATUS), .groups = "drop")
 
@@ -280,14 +281,14 @@ healthstatus_25 |>
 ```
 
 ```{r}
-#| label: play2-health-bars
-#| fig-cap: "Mean self-rated health (1 = Poor to 5 = Excellent) by racialized identity and sex, respondents aged 25 and older (Cohort 10 class dataset). Error bars are ±1 standard error."
+#| label: plot3-health-minoritized-sex-barplot
+#| fig-cap: "Figure 3. Mean self-rated health (1 = Poor to 5 = Excellent) by racialized identity and sex, respondents aged 25 and older (Cohort 10 class dataset). Error bars are ±1 standard error."
 #| fig-alt: "A grouped bar chart with two clusters, Not minoritized and Minoritized, each with a Male and a Female bar. Bars sit between Good and Very Good; the not-minoritized bars are slightly taller. Thin error bars top each bar."
 #| fig-height: 5.5
 #| fig-width: 8
 library(ggplot2)
 
-plot_health_groups <- ggplot(healthstatus_25,
+plot3_health_minoritized_sex_barplot <- ggplot(healthstatusdata_25,
                              aes(x = MINORITIZED, y = HEALTHSTATUS, fill = SEX)) +
   geom_bar(stat = "summary", fun = "mean", position = position_dodge(width = 0.8), width = 0.7) +
   stat_summary(fun.data = mean_se, geom = "errorbar",
@@ -299,10 +300,10 @@ plot_health_groups <- ggplot(healthstatus_25,
        x = "Racialized identity", y = "Mean health status", fill = "Sex") +
   theme_bw()
 
-plot_health_groups
+plot3_health_minoritized_sex_barplot
 
-ggsave("plots/plot_health_minoritized_sex.png", plot = plot_health_groups,
-       width = 8, height = 5.5, dpi = 300)
+ggsave("plots/plot3_health_minoritized_sex_barplot.png", plot = plot3_health_minoritized_sex_barplot,
+       width = 8, height = 5, dpi = 300)
 
 #source: ggplot2 documentation https://ggplot2.tidyverse.org/reference/stat_summary.html
 #explanation: x is the first group, fill is the second, position_dodge puts the bars side by side; stat_summary() adds a standard-error bar so the reader can see how sure each mean is
@@ -324,7 +325,7 @@ source("lab_prep.R")   # creates mh_raw and mh_clean from the lab dataset
 
 ## 🏈 The Lab {#sec-comparison-lab}
 
-You watched the play above with the `insurance` dataset (Pass 1). Now run two plays yourself with the **lab dataset**, a survey about what people believe about mental health.
+You watched the play above with the `insurancedata` dataset (Pass 1). Now run two plays yourself with the **lab dataset**, a survey about what people believe about mental health.
 
 :::::: {.ref .ref-tip}
 ::: ref-face
@@ -425,13 +426,13 @@ knitr::kable(lab_p3, digits = 2, col.names = c("Political label", "n", "Mean SOC
 ## 👀 See the solution
 
 ```{r}
-#| label: plot-lab-label-original
-#| fig-cap: "Figure 1. Mean agreement that mental health is social (SOCIAL, 1 to 5) for all six original political label responses in the lab dataset, plus the people who did not choose a label (NA)."
+#| label: plot4-social-politics-barplot
+#| fig-cap: "Figure 4. Mean agreement that mental health is social (SOCIAL, 1 to 5) for all six original political label responses in the lab dataset, plus the people who did not choose a label (NA)."
 #| fig-alt: "A barplot with seven bars, one for each original political label response including Libertarian, and one labeled NA for people who preferred not to say or did not know."
 #| fig-height: 5
 #| fig-width: 8
 
-plot_label_original <- ggplot(
+plot4_social_politics_barplot <- ggplot(
   data = mh_clean,
   mapping = aes(
     x = POLITICALBELIEFS_f,
@@ -445,7 +446,7 @@ plot_label_original <- ggplot(
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1))
 
-print(plot_label_original)
+print(plot4_social_politics_barplot)
 ```
 :::
 
@@ -513,13 +514,13 @@ knitr::kable(lab_p4, digits = 2, col.names = c("Political beliefs", "n", "Mean S
 ## 👀 See the solution
 
 ```{r}
-#| label: plot-lab-label-lmr
-#| fig-cap: !expr 'paste0("Figure 2. Mean agreement that mental health is social (SOCIAL, 1 to 5) by political beliefs in the lab dataset (n = ", nrow(mh_3cat), "). Left combines Leftist and Liberal; Right combines Conservative and Far Right/Alt-Right. Excluded: Libertarian (n = ", n_lib, ") and respondents who did not choose a label (n = ", n_na, ").")'
+#| label: plot5-social-pol3cat-barplot
+#| fig-cap: !expr 'paste0("Figure 5. Mean agreement that mental health is social (SOCIAL, 1 to 5) by political beliefs in the lab dataset (n = ", nrow(mh_3cat), "). Left combines Leftist and Liberal; Right combines Conservative and Far Right/Alt-Right. Excluded: Libertarian (n = ", n_lib, ") and respondents who did not choose a label (n = ", n_na, ").")'
 #| fig-alt: "A barplot with three bars for left, moderate, and right respondents. The left bar is tallest and the right bar is shortest."
 #| fig-height: 5
 #| fig-width: 7
 
-plot_label_lmr <- ggplot(
+plot5_social_pol3cat_barplot <- ggplot(
   data = mh_3cat,
   mapping = aes(
     x = POL_3CAT,
@@ -532,7 +533,7 @@ plot_label_lmr <- ggplot(
   ylab("Mental health is social (1 = disagree, 5 = agree)") +
   theme_bw()
 
-print(plot_label_lmr)
+print(plot5_social_pol3cat_barplot)
 ```
 
 :::
@@ -564,7 +565,7 @@ print(plot_label_lmr)
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play that matches your research question, change every line marked `# REPLACE`, and use the checklist at the end of this section to check your own plot. It is the same checklist your peer mentor and Dr. Shane use.
+Nobody has analyzed your team's data before, so there is no answer to check against. Copy the play that matches your research question, change every word that starts with `SWAP`, and use the checklist at the end of this section to check your own plot. It is the same checklist your peer mentor and Dr. Shane use.
 :::
 
 Once you finish all of the R Labs, come back here with **your team's dataset** and make the plot for your comparison research question.
@@ -572,30 +573,30 @@ Once you finish all of the R Labs, come back here with **your team's dataset** a
 ### The comparison play
 
 ```{r}
-#| label: plot-REPLACE             # REPLACE with a short name, e.g., plot-efficacy-gender
-#| fig-cap: "Figure 1. REPLACE with a caption that can stand alone."
-#| fig-alt: "REPLACE with a description of what the plot shows."
+#| label: plot1-SWAPNAME           # SWAP: the same name as the file, with hyphens
+#| fig-cap: "Figure 1. SWAP: a caption that can stand alone."
+#| fig-alt: "SWAP: a description of what the plot shows."
 #| eval: false
 
-alldata_groups <- alldata |>              # alldata = your team's imported .clean dataset (Import Data Once)
-  filter(!is.na(GROUPVARIABLE))             # REPLACE with your grouping variable
+mydata <- cleandata |>              # alldata = your team's imported .cleandataset (Import Data Once)
+  filter(!is.na(SWAPGROUP))                 # SWAP: your grouping variable
 
-plot_REPLACE <- ggplot(                     # REPLACE the plot name
-  data = alldata_groups,
+plot1_SWAPNAME <- ggplot(                    # SWAP: plot number + variables + plot type
+  data = mydata,
   mapping = aes(
-    x = GROUPVARIABLE,                      # REPLACE with your grouping variable
-    y = OUTCOME)) +                         # REPLACE with your continuous outcome
+    x = SWAPGROUP,                          # SWAP: your grouping variable
+    y = SWAPOUTCOME)) +                     # SWAP: your continuous outcome
   geom_bar(
     stat = 'summary', fun = 'mean', fill = "#005a43") +
-  ggtitle("REPLACE with your title") +
-  xlab("REPLACE with a plain-words label") +
-  ylab("REPLACE with a plain-words label and the scale range") +
+  ggtitle("SWAP: your title") +
+  xlab("SWAP: a plain-words label") +
+  ylab("SWAP: a plain-words label and the scale range") +
   theme_bw()
 
-print(plot_REPLACE)
-ggsave("plots/REPLACE.png",                 # REPLACE with a clear file name
-       plot = plot_REPLACE,
-       width = 10, height = 8, dpi = 300)
+print(plot1_SWAPNAME)
+ggsave("plots/plot1_SWAPNAME.png",                # SWAP: the variables and plot type, e.g. plot1_wellbeing_treated_barplot
+       plot = plot1_SWAPNAME,
+       width = 8, height = 5, dpi = 300)
 ```
 
 ### If you need to combine or exclude groups first
@@ -603,32 +604,30 @@ ggsave("plots/REPLACE.png",                 # REPLACE with a clear file name
 Do this **before** the comparison play above, then use your new dataset and your new grouping variable in the barplot.
 
 ```{r}
-#| label: transform-REPLACE        # REPLACE with a short name, e.g., transform-politics
+#| label: transform-SWAPNAME       # SWAP: a short name, e.g., transform-politics
 #| eval: false
 
-alldata <- alldata |>                     # alldata = your team's imported .clean dataset (Import Data Once)
-  mutate(NEWGROUP = case_when(              # REPLACE NEWGROUP with a name for your new variable
-    GROUPVARIABLE %in% c(1, 2) ~ "REPLACE", # REPLACE the codes and the label for group 1
-    GROUPVARIABLE == 3         ~ "REPLACE", # REPLACE the code and the label for group 2
-    GROUPVARIABLE %in% c(4, 5) ~ "REPLACE"))# REPLACE the codes and the label for group 3
+alldata <- alldata |>                     # alldata = your team's imported .cleandataset (Import Data Once)
+  mutate(SWAPNEWGROUP = case_when(          # SWAP: a name for your new variable (ends in _#CAT)
+    SWAPGROUP %in% c(1, 2) ~ "SWAPLABEL1",  # SWAP: the codes and the label for group 1
+    SWAPGROUP == 3         ~ "SWAPLABEL2",  # SWAP: the code and the label for group 2
+    SWAPGROUP %in% c(4, 5) ~ "SWAPLABEL3"))# SWAP: the codes and the label for group 3
                                             # every answer you leave out becomes NA (missing)
 
-alldata |>
-  count(GROUPVARIABLE, NEWGROUP)            # check: did every answer go where you wanted?
+cleandata |>
+  count(SWAPGROUP, SWAPNEWGROUP)            # check: did every answer go where you wanted?
 
-alldata_groups <- alldata |>
+mydata <- cleandata |>
   filter(!is.na(NEWGROUP))                  # keep only people who are in one of your groups
 ```
 
 In your figure caption, tell the reader which answers you combined, which answers you excluded, and how many people were excluded (for example, "Excluded: Libertarian (n = 4)").
 
 
-### Checklist for your RD Report and Final Report
+::: callout-tip
+## Go: the plot checklist is in Write the Results
 
-::: {.callout-note .gray collapse="true"}
-## Open the plot checklist
-
-{{< include _checklist-plots.qmd >}}
+Before a plot goes into your *RD Report* or *Final Report*, run it through the plot checklist in [Write the Results](results.qmd#the-plot-checklist), the chapter that collects every requirement for the Results section in one place.
 :::
 
 {{< include _ref-whistle-box.qmd >}}

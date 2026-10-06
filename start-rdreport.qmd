@@ -1,0 +1,318 @@
+---
+title: "Start My Report"
+subtitle: "How to start a .qmd file for your RD Report and the Final Report"
+author: "Shane McCarty"
+abstract: |
+  This chapter opens Lab 6 and applies to both reports: the RD Report and the Final Report that grows out of it. It turns the lab-file habits from Start a Report into the requirements for a report that will be graded and published: the report is a .qmd file with a fixed name (Lastname_RDreport.qmd, later copied to Lastname_finalreport.qmd), it starts with the full YAML header, and every code chunk has five required parts (a label, a figure caption and alt text for plots, the source of the code, and an explanation in the researcher's own words). It also explains which chunk output to show and which to hide, and how template code with SWAP placeholders is meant to be used.
+keywords:
+  - RD Report
+  - Final Report
+  - YAML
+  - code chunks
+  - fig-cap
+  - fig-alt
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+{{< include _resources-quarto.qmd >}}
+
+{{< include _ref-kickoff-box.qmd >}}
+
+::: {.callout-important .required}
+## Required: reports are `.qmd` files
+
+The *AIM report* was written and saved as a word document (`.docx`) format, which is different than a Quarto report (`.qmd`). Your *RD Report* and *Final Report* will be `.qmd` files. Every code chunk should include a label, a source, and an explanation. Code chunks that create figures should also include a figure caption (`fig-cap`) and alternative text (`fig-alt`). You will do your writing in a Google Doc and then paste your writing into RStudio, within a `.qmd` Quarto Markdown document.
+:::
+
+You have made a Quarto report for every lab ([Start a Report](codechunks.qmd)): one `.qmd`, one web page. What you write now is an **individual research report**: your own Introduction, Methods, Results, and Discussion of your team's data. It starts as the same kind of `.qmd`, with three more rules: a fixed file name, the full YAML header, and five required parts in every code chunk. This chapter is those three rules. Make the file now, before you write anything, so that every chapter you revisit in Lab 6 has somewhere to go.
+
+::: callout-note
+## Resources: Quarto report vs. Quarto manuscript
+
+A **Quarto report** is a single `.qmd` rendered to a single HTML page, which is what you submit as the *RD Report* and the *Final Report*. A [**Quarto manuscript**](https://quarto.org/docs/manuscripts/) is Quarto's format for a scholarly article: the same writing and code, with a title page, author affiliations, an abstract, and the option to render the one article to HTML, PDF, and Word, with the notebooks that produced it attached. Your Final Report will be published on your own academic website ([Academic Website](website.qmd)) as a Quarto manuscript, so that it reads as an article rather than a lab page. Nothing changes in how you write it: the manuscript format is a YAML setting and a project folder, which [Publish in Quarto Pub](quartopub.qmd) and [Academic Website](website.qmd) cover when you get there.
+:::
+
+## The file name
+
+- Your results and discussion (RD) report should be named: `Lastname_RDreport.qmd`
+- After submitting your `Lastname_RDreport.qmd`, you should go to the files tab, check the box next to `Lastname_RDreport.qmd` and then click the gear icon (More) \> Copy \> name it `Lastname_finalreport.qmd`
+- Your final report should be named: `Lastname_finalreport.qmd`
+- Replace `Lastname` with your own last name (e.g., `McCarty_RDreport.qmd`)
+
+::: {.callout-important .required}
+## Required: file names
+
+Please name your quarto markdown files (`.qmd`) correctly.
+:::
+
+{{< include _caution-save-your-file.qmd >}}
+
+## The YAML header
+
+YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a `.qmd` file can render as HTML (website format) and a `.pdf` file too. Your lab files used a four-line header; the report uses this one.
+
+{{< include _yaml-report.qmd >}}
+
+::: {.callout-important .required}
+## Required: the YAML header
+
+- Use the above YAML format at the top of ALL Quarto markdown document files (`.qmd`).
+
+- title, subtitle, name, email should be revised
+
+- abstract and keywords should be included
+:::
+
+::: callout-warning
+## Caution: In YAML, spaces are part of the code
+
+YAML reads indentation the way R reads parentheses. Every line's position matters: `title:` starts at the left edge, `html:` sits two spaces in under `format:`, and `toc: true` sits two spaces in under `html:`. Add or remove one space and the render fails, usually with a message that does not mention spacing at all, such as *"YAML parse exception"* or *"did not find expected key."*
+
+**Do this**
+
+-   **Copy the YAML above with the clipboard icon and paste it in.** Do not retype it.
+-   Change only the words after the colons: the title, your name, your email, the abstract, the keywords.
+-   Keep one space after every colon (`title: "..."`, not `title:"..."`).
+-   Keep the `---` lines at the very top of the file, with nothing above the first one.
+
+**Do not do this**
+
+-   Do not press Tab inside the YAML. Tab characters are not spaces, and YAML rejects them. If you must indent, use the space bar, two spaces at a time.
+-   Do not delete a line you do not understand. If you do not want a line, put `#` in front of it so YAML ignores it.
+-   Do not let the visual editor "help": switch to **Source** view before you edit the header, so you can see the spaces.
+
+The same rule applies to code chunk options. Every `#|` line needs a space after the `|`, and one after the colon: `#| label: import-data`, not `#|label:import-data`.
+:::
+
+For more information, see:
+
+- [YAML](https://quarto.org/docs/reference/formats/html.html)
+
+- [Front Matter](https://quarto.org/docs/authoring/front-matter.html)
+
+- [code-overflow](https://quarto.org/docs/output-formats/html-code.html#code-overflow)
+
+- [Authors & Affiliations](https://quarto.org/docs/journals/authors.html)
+
+## The first chunk
+
+Right under the YAML header, the report starts with the same load-library chunk as your lab files ([Start a Report](codechunks.qmd#your-first-chunk-load-your-packages)). It is the only chunk with `#| output: false`, because package startup messages tell a reader nothing about your research.
+
+## Code Chunks
+
+### Example Code Chunk
+
+Below is an example from the [Visualize a Relationship](visualize-relationship.qmd) chapter of an informative `label` for your code chunk and a very detailed figure caption ( `fig-cap`). Also, notice that all code chunk options start with `#|` and use a `:`.
+
+For more examples, see [Visualize a Relationship](visualize-relationship.qmd) and [Visualize a Comparison](visualize-comparison.qmd).
+
+```{r}
+#| label: scatterplot-BMI-insurancedata
+#| fig-cap: A scatterplot depicting the relationship between body mass index and insurancedata charges with a line of best fit to demonstrate the liner relationship between the two variables
+#| echo: fenced
+#| eval: false
+```
+
+### The five required parts
+
+#### Label for All Code Chunks
+
+Your `#| label:` should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.
+
+```{{r}}
+#| label: import-data-xlsx
+
+```
+
+::: {.callout-important .required}
+## Required: a label for every code chunk
+
+Every code chunk must have a `#| label:` at the start of the chunk.
+:::
+
+#### Figure Caption (Fig-Cap) for Plot Code Chunks
+
+```{{r}}
+#| label: plot1-SWAPNAME
+#| fig-cap: provide a detailed figure caption
+
+```
+
+::: {.callout-important .required}
+## Required: a figure caption for every plot
+
+Every plot should include a detailed figure caption using `#| fig-cap:`
+:::
+
+#### Alternative Text for Figures and Images (Fig-Alt) {#alt-text}
+
+Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.
+
+```{{r}}
+#| label: plot1-SWAPNAME
+#| fig-cap: provide a detailed figure caption
+#| fig-alt: provide info for accessiblity
+```
+
+::: {.callout-important .required}
+## Required: alt text for every figure
+
+Every figure and image should include alternative text using `#| fig-alt:`
+:::
+
+For more information on how improve the accessiblity of an image, see [figures-alt-text on Quarto](https://quarto.org/docs/authoring/figures.html#alt-text) to use alt text to increase accessiblity.
+
+#### Comments: Notes Inside Your Code
+
+The next two requirements, a source and an explanation, are written as **comments**. A comment is a line inside a code chunk that starts with `#`. R skips it: anything after `#` on that line is a note for people, not an instruction for the computer. Comments let you say what a piece of code is for, where it came from, and what you learned from it, right next to the code itself. When you come back to your report in three weeks, or when a teammate or grader reads it, the comments are what make the code understandable.
+
+Here is a code chunk with three kinds of comments:
+
+```{{r}}
+#| label: import-data-csv-insurancedata
+
+# IMPORT: read the data file from the project folder
+insurancedata <- read.csv("data/insurance.csv")
+
+# CHECK: look at the first six rows to confirm it loaded
+head(insurancedata)
+
+#source: The Quantitative Playbook for R (McCarty, 2026)
+#explanation: This chunk imports the insurancedata dataset and shows the first six rows so I can check the variable names.
+```
+
+- A comment **above** a line says what that line does (`# IMPORT`, `# CHECK`). Short labels in capitals make each step easy to find.
+- `#source:` at the **bottom** says where the code came from.
+- `#explanation:` at the **bottom** says, in your own words, what the chunk did and why.
+
+Two rules of thumb. Write what the code is *for*, not what R does: "keep only complete responses" is a useful comment, "subset the data frame" is not. And do not comment out code you no longer need. Delete it, so that your report does not fill up with lines that are not part of the analysis.
+
+::: callout-tip
+## Go: `#|` is an option, `#` is a comment
+
+They look alike, but they do different jobs. `#|` at the **top** of a chunk sets a chunk option that Quarto reads, such as `#| label:` or `#| fig-cap:`. A plain `#` anywhere else is a comment that Quarto and R both ignore. The `#source:` and `#explanation:` lines are comments, and they go at the **bottom** of the chunk.
+:::
+
+#### Provide Sources for ALL Code Chunks
+
+::: {.callout-important .required}
+## Required: the source of your code
+
+At the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).
+:::
+
+```{{r}}
+#| label: SWAPACTION-SWAPVARIABLE
+
+#source: example 1, The FRI Playbook (McCarty, 2025)   
+#source: example 2, Writing Reproducible Results (Hei, 2025)   
+#source: example 3, Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html
+
+```
+
+
+#### Provide Explanation for ALL Code Chunks
+
+::: {.callout-important .required}
+## Required: an explanation in your own words
+
+You will explain the code chunk in your own words using `#explanation:` at the bottom of your code chunk.
+:::
+
+##### Example of Non-Figure Code Chunk
+
+All of your R code chunks for non-figures should follow this format:
+
+```{{r}}
+#| label: import-data-csv-insurancedata
+
+insurancedata <- read.csv("data/insurance.csv")
+
+#source: (Wickham et al., 2023) https://r4ds.hadley.nz/data-import.html#practical-advice
+#explanation: importing the insurancedata data from a comma-separated values (CSV) based on import code from R4DS book 
+
+```
+
+##### Example of Figure Code Chunk
+
+All of your R code chunks for figures should follow this format:
+
+```{{r}}
+#| label: scatterplot-BMI-insurancedata
+#| fig-cap: A scatterplot depicting the relationship between body mass index and insurancedata charges with a line of best fit to demonstrate the liner relationship between the two variables
+#| fig-alt: the scatterplot shows BMI on the x axis and insurancedata charges on the y axis with the grouping variable of smoker. The smokers are denoted in teal and the non-smokers are in red. The smokers and non-smokers have a different slope, showing a different relationship/slope for BMI and insurancedata chargers based on smoker status.
+
+ggplot(data = insurancedata,
+       mapping = aes(
+         x = bmi,
+         y = charges,
+         color = smoker)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+  
+#source: Introduction to ggplot2 (Silhavy & McCarty, 2025)
+#explanation: the insurancedata data is being used with BMI for the x variable and insurancedata charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurancedata charges
+
+```
+
+#### Setting library code chunk
+
+By setting the `#| output:` to `false`, none of the output from running the code will show up. Only the code chunk for loading the library has `#| output: false`. The output is "attaching package (`readxl`), which is not necessary for our report. In almost all cases, your code chunk will NOT include the `output` option. If you do include it, it will mostly be set to `true` in order for you to output results, a plot, etc.
+
+```{r}
+#| label: load-library-readxl
+#| echo: fenced
+#| output: false
+
+library(readxl)
+
+```
+
+#### Code Chunk Options
+
+For more information on code chunks, see [code chunk options](https://r4ds.hadley.nz/quarto.html#chunk-options).
+
+```{{r}}
+#| label: example-with-options
+#| eval: true          # Whether to execute the code
+#| output: true        # Whether to display output
+#| warning: false      # Hide warnings
+#| message: false      # Hide messages
+#| error: false        # Stop the render if this chunk has an error (the default; keep it)
+#| fig-cap: "Figure 1. SWAP: a caption that can stand alone"  # Figure caption
+#| fig-width: 8        # Figure width in inches
+#| fig-height: 6       # Figure height in inches
+
+# Your code here below these code chunk options
+
+```
+
+#### When to Show and When to Hide {#sec-show-hide}
+
+Chunk options decide what a reader of your report sees. By default, Quarto shows everything: the code, its output, and any messages or warnings. That is right for most chunks in this course, because your grader needs to read your code and the `#source:` and `#explanation:` comments inside it. Change the defaults only in these situations:
+
+| Situation | Option | Why |
+|----|----|----|
+| Your load-library chunk | `#| message: false` and `#| warning: false` | Loading packages prints startup messages ("Attaching core tidyverse packages..."). They tell the reader nothing about your research. |
+| A chunk you used only to check your work, such as `head()`, `names()`, or `View()` | Delete it from the report, or add `#| include: false` | Checks help you while you work. In a report, 200 rows of raw data bury your results. |
+| A plot or table | `#| fig-cap:` and `#| fig-alt:` (plots); keep the output showing | The output **is** the result. Never hide it. |
+| A warning you have read and understood, such as `geom_smooth()` using formula 'y ~ x' | `#| warning: false` on that chunk only | Hide a warning only after you know what it means. A warning you have not read may be telling you that your result is wrong. |
+| A chunk that stops with an error | Fix the code | Do not use `#| error: true` in a report. It lets the render finish with an error message printed in the middle of your results. |
+
+::: callout-warning
+## Caution: fold your code, never hide it
+
+The Required YAML sets `code-fold: true`, so every chunk's code sits behind a **Show the code** button: a reader sees a paper, and a grader clicks to see your code and its `#source:` and `#explanation:` comments. That is the only kind of hiding allowed. `#| echo: false` removes the code from the page altogether, and `output: false` removes the results; both would hide something that is required. Do not use either, in any chunk, unless your peer mentor and/or Dr. Shane tells you otherwise.
+:::
+
+## Template code and `SWAP`
+
+{{< include _important-swap.qmd >}}
+
+{{< include _ref-whistle-box.qmd >}}

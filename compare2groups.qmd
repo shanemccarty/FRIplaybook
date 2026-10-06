@@ -1,6 +1,6 @@
 ---
 title: "Compare 2 Groups"
-subtitle: "The independent-samples t-test for normal data and the Mann-Whitney U test for data that are not, with density, violin, and raincloud plots"
+subtitle: "Independent-samples t-test (normal) and Mann-Whitney U (non-normal)"
 author:
   - Anna Vishnevetsky
   - Yoomin (Ashley) Kim
@@ -55,7 +55,7 @@ You have **two groups of different people** and **one continuous outcome**, and 
 
 Two things decide whether you are on this row:
 
--   **The group variable has exactly two levels.** Usually it is a `_01` variable from the survey (`TREATED_01`, `KNOWS_01`) or a `_01CAT` you made in [Transforming Your Data](dplyr.qmd) (`RACIALIZED_01CAT`, `DISTRESS_01CAT`). Three or more groups is the next row, [Compare 3+ Groups](ANOVA.qmd).
+-   **The group variable has exactly two levels.** Usually it is a `_01` variable from the survey (`TREATED_01`, `KNOWS_01`) or a `_01CAT` you made in [Transforming Your Data](dplyr.qmd) (`RACIALIZED_01`, `DISTRESS_01`). Three or more groups is the next row, [Compare 3+ Groups](ANOVA.qmd).
 -   **The two groups are different people.** If the same people were measured twice, before and after something, that is a **paired** design: the differences live *within* each person, and the test is the paired t-test ([Compare 1 Group, Pre/Post](violin.qmd), for Teams 3 and 5). Running an independent-samples test on pre/post data is the most common wrong turn on the map, so decide this first.
 
 The outcome should be a score, not a category: a composite from 1 to 5, a Veggie Meter number, an age. If the outcome is yes/no, you need a different test (a chi-square), and your peer mentor and/or Dr. Shane can point you to it.
@@ -103,11 +103,11 @@ Biological sex and gender identity are not the same thing, and the standardized 
 
 ```{r}
 #| label: play1-import
-veggie <- read_excel("data/veggiescore_SYNTHETIC.xlsx")
+veggiedata <- read_excel("data/veggiescore_SYNTHETIC.xlsx")
 
-nrow(veggie)
-summary(veggie$VEGGIESCORE)
-veggie |> count(SEX)
+nrow(veggiedata)
+summary(veggiedata$VEGGIESCORE)
+veggiedata |> count(SEX)
 ```
 
 Two problems are visible already. `summary()` of `VEGGIESCORE` prints `Length` and `Class :character` instead of a minimum and a maximum: the column came in as **text**, because a few cells contain words ([Import Data Once](import-once.qmd), Lab Play 5). And `SEX` has values other than 0 and 1: `-99` (prefer not to say) and `NA` (skipped).
@@ -118,23 +118,23 @@ These problems are not invented for the exercise. The real export from the Veggi
 
 ```{r}
 #| label: play1-clean
-veggie <- veggie |>
+veggiedata <- veggiedata |>
   mutate(VEGGIESCORE = as.numeric(VEGGIESCORE))      # words become NA; numbers stay numbers
 
-summary(veggie$VEGGIESCORE)                           # now you can see the range
+summary(veggiedata$VEGGIESCORE)                           # now you can see the range
 ```
 
 Now `summary()` shows the range, and it is wrong at both ends: a minimum of 1 and a maximum in the billions. No skin-carotenoid scan produces those numbers; they are the pasted read-out and the failed scans described above. The cleaning rule has to come from what the instrument can measure, not from the data: the Veggie Meter's plausible range is about 100 to 800, so keep scores in that range. And a two-group test needs two groups, so keep only the people with `SEX` coded 0 or 1. Write both rules in your Methods, with the number of people each one removed.
 
 ```{r}
 #| label: play1-filter
-veggie_clean <- veggie |>
+veggiedata_clean <- veggiedata |>
   filter(VEGGIESCORE >= 100, VEGGIESCORE <= 800,      # plausible scores only
          SEX %in% c(0, 1)) |>                          # the two groups (drops -99 and NA)
   mutate(SEX = factor(SEX, levels = c(0, 1), labels = c("Male", "Female")))
 
-nrow(veggie_clean)
-veggie_clean |>
+nrow(veggiedata_clean)
+veggiedata_clean |>
   group_by(SEX) |>
   summarise(n = n(), mean = mean(VEGGIESCORE), sd = sd(VEGGIESCORE))
 
@@ -149,12 +149,12 @@ Write the rule in your Methods: "Scores outside the instrument's range (100 to 8
 A **density plot** is a smoothed histogram. With two groups it shows, in one picture, whether the groups overlap and where their centers sit. In `ggpubr` it is one call, with the group mean drawn as a dashed line and every person as a tick on the axis (`rug = TRUE`).
 
 ```{r}
-#| label: play1-density
+#| label: plot1-veggiescore-sex-density
 #| fig-cap: "Figure 1. Veggie Meter scores for male and female participants (synthetic data, n = 238). Dashed lines are group means; ticks along the x axis are individual scores."
 #| fig-alt: "Two overlapping density curves of Veggie Meter scores, orange for male and pink for female participants. Both are roughly bell shaped. The male curve and its dashed mean line sit slightly to the right of the female curve."
 #| fig-width: 8
 #| fig-height: 4
-plot_veggie_sex <- ggdensity(veggie_clean, x = "VEGGIESCORE",
+plot1_veggiescore_sex_density <- ggdensity(veggiedata_clean, x = "VEGGIESCORE",
                              color = "SEX", fill = "SEX",
                              palette = c("#ff8c6b", "#e8a7d0"),
                              add = "mean", rug = TRUE,
@@ -162,10 +162,10 @@ plot_veggie_sex <- ggdensity(veggie_clean, x = "VEGGIESCORE",
                              title = "Veggie Meter scores by biological sex") +
   scale_x_continuous(breaks = seq(100, 800, by = 100))
 
-plot_veggie_sex
+plot1_veggiescore_sex_density
 
-ggsave("plots/veggie_sex_density.png", plot = plot_veggie_sex,
-       width = 8, height = 4, dpi = 300)
+ggsave("plots/plot1_veggiescore_sex_density.png", plot = plot1_veggiescore_sex_density,
+       width = 8, height = 5, dpi = 300)
 
 #source: ggpubr documentation https://rpkgs.datanovia.com/ggpubr/reference/ggdensity.html
 #explanation: one density curve per group, with the mean of each group as a dashed line and each person's score as a rug tick
@@ -179,7 +179,7 @@ The t-test assumes the outcome is roughly normal **within each group** (less imp
 
 ```{r}
 #| label: play1-assumptions
-veggie_clean |>
+veggiedata_clean |>
   group_by(SEX) |>
   summarise(shapiro_p = shapiro.test(VEGGIESCORE)$p.value)
 ```
@@ -190,8 +190,9 @@ Both p-values are above .05, so there is no evidence against normality in either
 
 ```{r}
 #| label: play1-ttest
-t_veggie <- t.test(VEGGIESCORE ~ SEX, data = veggie_clean)   # Welch t-test (var.equal = FALSE is the default)
-t_veggie
+# ttestmodel1: VEGGIESCORE by SEX (Welch t-test)
+ttestmodel1 <- t.test(VEGGIESCORE ~ SEX, data = veggiedata_clean)   # Welch t-test (var.equal = FALSE is the default)
+ttestmodel1
 
 #source: https://www.datacamp.com/tutorial/t-tests-r-tutorial
 #explanation: the formula means "VEGGIESCORE split by SEX"; Welch's version does not assume the two groups have equal spread
@@ -207,11 +208,11 @@ A p-value says whether the difference is detectable, not whether it is big. **Co
 #| label: play1-effect
 cohens_d <- function(x, y) (mean(x) - mean(y)) / sqrt((var(x) + var(y)) / 2)
 
-male   <- veggie_clean$VEGGIESCORE[veggie_clean$SEX == "Male"]
-female <- veggie_clean$VEGGIESCORE[veggie_clean$SEX == "Female"]
+male   <- veggiedata_clean$VEGGIESCORE[veggiedata_clean$SEX == "Male"]
+female <- veggiedata_clean$VEGGIESCORE[veggiedata_clean$SEX == "Female"]
 cohens_d(male, female)
 
-wilcox.test(VEGGIESCORE ~ SEX, data = veggie_clean)   # Mann-Whitney U (R calls it the Wilcoxon rank sum test); Play 3 explains it
+wilcox.test(VEGGIESCORE ~ SEX, data = veggiedata_clean)   # Mann-Whitney U (R calls it the Wilcoxon rank sum test); Play 3 explains it
 
 #source: Cohen (1988); R documentation ?wilcox.test
 #explanation: d is the mean difference divided by the pooled standard deviation; the Mann-Whitney U test compares the groups by rank, without assuming normality
@@ -222,7 +223,7 @@ The two tests disagree: the Welch t-test is significant (*p* = .029) and the Man
 ```{r}
 #| label: play1-report-values
 #| include: false
-m <- veggie_clean |> group_by(SEX) |> summarise(n = n(), mean = mean(VEGGIESCORE), sd = sd(VEGGIESCORE))
+m <- veggiedata_clean |> group_by(SEX) |> summarise(n = n(), mean = mean(VEGGIESCORE), sd = sd(VEGGIESCORE))
 d_v <- cohens_d(male, female)
 fmt <- function(x, k = 2) formatC(x, format = "f", digits = k)
 pfmt <- function(p) if (p < .001) "< .001" else paste0("= ", sub("^0", "", fmt(p, 3)))
@@ -232,7 +233,7 @@ pfmt <- function(p) if (p < .001) "< .001" else paste0("= ", sub("^0", "", fmt(p
 
 One sentence with the means, the test, and the effect size, plus the figure. In APA style:
 
-> Male participants (*M* = `r fmt(m$mean[1], 1)`, *SD* = `r fmt(m$sd[1], 1)`, *n* = `r m$n[1]`) had higher Veggie Meter scores than female participants (*M* = `r fmt(m$mean[2], 1)`, *SD* = `r fmt(m$sd[2], 1)`, *n* = `r m$n[2]`), Welch *t*(`r fmt(t_veggie$parameter, 1)`) = `r fmt(t_veggie$statistic)`, *p* `r pfmt(t_veggie$p.value)`, *d* = `r fmt(d_v)`, a small effect (Figure 1).
+> Male participants (*M* = `r fmt(m$mean[1], 1)`, *SD* = `r fmt(m$sd[1], 1)`, *n* = `r m$n[1]`) had higher Veggie Meter scores than female participants (*M* = `r fmt(m$mean[2], 1)`, *SD* = `r fmt(m$sd[2], 1)`, *n* = `r m$n[2]`), Welch *t*(`r fmt(ttestmodel1$parameter, 1)`) = `r fmt(ttestmodel1$statistic)`, *p* `r pfmt(ttestmodel1$p.value)`, *d* = `r fmt(d_v)`, a small effect (Figure 1).
 
 Every number in that sentence comes from Steps 2, 5, and 6, and the sentence says which groups, how many, which direction, and how big.
 
@@ -252,18 +253,18 @@ This play uses only the **pretest** rows, because the question is a two-group on
 
 ```{r}
 #| label: play2-import
-foodsec <- read_excel("data/foodsecurity_SYNTHETIC.xlsx")
+foodsecuritydata <- read_excel("data/foodsecurity_SYNTHETIC.xlsx")
 
-foodsec[foodsec == -99] <- NA      # prefer not to say -> missing
-foodsec[foodsec == -50] <- NA      # don't know -> missing
+foodsecuritydata[foodsecuritydata == -99] <- NA      # prefer not to say -> missing
+foodsecuritydata[foodsecuritydata == -50] <- NA      # don't know -> missing
 
-pre <- foodsec |>
+foodsecuritydata_pre <- foodsecuritydata |>
   mutate(PASSWORD = tolower(trimws(PASSWORD))) |>    # clean the linking code (Pre/Post Data)
   filter(TIME == 0) |>                                # pretest only
   distinct(PASSWORD, .keep_all = TRUE)                # one row per person (drops the duplicate submission)
 
-nrow(pre)
-pre |> count(GENDER)
+nrow(foodsecuritydata_pre)
+foodsecuritydata_pre |> count(GENDER)
 
 #source: Import Data Once; Pre/Post Data
 #explanation: missing codes become NA; the pretest rows are kept, one per person
@@ -273,11 +274,11 @@ pre |> count(GENDER)
 
 ```{r}
 #| label: play2-gender
-pre2 <- pre |>
+foodsecuritydata_pre2 <- foodsecuritydata_pre |>
   filter(GENDER %in% c(0, 1)) |>
   mutate(GENDER = factor(GENDER, levels = c(0, 1), labels = c("Women", "Men")))
 
-pre2 |> count(GENDER)
+foodsecuritydata_pre2 |> count(GENDER)
 
 #explanation: the two groups to compare, as a labeled factor with the comparison group (women) first
 ```
@@ -293,10 +294,10 @@ eff_keys <- list(
   EFF_SAFE  = c("EFFSAFE1", "EFFSAFE2", "EFFSAFE3", "EFFSAFE4"),
   EFF_NUTRI = c("EFFNUTRI1", "EFFNUTRI2", "EFFNUTRI3"))
 
-eff_scores <- scoreItems(eff_keys, pre2, impute = "none")
+eff_scores <- scoreItems(eff_keys, foodsecuritydata_pre2, impute = "none")
 round(eff_scores$alpha, 2)                                   # reliability of each scale
 
-pre2 <- pre2 |>
+foodsecuritydata_pre2 <- foodsecuritydata_pre2 |>
   mutate(EFF_CONF  = eff_scores$scores[, "EFF_CONF"],
          EFF_SAFE  = eff_scores$scores[, "EFF_SAFE"],
          EFF_NUTRI = eff_scores$scores[, "EFF_NUTRI"])
@@ -311,14 +312,14 @@ A plot that shows all three scales side by side needs them in **one** column, wi
 
 ```{r}
 #| label: play2-long
-pre_long <- pre2 |>
+foodsecuritydata_pre_long <- foodsecuritydata_pre2 |>
   select(PASSWORD, GENDER, EFF_CONF, EFF_SAFE, EFF_NUTRI) |>
   pivot_longer(cols = c(EFF_CONF, EFF_SAFE, EFF_NUTRI),
                names_to = "SCALE", values_to = "SCORE") |>
   mutate(SCALE = factor(SCALE, levels = c("EFF_CONF", "EFF_SAFE", "EFF_NUTRI"),
                         labels = c("Confidence", "Safety", "Nutrition")))
 
-head(pre_long)
+head(foodsecuritydata_pre_long)
 ```
 
 #### Step 4: Violin plot, built in layers
@@ -326,12 +327,12 @@ head(pre_long)
 A **violin plot** is a box plot with the distribution drawn around it: the width at each height is how many people scored there (a smoothed histogram turned on its side). Add the box plot inside it for the median and quartiles, and the raw points so that the reader can see how many people are behind each shape.
 
 ```{r}
-#| label: play2-violin
+#| label: plot2-efficacy-gender-violin
 #| fig-cap: "Figure 2. Cooking self-efficacy before the workshop, by gender (synthetic data). Violins show the distribution, boxes the median and quartiles, points the individual scores."
 #| fig-alt: "Three pairs of violin plots, one pair for each self-efficacy scale, with women in purple and men in yellow. Each violin has a narrow box plot inside and jittered points. The men's violins sit slightly higher on confidence."
 #| fig-width: 9
 #| fig-height: 5
-plot_eff_gender <- ggplot(pre_long, aes(x = SCALE, y = SCORE, fill = GENDER)) +
+plot2_efficacy_gender_violin <- ggplot(foodsecuritydata_pre_long, aes(x = SCALE, y = SCORE, fill = GENDER)) +
   geom_violin(trim = TRUE, alpha = 0.6, position = position_dodge(width = 0.8)) +
   geom_boxplot(width = 0.12, outlier.shape = NA, position = position_dodge(width = 0.8)) +
   geom_jitter(position = position_jitterdodge(jitter.width = 0.12, dodge.width = 0.8),
@@ -342,9 +343,9 @@ plot_eff_gender <- ggplot(pre_long, aes(x = SCALE, y = SCORE, fill = GENDER)) +
        fill = "Gender", title = "Cooking self-efficacy before the workshop, by gender") +
   theme_minimal(base_size = 13)
 
-plot_eff_gender
+plot2_efficacy_gender_violin
 
-ggsave("plots/eff_gender_violin.png", plot = plot_eff_gender, width = 9, height = 5, dpi = 300)
+ggsave("plots/plot2_efficacy_gender_violin.png", plot = plot2_efficacy_gender_violin, width = 8, height = 5, dpi = 300)
 
 #source: ggplot2 documentation https://ggplot2.tidyverse.org/reference/geom_violin.html
 #explanation: three layers on one plot: the violin (distribution), the box (median and quartiles), the jittered points (every person); position_dodge puts the two genders side by side within each scale
@@ -361,12 +362,12 @@ Wide at the top means many people scored high. Two bulges mean two kinds of peop
 A **raincloud plot** is the same information with the layers pulled apart so that none hides another: a half violin (the cloud), the box plot beside it, and the raw points below (the rain). `geom_violinhalf()` comes from the `see` package.
 
 ```{r}
-#| label: play2-raincloud
+#| label: plot3-efficacy-gender-raincloud
 #| fig-cap: "Figure 3. The same data as Figure 2 as a raincloud plot: half violins (the cloud), box plots, and individual scores (the rain)."
 #| fig-alt: "For each of the three scales, half-violin shapes for women and men are nudged to the right, narrow box plots sit in the middle, and jittered points are nudged to the left."
 #| fig-width: 9
 #| fig-height: 5
-plot_eff_rain <- ggplot(pre_long, aes(x = SCALE, y = SCORE, fill = GENDER)) +
+plot3_efficacy_gender_raincloud <- ggplot(foodsecuritydata_pre_long, aes(x = SCALE, y = SCORE, fill = GENDER)) +
   geom_violinhalf(position = position_dodge(width = 0.8), alpha = 0.6, trim = TRUE) +
   geom_boxplot(width = 0.1, outlier.shape = NA, position = position_dodge(width = 0.8)) +
   geom_point(aes(color = GENDER),
@@ -379,7 +380,8 @@ plot_eff_rain <- ggplot(pre_long, aes(x = SCALE, y = SCORE, fill = GENDER)) +
        title = "Cooking self-efficacy before the workshop, by gender (raincloud)") +
   theme_minimal(base_size = 13)
 
-plot_eff_rain
+plot3_efficacy_gender_raincloud
+ggsave("plots/plot3_efficacy_gender_raincloud.png", plot = plot3_efficacy_gender_raincloud, width = 8, height = 5, dpi = 300)
 
 #source: see package https://easystats.github.io/see/reference/geom_violinhalf.html; Allen et al. (2019)
 #explanation: a half violin instead of a full one, so the box and the points have room beside it
@@ -391,11 +393,14 @@ Three outcomes means three tests. Run them the same way as Play 1, and report ea
 
 ```{r}
 #| label: play2-ttests
-t_conf  <- t.test(EFF_CONF  ~ GENDER, data = pre2)
-t_safe  <- t.test(EFF_SAFE  ~ GENDER, data = pre2)
-t_nutri <- t.test(EFF_NUTRI ~ GENDER, data = pre2)
+# ttestmodel2: EFF_CONF by GENDER
+ttestmodel2  <- t.test(EFF_CONF  ~ GENDER, data = foodsecuritydata_pre2)
+# ttestmodel3: EFF_SAFE by GENDER
+ttestmodel3  <- t.test(EFF_SAFE  ~ GENDER, data = foodsecuritydata_pre2)
+# ttestmodel4: EFF_NUTRI by GENDER
+ttestmodel4 <- t.test(EFF_NUTRI ~ GENDER, data = foodsecuritydata_pre2)
 
-t_conf
+ttestmodel2
 
 #explanation: Welch t-test for each composite; print the other two the same way
 ```
@@ -404,14 +409,14 @@ t_conf
 #| label: play2-summary-table
 #| echo: false
 sum_row <- function(tt, var) {
-  g <- pre2 |> group_by(GENDER) |> summarise(n = n(), m = mean(.data[[var]], na.rm = TRUE), s = sd(.data[[var]], na.rm = TRUE))
-  dd <- cohens_d(na.omit(pre2[[var]][pre2$GENDER == "Women"]), na.omit(pre2[[var]][pre2$GENDER == "Men"]))
+  g <- foodsecuritydata_pre2 |> group_by(GENDER) |> summarise(n = n(), m = mean(.data[[var]], na.rm = TRUE), s = sd(.data[[var]], na.rm = TRUE))
+  dd <- cohens_d(na.omit(foodsecuritydata_pre2[[var]][foodsecuritydata_pre2$GENDER == "Women"]), na.omit(foodsecuritydata_pre2[[var]][foodsecuritydata_pre2$GENDER == "Men"]))
   tibble(Scale = var,
          `Women M (SD)` = paste0(fmt(g$m[1]), " (", fmt(g$s[1]), ")"),
          `Men M (SD)`   = paste0(fmt(g$m[2]), " (", fmt(g$s[2]), ")"),
          t = fmt(tt$statistic), df = fmt(tt$parameter, 1), p = sub("^= ", "", pfmt(tt$p.value)), d = fmt(dd))
 }
-kable(bind_rows(sum_row(t_conf, "EFF_CONF"), sum_row(t_safe, "EFF_SAFE"), sum_row(t_nutri, "EFF_NUTRI")),
+kable(bind_rows(sum_row(ttestmodel2, "EFF_CONF"), sum_row(ttestmodel3, "EFF_SAFE"), sum_row(ttestmodel4, "EFF_NUTRI")),
       caption = "Table 1. Cooking self-efficacy by gender before the workshop: Welch t-tests (synthetic data).")
 ```
 
@@ -420,7 +425,7 @@ When you have several tests like this, a table is clearer than three sentences, 
 ::: callout-warning
 ## Caution: the n behind the plot
 
-Play 2 has `r sum(pre2$GENDER == "Men")` men. A violin drawn from a group that small is a smoothed curve through a few points, and it can look like a shape that is not there. Always print `count()` by group before you trust the picture, and report the n of each group in the caption.
+Play 2 has `r sum(foodsecuritydata_pre2$GENDER == "Men")` men. A violin drawn from a group that small is a smoothed curve through a few points, and it can look like a shape that is not there. Always print `count()` by group before you trust the picture, and report the n of each group in the caption.
 :::
 
 ### Play 3 ([Mann-Whitney U test]{.nonnormal}): compare minoritized and non-minoritized participants on self-rated health
@@ -434,7 +439,7 @@ Plays 1 and 2 had outcomes that were roughly normal, so the t-test was the right
 ```{r}
 #| label: play3-import
 #| message: false
-healthstatus <- read.csv("data/health_status_data.csv") |>
+healthstatusdata <- read.csv("data/health_status_data.csv") |>
   rename(HEALTHSTATUS = HEALTH_STATUS) |>
   mutate(
     MINORITIZED = factor(if_else(RACIALIZED_IDENTITY == 1, 0, 1),
@@ -442,7 +447,7 @@ healthstatus <- read.csv("data/health_status_data.csv") |>
     SEX         = factor(SEX, levels = c(0, 1), labels = c("Male", "Female"))) |>
   filter(!is.na(HEALTHSTATUS), !is.na(MINORITIZED))
 
-healthstatus |> count(MINORITIZED)
+healthstatusdata |> count(MINORITIZED)
 
 #source: Visualize a Comparison (Play 2)
 #explanation: the same two recodes as the earlier chapters; this play keeps every age because the question is about the whole sample
@@ -453,16 +458,16 @@ healthstatus |> count(MINORITIZED)
 A density curve is the wrong picture for five possible values. Count how many people in each group chose each answer and plot the **proportions**, so a bigger group does not look like a healthier one.
 
 ```{r}
-#| label: play3-plot
-#| fig-cap: "Figure 3. Self-rated health by minoritized status (Cohort 10 data, n = 343). Bars are the share of each group choosing each answer."
+#| label: plot4-health-minoritized-barplot
+#| fig-cap: "Figure 4. Self-rated health by minoritized status (Cohort 10 data, n = 343). Bars are the share of each group choosing each answer."
 #| fig-alt: "Two sets of five bars, one per group, for Poor through Excellent. Both groups peak at Good and Very good; the Minoritized bars are much taller at Fair and shorter at Excellent."
-health_props <- healthstatus |>
+health_props <- healthstatusdata |>
   count(MINORITIZED, HEALTHSTATUS) |>
   group_by(MINORITIZED) |>
   mutate(prop = n / sum(n)) |>
   ungroup()
 
-plot_health_mw <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = prop, fill = MINORITIZED)) +
+plot4_health_minoritized_barplot <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = prop, fill = MINORITIZED)) +
   geom_col(position = position_dodge(width = 0.8), width = 0.75) +
   scale_x_discrete(labels = c("1" = "Poor", "2" = "Fair", "3" = "Good", "4" = "Very good", "5" = "Excellent")) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -472,8 +477,8 @@ plot_health_mw <- ggplot(health_props, aes(x = factor(HEALTHSTATUS), y = prop, f
   theme_bw(base_size = 13) +
   theme(legend.position = "top")
 
-plot_health_mw
-ggsave("plots/health_minoritized_mannwhitney.png", plot = plot_health_mw, width = 8, height = 4.5, dpi = 300)
+plot4_health_minoritized_barplot
+ggsave("plots/plot4_health_minoritized_barplot.png", plot = plot4_health_minoritized_barplot, width = 8, height = 5, dpi = 300)
 
 #source: https://ggplot2.tidyverse.org/reference/geom_bar.html
 #explanation: count() then a proportion within each group; position_dodge puts the two groups side by side at each answer
@@ -485,7 +490,7 @@ The minoritized group's bars sit a step to the left: four times the share at Fai
 
 ```{r}
 #| label: play3-check
-healthstatus |>
+healthstatusdata |>
   group_by(MINORITIZED) |>
   summarise(n = n(), median = median(HEALTHSTATUS), mean = mean(HEALTHSTATUS),
             shapiro_p = shapiro.test(HEALTHSTATUS)$p.value)
@@ -499,12 +504,13 @@ Both Shapiro-Wilk p-values are far below .05. With groups this large a t-test wo
 
 ```{r}
 #| label: play3-test
-mw_health <- wilcox.test(HEALTHSTATUS ~ MINORITIZED, data = healthstatus)
-mw_health
+# mannmodel1: HEALTHSTATUS by MINORITIZED (Mann-Whitney U)
+mannmodel1 <- wilcox.test(HEALTHSTATUS ~ MINORITIZED, data = healthstatusdata)
+mannmodel1
 
 # effect size r, from the test's normal approximation
-n_health <- nrow(healthstatus)
-z_health <- qnorm(mw_health$p.value / 2)
+n_health <- nrow(healthstatusdata)
+z_health <- qnorm(mannmodel1$p.value / 2)
 r_health <- abs(z_health) / sqrt(n_health)
 r_health
 
@@ -519,12 +525,12 @@ Three things to know about the output. R calls the test the **Wilcoxon rank sum 
 ```{r}
 #| label: play3-report-values
 #| include: false
-md_health <- healthstatus |> group_by(MINORITIZED) |> summarise(n = n(), md = median(HEALTHSTATUS))
+md_health <- healthstatusdata |> group_by(MINORITIZED) |> summarise(n = n(), md = median(HEALTHSTATUS))
 ```
 
 A Mann-Whitney sentence reports **medians** (and the n of each group), *U*, *p*, and *r*, and names the direction:
 
-> Minoritized participants rated their health lower (*Mdn* = `r md_health$md[2]`, Good; *n* = `r md_health$n[2]`) than participants who were not minoritized (*Mdn* = `r md_health$md[1]`, Very good; *n* = `r md_health$n[1]`), Mann-Whitney *U* = `r format(mw_health$statistic, big.mark = ",")`, *p* `r pfmt(mw_health$p.value)`, *r* = `r fmt(r_health)`, a small effect (Figure 3).
+> Minoritized participants rated their health lower (*Mdn* = `r md_health$md[2]`, Good; *n* = `r md_health$n[2]`) than participants who were not minoritized (*Mdn* = `r md_health$md[1]`, Very good; *n* = `r md_health$n[1]`), Mann-Whitney *U* = `r format(mannmodel1$statistic, big.mark = ",")`, *p* `r pfmt(mannmodel1$p.value)`, *r* = `r fmt(r_health)`, a small effect (Figure 3).
 
 ::: callout-tip
 ## Go: which line of the box am I on?
@@ -540,7 +546,7 @@ Ask two questions about the outcome. Is it a **composite or a continuous measure
 :::
 
 ::: ref-say
-**Ref's kickoff.** Two comparisons on the lab data: well-being by whether a person has had mental health treatment (`MH_TREATED`, 0/1), drawn with `ggdensity()`, then stigma by racialized identity (`RACIALIZED_01CAT`), drawn as a violin. Run `source("lab_prep.R")` first. Try each play before you open my check.
+**Ref's kickoff.** Two comparisons on the lab data: well-being by whether a person has had mental health treatment (`MH_TREATED`, 0/1), drawn with `ggdensity()`, then stigma by racialized identity (`RACIALIZED_01`), drawn as a violin. Run `source("lab_prep.R")` first. Try each play before you open my check.
 :::
 ::::::
 
@@ -552,18 +558,18 @@ lab1 <- mh_clean |> filter(MH_TREATED %in% c(0, 1)) |>
   mutate(MH_TREATED = factor(MH_TREATED, levels = c(0, 1), labels = c("No treatment", "Treatment")))
 g1 <- lab1 |> group_by(MH_TREATED) |> summarise(n = n(), m = mean(WELLBEING, na.rm = TRUE), s = sd(WELLBEING, na.rm = TRUE),
                                                  sh = shapiro.test(WELLBEING)$p.value)
-t1 <- t.test(WELLBEING ~ MH_TREATED, data = lab1)
+ttestmodel5 <- t.test(WELLBEING ~ MH_TREATED, data = lab1)
 d1 <- cohens_d(na.omit(lab1$WELLBEING[lab1$MH_TREATED == "No treatment"]), na.omit(lab1$WELLBEING[lab1$MH_TREATED == "Treatment"]))
-lab2 <- mh_clean |> filter(!is.na(RACIALIZED_01CAT)) |>
-  mutate(RACIALIZED_01CAT = factor(RACIALIZED_01CAT, levels = c(0, 1), labels = c("White", "Person of color")))
-g2 <- lab2 |> group_by(RACIALIZED_01CAT) |> summarise(n = n(), m = mean(STIGMA, na.rm = TRUE), s = sd(STIGMA, na.rm = TRUE),
+lab2 <- mh_clean |> filter(!is.na(RACIALIZED_01)) |>
+  mutate(RACIALIZED_01 = factor(RACIALIZED_01, levels = c(0, 1), labels = c("White", "Person of color")))
+g2 <- lab2 |> group_by(RACIALIZED_01) |> summarise(n = n(), m = mean(STIGMA, na.rm = TRUE), s = sd(STIGMA, na.rm = TRUE),
                                                        sh = shapiro.test(STIGMA)$p.value)
-t2 <- t.test(STIGMA ~ RACIALIZED_01CAT, data = lab2)
-w2 <- wilcox.test(STIGMA ~ RACIALIZED_01CAT, data = lab2)
-d2 <- cohens_d(na.omit(lab2$STIGMA[lab2$RACIALIZED_01CAT == "White"]), na.omit(lab2$STIGMA[lab2$RACIALIZED_01CAT == "Person of color"]))
+ttestmodel6 <- t.test(STIGMA ~ RACIALIZED_01, data = lab2)
+mannmodel2 <- wilcox.test(STIGMA ~ RACIALIZED_01, data = lab2)
+d2 <- cohens_d(na.omit(lab2$STIGMA[lab2$RACIALIZED_01 == "White"]), na.omit(lab2$STIGMA[lab2$RACIALIZED_01 == "Person of color"]))
 ```
 
-**Before you start.** Open your lab `.qmd`, run your load-library chunk (`ggpubr` and `see` must be loaded), and run `source("lab_prep.R")` so that `mh_clean` is in your environment. `WELLBEING` and `STIGMA` are already composites (made in `lab_prep.R`); `RACIALIZED_01CAT` is from [Transforming Your Data](dplyr.qmd).
+**Before you start.** Open your lab `.qmd`, run your load-library chunk (`ggpubr` and `see` must be loaded), and run `source("lab_prep.R")` so that `mh_clean` is in your environment. `WELLBEING` and `STIGMA` are already composites (made in `lab_prep.R`); `RACIALIZED_01` is from [Transforming Your Data](dplyr.qmd).
 
 ### Lab Play 1 ([t-test]{.normal}): compare people with and without mental health treatment on well-being, with `ggdensity()`
 
@@ -574,20 +580,20 @@ Keep people with `MH_TREATED` of 0 or 1, make it a factor (`No treatment` first)
 
 -   **`r g1$n[1]`** people with no treatment history and **`r g1$n[2]`** with treatment.
 -   Means: no treatment `r fmt(g1$m[1])` (SD `r fmt(g1$s[1])`), treatment `r fmt(g1$m[2])` (SD `r fmt(g1$s[2])`). Shapiro-Wilk p = `r fmt(g1$sh[1], 3)` and `r fmt(g1$sh[2], 3)`.
--   Welch *t*(`r fmt(t1$parameter, 1)`) = `r fmt(t1$statistic)`, *p* `r pfmt(t1$p.value)`, *d* = `r fmt(d1)`. `r if (t1$p.value < .05) "The groups differ: people who have had treatment report lower well-being, a difference that is more than chance." else "The groups do not differ by more than chance would produce."`
+-   Welch *t*(`r fmt(ttestmodel5$parameter, 1)`) = `r fmt(ttestmodel5$statistic)`, *p* `r pfmt(ttestmodel5$p.value)`, *d* = `r fmt(d1)`. `r if (ttestmodel5$p.value < .05) "The groups differ: people who have had treatment report lower well-being, a difference that is more than chance." else "The groups do not differ by more than chance would produce."`
 -   In the density plot, the dashed mean lines should sit where the two means above say they do. If your lines are in different places, you plotted `mh_clean` instead of your filtered object, or the factor labels are swapped.
 :::
 
 ### Lab Play 2 ([t-test]{.normal} and [Mann-Whitney U]{.nonnormal}): compare white participants and people of color on stigma, with a violin plot
 
-Keep people with a value on `RACIALIZED_01CAT`, make it a factor (`White` first), draw a violin with a box plot and jittered points, check normality, run the Welch t-test **and** the Mann-Whitney U test, and compare their conclusions.
+Keep people with a value on `RACIALIZED_01`, make it a factor (`White` first), draw a violin with a box plot and jittered points, check normality, run the Welch t-test **and** the Mann-Whitney U test, and compare their conclusions.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## ![](images/ref.svg){.ref-mini fig-alt="Ref the raccoon"} Ref's check: what should you find?
 
 -   **`r g2$n[1]`** people racialized as white and **`r g2$n[2]`** as people of color.
 -   Means: white `r fmt(g2$m[1])` (SD `r fmt(g2$s[1])`), people of color `r fmt(g2$m[2])` (SD `r fmt(g2$s[2])`). Shapiro-Wilk p = `r fmt(g2$sh[1], 3)` and `r fmt(g2$sh[2], 3)`.
--   Welch *t*(`r fmt(t2$parameter, 1)`) = `r fmt(t2$statistic)`, *p* `r pfmt(t2$p.value)`, *d* = `r fmt(d2)`; Mann-Whitney U *p* `r pfmt(w2$p.value)`. `r if ((t2$p.value < .05) == (w2$p.value < .05)) "The two tests agree, which is what you want to see." else "The two tests disagree, which happens when an effect is near the line; report both and say so."`
+-   Welch *t*(`r fmt(ttestmodel6$parameter, 1)`) = `r fmt(ttestmodel6$statistic)`, *p* `r pfmt(ttestmodel6$p.value)`, *d* = `r fmt(d2)`; Mann-Whitney U *p* `r pfmt(mannmodel2$p.value)`. `r if ((ttestmodel6$p.value < .05) == (mannmodel2$p.value < .05)) "The two tests agree, which is what you want to see." else "The two tests disagree, which happens when an effect is near the line; report both and say so."`
 -   Write the result as "people racialized as …", never "white people are …" ([Transforming Your Data](dplyr.qmd)).
 :::
 
@@ -614,13 +620,13 @@ cohens_d(lab1$WELLBEING[lab1$MH_TREATED == "No treatment"], lab1$WELLBEING[lab1$
 
 # Lab Play 2
 lab2 <- mh_clean |>
-  filter(!is.na(RACIALIZED_01CAT)) |>
-  mutate(RACIALIZED_01CAT = factor(RACIALIZED_01CAT, levels = c(0, 1), labels = c("White", "Person of color")))
-ggplot(lab2, aes(x = RACIALIZED_01CAT, y = STIGMA, fill = RACIALIZED_01CAT)) +
+  filter(!is.na(RACIALIZED_01)) |>
+  mutate(RACIALIZED_01 = factor(RACIALIZED_01, levels = c(0, 1), labels = c("White", "Person of color")))
+ggplot(lab2, aes(x = RACIALIZED_01, y = STIGMA, fill = RACIALIZED_01)) +
   geom_violin(alpha = 0.6) + geom_boxplot(width = 0.12, outlier.shape = NA) +
   geom_jitter(width = 0.1, alpha = 0.4) + theme_minimal()
-t.test(STIGMA ~ RACIALIZED_01CAT, data = lab2)
-wilcox.test(STIGMA ~ RACIALIZED_01CAT, data = lab2)
+t.test(STIGMA ~ RACIALIZED_01, data = lab2)
+wilcox.test(STIGMA ~ RACIALIZED_01, data = lab2)
 
 #source: The Quantitative Playbook for R (McCarty, 2026)
 #explanation: the same seven steps as the Play, on two lab comparisons
@@ -659,7 +665,7 @@ For every two-group comparison in your *RD Report* and *Final Report*: the plot 
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Nobody has compared your team's groups before, so there is no answer to check against. Pick the plot style you will use throughout your report, change every line marked `# REPLACE`, and use the checklist.
+Nobody has compared your team's groups before, so there is no answer to check against. Pick the plot style you will use throughout your report, change every word that starts with `SWAP`, and use the checklist.
 :::
 
 ```{r}
@@ -668,35 +674,38 @@ Nobody has compared your team's groups before, so there is no answer to check ag
 library(tidyverse); library(ggpubr); library(see)
 
 # 1. two groups, as a labeled factor, comparison group first
-mydata <- alldata |>
-  filter(GROUP_01 %in% c(0, 1)) |>                                        # REPLACE GROUP_01 (a _01 or _01CAT variable)
-  mutate(GROUP_01 = factor(GROUP_01, levels = c(0, 1), labels = c("Group A", "Group B")))   # REPLACE labels
-mydata |> count(GROUP_01)                                                 # both groups big enough?
+mydata <- cleandata |>
+  filter(SWAPGROUP_01 %in% c(0, 1)) |>                                        # SWAP: your group variable (a _01 or _01CAT variable)
+  mutate(SWAPGROUP_01 = factor(SWAPGROUP_01, levels = c(0, 1), labels = c("SWAPLABEL1", "SWAPLABEL2")))   # SWAP: the labels
+mydata |> count(SWAPGROUP_01)                                                 # both groups big enough?
 
 # 2. look
-ggdensity(mydata, x = "OUTCOME", color = "GROUP_01", fill = "GROUP_01",   # REPLACE OUTCOME (a score)
+ggdensity(mydata, x = "SWAPOUTCOME", color = "SWAPGROUP_01", fill = "SWAPGROUP_01",   # SWAP: your outcome (a score)
           add = "mean", rug = TRUE)
 # or:
-# ggplot(mydata, aes(x = GROUP_01, y = OUTCOME, fill = GROUP_01)) +
+# ggplot(mydata, aes(x = SWAPGROUP_01, y = SWAPOUTCOME, fill = SWAPGROUP_01)) +
 #   geom_violin(alpha = 0.6) + geom_boxplot(width = 0.12, outlier.shape = NA) + geom_jitter(width = 0.1, alpha = 0.4)
 
 # 3. assumptions
-mydata |> group_by(GROUP_01) |> summarise(n = n(), mean = mean(OUTCOME, na.rm = TRUE), sd = sd(OUTCOME, na.rm = TRUE),
-                                          shapiro_p = shapiro.test(OUTCOME)$p.value)
+mydata |> group_by(SWAPGROUP_01) |> summarise(n = n(), mean = mean(SWAPOUTCOME, na.rm = TRUE), sd = sd(SWAPOUTCOME, na.rm = TRUE),
+                                          shapiro_p = shapiro.test(SWAPOUTCOME)$p.value)
 
 # 4a. normal outcome (parametric): t-test and Cohen's d
-t.test(OUTCOME ~ GROUP_01, data = mydata)
+# ttestmodel1: SWAP: one line that says what this test compares
+ttestmodel1 <- t.test(SWAPOUTCOME ~ SWAPGROUP_01, data = mydata)
+ttestmodel1
 cohens_d <- function(x, y) (mean(x, na.rm = TRUE) - mean(y, na.rm = TRUE)) / sqrt((var(x, na.rm = TRUE) + var(y, na.rm = TRUE)) / 2)
-cohens_d(mydata$OUTCOME[mydata$GROUP_01 == "Group A"], mydata$OUTCOME[mydata$GROUP_01 == "Group B"])
+cohens_d(mydata$SWAPOUTCOME[mydata$SWAPGROUP_01 == "SWAPLABEL1"], mydata$SWAPOUTCOME[mydata$SWAPGROUP_01 == "SWAPLABEL2"])
 
 # 4b. outcome not normal, or a single rating (non-parametric): Mann-Whitney U and r
-mydata |> group_by(GROUP_01) |> summarise(n = n(), median = median(OUTCOME, na.rm = TRUE))
-mw <- wilcox.test(OUTCOME ~ GROUP_01, data = mydata)
-mw
-abs(qnorm(mw$p.value / 2)) / sqrt(sum(!is.na(mydata$OUTCOME)))          # r: .1 small, .3 medium, .5 large
+mydata |> group_by(SWAPGROUP_01) |> summarise(n = n(), median = median(SWAPOUTCOME, na.rm = TRUE))
+# mannmodel1: SWAP: one line that says what this test compares
+mannmodel1 <- wilcox.test(SWAPOUTCOME ~ SWAPGROUP_01, data = mydata)
+mannmodel1
+abs(qnorm(mannmodel1$p.value / 2)) / sqrt(sum(!is.na(mydata$SWAPOUTCOME)))          # r: .1 small, .3 medium, .5 large
 
 # 5. save the plot for the poster
-# ggsave("plots/outcome_by_group.png", width = 8, height = 4, dpi = 300)               # REPLACE the name
+# ggsave("plots/plot1_SWAPNAME.png", width = 8, height = 5, dpi = 300)                       # SWAP: the variables and plot type, e.g. plot1_wellbeing_treated_barplot
 ```
 
 | Criteria | Ask yourself |

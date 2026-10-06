@@ -45,17 +45,9 @@ This line tells Quarto to create and use a file called `references.bib`, which y
 
 To format your references in APA style, also include the line `csl: apa.csl` in the YAML header.
 
-```{markdown}
----
-title: "APA citations"
-author: "Zihan Hei"
-format: html
-editor: visual
+The two lines are already in the Required YAML header from [Start My Report](start-rdreport.qmd), shown again here:
 
-bibliography: references.bib
-csl: apa.csl
----
-```
+{{< include _yaml-report.qmd >}}
 
 ## **Download the `apa.csl` file from Zotero**
 
@@ -140,13 +132,14 @@ nocite: |
 
 This means "\@kannan2014" will not appear in the body text, but it will still be listed in your final **bibliography.**
 
-For example, if you want to include Dr.Shane's *Quantitative Playbook* (which doesn't have a DOI but has a web link), you can manually add it to your `references.bib` file:
+For example, if you want to include this playbook (which doesn't have a DOI but has a web link), you can manually add it to your `references.bib` file. It is an edited book in its second edition, so the entry uses `@book` with an `editor` and an `edition`, and APA style then prints it as "McCarty, S. (Ed.). (2026). *The Quantitative Playbook for R: Plays for Public Health & Community Health Research* (2nd ed.)." To cite one chapter instead, use the chapter's own authors and title with `@incollection`, the way the Preface shows:
 
 ```{markdown}
-@article{McCarty2026, 
-  title = {The Quantitative Playbook for R: Plays for Public Health \& Community Health Research},
+@book{McCarty2026,
+  title = {The {Quantitative} {Playbook} for {R}: Plays for {Public} {Health} \& {Community} {Health} {Research}},
+  editor = {McCarty, Shane},
+  edition = {2},
   year = {2026},
-  author = {McCarty, S.},
   url = {https://shanemccarty.github.io/FRIplaybook/},
   langid = {en}
 }

@@ -1,0 +1,154 @@
+---
+title: "Write the Methods"
+subtitle: "What every Methods section must contain, and how to check it"
+author:
+  - Shane McCarty
+abstract: |
+  This chapter is the checklist for the Methods section of the RD Report and the Final Report. Researchers learn what a Methods section is for (how the data were collected and prepared, in enough detail that another researcher could repeat it), its five parts in this course (Participants, Procedure, Measures, Data Cleaning, Data Analysis Plan), the sentence each part needs, and the Data Analysis Plan template that turns the decisions made on the Analysis Map into one paragraph per research question. It gathers the Methods requirements from the Lab 2 and Lab 3 chapters into one place, with a checklist to run before the report is submitted.
+keywords:
+  - methods
+  - report
+  - checklist
+  - measures
+  - data analysis plan
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
+format: html
+editor: visual
+---
+
+{{< include _ref-kickoff-box.qmd >}}
+
+::: {.callout-note collapse="true"}
+## Resources: writing a Methods section
+
+-   [APA Style: Method section](https://apastyle.apa.org/style-grammar-guidelines/paper-format/sample-papers) (the sample papers show the headings and the level of detail)
+-   The chapters each part comes from: [Name & Recode Vars](qualtrics.qmd) and [Export Survey Data](export.qmd) (Procedure), [Creating Composites](composite.qmd) (Measures), [Import Data Once](import-once.qmd), [Pre/Post Data](prepost.qmd), and [Mutate Variables](dplyr.qmd) (Data Cleaning), [The Analysis Map](analysis-map.qmd) and [Describe Your Data](describe.qmd) (Data Analysis Plan)
+-   [Write an Introduction](write-intro.qmd): the markdown for headings and for variable names in backticks
+:::
+
+## What a Methods section is for
+
+The Methods section says **how you got your numbers**: who answered, how they were recruited and surveyed, what each measure was and how it was scored, what you did to the data before analyzing them, and which test you ran for each research question and why. The test of a good Methods section is that another researcher could repeat your study from it, and that a reader of your Results never has to ask "where did that variable come from?"
+
+You wrote a first Methods section in your *AIM Report*, before the data existed. The *RD Report* updates it with what actually happened (the real *n*, the real alphas, the exclusions you made), and the *Final Report* finishes it. Write it in the **past tense**: it describes what you did.
+
+::: {.callout-important .required}
+## Required: the five parts of Methods, in this order
+
+Your Methods section has five `##` subheadings, in this order: **Participants**, **Procedure**, **Measures**, **Data Cleaning**, **Data Analysis Plan**. The rest of this chapter has the same five headings, in the same order, with what goes under each and an example from the lab dataset. Under Measures, each measure gets its own `###` subheading.
+:::
+
+::: callout-warning
+## Caution: the examples below describe a study that never happened
+
+The lab dataset is **synthetic**: no real person answered it. It was generated for this course so that everyone practices on the same numbers. The example paragraphs in this chapter are written as if the data *had* been collected, in the form your own Methods will take, and every number in them is computed from the lab file (`mh_clean`, *n* = 188). Use them as models for the shape of a sentence. Do not cite them as findings, and do not copy a sentence without replacing every fact with your team's.
+:::
+
+## Participants
+
+Who answered and how many: how they were recruited, how many started the survey, how many were kept after the exclusions described under Data Cleaning, and their characteristics (age, gender, racialized identity) as counts, percentages, or means from your data. If your population of interest is Binghamton students or Broome County, say in one sentence how your sample compares with it.
+
+EXAMPLE (lab dataset):
+
+> Participants were adults living in the United States, recruited through an online research panel between September 15 and September 18, 2026. Of the 200 people who submitted the survey, 188 were retained for analysis after the exclusions described under Data Cleaning. Participants ranged in age from 26 to 79 years (*M* = 55.4, *SD* = 13.2; two did not report an age) and lived in 46 states. Most identified as women (*n* = 97, 52%) or men (*n* = 78, 41%); 5 identified as nonbinary, 1 was not sure, and 7 preferred not to say. Half were racialized as White (*n* = 94, 50%), 31 as Black (16%), 19 as Asian (10%), 17 as Hispanic or Latine (9%), and 19 as two or more identities (10%); 5 chose another identity and 3 preferred not to say. The sample was older than Binghamton University's undergraduate population, the population of interest for the course projects, so comparisons with students should be made with care.
+
+## Procedure
+
+What participants did: the survey platform, consent, when and where it was given, how long it took, any attention or seriousness checks, and the IRB approval. Pre/post teams (Teams 3 and 5) describe both time points and how a person's two responses were linked (`PASSWORD`). Team 4 describes the four vignettes and the order they were shown in.
+
+EXAMPLE (lab dataset):
+
+> Participants completed an online Qualtrics survey on their own device. The first page described the study and asked for consent; only those who consented continued. The survey took a median of 10 minutes and had six blocks: sociodemographics; beliefs about the causes of mental illness and a definition of mental health in the participant's own words; mental health stigma; help-seeking and treatment history; well-being, stress, support, and psychological distress; and four short case vignettes describing a young adult, each followed by a rating and an open-ended explanation. Two items checked data quality: participants were asked whether they had answered seriously, and one attention-check item inside the beliefs block asked them to select a specific response. The study was approved by the Binghamton University Institutional Review Board (protocol #____).
+
+EXAMPLE for a pre/post design (lab pre/post file, Teams 3 and 5):
+
+> The same survey was given twice, about six weeks apart. At both times participants created a confidential password (`PASSWORD`) from fixed rules, which was used to link a person's two responses without collecting names. Of the 200 pretest and 124 posttest responses, 114 could be matched by password.
+
+## Measures
+
+One paragraph per variable in your research questions, under its own `###` heading, named for the construct (not the variable name). Every composite needs one sentence from which a reader could rebuild the score: what it measures, how many items, the response scale, how it was scored, any reverse items, and Cronbach's alpha in **your** sample, not the alpha in the original paper ([Creating Composites](composite.qmd), Lab Play 4). Single items and demographic variables get one sentence each, with their response options. Put the variable name in backticks once, at the end of the first sentence.
+
+### Positive Mental Well-being
+
+> Positive mental well-being was measured with eight items about the past two weeks (1 = *none of the time* to 5 = *all of the time*), averaged so that higher scores mean greater well-being (`WELLBEING`; Cronbach's α = .81).
+
+### Mental Health Stigma
+
+> Mental health stigma was measured with eight items on a 5-point agreement scale, in two subscales: public stigma (4 items, one reverse-scored; `STIGMA_PUB`, α = .72) and self stigma (4 items, two reverse-scored; `STIGMA_SELF`, α = .68). Reverse items were recoded before averaging, and the eight items were also averaged into a total stigma score (`STIGMA`, α = .80), with higher scores meaning more stigma. Scores were the mean of the items a participant answered.
+
+### Willingness to Seek Help
+
+> Willingness to seek help was measured with a single item, "If I had a mental health problem, I would seek professional help," on a 5-point agreement scale (`HELPSEEK`; 1 = *strongly disagree* to 5 = *strongly agree*).
+
+### Mental Health Treatment
+
+> Participants reported whether they had ever received treatment for a mental health problem (`TREATED_01`; 0 = no, 1 = yes).
+
+::: callout-tip
+## Go: paste your team codebook
+
+Your team codebook ([Name & Recode Vars](qualtrics.qmd)) already has one row per variable with its question, type, and values. A table built from it belongs in Measures; the sentences above then only need to add the scoring and the alpha.
+:::
+
+## Data Cleaning
+
+How the export became the data you analyzed, in the order it happened, each step with a number. The sentences below come from the chapters where you did each step.
+
+> The Qualtrics export was imported into R (`alldata`) and copied for cleaning (`cleandata`). One duplicate submission was removed, as were participants who said they had not answered seriously (*n* = 8) or who failed the attention check (*n* = 6), leaving 188 of 200 responses ([Import Data Once](import-once.qmd)). Responses of *prefer not to say* (−99) and *don't know* (−50) were treated as missing, and two implausible ages (below 18 or above 100) were set to missing. Reverse-worded items were recoded before scoring. Education was collapsed into three groups (less than a bachelor's degree, bachelor's degree, graduate degree), and psychological distress was dichotomized at the published K10 cut-off of 20 (Andrews & Slade, 2001) ([Mutate Variables](dplyr.qmd)). For the pre/post analyses, 114 of 200 pretest responses were matched to a posttest response by password; where a password appeared twice at the same time point, the first response was kept ([Pre/Post Data](prepost.qmd)).
+
+Keep only the sentences that apply to your data. A cut-off you chose yourself is fine if you say why.
+
+## Data Analysis Plan
+
+The last subheading and the last text in your Methods section. It records the decisions you made on [The Analysis Map](analysis-map.qmd): comparison or relationship, which box, and which line of the box, then the plot, the test, and the effect size. Keep updating it as you run the analyses: by the *Final Report* it needs to be a detailed account of what you did, so write it in the **past tense**, as a description of the analysis you ran, not the one you intend to run. In the *RD Report* you may not have run every test yet; write the ones you have run in the past tense and mark the rest with a bracketed note to yourself, such as *[to run after Lab 5]*, and remove the brackets in the *Final Report*.
+
+One paragraph per research question, each under its own `###` heading. Copy the template and fill in the blanks.
+
+### Research Question 1
+
+TEMPLATE:
+
+> The research aims to answer a \_\_\_\_\_\_\_\_ (comparison / relationship) question: \_\_\_\_\_\_\_\_. The outcome was \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ (composite score of \_\_ items / single item / count / measurement) treated as a \_\_\_\_\_\_\_\_ (continuous / ordinal) variable. The \_\_\_\_\_\_\_\_ (grouping variable / second variable) was \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ (nominal / ordinal / continuous) variable with \_\_\_\_\_\_\_\_ (levels / range).
+>
+> On the Analysis Map, this question landed in the box \_\_\_\_\_\_\_\_. The data were visualized with a \_\_\_\_\_\_\_\_ (bar chart / violin plot / raincloud plot / scatterplot). The distribution of the outcome was \_\_\_\_\_\_\_\_ (approximately normal / not normal) (Shapiro-Wilk *p* = \_\_\_\_), so the \_\_\_\_\_\_\_\_ test was used, with \_\_\_\_\_\_\_\_ (Cohen's *d* / *r* / η² / *R*²) as the effect size. Analyses were run in RStudio (version \_\_\_\_) using the \_\_\_\_\_\_\_\_ packages.
+
+### Research Question 2
+
+EXAMPLE (question 4 from the Analysis Map Lab: willingness to seek help by gender, lab dataset):
+
+> The research aims to answer a comparison question: does willingness to seek help differ between women and men? The outcome was willingness to seek help (`HELPSEEK`), a single item treated as an ordinal variable. The grouping variable was gender (`GENDER`), a nominal variable with two levels (women, men). On the Analysis Map, this question landed in the box Compare 2 Groups. The data were visualized with a violin plot. The distribution of the outcome was not normal (Shapiro-Wilk *p* < .001), so the Mann-Whitney U test was used, with *r* as the effect size. Analyses were run in RStudio (version 2025.09.1) using the tidyverse and ggpubr packages.
+
+::: callout-tip
+## Go: how to look up your version numbers
+
+In RStudio, click **Help \> About RStudio** (Mac: **RStudio \> About RStudio**); the version is on the first line, such as *2025.09.1*. For the version of R itself, run `R.version.string` in the Console, which prints something like `R version 4.4.1`. Both change when you update, so look them up when you write the *Final Report*, not from memory.
+:::
+
+::: callout-warning
+## Caution: the plan and the Results must agree
+
+The test named here for a research question is the test that appears in Results for that question, with the same variables and the same line of the box. If the data made you change your mind (an outcome you expected to be normal was not), change it here and say so; do not leave the plan saying *t*-test while Results reports a Mann-Whitney U ([Write the Results](results.qmd)).
+:::
+
+## The Methods checklist
+
+Run down this list before you submit.
+
+| ☐ | Criteria | Ask yourself |
+|----|----|----|
+| ☐ | **Five parts** | Are Participants, Procedure, Measures, Data Cleaning, and Data Analysis Plan all there, in that order, as subheadings? |
+| ☐ | **Past tense** | Does every sentence describe what you did, not what you will do (except bracketed notes in the *RD Report*)? |
+| ☐ | **Participants** | Do you give how many started, how many were kept, and the sample's age, gender, and racialized identity from your data? |
+| ☐ | **Procedure** | Is the survey, consent, timing, and IRB approval stated? Pre/post teams: are both time points and the `PASSWORD` link described? |
+| ☐ | **Measures** | Does every measure have its own `###` heading named for the construct? Does every composite have a sentence with items, response scale, direction, reverse items, scoring, and the alpha from your sample? Does every single item and demographic variable have its response options? |
+| ☐ | **Variable names** | Is every measured variable named in backticks the way it appears in your code (`WELLBEING`, `TREATED_01`)? |
+| ☐ | **Exclusions** | Is every exclusion stated with its *n* and its reason? |
+| ☐ | **Missing codes** | Do you say that −99 and −50 were treated as missing? |
+| ☐ | **Cut-offs** | For every collapsed or cut variable, are the categories given, and is the cut-off's source cited (or your reason stated)? |
+| ☐ | **Matching** | Pre/post teams: do you report how many took the pretest, how many the posttest, how many were matched, and how many were not? |
+| ☐ | **Plan, one per question** | Is there one Data Analysis Plan paragraph per research question, each under its own `###` heading, in the template's order, naming the box, the plot, the shape check, the test, and the effect size? |
+| ☐ | **Plan matches Results** | Is the test in each paragraph the test that appears in Results for that question? |
+| ☐ | **Software** | Does the plan end with the RStudio version and the packages used? |
+
+{{< include _ref-whistle-box.qmd >}}

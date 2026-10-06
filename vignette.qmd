@@ -291,7 +291,7 @@ case_long |>                                                    # Lab Play 3
 -   **The means are all `NA`** → you forgot `na.rm = TRUE`.
 -   **Levels come out alphabetically** (`Black` before `White`) → you forgot `levels =` in `factor()`.
 -   **An error about combining `character` and `double`** (or `RISK` comes out as text) → you selected the `_QUAL` text columns along with the ratings, usually by writing a range like `CASE1:CASE4`. Name the four rating columns one by one.
--   **`object 'CASE1' not found`** → your lab data file is older than this chapter. Download the current `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` from the class Google Drive.
+-   **`object 'CASE1' not found`** → your lab data file is older than this chapter. Download the current `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` from the [CLASS DRIVE: Quant Track folder](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link).
 :::
 
 :::::: {.ref .ref-tip}
@@ -309,7 +309,7 @@ case_long |>                                                    # Lab Play 3
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Team 4: write your Step 1 table (which `SENTENCE` column is which vignette) into your codebook first, then change every line marked `# REPLACE` and use the checklist.
+Team 4: write your Step 1 table (which `SENTENCE` column is which vignette) into your codebook first, then change every word that starts with `SWAP` (and the lines marked `# SWAP`) and use the checklist.
 :::
 
 ```{r}
@@ -319,24 +319,25 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 
-# 1. import the .clean file
-alldata <- read_excel("data/10.09.2026.data.team4.clean.xlsx")   # REPLACE with your file
-alldata[alldata == -99] <- NA
-alldata[alldata == -50] <- NA
+# 1. import the .cleandata file
+alldata <- read_excel("data/SWAPFILE.xlsx")   # SWAP: your team's .cleandata file, e.g. 10.09.2026.team4.cleandata.xlsx
+cleandata <- alldata
+cleandata[cleandata == -99] <- NA
+cleandata[cleandata == -50] <- NA
 
 # 2. one row per person per vignette
-case_long <- alldata |>
-  select(ResponseId, SENTENCE1, SENTENCE2, SENTENCE3, SENTENCE4) |>   # REPLACE: name the rating columns one by one (a range would also grab the _QUAL columns)
+case_long <- cleandata |>
+  select(ResponseId, SENTENCE1, SENTENCE2, SENTENCE3, SENTENCE4) |>   # SWAP: name your rating columns one by one (a range would also grab the _QUAL columns)
   pivot_longer(
-    cols      = c(SENTENCE1, SENTENCE2, SENTENCE3, SENTENCE4),   # REPLACE
+    cols      = c(SENTENCE1, SENTENCE2, SENTENCE3, SENTENCE4),   # SWAP: the same columns
     names_to  = "CASE",
-    values_to = "SENTENCE")                           # REPLACE with the name of what was rated
+    values_to = "SENTENCE")                           # SWAP: the name of what was rated
 
 # 3. add a factor for each thing the vignettes varied (from the Step 1 table in your codebook)
 case_long <- case_long |>
   mutate(
     CASE_RACIALIZED = factor(case_when(
-      CASE %in% c("SENTENCE1", "SENTENCE2") ~ "Black",     # REPLACE: which vignettes had which level
+      CASE %in% c("SENTENCE1", "SENTENCE2") ~ "Black",     # SWAP: which vignettes had which level
       CASE %in% c("SENTENCE3", "SENTENCE4") ~ "White"),
       levels = c("White", "Black")),
     CASE_CLASS = factor(case_when(
@@ -346,7 +347,7 @@ case_long <- case_long |>
 
 # 4. check: every vignette in exactly one cell; rows = people x vignettes; the four cell means
 case_long |> count(CASE, CASE_RACIALIZED, CASE_CLASS)
-nrow(alldata) * 4 == nrow(case_long)
+nrow(cleandata) * 4 == nrow(case_long)
 case_long |>
   group_by(CASE_RACIALIZED, CASE_CLASS) |>
   summarise(n = sum(!is.na(SENTENCE)), mean_sentence = mean(SENTENCE, na.rm = TRUE), .groups = "drop")

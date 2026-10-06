@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Shane McCarty">
+<meta name="keywords" content="RD Report, Final Report, YAML, code chunks, fig-cap, fig-alt">
+
+<title>27&nbsp; Start My Report – The Quantitative Playbook for R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./readme.html" rel="next">
+<link href="./regression.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./start-rdreport.html">Write Your Report (Lab 6)</a></li><li class="breadcrumb-item"><a href="./start-rdreport.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Quantitative Playbook for R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Get Started (Lab 1)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 1 Checklist</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pre/Post Data (#1,3)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vignette Data (#4)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab2-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab3-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Lab 3 Checklist</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./compare2groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-rdreport.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./citations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Peer Review</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Academic Website</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-file-name" id="toc-the-file-name" class="nav-link active" data-scroll-target="#the-file-name"><span class="header-section-number">27.1</span> The file name</a></li>
+  <li><a href="#the-yaml-header" id="toc-the-yaml-header" class="nav-link" data-scroll-target="#the-yaml-header"><span class="header-section-number">27.2</span> The YAML header</a></li>
+  <li><a href="#the-first-chunk" id="toc-the-first-chunk" class="nav-link" data-scroll-target="#the-first-chunk"><span class="header-section-number">27.3</span> The first chunk</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">27.4</span> Code Chunks</a>
+  <ul class="collapse">
+  <li><a href="#example-code-chunk" id="toc-example-code-chunk" class="nav-link" data-scroll-target="#example-code-chunk"><span class="header-section-number">27.4.1</span> Example Code Chunk</a></li>
+  <li><a href="#the-five-required-parts" id="toc-the-five-required-parts" class="nav-link" data-scroll-target="#the-five-required-parts"><span class="header-section-number">27.4.2</span> The five required parts</a></li>
+  </ul></li>
+  <li><a href="#template-code-and-swap" id="toc-template-code-and-swap" class="nav-link" data-scroll-target="#template-code-and-swap"><span class="header-section-number">27.5</span> Template code and <code>SWAP</code></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/start-rdreport.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./start-rdreport.html">Write Your Report (Lab 6)</a></li><li class="breadcrumb-item"><a href="./start-rdreport.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></h1>
+<p class="subtitle lead">How to start a .qmd file for your RD Report and the Final Report</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shane McCarty </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10.05.2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This chapter opens Lab 6 and applies to both reports: the RD Report and the Final Report that grows out of it. It turns the lab-file habits from Start a Report into the requirements for a report that will be graded and published: the report is a .qmd file with a fixed name (Lastname_RDreport.qmd, later copied to Lastname_finalreport.qmd), it starts with the full YAML header, and every code chunk has five required parts (a label, a figure caption and alt text for plots, the source of the code, and an explanation in the researcher’s own words). It also explains which chunk output to show and which to hide, and how template code with SWAP placeholders is meant to be used.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>RD Report, Final Report, YAML, code chunks, fig-cap, fig-alt</p>
+  </div>
+</div>
+
+</header>
+
+
+<!-- Shared Resources box for the two Quarto chapters: Start a Report (codechunks.qmd) and Write an Introduction (write-intro.qmd). Edit here, not in the chapters. -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span>Resources: <code>quarto</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://quarto.org">Primary website</a></li>
+<li>Read: <a href="https://r4ds.hadley.nz/quarto.html">R4DS Ch. 28 Quarto</a></li>
+<li>Read: <a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown Basics</a></li>
+<li><a href="https://www.youtube.com/watch?v=_f3latmOhew">Youtube: Getting Started</a></li>
+<li><a href="https://www.youtube.com/watch?v=EbAAmrB0luA">Youtube: Quarto for Academics</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/html/quarto.html">Posit Cheatsheet</a></li>
+<li><a href="https://rstudio.github.io/cheatsheets/quarto.pdf">PDF Cheatsheet</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Single source for the collapsed kickoff reminder at the START of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref.svg" class="ref-mini img-fluid" alt="Ref the raccoon"> Ref’s kickoff: find the Ref before you code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Open Project → Open <code>.qmd</code> → Run load-library chunk → Run All Chunks Above → code.</strong> If anything looks wrong, use <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: reports are <code>.qmd</code> files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <em>AIM report</em> was written and saved as a word document (<code>.docx</code>) format, which is different than a Quarto report (<code>.qmd</code>). Your <em>RD Report</em> and <em>Final Report</em> will be <code>.qmd</code> files. Every code chunk should include a label, a source, and an explanation. Code chunks that create figures should also include a figure caption (<code>fig-cap</code>) and alternative text (<code>fig-alt</code>). You will do your writing in a Google Doc and then paste your writing into RStudio, within a <code>.qmd</code> Quarto Markdown document.</p>
+</div>
+</div>
+<p>You have made a <code>.qmd</code> for every lab (<a href="./codechunks.html">Start a Report</a>). Your <em>RD Report</em> is the same kind of file with three more rules, and your <em>Final Report</em> is a copy of it with the same rules: a fixed file name, the full YAML header, and five required parts in every code chunk. This chapter is those three rules. Make the file now, before you write anything, so that every chapter you revisit in Lab 6 has somewhere to go.</p>
+<section id="the-file-name" class="level2" data-number="27.1">
+<h2 data-number="27.1" class="anchored" data-anchor-id="the-file-name"><span class="header-section-number">27.1</span> The file name</h2>
+<ul>
+<li>Your results and discussion (RD) report should be named: <code>Lastname_RDreport.qmd</code></li>
+<li>After submitting your <code>Lastname_RDreport.qmd</code>, you should go to the files tab, check the box next to <code>Lastname_RDreport.qmd</code> and then click the gear icon (More) &gt; Copy &gt; name it <code>Lastname_finalreport.qmd</code></li>
+<li>Your final report should be named: <code>Lastname_finalreport.qmd</code></li>
+<li>Replace <code>Lastname</code> with your own last name (e.g., <code>McCarty_RDreport.qmd</code>)</li>
+</ul>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: file names
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please name your quarto markdown files (<code>.qmd</code>) correctly.</p>
+</div>
+</div>
+<!-- Single source for the "save before you close" caution. Included in RStudio.qmd, codechunks.qmd (ch. 5), and find-the-ref.qmd (ch. 6). Edit it here only. -->
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Save your file before you close RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>RStudio does not save your <code>.qmd</code> or <code>.R</code> file for you. If the file name on its tab is <strong>red with a *</strong>, your latest changes exist only on the screen, and closing RStudio throws them away. Two different questions come up when you quit, and they need opposite answers.</p>
+<p><strong>Do this</strong></p>
+<ul>
+<li>Press <strong>Cmd + S</strong> (Mac) or <strong>Ctrl + S</strong> (Windows) every few minutes, and always before you Render. The file name on the tab turns black when it is saved.</li>
+<li>Before you quit, click <strong>File &gt; Save All</strong>.</li>
+<li>If RStudio asks <em>“Save changes to report.qmd?”</em>, click <strong>Save</strong>. That question is about your file.</li>
+<li>Copy your <code>.qmd</code> and <code>.R</code> files to your ELN at the end of every session (<a href="./find-the-ref.html">Find the Ref</a>).</li>
+</ul>
+<p><strong>Do not do this</strong></p>
+<ul>
+<li>Do not close RStudio, or your laptop, while a file name is still red.</li>
+<li>Do not click <strong>Don’t Save</strong> when the question names a file (<code>report.qmd</code>, <code>install.R</code>). Only the question about the <strong>workspace</strong> (<code>.RData</code>) gets <strong>Don’t Save</strong>: the workspace is leftovers, and your file is the recipe.</li>
+<li>Do not rely on Render to save for you. It usually does, but only for the file you rendered, and only if the render starts.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="the-yaml-header" class="level2" data-number="27.2">
+<h2 data-number="27.2" class="anchored" data-anchor-id="the-yaml-header"><span class="header-section-number">27.2</span> The YAML header</h2>
+<p>YAML (human-readable data serialization language) has a simple syntax, which is a structured way to organize information (aka metadata), such as title, author, date, and format output. In this case, both HTML and PDF are included in the YAML, allowing you to submit a <code>.qmd</code> file can render as HTML (website format) and a <code>.pdf</code> file too. Your lab files used a four-line header; the report uses this one.</p>
+<!-- The one Required YAML header for the RD Report and Final Report. Included in Start My Report and Citations & Refs. Edit here only. -->
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"title your report here"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"insert subtitle here"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="fl">10.09.2026</span><span class="co">            # SWAP: the date you submit, written MM.DD.YYYY</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">date-format</span><span class="kw">:</span><span class="at"> </span><span class="st">"MM.DD.YYYY"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">"your name"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">email</span><span class="kw">:</span><span class="at"> youremail@binghamton.edu </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Binghamton University</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">attributes</span><span class="kw">:</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">corresponding</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    TBD goes here</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">keywords</span><span class="kw">:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> insert keyword 1</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> insert keyword 2</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> insert keyword 3</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> insert keyword 4</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> insert keyword 5</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span><span class="co">   # your Zotero export (Citations &amp; Refs)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> apa.csl</span><span class="co">                   # APA 7th style file (Citations &amp; Refs)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="dv">8</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-overflow</span><span class="kw">:</span><span class="at"> wrap</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">colorlinks</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig-width</span><span class="kw">:</span><span class="at"> </span><span class="dv">6</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig-height</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">geometry</span><span class="kw">:</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> top=1in</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> bottom=1in</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> left=1in</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> right=1in</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: the YAML header
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Use the above YAML format at the top of ALL Quarto markdown document files (<code>.qmd</code>).</p></li>
+<li><p>title, subtitle, name, email should be revised</p></li>
+<li><p>abstract and keywords should be included</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: In YAML, spaces are part of the code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>YAML reads indentation the way R reads parentheses. Every line’s position matters: <code>title:</code> starts at the left edge, <code>html:</code> sits two spaces in under <code>format:</code>, and <code>toc: true</code> sits two spaces in under <code>html:</code>. Add or remove one space and the render fails, usually with a message that does not mention spacing at all, such as <em>“YAML parse exception”</em> or <em>“did not find expected key.”</em></p>
+<p><strong>Do this</strong></p>
+<ul>
+<li><strong>Copy the YAML above with the clipboard icon and paste it in.</strong> Do not retype it.</li>
+<li>Change only the words after the colons: the title, your name, your email, the abstract, the keywords.</li>
+<li>Keep one space after every colon (<code>title: "..."</code>, not <code>title:"..."</code>).</li>
+<li>Keep the <code>---</code> lines at the very top of the file, with nothing above the first one.</li>
+</ul>
+<p><strong>Do not do this</strong></p>
+<ul>
+<li>Do not press Tab inside the YAML. Tab characters are not spaces, and YAML rejects them. If you must indent, use the space bar, two spaces at a time.</li>
+<li>Do not delete a line you do not understand. If you do not want a line, put <code>#</code> in front of it so YAML ignores it.</li>
+<li>Do not let the visual editor “help”: switch to <strong>Source</strong> view before you edit the header, so you can see the spaces.</li>
+</ul>
+<p>The same rule applies to code chunk options. Every <code>#|</code> line needs a space after the <code>|</code>, and one after the colon: <code>#| label: import-data</code>, not <code>#|label:import-data</code>.</p>
+</div>
+</div>
+<p>For more information, see:</p>
+<ul>
+<li><p><a href="https://quarto.org/docs/reference/formats/html.html">YAML</a></p></li>
+<li><p><a href="https://quarto.org/docs/authoring/front-matter.html">Front Matter</a></p></li>
+<li><p><a href="https://quarto.org/docs/output-formats/html-code.html#code-overflow">code-overflow</a></p></li>
+<li><p><a href="https://quarto.org/docs/journals/authors.html">Authors &amp; Affiliations</a></p></li>
+</ul>
+</section>
+<section id="the-first-chunk" class="level2" data-number="27.3">
+<h2 data-number="27.3" class="anchored" data-anchor-id="the-first-chunk"><span class="header-section-number">27.3</span> The first chunk</h2>
+<p>Right under the YAML header, the report starts with the same load-library chunk as your lab files (<a href="./codechunks.html#your-first-chunk-load-your-packages">Start a Report</a>). It is the only chunk with <code>#| output: false</code>, because package startup messages tell a reader nothing about your research.</p>
+</section>
+<section id="code-chunks" class="level2" data-number="27.4">
+<h2 data-number="27.4" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">27.4</span> Code Chunks</h2>
+<section id="example-code-chunk" class="level3" data-number="27.4.1">
+<h3 data-number="27.4.1" class="anchored" data-anchor-id="example-code-chunk"><span class="header-section-number">27.4.1</span> Example Code Chunk</h3>
+<p>Below is an example from the <a href="./visualize-relationship.html">Visualize a Relationship</a> chapter of an informative <code>label</code> for your code chunk and a very detailed figure caption ( <code>fig-cap</code>). Also, notice that all code chunk options start with <code>#|</code> and use a <code>:</code>.</p>
+<p>For more examples, see <a href="./visualize-relationship.html">Visualize a Relationship</a> and <a href="./visualize-comparison.html">Visualize a Comparison</a>.</p>
+</section>
+<section id="the-five-required-parts" class="level3" data-number="27.4.2">
+<h3 data-number="27.4.2" class="anchored" data-anchor-id="the-five-required-parts"><span class="header-section-number">27.4.2</span> The five required parts</h3>
+<section id="label-for-all-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="label-for-all-code-chunks">Label for All Code Chunks</h4>
+<p>Your <code>#| label:</code> should be lowercase with dashs between words to create a complete object with no spaces, such as import-data-csv or import-data-xlsx.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-data-xlsx</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: a label for every code chunk
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every code chunk must have a <code>#| label:</code> at the start of the chunk.</p>
+</div>
+</div>
+</section>
+<section id="figure-caption-fig-cap-for-plot-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="figure-caption-fig-cap-for-plot-code-chunks">Figure Caption (Fig-Cap) for Plot Code Chunks</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: plot1-SWAPNAME</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: provide a detailed figure caption</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: a figure caption for every plot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every plot should include a detailed figure caption using <code>#| fig-cap:</code></p>
+</div>
+</div>
+</section>
+<section id="alt-text" class="level4">
+<h4 class="anchored" data-anchor-id="alt-text">Alternative Text for Figures and Images (Fig-Alt)</h4>
+<p>Every image and figure/plot/graph/table should be accessible to people with blindness or low vision. By providing alt text, you are explaining the figure and image with enough detail for a screen reader. This is a requirement of Binghamton University based on federal law.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: plot1-SWAPNAME</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: provide a detailed figure caption</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: provide info for accessiblity</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: alt text for every figure
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every figure and image should include alternative text using <code>#| fig-alt:</code></p>
+</div>
+</div>
+<p>For more information on how improve the accessiblity of an image, see <a href="https://quarto.org/docs/authoring/figures.html#alt-text">figures-alt-text on Quarto</a> to use alt text to increase accessiblity.</p>
+</section>
+<section id="comments-notes-inside-your-code" class="level4">
+<h4 class="anchored" data-anchor-id="comments-notes-inside-your-code">Comments: Notes Inside Your Code</h4>
+<p>The next two requirements, a source and an explanation, are written as <strong>comments</strong>. A comment is a line inside a code chunk that starts with <code>#</code>. R skips it: anything after <code>#</code> on that line is a note for people, not an instruction for the computer. Comments let you say what a piece of code is for, where it came from, and what you learned from it, right next to the code itself. When you come back to your report in three weeks, or when a teammate or grader reads it, the comments are what make the code understandable.</p>
+<p>Here is a code chunk with three kinds of comments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-data-csv-insurancedata</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORT: read the data file from the project folder</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>insurancedata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># CHECK: look at the first six rows to confirm it loaded</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(insurancedata)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#source: The Quantitative Playbook for R (McCarty, 2026)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: This chunk imports the insurancedata dataset and shows the first six rows so I can check the variable names.</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A comment <strong>above</strong> a line says what that line does (<code># IMPORT</code>, <code># CHECK</code>). Short labels in capitals make each step easy to find.</li>
+<li><code>#source:</code> at the <strong>bottom</strong> says where the code came from.</li>
+<li><code>#explanation:</code> at the <strong>bottom</strong> says, in your own words, what the chunk did and why.</li>
+</ul>
+<p>Two rules of thumb. Write what the code is <em>for</em>, not what R does: “keep only complete responses” is a useful comment, “subset the data frame” is not. And do not comment out code you no longer need. Delete it, so that your report does not fill up with lines that are not part of the analysis.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: <code>#|</code> is an option, <code>#</code> is a comment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>They look alike, but they do different jobs. <code>#|</code> at the <strong>top</strong> of a chunk sets a chunk option that Quarto reads, such as <code>#| label:</code> or <code>#| fig-cap:</code>. A plain <code>#</code> anywhere else is a comment that Quarto and R both ignore. The <code>#source:</code> and <code>#explanation:</code> lines are comments, and they go at the <strong>bottom</strong> of the chunk.</p>
+</div>
+</div>
+</section>
+<section id="provide-sources-for-all-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="provide-sources-for-all-code-chunks">Provide Sources for ALL Code Chunks</h4>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: the source of your code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the end of every code chunk, include the source of the code chunk so that others can replicate your work. You should use a pseudo APA citation format with (author, year) and website link (if possible).</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: SWAPACTION-SWAPVARIABLE</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#source: example 1, The FRI Playbook (McCarty, 2025)   </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#source: example 2, Writing Reproducible Results (Hei, 2025)   </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#source: example 3, Quarto guide markdown basics: https://quarto.org/docs/authoring/markdown-basics.html</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="provide-explanation-for-all-code-chunks" class="level4">
+<h4 class="anchored" data-anchor-id="provide-explanation-for-all-code-chunks">Provide Explanation for ALL Code Chunks</h4>
+<div class="required callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Required: an explanation in your own words
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will explain the code chunk in your own words using <code>#explanation:</code> at the bottom of your code chunk.</p>
+</div>
+</div>
+<section id="example-of-non-figure-code-chunk" class="level5">
+<h5 class="anchored" data-anchor-id="example-of-non-figure-code-chunk">Example of Non-Figure Code Chunk</h5>
+<p>All of your R code chunks for non-figures should follow this format:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: import-data-csv-insurancedata</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>insurancedata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/insurance.csv"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#source: (Wickham et al., 2023) https://r4ds.hadley.nz/data-import.html#practical-advice</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: importing the insurancedata data from a comma-separated values (CSV) based on import code from R4DS book </span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="example-of-figure-code-chunk" class="level5">
+<h5 class="anchored" data-anchor-id="example-of-figure-code-chunk">Example of Figure Code Chunk</h5>
+<p>All of your R code chunks for figures should follow this format:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: scatterplot-BMI-insurancedata</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: A scatterplot depicting the relationship between body mass index and insurancedata charges with a line of best fit to demonstrate the liner relationship between the two variables</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: the scatterplot shows BMI on the x axis and insurancedata charges on the y axis with the grouping variable of smoker. The smokers are denoted in teal and the non-smokers are in red. The smokers and non-smokers have a different slope, showing a different relationship/slope for BMI and insurancedata chargers based on smoker status.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> insurancedata,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> bmi,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> charges,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> smoker)) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#source: Introduction to ggplot2 (Silhavy &amp; McCarty, 2025)</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#explanation: the insurancedata data is being used with BMI for the x variable and insurancedata charges for the year variable. geom_point is used for scatterplots. geom_smooth with lm adds a linear model on top of the datapoint to show the association between BMI and insurancedata charges</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="setting-library-code-chunk" class="level4">
+<h4 class="anchored" data-anchor-id="setting-library-code-chunk">Setting library code chunk</h4>
+<p>By setting the <code>#| output:</code> to <code>false</code>, none of the output from running the code will show up. Only the code chunk for loading the library has <code>#| output: false</code>. The output is “attaching package (<code>readxl</code>), which is not necessary for our report. In almost all cases, your code chunk will NOT include the <code>output</code> option. If you do include it, it will mostly be set to <code>true</code> in order for you to output results, a plot, etc.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-library-readxl</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="code-chunk-options" class="level4">
+<h4 class="anchored" data-anchor-id="code-chunk-options">Code Chunk Options</h4>
+<p>For more information on code chunks, see <a href="https://r4ds.hadley.nz/quarto.html#chunk-options">code chunk options</a>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: example-with-options</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true          # Whether to execute the code</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true        # Whether to display output</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false      # Hide warnings</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false      # Hide messages</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: false        # Stop the render if this chunk has an error (the default; keep it)</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Figure 1. SWAP: a caption that can stand alone"  # Figure caption</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8        # Figure width in inches</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6       # Figure height in inches</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here below these code chunk options</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sec-show-hide" class="level4">
+<h4 class="anchored" data-anchor-id="sec-show-hide">When to Show and When to Hide</h4>
+<p>Chunk options decide what a reader of your report sees. By default, Quarto shows everything: the code, its output, and any messages or warnings. That is right for most chunks in this course, because your grader needs to read your code and the <code>#source:</code> and <code>#explanation:</code> comments inside it. Change the defaults only in these situations:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Option</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Your load-library chunk</td>
+<td><code>#| message: false</code> and <code>#| warning: false</code></td>
+<td>Loading packages prints startup messages (“Attaching core tidyverse packages…”). They tell the reader nothing about your research.</td>
+</tr>
+<tr class="even">
+<td>A chunk you used only to check your work, such as <code>head()</code>, <code>names()</code>, or <code>View()</code></td>
+<td>Delete it from the report, or add <code>#| include: false</code></td>
+<td>Checks help you while you work. In a report, 200 rows of raw data bury your results.</td>
+</tr>
+<tr class="odd">
+<td>A plot or table</td>
+<td><code>#| fig-cap:</code> and <code>#| fig-alt:</code> (plots); keep the output showing</td>
+<td>The output <strong>is</strong> the result. Never hide it.</td>
+</tr>
+<tr class="even">
+<td>A warning you have read and understood, such as <code>geom_smooth()</code> using formula ‘y ~ x’</td>
+<td><code>#| warning: false</code> on that chunk only</td>
+<td>Hide a warning only after you know what it means. A warning you have not read may be telling you that your result is wrong.</td>
+</tr>
+<tr class="odd">
+<td>A chunk that stops with an error</td>
+<td>Fix the code</td>
+<td>Do not use <code>#| error: true</code> in a report. It lets the render finish with an error message printed in the middle of your results.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Caution: Do not hide your code in the RD Report or Final Report
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>#| echo: false</code> hides the code of a chunk and shows only its output. Published papers often do this, but in this course it also hides your <code>#source:</code> and <code>#explanation:</code> comments, which are required. Leave <code>echo</code> alone unless your peer mentor and/or Dr.&nbsp;Shane tells you otherwise.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="template-code-and-swap" class="level2" data-number="27.5">
+<h2 data-number="27.5" class="anchored" data-anchor-id="template-code-and-swap"><span class="header-section-number">27.5</span> Template code and <code>SWAP</code></h2>
+<!-- Shared box explaining the SWAP convention. Included in Start My Report (start-rdreport.qmd) and in the first Your Turn (import-once.qmd). Edit here. -->
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: <code>SWAP</code> means swap it for your own
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every <strong>Your Turn</strong> section gives you template code. Most of it is real code that you keep exactly as it is. The parts you must change are marked with one code word: <strong><code>SWAP</code></strong>.</p>
+<ul>
+<li>A word that <strong>starts with <code>SWAP</code></strong> is a placeholder: <code>SWAPOUTCOME</code>, <code>SWAPGROUP_3CAT</code>, <code>SWAPFILE.xlsx</code>, <code>"SWAP: your title"</code>. Swap the whole word for your own variable, file, or words. What follows <code>SWAP</code> tells you what goes there, and any ending such as <code>_3CAT</code> or <code>_PRE</code> is part of the name you should keep.</li>
+<li>A comment that <strong>starts with <code># SWAP:</code></strong> tells you what to put in that line.</li>
+<li><strong>Everything else stays</strong>, even if it looks generic. <code>alldata</code>, <code>cleandata</code>, <code>mydata</code>, <code>my_keys</code>, <code>ttestmodel1</code>, and <code>plots/</code> are real names the playbook uses on purpose.</li>
+</ul>
+<p>When you are done, search your file for <code>SWAP</code>. If the word is still there, so is a placeholder.</p>
+</div>
+</div>
+<!-- Single source for the collapsed final-whistle reminder at the END of every coding chapter (7 onward). Edit here only. The full routine lives in find-the-ref.qmd (Ref's Quick Checklist). -->
+<div class="gray callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Resources</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s final whistle: before you quit RStudio
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Save → Render → Back up to ELN → Quit, Don’t Save workspace.</strong> Details: <a href="./find-the-ref.html#sec-ref-checklist">Ref’s Quick Checklist</a>.</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shanemccarty\.github\.io\/FRIplaybook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./regression.html" class="pagination-link" aria-label="Relate 3+ Variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./readme.html" class="pagination-link" aria-label="Read Me">
+        <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Read Me</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/start-rdreport.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

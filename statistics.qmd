@@ -22,6 +22,16 @@ format:
 editor: visual
 ---
 
+::: {.callout-note collapse="true"}
+## Resources: statistics in general, and the two distinctions in the figure
+
+Each list is a ladder in the same order: **Start here** is the shortest way in (a course or a short article you can finish in a sitting), **Main text** is the free book to work through, and **Go further** is for when you want the full treatment or the original argument.
+
+- Start here: Wasserstein, R. L., & Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. *The American Statistician, 70*(2), 129–133. <https://doi.org/10.1080/00031305.2016.1154108> (six principles on what a p-value is and is not; the clearest short statement of the frequentist row)
+- Go further: Breiman, L. (2001). Statistical modeling: The two cultures. *Statistical Science, 16*(3), 199–231. <https://doi.org/10.1214/ss/1009213726> (the inference / prediction columns)
+- Go further: Wagenmakers, E.-J., Marsman, M., Jamil, T., Ly, A., Verhagen, J., Love, J., Selker, R., Gronau, Q. F., Šmíra, M., Epskamp, S., Matzke, D., Rouder, J. N., & Morey, R. D. (2018). Bayesian inference for psychology. Part I: Theoretical advantages and practical ramifications. *Psychonomic Bulletin & Review, 25*(1), 35–57. <https://doi.org/10.3758/s13423-017-1343-3> (the frequentist / Bayesian rows, argued from the Bayesian side)
+:::
+
 This playbook is not a statistics course. The [Analysis Map](analysis-map.qmd) tells you **which** test fits your research question, and the chapters that follow show you **how** to run it in R. This short chapter answers a different question: **where** do those tests sit in the much larger world of statistics, and what do the numbers they produce mean? Knowing that helps you read a journal article that uses a different approach, describe your own approach in a Methods section, and recognize when a question needs a tool this playbook does not have.
 
 ## Two questions locate every statistical approach
@@ -32,51 +42,47 @@ Statisticians disagree about many things, but two distinctions sort most of the 
 
 **How is uncertainty handled: frequentist or Bayesian?** A *frequentist* treats probability as a long-run frequency: if you repeated the study many times, how often would a difference this large appear by chance alone? That is what a p-value and a confidence interval answer. A *Bayesian* treats probability as a degree of belief that is updated by data: start from what was believed before the study, add the evidence, and report the resulting probability that the difference is real or that it lies in a given range. Both answer the same research questions. However, they word the answer differently and make very different assumptions. Nearly all of the public health and social science literature you will read in this course, and every test on the Analysis Map, is frequentist.
 
-![*Two questions, four cells. Every cell has the same four parts: the question it asks, the tests or models that answer it, what it reports, and the R packages that run it. The plays in this playbook are frequentist inferential statistics, the shaded cell.*](images/stats-2x2.svg){fig-alt="A two-by-two grid. Columns: Inference (explain a difference or relationship in the population) and Prediction (forecast what a new case will look like). Rows: Frequentist (probability as long-run frequency over repeated samples) and Bayesian (probability as degree of belief updated by the data). Each cell lists a question, tests or models, what is reported, and R packages. Each cell ends with its R packages. Frequentist inference, shaded blue and labeled This Playbook, asks: if there were no difference in the population, how often would data like these appear? Tests: t-tests, Mann-Whitney U, ANOVA, Kruskal-Wallis, correlation, linear regression; reports p-value, confidence interval, effect size; packages stats, moderndive, infer, effectsize. Frequentist prediction (machine learning) asks: given these predictors, what is the best guess for a new case and how well does it do on new data? Models: regression used to forecast, decision trees, random forests, boosting, neural networks; reports accuracy on held-out data; packages tidymodels, caret, ranger, xgboost. Bayesian inference asks: given the data and what was known before, how likely is a difference this big? Models: Bayesian t-test and ANOVA with Bayes factors, Bayesian regression with posterior distributions; reports posterior probability, credible interval, Bayes factor; packages brms, rstanarm, BayesFactor, bayesrules. Bayesian prediction asks: given the data and what was known before, what range of outcomes is likely for a new case? Models: Bayesian regression forecasts, hierarchical and time-series models; reports a predictive distribution; packages brms, rstan or cmdstanr, tidybayes, prophet."}
-
-So when a Methods section asks you to describe your approach, the one-sentence answer is: *frequentist inferential statistics, with the test chosen by the research question and the distribution of the outcome* ([Analysis Map](analysis-map.qmd), Your Turn).
+![*Two questions, four cells. Every cell has the same four parts: the question it asks, the tests or models that answer it, what it reports, and the R packages that run it. The plays in this playbook are frequentist inferential statistics, the shaded cell. The original conceptualization was developed by Shane McCarty and revised with Claude.*](images/stats-2x2.svg){fig-alt="A two-by-two grid. Columns: Inference (explain a difference or relationship in the population) and Prediction (forecast what a new case will look like). Rows: Frequentist (probability as long-run frequency over repeated samples) and Bayesian (probability as degree of belief updated by the data). Each cell lists a question, tests or models, what is reported, and R packages. Each cell ends with its R packages. Frequentist inference, shaded blue and labeled This Playbook, asks: if there were no difference in the population, how often would data like these appear? Tests: t-tests, Mann-Whitney U, ANOVA, Kruskal-Wallis, correlation, linear regression; reports p-value, confidence interval, effect size; packages stats, moderndive, infer, effectsize. Frequentist prediction (machine learning) asks: given these predictors, what is the best guess for a new case and how well does it do on new data? Models: regression used to forecast, decision trees, random forests, boosting, neural networks; reports accuracy on held-out data; packages tidymodels, caret, ranger, xgboost. Bayesian inference asks: given the data and what was known before, how likely is a difference this big? Models: Bayesian t-test and ANOVA with Bayes factors, Bayesian regression with posterior distributions; reports posterior probability, credible interval, Bayes factor; packages brms, rstanarm, BayesFactor, bayesrules. Bayesian prediction asks: given the data and what was known before, what range of outcomes is likely for a new case? Models: Bayesian regression forecasts, hierarchical and time-series models; reports a predictive distribution; packages brms, rstan or cmdstanr, tidybayes, prophet."}
 
 ::: {.callout-note collapse="true"}
-## Resources: one group for each cell of the figure
+## Resources: frequentist inference (this playbook)
 
-Each group is a ladder in the same order: **Start here** is the shortest way in (a course or a short article you can finish in a sitting), **Main text** is the free book to work through, and **Go further** is for when you want the full treatment or the original argument.
-
-**The figure itself**
-
--   Start here: Wasserstein, R. L., & Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. *The American Statistician, 70*(2), 129–133. <https://doi.org/10.1080/00031305.2016.1154108> (six principles on what a p-value is and is not; the clearest short statement of the frequentist row)
--   Go further: Breiman, L. (2001). Statistical modeling: The two cultures. *Statistical Science, 16*(3), 199–231. <https://doi.org/10.1214/ss/1009213726> (the inference / prediction columns)
--   Go further: Wagenmakers, E.-J., Marsman, M., Jamil, T., Ly, A., Verhagen, J., Love, J., Selker, R., Gronau, Q. F., Šmíra, M., Epskamp, S., Matzke, D., Rouder, J. N., & Morey, R. D. (2018). Bayesian inference for psychology. Part I: Theoretical advantages and practical ramifications. *Psychonomic Bulletin & Review, 25*(1), 35–57. <https://doi.org/10.3758/s13423-017-1343-3> (the frequentist / Bayesian rows, argued from the Bayesian side)
-
-**Frequentist inference (this playbook)**
-
--   Start here: [Introduction to Statistics in R](https://www.datacamp.com/courses/introduction-to-statistics-in-r) (DataCamp course)
--   Start here: [Understanding p-values through simulation](https://rpsychologist.com/pvalue/) (Kristoffer Magnusson's interactive page; see the Go box in the next section)
--   Main text: Çetinkaya-Rundel, M., & Hardin, J. [*Introduction to Modern Statistics*](https://openintrostat.github.io/ims/) (free online textbook from OpenIntro; Chapters 11–14 are the inference in this playbook)
--   Main text: Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [*Statistical Inference via Data Science: A ModernDive into R and the Tidyverse*](https://moderndive.com/v2/) (2nd ed.). CRC Press. (free online; the same tests in tidyverse code, with the `moderndive` and `infer` packages; also used in [R Packages](library.qmd) and [Relate 3+ Variables](regression.qmd))
--   Go further: Batra, N., et al. (2021). [*The Epidemiologist R Handbook*](https://www.epirhandbook.com/en/) (free online handbook for applied epidemiology and public health; the reference to keep open after this course)
-
-**Frequentist prediction (machine learning)**
-
--   Start here: [Modeling with tidymodels in R](https://app.datacamp.com/learn/courses/modeling-with-tidymodels-in-r) (DataCamp course)
--   Start here: [Machine Learning with caret in R](https://app.datacamp.com/learn/courses/machine-learning-with-caret-in-r) (DataCamp course; caret is the older, widely used alternative to tidymodels)
--   Main text: Kuhn, M., & Silge, J. (2022). [*Tidy Modeling with R*](https://www.tmwr.org/). O'Reilly. (free online; the tidymodels packages, in the same pipe-and-tibble style as this playbook)
--   Main text: James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). [*An Introduction to Statistical Learning with Applications in R*](https://www.statlearning.com) (2nd ed.). Springer. (free PDF on the book's website; the standard first textbook)
--   Go further: Molnar, C. (2025). [*Interpretable Machine Learning: A Guide for Making Black Box Models Explainable*](https://christophm.github.io/interpretable-ml-book/) (3rd ed.). (free online; how to explain what a predictive model learned)
-
-**Bayesian inference**
-
--   Start here: Etz, A., Gronau, Q. F., Dablander, F., Edelsbrunner, P. A., & Baribault, B. (2018). How to become a Bayesian in eight easy steps: An annotated reading list. *Psychonomic Bulletin & Review, 25*(1), 219–234. <https://doi.org/10.3758/s13423-017-1317-5> (a reading list with the order to read it in)
--   Main text: Johnson, A. A., Ott, M. Q., & Dogucu, M. (2022). [*Bayes Rules! An Introduction to Applied Bayesian Modeling*](https://www.bayesrulesbook.com/). CRC Press. (free online; written for students who know the tidyverse; the `bayesrules` package)
--   Main text: Kruschke, J. K. (2015). *Doing Bayesian Data Analysis: A Tutorial with R, JAGS, and Stan* (2nd ed.). Academic Press. (the "puppies" book; the gentlest full textbook)
--   Go further: McElreath, R. (2020). *Statistical Rethinking: A Bayesian Course with Examples in R and Stan* (2nd ed.). CRC Press. (free [lectures on YouTube](https://www.youtube.com/@rmcelreath); the deepest of the three)
-
-**Bayesian prediction**
-
--   Start here: Johnson, Ott, & Dogucu (above), Unit IV: posterior prediction and model evaluation, where Bayesian inference turns into Bayesian forecasting
--   Main text: McElreath (above), the chapters on model comparison and out-of-sample prediction
--   Go further: [Stan documentation and case studies](https://mc-stan.org/users/documentation/) (the engine behind `brms`, `rstan`, and `cmdstanr`)
--   Go further: [Prophet](https://facebook.github.io/prophet/) (Bayesian time-series forecasting in R, with a short quick-start)
+- Start here: [Introduction to Statistics in R](https://www.datacamp.com/courses/introduction-to-statistics-in-r) (DataCamp course)
+- Start here: [Understanding p-values through simulation](https://rpsychologist.com/pvalue/) (Kristoffer Magnusson's interactive page; see the Go box in the next section)
+- Main text: Çetinkaya-Rundel, M., & Hardin, J. [*Introduction to Modern Statistics*](https://openintrostat.github.io/ims/) (free online textbook from OpenIntro; Chapters 11–14 are the inference in this playbook)
+- Main text: Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [*Statistical Inference via Data Science: A ModernDive into R and the Tidyverse*](https://moderndive.com/v2/) (2nd ed.). CRC Press. (free online; the same tests in tidyverse code, with the `moderndive` and `infer` packages; also used in [R Packages](library.qmd) and [Relate 3+ Variables](regression.qmd))
+- Go further: Batra, N., et al. (2021). [*The Epidemiologist R Handbook*](https://www.epirhandbook.com/en/) (free online handbook for applied epidemiology and public health; the reference to keep open after this course)
 :::
+
+::: {.callout-note collapse="true"}
+## Resources: frequentist prediction (machine learning)
+
+- Start here: [Modeling with tidymodels in R](https://app.datacamp.com/learn/courses/modeling-with-tidymodels-in-r) (DataCamp course)
+- Start here: [Machine Learning with caret in R](https://app.datacamp.com/learn/courses/machine-learning-with-caret-in-r) (DataCamp course; caret is the older, widely used alternative to tidymodels)
+- Main text: Kuhn, M., & Silge, J. (2022). [*Tidy Modeling with R*](https://www.tmwr.org/). O'Reilly. (free online; the tidymodels packages, in the same pipe-and-tibble style as this playbook)
+- Main text: James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). [*An Introduction to Statistical Learning with Applications in R*](https://www.statlearning.com) (2nd ed.). Springer. (free PDF on the book's website; the standard first textbook)
+- Go further: Molnar, C. (2025). [*Interpretable Machine Learning: A Guide for Making Black Box Models Explainable*](https://christophm.github.io/interpretable-ml-book/) (3rd ed.). (free online; how to explain what a predictive model learned)
+:::
+
+::: {.callout-note collapse="true"}
+## Resources: Bayesian inference
+
+- Start here: Etz, A., Gronau, Q. F., Dablander, F., Edelsbrunner, P. A., & Baribault, B. (2018). How to become a Bayesian in eight easy steps: An annotated reading list. *Psychonomic Bulletin & Review, 25*(1), 219–234. <https://doi.org/10.3758/s13423-017-1317-5> (a reading list with the order to read it in)
+- Main text: Johnson, A. A., Ott, M. Q., & Dogucu, M. (2022). [*Bayes Rules! An Introduction to Applied Bayesian Modeling*](https://www.bayesrulesbook.com/). CRC Press. (free online; written for students who know the tidyverse; the `bayesrules` package)
+- Main text: Kruschke, J. K. (2015). *Doing Bayesian Data Analysis: A Tutorial with R, JAGS, and Stan* (2nd ed.). Academic Press. (the "puppies" book; the gentlest full textbook)
+- Go further: McElreath, R. (2020). *Statistical Rethinking: A Bayesian Course with Examples in R and Stan* (2nd ed.). CRC Press. (free [lectures on YouTube](https://www.youtube.com/@rmcelreath); the deepest of the three)
+:::
+
+::: {.callout-note collapse="true"}
+## Resources: Bayesian prediction
+
+- Start here: Johnson, Ott, & Dogucu (above), Unit IV: posterior prediction and model evaluation, where Bayesian inference turns into Bayesian forecasting
+- Main text: McElreath (above), the chapters on model comparison and out-of-sample prediction
+- Go further: [Stan documentation and case studies](https://mc-stan.org/users/documentation/) (the engine behind `brms`, `rstan`, and `cmdstanr`)
+- Go further: [Prophet](https://facebook.github.io/prophet/) (Bayesian time-series forecasting in R, with a short quick-start)
+:::
+
+So when a Methods section asks you to describe your approach, the one-sentence answer is: *frequentist inferential statistics, with the test chosen by the research question and the distribution of the outcome* ([Analysis Map](analysis-map.qmd), Your Turn).
 
 ::: callout-tip
 ## Go: a third distinction you already know
@@ -100,6 +106,12 @@ Kristoffer Magnusson's [interactive p-value simulation](https://rpsychologist.co
 
 **The confidence interval** (CI) is the range of population values the data are consistent with. In the lab dataset, people who have had mental health treatment and people who have not differ in well-being (`WELLBEING`, 1 to 5) by 0.03 points, with a 95% CI from −0.17 to 0.23: the true difference could plausibly be anywhere from a little lower to a little higher, including zero. A CI that includes zero always goes with a p-value above .05 (here *p* = .76), and a CI that excludes zero always goes with a p-value below .05; the two never disagree. The CI is more informative than p because it shows how large or small the difference might be. Report it when the chapter's output gives one.
 
+::: callout-tip
+## Go: watch a confidence interval happen
+
+Kristoffer Magnusson's [interactive confidence interval simulation](https://rpsychologist.com/d3/ci/) draws sample after sample from the same population and shows each sample's 95% CI as a horizontal bar, with the true population mean as a vertical line. Watch the bars pile up: about 95 in 100 cross the line, and about 5 in 100 miss it entirely, and you never know from a single sample which kind yours is. Change the sample size and watch the bars shrink; change the confidence level and watch them stretch. That is what "95% confidence" means: not that there is a 95% chance the true value is inside *your* interval, but that intervals made this way catch the true value 95% of the time. Ten minutes with it will do for CIs what the p-value page does for p.
+:::
+
 **The effect size** is the size of the difference between groups (Cohen's *d* for two groups, *d~z~* for the same people measured twice, η² for three or more groups, and *r* for the rank-based tests) or of a relationship (*r* for a correlation, *R*² for a regression) in standard units, independent of the sample size. This is the number that answers your research question. With a large sample, a tiny difference can have a very small p-value; with a small sample, a large difference can miss .05. Each chapter gives the conventional labels (small, medium, large), and the Required box in every chapter asks for the effect size for exactly this reason.
 
 ::: callout-warning
@@ -118,5 +130,5 @@ Kristoffer Magnusson's [interactive p-value simulation](https://rpsychologist.co
 
 The two outer cells of the figure draw on readings from two statistics workshops that I recommend to other social and behavioral scientists:
 
--   *Machine learning: Uncovering hidden structure in data* (May 19–23, 2025), [Professor Christopher Hare](https://ps.ucdavis.edu/people/christopher-hare), [ICPSR Summer Program in Quantitative Methods](https://www.icpsr.umich.edu/web/pages/sumprog/), University of Michigan.
--   *Getting started with Bayesian statistics* (June 2–4, 2025), Professors Andrew Cohen and Jeff Starns, [ISSR Summer Methods Workshops](https://www.umass.edu/social-science-research/), University of Massachusetts Amherst.
+- *Machine learning: Uncovering hidden structure in data* (May 19–23, 2025), [Professor Christopher Hare](https://ps.ucdavis.edu/people/christopher-hare), [ICPSR Summer Program in Quantitative Methods](https://www.icpsr.umich.edu/web/pages/sumprog/), University of Michigan.
+- *Getting started with Bayesian statistics* (June 2–4, 2025), Professors Andrew Cohen and Jeff Starns, [ISSR Summer Methods Workshops](https://www.umass.edu/social-science-research/), University of Massachusetts Amherst.

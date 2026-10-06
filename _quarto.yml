@@ -7,7 +7,7 @@ book:
   subtitle: "Plays for Public Health & Community Health Research"
   author: "Shane McCarty, PhD"
   date: "10/04/2026"
-  version: "Edition 2 (v2.3)"      
+  version: "Edition 2 (v2.35)"      
   search: true
   repo-url: https://shanemccarty.github.io/FRIplaybook
   repo-actions: [edit, issue]
@@ -33,6 +33,8 @@ book:
         - text: "Find the Ref"                # after Start a Report: the routine opens, runs, and renders a .qmd that now exists
           file: find-the-ref.qmd
 
+        - text: "Lab 1 Checklist"
+          file: lab1-checklist.qmd
     - part: "Clean Data (Lab 2)"
       chapters:
         - text: "Name & Recode Vars"
@@ -41,15 +43,16 @@ book:
           file: export.qmd
         - text: "Import Data Once"
           file: import-once.qmd
-        - text: "Pre/Post Data"               # Teams 3 and 5; combines the old tidyr.qmd + merge.qmd (2026-09-20)
+        - text: "Pre/Post Data (#1,3)"               # Teams 3 and 5; combines the old tidyr.qmd + merge.qmd (2026-09-20)
           file: prepost.qmd
-        - text: "Vignette Data"                 # Team 4 only: compare four vignettes (2 x 2 within-person), pivot_longer + factors (2026-09-28)
+        - text: "Vignette Data (#4)"                 # Team 4 only: compare four vignettes (2 x 2 within-person), pivot_longer + factors (2026-09-28)
           file: vignette.qmd
         - text: "Mutate Variables"
           file: dplyr.qmd
         - text: "Creating Composites"
           file: composite.qmd
-
+        - text: "Lab 2 Checklist"
+          file: lab2-checklist.qmd
     - part: "Map Your Analysis (Lab 3)"
       chapters:
         - text: "The Analysis Map"
@@ -59,6 +62,8 @@ book:
         - text: "Frequentist Inference"   # where the plays sit (2x2: inference/prediction x frequentist/Bayesian), the four numbers, resources (2026-10-04)
           file: statistics.qmd
 
+        - text: "Lab 3 Checklist"
+          file: lab3-checklist.qmd
     - part: "Compare Groups (Lab 4)"
       chapters:
         - text: "Visualize a Comparison"
@@ -81,16 +86,22 @@ book:
 
     - part: "Write Your Report (Lab 6)"
       chapters:
-        - text: "Read Me"
-          file: readme.qmd
+        - text: "Start My Report"            # file name, full YAML, five required chunk parts, show/hide (split from Start a Report, 2026-10-05)
+          file: start-rdreport.qmd
         - text: "Introduction"
           file: write-intro.qmd
+        - text: "Methods"                    # Methods checklist + Data Analysis Plan (moved from The Analysis Map, 2026-10-05)
+          file: methods.qmd
+        - text: "Results"                    # Results checklist + Required ggsave (moved from Coding a Plot, 2026-10-05)
+          file: results.qmd
+        - text: "Discussion"                 # one paragraph; no code (2026-10-06)
+          file: discussion.qmd
         - text: "Citations & Refs"
           file: citations.qmd
-        - text: "Publish in Quarto Pub"
+        - text: "Read Me"                    # moved after Citations (2026-10-06)
+          file: readme.qmd
+        - text: "Publish"
           file: quartopub.qmd
-        - text: "Review in Hypothes.is"
-          file: review.qmd
         # - text: "Final Report Checklist"
         #   file: checklist.qmd
 
@@ -102,8 +113,12 @@ book:
           file: import-live.qmd
         - text: "Write Functions"
           file: write-functions.qmd
+        - text: "Peer Review"                 # Review in Hypothes.is; moved from Write Your Report (2026-10-05)
+          file: review.qmd
         - text: "Shiny Data Viz"
           file: shiny.qmd
+        - text: "Academic Website"           # Quarto website: guide + RStudio video (2026-10-05)
+          file: website.qmd
 
 # Filters - WebR only for now
 filters:
@@ -145,7 +160,7 @@ format:
     number-sections: true
     number-depth: 3
     page-footer:
-      left: "© 2026 FRI Public Health Research Stream"
+      left: "© 2026 Shane McCarty (Editor) and the chapter authors. Freely available for non-commercial, educational use only."
       right: 
         - icon: github
           href: https://shanemccarty.github.io/FRIplaybook

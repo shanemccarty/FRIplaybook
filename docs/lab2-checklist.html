@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Shane McCarty">
+<meta name="keywords" content="checklist, Lab 2, clean data">
+
+<title>15&nbsp; Lab 2 Checklist – The Quantitative Playbook for R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./analysis-map.html" rel="next">
+<link href="./composite.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3960f907883494f1151aa7142734774f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./lab2-checklist.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Quantitative Playbook for R</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://shanemccarty.github.io/FRIplaybook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Get Started (Lab 1)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Reproducible Reports</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coding a Plot</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RStudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R Software</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./library.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./codechunks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Start a Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./find-the-ref.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Find the Ref</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 1 Checklist</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clean Data (Lab 2)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./qualtrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Name &amp; Recode Vars</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Export Survey Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-once.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Import Data Once</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prepost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Pre/Post Data (#1,3)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vignette.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Vignette Data (#4)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dplyr.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mutate Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./composite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Creating Composites</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab2-checklist.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Map Your Analysis (Lab 3)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./describe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Describe Your Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Frequentist Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab3-checklist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Lab 3 Checklist</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Compare Groups (Lab 4)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Visualize a Comparison</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./compare2groups.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Compare 2 Groups</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./violin.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">1 Group, Pre/Post</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Compare 3+ Groups</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Examine Relationships (Lab 5)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./visualize-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualize a Relationship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Relate 2 Variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Relate 3+ Variables</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Write Your Report (Lab 6)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-rdreport.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Start My Report</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readme.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Read Me</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./citations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Citations &amp; Refs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quartopub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Publish in Quarto Pub</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Plays</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-equity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Data Equity</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import-live.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Import Data Live</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./write-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Write Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Peer Review</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Shiny Data Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Academic Website</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-lab2-summary" id="toc-sec-lab2-summary" class="nav-link active" data-scroll-target="#sec-lab2-summary"><span class="header-section-number">15.1</span> What each chapter asked of you</a></li>
+  <li><a href="#part-1-your-team-in-qualtrics-and-the-google-drive" id="toc-part-1-your-team-in-qualtrics-and-the-google-drive" class="nav-link" data-scroll-target="#part-1-your-team-in-qualtrics-and-the-google-drive"><span class="header-section-number">15.2</span> Part 1: your team, in Qualtrics and the Google Drive</a></li>
+  <li><a href="#part-2-you-in-rstudio" id="toc-part-2-you-in-rstudio" class="nav-link" data-scroll-target="#part-2-you-in-rstudio"><span class="header-section-number">15.3</span> Part 2: you, in RStudio</a></li>
+  <li><a href="#what-lab-3-will-add" id="toc-what-lab-3-will-add" class="nav-link" data-scroll-target="#what-lab-3-will-add"><span class="header-section-number">15.4</span> What Lab 3 will add</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/lab2-checklist.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./qualtrics.html">Clean Data (Lab 2)</a></li><li class="breadcrumb-item"><a href="./lab2-checklist.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Lab 2 Checklist</span></h1>
+<p class="subtitle lead">What you should have when Clean Data is done</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Shane McCarty </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">10.05.2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This short chapter closes Lab 2. It first sums up each Clean Data chapter in three parts: what you learned in The Play, what you did in The Lab (and whether you did it in Qualtrics with your team or in RStudio on your own computer), and what you will do in Your Turn when you come back with your team’s data. It then lists what should exist in your team’s Google Drive, on your computer, and in your lab file, with a one-line way to check each item and a link back to the section that made it. Lab 2 has two halves: the team work in Qualtrics (naming, recoding, codebook, export), which has no R in it, and your first analysis in RStudio, importing and cleaning the lab dataset and building the categorical and composite variables that every later lab uses.</p>
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>checklist, Lab 2, clean data</p>
+  </div>
+</div>
+
+</header>
+
+
+<p>Lab 2 is the first lab with code in RStudio, and it is also the only lab that is half team work. The first two chapters (<a href="./qualtrics.html">Name and Recode Variables in Qualtrics</a> and <a href="./export.html">Export Survey Data</a>) happen in Qualtrics with your team; the rest happen in your own RStudio with the lab dataset. The list below is split the same way. (If you are not sure what a Lab checklist is for, <a href="./lab1-checklist.html">Lab 1 Checklist</a> explains the two kinds.)</p>
+<section id="sec-lab2-summary" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="sec-lab2-summary"><span class="header-section-number">15.1</span> What each chapter asked of you</h2>
+<p>Every row below has the same three parts as the chapters themselves. <strong>The Play</strong> is what you read: the chapter walks through the code with an example dataset, and you do not retype it. <strong>The Lab</strong> is what you did yourself. <strong>Your Turn</strong> is what you will do later with your team’s data, once data collection has closed.</p>
+<p>The <strong>Where</strong> column is about The Lab, because that is where students lose track of whether they were supposed to be coding:</p>
+<ul>
+<li><strong>Qualtrics, with your team</strong>: no R at all. Your team’s own survey is the practice.</li>
+<li><strong>RStudio, lab data</strong>: you typed and ran code in <code>Lastname_lab2.qmd</code> on your own computer, using the lab dataset from the class Google Drive, and checked your answers against Ref’s checks.</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Chapter</th>
+<th>The Play: what you learned</th>
+<th>The Lab: what you did</th>
+<th>Where</th>
+<th>Your Turn: with your data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="./qualtrics.html">Name &amp; Recode Vars</a></td>
+<td>The naming rules (<code>NAME1</code>, <code>_01</code>, <code>_QUAL</code>), a number for every answer choice, and what a codebook is for</td>
+<td>Named and recoded every question in your team’s survey, filled in the Team Codebook, and exported the draft survey questions to Word</td>
+<td><strong>Qualtrics, with your team</strong></td>
+<td>Export the final survey questions and codebook before the survey is published; after that, only the changes listed as safe</td>
+</tr>
+<tr class="even">
+<td><a href="./export.html">Export Survey Data</a></td>
+<td>The export settings, the <code>.cleandata</code> copy, and the file name</td>
+<td>Triple-checked the coded values and exported the final survey questions. You did <strong>not</strong> export data yet: your team is still collecting it</td>
+<td><strong>Qualtrics, with your team</strong></td>
+<td>After data collection closes: export the <code>.xlsx</code>, make the <code>.cleandata</code> copy, name it <code>MONTH.DAY.YEAR.team#.cleandata.xlsx</code>, and meet with a Quant Peer Mentor</td>
+</tr>
+<tr class="odd">
+<td><a href="./import-once.html">Import Data Once</a></td>
+<td>How to read an import line, how to look at what came in (<code>head()</code>, <code>names()</code>, <code>nrow()</code>, <code>ncol()</code>), and that only the function changes between <code>.csv</code> and <code>.xlsx</code></td>
+<td>Lab Plays 1 to 5: imported the lab data as <code>mh_raw</code>, compared the names to the codebook, turned <code>-99</code> and <code>-50</code> into <code>NA</code>, and fixed a number column that came in as text. <strong>This is the first code you ran in RStudio on data</strong></td>
+<td><strong>RStudio, lab data</strong></td>
+<td>Import your team’s <code>.cleandata</code> file as <code>alldata</code>, with the same checks</td>
+</tr>
+<tr class="even">
+<td><a href="./prepost.html">Pre/Post Data</a> (Teams 3 and 5 only)</td>
+<td>Long and wide data, and how <code>PASSWORD</code> links a person’s two responses</td>
+<td>Lab Plays 1 to 3: imported the long lab file, cleaned the password, found the duplicate, and reshaped to wide</td>
+<td><strong>RStudio, lab data</strong></td>
+<td>Template 1 on <code>alldata</code>: one row per person, with <code>_PRE</code> and <code>_POST</code> columns</td>
+</tr>
+<tr class="odd">
+<td><a href="./vignette.html">Vignette Data</a> (Team 4 only)</td>
+<td>How a two-by-two design becomes a table, one row per rating, and a factor for each thing that varied</td>
+<td>Lab Plays 1 to 3: reshaped <code>CASE1</code> to <code>CASE4</code> to long, added the two factors, and found the four cell means</td>
+<td><strong>RStudio, lab data</strong></td>
+<td>The same template on <code>SENTENCE1</code> to <code>SENTENCE4</code></td>
+</tr>
+<tr class="even">
+<td><a href="./dplyr.html">Mutate Variables</a></td>
+<td>Three moves: collapse categories, cut a score into bands, combine select-all boxes; and the <code>_#CAT</code> naming rule</td>
+<td>Lab Plays 1 to 4: ran <code>source("lab_prep.R")</code> to get <code>mh_clean</code>, then built <code>EDUCATION_3CAT</code>, <code>POL_3CAT</code>, <code>HEALTH_3CAT</code>, and <code>SES_01</code>, counting each one</td>
+<td><strong>RStudio, lab data</strong></td>
+<td>Make every categorical variable your report uses from <code>alldata</code>, count each one, and cite any cut-off</td>
+</tr>
+<tr class="odd">
+<td><a href="./composite.html">Creating Composites</a></td>
+<td>Scoring keys, reverse items, and Cronbach’s alpha</td>
+<td>Lab Plays 1 to 4: scored WELLBEING, STIGMA with its two subscales, and the K10 with <code>scoreItems()</code>, then wrote a Measures sentence for each</td>
+<td><strong>RStudio, lab data</strong></td>
+<td>Score every multi-item measure in your team’s survey and report its alpha</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important: The Lab is practice on the lab dataset. Your Turn is not due yet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Lab 2 you do The Lab of each chapter that applies to you, in <code>Lastname_lab2.qmd</code>. You do <strong>not</strong> do the Your Turn sections now, because your team’s data do not exist yet. When they do, you will open each of these chapters a second time, skip to <strong>Your Turn</strong>, and run the template on <code>alldata</code> in your report file. The last column of the table is your list for that day.</p>
+</div>
+</div>
+</section>
+<section id="part-1-your-team-in-qualtrics-and-the-google-drive" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="part-1-your-team-in-qualtrics-and-the-google-drive"><span class="header-section-number">15.2</span> Part 1: your team, in Qualtrics and the Google Drive</h2>
+<p>These are team items. One person can check them for everyone, but every team member should know where the files are.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>☐</th>
+<th>What</th>
+<th>How to check</th>
+<th>Where it came from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>☐</td>
+<td><strong>Every variable has an export tag</strong> following the rules</td>
+<td>Open the survey; no question is still named <code>Q1</code>, <code>Q2</code>…; multi-item measures are <code>NAME1</code>, <code>NAME2</code>…; yes/no variables end in <code>_01</code>; open-ended questions end in <code>_QUAL</code></td>
+<td><a href="./qualtrics.html">Name and Recode Variables</a>, Name Your Variables in Qualtrics</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>The shared class variables are present and named exactly</strong></td>
+<td><code>CONSENT</code>, <code>GENDER</code> (0 to 3), <code>RACIALIZED</code> (select-all), and <code>TIME</code> for Teams 3 and 5</td>
+<td><a href="./qualtrics.html">Name and Recode Variables</a>, the shared-variables table</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong>Every answer choice has a number</strong></td>
+<td>Recode values are on; scales start at 1, true zeros at 0, every binary is No = 0 / Yes = 1, <code>-99</code> = Prefer not to say, <code>-50</code> = Don’t know</td>
+<td><a href="./qualtrics.html">Name and Recode Variables</a>, Recode the Values</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>The Team Codebook is filled in</strong></td>
+<td><code>TeamCodebook.docx</code> in the team Google Drive lists every variable with its values</td>
+<td><a href="./qualtrics.html">Name and Recode Variables</a>, Create a Team Codebook</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong>The survey questions are exported to Word with coded values showing</strong></td>
+<td><code>Draft.TeamSurveyQuestions.docx</code> (and later the final version) in the team Google Drive</td>
+<td><a href="./qualtrics.html">Name and Recode Variables</a>, Export Survey Questions</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>You know how the data export will be done</strong></td>
+<td>Excel, numeric values, “Recode seen but unanswered as -99” checked, split multi-value fields for select-all questions, the <code>.cleandata</code> copy with the extra header rows removed, and the file name <code>MONTH.DAY.YEAR.team#.cleandata.xlsx</code></td>
+<td><a href="./export.html">Export Survey Data</a>, Export Survey Data (.xlsx) and Rename Files</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Go</span>Go: your team’s data file is not part of Lab 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your team is still collecting data during Lab 2. The R half of this lab uses the <strong>lab dataset</strong>, which is why every chapter has a Lab (lab data) and a Your Turn (team data). You will come back to the Your Turn sections with your team’s <code>.cleandata</code> file after data collection closes, with a Quant Peer Mentor (<a href="./import-once.html">Caution: meet with a Quant Peer Mentor</a>).</p>
+</div>
+</div>
+</section>
+<section id="part-2-you-in-rstudio" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="part-2-you-in-rstudio"><span class="header-section-number">15.3</span> Part 2: you, in RStudio</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>☐</th>
+<th>What</th>
+<th>How to check</th>
+<th>Where it came from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>☐</td>
+<td><strong><code>Lastname_lab2.qmd</code> exists in your project</strong> with a YAML header and a load-library chunk</td>
+<td>The Files tab shows it next to <code>Lastname_FRI.Rproj</code>; the load-library chunk loads <code>tidyverse</code>, <code>readxl</code>, and <code>psych</code> without error</td>
+<td><a href="./codechunks.html">Start a Report</a>, Name the file</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>The lab dataset is in <code>data/</code></strong></td>
+<td><code>list.files("data")</code> shows <code>ANTH306_LayConceptionsMH_SYNTHETIC.xlsx</code> (and, for Teams 3 and 5, <code>ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx</code>)</td>
+<td><a href="./import-once.html">Import Data Once</a>, Before you start, and the box <em>Where the data files are</em></td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong><code>lab_prep.R</code> is in the project folder, not in <code>data/</code></strong></td>
+<td><code>list.files()</code> shows <code>lab_prep.R</code> next to <code>Lastname_FRI.Rproj</code>; <code>source("lab_prep.R")</code> runs silently and <code>nrow(mh_clean)</code> prints 188</td>
+<td><a href="./dplyr.html">Transforming Your Data</a>, Important: where <code>mh_clean</code> comes from</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>You imported the lab data yourself as <code>mh_raw</code></strong> and looked at it</td>
+<td><code>nrow(mh_raw)</code> is 200 and <code>ncol(mh_raw)</code> is 134; you ran <code>head()</code> and <code>names()</code></td>
+<td><a href="./import-once.html">Import Data Once</a>, Lab Plays 1 and 2</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong>You checked the names against the codebook with <code>setdiff()</code> in both directions</strong></td>
+<td>You can say which variables are in the data but not the codebook, and why</td>
+<td><a href="./import-once.html">Import Data Once</a>, Lab Play 3</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>You turned <code>-99</code> and <code>-50</code> into <code>NA</code></strong></td>
+<td><code>summary(mh_raw$POLITICALBELIEFS)</code> shows a minimum of 1 and an <code>NA's</code> count, not <code>-99</code></td>
+<td><a href="./import-once.html">Import Data Once</a>, Lab Play 4</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong>You converted a text column to numbers with <code>as.numeric()</code></strong> and counted what became <code>NA</code></td>
+<td><code>veggiescore_SYNTHETIC.xlsx</code> is in <code>data/</code>; <code>summary()</code> of <code>VEGGIESCORE</code> shows a minimum and maximum and 24 <code>NA's</code></td>
+<td><a href="./import-once.html">Import Data Once</a>, Lab Play 5</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>Teams 3 and 5 only: you reshaped the long lab file to wide</strong></td>
+<td><code>lab_wide</code> has one row per <code>PASSWORD</code> with <code>HELPSEEK_PRE</code> and <code>HELPSEEK_POST</code></td>
+<td><a href="./prepost.html">Pre/Post Data</a>, Lab Plays 1 to 3</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong>Team 4 only: you reshaped the vignette ratings to long and added the two factors</strong></td>
+<td>One row per person per case (<code>CASE</code>, <code>RISK</code>), with the <code>CASE_RACIALIZED</code> and <code>CASE_SEVERITY</code> factors, and four cell means</td>
+<td><a href="./vignette.html">Vignette Data</a>, Lab Plays 1 to 3</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>You built the four lab categories with <code>mutate()</code> and <code>case_when()</code></strong></td>
+<td><code>count()</code> on <code>EDUCATION_3CAT</code>, <code>POL_3CAT</code>, <code>HEALTH_3CAT</code>, and <code>SES_01</code> matches the Ref’s checks</td>
+<td><a href="./dplyr.html">Transforming Your Data</a>, Lab Plays 1 to 4</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong>You scored three composites with <code>scoreItems(impute = "none")</code></strong> and read their alphas</td>
+<td>WELLBEING, STIGMA (with its two subscales), and the K10 total; the alphas match the Ref’s checks</td>
+<td><a href="./composite.html">Creating Composite Scores</a>, Lab Plays 1 to 3</td>
+</tr>
+<tr class="even">
+<td>☐</td>
+<td><strong>You wrote one Measures sentence per composite</strong></td>
+<td>Scale, number of items, response scale, scoring, reverse items, alpha in this sample</td>
+<td><a href="./composite.html">Creating Composite Scores</a>, Lab Play 4</td>
+</tr>
+<tr class="odd">
+<td>☐</td>
+<td><strong><code>Lastname_lab2.qmd</code> renders and is backed up</strong></td>
+<td>Render produces <code>Lastname_lab2.html</code> with no red text; a copy of the <code>.qmd</code> is in the R Labs folder of your ELN</td>
+<td><a href="./find-the-ref.html">Find the Ref</a>, Ref’s final whistle</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span><img src="images/ref-whistle.svg" class="ref-mini img-fluid" alt="Ref the raccoon blowing his whistle"> Ref’s call: the gaps that break Lab 3 and Lab 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>object 'mh_clean' not found</code></strong> in a later chapter → <code>source("lab_prep.R")</code> was not run in this session, or the file is inside <code>data/</code> instead of the project folder.</li>
+<li><strong><code>object 'WELLBEING' not found</code></strong> → same cause; every composite and every <code>_CAT</code> variable the later labs use is created by <code>lab_prep.R</code>, not by you typing it again.</li>
+<li><strong>Your lab file lives on the Desktop</strong> → relative paths fail. It belongs in <code>Lastname_FRI</code>.</li>
+<li><strong>You skipped Lab Play 3 (the <code>setdiff()</code> check)</strong> → nothing breaks in the lab data, which is clean, but the same check is the one that catches a misnamed variable in your team’s export, where it matters.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="what-lab-3-will-add" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="what-lab-3-will-add"><span class="header-section-number">15.4</span> What Lab 3 will add</h2>
+<p>Lab 3 has very little code. You will read the Analysis Map, take a short quiz placing five research questions on it, check whether an outcome is normal, and write the Data Analysis Plan paragraph for your Methods section. <a href="./lab3-checklist.html">Lab 3 Checklist</a> is the matching list.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/shanemccarty\.github\.io\/FRIplaybook");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./composite.html" class="pagination-link" aria-label="Creating Composites">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Creating Composites</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./analysis-map.html" class="pagination-link" aria-label="The Analysis Map">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">The Analysis Map</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://shanemccarty.github.io/FRIplaybook/edit/main/lab2-checklist.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://shanemccarty.github.io/FRIplaybook/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

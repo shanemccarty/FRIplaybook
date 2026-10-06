@@ -1,6 +1,6 @@
 ---
 title: "Compare 1 Group, Pre/Post"
-subtitle: "The paired-samples t-test for normal data and the Wilcoxon signed-rank test for data that are not, with paired violin and raincloud plots"
+subtitle: "Paired-samples t-test (normal) and Wilcoxon signed-rank (non-normal)"
 author:
   - Yoomin (Ashley) Kim
   - Erica Sava
@@ -55,7 +55,7 @@ Play 1 is the [parametric]{.normal} case; Play 2 is the [non-parametric]{.nonnor
 ::: callout-tip
 ## Go: do this first
 
-[Pre/Post Data](prepost.qmd) gets the data into shape: `PASSWORD` cleaned, duplicates removed, `TIME` as a factor, and one **wide** table (one row per person, `SCORE_PRE` and `SCORE_POST`) plus one **long** table (two rows per person). This chapter tests the wide table and plots the long one.
+[Pre/Post Data](prepost.qmd) gets the data into shape: `PASSWORD` cleaned, duplicates removed, `TIME` as a factor, and one **wide** table (one row per person, `SWAPSCORE_PRE` and `SWAPSCORE_POST`) plus one **long** table (two rows per person). This chapter tests the wide table and plots the long one.
 :::
 
 ```{r}
@@ -88,7 +88,7 @@ The research question is the team's: **did cooking self-efficacy change from bef
 
 ```{r}
 #| label: play1-import
-food_long <- read_excel("data/foodsecurity_SYNTHETIC.xlsx") |>
+foodsecuritydata_long <- read_excel("data/foodsecurity_SYNTHETIC.xlsx") |>
   mutate(PASSWORD = tolower(trimws(PASSWORD)),                              # the link must match exactly
          TIME = factor(TIME, levels = c(0, 1), labels = c("PRE", "POST"))) |>
   distinct(PASSWORD, TIME, .keep_all = TRUE) |>                             # one row per person per time
@@ -96,7 +96,7 @@ food_long <- read_excel("data/foodsecurity_SYNTHETIC.xlsx") |>
   mutate(EFF_SAFE = rowMeans(across(EFFSAFE1:EFFSAFE4), na.rm = TRUE),
          COOKKNOW = rowSums(across(COOKKNOW1:COOKKNOW5)))                   # count of skills known (0 to 5)
 
-food_long |> count(TIME)
+foodsecuritydata_long |> count(TIME)
 
 #source: Pre/Post Data (Situation 1); Create Composite Variables
 #explanation: tolower() and trimws() fix the two most common password mismatches; distinct() drops the duplicate; the composites are scored in long format so pre and post are scored the same way
@@ -106,13 +106,13 @@ food_long |> count(TIME)
 
 ```{r}
 #| label: play1-wide
-food_wide <- food_long |>
+foodsecuritydata_wide <- foodsecuritydata_long |>
   select(PASSWORD, TIME, EFF_SAFE, COOKKNOW) |>
   pivot_wider(names_from = TIME, values_from = c(EFF_SAFE, COOKKNOW), names_glue = "{.value}_{TIME}")
 
-nrow(food_wide)                                                   # people who appear at least once
-food_matched <- food_wide |> filter(!is.na(EFF_SAFE_PRE), !is.na(EFF_SAFE_POST))
-nrow(food_matched)                                                # people with both scores: the n for the test
+nrow(foodsecuritydata_wide)                                                   # people who appear at least once
+foodsecuritydata_matched <- foodsecuritydata_wide |> filter(!is.na(EFF_SAFE_PRE), !is.na(EFF_SAFE_POST))
+nrow(foodsecuritydata_matched)                                                # people with both scores: the n for the test
 
 #source: Pre/Post Data (Situation 1, Step 4)
 #explanation: names_glue builds EFF_SAFE_PRE / EFF_SAFE_POST; a paired test can only use people who have both
@@ -121,7 +121,7 @@ nrow(food_matched)                                                # people with 
 ::: callout-warning
 ## Caution: your n is the matched people, not the rows
 
-`r nrow(food_long)` rows became `r nrow(food_wide)` people, of whom `r nrow(food_matched)` have both a pretest and a posttest. The test uses `r nrow(food_matched)`. Report all three numbers in Methods (how many started, how many finished, how many could be linked), because the people who dropped out may differ from the people who stayed.
+`r nrow(foodsecuritydata_long)` rows became `r nrow(foodsecuritydata_wide)` people, of whom `r nrow(foodsecuritydata_matched)` have both a pretest and a posttest. The test uses `r nrow(foodsecuritydata_matched)`. Report all three numbers in Methods (how many started, how many finished, how many could be linked), because the people who dropped out may differ from the people who stayed.
 :::
 
 #### Step 3: Look at the change, person by person
@@ -129,15 +129,15 @@ nrow(food_matched)                                                # people with 
 A paired plot should show the pairing. The long table of the matched people, with a line from each person's pretest to their posttest, does that: the violins show the two distributions, and the lines show that most people moved up.
 
 ```{r}
-#| label: play1-plot
+#| label: plot1-effsafe-prepost-paired
 #| fig-cap: "Figure 1. Food-safety self-efficacy before and after the cooking workshop (synthetic data, n = 59 matched). Each gray line is one person; violins show the distribution at each time, boxes the median and quartiles."
 #| fig-alt: "Two violins, PRE in purple and POST in yellow, with thin gray lines connecting each person's two points. Most lines slope upward; the POST violin sits higher and is narrower at the top of the scale."
-food_matched_long <- food_matched |>
+foodsecuritydata_matched_long <- foodsecuritydata_matched |>
   select(PASSWORD, EFF_SAFE_PRE, EFF_SAFE_POST) |>
   pivot_longer(cols = -PASSWORD, names_to = "TIME", values_to = "EFF_SAFE", names_prefix = "EFF_SAFE_") |>
   mutate(TIME = factor(TIME, levels = c("PRE", "POST")))
 
-plot_effsafe_paired <- ggplot(food_matched_long, aes(x = TIME, y = EFF_SAFE)) +
+plot1_effsafe_prepost_paired <- ggplot(foodsecuritydata_matched_long, aes(x = TIME, y = EFF_SAFE)) +
   geom_line(aes(group = PASSWORD), color = "gray60", alpha = 0.5) +            # one line per person
   geom_violin(aes(fill = TIME), alpha = 0.5, show.legend = FALSE) +
   geom_boxplot(width = 0.12, outlier.shape = NA) +
@@ -148,8 +148,8 @@ plot_effsafe_paired <- ggplot(food_matched_long, aes(x = TIME, y = EFF_SAFE)) +
        title = "Food-safety self-efficacy before and after the workshop") +
   theme_bw(base_size = 13)
 
-plot_effsafe_paired
-ggsave("plots/effsafe_prepost_paired.png", plot = plot_effsafe_paired, width = 7, height = 5, dpi = 300)
+plot1_effsafe_prepost_paired
+ggsave("plots/plot1_effsafe_prepost_paired.png", plot = plot1_effsafe_prepost_paired, width = 8, height = 5, dpi = 300)
 
 #source: https://ggplot2.tidyverse.org/reference/geom_path.html
 #explanation: geom_line(aes(group = PASSWORD)) draws one segment per person, which is the layer that makes the plot paired; the other layers are the violin from Compare 2 Groups
@@ -166,10 +166,10 @@ The violin is a box plot and a density curve in one shape: wide where many peopl
 A raincloud puts the half-violin (the cloud), the box, and the raw points (the rain) side by side so that none hides another. The paired lines still connect each person.
 
 ```{r}
-#| label: play1-raincloud
+#| label: plot2-effsafe-prepost-raincloud
 #| fig-cap: "Figure 2. The same data as Figure 1 as a paired raincloud plot: half-violins to the right, boxes in the middle, individual points to the left, one gray line per person."
 #| fig-alt: "For PRE and POST, a half-violin is nudged to the right, a narrow box plot sits at the center, and jittered points are nudged to the left, with gray lines joining each person's PRE and POST points."
-plot_effsafe_rain <- ggplot(food_matched_long, aes(x = TIME, y = EFF_SAFE, fill = TIME)) +
+plot2_effsafe_prepost_raincloud <- ggplot(foodsecuritydata_matched_long, aes(x = TIME, y = EFF_SAFE, fill = TIME)) +
   geom_line(aes(group = PASSWORD), color = "gray60", alpha = 0.4, position = position_nudge(x = -0.15)) +
   geom_violinhalf(alpha = 0.6, position = position_nudge(x = 0.15), show.legend = FALSE) +
   geom_boxplot(width = 0.1, outlier.shape = NA, show.legend = FALSE) +
@@ -180,8 +180,8 @@ plot_effsafe_rain <- ggplot(food_matched_long, aes(x = TIME, y = EFF_SAFE, fill 
        title = "Before and after the workshop (raincloud)") +
   theme_bw(base_size = 13)
 
-plot_effsafe_rain
-ggsave("plots/effsafe_prepost_raincloud.png", plot = plot_effsafe_rain, width = 7, height = 5, dpi = 300)
+plot2_effsafe_prepost_raincloud
+ggsave("plots/plot2_effsafe_prepost_raincloud.png", plot = plot2_effsafe_prepost_raincloud, width = 8, height = 5, dpi = 300)
 
 #source: https://easystats.github.io/see/reference/geom_violinhalf.html
 #explanation: position_nudge() moves each layer sideways so the cloud, the box, and the rain do not overlap
@@ -193,26 +193,27 @@ The paired t-test does not care whether the pretest or the posttest scores are n
 
 ```{r}
 #| label: play1-check
-food_matched <- food_matched |> mutate(EFF_SAFE_DIFF = EFF_SAFE_POST - EFF_SAFE_PRE)
+foodsecuritydata_matched <- foodsecuritydata_matched |> mutate(EFF_SAFE_DIFF = EFF_SAFE_POST - EFF_SAFE_PRE)
 
-food_matched |>
+foodsecuritydata_matched |>
   summarise(n = n(), mean_diff = mean(EFF_SAFE_DIFF), sd_diff = sd(EFF_SAFE_DIFF),
             shapiro_p = shapiro.test(EFF_SAFE_DIFF)$p.value)
 
 #explanation: post minus pre, so a positive difference is an increase; Shapiro-Wilk on the differences, not on the two columns
 ```
 
-The Shapiro-Wilk p-value is above .05 and there are `r nrow(food_matched)` matched people, so the paired t-test is the right line of the box.
+The Shapiro-Wilk p-value is above .05 and there are `r nrow(foodsecuritydata_matched)` matched people, so the paired t-test is the right line of the box.
 
 #### Step 6: The paired-samples t-test and its effect size
 
 ```{r}
 #| label: play1-test
-t_effsafe <- t.test(food_matched$EFF_SAFE_POST, food_matched$EFF_SAFE_PRE, paired = TRUE)
-t_effsafe
+# ptestmodel1: EFF_SAFE, posttest vs pretest, matched people
+ptestmodel1 <- t.test(foodsecuritydata_matched$EFF_SAFE_POST, foodsecuritydata_matched$EFF_SAFE_PRE, paired = TRUE)
+ptestmodel1
 
 # effect size for a paired design: Cohen's d_z = mean difference / SD of the differences
-dz_effsafe <- mean(food_matched$EFF_SAFE_DIFF) / sd(food_matched$EFF_SAFE_DIFF)
+dz_effsafe <- mean(foodsecuritydata_matched$EFF_SAFE_DIFF) / sd(foodsecuritydata_matched$EFF_SAFE_DIFF)
 dz_effsafe
 
 #source: https://www.datacamp.com/tutorial/t-tests-r-tutorial; Lakens (2013) for d_z
@@ -232,12 +233,12 @@ dz_effsafe
 #| include: false
 fmt  <- function(x, k = 2) formatC(x, format = "f", digits = k)
 pfmt <- function(p) if (p < .001) "< .001" else paste0("= ", sub("^0", "", fmt(p, 3)))
-m1 <- food_matched |> summarise(pre_m = mean(EFF_SAFE_PRE), pre_s = sd(EFF_SAFE_PRE), post_m = mean(EFF_SAFE_POST), post_s = sd(EFF_SAFE_POST))
+m1 <- foodsecuritydata_matched |> summarise(pre_m = mean(EFF_SAFE_PRE), pre_s = sd(EFF_SAFE_PRE), post_m = mean(EFF_SAFE_POST), post_s = sd(EFF_SAFE_POST))
 ```
 
 A paired sentence reports both means, the n of matched people, *t*(df), *p*, *d~z~*, and the direction:
 
-> Food-safety self-efficacy increased from before the workshop (*M* = `r fmt(m1$pre_m)`, *SD* = `r fmt(m1$pre_s)`) to two weeks after it (*M* = `r fmt(m1$post_m)`, *SD* = `r fmt(m1$post_s)`), paired *t*(`r t_effsafe$parameter`) = `r fmt(t_effsafe$statistic)`, *p* `r pfmt(t_effsafe$p.value)`, *d~z~* = `r fmt(dz_effsafe)`, a medium effect (*n* = `r nrow(food_matched)` matched participants; Figure 1).
+> Food-safety self-efficacy increased from before the workshop (*M* = `r fmt(m1$pre_m)`, *SD* = `r fmt(m1$pre_s)`) to two weeks after it (*M* = `r fmt(m1$post_m)`, *SD* = `r fmt(m1$post_s)`), paired *t*(`r ptestmodel1$parameter`) = `r fmt(ptestmodel1$statistic)`, *p* `r pfmt(ptestmodel1$p.value)`, *d~z~* = `r fmt(dz_effsafe)`, a medium effect (*n* = `r nrow(foodsecuritydata_matched)` matched participants; Figure 1).
 
 ### Play 2 ([Wilcoxon signed-rank test]{.nonnormal}): compare pretest and posttest on the number of cooking skills known
 
@@ -247,11 +248,11 @@ A paired sentence reports both means, the n of matched people, *t*(df), *p*, *d~
 
 ```{r}
 #| label: play2-look
-food_matched <- food_matched |> mutate(COOKKNOW_DIFF = COOKKNOW_POST - COOKKNOW_PRE)
+foodsecuritydata_matched <- foodsecuritydata_matched |> mutate(COOKKNOW_DIFF = COOKKNOW_POST - COOKKNOW_PRE)
 
-food_matched |> count(COOKKNOW_DIFF)                                            # how many people changed by how much
+foodsecuritydata_matched |> count(COOKKNOW_DIFF)                                            # how many people changed by how much
 
-food_matched |>
+foodsecuritydata_matched |>
   summarise(n = n(), median_pre = median(COOKKNOW_PRE), median_post = median(COOKKNOW_POST),
             shapiro_p = shapiro.test(COOKKNOW_DIFF)$p.value)
 
@@ -264,12 +265,13 @@ Most people gained one skill, a third stayed the same, a few lost one. Medians, 
 
 ```{r}
 #| label: play2-test
-w_cook <- wilcox.test(food_matched$COOKKNOW_POST, food_matched$COOKKNOW_PRE, paired = TRUE)
-w_cook
+# wilcomodel1: COOKKNOW, posttest vs pretest (Wilcoxon signed-rank)
+wilcomodel1 <- wilcox.test(foodsecuritydata_matched$COOKKNOW_POST, foodsecuritydata_matched$COOKKNOW_PRE, paired = TRUE)
+wilcomodel1
 
 # effect size r from the normal approximation, as in Compare 2 Groups
-n_changed <- sum(food_matched$COOKKNOW_DIFF != 0)                 # people with a zero difference are dropped by the test
-z_cook <- qnorm(w_cook$p.value / 2)
+n_changed <- sum(foodsecuritydata_matched$COOKKNOW_DIFF != 0)                 # people with a zero difference are dropped by the test
+z_cook <- qnorm(wilcomodel1$p.value / 2)
 r_cook <- abs(z_cook) / sqrt(n_changed)
 r_cook
 
@@ -284,10 +286,10 @@ Two things to know about the output. With `paired = TRUE` the statistic is `V`, 
 ```{r}
 #| label: play2-report-values
 #| include: false
-md2 <- food_matched |> summarise(pre = median(COOKKNOW_PRE), post = median(COOKKNOW_POST))
+md2 <- foodsecuritydata_matched |> summarise(pre = median(COOKKNOW_PRE), post = median(COOKKNOW_POST))
 ```
 
-> The number of basic cooking skills participants said they knew increased from before the workshop (*Mdn* = `r md2$pre` of 5) to after it (*Mdn* = `r md2$post`), Wilcoxon signed-rank *V* = `r format(w_cook$statistic, big.mark = ",")`, *p* `r pfmt(w_cook$p.value)`, *r* = `r fmt(r_cook)`, a large effect; `r sum(food_matched$COOKKNOW_DIFF > 0)` of `r nrow(food_matched)` matched participants gained at least one skill, `r sum(food_matched$COOKKNOW_DIFF == 0)` reported no change, and `r sum(food_matched$COOKKNOW_DIFF < 0)` reported fewer.
+> The number of basic cooking skills participants said they knew increased from before the workshop (*Mdn* = `r md2$pre` of 5) to after it (*Mdn* = `r md2$post`), Wilcoxon signed-rank *V* = `r format(wilcomodel1$statistic, big.mark = ",")`, *p* `r pfmt(wilcomodel1$p.value)`, *r* = `r fmt(r_cook)`, a large effect; `r sum(foodsecuritydata_matched$COOKKNOW_DIFF > 0)` of `r nrow(foodsecuritydata_matched)` matched participants gained at least one skill, `r sum(foodsecuritydata_matched$COOKKNOW_DIFF == 0)` reported no change, and `r sum(foodsecuritydata_matched$COOKKNOW_DIFF < 0)` reported fewer.
 
 ::: callout-warning
 ## Caution: a change is not an effect of the workshop
@@ -319,14 +321,14 @@ lab_wide <- lab_long |>
   select(PASSWORD, TIME, STIGMA, HELPSEEK) |>
   pivot_wider(names_from = TIME, values_from = c(STIGMA, HELPSEEK), names_glue = "{.value}_{TIME}")
 lab_st <- lab_wide |> filter(!is.na(STIGMA_PRE), !is.na(STIGMA_POST)) |> mutate(DIFF = STIGMA_POST - STIGMA_PRE)
-lab_t  <- t.test(lab_st$STIGMA_POST, lab_st$STIGMA_PRE, paired = TRUE)
+ptestmodel2  <- t.test(lab_st$STIGMA_POST, lab_st$STIGMA_PRE, paired = TRUE)
 lab_dz <- mean(lab_st$DIFF) / sd(lab_st$DIFF)
 lab_hs <- lab_wide |> filter(!is.na(HELPSEEK_PRE), !is.na(HELPSEEK_POST)) |> mutate(DIFF = HELPSEEK_POST - HELPSEEK_PRE)
-lab_w  <- wilcox.test(lab_hs$HELPSEEK_POST, lab_hs$HELPSEEK_PRE, paired = TRUE)
-lab_r  <- abs(qnorm(lab_w$p.value / 2)) / sqrt(sum(lab_hs$DIFF != 0))
+wilcomodel2  <- wilcox.test(lab_hs$HELPSEEK_POST, lab_hs$HELPSEEK_PRE, paired = TRUE)
+lab_r  <- abs(qnorm(wilcomodel2$p.value / 2)) / sqrt(sum(lab_hs$DIFF != 0))
 ```
 
-**Before you start.** The file is in the class Google Drive, next to the lab data; put it in your `data` folder. Clean it as in [Pre/Post Data](prepost.qmd) (lowercase and trim `PASSWORD`, `TIME` as a factor, `distinct()`, -99/-50 to `NA`), then score `STIGMA` in long format exactly as `lab_prep.R` does (reverse the four `_R` items with `6 - x`, then the mean of all eight). Pivot `STIGMA` and `HELPSEEK` wide together.
+**Before you start.** The file is in the [CLASS DRIVE: Quant Track folder](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link), next to the lab data; put it in your `data` folder. Clean it as in [Pre/Post Data](prepost.qmd) (lowercase and trim `PASSWORD`, `TIME` as a factor, `distinct()`, -99/-50 to `NA`), then score `STIGMA` in long format exactly as `lab_prep.R` does (reverse the four `_R` items with `6 - x`, then the mean of all eight). Pivot `STIGMA` and `HELPSEEK` wide together.
 
 ### Lab Play 1 ([paired t-test]{.normal}): compare pretest and posttest on stigma
 
@@ -337,7 +339,7 @@ Keep the people with both stigma scores, draw the paired violin, compute the dif
 
 -   `r nrow(lab_long)` rows after `distinct()`, `r nrow(lab_wide)` people, **`r nrow(lab_st)` matched** on `STIGMA`.
 -   Means: pre `r fmt(mean(lab_st$STIGMA_PRE))`, post `r fmt(mean(lab_st$STIGMA_POST))`; mean difference `r fmt(mean(lab_st$DIFF))` (SD `r fmt(sd(lab_st$DIFF))`), Shapiro-Wilk p = `r fmt(shapiro.test(lab_st$DIFF)$p.value, 3)`.
--   Paired *t*(`r lab_t$parameter`) = `r fmt(lab_t$statistic)`, *p* `r pfmt(lab_t$p.value)`, *d~z~* = `r fmt(lab_dz)`. Stigma went **down**: a negative difference and a negative *t* mean post is lower than pre.
+-   Paired *t*(`r ptestmodel2$parameter`) = `r fmt(ptestmodel2$statistic)`, *p* `r pfmt(ptestmodel2$p.value)`, *d~z~* = `r fmt(lab_dz)`. Stigma went **down**: a negative difference and a negative *t* mean post is lower than pre.
 :::
 
 ### Lab Play 2 ([Wilcoxon signed-rank]{.nonnormal}): compare pretest and posttest on willingness to seek help
@@ -349,7 +351,7 @@ Keep the people with both stigma scores, draw the paired violin, compute the dif
 
 -   **`r nrow(lab_hs)` matched** on `HELPSEEK` (fewer than on `STIGMA`: some people skipped the question at one time).
 -   Differences: `r sum(lab_hs$DIFF < 0)` went down, `r sum(lab_hs$DIFF == 0)` no change, `r sum(lab_hs$DIFF > 0)` went up. Medians: pre `r median(lab_hs$HELPSEEK_PRE)`, post `r median(lab_hs$HELPSEEK_POST)`. The medians are the same, and the test is still significant: a signed-rank test is about the differences, and `r sum(lab_hs$DIFF > 0)` up against `r sum(lab_hs$DIFF < 0)` down is lopsided. Report the counts of up / same / down alongside the medians.
--   Wilcoxon signed-rank *V* = `r lab_w$statistic`, *p* `r pfmt(lab_w$p.value)`, *r* = `r fmt(lab_r)` (using the `r sum(lab_hs$DIFF != 0)` people who changed).
+-   Wilcoxon signed-rank *V* = `r wilcomodel2$statistic`, *p* `r pfmt(wilcomodel2$p.value)`, *r* = `r fmt(lab_r)` (using the `r sum(lab_hs$DIFF != 0)` people who changed).
 :::
 
 ::: {.callout-note collapse="true" icon="false"}
@@ -390,9 +392,10 @@ mean(lab_st$DIFF) / sd(lab_st$DIFF)                                  # d_z
 # Lab Play 2
 lab_hs <- lab_wide |> filter(!is.na(HELPSEEK_PRE), !is.na(HELPSEEK_POST)) |> mutate(DIFF = HELPSEEK_POST - HELPSEEK_PRE)
 lab_hs |> count(DIFF)
-w <- wilcox.test(lab_hs$HELPSEEK_POST, lab_hs$HELPSEEK_PRE, paired = TRUE)
-w
-abs(qnorm(w$p.value / 2)) / sqrt(sum(lab_hs$DIFF != 0))              # r
+# wilcomodel2: HELPSEEK, posttest vs pretest, matched people
+wilcomodel2 <- wilcox.test(lab_hs$HELPSEEK_POST, lab_hs$HELPSEEK_PRE, paired = TRUE)
+wilcomodel2
+abs(qnorm(wilcomodel2$p.value / 2)) / sqrt(sum(lab_hs$DIFF != 0))              # r
 ```
 :::
 
@@ -418,7 +421,7 @@ For every pre/post comparison in your *RD Report* and *Final Report*: the three 
 ::: {.callout-note .gray icon="false"}
 ## There is no Ref. It's game time, your turn!
 
-Start from the `wide_data` and `long_data` you built in [Pre/Post Data](prepost.qmd). Change every line marked `# REPLACE`, pick the line of the box that matches your outcome, and use the checklist.
+Start from the `wide_data` and `long_data` you built in [Pre/Post Data](prepost.qmd). Change every word that starts with `SWAP`, pick the line of the box that matches your outcome, and use the checklist.
 :::
 
 ```{r}
@@ -426,35 +429,38 @@ Start from the `wide_data` and `long_data` you built in [Pre/Post Data](prepost.
 #| eval: false
 library(tidyverse); library(see)
 
-# 1. matched people only (wide_data from Pre/Post Data has SCORE_PRE and SCORE_POST)
-matched <- wide_data |>
-  filter(!is.na(SCORE_PRE), !is.na(SCORE_POST)) |>                  # REPLACE SCORE with your composite or outcome
-  mutate(DIFF = SCORE_POST - SCORE_PRE)
-nrow(matched)                                                        # the n for the test; report started / finished / matched
+# 1. mydata people only (wide_data from Pre/Post Data has SWAPSCORE_PRE and SWAPSCORE_POST)
+mydata <- wide_data |>
+  filter(!is.na(SWAPSCORE_PRE), !is.na(SWAPSCORE_POST)) |>          # SWAP: your composite or outcome
+  mutate(DIFF = SWAPSCORE_POST - SWAPSCORE_PRE)
+nrow(mydata)                                                        # the n for the test; report started / finished / mydata
 
 # 2. look: paired violin with one line per person
-matched |> select(PASSWORD, SCORE_PRE, SCORE_POST) |>
+mydata |> select(PASSWORD, SWAPSCORE_PRE, SWAPSCORE_POST) |>
   pivot_longer(-PASSWORD, names_to = "TIME", values_to = "SCORE", names_prefix = "SCORE_") |>
   mutate(TIME = factor(TIME, levels = c("PRE", "POST"))) |>
   ggplot(aes(x = TIME, y = SCORE)) +
   geom_line(aes(group = PASSWORD), color = "gray60", alpha = 0.4) +
   geom_violin(aes(fill = TIME), alpha = 0.5, show.legend = FALSE) +
   geom_boxplot(width = 0.12, outlier.shape = NA) +
-  labs(x = NULL, y = "REPLACE: outcome (scale)", title = "REPLACE") + theme_bw()
-# ggsave("plots/score_prepost.png", width = 7, height = 5, dpi = 300)                 # REPLACE the name
+  labs(x = NULL, y = "SWAP: outcome (scale)", title = "SWAP: title") + theme_bw()
+# ggsave("plots/plot1_SWAPNAME.png", width = 8, height = 5, dpi = 300)                      # SWAP: the variables and plot type, e.g. plot1_wellbeing_treated_barplot
 
 # 3. the differences
-matched |> summarise(n = n(), mean_diff = mean(DIFF), sd_diff = sd(DIFF), shapiro_p = shapiro.test(DIFF)$p.value)
-matched |> count(DIFF)                                               # for a count or a single rating
+mydata |> summarise(n = n(), mean_diff = mean(DIFF), sd_diff = sd(DIFF), shapiro_p = shapiro.test(DIFF)$p.value)
+mydata |> count(DIFF)                                               # for a count or a single rating
 
 # 4a. differences roughly normal (parametric): paired t-test and d_z
-t.test(matched$SCORE_POST, matched$SCORE_PRE, paired = TRUE)
-mean(matched$DIFF) / sd(matched$DIFF)                                # d_z: .2 small, .5 medium, .8 large
+# ptestmodel1: SWAP: one line that says what this test compares
+ptestmodel1 <- t.test(mydata$SWAPSCORE_POST, mydata$SWAPSCORE_PRE, paired = TRUE)
+ptestmodel1
+mean(mydata$DIFF) / sd(mydata$DIFF)                                # d_z: .2 small, .5 medium, .8 large
 
 # 4b. differences not normal, a count, or a single rating (non-parametric): Wilcoxon signed-rank and r
-w <- wilcox.test(matched$SCORE_POST, matched$SCORE_PRE, paired = TRUE)
-w
-abs(qnorm(w$p.value / 2)) / sqrt(sum(matched$DIFF != 0))              # r: .1 small, .3 medium, .5 large
+# wilcomodel1: SWAP: one line that says what this test compares
+wilcomodel1 <- wilcox.test(mydata$SWAPSCORE_POST, mydata$SWAPSCORE_PRE, paired = TRUE)
+wilcomodel1
+abs(qnorm(wilcomodel1$p.value / 2)) / sqrt(sum(mydata$DIFF != 0))              # r: .1 small, .3 medium, .5 large
 ```
 
 | Criteria | Ask yourself |

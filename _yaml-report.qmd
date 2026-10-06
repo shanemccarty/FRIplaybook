@@ -1,0 +1,50 @@
+<!-- The one Required YAML header for the RD Report and Final Report. Included in Start My Report and Citations & Refs. Edit here only. -->
+```{YAML}
+---
+title: "title your report here"
+subtitle: "insert subtitle here"
+date: 10.09.2026            # SWAP: the date you submit, written MM.DD.YYYY
+date-format: "MM.DD.YYYY"
+author:
+  - name: "your name"
+    email: youremail@binghamton.edu 
+    affiliation: 
+      - name: Binghamton University
+    attributes:
+      corresponding: true
+abstract: |
+    TBD goes here
+keywords:
+  - insert keyword 1
+  - insert keyword 2
+  - insert keyword 3
+  - insert keyword 4
+  - insert keyword 5
+bibliography: references.bib   # your Zotero export (Citations & Refs)
+csl: apa.csl                   # APA 7th style file (Citations & Refs)
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    fig-width: 8
+    fig-height: 5
+    code-fold: true                # code is folded behind a "Code" button: readers see a paper, graders click to see the code
+    code-summary: "Show the code"
+    code-overflow: wrap
+    embed-resources: true
+    theme: cosmo
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    fig-width: 6
+    fig-height: 4
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+---
+    
+```

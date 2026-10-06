@@ -63,6 +63,7 @@ Objects from earlier work (`alldata`, `select_data`, `VARIABLE1`) stay in the **
 -   **`rm(list = ls())`** in the console. This removes every object but leaves packages loaded. Use it when you want a quick reset without restarting.
 
 ```{r}
+#| label: clean-environment
 # Remove all objects from the global environment
 rm(list = ls())
 ```
@@ -76,7 +77,7 @@ You did most of this when you first set up your computer. You do **not** repeat 
 -   Install R and RStudio ([R Software](RStudio.qmd))
 -   Create your RStudio Project, `Lastname_FRI`
 -   Run your `install.R` file to install your packages ([R Packages](library.qmd))
--   Create your first report file, with its load-library chunk ([Start a Report](codechunks.qmd)). You repeat this once per lab, not per session.
+-   Know how to create a `.qmd` file with its load-library chunk ([Start a Report](codechunks.qmd)). Your first real one is `Lastname_lab2.qmd`, made at the start of Lab 2; there is no Lab 1 file. You make one file per lab, not per session.
 -   Create a folder called **R Labs** inside your individual ELN (your Google Drive folder). In Google Drive, open your ELN and click + New \> New folder.
 
 ## Ref's kickoff: every time you start RStudio
@@ -86,7 +87,7 @@ You did most of this when you first set up your computer. You do **not** repeat 
 ::: callout-tip
 ## Go: Starting a new lab? Make a new file first
 
-The six steps above are for a day when you **continue** a file you already started. On the first day of a new lab there is no file to open yet. Do steps 1 and 2, then create and name the new `.qmd` file and paste in your load-library chunk exactly as in [Start a Report](codechunks.qmd) (the previous chapter). Save it, check that it appears in the files tab, and pick up at step 4.
+The six steps above are for a day when you **continue** a file you already started. On the first day of a new lab there is no file to open yet. Do steps 1 and 2, then create and name the new `.qmd` file (`Lastname_lab2.qmd` for Lab 2, and so on) and paste in your load-library chunk exactly as in [Start a Report](codechunks.qmd) (the previous chapter). Save it, check that it appears in the files tab, and pick up at step 4.
 :::
 
 ## Ref's final whistle: before you quit RStudio

@@ -1,0 +1,95 @@
+---
+title: "Lab 2 Checklist"
+subtitle: "What you should have when Clean Data is done"
+author:
+  - Shane McCarty
+abstract: |
+  This short chapter closes Lab 2. It first sums up each Clean Data chapter in three parts: what you learned in The Play, what you did in The Lab (and whether you did it in Qualtrics with your team or in RStudio on your own computer), and what you will do in Your Turn when you come back with your team's data. It then lists what should exist in your team's Google Drive, on your computer, and in your lab file, with a one-line way to check each item and a link back to the section that made it. Lab 2 has two halves: the team work in Qualtrics (naming, recoding, codebook, export), which has no R in it, and your first analysis in RStudio, importing and cleaning the lab dataset and building the categorical and composite variables that every later lab uses.
+keywords:
+  - checklist
+  - Lab 2
+  - clean data
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+---
+
+Lab 2 is the first lab with code in RStudio, and it is also the only lab that is half team work. The first two chapters ([Name and Recode Variables in Qualtrics](qualtrics.qmd) and [Export Survey Data](export.qmd)) happen in Qualtrics with your team; the rest happen in your own RStudio with the lab dataset. The list below is split the same way. (If you are not sure what a Lab checklist is for, [Lab 1 Checklist](lab1-checklist.qmd) explains the two kinds.)
+
+## What each chapter asked of you {#sec-lab2-summary}
+
+Every row below has the same three parts as the chapters themselves. **The Play** is what you read: the chapter walks through the code with an example dataset, and you do not retype it. **The Lab** is what you did yourself. **Your Turn** is what you will do later with your team's data, once data collection has closed.
+
+The **Where** column is about The Lab, because that is where students lose track of whether they were supposed to be coding:
+
+- **Qualtrics, with your team**: no R at all. Your team's own survey is the practice.
+- **RStudio, lab data**: you typed and ran code in `Lastname_lab2.qmd` on your own computer, using the lab dataset from the [CLASS DRIVE: Quant Track folder](https://drive.google.com/drive/folders/1CD_lpXZq2XoEFQWnpXed6AXnHUWUETBo?usp=share_link), and checked your answers against Ref's checks.
+
+| Chapter | The Play: what you learned | The Lab: what you did | Where | Your Turn: with your data |
+|----|----|----|----|----|
+| [Name & Recode Vars](qualtrics.qmd) | The naming rules (`NAME1`, `_01`, `_QUAL`), a number for every answer choice, and what a codebook is for | Named and recoded every question in your team's survey, filled in the Team Codebook, and exported the draft survey questions to Word | **Qualtrics, with your team** | Export the final survey questions and codebook before the survey is published; after that, only the changes listed as safe |
+| [Export Survey Data](export.qmd) | The export settings, the `.cleandata` copy, and the file name | Triple-checked the coded values and exported the final survey questions. You did **not** export data yet: your team is still collecting it | **Qualtrics, with your team** | After data collection closes: export the `.xlsx`, make the `.cleandata` copy, name it `MONTH.DAY.YEAR.team#.cleandata.xlsx`, and meet with a Quant Peer Mentor |
+| [Import Data Once](import-once.qmd) | How to read an import line, how to look at what came in (`head()`, `names()`, `nrow()`, `ncol()`), and that only the function changes between `.csv` and `.xlsx` | Lab Plays 1 to 5: imported the lab data as `mh_raw`, compared the names to the codebook, turned `-99` and `-50` into `NA`, and fixed a number column that came in as text. **This is the first code you ran in RStudio on data** | **RStudio, lab data** | Import your team's `.cleandata` file as `alldata`, with the same checks |
+| [Pre/Post Data](prepost.qmd) (Teams 3 and 5 only) | Long and wide data, and how `PASSWORD` links a person's two responses | Lab Plays 1 to 3: imported the long lab file, cleaned the password, found the duplicate, and reshaped to wide | **RStudio, lab data** | Template 1 on `alldata`: one row per person, with `_PRE` and `_POST` columns |
+| [Vignette Data](vignette.qmd) (Team 4 only) | How a two-by-two design becomes a table, one row per rating, and a factor for each thing that varied | Lab Plays 1 to 3: reshaped `CASE1` to `CASE4` to long, added the two factors, and found the four cell means | **RStudio, lab data** | The same template on `SENTENCE1` to `SENTENCE4` |
+| [Mutate Variables](dplyr.qmd) | Three moves: collapse categories, cut a score into bands, combine select-all boxes; and the `_#CAT` naming rule | Lab Plays 1 to 4: ran `source("lab_prep.R")` to get `mh_clean`, then built `EDUCATION_3CAT`, `POL_3CAT`, `HEALTH_3CAT`, and `SES_01`, counting each one | **RStudio, lab data** | Make every categorical variable your report uses from `alldata`, count each one, and cite any cut-off |
+| [Creating Composites](composite.qmd) | Scoring keys, reverse items, and Cronbach's alpha | Lab Plays 1 to 4: scored WELLBEING, STIGMA with its two subscales, and the K10 with `scoreItems()`, then wrote a Measures sentence for each | **RStudio, lab data** | Score every multi-item measure in your team's survey and report its alpha |
+
+::: callout-important
+## Important: The Lab is practice on the lab dataset. Your Turn is not due yet
+
+In Lab 2 you do The Lab of each chapter that applies to you, in `Lastname_lab2.qmd`. You do **not** do the Your Turn sections now, because your team's data do not exist yet. When they do, you will open each of these chapters a second time, skip to **Your Turn**, and run the template on `alldata` in your report file. The last column of the table is your list for that day.
+:::
+
+## Part 1: your team, in Qualtrics and the Google Drive
+
+These are team items. One person can check them for everyone, but every team member should know where the files are.
+
+| ☐ | What | How to check | Where it came from |
+|----|----|----|----|
+| ☐ | **Every variable has an export tag** following the rules | Open the survey; no question is still named `Q1`, `Q2`…; multi-item measures are `NAME1`, `NAME2`…; yes/no variables end in `_01`; open-ended questions end in `_QUAL` | [Name and Recode Variables](qualtrics.qmd), Name Your Variables in Qualtrics |
+| ☐ | **The shared class variables are present and named exactly** | `CONSENT`, `GENDER` (0 to 3), `RACIALIZED` (select-all), and `TIME` for Teams 3 and 5 | [Name and Recode Variables](qualtrics.qmd), the shared-variables table |
+| ☐ | **Every answer choice has a number** | Recode values are on; scales start at 1, true zeros at 0, every binary is No = 0 / Yes = 1, `-99` = Prefer not to say, `-50` = Don't know | [Name and Recode Variables](qualtrics.qmd), Recode the Values |
+| ☐ | **The Team Codebook is filled in** | `TeamCodebook.docx` in the team Google Drive lists every variable with its values | [Name and Recode Variables](qualtrics.qmd), Create a Team Codebook |
+| ☐ | **The survey questions are exported to Word with coded values showing** | `Draft.TeamSurveyQuestions.docx` (and later the final version) in the team Google Drive | [Name and Recode Variables](qualtrics.qmd), Export Survey Questions |
+| ☐ | **You know how the data export will be done** | Excel, numeric values, "Recode seen but unanswered as -99" checked, split multi-value fields for select-all questions, the `.cleandata` copy with the extra header rows removed, and the file name `MONTH.DAY.YEAR.team#.cleandata.xlsx` | [Export Survey Data](export.qmd), Export Survey Data (.xlsx) and Rename Files |
+
+::: callout-tip
+## Go: your team's data file is not part of Lab 2
+
+Your team is still collecting data during Lab 2. The R half of this lab uses the **lab dataset**, which is why every chapter has a Lab (lab data) and a Your Turn (team data). You will come back to the Your Turn sections with your team's `.cleandata` file after data collection closes, with a Quant Peer Mentor ([Caution: meet with a Quant Peer Mentor](import-once.qmd)).
+:::
+
+## Part 2: you, in RStudio
+
+| ☐ | What | How to check | Where it came from |
+|----|----|----|----|
+| ☐ | **`Lastname_lab2.qmd` exists in your project** with a YAML header and a load-library chunk | The Files tab shows it next to `Lastname_FRI.Rproj`; the load-library chunk loads `tidyverse`, `readxl`, and `psych` without error | [Start a Report](codechunks.qmd), Name the file |
+| ☐ | **The lab dataset is in `data/`** | `list.files("data")` shows `ANTH306_LayConceptionsMH_SYNTHETIC.xlsx` (and, for Teams 3 and 5, `ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx`) | [Import Data Once](import-once.qmd), Before you start, and the box *Where the data files are* |
+| ☐ | **`lab_prep.R` is in the project folder, not in `data/`** | `list.files()` shows `lab_prep.R` next to `Lastname_FRI.Rproj`; `source("lab_prep.R")` runs silently and `nrow(mh_clean)` prints 188 | [Transforming Your Data](dplyr.qmd), Important: where `mh_clean` comes from |
+| ☐ | **You imported the lab data yourself as `mh_raw`** and looked at it | `nrow(mh_raw)` is 200 and `ncol(mh_raw)` is 134; you ran `head()` and `names()` | [Import Data Once](import-once.qmd), Lab Plays 1 and 2 |
+| ☐ | **You checked the names against the codebook with `setdiff()` in both directions** | You can say which variables are in the data but not the codebook, and why | [Import Data Once](import-once.qmd), Lab Play 3 |
+| ☐ | **You turned `-99` and `-50` into `NA`** | `summary(mh_raw$POLITICALBELIEFS)` shows a minimum of 1 and an `NA's` count, not `-99` | [Import Data Once](import-once.qmd), Lab Play 4 |
+| ☐ | **You converted a text column to numbers with `as.numeric()`** and counted what became `NA` | `veggiescore_SYNTHETIC.xlsx` is in `data/`; `summary()` of `VEGGIESCORE` shows a minimum and maximum and 24 `NA's` | [Import Data Once](import-once.qmd), Lab Play 5 |
+| ☐ | **Teams 3 and 5 only: you reshaped the long lab file to wide** | `lab_wide` has one row per `PASSWORD` with `HELPSEEK_PRE` and `HELPSEEK_POST` | [Pre/Post Data](prepost.qmd), Lab Plays 1 to 3 |
+| ☐ | **Team 4 only: you reshaped the vignette ratings to long and added the two factors** | One row per person per case (`CASE`, `RISK`), with the `CASE_RACIALIZED` and `CASE_SEVERITY` factors, and four cell means | [Vignette Data](vignette.qmd), Lab Plays 1 to 3 |
+| ☐ | **You built the four lab categories with `mutate()` and `case_when()`** | `count()` on `EDUCATION_3CAT`, `POL_3CAT`, `HEALTH_3CAT`, and `SES_01` matches the Ref's checks | [Transforming Your Data](dplyr.qmd), Lab Plays 1 to 4 |
+| ☐ | **You scored three composites with `scoreItems(impute = "none")`** and read their alphas | WELLBEING, STIGMA (with its two subscales), and the K10 total; the alphas match the Ref's checks | [Creating Composite Scores](composite.qmd), Lab Plays 1 to 3 |
+| ☐ | **You wrote one Measures sentence per composite** | Scale, number of items, response scale, scoring, reverse items, alpha in this sample | [Creating Composite Scores](composite.qmd), Lab Play 4 |
+| ☐ | **`Lastname_lab2.qmd` renders and is backed up** | Render produces `Lastname_lab2.html` with no red text; a copy of the `.qmd` is in the R Labs folder of your ELN | [Find the Ref](find-the-ref.qmd), Ref's final whistle |
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: the gaps that break Lab 3 and Lab 4
+
+- **`object 'mh_clean' not found`** in a later chapter → `source("lab_prep.R")` was not run in this session, or the file is inside `data/` instead of the project folder.
+- **`object 'WELLBEING' not found`** → same cause; every composite and every `_CAT` variable the later labs use is created by `lab_prep.R`, not by you typing it again.
+- **Your lab file lives on the Desktop** → relative paths fail. It belongs in `Lastname_FRI`.
+- **You skipped Lab Play 3 (the `setdiff()` check)** → nothing breaks in the lab data, which is clean, but the same check is the one that catches a misnamed variable in your team's export, where it matters.
+:::
+
+## What Lab 3 will add
+
+Lab 3 has very little code. You will read the Analysis Map, take a short quiz placing five research questions on it, check whether an outcome is normal, and write the Data Analysis Plan paragraph for your Methods section. [Lab 3 Checklist](lab3-checklist.qmd) is the matching list.

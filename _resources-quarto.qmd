@@ -1,0 +1,12 @@
+<!-- Shared Resources box for the two Quarto chapters: Start a Report (codechunks.qmd) and Write an Introduction (write-intro.qmd). Edit here, not in the chapters. -->
+::: {.callout-note collapse="true"}
+## Resources: `quarto`
+
+- [Primary website](https://quarto.org)
+- Read: [R4DS Ch. 28 Quarto](https://r4ds.hadley.nz/quarto.html)
+- Read: [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+- [Youtube: Getting Started](https://www.youtube.com/watch?v=_f3latmOhew)
+- [Youtube: Quarto for Academics](https://www.youtube.com/watch?v=EbAAmrB0luA)
+- [Posit Cheatsheet](https://rstudio.github.io/cheatsheets/html/quarto.html)
+- [PDF Cheatsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
+:::

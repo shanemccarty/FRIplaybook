@@ -1,0 +1,67 @@
+---
+title: "Lab 3 Checklist"
+subtitle: "What you should have when Map Your Analysis is done"
+author:
+  - Shane McCarty
+abstract: |
+  This short chapter closes Lab 3. It first sums up each Map Your Analysis chapter in three parts: what you learned, what you did in the lab (and whether it involved any code in RStudio), and what you will do in Your Turn with your own research questions. It then lists what should exist in your head, in your lab file, and in your report draft, with a one-line way to check each item and a link back to the section that made it. Lab 3 has little code. Its product is a decision: for each of your research questions, which box on the Analysis Map it lands in and which line of that box, written down as the Data Analysis Plan paragraph of your Methods section.
+keywords:
+  - checklist
+  - Lab 3
+  - analysis plan
+date: 10.05.2026
+date-format: "MM.DD.YYYY"
+format:
+  html:
+    css: custom.css
+editor: visual
+---
+
+Lab 3 is different from Labs 1 and 2. There is almost no code to run, and nothing new goes into `data/`. What you make is a **decision** for each research question, and the test of whether you made it is whether you can write it down. So this checklist has fewer rows, and most of them are things you should be able to say or write rather than things that should be on your disk. (If you are not sure what a Lab checklist is for, [Lab 1 Checklist](lab1-checklist.qmd) explains the two kinds.)
+
+## What each chapter asked of you {#sec-lab3-summary}
+
+The three parts are the same as in Lab 2: what you **learned** by reading, what you **did** yourself in the lab, and what you will do in **Your Turn** for your report. The **Where** column says whether the lab part involved code:
+
+-   **Read**: the chapter has no Lab. You read it; there was no code to run and nothing to write down.
+-   **No code**: the chapter has a Lab, but it is a quiz, not code. You wrote your answers down and checked them against Ref.
+-   **RStudio, lab data**: the Lab is code. You ran it in `Lastname_lab3.qmd` on the lab dataset.
+
+| Chapter | What you learned | The Lab: what you did | Where | Your Turn: with your data |
+|------------------|----------------|----------------|--------|----------------|
+| [The Analysis Map](analysis-map.qmd) | Comparison or relationship, the types of data, and the two lines in every box ([NORMAL]{.normal} and [NOT NORMAL]{.nonnormal}) | Placed five research questions about the lab dataset on the map and checked them against Ref | **No code** | Decide the box and the line for each research question, then write the Data Analysis Plan with the template in [Write the Methods](methods.qmd) |
+| [Describe Your Data](describe.qmd) | Three checks for a normal outcome (histogram, Q-Q plot, Shapiro-Wilk) and how to make the decision | Ran the three checks on a lab outcome, starting from `source("lab_prep.R")` | **RStudio, lab data** | Run the three checks on the outcome of each research question, decide normal or not normal **before** you test, and write the sentence in your plan |
+| [Frequentist Inference](statistics.qmd) | Where this playbook's tests sit in statistics, and the four numbers every play reports (test statistic, *p*, confidence interval, effect size) | Nothing to run | **Read** | Every result you report in Labs 4 and 5 has those four numbers |
+
+## What you should have
+
+| ☐ | What | How to check | Where it came from |
+|----|----|----|----|
+| ☐ | **You can read the Analysis Map** | Given any research question, you can say whether it is a comparison or a relationship, which box it lands in, and which of the box's two lines ([navy]{.normal} for a normal outcome, [orange]{.nonnormal} for one that is not) | [The Analysis Map](analysis-map.qmd), How to Read the Map |
+| ☐ | **You took the five-question quiz and checked your answers** | All five land where Ref's check says; if one did not, you can say why | [The Analysis Map](analysis-map.qmd), The Lab |
+| ☐ | **You know where a 1-to-6 Likert item lands** | One item on its own is ordinal and takes the [non-parametric]{.nonnormal} line as an outcome; a composite of several items is treated as continuous and takes the [parametric]{.normal} line | [The Analysis Map](analysis-map.qmd), Go: where does a 1-to-6 Likert scale land? |
+| ☐ | **You ran the three normality checks on an outcome** | A histogram, a Q-Q plot, and `shapiro.test()`, on the lab outcome in `Lastname_lab3.qmd` (and on your own outcome once your team's data exist) | [Describe Your Data](describe.qmd), Checks 1 to 3 |
+| ☐ | **You can say why a single item is never "normal"** and why regression is the exception | A five-point rating has five values and cannot be bell-shaped; a regression checks its residuals, not the outcome | [Describe Your Data](describe.qmd), Caution: A single survey item is not normal, and One exception: regression |
+| ☐ | **You can place this playbook's tests in the world of statistics** | Frequentist inference, not Bayesian and not prediction; you can name the four numbers every play reports (test statistic, *p*, confidence interval, effect size) and what *p* does not mean | [Frequentist Inferential Statistics](statistics.qmd) |
+| ☐ | **Your Data Analysis Plan is drafted, one paragraph per research question, in the past tense** | The paragraph is the last text under Methods in your report draft, follows the template, names the box, the plot, the shape check, the test, and the effect size, and marks any test you have not yet run with a bracketed note | [Write the Methods](methods.qmd), Data Analysis Plan |
+| ☐ | **You know your RStudio version** | You can find it in Help \> About RStudio, for the last sentence of the plan | [Write the Methods](methods.qmd), Go: how to look up your version numbers |
+| ☐ | **`Lastname_lab3.qmd` renders and is backed up** | Render produces `Lastname_lab3.html` with no red text; a copy of the `.qmd` is in the R Labs folder of your ELN | [Find the Ref](find-the-ref.qmd), Ref's final whistle |
+
+::: callout-tip
+## Go: this is where the two kinds of checklist meet
+
+The Data Analysis Plan is the one Lab item that goes straight into your report. From here on, every chapter you need is chosen by that plan: the box your question lands in tells you which chapter in Lab 4 or Lab 5 to read, and that chapter's **Your Turn checklist** tells you what your report must contain. Students on the mixed-methods track need one box; students on the quantitative track need two, usually one from each side of the map.
+:::
+
+::: {.callout-warning collapse="true" icon="false"}
+## ![](images/ref-whistle.svg){.ref-mini fig-alt="Ref the raccoon blowing his whistle"} Ref's call: the gaps that send you to the wrong chapter
+
+-   **Your plan says "compare" but your two variables are both scores** → that is a relationship; you are on the right side of the map. Cutting a score into high and low to make it a comparison is the foul [Relate 3+ Variables](regression.qmd) warns about.
+-   **Your plan says "pre/post" but different people took the two surveys** → that is two groups, not one group twice: [Compare 2 Groups](compare2groups.qmd), not [Compare 1 Group, Pre/Post](violin.qmd).
+-   **Your outcome is a single item and your plan picked the parametric line** → go back to the Likert Go box. The Mann-Whitney U, Wilcoxon signed-rank, Kruskal-Wallis, and Spearman chapters are written for exactly this case.
+-   **Your plan is in the future tense** → it will read as a promise in the *Final Report*. Write what you did, and bracket what you have not done yet.
+:::
+
+## What Labs 4 and 5 will add
+
+From here the playbook branches. Lab 4 ([Compare Groups](visualize-comparison.qmd)) and Lab 5 ([Examine Relationships](visualize-relationship.qmd)) each have a visualization chapter and then one chapter per box on the map. Read the ones your Data Analysis Plan points to; each has its own Ref's checks on the lab dataset and its own Your Turn checklist for your report, so there is no separate Lab checklist for them.

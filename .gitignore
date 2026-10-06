@@ -17,7 +17,33 @@ make_regression_example.R
 # ---- added 2026-10-04: REAL participant data (Team 4, 2025): never publish ----
 data/11.10.2025.pre.not.data.team4.clean.xlsx
 data/*.team*.clean.xlsx
+data/*.team*.cleandata.xlsx
+data/*.team*.data.xlsx
 
 # raw team exports must never be in the repo (real participant data)
 data/safety-data.xlsx
 data/*safety*RAW*
+
+# ---- added 2026-10-05: ONLY synthetic data is published (Shane's rule) ----
+# Everything in data/ is ignored unless it is listed below.
+data/*
+!data/*_SYNTHETIC.xlsx
+# public Kaggle example data (not participant data); Coding a Plot downloads it from GitHub
+!data/insurance.csv
+!data/insurance.xlsx
+# the lab files stay off GitHub (shared through the course Drive)
+data/ANTH306_LayConceptionsMH_SYNTHETIC.xlsx
+data/ANTH306_LayConceptionsMH_SYNTHETIC_LONG.xlsx
+# real data copies outside data/
+shiny/*.csv
+9992749/
+# working notes, never published
+FINAL-TO-DO-BEFORE-PUBLISH.md
+# render clutter that can hold data
+.quarto/
+**/.Rhistory
+**/.RData
+
+# working copies and notes, never published
+_backup/
+_drafts/

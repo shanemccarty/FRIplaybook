@@ -84,9 +84,9 @@ Quarto provided two examples of a reproducible report and manuscript:
 
 FRI-PH Cohort 11 produced individual reports and a team manuscript. Cohort 12 will ONLY produce an individual report. Below are examples of individual reports from students: 
 
--   [Individual Report on Sleep](https://danicalyktey.quarto.pub/sleep/)
-
 -   [Individual Report on Cooking Self-Efficacy](https://yoominkim.quarto.pub/indvidualfinalreport/)
+
+-   [Individual Report on Sleep](https://danicalyktey.quarto.pub/sleep/)
 
 -   [Team Manuscript on Violence Prevention](https://vraposo.quarto.pub/mixed-methods-analysis-of-preferences-for-community-based-violence-prevention-and-intervention-approaches/)
 
